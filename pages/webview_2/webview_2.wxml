@@ -1,0 +1,12 @@
+<!-- pages/webview_2/webview_2.wxml -->
+
+<blcok wx:if="{{ getPhoneIf }}">
+    
+    <getPhoneNumber bindgetPhoneNumber="getPhoneNumber"></getPhoneNumber>
+
+</blcok>
+<block wx:else>
+    
+    <web-view src="{{ h5Url }}" bindmessage="bindmessage"></web-view>
+
+</block>

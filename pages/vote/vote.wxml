@@ -1,0 +1,121 @@
+<!-- pages/vote/vote.wxml -->
+<view class="vote_bg" bindtap="isVehicleOwner">
+  <view bindtap="openRule" class="rulsbox">规 则</view>
+  <view bindtap="votePageJump" class="rankbox">排 行 榜</view>
+  <view wx:if="{{isHome}}" bindtap="back_home" class="rulsbox back-home">首 页</view>
+  <swiper vertical="true" bindchange="swiperChange">
+    <swiper-item wx:for="{{VideoBg}}">
+      <!-- <image  class="bg" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3987907653,720009510&fm=26&gp=0.jpg">
+    </image> -->
+      <video wx:if="{{imgVideoType == 0}}" src="{{item.videoUrl}}" id="video{{index}}" object-fit="fill" loop="{{true}}" controls='{{false}}' class="image-video"></video>
+      <!-- <image wx:else src="{{item.resource}}" model="widthFix" class="image-video"></image> -->
+     <!-- {{item.resource}}== -->
+     <view class="image-video" style="background-image:url({{item.resource}})"></view>
+      <view class="down_right">
+        <view class="headimg" data-type="ok" bindtap="toVoteDetail">
+          <image data-type="ok" src="{{userInfo.avatarUrl || IMGSERVICE + '/home/om.png'}}"></image>
+        </view>
+        <view class="currency" data-index="{{index}}" bindtap="start">
+          <image class="image {{item.curIndex == indexs ? 'on' : ''}}" wx:for="{{sequenceList}}" wx:for-item="items" wx:for-index="indexs" wx:key="key{{indexs}}" src="{{items.url}}"></image>
+          <view class="zan_num">{{item.votes}}</view>
+        </view>
+        <view class="share" bindtap="bindShare" bindtap="isShare">
+          <image src="{{IMGSERVICE}}/activity/share.png"></image>
+          <button open-type="share" class="btn_share" bindtap="shareFriend"></button>
+          <view>{{item.shares}}</view>
+        </view>
+      </view>
+      <view class="btn_can" bindtap="toPartake" data-type="ok" wx:if="{{is_join==0}}">立即参与</view>
+      <view class="down_left">
+        <view class="left_img">
+          <view class="image">
+            <image src="{{item.headimg}}"></image>
+          </view>
+          <view>{{item.nickname}}</view>
+        </view>
+        <view class="content">{{item.content}}</view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <!-- 游戏规则弹窗 -->
+  <!-- <view class="popup flex-cen" wx:if="{{rulspop}}">
+          <view class="rule-box fadeShow">
+          <view class="box">
+          <scroll-view scroll-y>
+          <image src="{{info.rule}}" mode="widthFix"></image>
+          </scroll-view>
+          </view>
+          <image class="close-btn" src="{{IMGSERVICE}}/prize/close.png" bindtap="closePop"></image>
+          </view>
+    </view> -->
+</view>
+<view class="pof fadeShow" wx:if="{{rulspop}}">
+  <rule bindclose="closePop" ruleImg="{{indexInfo.rule}}"></rule>
+</view>
+<!-- 授权、去绑定车主弹窗 -->
+
+
+
+
+<!-- win_list -->
+
+  <view class="bg_color" wx:if="{{isPrize}}">
+
+    <view class="top">
+        <image src="{{IMGSERVICE}}/activity/bg(1).png"></image>
+        <view class="img" style="background-image:url('{{IMGSERVICE}}/activity/hjmd.png')"></view>
+        <view class="img_next">
+            <view class="xian"></view>
+            <view class="over">活动结束</view>
+            <view class="xian"></view>
+        </view>
+    </view>
+
+      <view class="win_list">
+
+        <scroll-view  scroll-y style="height:335rpx;">
+        
+          <view class="list" wx:for="{{rank_list}}">
+            <image wx:if="{{item.num==1}}" class="one" src="{{IMGSERVICE}}/activity/1.png"></image>
+            <image wx:elif="{{item.num==2}}" class="one" src="{{IMGSERVICE}}/activity/2.png"></image>
+            <image wx:elif="{{item.num==3}}" class="one" src="{{IMGSERVICE}}/activity/3.png"></image>
+            <view class="num">{{index+1}}</view>
+            <image class="headimg" src="{{item.headimg}}"></image>
+            <view class="name">{{item.nickname}}</view>
+            <view class="vote-num">{{item.votes}}</view>
+          </view>
+
+        </scroll-view>
+
+        <view class="l_list">
+
+          <view class="list">
+            <view class="num">*</view>
+            <image class="headimg" src="{{myInfo.headimg}}"></image>
+            <view class="name">{{myInfo.nickname}}</view>
+            <view class="vote-num">{{myInfo.votes}}</view>
+          </view>
+
+          <view wx:if="{{is_win==1}}" class="list_right">恭喜获奖</view>
+          <view wx:else class="list_right">未获奖</view>
+
+        </view>
+
+        <view wx:if="{{is_win==1}}" bindtap="getPrize" class="btn">领取奖品</view>
+        <view wx:else bindtap="getPrize" class="btn">您未获奖</view>
+
+     </view>
+
+     <view bindtap="close_prize" class="x" style="background-image:url('{{IMGSERVICE}}/center/icon_close.png')"></view>
+
+  </view>
+
+
+<!-- win_list -->
+
+
+
+<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+  <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
+</view>
+<!-- <image  class="img {{cur_index == index ? 'op':''}}" bindtap="test" wx:for="{{image_list}}" src="{{item.src}}"></image> -->

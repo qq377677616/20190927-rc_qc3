@@ -1,0 +1,105 @@
+/* pages/lj_partake/lj_partake.wxss */
+
+page{
+  height: 100%;
+  background-color: #F0F0F0;
+}
+
+.partake{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28rpx 0;
+}
+
+.bg{
+  width: 694rpx;
+  height: 920rpx;
+  background-color: #fff;
+}
+
+.bg_content{
+  padding: 50rpx 27rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* upload_pic */
+
+.bg_content .upload_pic image{
+  width: 240rpx;
+  height: 224rpx;
+  margin-top: 35rpx;
+}
+
+.upload-image{
+  width: 240rpx;
+  height: 224rpx;
+  background-size: cover;
+  background-position:  center center;
+}
+
+.bg_content .point1{
+  font-size: 30rpx;
+  color:#333;
+  margin-top: 36rpx;
+}
+
+.bg_content .point2{
+  font-size: 24rpx;
+  color:#999;
+  margin-top: 10rpx;
+}
+
+/* upload_pic */
+
+/* describe */
+
+.describe{
+  margin-top: 76rpx;
+}
+
+.describe .ms{
+  margin-left: 21rpx;
+}
+
+.describe textarea{
+  background-color:#f5f5f5;
+  width: 600rpx;
+  height: 280rpx;
+  border-radius: 14rpx;
+  margin-top: 30rpx;
+  position: relative;
+  padding: 20rpx;
+}
+
+.describe .pla{
+  font-size: 24rpx;
+  color: #CCC;
+}
+
+.describe .txt{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 21rpx;
+  margin-bottom: 15rpx;
+  font-size: 20rpx;
+  color: #ccc;
+}
+
+/* describe */
+
+.btn{
+  width: 600rpx;
+  height: 90rpx;
+  background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
+  border-radius: 10rpx;
+  margin-top: 74rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  color:#FFF;
+}

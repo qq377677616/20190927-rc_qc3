@@ -1,0 +1,9 @@
+/* components/More/cmd.wxss */
+
+.more{
+    font-size: 26rpx;
+    color: #ddd;
+    text-align:center;
+    line-height: 2em;
+    padding-bottom: 30rpx;
+}

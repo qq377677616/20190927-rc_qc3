@@ -1,0 +1,28 @@
+<!--components/goodsItem/cmp.wxml-->
+
+<view class="goods-item" data-id="{{ goodsItem.id }}" bindtap="goodsDetailBtn">
+    <!-- <view class="stars">
+        <image src="{{ IMGSERVICE + '/haoli_district/haoli_district_star_select.png' }}"></image>
+        <image src="{{ IMGSERVICE + '/haoli_district/haoli_district_star_select.png' }}"></image>
+        <image src="{{ IMGSERVICE + '/haoli_district/haoli_district_star_select.png' }}"></image>
+        <image src="{{ IMGSERVICE + '/haoli_district/haoli_district_star_select.png' }}"></image>
+        <image src="{{ IMGSERVICE + '/haoli_district/haoli_district_star_normal.png' }}"></image>
+    </view> -->
+    <view class="goods-image">
+        <image src="{{ goodsItem.thumb }}" mode="widthFix"></image>
+    </view> 
+
+    <view class="goods-name">{{ goodsItem.title }}</view>
+
+    <!-- <view class="stock">
+        <text decode="true">库存剩余:&nbsp;{{ goodsItem.stock }}</text>
+    </view> -->
+
+    <view class="v-money">
+        所需V币<text>{{ goodsItem.exchange }}</text>
+    </view>
+
+    <view class="mongolia" wx:if="{{ goodsItem.exchanged == 1 }}">
+        <text>您已兑换</text>
+    </view>
+</view>

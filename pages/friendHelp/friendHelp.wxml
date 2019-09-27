@@ -1,0 +1,52 @@
+<!-- 好友助力页面 -->
+<view class="whole">
+	<view class="handImg" style="background-image:url({{IMGSERVICE}}/center/giftbg1.png)">
+		<!-- 给好友助力Box -->
+		<view class="helpBox" hidden="{{true}}">
+			<view class="userBox">
+				<view class="userImg" style="background-image:url({{IMGSERVICE}}/center/giftbg1.png)"></view>
+				<view class="userInfo">
+					<text class="userNick">格律风诗</text>
+					<text class="userTxt">请帮我助力！</text>
+				</view>
+			</view>	
+			<view class="helpBtn"><text>助TA一臂之力</text></view>
+			<view class="myEnter"><text>我也要参与</text></view>
+		</view>
+		<!-- 查看其他活动BOX -->
+		<view class="helpBox helpBox2">
+			<view class="readyTxt">已经有10位好友助力，快来领取奖品</view>
+			<view class="quanBox" style="background-image:url({{IMGSERVICE}}/center/quan.png)">
+				<view class="quan1">优惠券</view>
+				<view class="quan2 nowrap">￥888<text class="addstyle">元购车基金</text></view>
+				<view class="quan3">领取</view>
+			</view>
+			<view class="helpBtn"><text>继续分享获取更多好礼</text></view>
+			<view class="myEnter"><text>查看其他活动</text></view>
+		</view>		
+	</view>
+	<!-- 给好友助力Box -->
+	<view class="centerHelp" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)" hidden="{{true}}"></view>
+	<!-- 查看其他活动BOX -->
+	<view class="centerHelp2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)"></view>
+	<view class="help_list">
+		<view class="help_item" wx:for="{{helpList}}">
+			<view class="leftBox">
+				<view class="l_item1 nowrap"><text>{{index+1}}2</text></view>
+				<view class="l_item2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)"></view>
+				<view class="l_item3 nowrap"><text>陈小东</text></view>
+			</view>
+			<view class="rightBox">
+				<text>2019-08-09</text>
+			</view>
+		</view>
+	</view>
+	<view class="helpsuccBox" hidden="{{true}}">
+		<view class="succPop">
+			<view class="succTxt"><text>助力成功!</text></view>
+			<view class="succBtn">知道了</view>
+			<view class="look_other"><text>去查看其他活动</text></view>
+			<image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn"></image>
+		</view>
+	</view>
+</view>

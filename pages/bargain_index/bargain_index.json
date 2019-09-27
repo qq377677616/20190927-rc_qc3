@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+	  "rule": "/components/rule/rule",
+	  "activePop":"/components/activePop/activePop",
+	  "activeStatus":"/components/activeStatus/activeStatus"
+  },
+     "navigationBarTitleText": "砍价免费拿"
+}

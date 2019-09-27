@@ -1,0 +1,80 @@
+<!-- pages/yuyueshijia_form/yuyueshijia_form.wxml -->
+
+
+<!-- yuyueshijia_form_page -->
+<view class="yuyueshijia_form_page">
+
+    <!-- header -->
+    <view class="header">
+
+        <view class="image">
+            <image src="http://img2.imgtn.bdimg.com/it/u=3630752995,1992942569&fm=26&gp=0.jpg" mode="widthFix"></image>
+        </view>
+
+        <view class="info">
+
+            <view class="title nowrap">T90MC  2.0L时尚版 0L时尚版0L时尚版0L时尚版</view>
+
+            <view class="price">
+                <view class="label">官方指导价：</view>
+                <view class="span">17.98万元</view>
+            </view>
+        
+        </view>
+
+    </view><!-- header -->
+
+    <!-- bind_btn -->
+    <view class="bind_btn">使用微信绑定的手机号</view><!-- bind_btn -->
+
+    <!-- tips -->
+    <view class="tips">使用其他手机号码</view><!-- tips -->
+
+    <!-- form_area -->
+    <view class="form_area">
+
+        <view class="group">
+            <text class="label" space="nbsp">电话</text>
+
+            <input type="text" placeholder="请输入您的电话号码"/>
+        </view>
+
+        <view class="group">
+            <text class="label" space="nbsp"></text>
+
+            <input type="text" placeholder="请输入验证码"/>
+
+            <view class="code_btn">获取验证码</view>
+        </view>
+
+        <view class="group">
+            <text class="label" space="nbsp">姓名</text>
+
+            <input type="text" placeholder="请输入您的姓名"/>
+        </view>
+
+        <view class="group">
+            <text class="label" space="nbsp">地址</text>
+
+            <input type="text" placeholder="请输入您的地址"/>
+        </view>
+
+        <view class="group">
+            <text class="label" space="nbsp">当前城市</text>
+
+            <view class="location">
+                <text class="span nowrap">广东  广州</text>
+                <view class="icon iconfont icon_wdwd"></view>
+            </view>
+        </view>
+
+        <view class="agree">
+            <view class="checked"></view>
+            我同意东风汽车有限公司东风启辰汽车公司使用、分享我的私人信息；同时我同意东风汽车有限公司东风启辰汽车公司向我发送相关市场或营销资料。
+        </view>
+
+        <view class="submit">领取</view>
+
+    </view><!-- form_area -->
+
+</view><!-- yuyueshijia_form_page -->

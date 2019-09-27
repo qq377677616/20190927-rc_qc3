@@ -1,0 +1,152 @@
+<import src="../../utils/wxParse/wxParse.wxml" />
+<view class="cut_product_details">
+
+  <view class="p_pic">
+	<image mode="widthFix" src="{{shopdelData.thumb}}"></image>
+  </view>
+
+  <view class="p_name">
+
+      <view class="name">{{shopdelData.title}}</view>
+      <view class="name_under">
+          <view class="price">
+		    	价格：¥ {{shopdelData.price}}元
+		  		<text class="getWay" wx:if="{{getWay>0}}">{{textArr[getWay-1]}}</text>
+		  </view>
+          <view class="p_num">
+            <view>已有</view>
+            <view class="p_count">{{shopdelData.true_num}}</view>
+            <view>人免费拿</view>
+          </view>
+      </view>
+
+  </view>
+
+  <view class="xian"></view>
+ <view class="bg_down">
+      <view class="bg_title">产品图片</view>
+      <view class="p_pic_down">
+	  	<view wx:if="{{noImg}}" class="noshuoming">暂无产品图</view>
+	  	<image mode="widthFix" src="{{shopdelData.goods_detail_img}}"></image>
+	  </view>
+ </view> 
+
+ <view class="xian"></view>
+
+  
+
+  <view class="explain">
+	  <view class="bg_title">温馨提示</view>
+      <template is="wxParse" data="{{ wxParseData:product_explain.nodes }}"/>
+  </view>
+   <!-- b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了 -->
+   <view wx:if="{{barType==3}}" class="r_btn" bindtap="freeGet" data-type="{{shopdelData.type}}">我要免费拿</view>
+
+   <view wx:if="{{barType==1}}" class="r_btn" bindtap="contBar">继续砍价</view>
+
+   <view wx:if="{{barType==2}}" class="r_btn b" catchtap="getworld">立即领取</view>
+
+   <view wx:if="{{barType==4}}" class="r_btn b setbg">已领取</view>
+
+   <view wx:if="{{barType==5}}" class="r_btn b setbg">抢完了</view>
+
+   <view wx:if="{{barType==6}}" class="r_btn b setbg">已经抢过了</view>
+
+   <view wx:if="{{barType==7}}" class="r_btn b setbg">砍价超时</view>
+
+</view>
+
+<!-- </view> -->
+
+
+<!-- start_cut -->
+
+<view class="start_cut" wx:if="{{barPop}}">
+
+      <view class="p_con">
+
+          <view class="con_top">
+
+              <view class="top">
+                <view class="zs" style="background-image:url('{{IMGSERVICE}}/activity/zstiao.png')"></view>
+                <view class="choose">已选择该商品</view>
+              </view>
+
+              <view class="x" style="background-image:url('{{IMGSERVICE}}/activity/X.png')" bindtap="closePop"></view>
+        
+          </view>
+
+          <view class="product">
+
+              <view class="list">
+
+                <view class="wares" style="background-image:url({{shopdelData.thumb}})"></view>
+
+                <view class="list_right">
+                     <view class="title">{{shopdelData.title}}</view>
+                     <view class="price">
+                        <view>价值</view>
+                        <view class="txt">{{shopdelData.price}}</view>
+                        <view>元,砍到免费拿</view>
+                     </view>
+                </view>
+              
+              </view>
+        
+          </view>
+
+          <view class="btn" bindtap="startBar" data-type="{{shopdelData.type}}">开始砍价</view>
+      
+      </view>
+      
+</view>
+
+<!-- start_cut -->
+
+
+
+<!-- draw -->
+
+    <view class="draw" wx:if="{{false}}">
+
+          <view class="draw_bg">
+
+              <view class="top">
+
+                <view class="pic" style="background-image:url('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2174909441,2495215020&fm=26&gp=0.jpg')"></view>
+
+                <view class="pic_right">
+                  <view class="txt1">白色AJ1低帮 553558</view>
+                  <view class="txt2">¥0元</view>
+                </view>
+
+                <view class="x" style="background-image:url('{{IMGSERVICE}}/activity/X.png')"></view>
+              
+              </view>
+
+              <view class="under">
+              
+                  <view class="dh">兑换数量</view>
+
+                  <view class="add">
+                      <view class="reduce">-</view>
+                      <view class="num">1</view>
+                      <view class="add_num">+</view>
+                  </view>
+
+                  <view class="stock">库存：222</view>
+
+                  <view class="btn_com">确认领取</view>
+
+              </view>
+        
+          </view>
+
+    </view>
+
+
+<!-- draw -->
+
+
+
+

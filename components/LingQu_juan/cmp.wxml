@@ -1,0 +1,39 @@
+<!--components/LingQu/cmp.wxml-->
+
+
+
+<!-- prize_mask -->
+<view class="prize_mask">
+
+    <!-- main -->
+    <view class="main" style="background-image:url({{ IMGSERVICE }}/prize/bg.png);">
+
+        <view class="title">恭喜您获得了</view>
+
+        <view class="list">
+            <view class="item use" style="background-image:url({{ IMGSERVICE }}/prize/youhuijuan_use.png);">
+                <text class="label">优\n惠\n券</text>
+
+                <view class="info">
+                    <view class="span">￥388元</view>购车券
+                </view>
+            </view>
+
+            <view class="item used" style="background-image:url({{ IMGSERVICE }}/prize/youhuijuan_used.png);">
+                <text class="label">优\n惠\n券</text>
+
+                <view class="info">
+                    <view class="span">￥388元</view>购车券
+                </view>
+            </view>
+        </view>
+
+        <view class="get_btn">领取</view>
+
+        <view class="close_btn iconfont icon_del"></view>
+
+    </view>
+    <!-- main -->
+
+</view>
+<!-- prize_mask -->

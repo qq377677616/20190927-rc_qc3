@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "兑换详情",
+  "usingComponents": {
+    "forms": "/components/forms/form",
+    "showLoading": "/components/showLoading/showLoading"
+  }
+}

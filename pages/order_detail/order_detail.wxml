@@ -1,0 +1,151 @@
+<!--pages/order_detail/order_detail.wxml-->
+
+<!-- order_detail_page -->
+<view class="order_detail_page">
+
+    <!-- order_status -->
+    <view class="handbox" wx:if="{{ orderDetail.type == 2 }}">
+        <image src="{{ IMGSERVICE }}/center/flish_1.png" mode="widthFix"></image>
+        <view class="info">
+            <view class="title nowrap">{{ orderDetail.status_text }}</view>
+            <view class="date nowrap">{{ orderDetail.create_time }}</view>
+        </view>
+        <view class="look" bindtap="lookWuLiu" wx:if="{{ !(orderDetail.status == 2) }}">查看物流信息</view>
+    </view>
+
+    <view class="order_status" wx:else>
+
+        <image src="{{ IMGSERVICE }}/order_detail_02/complete.png" mode="widthFix"></image>
+
+        <view class="span nowrap">{{ orderDetail.status_text }}</view>
+
+        <view class="date">{{ orderDetail.create_time }}</view>
+
+    </view>
+    <!-- order_status -->
+
+    <!-- card_list -->
+    <view class="card_list">
+
+        <!-- card_item -->
+        <view class="card_item" wx:for="{{ orderDetail.order_goods }}" wx:key="index">
+
+            <view class="image">
+                <image src="{{ item.thumb }}" mode="widthFix"></image>
+            </view>
+
+            <block wx:if="{{ item.type == 1 }}">
+                <view class="info">
+                    <view class="section card_name_btn">
+                        <view class="card_name nowrap">{{ item.title }}</view>
+                        <view class="btn {{item.is_receive == 1 ? '' : 'active'}}" data-index="{{index}}" bindtap="receive">{{item.is_receive  == 1 ? '已领取' : '待领取'}}</view>
+                    </view>
+                    <view class="section total_num">
+                        <view class="num">X{{ item.number }}</view>
+                    </view>
+                    <view class="section prize">
+                        <view class="prize nowrap">原价: {{ item.vcoin }}</view>
+                    </view>
+                </view>
+            </block>
+
+            <block wx:elif="{{ item.type == 3 }}">
+                <view class="info">
+                    <view class="section card_name_v">
+                        <view class="card_name nowrap">{{ item.title }}</view>
+                        <view class="v">原价: {{ item.vcoin }}</view>
+                    </view>
+                    <view class="section total_num">
+                        <view class="num">X{{ item.number }}</view>
+                    </view>
+                    <view class="section code_copy">
+                        <view class="code nowrap">兑换码: {{ item.card_code }}</view>
+                        <view class="copy" data-index="{{ index }}" bindtap="copyBtn">复制</view>
+                    </view>
+                </view>
+            </block>
+
+            <block wx:elif="{{ item.type == 2 }}">
+                <view class="info">
+                    <view class="title nowrap">{{ item.title }}</view>
+                    <view class="num">X{{ item.number }}</view>
+                    <view class="v">原价: {{ item.vcoin }}</view>
+                </view>
+            </block>
+
+        </view><!-- card_item -->
+
+        <!-- total_v -->
+        <view class="total_v">
+            支付 <text class="span">V豆: {{ orderDetail.vcoin }}</text>
+        </view><!-- total_v -->
+
+
+    </view><!-- card_list -->
+
+    <!-- order_info -->
+    <view class="order_info">
+
+        <view class="title nowrap">订单信息</view>
+
+        <view class="section">
+            <view class="span">订单编号</view>
+            <view class="p nowrap">{{ orderDetail.order_sn }}</view>
+        </view>
+
+        <view class="section">
+            <view class="span">下单时间</view>
+            <view class="p nowrap">{{ orderDetail.create_time }}</view>
+        </view>
+
+        <view class="section">
+            <view class="span">订单来源</view>
+            <view class="p nowrap">{{ orderDetail.from }}</view>
+        </view>
+
+        <view class="section">
+            <view class="span">领取方式</view>
+            <view class="p nowrap">{{ orderDetail.receive_type }}</view>
+        </view>
+
+        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+            <view class="span">门店名称</view>
+            <view class="p">{{ orderDetail.dealer_info.name }}</view>
+        </view>
+
+        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+            <view class="span">门店地址</view>
+            <view class="p">{{ orderDetail.dealer_info.address }}</view>
+        </view>
+
+        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+            <view class="span">门店电话</view>
+            <view class="p nowrap">{{ orderDetail.dealer_info.service_tel }}</view>
+        </view>
+
+    </view><!-- order_info -->
+
+    <!-- order_info -->
+    <view class="order_info" wx:if="{{ orderDetail.type == 2 }}">
+        <view class="title nowrap">配送信息</view>
+        <view class="section">
+            <view class="span">快递公司</view>
+            <view class="p nowrap">{{ orderDetail.shipping_name || orderDetail.status_text }}</view>
+        </view>
+        <view class="section">
+            <view class="span">收货人</view>
+            <view class="p nowrap">{{ orderDetail.name + orderDetail.mobile }}</view>
+        </view>
+        <view class="section">
+            <view class="span">配送地址</view>
+            <view class="p clamp_02">{{ orderDetail.address }}</view>
+        </view>
+    </view><!-- order_info -->
+    <!-- 留资弹窗-->
+    <view class="forms-box bottom-top" wx:if="{{isShowForm}}">
+      <!-- <forms bindsubmit="submit" bindclose="isShowForm" type="2" vehicle="{{vehicle}}"></forms> -->
+      <forms bindsubmit="submit" bindclose="isShowForm" type="{{formsType}}"></forms>
+    </view>
+    <!-- 自定义loading -->
+    <showLoading wx:if="{{isShowLoading}}" loadingText="{{loadingText}}"></showLoading>
+</view><!-- order_detail_page -->

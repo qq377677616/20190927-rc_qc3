@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "forms": "/components/forms/form"
+  },
+  "navigationBarTitleText": "报名"
+}

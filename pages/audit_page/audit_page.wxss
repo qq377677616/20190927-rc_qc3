@@ -1,0 +1,79 @@
+/* pages/audit_page/audit_page.wxss */
+.whole{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.centerBox{
+	width: 694rpx;
+	height:1155rpx;
+	background: center no-repeat;
+	background-size: 100% 100%;
+	border-radius: 14rpx;
+	position: relative;
+}
+.status{
+	width:119rpx;
+	height: 48rpx;
+	background-color:#F23E3C;
+	border-top-right-radius: 14rpx;
+	position: absolute;
+	right: 0;
+	top: 0;
+	text-align: center;
+}
+.status>text{
+	color: white;
+	font-size:24rpx; 
+}
+.statusPop{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 99;
+	position: fixed;
+	left: 0;
+	top:0;
+}
+.centerpop{
+	width:505rpx;
+	height:379rpx;
+	border-radius: 14rpx;
+	background-color: white;
+	padding-top: 126rpx;
+	box-sizing: border-box;  
+}
+.centerpop2{
+	padding-top: 90rpx;
+}
+.passtxt{
+	display: block;
+	width: 100%;
+	text-align: center;
+	color: #333;
+	font-weight: 600;
+	font-size: 36rpx;
+}
+.passBtn{
+	background:linear-gradient(90deg,rgba(18,77,184,1),rgba(32,161,224,1));
+	width: 332rpx;
+	height: 60rpx;
+	border-radius: 30rpx;
+	text-align: center;
+	line-height: 60rpx;
+	color:#fff;
+	font-size: 28rpx;
+	margin: 0 auto;
+	margin-top:86rpx;  
+}
+.passtxt2{
+	margin-top: 10rpx;
+}
+.passBtn2{
+	margin-top: 75rpx;
+}

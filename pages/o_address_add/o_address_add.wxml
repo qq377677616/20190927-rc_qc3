@@ -1,0 +1,63 @@
+<!--pages/o_address_add/o_address_add.wxml-->
+
+<!-- o_address_add_page -->
+<view class="o_address_add_page">
+
+     <!-- group -->
+     <view class="group">
+          <view class="span nowrap">姓名:</view>
+          <input class="name" value="{{ currentAddressItem.name }}" type="text" maxlength="16" placeholder="请填写收件人姓名" bindinput="nameInput"/>
+     </view>
+     <view class="group">
+          <view class="span"></view>
+          <view class="radio_group">
+
+               <view class="item" data-id="1" bindtap="sexRadioBtn">
+
+                    <view wx:if="{{ currentAddressItem.sex == 1 }}" class="checked active iconfont icon_gouxuan"></view>
+                    <view wx:else class="checked"></view>
+
+                    <view class="span">先生</view> 
+               </view>
+
+
+                <view class="item" data-id="2" bindtap="sexRadioBtn">
+
+                    <view wx:if="{{  currentAddressItem.sex == 2 }}" class="checked active iconfont icon_gouxuan"></view>
+                    <view wx:else class="checked"></view>
+
+                    <view class="span">女士</view> 
+               </view>
+
+          </view>
+     </view>
+     <view class="group">
+          <view class="span nowrap">手机号:</view>
+          <input class="tel" value="{{ currentAddressItem.mobile }}" type="text" maxlength="16" placeholder="请填写收件人手机号码" bindinput="telInput"/>
+     </view>
+     <view class="group">
+          <view class="span nowrap">地址:</view>
+          <view class="address">
+               <view class="icon iconfont icon_wdwd"></view>
+               <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{ ssqArr }}">
+                    <view wx:if="{{ ssqArr.length }}" class="tips cur_addr nowrap">{{ ssqArr[0] }},{{ ssqArr[1] }},{{ ssqArr[2] }}</view>
+                    <view wx:else class="tips nowrap">点击选择</view>
+               </picker>
+               <view class="more iconfont icon_more"></view>
+          </view>
+     </view>
+     <view class="group">
+          <view class="span nowrap">详细地址:</view>
+          <input class="tel" value="{{ currentAddressItem.address }}" type="tel" maxlength="36" placeholder="请填写详细地址" bindinput="addressInput"/>
+     </view><!-- group -->
+
+     <!-- default -->
+     <view class="default">
+          <view class="span nowrap">设为默认地址</view>
+          <switch color="#F23E3C" checked="{{ currentAddressItem.is_default == 1 }}" bindchange="switchChange"/>
+     </view><!-- default -->
+
+     <!-- submit_btn -->
+     <view class="submit_btn" bindtap="submitBtn">确 定</view><!-- submit_btn -->
+
+</view><!-- o_address_add_page -->

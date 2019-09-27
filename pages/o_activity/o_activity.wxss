@@ -1,0 +1,100 @@
+/* pages/o_activity/o_activity.wxss */
+
+page{
+    height: 100%;
+    background-color: #F1F1F1;
+}
+.o_activity_page{
+    padding: 26rpx 28rpx;
+}
+
+/* activity_item */
+.activity_item{
+    padding: 29rpx 32rpx;
+    border-radius:14rpx;
+    display: flex;
+    background-color: #fff;
+}
+.activity_item:not(:first-of-type){
+    margin-top: 25rpx;
+}
+.activity_item .image{
+    flex:0 0 auto;
+    height: 175rpx;
+    width: 225rpx;
+    overflow: hidden;
+    position: relative;
+    margin-right: 38rpx;
+    border-radius: 8rpx;
+}
+.activity_item .image .is_hot{
+    padding: 8rpx;
+    font-size: 20rpx;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #F23E3C;
+    border-radius: 8rpx 0 8rpx 0;
+}
+.activity_item .image image{
+    width: 100%;
+    border-radius: 8rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.activity_item .info{
+    width: 0;
+    flex:1;
+}
+.activity_item .info .title{
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 21rpx;
+}
+.activity_item .info .date{
+    font-size: 24rpx;
+    color: #999;
+    margin-bottom: 57rpx;
+}
+.activity_item .info .tips{
+    display: flex;
+}
+.activity_item .info .tips .partake_num{ 
+    width: 0;
+    flex:1;
+    font-size: 28rpx;
+    color: #124FB9;
+}
+.activity_item .info .tips .status{ 
+    flex:0 0 auto;
+    font-size: 30rpx;
+    color: #666;
+}
+.activity_item .info .tips .status.active{ 
+    color: #F1403E;
+}/* activity_item */
+.noactive{
+	width: 100%;
+	text-align: center;
+	color: #333;
+	margin-top: 200rpx;
+}
+.lookMore{
+	width:674rpx;
+	height:90rpx;
+	background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
+	border-radius:10rpx;
+	font-size:30rpx;
+	font-family:Source Han Sans CN;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	margin: 0 auto;
+	text-align: center;
+	line-height: 90rpx;
+	margin-top: 200rpx;
+}
+

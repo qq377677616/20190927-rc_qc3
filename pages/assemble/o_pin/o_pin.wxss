@@ -1,0 +1,368 @@
+/* pages/assemble/o_pin/o_pin.wxss */
+
+page {
+  height: 100%;
+  background: #F1F1F1;
+}
+
+.o_pin_status {
+  padding: 25rpx 28rpx;
+}
+
+/* main_container */
+
+.main_container {
+  background-color: #fff;
+  border-radius: 14rpx;
+  padding: 22rpx 22rpx 60rpx;
+}
+
+.goods_area {
+  padding: 19rpx;
+  display: flex;
+  background-color: rgba(241, 64, 62, 0.1);
+  border-radius: 14rpx;
+  margin-bottom: 50rpx;
+}
+
+.goods_area .image {
+  flex: 0 0 auto;
+  width: 151rpx;
+  height: 151rpx;
+  overflow: hidden;
+  position: relative;
+  margin-right: 32rpx;
+  border-radius: 10rpx;
+}
+
+.goods_area .image image {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 10rpx;
+}
+
+.goods_area .info {
+  width: 0;
+  flex: 1;
+  line-height: 1em;
+}
+
+.goods_area .info .title {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 35rpx;
+  font-weight: bold;
+}
+
+.goods_area .info .v {
+  font-size: 24rpx;
+  color: #F34644;
+  margin-bottom: 24rpx;
+}
+
+.goods_area .info .pin {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.pin_status {
+  font-size: 28rpx;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 35rpx;
+  text-align: center;
+}
+
+.pin_status.fail {
+  color: #999;
+}
+
+.pin_status.progress {
+  color: #F34442;
+}
+
+.tips {
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 23rpx;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 56rpx;
+}
+
+.time .span {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.time .day, .time .hours, .time .minutes, .time .seconds {
+  font-size: 22rpx;
+  color: #fff;
+  background-color: #F1403E;
+  border-radius: 6rpx;
+  padding: 6rpx 4rpx;
+  white-space: nowrap;
+}
+
+.time .mh {
+  font-size: 32rpx;
+  color: #F1403E;
+}
+
+.friend_group {
+  margin-bottom: 60rpx;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0 47rpx;
+}
+
+.friend_group .o {
+  flex: 0 0 auto;
+  width: 25%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+/* .friend_group .o:last-child {
+  margin-right: 0;
+} */
+
+.friend_group .o .decorate {
+  width: 26rpx;
+  height: 24rpx;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translatex(-45rpx) translatey(-5rpx);
+}
+
+.friend_group .o .headimg {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+
+.friend_group .o .headman {
+  font-size: 20rpx;
+  color: #FFF;
+  min-width: 59rpx;
+  height: 29rpx;
+  border-radius: 15rpx;
+  background-color: #FFC052;
+  position: absolute;
+  left:50%;
+  bottom:-18rpx;
+  transform:translatex(-50%);
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.friend_group .friend_headimg {
+  width: 0;
+  flex: 1;
+  background-color: #F7F5F6;
+  padding: 7rpx 28rpx;
+  border-radius: 12rpx;
+  display: flex;
+}
+
+.friend_group .friend_headimg image {
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 50%;
+}
+
+.btn {
+  height: 90rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+}
+
+.gift, .join {
+  color: #fff;
+  background: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1));
+  margin-bottom: 50rpx;
+  box-shadow: 0 8rpx 8rpx rgba(18, 77, 184, 0.5);
+}
+
+.invite {
+  color: #fff;
+  background: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1));
+  margin-bottom: 50rpx;
+  box-shadow: 0 8rpx 8rpx rgba(18, 77, 184, 0.5);
+}
+
+.me {
+  color: #fff;
+  background-color: rgba(225, 55, 52, 1);
+  margin-bottom: 50rpx;
+  box-shadow: 0 8rpx 8rpx rgba(225, 55, 52, 0.5);
+}
+
+.see {
+  color: #124EB9;
+  border: 1rpx solid #20A1E0;
+}
+
+/* live_tuan */
+
+.cut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.cut_now {
+  width: 694rpx;
+  background-color: #FFF;
+  margin-bottom: 28rpx;
+  border-radius: 18rpx;
+  padding-top: 40rpx;
+}
+
+.cut_now .now_title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.cut_now .now_title .em {
+  width: 5rpx;
+  background-image: linear-gradient(to left, rgba(30, 105, 202, 1), rgba(28, 151, 219, 1));
+}
+
+.cut_now .now_title .em.low {
+  height: 9rpx;
+}
+
+.cut_now .now_title .null {
+  width: 5rpx;
+}
+
+.cut_now .now_title .em.high {
+  height: 18rpx;
+}
+
+.cut_now .now_title .span {
+  color: #2D2D2D;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin: 0 15rpx 0;
+}
+
+.cut_now .pro_list {
+  width: 650rpx;
+  display: flex;
+  margin: 0 20rpx;
+  padding: 30rpx 0 28rpx;
+  border-bottom: 1rpx solid #EBEBEB;
+}
+
+.cut_now .pro_list .spimg {
+  flex: 0 0 auto;
+  width: 180rpx;
+  height: 180rpx;
+  background-size: cover;
+}
+
+.cut_now .pro_list .spimg_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 18rpx;
+  flex: 1;
+}
+
+.cut_now .pro_list .spimg_right .sp_title {
+  font-size: 24rpx;
+  color: #2D2D2D;
+}
+
+.red {
+  color: #E3413E;
+}
+
+.cut_now .pro_list .down {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cut_now .pro_list .down .down_left {
+  display: flex;
+  flex-direction: column;
+}
+
+.cut_now .pro_list .down .down_left .have_per {
+  font-size: 22rpx;
+  color: #8E8E8E;
+}
+
+.cut_now .pro_list .down .down_left .progress {
+  width: 212rpx;
+  position: relative;
+}
+
+.cut_now .pro_list .down .down_left .progress .send {
+  position: absolute;
+  font-size: 18rpx;
+  color: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 8rpx;
+  display: flex;
+  align-items: center;
+}
+
+.cut_now .pro_list .down .down_left .residue {
+  margin-top: 17rpx;
+  font-size: 22rpx;
+  color: #8E8E8E;
+}
+
+.cut_now .pro_list .down .cut_on {
+  width: 180rpx;
+  height: 58rpx;
+  background: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1));
+  display: flex;
+  margin-top: 9rpx;
+  margin-left: 6rpx;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50rpx;
+  font-size: 22rpx;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.cut_now .pro_list .down .cut_robbed {
+  width: 191rpx;
+  height: 58rpx;
+  background-color: #F0F0F0;
+  font-size: 24rpx;
+  color: #999;
+  border-radius: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

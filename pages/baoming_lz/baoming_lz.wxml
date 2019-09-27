@@ -1,0 +1,71 @@
+<view class="whole">
+	<view class="centerBox">
+		<!-- <view class="handBox">
+			<view class="left_img" style="background-image:url({{IMGSERVICEZ}}/center/car_1.png)"></view>
+			<view class="right_info">
+				<text class="shopName nowrap">T90MC  2.0L时尚版T90MC  2.0L时尚版</text>
+				<text class="shopPrice nowrap">官方指导价:<text class="addstyle">17.98万元</text></text>
+			</view>
+		</view>	 -->
+		<view class="bindIphone"><text>使用微信绑定的手机号</text></view>
+		<view class="useOther">
+			<getPhoneNumber bindgetPhoneNumber="getPhoneNumber" wx:if="{{isGetPhoneNumber}}"></getPhoneNumber>
+			使用其他手机号码
+		</view>
+		<view class="lz_box">
+			<view class="row_box">
+				<view><text class="labels setLet">电 话</text></view>
+				<view><input type="text" placeholder="请输入您的电话号码" class="ipt"></input></view>
+			</view>
+			<view class="row_box">
+				<view></view>
+				<view class="nobg">
+					<view class="codeIpt"><input type="text" placeholder="请输入验证码"></input></view>
+					<view class="codeBtn">获取验证码</view>
+				</view>
+			</view>
+			<view class="row_box">
+				<view><text class="labels setLet">姓 名</text></view>
+				<view><input type="text" placeholder="请输入您的姓名" class="ipt"></input></view>
+			</view>
+			<view class="row_box">
+				<view><text class="labels">当前城市</text></view>
+				<view class="locationBox">
+					 <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      					<text class="nowrap">{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+    				 </picker>	
+					 <image mode="widthFix" src="{{IMGSERVICEZ}}/center/icon_dingwei.png"></image>
+				</view>
+			</view>
+			<!-- 专营店-->
+			<view class="row_box" hidden="{{true}}">
+				<view><text class="labels">专营店</text></view>
+				<view class="zyd_box">  
+					<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" >
+						<view class="picker">
+							 {{array[index]}}
+						</view>
+					</picker>
+					<view class="down_triangle"></view>
+  				</view>
+			</view>
+			<!-- 收货地址-->
+			<view class="row_box">
+				<view><text class="labels">收货地址</text></view>
+				<view><input type="text" placeholder="请输入您的收货地址" class="ipt"></input></view>
+			</view>
+			<view class="receive">领取</view>
+		</view>
+	</view>
+	<!-- 留资成功 -->
+	<view class="lz_succ" hidden="{{true}}">
+		<view class="succPop">
+			<text class="succtxt">留资成功</text>
+			<text class="waittxt">报名成功，等待后台开奖</text>
+			<view class="comfirBtn"><text>确定</text></view>
+			<text class="look_other">去查看其他活动</text>
+			<image mode="widthFix" src="{{IMGSERVICEZ}}/center/icon_close.png" class="icon_close"></image>
+		</view>
+	</view>
+	<showModal></showModal>
+</view>

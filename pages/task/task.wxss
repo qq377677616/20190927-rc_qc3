@@ -1,0 +1,172 @@
+/* pages/task/task.wxss */
+
+page {
+    height: 100%;
+    background-color: #fff;
+}
+
+.task_page {}
+
+/* banner_area */
+
+.banner_area {
+    margin-bottom: 28rpx;
+}
+
+.banner_area image {
+    width: 100%;
+}
+
+/* banner_area */
+
+/* task_list */
+
+.task_list {
+    padding: 0 28rpx;
+}
+
+.task_list .task_item {
+    height: 120rpx;
+    background-color: #fff;
+    padding: 0 26rpx;
+    box-shadow: 0rpx 8rpx 30rpx 0rpx rgba(204, 204, 204, 0.3);
+    border-radius: 6rpx;
+    display: flex;
+    align-items: center;
+}
+
+.task_list .task_item:not(:first-of-type) {
+    margin-top: 30rpx;
+}
+
+.task_list .task_item .item_icon {
+    flex: 0 0 auto;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.task_list .task_item .p {
+    flex: 1;
+    font-size: 26rpx;
+    color: #333;
+    margin-left: 18rpx;
+}
+
+.task_list .task_item .btn {
+    flex: 0 0 auto;
+    width: 160rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+}
+.task_list .task_item .btn button{position: absolute;width:100%;height:100%;left:0;top:0;}
+
+.task_list .task_item .btn.yes {
+    background: linear-gradient(to left, rgba(129, 128, 130, 1), rgba(172, 171, 173, 1));
+    box-shadow: 0 8rpx 8rpx rgba(172, 171, 173, 0.6);
+}
+
+.task_list .task_item .btn.no {
+    background: linear-gradient(to left, rgba(255, 103, 101, 1), rgba(241, 64, 62, 1));
+    box-shadow: 0 8rpx 8rpx rgba(255, 103, 101, 0.6);
+}
+
+/* task_list */
+
+/* tips_mask */
+
+.tips_mask {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translatex(-50%) translatey(-50%);
+    z-index: 999;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fff;
+}
+
+.tips_mask .main {
+    background-color: #fff;
+    border-radius: 20rpx;
+    width: 660rpx;
+    padding: 40rpx 70rpx;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 192rpx;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.tips_mask .main .title {
+    font-size: 36rpx;
+    color: #999;
+    text-align: center;
+    margin-bottom: 10rpx;
+}
+
+.tips_mask .main .number {
+    font-size: 72rpx;
+    color: #FDE24A;
+    text-align: center;
+    margin-bottom: 50rpx;
+}
+
+.tips_mask .main .btn_group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tips_mask .main .btn_group .btn {
+    box-sizing: border-box;
+    min-width: 220rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tips_mask .main .btn_group .btn.out {
+    border: 1rpx solid #5F87FF;
+    color: #5F87FF;
+}
+
+.tips_mask .main .btn_group .btn.go {
+    background-image: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1));
+    color: #fff;
+}
+
+/* tips_mask */
+
+/* currency */
+.currency {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    left: 0;
+    top: 0;
+}
+
+.currency image {
+    position: absolute;
+    width: 745rpx;
+    height: 921rpx;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.currency image.on {
+    opacity: 1;
+}/* currency */

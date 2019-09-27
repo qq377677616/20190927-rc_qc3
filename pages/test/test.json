@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "qc-SignIn":"/components/SignIn/cmp",
+    "qc-activePop":"/components/activePop/activePop"
+  }
+}

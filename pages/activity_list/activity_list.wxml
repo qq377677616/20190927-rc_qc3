@@ -1,0 +1,59 @@
+<!--pages/activity_list/activity_list.wxml-->
+
+<!-- activity_list_page -->
+<view class="activity_list_page">
+
+    <!-- swiper-area -->
+    <view class="swiper_area" wx:if="{{ bannerList.length }}">
+
+        <swiper 
+            circular="true" 
+            autoplay="true" 
+            interval="2500" 
+            bindchange="dotchange">
+
+            <swiper-item data-index="{{ index }}" wx:for="{{ bannerList }}" wx:key="index" style="background-image:url({{ item.image }});" data-index="{{ index }}" bindtap="bannerJump"></swiper-item>
+
+        </swiper>
+
+        <view class="dots">
+            <view wx:for="{{ bannerList }}" wx:key="index" class="dot_item {{dotIndex == index ? 'active' : ''}}">
+                <view class="tiao"></view>
+            </view>
+            <view class="dot_item"></view>
+        </view>
+
+    </view><!-- swiper-area -->
+
+    <!-- activity_list -->
+    <view class="activity_list">
+            
+            <view wx:for="{{ activityList }}" wx:key="index" class="activity_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn" style="background-image:url({{ item.thumb }});" data-index="{{ index }}" bindtap="activityJump">
+
+                <view class="describe">
+                    
+                    <view class="main">
+                        <view class="span nowrap">
+                            {{ item.title }}
+                        </view>
+                        <!-- <view class="time nowrap">
+                            {{ item.time }}
+                        </view> -->
+                    </view>
+
+                </view>
+
+            </view>
+
+    </view><!-- activity_list -->
+
+    <!-- qc-More -->
+    <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
+
+    <!-- qc-Tabbar -->
+    <qc-Tabbar></qc-Tabbar><!-- qc-Tabbar -->
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+
+</view><!-- activity_list_page -->

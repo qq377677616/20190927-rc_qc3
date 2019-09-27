@@ -1,0 +1,17 @@
+<!--pages/pages-list/poster/poster.wxml-->
+<view>
+  <view class="canvas-mask flex-cen">
+      <view class="content riseShow">
+         <!-- <view class="myCanvas" style="background-image:url('{{ posterImgUrl }}')"></view> -->
+         <image class="myCanvas" mode="widthFix" src="{{ posterImgUrl }}"></image>
+      </view>
+      <view class="flex-aro">
+           <view style="background-image:url('{{IMGSERVICE}}/activity/noSave.png')" class="btn1" bindtap="noSavePhoto"></view>
+           <view style="background-image:url('{{IMGSERVICE}}/activity/savePhoto.png')" class="btn2" bindtap="savePhoto"></view>
+      </view>
+      <view class="no_boc"></view>
+   </view>
+   
+   <canvas canvas-id="myCanvas" id="myCanvas"></canvas>
+   <showModal showModalOption="{{showModalOption}}" bindoperation="operation"></showModal>
+</view>

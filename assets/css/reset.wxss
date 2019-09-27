@@ -1,0 +1,124 @@
+view, text, input, button, textarea {
+    letter-spacing: 3rpx;
+    line-height: 1.2em;
+}
+
+button {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+.button-hover {
+    background-color: transparent;
+}
+
+button::after {
+    border: none;
+}
+
+image {
+    height: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-bet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-bett {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-aro {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-cen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-jus {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-ali {
+    display: flex;
+    align-items: center;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.poa,.posa {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.pof {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.haze {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    left: 0;
+    top: 0;
+    z-index: 9999
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.nowrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.clamp_02{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+}

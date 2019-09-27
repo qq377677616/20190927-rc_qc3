@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "领取卡券",
+  "usingComponents": {
+    "myModal": "/components/showModal/myModal",
+    "showLoading": "/components/showLoading/showLoading",
+    "showModal": "/components/showModal/showModal",
+    "getPhoneNumber": "/components/getPhoneNumber/getPhoneNumber"
+  }
+}

@@ -1,0 +1,77 @@
+<!-- pages/o_duihuan_detail/o_duihuan_detail.wxml -->
+
+
+<!-- whole -->
+<view class="whole">
+
+    <!-- handbox -->
+    <view class="handbox">
+        <image src="{{ IMGSERVICE }}/center/flish_1.png" mode="widthFix"></image>
+        <view class="info">
+            <view class="title nowrap">订单已完成</view>
+            <view class="date nowrap">2019-09-09</view>
+        </view>
+        <view class="look">查看物流信息</view>
+    </view><!-- handbox -->
+
+    <!-- shop_list -->
+    <view class="shop_list">
+
+        <view class="shop_item" wx:for="{{ 2 }}">
+
+            <view class="image" style="background-image:url({{ IMGSERVICE }}/center/car_1.png)"></view>
+            <view class="info">
+                <view class="title nowrap">启辰T70启辰T70</view>
+                <view class="num">x1</view>
+                <view class="v">V豆: 2000</view>
+            </view>
+
+        </view>
+
+        <view class="total">
+            <view class="span">共计</view>
+            <view class="num">V豆: 4000</view>
+        </view>
+
+    </view><!-- shop_list -->
+
+
+    <!-- section -->
+    <view class="section">
+        <view class="title nowrap">订单信息</view>
+        <view class="order_item">
+            <view class="span">订单编号</view>
+            <view class="p nowrap">64033214065648</view>
+        </view>
+        <view class="order_item">
+            <view class="span">下单时间</view>
+            <view class="p nowrap">2019-09-09 18:08:06</view>
+        </view>
+        <view class="order_item">
+            <view class="span">支付方式</view>
+            <view class="p nowrap">在线兑换</view>
+        </view>
+    </view><!-- section -->
+
+    <!-- section -->
+    <view class="section">
+        <view class="title nowrap">配送信息</view>
+        <view class="order_item">
+            <view class="span">快递公司</view>
+            <view class="p nowrap">4月22号</view>
+        </view>
+        <view class="order_item">
+            <view class="span">收货人</view>
+            <view class="p nowrap">陈小东 13088885555</view>
+        </view>
+        <view class="order_item">
+            <view class="span">配送地址</view>
+            <view class="p clamp_02">广东省 花都区 滨河街道花园小区2栋3单元15楼1502 滨河街道花园小区2栋3单元15楼1502滨河街道花园小区2栋3单元15楼1502滨河街道花园小区2栋3单元15楼1502</view>
+        </view>
+        <view class="order_item">
+            <view class="span">配送员</view>
+            <view class="p nowrap">陈小东</view>
+        </view>
+    </view><!-- section -->
+
+</view><!-- whole -->

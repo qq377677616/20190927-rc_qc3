@@ -1,0 +1,119 @@
+/* pages/o_address_add/o_address_add.wxss */
+page{
+    height: 100%;
+    background-color: #fff;
+}
+.o_address_add_page {
+    padding: 0 28rpx;
+}
+
+/* group */
+.group{
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1rpx solid #EEEEEE;
+}
+.group .span{
+    flex:0 0 auto;
+    width: 178rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+.group input{
+    width: 0;
+    flex:1;
+    font-size: 28rpx;
+    color: #000;
+    padding: 0 10rpx 0 0;
+}
+.group input::placeholder{
+    color: #999;
+}
+.group .radio_group{
+    width: 0;
+    flex:1;
+    display: flex;
+    align-items: center;
+}
+.group .radio_group .item{
+    display: flex;
+    align-items: center;
+}
+.group .radio_group .item .checked{
+    width: 36rpx;
+    height: 36rpx;
+    border:1rpx solid #E5E5E5;
+    border-radius: 50%;
+    margin-right: 26rpx;
+    font-size: 26rpx;
+    color: #fff;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+.group .radio_group .item .checked.active{
+    background-color: #F23E3C;
+    border-color:#F23E3C;
+}
+.group .radio_group .item .span{
+    font-size: 30rpx;
+    color: #333;
+}
+.group .address{
+    flex:1;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #999;
+
+}
+.group .address .icon{
+    flex:0 0 auto;
+}
+.group .address .picker{
+    width: 0;
+    flex:1;
+}
+.group .address .picker .tips{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0 18rpx;
+}
+.group .address .picker .tips.cur_addr{
+    color: #333;
+}
+.group .address .more{
+    flex:0 0 auto;
+}/* group */
+
+/* default */
+.default{
+    display: flex;
+    align-items: center;
+    height: 120rpx;
+    margin-bottom: 160rpx;
+}
+.default .span{
+    width: 0;
+    flex:1;
+    font-size: 30rpx;
+    color: #333;
+}
+.default .span switch{
+    flex:0 0 auto;
+}/* default */
+
+/* sumbmit_btn */
+.submit_btn{
+    font-size: 30rpx;
+    color: #fff;
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    border-radius:10rpx;
+    box-shadow:0 8rpx 8rpx rgba(32,161,224,0.6);
+}/* sumbmit_btn */

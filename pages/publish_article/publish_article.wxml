@@ -1,0 +1,51 @@
+<!--pages/publish_article/publish_article.wxml-->
+
+<!-- publish_article_page -->
+<view class="publish_article_page">
+    
+    <!-- article_title article_content -->
+    <view class="article_title">
+        <view class="h4">文章标题</view>
+        <input type="text" placeholder="请输入你的标题..." maxlength="20"/>
+    </view>
+
+    <view class="article_content">
+        <view class="h4">文章内容</view>
+        <textarea placeholder="请输入你的详细内容......" maxlength="200"></textarea>
+    </view><!-- article_title article_content -->
+
+    <!-- upload_list -->
+    <view class="upload_list">
+
+        <view class="upload_item image">
+            <view class="image" style="background-image:url('https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2930044225,931260109&fm=26&gp=0.jpg');"></view>
+            <image class="delete_btn" mode="widthFix" src="{{ IMGSERVICE }}/publish_article/del.png"></image>
+        </view>
+
+        <view class="upload_default image">
+            <view class="icon iconfont icon_add"></view>
+        </view>
+
+    </view><!-- upload_list -->
+
+    <!-- upload_list -->
+    <view class="upload_list">
+
+        <view class="upload_item video">
+            <view class="image" style="background-image:url('https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2930044225,931260109&fm=26&gp=0.jpg');"></view>
+            <image class="delete_btn" mode="widthFix" src="{{ IMGSERVICE }}/publish_article/del.png"></image>
+            <image class="play_btn"mode="widthFix" src="{{ IMGSERVICE }}/publish_article/play.png"></image>
+        </view>
+
+        <view class="upload_default video">
+            <view class="icon iconfont icon_add"></view>
+        </view>
+
+    </view><!-- upload_list -->
+
+    <!-- submit_btn -->
+    <view class="submit_btn">
+        发布
+    </view><!-- submit_btn -->
+
+</view><!-- publish_article_page -->

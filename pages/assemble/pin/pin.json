@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "拼团",
+  "usingComponents": {
+    "qc-More":"/components/More/cmp",
+    "qc-page404":"/components/page404/page404",
+    "qc-activePop":"/components/activePop/activePop",
+    "qc-rule":"/components/rule/rule"
+  }
+}

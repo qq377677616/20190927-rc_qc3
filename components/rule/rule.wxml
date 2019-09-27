@@ -1,0 +1,11 @@
+<!--components/rule/rule.wxml-->
+<!-- rule_mask -->
+<view class="rule_mask fadeIn">
+  <view class="main">
+    <scroll-view scroll-y class="rule">
+      <image src="{{ ruleImg }}" mode="widthFix"></image>
+    </scroll-view>
+    <image class="close_btn" src="{{ IMGSERVICE }}/prize/close.png" mode="widthFix" bindtap="isHidePop"></image>
+  </view>
+</view>
+<!-- rule_mask -->

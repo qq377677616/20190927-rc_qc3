@@ -1,0 +1,4 @@
+<!--components/More/cmd.wxml-->
+
+
+<view class="more">{{ str }}</view>

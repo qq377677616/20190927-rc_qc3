@@ -1,0 +1,70 @@
+/* pages/o_pin/o_pin.wxss */
+page{
+    height: 100%;
+    background-color: #f0f0f0;
+}
+.mypin {
+    padding: 28rpx;
+}
+
+.bg-list {
+    background-color: #fff;
+    border-radius: 14rpx;
+    margin-bottom: 24rpx;
+    padding: 29rpx 32rpx;
+    display: flex;
+}
+
+.bg-list .image{
+    flex:0 0 auto;
+    width: 225rpx;
+    height: 175rpx;
+    overflow: hidden;
+    position: relative;
+    border-radius:10rpx;
+    margin-right: 38rpx;
+}
+.bg-list .image image{
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius:10rpx;
+}
+
+.p-right {
+    width:0;
+    flex:1;
+    line-height:1em;
+}
+
+.p-right .title{
+    color: #333;
+    font-size: 30rpx;
+    margin-bottom: 26rpx;
+}
+.p-right .date{
+    color: #999;
+    font-size: 24rpx;
+    margin-bottom: 44rpx;
+}
+
+.partake {
+    display: flex;
+    align-items: center;
+}
+
+.partake image{
+    width: 46rpx;
+    height: 46rpx;
+    border-radius: 50%;
+}
+.partake image:not(:first-of-type){
+    margin-left: -12rpx;
+}
+.partake text {
+    margin-left: 12rpx;
+    font-size: 24rpx;
+    color: #333333;
+}

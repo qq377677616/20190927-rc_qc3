@@ -1,0 +1,18 @@
+ <view class="whole">
+	<view class="centerBox" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)">
+		<view class="status"><text>{{audit[0]}}</text></view>
+	</view>
+	<view class="statusPop" hidden="true">
+		<!-- 审核通过 -->
+		<view class="centerpop" hidden="{{true}}">
+			<text class="passtxt">恭喜审核通过</text>
+			<view class="passBtn"><text>领取奖品</text></view>
+		</view>
+		<!-- 审核不通过 -->
+		<view class="centerpop centerpop2">
+			<text class="passtxt">很遗憾</text>
+			<text class="passtxt passtxt2">恭喜未通过</text>
+			<view class="passBtn passBtn2"><text>继续上传</text></view>
+		</view>	
+	</view>
+</view>

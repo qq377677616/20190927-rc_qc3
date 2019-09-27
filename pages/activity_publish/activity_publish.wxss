@@ -1,0 +1,166 @@
+/* pages/activity_publish/activity_publish.wxss */
+
+page{
+  height: 100%;
+}
+
+.activity_publish{
+  height: 100%;
+  padding:0rpx 30rpx ;
+  overflow: hidden;
+}
+
+/* publish */
+
+.publish{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .end */
+
+.end{
+  width: 748rpx;
+  height: 191rpx;
+  margin-top: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.end .title{
+  display: flex;
+  margin-top: 28rpx;
+  font-size: 34rpx;
+  color: #FEFEFE;
+}
+
+.end .title .icon image{
+  width: 14rpx;
+  height: 26rpx;
+  margin: 0 16rpx;
+}
+
+.win{
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.win .txt{
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.win .xian{
+  width: 40rpx;
+  height: 2rpx;
+  background-color: #FFF;
+  margin: 0 25rpx;
+}
+
+.time{
+  margin-top: 25rpx;
+  font-size: 20rpx;
+  color: #FFF;
+}
+
+/* .end */
+
+
+/* publish */
+
+/* bg_list */
+
+.win_list{
+  width: 690rpx;
+  background-color: #fff;
+  padding-top: 25rpx;
+}
+
+.list{
+  display: flex;
+}
+
+.list .headimg{
+  width: 60rpx;
+  height: 60rpx;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.win_list .list{
+  height: 113rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.win_list .list .one{
+  margin-left: 30rpx;
+  width: 38rpx;
+  height: 46rpx;
+  object-fit: cover;
+}
+
+.me{
+  margin-top: 30rpx;
+  background-color: #E9F2FD;
+}
+
+.win_list .list .num{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38rpx;
+  height: 46rpx;
+  margin-left: 30rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.win_list .list .headimg{
+  margin-left: 23rpx;
+}
+
+.win_list .list .name{
+  width: 97rpx;
+  margin-left: 40rpx;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.win_list .list .piao{
+  font-size: 24rpx;
+  color: #999;
+  width: 131rpx;
+  margin-left: 73rpx;
+}
+
+.win_list .list .rank{
+  font-size: 30rpx;
+  color: #F1403E;
+  width: 96rpx;
+  margin-left: 90rpx;
+}
+
+
+/* bg_list */
+
+.btn{
+  display: flex;
+  justify-content: center;
+  margin-top: 33rpx;
+}
+
+.btn view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600rpx;
+  height: 87rpx;
+  border-radius: 10rpx;
+  font-size: 36rpx;
+  color: #FFF;
+}

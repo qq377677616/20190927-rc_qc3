@@ -1,0 +1,80 @@
+<!--pages/shop_mall_plate/shop_mall_plate.wxml-->
+
+<!-- shop_mall_plate -->
+<view class="shop_mall_plate">
+
+    <!-- search_area -->
+    <view class="search_area">
+
+        <input type="text" placeholder="搜索" value="{{ searchValue }}" bindinput="searchInput" maxlength="50"/>
+
+        <view class="icon" bindtap="searchBtn">
+            <image src="{{ IMGSERVICE }}/shop_mall/search.png" mode="widthFix" ></image>
+        </view>
+
+    </view>
+    <!-- search_area -->
+
+    <!-- swiper-area -->
+    <view class="swiper_area" wx:if="{{ bannerList.length }}">
+
+        <swiper 
+            circular="true" 
+            autoplay="true" 
+            interval="2500" 
+            bindchange="dotchange">
+
+            <swiper-item wx:for="{{ bannerList }}" wx:key="index" style="background-image:url({{ item.image }});" data-index="{{ index }}" bindtap="bannerJump"></swiper-item>
+           
+
+        </swiper>
+
+        <view class="dots">
+            <view wx:for="{{ bannerList }}" wx:key="index" class="dot_item {{dotIndex == index ? 'active' : ''}}">
+                <view class="tiao"></view>
+            </view>
+            <view class="dot_item"></view>
+        </view>
+
+    </view><!-- swiper-area -->
+
+    <!-- goods_list -->
+    <view class="goods_list">
+
+        <view class="goods_item fadeIn" wx:for="{{ goodsList }}" wx:key="index" data-id="{{ item.goods_id }}" bindtap="goodsDetail">
+            <view class="image">
+                <image src="{{ item.thumb }}" mode="widthFix"></image>
+            </view>
+
+            <view class="info_area">
+                <view class="title nowrap">{{ item.title }}</view>
+                
+                <view class="info">
+                    <view class="v">
+                        <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+                        <view class="span">{{ item.vcoin }}</view>
+                    </view>
+
+                    <view class="cart iconfont icon_gouwuche"></view>
+                </view>
+            </view>
+        </view>
+
+    </view><!-- goods_list -->
+
+    <!-- qc-More -->
+    <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
+
+    <!-- float_btn -->
+    <view class="float_btn">
+
+        <view class="btn cart_btn iconfont icon_gouwuche" bindtap="shopCart"></view>
+
+        <button class="btn kf_btn iconfont icon_kefu" open-type="contact"></button>
+
+    </view><!-- float_btn -->
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+
+</view><!-- shop_mall_plate -->

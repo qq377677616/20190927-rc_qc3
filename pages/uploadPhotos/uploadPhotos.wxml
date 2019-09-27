@@ -1,0 +1,10 @@
+<view class="whole">
+	<view class="uploadBox">
+		<view class="uploadIcon" bindtap="openActionsheet">
+			<image mode="widthFix" src="{{IMGSERVICE}}/center/add_phone.png"></image>
+		</view>
+		<view class="uploadTxt">上传照片</view>
+		<view class="limit">(只支持jpg.png)</view>
+	</view>
+	<view class="submit">提交</view>
+</view>

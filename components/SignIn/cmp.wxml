@@ -1,0 +1,57 @@
+<!--components/SignIn/cmp.wxml-->
+
+
+
+<!-- sign_in_mask -->
+<view class="sign_in_mask fadeIn" wx:if="{{ show }}">
+
+    <!-- main -->
+    <view class="main">
+
+        <view class="header">
+            每日签到 领取
+            <view class="span">V</view>
+            豆
+        </view>
+
+        <view class="content">
+
+            <view class="sign_in_area">
+
+                <!-- <view class="sign_in_item {{ (index + 1) == 7 ? 'gift' : (index + 1) > (signInInfo.sign_in_num + 1) ? 'after' : ( !(signInInfo.is_sign == 1) && (signInInfo.sign_in_num + 1) == (index + 1) ) ? 'current' : 'before' }}" wx:for="{{ signInArr }}" wx:key="index" data-index="{{ index }}" bindtap="signIn"> -->
+                <view class="sign_in_item {{signInInfo.sign_in_num > index ? 'before' : ((signInInfo.sign_in_num == index && signInInfo.is_sign == 0) ? 'cur' : (index == 6 ? 'gifts' : 'no'))}}" wx:for="{{ signInArr }}" wx:key="index" data-index="{{ index }}">
+
+                    <view class="image">
+                        <!-- <image wx:if="{{ (index + 1) == 7 }}" src="{{ IMGSERVICE }}/home/icon_liwu.png" mode="widthFix"></image>
+                        <image wx:elif="{{ (index + 1) > (signInInfo.sign_in_num + 1) }}" src="{{ IMGSERVICE }}/home/icon_qiandao.png" mode="widthFix"></image>
+                        <image wx:elif="{{ !(signInInfo.is_sign == 1) && (signInInfo.sign_in_num + 1) == (index + 1) }}" src="{{ IMGSERVICE }}/home/vdou.png" mode="widthFix"></image>
+                        <image wx:else src="{{ IMGSERVICE }}/home/icon_yiqiandao.png" mode="widthFix"></image> -->
+
+                        <!-- 礼物 -->
+                        <image class="gifts" src="{{ IMGSERVICE }}/home/icon_liwu.png" mode="widthFix"></image>
+                        <!-- 未签到 -->
+                        <image class="no" src="{{ IMGSERVICE }}/home/icon_qiandao.png" mode="widthFix"></image>
+                        <!-- 已签到 -->
+                        <image class="ok" src="{{ IMGSERVICE }}/home/icon_yiqiandao.png" mode="widthFix"></image>
+                        <!-- 彩带 -->
+                        <image class="cur" src="{{ IMGSERVICE }}/home/vdou.png" mode="widthFix"></image>
+                    </view>
+
+                    <view wx:if="{{ index == (signInInfo.is_sign == 1 ? signInInfo.sign_in_num - 1 : signInInfo.sign_in_num) }}" class="span">{{ signInInfo.is_sign == 1 ? '已签到' : '签到' }}</view>
+                    <view wx:else class="span nowrap">第{{ item }}天</view>
+                    
+                </view>
+ 
+            </view>
+
+            <view class="btn" bindtap="signIn">{{signInInfo.is_sign == 0 ? '签到' : '确定'}}</view>
+
+        </view>
+
+    </view>
+    <!-- main -->
+    <!-- 序列帧 -->
+    <view class="currency" hidden="{{!(sequenceListIndex >= 0)}}" bindtap="start">
+      <image class="{{sequenceListIndex == index ? 'on' : ''}}" wx:for="{{sequenceList}}" wx:key="key{{index}}" src="{{item.url}}"></image>
+    </view>
+</view><!-- sign_in_mask -->

@@ -1,0 +1,56 @@
+/* pages/game_list/game_list.wxss */
+
+page{
+    height: 100%;
+    background-color: #F5F5F5;
+}
+.game_list_page{
+    padding: 40rpx 28rpx 0;
+}
+
+/* game_item */
+.game_item{
+    overflow: hidden;
+    border-radius:14rpx;
+    background-color: #fff;
+}
+.game_item:not(:last-of-type){
+    margin-bottom: 40rpx;
+}
+.game_item .game_image{
+    height: 390rpx;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center center;
+}
+.game_item .game_info{
+    padding: 29rpx 32rpx 32rpx;
+    display: flex;
+    align-items:center;
+}
+.game_item .game_info .content{
+    width: 0;
+    flex:1;
+}
+.game_item .game_info .content .title{
+    font-size:30rpx;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-bottom: 30rpx;
+}
+.game_item .game_info .content .span{
+    font-size:26rpx;
+    color:rgba(153,153,153,1);
+}
+.game_item .game_info .btn{
+    flex:0 0 auto;
+    border-radius:6rpx;
+    width: 200rpx;
+    height: 60rpx;
+    font-size:30rpx;
+    color:rgba(254,254,254,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image:linear-gradient(0deg,rgba(18,77,184,1),rgba(32,161,224,1));
+}/* game_item */

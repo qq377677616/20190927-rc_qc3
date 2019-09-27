@@ -1,0 +1,94 @@
+/* pages/vote_page/vote_page.wxss */
+page{
+	background-color:#EFEFEF;
+	padding:40rpx 28rpx;
+	box-sizing: border-box; 
+}
+.whole{
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+.pro_list{
+	width:330rpx;
+	height: 470rpx;
+	background-color: white;
+	border-radius: 14rpx; 
+}
+.whole>.pro_list:not(:nth-child(1)):not(:nth-child(2)){
+	margin-top:40rpx; 
+}
+.whole>.pro_list:nth-child(2n){
+	margin-left: 34rpx;
+}
+.dotImg{
+	width: 100%;
+	height: 255rpx;
+	border-top-left-radius: 14rpx;
+	border-top-right-radius: 14rpx;
+	background: center no-repeat;
+	background-size: cover;
+}
+.user_box{
+	width: 100%;
+	height: 88rpx;
+	display: flex;
+	padding: 0 18rpx;
+	box-sizing: border-box;
+	margin-top: 22rpx;
+}
+.handImg{
+	width: 88rpx;
+	height: 88rpx;
+	border-radius: 50%;
+	background: center no-repeat;
+	background-size: cover;
+}
+.infoBox{
+	flex: 1;
+	/* background-color: red; */
+	padding-left:16rpx;
+	padding-top: 10rpx;
+	box-sizing: border-box; 
+}
+.userName{
+	font-size: 30rpx;
+	color: #333;
+	display: block;
+	width: 180rpx;
+}
+.userRank{
+	color: #999;
+	font-size: 26rpx;
+	margin-top:23rpx; 
+}
+.dotBtn{
+	width:265rpx;
+	height: 60rpx;
+	margin: 0 auto;
+	background: center no-repeat;
+	background-size: cover;
+	margin-top: 25rpx;
+}
+.dotBtn2{
+	width:267rpx;	
+}
+.dotNum{
+	width: 160rpx;
+	height: 100%;
+	float: right;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 26rpx;
+	color: #FEFEFE;
+}
+.dotNum2{
+	color: #E65F5D;
+}
+.noRank{
+	width: 100%;
+	text-align: center;
+	color: #666;
+}

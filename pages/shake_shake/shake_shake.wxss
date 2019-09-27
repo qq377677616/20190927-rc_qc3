@@ -1,0 +1,58 @@
+/* pages/shake_shake/shake_shake.wxss */
+
+page{
+    height:100%;
+}
+.shake_shake_page{
+    height:100%;
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+}
+
+/* main */
+.main{
+
+}
+.main .yao{
+    width: 313rpx;
+    position: fixed;
+    left:50%;
+    top:150rpx;
+    transform: translatex(-50%);
+}
+.main .rule{
+    position: fixed;
+    right:0;
+    top:44rpx;
+    height: 50rpx;
+    padding: 0 20rpx;
+    background-color: rgba(255,255,255,0.2);
+    font-size: 24rpx;
+    color: #fff;
+    line-height: 50rpx;
+    border-radius:25rpx 0 0 25rpx;
+}
+.main .btn_group{
+    position: fixed;
+    bottom: 98rpx;
+    width: 514rpx;
+    left:50%;
+    transform: translatex(-50%);
+}
+.main .btn_group .btn{
+    height: 80rpx;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    border-radius:14rpx;
+    font-size: 30rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24rpx;
+}
+.main .btn_group .tips{
+    font-size: 24rpx;
+    color: #fff;
+    text-align: center;
+}/* main */

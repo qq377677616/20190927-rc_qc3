@@ -1,0 +1,55 @@
+<!--pages/o_pin/o_pin.wxml-->
+
+
+<view class="mypin">
+
+  <view class="bg-list fadeIn">
+
+      <view class="image">
+          <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+      </view>
+
+      <view class="p-right">
+
+          <view class="title nowrap">D60EV火热销售中 D60EV火热销售中D60EV火热销售中</view>
+
+          <view class="date">2019-09-09 18:08:06</view>
+
+          <view class="partake">
+            
+              <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+              <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+              <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+              <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+              <text>等3000人参与</text>
+
+          </view>
+
+      </view>
+
+  </view>
+
+  <view class="bg-list fadeIn">
+
+      <view class="image">
+          <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+      </view>
+
+      <view class="p-right">
+
+          <view class="title">D60EV火热销售中</view>
+
+          <view class="date">2019-09-09 18:08:06</view>
+          
+          <view class="partake">
+                <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+                <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+                <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+                <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+                <text>等3000人参与</text>
+          </view>
+      </view>
+      
+  </view>
+
+</view>

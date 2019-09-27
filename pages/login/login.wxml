@@ -1,0 +1,8 @@
+<!--pages/login/login.wxml-->
+
+<!-- login-page -->
+<view class="login-page" style="background-image:url('{{ IMGSERVICE }}/login/bg.jpg');">
+  <image class="logo fadeIn" hidden="{{isShowLogo}}" mode="widthFix" src="{{ IMGSERVICE + '/login/logo.png' }}"></image>
+  <button class="auth-btn fadeIn" hidden="{{isShowButton}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{isLogin ? '正在登录中...' : '登录授权'}}</button>
+  <showModal container="{{showModal}}" bindoperation="operation"></showModal>
+</view><!-- login-page -->

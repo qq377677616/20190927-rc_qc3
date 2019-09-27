@@ -1,0 +1,88 @@
+<view class="prize" bindtap="isVehicleOwner">
+  <!-- 抽奖过渡页 -->
+  <view class="page1">
+    <image class="bg" src="{{prizeDetails.transit}}" mode="aspectFill"></image>
+    <view class="con">
+      <view class="btn rule" bindtap="isHidePop">规则</view>
+      <view class="btn start bounceInUp animated" bindtap="startPrize">立即参与{{isSequence}}</view>
+    </view>
+  </view>
+  <!-- 抽奖主页 --> 
+  <view class="page2 bottom-top" wx:if="{{type == 1}}">
+    <!-- 抽奖banner -->
+    <view class="banner">
+      <image src="{{prizeDetails.thumb}}" mode="aspectFill"></image>
+      <view class="btns {{isBtnOn ? 'on' : ''}}">
+        <view class="btn-box">
+          <view class="btn" catchtap="isHidePop">抽奖规则</view>
+          <view class="btn" catchtap="jump" wx:if="{{isShareEnter}}">回到首页</view>
+        </view>
+        <view class="btn-box">
+          <view class="btn" bindtap="router" data-url="/pages/o_prize/o_prize">我的奖品</view>
+          <view class="btn">V豆：{{prizeDetails.my_vcoin >= 10000 ? '9999+' : prizeDetails.my_vcoin}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="con">
+      <!-- 抽奖转盘 -->
+      <view class="top">
+        <image class="edge" src="{{IMGSERVICE}}/prize/icon.png" mode="widthFix"></image>
+        <view class="prize-box {{isPrizeList ? 'on' : ''}}">
+          <view class="ul {{ isPrize ? 'shadow' : ''}}">
+            <view class="li flex-cen {{curIndex == index ? 'cur' : ''}}" wx:for="{{prizeList}}" wx:key="{{item.id}}">
+              <image src="{{item.prize_img}}" mode="widthFix"></image>
+              {{item.prize_name}}
+            </view>
+            <!-- <li class="btn {{isPrizeList ? 'fadeShow' : ''}}" data-type="ok" bindtap="start">{{isPrize ? '立即抽奖' : '抽奖中...'}}<button wx:if="{{!userInfo.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button></li> -->
+            <li class="btn {{isPrizeList ? 'fadeShow' : ''}}" data-type="ok" bindtap="start">{{isPrize ? '立即抽奖' : '抽奖中...'}}</li>
+          </view>
+        </view>
+        <view class="my-prize"> 
+          <view class="h3">您的抽奖机会<text>({{prizeDetails.my_draw_num}}/{{prizeDetails.draw_num}})</text></view>
+          <view class="btns flex-cen">
+            <view class="button" bindtap="router" data-url="/pages/task/task">赚积分换大奖</view>
+            <view class="button"  bindtap="router" data-url="/pages/activity_list/activity_list">查看更多精彩</view>
+          </view>
+        </view> 
+      </view>
+      <!-- 中奖信息列表 -->
+      <view class="bottom">
+        <view class="title"><image src="{{IMGSERVICE}}/prize/title.png" mode="widthFix"></image></view>
+        <view class="prize-list">
+          <view class="p-header flex-cen"><view>中奖用户</view><view class="text">奖品</view><view>中奖时间</view></view>
+          <swiper vertical="true" display-multiple-items="6" interval="1500" autoplay="true" circular="true">
+            <swiper-item class="flex-cen" wx:for="{{ortherList}}" wx:key="key{{index}}"><view>{{item.nickname}}</view><view class="text">{{item.prize_name}}</view><view>{{item.create_time}}</view></swiper-item>
+          </swiper>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 游戏规则弹窗 -->
+  <view class="pof fadeShow" hidden="{{isHidePop}}">
+    <rule bindclose="isHidePop" ruleImg="{{prizeDetails.rule}}"></rule>
+  </view>
+  <!-- 留资弹窗-->
+  <view class="forms-box bottom-top" wx:if="{{isShowForm}}">
+    <!-- <forms bindsubmit="submit" bindclose="isShowForm" type="{{formsType}}" vehicle="{{vehicle}}"></forms> -->
+    <forms bindsubmit="submit" bindclose="isShowForm" type="{{formsType}}"></forms>
+  </view>
+  <!-- 中奖弹窗 -->
+  <view class="forms-box fadeShow" wx:if="{{!isHidePrize}}">
+    <pop bindconfirm="bindconfirm" data="{{popData}}"></pop>
+  </view>
+  <!-- 兑换码弹窗 -->
+  <view class="forms-box flex-cen code" wx:if="{{isShowCode}}">
+    <view class="box fadeShow">
+      <view class="h3"><view>请凭激活码自行</view><view>前往对应平台自助兑换</view></view>
+      <view class="p">{{code}}</view>
+      <view class="btn" bindtap="setClipboar">复制商品码</view>
+      <view class="close_btn iconfont icon_del" bindtap="isShowCode"></view>
+    </view>
+  </view>
+  <!-- 授权、去绑定车主弹窗 -->
+  <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+    <activePop popType="{{popType}}" text="{{activePopText}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
+  </view>
+  <!-- 自定义loading -->
+  <showLoading wx:if="{{isShowLoading}}" loadingText="{{loadingText}}"></showLoading>
+</view>

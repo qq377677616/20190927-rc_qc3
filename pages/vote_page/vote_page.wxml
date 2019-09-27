@@ -1,0 +1,19 @@
+<view class="whole">
+	<view class="noRank" wx:if="{{!voteList.length>0}}">暂无数据~</view>
+	<view class="pro_list" data-id="{{item.vote_id}}" wx:for="{{voteList}}" wx:key="item" bindtap="goVotedel" >
+		<view class="dotImg" style="background-image:url({{item.resource}})"></view>
+		<view class="user_box">
+			<view class="handImg" style="background-image:url({{item.headimg}})"></view>
+			<view class="infoBox">
+				<text class="userName nowrap">{{item.nickname}}</text>
+				<text class="userRank">第{{index+1}}名</text>
+			</view>
+		</view>
+		<view class="dotBtn" style="background-image:url({{IMGSERVICEZ}}/center/heart-normal.png)" catchtap="goVote" hidden="{{item.is_favorite!=0}}" data-vote="{{item.vote_id}}">
+			<view class="dotNum nowrap"><text>{{item.votes}}</text></view>
+		</view>
+		<view class="dotBtn dotBtn2" style="background-image:url({{IMGSERVICEZ}}/center/heart-select.png)" catchtap="goVote"  data-vote="{{item.vote_id}}" hidden="{{item.is_favorite==0}}">
+			<view class="dotNum nowrap dotNum2"><text>{{item.votes}}</text></view>
+		</view>
+	</view>
+</view>

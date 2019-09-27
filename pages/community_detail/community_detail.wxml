@@ -1,0 +1,100 @@
+<!--pages/community_detail/community_detail.wxml-->
+<!-- <import src="../../utils/wxParse/wxParse.wxml"/> -->
+
+<!-- article_content -->
+<scroll-view scroll-y="{{true}}" scroll-into-view="{{toView}}" class="setHeight" >
+
+<view class="article_content">
+
+    <view class="pic">
+        <image src="{{artDel.images}}" mode="widthFix"></image>
+    </view>
+
+    <view class="audi">{{artDel.title}}</view>
+
+    <view class="person">
+        <view class="per_pic" style="background-image:url({{artDel.headimg}})"></view>
+        <view class="nickname">{{artDel.nickname}}</view>
+        <view class="date">{{artDel.create_time}}</view>
+		<view class="date">阅读量：{{artDel.read_num}}</view>
+    </view>
+
+    <view class="paragragh">
+		<view wx:for="{{artDel.content}}" wx:key="item">
+			<view class="txtList {{'setindent'+item.indent}}" wx:if="{{item.type=='text'}}">
+				{{item.value}}
+			</view>
+			<image mode="widthFix" wx:elif="{{item.type=='img'}}" class="fwbImg" src="{{item.value}}"></image>
+			<video class="fwbImg" wx:elif="{{item.type=='video'}}" src="{{item.value}}"></video>
+		</view>
+    </view>
+
+    <!-- <view class="pic_next">
+        <image src="http://img4.imgtn.bdimg.com/it/u=1814797078,988252020&fm=26&gp=0.jpg" mode="widthFix"></image>
+    </view> -->
+
+</view>
+<!-- article_content -->
+
+<!-- line -->
+<view class="line"></view><!-- line -->
+
+
+<!-- comment -->
+
+<view class="comment" >
+
+    <view class="new" id="bottom">最新评论</view>
+
+    <view class="elastic" wx:for="{{replyData}}" wx:key="item">
+
+        <view class="elastic_list">
+
+            <view class="person">
+                <view class="per_pic" style="background-image:url({{item.headimg}})"></view>
+                <view class="nickname">{{item.nickname}}</view>
+                <view class="date">{{item.create_time}}</view>
+            </view>
+
+            <view class="support">
+
+                <view class="icon dianzan" hidden="{{item.is_favorite!=0}}" style="background-image:url({{IMGSERVICE}}/center/dianzan_01.png)" bindtap="addLike" data-rpid="{{item.reply_id}}"></view>
+                <view class="icon dianzan" hidden="{{item.is_favorite==0}}" style="background-image:url({{IMGSERVICE}}/center/yidianzan_01.png)" bindtap="addLike" data-rpid="{{item.reply_id}}"></view>
+				<view class="num">{{item.favorite_num}}</view>
+
+            </view>
+
+        </view>
+
+        <view class="txt">
+			{{item.content}}
+        </view>
+    </view>
+	<view class="all" bindtap="lookMore" hidden="{{currtotle!=10}}">点击查看更多 ></view>
+	<view class="all setmar" wx:if="{{nomore}}">~没有更多评论~</view>
+</view>
+</scroll-view>
+<!-- footer -->
+	<view class="footer"  >
+		<input class="inp" type="button" placeholder-class="pla" placeholder="这篇文章很赞，来聊聊？" bindtap="showRemark" disabled="{{true}}"></input>
+		<view class="dzan" data-fid="{{artDel.is_favorite}}" data-arid="{{artDel.article_id}}" bindtap="giveLike">
+
+			<view class="zan" style="background-image:url({{IMGSERVICE}}/center/dianzan_01.png)" hidden="{{artDel.is_favorite!=0}}" data-fid="{{artDel.is_favorite}}" data-arid="{{artDel.article_id}}" ></view>
+			<view class="zan" style="background-image:url({{IMGSERVICE}}/center/yidianzan_01.png)" hidden="{{artDel.is_favorite==0}}" data-fid="{{artDel.is_favorite}}" data-arid="{{artDel.article_id}}"></view>
+			<view class="setmar2">{{artDel.favorite_num>999?'999+':artDel.favorite_num}}</view>
+
+		</view>
+
+		<view class="plun" bindtap="goViews">
+			<view class="pin" style="background-image:url({{IMGSERVICE}}/center/remarkImg.png)"> </view>
+			<view class="setmar2">{{artDel.reply_num>999?'999+':artDel.reply_num}}</view>
+		</view>
+		
+		<view  class="icon iconfont icon_fx fen">
+			<view class="coverbig"></view>
+			<button class="shareBtn" open-type="share" data-img="{{artDel.images}}"></button>
+		</view>
+
+	</view>
+<!-- footer -->
+

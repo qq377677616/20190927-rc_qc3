@@ -1,0 +1,145 @@
+/* pages/assemble/o_pin_status/o_pin_status.wxss */
+
+page{
+  background-color: #F3F3F3;
+}
+
+/* status_nav */
+
+.status_nav{
+  display: flex;
+  background-color: #FFF;
+  height: 100rpx;
+}
+
+.status_nav view{
+  flex:1;
+  font-size: 30rpx;
+  color: #333;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  position: relative;
+}
+.status_nav view .line{
+  position: absolute;
+  left:50%;
+  bottom:0;
+  width: 60rpx;
+  height: 6rpx;
+  background-color: #F1403E;
+  border-radius:3rpx;
+  transform:translateX(-50%);
+}
+
+
+/* status_nav */
+
+.pin_list{
+  padding: 0 28rpx;
+}
+
+.pin_list .list{
+  width: 694rpx;
+  background-color: #FFF;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.pin_list .list .list_top{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.pin_list .list .list_top .orderID{
+  margin-left: 22rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.pin_list .list .list_top .orderID.no{
+  visibility:hidden;
+}
+
+.pin_list .list .list_top .countdown{
+  font-size: 30rpx;
+  margin-right: 21rpx;
+}
+
+.pin_list .list .list_top .countdown.fail{
+  color: #999;
+}
+
+.pin_list .list .list_top .countdown.success{
+  color: #F1403E;
+} 
+
+.pin_list .list .list_down{
+  display: flex;
+  margin: 25rpx 0;
+}
+
+.pin_list .list .list_down .productImg{
+  flex: 0 0 auto;
+  width: 180rpx;
+  height: 180rpx;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+}
+
+.pin_list .list .list_down .down_right{
+  margin-left: 25rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pin_list .list .list_down .down_right .one{
+  font-size: 28rpx;
+  color: #333;
+}
+
+.pin_list .list .list_down .down_right .two{
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 14rpx;
+}
+.pin_list .list .list_down .down_right .two.no{
+  visibility:hidden;
+}
+
+.pin_list .list .list_down .down_right .three{
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.pin_list .list .list_down .down_right .three .v_dou{
+  font-size: 22rpx;
+  color: #3F3F3F;
+}
+
+.pin_list .list .list_down .down_right .three .btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+  margin-right: 12rpx;
+  background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+  color: #FFF;
+}
+.pin_list .list .list_down .down_right .three .btn.no{
+  background-image:linear-gradient(to left,rgba(129,128,130,1),rgba(172,171,173,1));
+}
+.pin_list .list .list_down .down_right .three .btn.fail{
+  visibility:hidden;
+}

@@ -1,0 +1,30 @@
+<!-- pages/o_love_car_next/o_love_car_next.wxml -->
+
+<!-- o_love_car_next_page -->
+<view class="o_love_car_next_page">
+
+    <view class="content_container">
+
+        <view class="input_group">
+            <input placeholder="车主姓名或者手机号码" type="text" />
+        </view>
+
+        <view class="next_btn">保存</view>
+
+    </view>
+
+    <!-- bind_fail_mask -->
+    <view class="bind_fail_mask fadeIn">
+
+        <view class="prompt">
+
+            <view class="p">绑定失败</view>
+
+            <view class="know_btn">知道了</view>
+
+        </view>
+
+    </view><!-- bind_fail_mask -->
+
+</view>
+<!-- o_love_car_next_page -->

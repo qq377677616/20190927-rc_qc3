@@ -1,0 +1,95 @@
+<!-- pages/assemble/pin_detail/pin_detail.wxml -->
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<view class="product" bindtap="isVehicleOwner">
+  <!-- swiper-area -->
+  <view class="swiper_area">
+    <swiper circular="true" autoplay="true" interval="2500" bindchange="dotchange">
+      <swiper-item wx:for="{{ pinDetail.album }}" wx:key="index" style="background-image:url({{ item }});"></swiper-item>
+    </swiper>
+    <view class="dots">
+      <view wx:for="{{ pinDetail.album }}" wx:key="index" class="dot_item {{dotIndex == index ? 'active' : ''}}">
+        <view class="tiao"></view>
+      </view>
+      <view class="dot_item"></view>
+    </view>
+  </view>
+  <!-- swiper-area -->
+  <!-- p -->
+  <view class="p_name">
+    <view class="name_left">
+      <view class="name">{{ pinDetail.title }}</view>
+      <view class="name_down">
+        <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+        <view class="txt1">{{ pinDetail.real_vcoin }}</view>
+        <view class="txt2">{{ pinDetail.vcoin }}</view>
+        <view class="label">{{ pinDetail.type == 1 ? '到店领取' : pinDetail.type == 2 ? '快递到家' : '在线领取' }}</view>
+      </view>
+    </view>
+    <button class="name_right" open-type="share">
+      <image src="{{ IMGSERVICE }}/activity/youshang.png"></image>
+      <view class="txt1">需要{{ pinDetail.group_num }}人拼团</view>
+    </button>
+  </view>
+  <!-- p -->
+  <view class="xian"></view>
+  <!-- live_tuan -->
+  <block wx:if="{{ pinDetail.group_show == 1 && timmerGroup.length }}">
+    <view class="live">
+      <view class="one_line">
+        <view class="one_left">{{ timmerGroup.length }}人正在拼团</view>
+        <view class="one_right" bindtap="lookMore">
+          <view class="more">{{ moreText }}</view>
+          <view class="in iconfont icon_more {{ moreShow ? 'rotate' : '' }}"></view>
+        </view>
+      </view>
+      <view class="two_line fadeIn" wx:if="{{ moreShow ? true : index < 2 }}" wx:for="{{ timmerGroup }}" wx:key="index">
+        <view class="two_left">
+          <image class="left_img" src="{{ item.headimg }}"></image>
+          <view class="txt1">{{ item.nickname }}</view>
+        </view>
+        <view class="two_right">
+          <view class="txt_right">
+            <view>还差{{ item.less_people }}人成功</view>
+            <view>
+              剩余{{ item.dhms.tiems.d + ':' + item.dhms.tiems.h + ':' + item.dhms.tiems.m + ':' + item.dhms.tiems.s }}
+            </view>
+          </view>
+          <view class="join" data-index="{{ index }}" data-type="ok" bindtap="joinBtn">
+            立即参加
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="xian"></view>
+  </block>
+  <!-- live_tuan -->
+
+  <!-- bg_down -->
+  <view class="bg_down">
+    <view class="bg_title">商品详情</view>
+    <image class="p_pic_down" src="{{ pinDetail.goods_detail_img }}" mode="widthFix"></image>
+  </view>
+  <view class="xian"></view>
+  
+  <!-- explain -->
+  <view class="explain">
+    <view class="ex_title">温馨提示</view>
+  </view>
+  <view class="ex_txt">
+    <template is="wxParse" data="{{ wxParseData:product_explain.nodes }}" />
+  </view>
+
+
+  <view class="r_btn" data-type="ok" bindtap="launchPin">发起拼团</view>
+
+
+</view>
+
+
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" style="z-index:999;" wx:if="{{ isVehicleOwnerHidePop }}">
+    <qc-activePop popType="{{ popType }}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
+
+    </qc-activePop>
+</view>
+<!-- 授权、去绑定车主弹窗 -->

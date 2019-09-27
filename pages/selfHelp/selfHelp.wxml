@@ -1,0 +1,27 @@
+<!-- 好友助力页面 -->
+<view class="whole">
+	<view class="handImg" style="background-image:url({{IMGSERVICE}}/center/giftbg1.png)">
+		<view class="helpBox helpBox2">
+			<view class="readyTxt">陈小东</view>
+			<view class="moreTxt">呼朋唤友助你获得更多奖励</view>
+			<view class="firendList">
+				<view class="setflex">
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>	
+					<view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>
+				</view>
+				<view class="firendNum">已有5位好友为您助力</view>
+			</view>
+		</view>	
+		<view class="userImg" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
+	</view>
+	<!-- <view class="helpBtn"><text>继续分享获取更多好礼</text></view> -->
+	<view class="myEnter"><text>查看其他活动</text></view>
+</view>

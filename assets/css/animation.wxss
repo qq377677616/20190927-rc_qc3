@@ -1,0 +1,67 @@
+/* 淡入 */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.25, 1, 1, 1) forwards;
+}
+
+/*从底部弹出*/
+
+@keyframes bottom-top {
+  0% {
+    -webkit-transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+
+.bottom-top {
+  animation: bottom-top .5s forwards;
+}
+
+
+@keyframes right-left {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+.right-left {
+  animation: right-left .5s forwards;
+}
+
+.bottom-top {
+  animation: bottom-top .5s forwards;
+}
+
+/*小变大*/
+
+@keyframes fadeShow {
+  0% {
+    -webkit-transform: scale(.1);
+    opacity: 0;
+  }
+  90% {
+    -webkit-transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fadeShow {
+  animation: fadeShow .3s forwards;
+}

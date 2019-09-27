@@ -1,0 +1,73 @@
+<!--pages/activity_publish/activity_publish.wxml-->
+
+<view class="activity_publish" style="background-image:url('{{IMGSERVICEZ}}/activity/bg.png');background-size:cover;">
+
+  <my-header title="我要投票" btnIcon="back" bind:headerBack="headerBack"></my-header>
+
+  <view class="publish">
+
+      <view class="end" style="background-image:url('{{IMGSERVICEZ}}/activity/bg(1).png');background-size:cover;')">
+         
+          <view class="title">
+              <view class="icon"><image src="{{IMGSERVICEZ}}/activity/shandian.png"></image></view>
+              <view>第一轮活动结束</view>
+              <view wx:if="{{false}}">第二轮活动结束</view>
+              <view class="icon"><image src="{{IMGSERVICEZ}}/activity/shandian.png"></image></view>
+          </view>
+
+          <view class="win">
+              <view class="xian"></view>
+              <view class="txt">获奖名单如下</view>
+              <view class="xian"></view>
+          </view>
+
+          <view class="time">{{rating_time}}</view>
+      </view>
+
+  </view>
+
+
+  <view class="bg_list">
+
+      <view class="win_list">
+      
+      <scroll-view scroll-y style="height: 230px;">
+        <view class="list" wx:for="{{rank_list}}" data-index="index">
+          <image wx:if="{{index==0}}" class="one" src="{{IMGSERVICEZ}}/activity/1.png"></image>
+          <image wx:elif="{{index==1}}" class="one" src="{{IMGSERVICEZ}}/activity/2.png"></image>
+          <image wx:elif="{{index==2}}" class="one" src="{{IMGSERVICEZ}}/activity/3.png"></image>
+          <view class="num" wx:else>{{item.num}}</view>
+          <image class="headimg" src="{{item.nickname}}"></image>
+          <view class="name">{{item.nickname}}</view>
+          <view class="piao">{{item.vote}}</view>
+          <view wx:if="{{item.rank_num==1}}" class="rank">一等奖</view>
+          <view wx:if="{{item.rank_num==2}}" class="rank">一等奖</view>
+          <view wx:if="{{item.rank_num==3}}" class="rank">三等奖</view>
+        </view>
+      </scroll-view>        
+
+        <view class="list me" data-index="index">
+          <view class="num">*</view>
+          <image class="headimg" src="{{userInfo.headimg}}"></image>
+          <view class="name">{{userInfo.nickname}}</view>
+          <view class="piao">{{userInfo.votes}}</view>
+          <view wx:if="{{item.rank_num==1}}" class="rank">一等奖</view>
+          <view wx:if="{{item.rank_num==2}}" class="rank">一等奖</view>
+          <view wx:if="{{item.rank_num==3}}" class="rank">三等奖</view>
+        </view>
+
+     </view>
+
+  </view>
+
+  <view class="btn" wx:if="{{is_win==1}}">
+      <view style="background-image:url('{{IMGSERVICEZ}}/center/btn1.png');background-size:cover;">领取我的奖品</view>
+  </view>
+
+  <view class="btn" wx:else>
+      <view bindtap="toVote" style="background-image:url('{{IMGSERVICEZ}}/center/btn1.png');background-size:cover;">很遗憾，您未获奖</view>
+      
+  </view>
+
+</view>
+

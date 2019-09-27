@@ -1,0 +1,170 @@
+<!--pages/sign_up/sign_up.wxml-->
+
+<!-- sign_up_page -->
+<view class="sign_up_page" style="background-image:url({{info.banner}});">
+
+    <view class="main">
+
+        <view class="rule" bindtap="isShowRule">规则</view>
+
+        <view class="car_type">D60EV</view>
+
+        <view class="span">火热销售中</view>
+
+        <view class="info">
+
+            <view class="headimg">
+                
+                <view class="image">
+                    <image wx:for="{{img_list}}" src="{{item.headimg}}" mode="widthFix"></image>
+                </view>
+
+                <view class="p nowrap">已有{{info.participant_number}}人参与</view>
+
+            </view>
+
+            <view class="btn_group">
+
+                <!-- <view class="btn yao">邀请好友一起参与</view> -->
+                
+                <form wx:if="{{info.status==1}}" bindsubmit="formSubmit" bindreset="formReset" report-submit="true">
+                    <button class="btn sign_up" form-type="submit" bindsubmit="bindsubmit">我要报名</button>
+                </form>
+
+                <form wx:if="{{info.status==2}}"  bindreset="formReset" report-submit="true">
+                    
+                    <view class="btn_group_down">
+                    <button class="invite" form-type="submit" bindsubmit="bindsubmit">邀请好友一起参与</button>
+                    <button class="signed" form-type="submit" bindsubmit="bindsubmit">您已报名</button>
+                    </view>
+
+                </form>
+
+            </view>
+
+        </view>
+
+    </view>
+
+    <!-- 留资弹窗-->
+  <view class="forms-box bottom-top" wx:if="{{isShowForm}}">
+    <!-- <forms bindsubmit="submit" bindclose="isShowForm" type="2" vehicle="{{vehicle}}"></forms> -->
+    <forms bindsubmit="submit" bindclose="isShowForm" type="{{formsType}}"></forms>
+  </view>
+
+  
+  <!-- success -->
+
+<view class="bg_color" wx:if="{{isShowSuc}}">
+
+    <view class="bg">
+
+      <view class="txt1">已报名成功</view>
+      <view class="txt2">坐等锦鲤附身!</view>
+      <view class="txt3">知道了</view>
+    
+    </view>
+     <view bindtap="close" class="x" style="background-image:url('{{IMGSERVICE}}/activity/x.png')"></view>
+
+
+</view>
+
+<!-- success -->
+
+<!-- win -->
+
+<view class="bg_color" wx:if="{{isGoPrize}}">
+
+  <view class="win" style="background-image:url('{{IMGSERVICE}}/activity/zhong_bg.png')">
+
+    <view></view>
+
+    <view class="btn" bindtap="goPrize">去领取奖品</view>
+  
+  </view>
+
+</view>
+
+<!-- win -->
+
+
+<!-- win_list -->
+
+  <view class="bg_color" wx:if="{{isPrize}}">
+
+    <view class="top">
+        <image src="{{IMGSERVICE}}/activity/bg(1).png"></image>
+        <view class="img" style="background-image:url('{{IMGSERVICE}}/activity/hjmd.png')"></view>
+        <view class="img_next">
+            <view class="xian"></view>
+            <view class="over">活动结束</view>
+            <view class="xian"></view>
+        </view>
+    </view>
+
+      <view class="win_list">
+
+        <scroll-view  scroll-y style="height:{{height}}rpx;">
+        
+          <view class="list" wx:for="{{the_winning_list}}">
+            <!-- <image wx:if="{{}}" class="one" src="{{IMGSERVICE}}/activity/1.png"></image>
+            <image wx:elif="{{item.num==2}}" class="one" src="{{IMGSERVICE}}/activity/2.png"></image>
+            <image wx:elif="{{item.num==3}}" class="one" src="{{IMGSERVICE}}/activity/3.png"></image> -->
+            <view class="num">{{index+1}}</view>
+            <image class="headimg" src="{{item.headimg}}"></image>
+            <view class="name">{{item.nickname}}</view>
+          </view>
+
+        </scroll-view>
+
+        <view class="l_list">
+
+          <view class="list">
+            <view class="num">*</view>
+            <image class="headimg" src="{{user_activity.headimg}}"></image>
+            <view class="name">{{user_activity.nickname}}</view>
+          </view>
+
+          <view wx:if="{{user_activity.status}}" class="list_right">恭喜获奖</view>
+          <view wx:if="{{user_activity.status}}" class="list_right">未获奖</view>
+
+        </view>
+
+        <view bindtap="getPrize" wx:if="{{user_activity.status}}" class="btn">领取奖品</view>
+
+     </view>
+
+     <view bindtap="close_prize" class="x" style="background-image:url('{{IMGSERVICE}}/activity/x.png')"></view>
+
+  </view>
+
+
+<!-- win_list -->
+
+<!-- 游戏规则弹窗 -->
+  <view class="popup flex-cen" wx:if="{{isShow}}">
+    <view class="box fadeShow">
+      <scroll-view scroll-y>
+        <image src="{{info.rule}}" mode="widthFix"></image>
+      </scroll-view>
+      <image class="close-btn" src="{{IMGSERVICE}}/prize/close.png" bindtap="isHidePop"></image>
+    </view>
+  </view>
+
+
+
+</view><!-- sign_up_page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

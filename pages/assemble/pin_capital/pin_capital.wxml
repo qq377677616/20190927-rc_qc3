@@ -1,0 +1,103 @@
+<!--pages/assemble/pin_capital/pin_capital.wxml-->
+<!-- shop_cart_next_page -->
+<view class="shop_cart_next_page">
+
+    <!-- form_area -->
+    <view class="form_area">
+
+        <view class="group" bindtap="getInfo">
+            <view class="icon iconfont icon_wd"></view>
+            <view class="span">
+                <block wx:if="{{ currentAddressItem.real_address }}">
+                    <view class="nowrap">{{ currentAddressItem.name + ' ' + currentAddressItem.mobile }}</view>
+                    <view class="nowrap">{{ currentAddressItem.real_address }}</view>
+                </block>
+                <block wx:else>
+                    填写收货人信息
+                </block>
+            </view>
+            <view class="go iconfont icon_more"></view>
+        </view>
+
+        <view class="group" wx:if="{{ !(pinDetail.type == 2) }}">
+            <view class="icon iconfont icon-shouyexianxing"></view>
+            <block wx:if="{{ pickerStoreList.length }}">
+                <picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}">
+                    <view class="nowrap">{{ pickerStoreList[storeIndex] }}</view>
+                </picker>
+            </block>
+            <block wx:else>
+                <view class="span nowrap" bindtap="getStore">选择领取的门店</view>
+            </block>
+            <view class="go iconfont icon_more"></view>
+        </view>
+
+    </view><!-- form_area -->
+
+    <!-- cart_list -->
+    <view class="cart_list">
+
+        <!-- cart_item -->
+        <view class="cart_item">
+
+            <view class="image">
+                <image src="{{ pinDetail.thumb }}" mode="widthFix"></image>
+            </view>
+
+            <view class="info">
+                <view class="title nowrap">{{ pinDetail.title }}</view>
+                <view class="specs nowrap no">规格: __</view>
+
+                <view class="v_num">
+                    <view class="v">
+                        <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+                        <view class="span">{{ pinDetail.real_vcoin }}</view>
+                        <view class="del" wx:if="{{ pinDetail.vcoin }}">{{ pinDetail.vcoin }}</view>
+                    </view>
+
+                    <view class="sub_num_add no">
+                        <view class="span sub iconfont icon_jian" data-type="dec" bindtap="addAndDelete"></view>
+                        <view class="span num">{{ pinDetail.__number }}</view>
+                        <view class="span add iconfont icon_jia" data-type="add" bindtap="addAndDelete"></view>
+                    </view>
+                </view>
+            </view>
+
+
+        </view><!-- cart_item -->
+
+    </view><!-- cart_list -->
+
+    <!-- section -->
+    <view class="section">
+
+        <view class="span label">领取方式</view>
+
+        <view class="span">{{ pinDetail.type == 1 ? '到店领取' : pinDetail.type == 2 ? '快递到家' : '在线领取'  }}</view>
+
+    </view><!-- section -->
+
+    <!-- total_area -->
+    <view class="total_area">
+
+        <view class="span total">共计{{ pinDetail.__number }}件产品</view>
+
+        <view class="span price">合计 {{ pinDetail.__number * pinDetail.real_vcoin }} V豆</view>
+
+    </view><!-- total_area -->
+
+    <!-- footer -->
+    <form bindsubmit="settlement" report-submit>
+        <view class="footer">
+
+            <view class="total nowrap">
+                总计: {{ pinDetail.__number * pinDetail.real_vcoin }} V豆
+            </view>
+
+            <button class="btn" form-type="submit">结 算</button>
+
+        </view>
+    </form>
+    <!-- footer -->
+
+</view><!-- shop_cart_next_page -->

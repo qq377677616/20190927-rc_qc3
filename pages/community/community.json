@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "qc-Tabbar":"/components/Tabbar/cmp"
+  },
+  "navigationBarTitleText": "头条"
+}

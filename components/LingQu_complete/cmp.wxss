@@ -1,0 +1,73 @@
+/* components/LingQu_complete/cmp.wxss */
+
+
+.linqu_complete_mask{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    left:0;
+    top:0;
+}
+
+/* main */
+.main{
+    width: 560rpx;
+    background-color: #fff;
+    padding: 75rpx 0 70rpx;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translatex(-50%) translatey(-50%);
+    border-radius:46rpx;
+    box-sizing: border-box;
+}
+.main .title{
+    font-size: 36rpx;
+    color: #333;
+    margin-bottom: 40rpx;
+    font-weight: bold;
+    text-align: center;
+}
+.main .tips{
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
+    margin-bottom: 80rpx;
+}
+.main .share_btn{
+    width: 332rpx;
+    height: 70rpx;
+    border-radius:35rpx;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    font-size: 28rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0 auto 40rpx;
+}   
+.main .more{
+    font-size: 28rpx;
+    color: #333;
+    text-align: center;
+}
+.main .close_btn{
+    color: #fff;
+    font-size: 50rpx;
+    position: absolute;
+    left:50%;
+    bottom:-100rpx;
+    transform: translatex(-50%);
+}
+.main .close_btn::after{
+    content:'';
+    position: absolute;
+    left:50%;
+    top:0;
+    transform: translatex(-50%) translatey(-100%);
+    width: 3rpx;
+    height: 50rpx;
+    background:linear-gradient(0deg,rgba(255,255,255,1),rgba(255,255,255,0));
+}
+/* main */

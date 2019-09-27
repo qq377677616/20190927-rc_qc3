@@ -1,0 +1,75 @@
+<!--pages/test/test.wxml-->
+
+<!-- yuyueshijia_form_page -->
+<view class="yuyueshijia_form_page">
+    <!-- bind_btn --> 
+    <view class="close-box"><image class="close" src="./close.png" bindtap="close"></image></view>
+    <view class="header" wx:if="{{type == 2}}">
+      <view class="image" style="background:url({{vehicle.img}})">
+          <!-- <image src="{{vehicle.img}}" mode="aspectFill"></image> -->
+      </view>
+      <view class="info">
+          <view class="title nowrap">{{vehicle.title}}</view>
+          <view class="price">
+              <view class="label">官方指导价：</view>
+              <view class="span">{{vehicle.price}}</view>
+          </view>
+      </view>
+    </view>
+    <view class="bind_btn" bindtap="wxPhone">使用微信绑定的手机号<button wx:if="{{!isGetPhone && !wxPhone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button></view><!-- bind_btn -->
+    <!-- tips -->
+    <view class="tips" bindtap="other">使用其他手机号码</view><!-- tips -->
+    <!-- form_area -->
+    <view class="form_area">
+        <view class="group">
+            <text class="label" space="nbsp">电话</text>
+            <!-- <input type="text" value="{{phone}}" disabled="{{isGetPhone}}" placeholder="请输入您的电话号码" bindinput="inputPhone"/> -->
+            <input type="text" value="{{phone}}" placeholder="请输入您的电话号码" bindinput="inputPhone" maxlength="11" type="number"/>
+        </view>
+
+        <view class="group" wx:if="{{!isGetPhone}}">
+            <text class="label" space="nbsp"></text>
+
+            <input type="text" bindinput="inputCode" placeholder="请输入验证码" maxlength="6" type="number"/>
+
+            <view class="code_btn {{isGetCode == 2 ? 'gray': ''}}" bindtap="getCode">{{isGetCode == 1 ? countDown + 's' : (isGetCode == 0 ? '获取验证码' : '验证码获取中')}}</view>
+        </view>
+
+        <view class="group">
+            <text class="label" space="nbsp">姓名</text>
+
+            <input type="text" placeholder="请输入您的姓名" bindinput="inputName"/>
+        </view>
+
+        <view class="group" wx:if="{{type != 3}}">
+            <text class="label" space="nbsp">当前城市</text>
+            <view class="location">
+              <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                <text>{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+              </picker>
+              <view class="icon iconfont icon_wdwd" bindtap="openSetting"></view>
+            </view>
+        </view>
+
+        <view class="group" wx:if="{{type != 1 && type != 3}}">
+            <text class="label" space="nbsp">专营店</text>
+            <view class="location">
+                <picker class="picker" bindchange="bindStoreChange" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}"><text class="picker">{{storeList[storeList_index].name}}</text>
+            </picker>
+                <view class="triangle"></view>
+            </view>
+        </view>
+        
+        <view class="group" wx:if="{{type == 1}}">
+            <text class="label" space="nbsp">详细地址</text>
+            <input type="text" value="{{address}}" placeholder="请输入您的详细收货地址" bindinput="inputAddress"/>
+        </view>
+        <view class="agree" wx:if="{{type == 2}}" bindtap="isChecked">
+            <view class="checked {{isChecked ? 'on' : ''}}"></view>
+            东风启辰在此承诺：您在智趣启辰小程序上提供的个人信息不会出售给任何第三方。您的信息可能被东风启辰以及其代理商或经销商用作分析研究，提供您所需要的服务，向您发出产品和服务的信息，以便改善我们的服务。请填写您的真实信息，方便我们尽快与您联系 。
+        </view> 
+        <view class="submit" bindtap="submit">{{ type == 2 ? '提交信息' : '领取' }}</view>
+
+    </view><!-- form_area -->
+
+</view><!-- yuyueshijia_form_page -->

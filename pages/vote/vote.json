@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "rule":"/components/rule/rule",
+    "activePop": "/components/activePop/activePop"
+  },
+  "navigationBarTitleText": "投票"
+}

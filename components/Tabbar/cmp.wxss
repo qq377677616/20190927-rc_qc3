@@ -1,0 +1,46 @@
+/* components/tabber/cmp.wxss */
+@import "/assets/iconfont/iconfont.wxss";
+
+.footer.iPhone{
+    height:158rpx;
+}
+.tabbar{
+    width:100%;
+    background-color:#fff;
+    display:flex;
+    border-top:1rpx solid #e5e5e5;
+    position:fixed;
+    bottom:0;
+    left:0;
+    z-index:3;
+    /* box-sizing:border-box; */
+    /* height: 100rpx; */
+    padding-top: 16rpx;
+    padding-bottom: 13rpx;
+}
+.tabbar.iPhone{
+    padding-bottom: 68rpx;
+}
+.tabbar .tabbar_item{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    line-height:1em;
+}
+.tabbar .tabbar_item .icon{
+    font-size: 40rpx;
+    color: #828183;
+    margin-bottom: 14rpx;
+}
+.tabbar .tabbar_item.active .icon{
+    color:#1354BB;
+}
+.tabbar .tabbar_item text{
+    font-size:20rpx;
+    color:#828183;
+}
+.tabbar .tabbar_item.active text{
+    color:#333;
+}
