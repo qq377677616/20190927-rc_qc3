@@ -1,0 +1,67 @@
+<!-- pages/assemble/o_pin_status/o_pin_status.wxml -->
+<view class="o_pin_status">
+  <!-- status_nav -->
+  <view class="status_nav">
+    <view data-index="" bindtap="navList">
+      全部
+      <view class="line" wx:if="{{ status === '' }}"></view>
+    </view>
+    <view data-index="0" bindtap="navList">
+      拼团中
+      <view class="line" wx:if="{{ status === '0' }}"></view>
+    </view>
+    <view data-index="1" bindtap="navList">
+      拼团成功
+      <view class="line" wx:if="{{ status === '1' }}"></view>
+    </view>
+    <view data-index="2" bindtap="navList">
+      拼团失败
+      <view class="line" wx:if="{{ status === '2' }}"></view>
+    </view>
+  </view>
+  <!-- status_nav -->
+  <!-- pin_list -->
+  <view class="pin_list">
+    <!-- list -->
+    <view class="list fadeIn" wx:for="{{ groupList }}" wx:key="index">
+      <view class="list_top">
+        <view class="orderID no">订单编号：__</view>
+        <view class="countdown success" wx:if="{{ item.status == 1 }}">拼团成功</view>
+        <view class="countdown fail" wx:elif="{{ item.status == 2 }}">拼团失败</view>
+        <view class="countdown success" wx:else>
+          剩余时间 {{ (timmerGroup[index].dhms.tiems.d || '00') + ':' + (timmerGroup[index].dhms.tiems.h || '00') + ':' + (timmerGroup[index].dhms.tiems.m || '00') + ':' + (timmerGroup[index].dhms.tiems.s || '00') }}
+        </view>
+      </view>
+      <view class="list_down">
+        <view class="productImg" style="background-image:url({{ item.thumb }})"></view>
+        <view class="down_right">
+          <view class="one">{{ item.title }}</view>
+          <view class="two no">规格：__</view>
+          <view class="three">
+            
+            <view class="v_dou">V豆：{{ item.vcoin }}</view>
+
+            <view class="btn" wx:if="{{ item.status == 1 }}" data-index="{{ index }}" catchtap="getOrderId">
+              领取奖品
+            </view>
+            
+            <view class="btn fail" wx:elif="{{ item.status == 2 }}">fail</view>
+
+            <button class="btn" open-type="share" wx:else data-index="{{ index }}" catchtap="shareBtn">
+              分享好友
+            </button>
+
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- list -->
+    <!-- qc-More -->
+    <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More>
+    <!-- qc-More -->
+  </view>
+  <!-- pin_list -->
+  <!-- qc-page404 -->
+  <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404>
+  <!-- qc-page404 -->
+</view>

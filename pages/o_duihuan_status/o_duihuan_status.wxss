@@ -1,0 +1,127 @@
+/* pages/o_duihuan_status/o_duihuan_status.wxss */
+
+page{
+    height: 100%;
+    background-color: #F1F1F1;
+}
+.o_duihuan_status_page{
+    padding: 22rpx 28rpx;
+}
+
+/* header_area */
+.header_area{
+    border-radius:14rpx;
+    padding: 18rpx 32rpx;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 22rpx;
+}
+.header_area .image{
+    flex:0 0 auto;
+    width: 96rpx;
+    height: 75rpx;
+    overflow: hidden;
+    position: relative;
+    border-radius:10rpx;
+    margin-right: 25rpx;
+}
+.header_area .image image{
+    border-radius:10rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%)
+}
+.header_area .status{
+    width: 0;
+    flex:1;
+    font-size: 30rpx;
+    color: #333;
+}
+.header_area .date{
+    font-size: 24rpx;
+    color: #999;
+}/* header_area */
+
+/* wuliu_info */
+.wuliu_info{
+    padding: 45rpx 46rpx 49rpx 0;
+    background-color: #fff;
+    border-radius:14rpx;
+}
+.wuliu_info .step{
+    display: flex;
+}
+.wuliu_info .step .mdhs{
+    flex:0 0 auto;
+    box-sizing: border-box;
+    width: 104rpx;
+    padding: 0 10rpx 0 0;
+    font-size: 24rpx;
+    color: #999;
+    text-align:right;
+    position: relative;
+}
+.wuliu_info .step:not(:last-of-type) .mdhs::after{
+    content:'';
+    position: absolute;
+    right: -24rpx;
+    top: 0;
+    height: 100%;
+    width: 2rpx;
+    background-color: #DCDCDC;
+}
+.wuliu_info .step .mdhs .md{
+   margin-bottom: 23rpx;
+}
+.wuliu_info .step.active .mdhs .md,
+.wuliu_info .step.active .mdhs .hs{
+    color: #333;
+}
+.wuliu_info .step .mdhs .hs{
+
+}
+.wuliu_info .step .icon{
+    position: relative;
+    flex:0 0 auto;
+    font-size: 28rpx;
+    color: #999;
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border:1rpx solid #E5E5E5;
+    box-sizing: border-box;
+}
+.wuliu_info .step.active .icon{
+    color: #fff;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    border-color:transparent;
+}
+.wuliu_info .step .step_info{
+    width: 0;
+    flex:1;
+    padding: 0 0 90rpx 46rpx;
+}
+.wuliu_info .step .step_info .title{
+    font-size: 30rpx;
+    color: #999;
+    margin-bottom: 17rpx;
+}
+.wuliu_info .step.active .step_info .title,
+.wuliu_info .step.active .step_info .detail{
+    color: #333;
+}
+.wuliu_info .step .step_info .detail{
+    font-size: 24rpx;
+    color: #999;
+    display: flex;
+    flex-wrap:wrap;
+}
+.wuliu_info .step .step_info .detail .span{
+    color: #145CBF;
+}/* wuliu_info */

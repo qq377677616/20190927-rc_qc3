@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "qc-Tabbar":"/components/Tabbar/cmp",
+    "qc-More":"/components/More/cmp",
+    "qc-SignIn":"/components/SignIn/cmp",
+    "qc-page404":"/components/page404/page404"
+  },
+  "navigationStyle": "custom"
+}

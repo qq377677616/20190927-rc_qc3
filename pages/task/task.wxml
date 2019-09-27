@@ -1,0 +1,54 @@
+<!--pages/task/task.wxml-->
+
+<!-- task_page -->
+<view class="task_page">
+
+    <!-- banner_area -->
+    <view class="banner_area">
+        <image src="{{ taskInfo.banner.image }}" mode="widthFix" bindtap="bannerJump"></image>
+    </view><!-- banner_area -->
+
+    <!-- task_list -->
+    <view class="task_list" wx:for="{{ taskInfo.list }}" wx:key="index">
+
+        <view class="task_item fadeIn">
+            <image class="item_icon" src="{{ item.icon }}" mode="widthFix"></image>
+
+            <view class="p">{{ item.title }}</view>
+
+            <view wx:if="{{ item.status == 1 }}" class="btn yes">已完成</view>
+            <view wx:else class="btn no" data-index="{{ index }}" bindtap="taskBtn">去完成<button wx:if="{{item.value == 'oauth' && !userInfo.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button></view>  
+        </view>
+
+    </view><!-- task_list -->
+
+    <!-- qc-SignIn -->
+    <qc-SignIn wx:if="{{ signInIf }}" bind:sureBtn="sureBtn"></qc-SignIn>
+    <!-- qc-SignIn -->
+
+    <!-- tips_mask -->
+    <view class="tips_mask" wx:if="{{ authIf }}" style="background-image:url({{ IMGSERVICE }}/index/jianmianli.png);">
+
+        <view class="main">
+
+            <view class="title">V豆</view>
+
+            <view class="number">50</view>
+
+            <view class="btn_group">
+                <view class="btn out" bindtap="notAuth">直接跳过</view>
+
+                <button class="btn go" open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即授权</button>
+            </view>
+
+        </view>
+
+    </view><!-- tips_mask -->
+
+    <!-- 序列帧 -->
+    <view class="currency" hidden="{{!(sequenceListIndex >= 0)}}" bindtap="start">
+      <image class="{{sequenceListIndex == index ? 'on' : ''}}" wx:for="{{sequenceList}}" wx:key="key{{index}}" src="{{item.url}}"></image>
+    </view>
+    <!-- 序列帧 -->
+
+</view><!-- task_page -->

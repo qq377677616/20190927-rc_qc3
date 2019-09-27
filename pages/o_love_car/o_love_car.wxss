@@ -1,0 +1,134 @@
+/* pages/o_love_car/o_love_car.wxss */
+
+page{
+    background-color: #F3F3F3;
+    height: 100%;
+}
+.o_love_car_page{
+    padding:23rpx 28rpx;
+}
+
+
+/* form_area */
+.form_area{
+    background-color: #fff;
+    border-radius:14rpx;
+    margin-bottom: 21rpx;
+}
+.form_area .group{
+    box-sizing: border-box;
+    height: 102rpx;
+    padding: 22rpx 34rpx;
+    display: flex;
+    align-items: center;
+}
+.form_area .group input{
+    width: 0;
+    flex:1;
+    font-size: 26rpx;
+    color: #000;
+}
+.form_area .group input::placeholder{
+    color: #333;
+}
+.form_area .number{
+    
+}
+.form_area .number input{
+    
+}
+.form_area .code{
+    
+}
+.form_area .code input{
+
+}
+.form_area .code .canvas{
+    flex:0 0 auto;
+    width: 160rpx;
+    height: 58rpx;
+    border-radius:14rpx;
+    background-color: #F3EDEF;
+}/* form_area */
+
+/* vin_area */
+.vin_area{
+    background-color: #fff;
+    border-radius:14rpx;
+    padding: 0 27rpx 27rpx;
+    margin-bottom: 169rpx;
+}
+.vin_area .title{
+    height: 77rpx;
+    line-height: 77rpx;
+    font-size:30rpx;
+    color: #333;
+}
+.vin_area .verify_area{
+    position: relative;
+}
+.vin_area .verify_area image{
+    width: 100%;
+    border-radius:10rpx;
+}/* vin_area */
+
+/* submit_btn */
+.submit_btn{
+    height: 90rpx;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    border-radius:10rpx;
+    font-size: 30rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:0 8rpx 8rpx rgba(32, 161, 224, 0.6);
+}/* submit_btn */
+
+
+/* tips_mask */
+.tips_mask{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    left:0;
+    top:0;
+}
+
+.tips_mask .main{
+    width: 560rpx;
+    background-color: #fff;
+    padding: 126rpx 0 72rpx;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translatex(-50%) translatey(-50%);
+    border-radius:46rpx;
+    box-sizing: border-box;
+}
+.tips_mask .main .title{
+    font-size: 36rpx;
+    color: #333;
+    margin-bottom: 86rpx;
+    font-weight: bold;
+    text-align: center;
+}
+.tips_mask .main .know_btn{
+    width: 332rpx;
+    height: 70rpx;
+    border-radius:35rpx;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    font-size: 28rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0 auto;
+}   
+.tips_mask .main .more{
+    font-size: 28rpx;
+    color: #333;
+    text-align: center;
+}
+/* tips_mask */

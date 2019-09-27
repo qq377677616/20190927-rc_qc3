@@ -1,0 +1,51 @@
+var totalPrice = function (data) {
+    var price = 0;
+    return data.reduce(function(prve, item){
+        if( item.exclued ){//排除的不计算在总价内
+            return prve;
+        }
+        else{
+            return prve + item.number * item.vcoin;
+        }
+    }, price);
+}
+
+var specJoin = function (data, indexArr) {
+    var spec = '';
+    if( data.length ){//有规格
+        return data.reduce(function(prve, item, index){
+            var attr = item.list.filter(function(sitem){
+                return sitem.id == indexArr[index];
+            })
+            return prve + item.name + attr[0].name + ';'
+        }, spec);
+    }else{//无规格
+        return spec;
+    }
+}
+
+var totalNumber = function (data) {
+    var number = 0;
+    return data.reduce(function(prev, item){
+        return prev + item.number;
+    }, number)
+}
+
+var cartTotalPrice = function(data){
+    var price = 0;
+    return data.reduce(function(prev, item){
+        return prev + item.number * item.vcoin;
+    }, price)
+}
+
+var split = function(data, way){
+    return data.split(way);
+}
+
+module.exports = {
+    totalPrice:totalPrice,
+    specJoin:specJoin,
+    totalNumber:totalNumber,
+    cartTotalPrice:cartTotalPrice,
+    split:split
+}

@@ -1,0 +1,92 @@
+/* pages/o_vdou/o_vdou.wxss */
+
+page {
+    height: 100%;
+    background-color: #f0f0f0;
+}
+.o_vdou_page {
+    padding: 28rpx;
+}
+
+/* user_info */
+.user_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 173rpx;
+    background-color: #fff;
+    border-radius: 14rpx;
+}
+
+.user_info_left {
+    display: flex;
+    align-items: center;
+}
+
+.user_info_left .headimg {
+    width: 105rpx;
+    height: 105rpx;
+    margin-left: 40rpx;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.user_info_left .name {
+    font-size: 32rpx;
+    color: #333;
+    margin-left: 36rpx;
+}
+
+.user_info_right {
+    display: flex;
+    align-items: center;
+    margin-right: 36rpx;
+}
+
+.user_info_right .v_mark {
+    width: 30rpx;
+    margin-right: 15rpx;
+}
+
+.user_info_right .bi {
+    font-size: 32rpx;
+    color: #f1403e;
+}/* user_info */
+
+/* list */
+.list {
+    margin-top: 28rpx;
+    background-color: #fff;
+    border-radius: 14rpx;
+    padding: 0 36rpx;
+}
+
+.item {
+    height: 109rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid #EEE;
+    align-items: center;
+}
+
+.item .path_dou {
+    display: flex;
+}
+
+.item .path_dou .path {
+	width: 220rpx;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.item .path_dou .dou {
+    font-size: 28rpx;
+    color: #F1403E;
+    margin-left: 28rpx;
+}
+
+.item .date {
+    font-size: 26rpx;
+    color: #999;
+}/* list */

@@ -1,0 +1,167 @@
+/* pages/upload_show/upload_show.wxss */
+
+page{
+  height: 100%;
+}
+
+.upload_show{
+  height: 100%;
+  padding: 0 30rpx;
+}
+
+/* top_bg */
+
+.top_bg{
+  background: #fff;
+  height: 560rpx;
+  border-radius: 20rpx;
+  margin-top: 102rpx;
+}
+
+.top_bg .pad{
+  padding: 29rpx 25rpx;
+}
+
+.top_bg .pad image{
+  height: 360rpx;
+  border-radius: 20rpx;
+  object-fit: cover;
+}
+
+.headimg{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 17rpx;
+}
+
+.headimg .pic{
+  display: flex;
+  margin-top: 23rpx;
+}
+
+.headimg .pic image{
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.headimg .pic .img_right{
+  display: flex;
+  flex-direction: column;
+  margin-left: 15rpx;
+}
+
+.headimg .pic .img_right .name{
+  font-size: 36rpx;
+  color: #333;
+}
+
+.headimg .pic .img_right .time{
+  font-size: 26rpx;
+  color: #A0A3A7;
+}
+
+.not_list{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.not_list .tuoyuan{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width:129rpx;
+  height:50rpx;
+  background:#2882E8;
+  border-radius:25px 0px 0px 25px;
+  margin-right: -23rpx;
+}
+
+.not_list .now{
+  display: flex;
+  margin-top: 23rpx;
+}
+
+.not_list .now .txt1{
+  font-size: 26rpx;
+  color: #A0A3A7;
+}
+
+.not_list .now .txt2{
+  font-size: 26rpx;
+  color: #64A0F1;
+}
+
+/* top_bg */
+
+
+/* down_bg */
+
+.down_bg{
+  background-color: #FFF;
+  height: 350rpx;
+  margin-top: 30rpx;
+  border-radius: 20rpx;
+}
+
+.down_pad{
+  padding: 28rpx 31rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.down_pad .tit_img image{
+  width: 249rpx;
+  height: 30rpx;
+  object-fit: cover;
+}
+
+.down_pad .per_img{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* justify-content: center; */
+}
+
+.down_pad .per_img image{
+  width: 84rpx;
+  height: 84rpx;
+  /* object-fit: cover; */
+  border-radius: 50%;
+  margin: 40rpx 20rpx 0;
+}
+
+
+  
+
+/* down_bg */
+
+.btn{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 46rpx;
+}
+
+.btn_list,.btn_share{
+  width: 300rpx;
+  height: 90rpx;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_list{
+  background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
+  color: #FFF;
+}
+
+.btn_share{
+  border:1rpx solid #20A1E0; 
+  color: #124DB8;
+}

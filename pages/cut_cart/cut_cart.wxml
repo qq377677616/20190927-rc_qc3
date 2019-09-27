@@ -1,0 +1,92 @@
+<!--pages/shop_cart_next/shop_cart_next.wxml-->
+
+<wxs src="../../utils/wxs/filter_01.wxs" module="filter"></wxs>
+
+<!-- shop_cart_next_page -->
+<view class="shop_cart_next_page">
+
+
+    <block>
+        <!-- form_area -->
+        <view class="form_area">
+            <view class="group" bindtap="getInfo">
+                <view class="icon iconfont icon_wd"></view>
+                <view class="span">
+                    <block wx:if="{{ currentAddressItem.real_address }}">
+                        <view class="nowrap">{{ currentAddressItem.name + ' ' + currentAddressItem.mobile }}</view>
+                        <view class="nowrap">{{ currentAddressItem.real_address }}</view>
+                    </block>
+                    <block wx:else>
+                        填写收货人信息
+                    </block>
+                </view>
+                <view class="go iconfont icon_more"></view>
+            </view>
+
+            <view class="group" wx:if="{{barshopData.type != 2}}">
+                <view class="icon iconfont icon-shouyexianxing"></view>
+                <block wx:if="{{ pickerStoreList.length }}">
+                    <picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ picklist }}" value="{{ storeIndex }}">
+                        <view class="nowrap">{{ pickerStoreList[storeIndex].name }}</view>
+                    </picker>
+                </block>
+                <block wx:else>
+                    <view class="span nowrap" bindtap="getStore">选择领取的门店</view>
+                </block>
+                <view class="go iconfont icon_more"></view>
+            </view>
+
+        </view><!-- form_area -->
+
+        <!-- cart_list -->
+        <view class="cart_list">
+
+            <!-- cart_item -->
+            <view class="cart_item fadeIn">
+                <view class="image">
+                    <image src="{{barshopData.shopImg}}" mode="widthFix"></image>
+                </view>
+
+                <view class="info">
+                    <view class="title nowrap">{{barshopData.shopName}}</view>
+                    <view class="specs nowrap no">规格:</view>
+
+                    <view class="v_num">
+                        <view class="v">
+                            <!-- <view class="icon iconfont icon_jfrw"></view> -->
+                            <view class="span">￥{{barshopData.shopPrice}}</view>
+                        </view>
+                        <view class="num">x1</view>
+                    </view>
+                </view>
+
+                <!-- <image src="{{ IMGSERVICE }}/shop_cart/x.png" mode="widthFix" class="del_btn"></image> -->
+
+            </view><!-- cart_item -->
+
+        </view><!-- cart_list -->
+
+        <!-- total_area -->
+        <view class="total_area">
+
+            <view class="span total">共计1件产品</view>
+
+            <view class="span price">合计0元</view>
+
+        </view><!-- total_area -->
+
+        <!-- footer -->
+        <view class="footer">
+			<form bindsubmit="formSubmit" bindreset="formReset" report-submit="true" class="remarkbtn">
+				<button class="remarkbtn" form-type="submit" bindsubmit="bindsubmit">
+				  	开始砍价
+				</button>
+			</form>
+        </view><!-- footer -->
+    </block>
+
+</view><!-- shop_cart_next_page -->
+
+
+
+

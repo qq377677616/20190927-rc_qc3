@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+	  "getPhoneNumber": "/components/getPhoneNumber/getPhoneNumber",
+	  "showModal": "/components/showModal/showModal"
+  }
+}

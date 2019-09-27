@@ -1,0 +1,4 @@
+<view class="whole" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)">
+	<text class="ruls">规则</text>
+	<view class="attend">我要参与</view>
+</view>

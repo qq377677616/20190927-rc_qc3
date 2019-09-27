@@ -1,0 +1,150 @@
+<!--pages/order_wuliu/order_wuliu.wxml-->
+<wxs src="../../utils/wxs/filter_01.wxs" module="filter"></wxs>
+
+<!-- order_wuliu_page -->
+<view class="order_wuliu_page">
+
+    <!-- header_area -->
+    <view class="header_area">
+
+        <view class="image">
+            <image src="{{ orderWuliu.logo }}" mode="widthFix"></image>
+        </view>
+
+        <view class="status nowrap">{{ orderWuliu.issign == 1 ? '订单已签收' : '订单配送中' }}</view>
+
+        <view class="date">{{ orderWuliu.updateTime }}</view>
+
+    </view><!-- header_area -->
+
+    <!-- wuliu_info -->
+    <view class="wuliu_info">
+
+        <view class="step" wx:for="{{ orderWuliu.list }}" wx:key="{{ index }}">
+
+            <view class="mdhs">
+                <view class="md nowrap">{{ filter.split(item.time, ' ')[0] || '__:__' }}</view>
+                <view class="hs nowrap">{{ filter.split(item.time, ' ')[1] || '__:__' }}</view>
+            </view>
+
+            <view wx:if="{{ index == 0 }}" class="icon iconfont icon_shdz"></view>
+            <view wx:elif="{{ index == (orderWuliu.list.length - 1) }}" class="icon iconfont icon_ddtjcg"></view>
+            <view wx:else class="icon iconfont icon_psz"></view>
+
+            <viwe class="step_info">
+                <!-- <view class="title">[收货地址]</view> -->
+                <view class="detail">{{ item.status }}</view>
+            </viwe>
+
+        </view>
+
+        <!-- <view class="step">
+
+            <view class="mdhs">
+                <view class="md nowrap">__:__</view>
+                <view class="hs nowrap">__:__</view>
+            </view>
+
+            <view class="icon iconfont icon_shdz"></view>
+
+            <viwe class="step_info">
+                <view class="title">[收货地址]</view>
+                <view class="detail">广东省 花都区 滨河街道花园小区2栋3单元15楼1502          您已在花园小区店完成取件，感谢您的使用期待再次为您服务。您已在花园小区店完成取件，感谢您的使用期待再次为您服务。您已在花园小区店完成取件，感谢您的使用期待再次为您服务。您已在花园小区店完成取件，感谢您的使用期待再次为您服务。</view>
+            </viwe>
+
+        </view> -->
+        
+        <!-- <view class="step active">
+
+            <view class="mdhs">
+                <view class="md nowrap">04-22</view>
+                <view class="hs nowrap">10:32</view>
+            </view>
+
+            <view class="icon iconfont icon_ddywc"></view>
+
+            <viwe class="step_info">
+                <view class="title">订单已完成</view>
+                <view class="detail">您已在花园小区店完成取件，感谢您的使用期待再次为您服务。</view>
+            </viwe>
+
+        </view> -->
+
+        <!-- <view class="step">
+
+            <view class="mdhs">
+                <view class="md nowrap">04-22</view>
+                <view class="hs nowrap">10:32</view>
+            </view>
+
+            <view class="icon iconfont icon_psz"></view>
+
+            <viwe class="step_info">
+                <view class="title">派送中</view>
+                <view class="detail">
+                    配送员小东
+                    <view class="span">13088885555</view>
+                    正在派送         您已在花园小区店完成取件，感谢您的使用期待再次为您服务。您已在花园小区店完成取件，感谢您的使用期待再次为您服务。您已在花园小区店完成取件，感谢您的使用期待再次为您服务。您已在花园小区店完成取件，感谢您的使用期待再次为您服务。
+                </view>
+            </viwe>
+
+        </view> -->
+
+        <!-- <view class="step">
+
+            <view class="mdhs">
+                <view class="md nowrap">04-22</view>
+                <view class="hs nowrap">10:32</view>
+            </view>
+
+            <view class="icon iconfont icon_psyyqh"></view>
+
+            <viwe class="step_info">
+                <view class="title">配送员已取货</view>
+                <view class="detail">
+                    开始为您配送，配送员：小东
+                    <view class="span">13088885555</view>
+                </view>
+            </viwe>
+
+        </view> -->
+
+        <!-- <view class="step">
+
+            <view class="mdhs">
+                <view class="md nowrap">04-22</view>
+                <view class="hs nowrap">10:32</view>
+            </view>
+
+            <view class="icon iconfont icon_ddclz"></view>
+
+            <viwe class="step_info">
+                <view class="title">订单处理中</view>
+                <view class="detail">
+                        订单号: 64033214065648
+                </view>
+            </viwe>
+
+        </view> -->
+
+        <!-- <view class="step">
+
+            <view class="mdhs">
+                <view class="md nowrap">04-22</view>
+                <view class="hs nowrap">10:32</view>
+            </view>
+
+            <view class="icon iconfont icon_ddtjcg"></view>
+
+            <viwe class="step_info">
+                <view class="title">订单提交成功</view>
+                <view class="detail">
+                        订单号: 64033214065648
+                </view>
+            </viwe>
+
+        </view> -->
+
+    </view><!-- wuliu_area -->
+
+</view><!-- order_wuliu_page -->

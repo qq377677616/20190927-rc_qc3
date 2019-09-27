@@ -1,0 +1,52 @@
+<!--pages/o_address/o_address.wxml-->
+
+
+<!-- o_address_page -->
+<view class="o_address_page">
+
+    <!-- address_list -->
+    <scroll-view scroll-y class="address_list">
+
+        <view class="content">
+
+            <view class="address_item fadeIn {{ item.direction == 'left' ? 'left' : 'right' }}" bind:touchstart="touchstart" bind:touchmove="touchmove" bind:touchend="touchend" data-id="{{ index }}" bindtap="checkedBtn" wx:key="item.address_id" wx:for="{{ addressList }}">
+
+                <block wx:if="{{ options.pageType == 'back' }}">
+                    <view wx:if="{{ item.is_default == 1 }}" class="checked active iconfont icon_gouxuan"></view>
+                    <view wx:else class="checked"></view>
+                </block>
+
+                <view class="info"> 
+
+                    <view class="name_tel">
+                        <view class="name">{{ item.name }}</view>
+                        <view class="tel">{{ item.mobile }}</view>
+                    </view>
+
+                    <view class="address">
+                        <view class="default" wx:if="{{ item.is_default == 1 }}">默认</view>
+                        <view class="span nowrap">{{ item.real_address }}</view>
+                    </view>
+                </view>
+
+                <view class="edit" data-id="{{ index }}" catchtap="editBtn">
+                    编辑
+                </view>
+
+                <view class="delete_btn" data-id="{{ item.address_id }}" catchtap="deleteBtn">
+                    删除
+                </view>
+
+            </view>
+
+        </view>
+
+        <!-- qc-More -->
+        <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
+
+    </scroll-view><!-- address_list -->
+
+    <!-- add_btn -->
+    <view class="add_btn" bindtap="addBtn">添加收货地址</view><!-- add_btn -->
+
+</view><!-- o_address_page -->

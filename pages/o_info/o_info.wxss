@@ -1,0 +1,51 @@
+/* pages/o_info/o_info.wxss */
+
+page {
+    height: 100%;
+    background: #f0f0f0;
+}
+
+.o_info_page {
+    padding:25rpx 28rpx;
+}
+
+/* info_area */
+.info_area {
+    padding: 0 26rpx 0rpx 33rpx;
+    background: #fff;
+    border-radius: 10rpx;
+}
+
+.info_area .group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 114rpx;
+}
+
+.info_area .group:not(:last-of-type) {
+    border-bottom: 1rpx solid #eeeeee;
+}
+
+.info_area .group image {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+}
+
+.info_area .group .span {
+    font-size: 30rpx;
+    color: #666666;
+}
+
+.info_area .group .p {
+    font-size: 30rpx;
+    color: #333333;
+}/* info_area */
+.info_area .group .p2{
+	color: red;
+}
+
+.setwidth{
+	width: 320rpx;
+}

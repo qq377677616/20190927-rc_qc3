@@ -1,0 +1,70 @@
+<!-- pages/receive_card/receive_card.wxml -->
+<!-- receive-card-page -->
+<view class="receive-card-page" style="background-image:url('{{ IMGSERVICE }}/receive_card/bg.png');" hidden="{{ show }}">
+    <!-- form-group -->
+    <view class="form-group">
+        <view class="input-group">
+            <text class="label">您的姓名</text>
+            <input type="text" placeholder="请输入您的姓名" value="{{ oName }}" bindinput="oNameInput"/>
+        </view>
+
+        <view class="input-group">
+            <text class="label">联系电话</text>
+            <input type="text" placeholder="请输入手机号码" value="{{ oTel }}" bindinput="oTelInput"/>
+        </view>
+        <block wx:if="{{curPrizeId != 7}}">
+        <view class="input-group">
+            <text class="label">所在城市</text> 
+            <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+              <text>{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+            </picker>
+        </view>
+        
+        <view class="input-group" wx:if="{{(product_id == 1 || product_id == 122) && ortherType == 2}}">
+            <text class="label">详细地址</text>
+            <input type="text" placeholder="请填写收货地址" value="{{ myAdd }}" bindinput="myAddInput"/>
+        </view>
+        <view class="input-group" wx:else>
+           <text class="label">专营店</text>
+            <picker class="picker" bindchange="bindStoreChange" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}"><text class="picker">{{storeList[storeList_index].name}}</text>
+            </picker>
+        </view>
+        </block> 
+        <view class="h5" wx:if="{{curPrizeId == 7}}">「温馨提示：信息提交成功后，稍后将有专人与您联系沟通具体兑奖事宜，请保持电话通畅。」          </view>
+        <!-- <block wx:else>
+        <view class="input-group">
+            <text class="label">所在城市</text>
+            <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+              <text>{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+            </picker>
+        </view>
+        <view class="input-group">
+            <text class="label">详细地址</text>
+            <input type="text" placeholder="请填写收货地址" value="{{ myAdd }}" bindinput="myAddInput"/>
+        </view>
+        </block>   -->
+
+        <view class="input-group orther" wx:if="{{product_id == 1 || product_id == 122 || product_id == 2}}">
+          <text class="label">{{ortherType == 0 ? '规格' : (ortherType == 1 ? '尺码' : '场次')}}</text>
+          <picker class="picker" bindchange="bindOtherChange" value="{{orther_index}}" range="{{ortherList}}" range-key="{{'attr_value'}}"><text class="picker">{{ortherList[orther_index].attr_value}}</text>
+          </picker>
+        </view>
+        <view class="submit-btn" bindtap="submitBtn">立即领取</view>
+
+    </view><!-- form-group -->
+
+    <!-- receive-success-mask -->
+    <view class="receive-success-mask" hidden="{{ !(receiveHidden) }}">
+
+        <view class="content riseShow">
+            <image src="{{ IMGSERVICE + '/receive_card/receive_card_cg.png' }}" mode="widthFix"></image>
+            <text class="text">领取成功</text>
+            <text class="tips">卡券已经到了您的卡包</text>
+            <view class="confirm-btn" bindtap="confirmBtn">确定</view>
+        </view>
+
+    </view><!-- receive-success-mask -->
+    <myModal container="{{showModal}}" bindoperation="operation"></myModal>
+    <showLoading wx:if="{{isShowLoading}}" loadingText="{{loadingText}}"></showLoading>
+    <getPhoneNumber bindgetPhoneNumber="getPhoneNumber" wx:if="{{isGetPhoneNumber}}"></getPhoneNumber>
+</view><!-- receive-card-page -->

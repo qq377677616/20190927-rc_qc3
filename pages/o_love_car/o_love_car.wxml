@@ -1,0 +1,42 @@
+<!--pages/o_love_car/o_love_car.wxml-->
+
+<!-- o_love_car_page -->
+<view class="o_love_car_page">
+
+    <!-- form_area -->
+    <view class="form_area">
+        <view class="group number">
+            <input type="text" placeholder="请输入VIN码" value="{{ vinCode }}" bindinput="vinInput"/>
+        </view>
+        <view class="group code">
+            <input type="text" maxlength="12" placeholder="请输入验证码" value="{{ code }}" bindinput="codeInput"/>
+            <canvas class="canvas" width="160" height="58" canvas-id="canvas" bindtap="refreshCode"></canvas>
+        </view>
+    </view><!-- form_area -->
+
+    <!-- vin_area -->
+    <view class="vin_area">
+        <view class="title nowrap">VIN示例</view>
+        <view class="verify_area">
+            <image src="{{ IMGSERVICE }}/center/vincode.jpg" mode="widthFix" bindtap="previewImage"></image>
+        </view>
+    </view><!-- vin_area -->
+
+    <!-- submit_btn -->
+    <view class="submit_btn" bindtap="nextBtn">下一步</view><!-- submit_btn -->
+
+    <!-- tips_mask -->
+    <view class="tips_mask" wx:if="{{ tipsIf }}">
+
+        <view class="main">
+
+            <view class="title">{{ failText }}</view>
+
+            <view class="know_btn" bindtap="knowBtn">知道了</view>
+
+        </view>
+
+    </view>
+    <!-- tips_mask -->
+
+</view><!-- o_love_car_page -->

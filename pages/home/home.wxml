@@ -1,0 +1,148 @@
+<!-- pages/home/home.wxml -->
+<!-- home_page -->
+<view class="home_page">
+    <!-- header -->
+    <view class="header" >
+        <view class="image">
+            <image wx:if="{{ userInfo.avatarUrl }}" class="my_photo" mode="widthFix" src="{{ userInfo.avatarUrl }}" bindtap="goInfo"></image>
+            <image wx:else class="my_photo" mode="widthFix" src="{{ IMGSERVICE }}/home/om.png"></image>
+			<button wx:if="{{!userInfo.nickName }}" class="sethandimg nowrap" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+        </view>
+        <view class="info_area">
+            <view wx:if="{{ userInfo.nickName }}" class="name nowrap" bindtap="goInfo" >
+                {{ userInfo.nickName  }}
+				<text class="iconfont icon-bianji setsize"></text>
+            </view>
+            <!-- <view wx:else class="name nowrap" bindtap="signInBtn">点击登录</view> -->
+            <button wx:else class="name nowrap" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+                点击登录
+            </button>
+            <view class="v_coin" catchtap="vdouDetail">
+                <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+                <view class="total">{{ personalInfo.vcoin }}</view>
+                <view class="more iconfont icon_more"></view>
+            </view>
+        </view>
+
+        <view class="btn binded_btn" wx:if="{{ personalInfo.user_type == 1 }}" data-type="binded" catchtap="bindCarUser">
+            <view class="icon iconfont icon_cz"></view>
+            车主
+        </view>
+
+        <view class="btn bind_btn" wx:else data-type="bind" catchtap="bindCarUser">
+            绑定车主
+        </view>
+        
+
+
+		<!-- <button wx:if="{{ !userInfo.nickName }}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="login"></button> -->
+    </view>
+    <!-- header -->
+    <!-- nav_area -->
+    <view class="nav_area">
+        <view class="nav_item" data-index="1" bindtap="signInIf">
+            <view class="icon iconfont icon_mrqd"></view>
+            <view class="span nowrap">来签到</view>
+        </view>
+        <view class="nav_item" data-index="2" bindtap="navJump">
+            <view class="icon iconfont icon_jfrw"></view>
+            <view class="span nowrap">领V豆</view>
+        </view>
+        <view class="nav_item" data-index="3" bindtap="navJump">
+            <view class="icon iconfont icon_sc"></view>
+            <view class="span nowrap">去兑奖</view>
+        </view>
+    </view>
+    <!-- nav_area -->
+    <!-- my_list -->
+    <view class="my_list">
+        <view class="list_item" data-index="1" bindtap="listJump">
+            <view class="icon iconfont icon_wdjp"></view>
+            <view class="span">
+                <view class="text">
+                    我的奖品
+                    <view class="dot" wx:if="{{ personalInfo.tips.prize_num }}">
+                        {{ personalInfo.tips.prize_num >= 100 ? '99+' : personalInfo.tips.prize_num }}
+                    </view>
+                </view>
+            </view>
+            <view class="more iconfont icon_more"></view>
+        </view>
+        <view class="list_item" data-index="2" bindtap="listJump">
+            <view class="icon iconfont icon_wddd"></view>
+            <view class="span">
+                <view class="text">
+                    我的订单
+                    <view class="dot" wx:if="{{ personalInfo.tips.order_num }}">
+                        {{ personalInfo.tips.order_num >= 100 ? '99+' : personalInfo.tips.order_num }}
+                    </view>
+                </view>
+            </view>
+            <view class="more iconfont icon_more"></view>
+        </view>
+        <view class="list_item" data-index="3" bindtap="listJump">
+            <view class="icon iconfont icon_wdkb"></view>
+            <view class="span">
+                <view class="text">
+                    我的卡包
+                    <view class="dot" wx:if="{{ personalInfo.tips.card_num }}">
+                        {{ personalInfo.tips.card_num >= 100 ? '99+' : personalInfo.tips.card_num }}
+                    </view>
+                </view>
+            </view>
+            <view class="more iconfont icon_more"></view>
+        </view>
+        <view class="list_item" data-index="4" bindtap="listJump">
+            <view class="icon iconfont icon_wdhd"></view>
+            <view class="span">
+                <view class="text">
+                    我的活动
+                    <view class="dot" wx:if="{{ personalInfo.tips.activity_num }}">
+                        {{ personalInfo.tips.activity_num >= 100 ? '99+' : personalInfo.tips.activity_num }}
+                    </view>
+                </view>
+            </view>
+            <view class="more iconfont icon_more"></view>
+        </view>
+        <view class="list_item" data-index="5" bindtap="listJump">
+            <view class="icon iconfont icon_wdyyjs"></view>
+            <view class="span">
+                <view class="text">
+                    我的预约试驾
+                    <view class="dot" wx:if="{{ personalInfo.tips.test_drive_num }}">
+                        {{ personalInfo.tips.test_drive_num >= 100 ? '99+' : personalInfo.tips.test_drive_num }}
+                    </view>
+                </view>
+            </view>
+            <view class="more iconfont icon_more"></view>
+        </view>
+        <view class="list_item" data-index="6" bindtap="listJump">
+            <view class="icon iconfont icon_wdwd"></view>
+            <view class="span">
+                 
+                <view class="text">
+                    我的网点
+                    <view class="dot" wx:if="{{ personalInfo.tips.dealer_num }}">
+                        
+                        <text>{{ personalInfo.tips.dealer_num >= 100 ? '99+' : personalInfo.tips.dealer_num }}</text>
+                   
+                    </view>
+                </view>
+            </view>
+            <view class="more iconfont icon_more"></view>
+        </view>
+    </view>
+    <!-- my_list -->
+    <!-- qc-Tabbar -->
+    <qc-Tabbar></qc-Tabbar>
+    <!-- qc-Tabbar -->
+    <!-- qc-SignIn -->
+    <view hidden="{{ !signInIf }}" class="posa fadeShow">
+        <qc-SignIn bind:sureBtn="signInIf"></qc-SignIn>
+    </view>
+    <!-- qc-SignIn -->
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404>
+    <!-- qc-page404 -->
+</view>
+<!-- home_page -->

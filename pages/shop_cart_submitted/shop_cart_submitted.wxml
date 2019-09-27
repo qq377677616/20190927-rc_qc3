@@ -1,0 +1,68 @@
+<!--pages/shop_cart_submitted/shop_cart_submitted.wxml-->
+
+<!-- shop_cart_submitted_page -->
+<view class="shop_cart_submitted_page">
+
+    <!-- prompt_area -->
+    <view class="prompt_area">
+
+        <view class="title">提交成功！</view>
+
+        <!-- 快递到家 -->
+        <view wx:if="{{ type == 2 }}" class="tips">已成功兑换商品，等待发货</view>
+        <!-- 到店领取 -->
+        <view wx:elif="{{ type == 1 }}" class="tips">请到我的订单中领取卡券，商品到店后会有专人通知您，届时凭券到店核销领取。</view>
+        <!-- 在线领取 -->
+        <view wx:elif="{{ type == 3 }}" class="tips">已成功兑换商品，请至订单中复制券码到第三方平台使用！</view>
+        <!-- 占位 -->
+        <view wx:else class="tips">__</view>
+
+        <view class="btn_group">
+
+            <view class="btn order" bindtap="lookOrder">查看订单</view>
+
+            <view class="btn mall" bindtap="shopMall">返回商城</view>
+
+        </view>
+
+    </view><!-- prompt_area -->
+
+    <!-- h2 -->
+    <view class="h2">猜你喜欢</view><!-- h2 -->
+
+
+    <!-- goods_list -->
+    <view class="goods_list">
+
+        <view class="goods_item fadeIn" wx:for="{{ goodsList }}" wx:key="index" data-id="{{ item.goods_id }}" bindtap="goodsDetail">
+            <view class="image">
+                <image src="{{ item.thumb }}" mode="widthFix"></image>
+            </view>
+
+            <view class="info_area">
+                <view class="title nowrap">{{ item.title }}</view>
+                
+                <view class="info">
+                    <view class="v">
+                        <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+                        <view class="span">{{ item.vcoin }}</view>
+                    </view>
+
+                    <view class="cart iconfont icon_gouwuche"></view>
+                </view>
+            </view>
+        </view>
+
+    </view><!-- goods_list -->
+
+    <!-- more_btn -->
+    <view wx:if="{{ isMore }}" class="more_btn" bindtap="lookMore">
+        查看更多
+    </view><!-- more_btn -->
+
+    <qc-More str="{{ str }}" wx:else></qc-More>
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+
+</view><!-- shop_cart_submitted_page -->

@@ -1,0 +1,45 @@
+<!--pages/o_vdou/o_vdou.wxml-->
+
+<!-- o_vdou_page -->
+<view class="o_vdou_page">
+
+  <!-- user_info -->
+  <view class="user_info">
+
+    <view class="user_info_left">
+      <image src="{{ douInfo.user_info.headimg }}" mode="widthFix" class="headimg"></image>
+      <view class="name">{{ douInfo.user_info.nickname }}</view>
+    </view>
+
+    <view class="user_info_right">
+      <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+      
+      <view class="bi">{{ douInfo.user_info.vcoin }}</view>
+    </view>
+
+  </view><!-- user_info -->
+  
+  <!-- list -->
+  <view class="list">
+
+    <view class="item fadeIn" wx:for="{{ douInfo.list }}" wx:key="index" >
+
+      <view class="path_dou">
+
+        <view class="path nowrap">{{ item.remarks }}</view>
+
+        <view wx:if="{{ item.act_type == 1 }}" class="dou">+{{ item.number }}V豆</view>
+        <view wx:else class="dou">-{{ item.number }}V豆</view>
+
+      </view>
+
+      <view class="date">{{ item.date }}</view>
+
+    </view>
+
+  </view><!-- list -->
+
+  <!-- qc-More -->
+  <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
+
+</view><!-- o_vdou_page -->

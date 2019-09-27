@@ -1,0 +1,43 @@
+<!--pages/o_card_bag_rule/o_card_bag_rule.wxml-->
+
+<!-- o_card_bag_rule_page -->
+<view class="o_card_bag_rule_page">
+
+    <!-- main_container -->
+    <view class="main_container">
+
+        <!-- tips -->
+        <view class="tips">请在专营店出示此卡券</view><!-- tips -->
+
+        <!-- name_status -->
+        <view class="name_status">
+            <view class="name nowrap">{{info.card_name}}</view>
+            <view class="status">{{info.status_tex}}</view>
+        </view><!-- name_status -->
+
+        <!-- date -->
+        <view class="date">{{info.card_time}}</view><!-- date -->
+
+        <!-- card_num -->
+        <view class="card_num nowrap">核销码: {{info.card_code}}</view><!-- card_num -->
+
+        <!-- use_explain -->
+        <view wx:if="{{card_rule!=null}}" class="use_explain">
+            <view class="use_item">
+                <view class="title">使用说明</view>
+               <view wx:for="{{card_rule}}" wx:key="item">
+                  <view class="p setline">{{item}}</view>
+                </view>  
+            </view>
+
+            <view wx:if="{{card_rule!=null}}" class="use_item">
+                <view class="title">使用须知</view>
+                <view wx:for="{{list}}">
+                  <view class="p setline">{{item}}</view>
+                </view>  
+            </view>
+        </view><!-- use_explain -->
+
+    </view><!-- main_container -->
+
+</view><!-- o_card_bag_rule_page -->

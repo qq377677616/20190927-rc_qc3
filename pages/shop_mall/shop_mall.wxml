@@ -1,0 +1,130 @@
+<!--pages/shop_mall/shop_mall.wxml-->
+
+<!-- shop_mall_page -->
+<view class="shop_mall_page">
+
+    <!-- swiper-area -->
+    <view class="swiper_area">
+
+        <swiper 
+            circular="true" 
+            autoplay="true" 
+            interval="2500" 
+            bindchange="dotchange">
+
+            <swiper-item wx:for="{{ mallInfo.banner }}" wx:key="index" style="background-image:url({{ item.image }});" data-index="{{ index }}" bindtap="bannerJump"></swiper-item>
+           
+
+        </swiper>
+
+        <view class="dots">
+            <view wx:for="{{ mallInfo.banner }}" wx:key="index" class="dot_item {{dotIndex == index ? 'active' : ''}}">
+                <view class="tiao"></view>
+            </view>
+            <view class="dot_item"></view>
+        </view>
+
+        <!-- search_area -->
+        <view class="search_area fadeIn">
+
+            <input type="text" placeholder="搜索" value="{{ searchValue }}" bindinput="searchInput" maxlength="50"/>
+
+            <view class="icon" bindtap="searchBtn">
+                <image src="{{ IMGSERVICE }}/shop_mall/search.png" mode="widthFix" ></image>
+            </view>
+
+
+        </view><!-- search_area -->
+
+    </view><!-- swiper-area -->
+
+    <!-- round_robin_area -->
+    <view class="round_robin_area">
+
+        <image class="icon" src="{{ IMGSERVICE }}/shop_mall/ld.png" mode="widthFix"></image>
+
+        <swiper class="round_robin" circular="true" autoplay="true" interval="2000" vertical="true">
+            <swiper-item wx:for="{{ mallInfo.carousel }}" wx:key="index">
+                <view class="span nowrap">{{ item }}</view>
+            </swiper-item>
+        </swiper>
+
+        <view class="more_btn" bindtap="goTask">
+            <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+
+            <view class="span">
+                {{ mallInfo.vcoin }} 赚取更多
+            </view>
+
+            <view class="more iconfont icon_more"></view>
+        </view>
+
+    </view><!-- round_robin_area -->
+
+    <!-- main_content -->
+    <view class="main_content">
+
+        <!-- nav_area -->
+        <view class="nav_area">
+
+            <view class="nav_item fadeIn" wx:for="{{ mallInfo.cate_list }}" wx:key="index" data-index="{{ index }}" bindtap="goPlate">
+                <image src="{{ item.thumb }}" mode="widthFix"></image>
+                <view class="span nowrap">{{ item.name }}</view>
+            </view>
+
+        </view><!-- nav_area -->
+
+        <!-- goods_list -->
+        <view class="goods_list">
+
+            <view class="goods_item fadeIn" wx:for="{{ goodsList }}" wx:key="goods_id" data-id="{{ item.goods_id }}" bindtap="goodsDetail">
+                <view class="image">
+                    <image src="{{ item.thumb }}" mode="widthFix"></image>
+                </view>
+
+                <view class="info_area">
+                    <view class="title nowrap">{{ item.title }}</view>
+                    
+                    <view class="info">
+                        <view class="v">
+                            <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+                            <view class="span">{{ item.vcoin }}</view>
+                        </view>
+
+                        <view class="cart iconfont icon_gouwuche"></view>
+                    </view>
+                </view>
+            </view>
+
+        </view><!-- goods_list -->
+
+        <!-- look_more_btn -->
+        <view wx:if="{{ isMore }}" class="look_more_btn" bindtap="lookMore">
+            查看更多
+        </view><!-- look_more_btn -->
+
+        <qc-More str="{{ str }}" wx:else></qc-More>
+
+    </view><!-- main_content -->
+
+    <!-- float_btn -->
+    <view class="float_btn">
+
+        <view class="btn cart_btn iconfont icon_gouwuche" bindtap="shopCart"></view>
+
+        <button class="btn kf_btn iconfont icon_kefu" open-type="contact"></button>
+
+    </view><!-- float_btn -->
+
+    <!-- qc-Tabbar -->
+    <qc-Tabbar></qc-Tabbar><!-- qc-Tabbar -->
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+
+</view><!-- shop_mall_page -->
+
+
+
+
+

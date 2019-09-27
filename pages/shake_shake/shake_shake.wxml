@@ -1,0 +1,23 @@
+<!--pages/shake_shake/shake_shake.wxml-->
+
+<!-- shake_shake_page -->
+<view class="shake_shake_page" style="background-image:url(http://img3.imgtn.bdimg.com/it/u=1057516799,1768438258&fm=26&gp=0.jpg)">
+
+    <!-- main -->
+    <view class="main">
+
+        <image class="yao" src="{{ IMGSERVICE }}/shake_shake/ziti.png" mode="widthFix"></image>
+
+        <view class="rule">活动规则</view>
+
+        <view class="btn_group">
+
+            <view class="btn">摇一摇</view>
+
+            <view class="tips">参与机会(3)</view>
+
+        </view>
+
+    </view><!-- main -->
+
+</view><!-- shake_shake_page -->

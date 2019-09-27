@@ -1,0 +1,42 @@
+<!-- pages/o_duihuan/o_duihuan.wxml -->
+<view class="whole">
+    <view class="hand_tab">
+        <view class="{{ status == 0 ? 'checked' : '' }}" data-status="0" bindtap="listBtn">全部</view>
+        <view class="{{ status == 1 ? 'checked' : '' }}" data-status="1" bindtap="listBtn">已完成</view>
+        <view class="{{ status == 2 ? 'checked' : '' }}" data-status="2" bindtap="listBtn">待发货</view>
+        <view class="{{ status == 3 ? 'checked' : '' }}" data-status="3" bindtap="listBtn">已发货</view>
+    </view>
+    <view class="center_box">
+    
+        <view class="items fadeIn" wx:for="{{ orderList }}" wx:key="index" data-index="{{ index }}" bindtap="orderDetail">
+            <view>
+                <text class="order_num">订单号：{{ item.order_sn }}</text>
+                <text class="order_status">{{ item.status_text }}</text>
+            </view>
+            <view class="order_time">
+                <text>下单时间：{{ item.create_time }}</text>
+            </view>
+            <view class="carList {{ item.order_goods.length > 1 ? 'mul' : '' }}" wx:if="{{ sindex < 3 }}" wx:for="{{ item.order_goods }}" wx:for-index="sindex" wx:for-item="sitem" wx:key="sindex">
+                <view style="background-image:url({{ sitem.thumb }})">
+                    <text class="corner" wx:if="{{ sitem.number > 1 }}">{{ sitem.number }}</text>
+                </view>
+
+				<view class="car_info" wx:if="{{ item.order_goods.length == 1 }}">
+					<text class="carName nowrap">{{ sitem.title }}</text>
+					<text class="carNum">x{{ sitem.number }}</text>
+				</view>	
+		    </view>
+            <view class="order_price">
+                <text>共计{{ item.order_goods_num }}件商品</text>
+                <text>V豆：{{ item.vcoin }}</text>
+            </view>
+        </view>
+
+        <!-- qc-More -->
+        <qc-More src="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
+
+    </view>
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+</view>

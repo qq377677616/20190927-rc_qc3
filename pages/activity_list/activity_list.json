@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "活动列表",
+  "usingComponents": {
+    "qc-More":"/components/More/cmp",
+    "qc-page404":"/components/page404/page404",
+    "qc-Tabbar":"/components/Tabbar/cmp"
+  }
+}

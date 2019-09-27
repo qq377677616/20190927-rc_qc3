@@ -1,0 +1,82 @@
+<!--pages/look_car_detail_02/look_car_detail_02.wxml-->
+
+<!-- look_car_detail_page -->
+<view class="look_car_detail_page">
+
+    <!-- nav_area -->
+    <view class="nav_area">
+        <view class="nav_item {{ navIndex == 0 ? 'active' : '' }}" data-index="0" bindtap="navList">车型介绍</view>
+        <view class="nav_item {{ navIndex == 1 ? 'active' : '' }}" data-index="1" bindtap="navList">参数配置</view>
+    </view>
+    <!-- nav_area -->
+
+    <!-- main -->
+    <scroll-view scroll-y class="main" scroll-top="{{scrollTop}}">
+        <block wx:if="{{ navIndex == 1 }}">
+            <view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
+
+                <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
+                    <view class="label">{{item.value}}</view>
+                    <!-- <view class="radio_group">
+                        <view class="item">
+                            <view class="radio"></view>
+                            <view class="span">标配</view>
+                        </view>
+
+                        <view class="item">
+                            <view class="radio"></view>
+                            <view class="span">选配_无</view>
+                        </view>
+                    </view> -->
+                </view>
+                <view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
+                    <view class="lable">{{item.name}}</view>
+                    <view class="span">{{isSwitchIng ? '--' : item.value}}</view>
+                </view>
+            </view>
+            <view class="group">
+          <view class="li config_area flex-bet remarks">
+              <view class="lable">备注：</view>
+              <!-- <view class="span">{{remarks || '暂无相关备注信息'}}</view> -->
+              <view class="span">
+                <view wx:for="{{lookCarDetail.remarks}}" wx:key="key{{index}}">{{item}}</view>
+              </view>
+          </view>
+        </view>
+        </block>
+        <block wx:else>
+            <view class="image_item">
+                <image src="{{ lookCarDetail.car_details_img }}" mode="widthFix" bindload="bindload"></image>
+            </view>
+        </block>
+
+    </scroll-view>
+    <!-- main -->
+
+    <!-- footer -->
+    <view class="footer" bindtap="downPayment">
+        预约试驾
+    </view><!-- footer -->
+
+    <!-- 留资弹窗-->
+    <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
+        <forms bindsubmit="submit" bindclose="isShowForm" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
+    </view>
+    <!-- 两个icon -->
+    <view class="icon-box {{isIconShow ? 'right-left' : ''}}" wx:key="key{{index}}" wx:if="{{ navIndex == 0 }}">
+      <view class="li flex-cen" wx:for="{{iconList}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
+        <image src="{{item.img}}" mode="widthFix"></image>
+      </view>
+    </view>
+    <!-- 选择车款-->
+    <view class="select_car flex-cen" wx:if="{{ navIndex == 1 }}">
+      <view class="text"><view>级别</view><view>选择</view></view>
+      <!-- <picker class="picker" mode="selector" bindchange="bindRegionChange" range="{{type_list}}" value="0">
+      </picker> -->
+      <picker class="picker" bindchange="bindRegionChange" value="{{index}}" range="{{car_type_list}}">
+        <view class="picker"></view>
+      </picker>
+    </view>
+</view>
+<!-- look_car_detail_page -->
+

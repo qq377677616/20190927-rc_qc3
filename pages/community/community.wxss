@@ -1,0 +1,113 @@
+/* pages/community/community.wxss */
+
+page{
+    height: 100%;
+    background-color: #F5F5F5;
+}
+.community_page{
+    padding: 28rpx 28rpx 100rpx;
+}
+
+
+/* item */
+.item{
+    background-color: #fff;
+    border-radius:18rpx;
+    box-shadow:0rpx 16rpx 60rpx 0rpx rgba(204,204,204,0.2);
+    margin-bottom: 20rpx;
+}
+.item .up_info{
+    display: flex;
+    align-items: center;
+    height: 92rpx;
+    padding: 0 30rpx;
+}
+.item .up_info image{
+    width: 46rpx;
+    height: 46rpx !important;
+    border-radius:50%;
+}
+.up_info>.name{
+    flex:1;
+    font-size:24rpx;
+    color:rgba(102,102,102,1);
+	padding-left: 10rpx;
+	box-sizing: border-box;
+}
+.name>text{
+	display: block;
+	width: 300rpx;
+}
+.item .photo_area{
+    display: flex;
+    flex-wrap:wrap;
+    align-content:flex-start;
+    align-items:flex-start;
+    justify-content: space-between;
+    padding: 0 30rpx;
+}
+.item .photo_area .photo_item{
+    /* width: 304rpx; */
+	width: 100%;
+    /* height: 180rpx; */
+    /* overflow: hidden; */
+    /* position: relative; */
+}
+.item .photo_area .photo_item image{
+    width: 100%;
+	height: auto;
+}
+
+.item .theme{
+    font-size:28rpx;
+    font-weight: bold;
+    line-height:1em;
+    display: flex;
+    align-items:center;
+    height: 84rpx;
+    padding: 0 30rpx;
+}
+.item .theme .span{
+    flex:0 0 auto;
+    color:rgba(19,81,186,1);
+    border-left:6rpx solid rgba(19,81,186,1);
+    padding: 0 10rpx;
+}
+.item .theme .p{
+    flex:1;
+    color:rgba(51,51,51,1);
+}
+
+.item .operation_area{
+    padding: 0 50rpx;
+    border-top: 1rpx solid rgba(238,238,238,1);
+    height: 83rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.item .operation_area .operation_item{
+    display: flex;
+    align-items: center;
+	position: relative;
+}
+.item .operation_area .operation_item .icon{
+    font-size: 30rpx;
+    color:rgba(51,51,51,1);
+    margin-right: 10rpx;
+}
+.item .operation_area .operation_item .span{
+    font-size:24rpx;
+    color:rgba(153,153,153,1);
+}/* item */
+.item .operation_area .operation_item .addcolor{
+	color: red;
+}
+.shareBtn{
+	position: absolute;
+	left: 0;
+	top: 20rpx;
+	width: 100rpx;
+	height: 50rpx;
+	/* background-color: red; */
+	z-index: 2;
+}

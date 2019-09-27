@@ -1,0 +1,42 @@
+<!--pages/o_info/o_info.wxml-->
+
+<!-- o_info_page -->
+<view class="o_info_page">
+
+    <view class="info_area">
+        <view class="group">
+            <view class="span">头像</view>
+            <image src="{{ personalInfo.headimg }}" mode="widthFix"></image>
+        </view>
+
+        <view class="group">
+            <view class="span">昵称</view>
+            <view class="p">{{ personalInfo.nickname }}</view>
+        </view>
+
+        <view class="group" data-index="1" bindtap="jump">
+            <view class="span">收货地址</view>
+            <!-- <view class="p">{{ personalInfo.nickname }}</view> -->
+            <view class="iconfont icon_more"></view>
+        </view>
+
+        <view class="group">
+            <view class="span">车主信息</view>
+            <view class="p" wx:if="{{ personalInfo.user_type == 1 }}">已认证</view>
+            <view class="p p2" wx:else data-index="2" bindtap="jump">未认证,请先认证</view>
+        </view>
+        <block wx:if="{{ personalInfo.user_type == 1 }}">
+          <view class="group">
+              <view class="span">我的车辆信息</view>
+              <view class="p setwidth nowrap">{{ personalInfo.car_info.car_name }}请先认证请先认证请先认证请先认证</view>
+          </view>
+
+          <view class="group">
+              <view class="span">车牌号码</view>
+              <view class="p">{{ personalInfo.car_info.car_license }}</view>
+          </view>
+        </block>
+    </view>
+
+</view><!-- o_info_page -->
+

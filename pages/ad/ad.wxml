@@ -1,0 +1,20 @@
+<!--pages/ad/ad.wxml-->
+<view class="ad">
+  
+  <!-- <video bindended="eventhandle" class="screen" binderror="videoErrorCallback" id="myVideo" src="{{screen}}" objectFit='fill' autoplay='true' loop='{{false}}' enable-progress-gesture="{{false}}"  show-play-btn="{{false}}" show-fullscreen-btn="{{false}}" controls="{{false}}"> -->
+  <!-- <image class="screen" src="{{screen}}"> -->
+  <view class="screen" style="background-image:url('{{screen}}')"></view>
+
+  <view class="head">
+        <my-header title="" btnIcon="back" bind:headerBack="headerBack"></my-header>
+  </view>
+
+  <view class="time">
+    <view bindtap="tiao">跳过</view>
+    <view wx:if="{{min!=0}}">{{min}}s</view>
+  </view>
+
+  <!-- </image> -->
+  <!-- </video> -->
+
+</view>

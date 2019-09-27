@@ -1,0 +1,9 @@
+<view class="whole">
+	<view class="centerBox" style="background-image:url({{IMGSERVICE}}/center/card_pop.png)">
+		<view class="shopDel">
+			<text class="jijintxt nowrap">购车基金</text>
+			<view class="moneys nowrap">388<text class="yuan">元</text></view>
+		</view>
+		<view class="enterCard" bindtap="enterCard"></view>
+	</view>
+</view>

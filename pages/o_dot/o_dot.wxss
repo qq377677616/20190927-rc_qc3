@@ -1,0 +1,117 @@
+/* pages/o_dot/o_dot.wxss */
+
+page{
+    height: 100%;
+    background-color: #F1F1F1;
+}
+
+
+/* local_area */
+.local_area{
+    background-color: #fff;
+    padding: 32rpx 28rpx;
+    display: flex;
+}
+.local_area .current_local{
+    width: 0;
+    flex:1;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.local_area .re_local{
+    flex:0 0 auto;
+    font-size: 28rpx;
+    color: #333;
+}
+.local_area .re_local .icon{
+    color: #FFB727;
+}/* local_area */
+
+
+.main_container{
+    padding: 25rpx 28rpx;
+}
+
+/* store_list */
+.store_list{
+    background-color: #fff;
+    padding:0 26rpx;
+}
+.store_list:not(:last-child){
+    margin-bottom: 24rpx;
+}
+.store_list{
+    background-color: #fff;
+    border-radius:14rpx;
+    box-shadow:0rpx 6rpx 32rpx 0px rgba(209,209,209,0.2);
+}
+.store_list .tips{
+    height: 78rpx;
+    line-height: 78rpx;
+    font-size: 28rpx;
+    color: #333;
+    border-bottom: 1rpx solid #E4E4E4;
+}
+.store_list .main{
+    padding: 30rpx 0;
+    display: flex;
+}
+.store_list.nearby .main:not(:last-of-type){
+    border-bottom:1rpx solid #E4E4E4;
+}
+.store_list .main .image{
+    flex:0 0 auto;
+    width: 225rpx;
+    height: 175rpx;
+    overflow: hidden;
+    position: relative;
+    margin-right: 26rpx;
+    border-radius:10rpx;
+}
+.store_list .main .image image{
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius:10rpx;
+}
+.store_list .main .info{
+    flex:1;
+}
+.store_list .main .info .title{
+    font-size: 30rpx;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 36rpx;
+    line-height: 1em;
+}
+.store_list .main .info .tel_local{
+    font-size: 24rpx;
+    color: #666;
+    display: flex;
+    margin-bottom: 26rpx;
+    line-height: 1em;
+}
+.store_list .main .info .tel_local .tel{
+    width: 0;
+    flex:1;
+}
+.store_list .main .info .tel_local .local{
+    flex:1;
+}
+.store_list .main .info .address{
+    font-size: 24rpx;
+    color: #666;
+}/* store_list */
+.rowbox{
+	width: 490rpx;
+	float: right;
+	text-align: left;
+}
+.nostroe{
+	width: 100%;
+	text-align: center;
+	color: #666;
+}

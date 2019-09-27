@@ -1,0 +1,108 @@
+/* pages/o_yuyueshijia/o_yuyueshijia.wxss */
+
+page{
+    height: 100%;
+    background-color: #F1F1F1;
+}
+.o_yuyueshijia_page{
+    padding: 25rpx 28rpx;
+}
+
+/* item */
+.item{
+    padding: 0 25rpx;
+    background-color: #fff;
+    border-radius: 14rpx;
+    box-shadow:0rpx 6rpx 32rpx 0rpx rgba(209,209,209,0.2);
+}
+.item:not(first-of-type){
+    margin-top: 25rpx;
+}
+.item .store_tel,
+.item .name_time{
+    height: 88rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1rpx solid #E4E4E4;
+}
+.item .store_tel .store,
+.item .name_time .name{
+    width: 0;
+    flex:1;
+    font-size: 30rpx;
+    color: #333;
+}
+.item .store_tel .tel,
+.item .name_time .time{
+    flex:0 0 auto;
+    font-size:28rpx;
+    color: #666;
+}
+.item .main{
+    padding: 30rpx 0;
+    border-bottom: 1rpx solid #E4E4E4;
+    display: flex;
+}
+.item .main .image{
+    flex:0 0 auto;
+    /* width: 225rpx;
+    height: 175rpx; */
+    width: 300rpx;
+    height: 176rpx;
+    position: relative;
+    overflow: hidden;
+    border-radius:10rpx;
+    margin-right: 29rpx;
+    background-repeat: no-repeat;
+    background-size: 600rpx;
+    background-position: -58rpx 0;
+}
+.item .main .info{
+    width: 0;
+    flex:1;
+}
+.item .main .info .title{
+    font-size: 28rpx;
+    color: #333;
+    margin-bottom: 34rpx;
+    line-height:1.2em;
+}
+.item .main .info .car_NO,
+.item .main .info .car_class{
+    font-size: 26rpx;
+    color: #666;
+    margin-bottom: 20rpx;
+    line-height: 1em;
+}
+.item .name_time{
+    border-bottom:none;
+}/* item */
+
+/* mei_yuyue_mask */
+.mei_yuyue_mask{
+    padding: 0 38rpx;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.mei_yuyue_mask .tips{
+    font-size: 30rpx;
+    color: #333;
+    padding: 220rpx 0 205rpx;
+    text-align:center;
+}
+.mei_yuyue_mask .go_btn{
+    height: 90rpx;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    border-radius:10rpx;
+    font-size: 30rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:0 8rpx 8rpx rgba(32, 161, 224, 0.6);
+}

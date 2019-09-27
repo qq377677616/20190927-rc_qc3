@@ -1,0 +1,181 @@
+/* pages/yuyueshijia_form/yuyueshijia_form.wxss */
+
+
+page{
+    height: 100%;
+    background-color: #F0F0F0;
+}
+.yuyueshijia_form_page{
+    padding: 28rpx;
+}
+
+/* header */
+.header{
+    box-shadow:0rpx 6rpx 32rpx 0rpx rgba(209,209,209,0.2);
+    border-radius:14rpx;
+    padding: 25rpx;
+    display: flex;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+.header .image{
+    flex:0 0 auto;
+    width: 200rpx;
+    height: 176rpx;
+    overflow: hidden;
+    position: relative;
+    border-radius:10rpx;
+    margin-right: 30rpx;
+}
+.header .image image{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translatex(-50%) translatey(-50%);
+    border-radius:10rpx;
+}
+.header .info{
+    width: 0;
+    flex:1;
+    padding: 28rpx 0;
+}
+.header .info .title{
+    font-size: 30rpx;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 70rpx;
+}
+.header .info .price{
+    font-size: 24rpx;
+    display: flex;
+}
+.header .info .price .label{
+    color: #333;
+    font-weight: bold;
+}
+.header .info .price .span{
+    color: #999;
+}/* header */
+
+/* bind_btn */
+.bind_btn{
+    width: 590rpx;
+	height: 90rpx;
+	border: 1rpx solid rgba(95, 135, 255, 1);
+	border-radius: 10rpx;
+	margin: 0 auto;
+	font-size: 36rpx;
+    color: #20A1E0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20rpx;
+}/* bind_btn */
+
+/* tips */
+.tips{
+    font-size: 30rpx;
+    color: #999;
+    text-align: center;
+    margin-bottom: 20rpx;
+}/* tips */
+
+
+/* form_area */
+.form_area{
+    padding: 40rpx 30rpx;
+    background-color: #fff;
+    border-radius:14rpx;
+}
+.form_area .group{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30rpx;
+}
+.form_area .group .label{
+    flex:0 0 auto;
+    font-size: 30rpx;
+    color: #333;
+    width: 120rpx;
+    margin-right: 32rpx;
+    text-align-last:justify;
+	text-align:justify;
+    text-justify:distribute-all-lines; 
+    letter-spacing: 0;
+}
+.form_area .group input{
+    flex:1;
+    height: 60rpx;
+    padding: 0 20rpx;
+    background-color: #F5F5F5;
+    border-radius:6rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+.form_area .group input::placeholder{
+    color: #999;
+}
+.form_area .group .code_btn{
+    flex:0 0 auto;
+    width: 200rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+    color: #fff;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    border-radius:6rpx;
+    margin-left: 20rpx;
+}
+.form_area .group .location{
+    width: 0;
+    flex:1;
+    padding: 0 26rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    background-color: #F5F5F5;
+    border-radius:6rpx;
+}
+.form_area .group .location .span{
+    width: 0;
+    flex:1;
+    font-size: 30rpx;
+    color: #666;
+    text-align: center;
+}
+.form_area .group .location .icon{
+    flex:0 0 auto;
+    font-size: 30rpx;
+    color: #666;
+}
+.form_area .agree{
+    font-size: 24rpx;
+    color: #CCCCCC;
+    overflow: hidden;
+    margin-bottom: 30rpx;
+}
+.form_area .agree .checked{
+    float:left;
+    width: 25rpx;
+    height: 25rpx;
+    border-radius:50%;
+    border:1rpx solid #20A1E0;
+    margin-right: 10rpx;
+}
+.form_area .agree .p{
+
+}
+.form_area .submit{
+    width: 590rpx;
+    height: 90rpx;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    border-radius:10rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36rpx;
+    color: #fff;
+    margin: 0 auto;
+}

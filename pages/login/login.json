@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "智趣启辰",
+  "usingComponents": {
+    "showModal": "/components/showModal/showModal"
+  }
+}

@@ -1,0 +1,28 @@
+<!--pages/o_activity/o_activity.wxml-->
+
+<!-- o_activity_page -->
+<view class="o_activity_page">
+
+    <!-- activity_item -->
+    <view class="activity_item fadeIn"  wx:for="{{ list }}" wx:key="item" bindtap="goActive" data-aid="{{item.activity_id}}" data-tid="{{item.activity_type}}">
+
+        <view class="image">
+            <image src="{{item.thumb}}" mode="widthFix"></image>
+            <view wx:if="{{item.is_hot==1&&item.activity_type!=2}}" class="is_hot">热门活动</view>
+			<view wx:if="{{item.activity_type==2}}" class="is_hot">{{item.vote_status_text}}</view>
+        </view>
+
+        <view class="info">
+            <view class="title nowrap">{{item.title}}</view>
+            <view class="date">{{item.end_time}}</view>
+            <view class="tips">
+                <view class="partake_num nowrap">已经参与{{item.join_num}}人</view>
+                <view wx:if="{{ item.status==0 }}" class="status active">进行中</view>
+                <view wx:if="{{ item.status==2 }}" class="status">已结束</view>
+            </view>
+        </view>
+
+    </view><!-- activity_item -->
+	<view class="noactive" wx:if="{{noActive}}">您还没有参与活动，快去参与赢好礼~</view>
+	<view class="lookMore" wx:if="{{noActive}}" bindtap="lookActive">查看活动</view>
+</view><!-- o_activity_page -->

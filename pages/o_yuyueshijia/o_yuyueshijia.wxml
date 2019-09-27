@@ -1,0 +1,48 @@
+<!--pages/o_yuyueshijia/o_yuyueshijia.wxml-->
+
+<!-- o_yuyueshijia_page -->
+<view class="o_yuyueshijia_page">
+
+    <block wx:if="{{ noshijia }}">
+    <!-- item -->
+    <view class="item fadeIn" wx:key="{{ index }}" wx:for="{{ shijiaList }}">
+
+        <view class="store_tel">
+            <view class="store nowrap">{{ item.dealer_name }}</view>
+            <view class="tel">{{ item.dealer_tel }}</view>
+        </view>
+
+        <view class="main">
+
+            <view class="image" style="background-image:url({{ item.car_img }});"></view>
+
+            <view class="info">
+                <view class="title clamp_02">{{ item.dealer_address }}</view>
+
+                <view class="car_NO">{{item.car_name}}</view>
+
+                <!-- <view class="car_class">车型: {{ item.car }}</view> -->
+            </view>
+
+        </view>
+
+        <view class="name_time">
+            <view class="name nowrap">{{ item.name }}</view>
+            <view class="time">{{item.mobile}}</view>
+        </view>
+
+    </view><!-- item -->
+    </block>
+
+    <block wx:else>
+    <!-- mei_yuyue_mask -->
+    <view class="mei_yuyue_mask">
+
+        <view class="tips">您还没有预约过试驾哦~</view>
+
+        <view class="go_btn" bindtap="goLookcar">去看车</view>
+
+    </view><!-- mei_yuyue_mask -->
+    </block>
+
+</view><!-- o_yuyueshijia_page -->

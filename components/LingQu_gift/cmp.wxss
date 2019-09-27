@@ -1,0 +1,125 @@
+/* components/LingQu_gift/cmp.wxss */
+
+
+
+.prize_mask{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 9999;
+}
+
+/* main */
+.main{
+    width: 667rpx;
+    /* background-color: #fff; */
+	height: 676rpx;
+    background-size:100%;
+    background-position: center bottom;
+    background-repeat:no-repeat;
+    position: absolute;
+    right: 0;
+    top:50%;
+    transform:translatey(-50%);
+    border-radius:46rpx;
+    box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	padding-top: 140rpx;
+}
+.main .title{
+    font-size: 36rpx;
+    color: #333;
+    text-align: center;
+    margin-bottom: 32rpx;
+}
+.main .prize_image{
+    display: block;
+    width: 114rpx;
+    margin: 0 auto 20rpx;
+}
+.main .prize_name{
+    font-size: 24rpx;
+    color: #666;
+    text-align: center;
+}
+.main .get_btn{
+    width: 332rpx;
+    height: 70rpx;
+    font-size: 32rpx;
+    color: #124FB9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius:35rpx;
+    margin: 103rpx auto 0;
+}
+.main .close_btn{
+    color: #fff;
+    font-size: 50rpx;
+    position: absolute;
+    left:50%;
+    bottom:-100rpx;
+    transform: translatex(-50%);
+}
+.main .close_btn::after{
+    content:'';
+    position: absolute;
+    left:50%;
+    top:0;
+    transform: translatex(-50%) translatey(-100%);
+    width: 3rpx;
+    height: 50rpx;
+    background:linear-gradient(0deg,rgba(255,255,255,1),rgba(255,255,255,0));
+}
+.world_box{
+	height: 160rpx;
+	/* background-color: red; */
+	margin-right: 80rpx;
+	padding-top: 20rpx;
+	box-sizing: border-box;
+	position: relative;
+  text-align: center;
+}
+.worldImg{
+	width: 180rpx;
+	height: 80rpx;
+	background-color: sandybrown;
+	background: center no-repeat;
+	background-size: cover;
+  margin:-20rpx auto 0;
+}
+.worldName{
+	text-align: center;
+	margin-top: 18rpx;
+  width:272rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.closeBtn{
+	width: 50rpx;
+	height: 50rpx;
+	/* background-color: red; */
+	position: absolute;
+	left: 50%;
+	transform: translateX(-68%);
+	bottom: -378rpx;
+	border-radius: 50%;
+}
+.runBox{
+	width: 330rpx;
+	height: 80rpx;
+	/* background-color: aquamarine; */
+	border-radius: 36rpx;
+	position: absolute;
+	left: 50%;
+  transform: translateX(-50%);
+	bottom: -205rpx;
+	z-index: 99;
+}
+/* main */

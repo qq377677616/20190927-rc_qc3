@@ -1,0 +1,123 @@
+<!-- pages/shop_cart/shop_cart.wxml -->
+
+<wxs src="../../utils/wxs/filter_01.wxs" module="filter"></wxs>
+
+<!-- shop_cart_page -->
+<view class="shop_cart_page">
+
+    <block wx:if="{{ is_empty }}">
+
+        <!-- cart_null -->
+        <view class="cart_null">
+            <view class="o_vdou">
+
+                <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+
+                <view class="span">我的V豆: {{ vcoin }}</view>
+
+            </view>
+
+            <view class="tips_area">
+
+                <view class="icon iconfont icon_gouwuche"></view>
+
+                <view class="span">购物车还是空的~</view>
+
+                <view class="go_btn" bindtap="goGo">去逛逛</view>
+
+            </view>
+        </view><!-- cart_null -->
+
+    </block>
+
+    <block wx:else>
+
+        <!-- header -->
+        <view class="header">
+            <view class="item {{ type == 2 ? 'active' : '' }}" data-index="2" bindtap="listNav">
+                <view class="span">
+                    快递到家
+                    <view class="badge" wx:if="{{ type_tips['2'] }}">{{ type_tips['2'] }}</view>
+                </view>
+            </view>
+            <view class="item {{ type == 1 ? 'active' : '' }}" data-index="1" bindtap="listNav">
+                <view class="span">
+                    到店领取
+                    <view class="badge" wx:if="{{ type_tips['1'] }}">{{ type_tips['1'] }}</view>
+                </view>
+            </view>
+            <view class="item {{ type == 3 ? 'active' : '' }}" data-index="3" bindtap="listNav">
+                <view class="span">
+                    在线领取
+                    <view class="badge" wx:if="{{ type_tips['3'] }}">{{ type_tips['3'] }}</view>
+                </view>
+            </view>
+        </view><!-- header -->
+
+        <!-- cart_list -->
+        <scroll-view scroll-y class="cart_list" lower-threshold="100" bindscrolltolower="scrollBottom">
+            <view class="main">
+
+                <!-- cart_item -->
+                <view class="cart_item fadeIn" wx:for="{{ shopCartList }}" wx:key="index">
+
+                    <view class="checked" data-index="{{ index }}" bindtap="checked">
+                        <image wx:if="{{ item.exclude ? false : true }}" src="{{ IMGSERVICE }}/shop_cart/gou.png" mode="widthFix"></image>
+                        <view wx:else class="no"></view>
+                    </view>
+
+                    <view class="image">
+                        <image src="{{ item.thumb }}" mode="widthFix"></image>
+                    </view>
+
+                    <view class="info">
+                        <view class="title nowrap">{{ item.title }}</view>
+                        <view class="specs nowrap {{ item.attr ? '' : 'no' }}">规格: {{ item.attr }}</view>
+
+                        <view class="v_num">
+                            <view class="v">
+                                <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+                                <view class="span">{{ item.vcoin }}</view>
+                            </view>
+
+                            <view class="sub_num_add">
+                                <view class="span sub iconfont icon_jian" data-type="dec" data-index="{{ index }}" bindtap="addAndDelete"></view>
+                                <view class="span num">{{ item.number }}</view>
+                                <view class="span add iconfont icon_jia" data-type="add" data-index="{{ index }}" bindtap="addAndDelete"></view>
+                            </view>
+                        </view>
+                    </view>
+
+                    <image src="{{ IMGSERVICE }}/shop_cart/x.png" mode="widthFix" class="del_btn" data-id="{{ item.shopping_cart_id }}" bindtap="deleteBtn"></image>
+
+                </view><!-- cart_item -->
+
+                <!-- qc-More -->
+                <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
+    
+            </view>
+        </scroll-view><!-- cart_list -->
+
+        <!-- footer -->
+        <view class="footer">
+            <view class="all" bindtap="selectAll">
+                <image wx:if="{{ selectAll }}" src="{{ IMGSERVICE }}/shop_cart/gou.png" mode="widthFix"></image>
+                <view wx:else class="no"></view>
+                <view class="span">全选</view>
+            </view>
+
+            <view class="total nowrap">
+                总计: {{ filter.totalPrice(shopCartList) }} V豆
+            </view>
+
+            <view class="btn" bindtap="settlement">结 算</view>
+
+        </view><!-- footer -->
+        
+
+    </block>
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+
+</view><!-- shop_cart_page -->

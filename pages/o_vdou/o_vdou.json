@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "V豆详情",
+  "usingComponents": {
+    "qc-More":"/components/More/cmp"
+  }
+}

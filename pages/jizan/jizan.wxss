@@ -1,0 +1,34 @@
+.whole{
+	width: 100vw;
+	height: 100vh;
+	background: center no-repeat;
+	background-size: 100% 100%;
+}
+.attend{
+	width:514rpx;
+	height: 80rpx;
+	background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1)); 
+	border-radius: 14rpx;
+	text-align: center;
+	line-height: 80rpx;
+	position: absolute;
+	left: 50%;
+	bottom:113rpx;
+	transform: translateX(-50%);
+	color: #FEFEFE;
+	font-size: 30rpx;
+}
+.ruls{
+	width:100rpx;
+	height: 38rpx;
+	border-radius: 19rpx;
+	border: 1rpx solid #FFFFFF;
+	position: absolute;
+	right: 26rpx;
+	top:32rpx;
+	display: block;
+	color: #FEFEFE;
+	font-size: 24rpx;
+	text-align: center;
+	line-height: 38rpx; 
+}

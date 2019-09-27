@@ -1,0 +1,159 @@
+<!--pages/assemble/o_pin/o_pin.wxml-->
+<!-- pages/o_pin_status/o_pin_status.wxml -->
+
+<!-- o_pin_status -->
+<view class="o_pin_status" wx:if="{{ show }}" bindtap="isVehicleOwner">
+
+    <!-- main_container -->
+    <view class="main_container">
+
+        <!-- goods_area -->
+        <view class="goods_area">
+
+            <view class="image">
+                <image src="{{ pinInfo.thumb }}" mode="widthFix"></image>
+            </view>
+
+            <view class="info">
+
+                <view class="title nowrap">{{ pinInfo.title }}</view>
+
+                <view class="v nowrap">
+                    {{ pinInfo.vcoin }}V豆
+                </view> 
+
+                <view class="pin nowrap">已拼{{ pinInfo.sale_num }}件</view>
+
+            </view>
+
+        </view><!-- goods_area -->
+
+        <!-- pin_status -->
+        <view class="pin_status progress" wx:if="{{ pinInfo.status == 0 }}">拼团中</view>
+        <view class="pin_status progress" wx:elif="{{ pinInfo.status == 1 && pinInfo.is_join == 1 }}">拼团成功</view>
+        <view class="pin_status fail" wx:elif="{{ pinInfo.status == 1 && pinInfo.is_join == 0 }}">拼团失败</view>
+        <view class="pin_status fail" wx:else>拼团失败</view>
+        <!-- pin_status -->
+
+        <!-- tips -->
+        <view class="tips" wx:if="{{ pinInfo.status == 0 }}">已参与{{ pinInfo.buy_num }}人，邀请好友一起拼团</view>
+
+        <view class="tips" wx:elif="{{ pinInfo.status == 1 && pinInfo.is_join == 1 }}">您已拼团成功啦 快来领取奖品吧</view>
+
+        <view class="tips" wx:elif="{{ pinInfo.status == 1 && pinInfo.is_join == 0 }}">很抱歉 您来晚了</view>
+
+        <view class="tips" wx:elif="{{ pinInfo.status == 2 && pinInfo.is_join == 1 }}">好可惜 拼团人数不足</view>
+
+        <view class="tips" wx:elif="{{ pinInfo.status == 2 && pinInfo.is_join == 0 }}">很抱歉 您来晚了</view>
+        <!-- tips -->
+
+        <!-- time -->
+        <view class="time" wx:if="{{ pinInfo.status == 0 }}">
+            <view class="span">距离结束还剩:</view>
+            <text class="day">{{ timmerGroup.dhms.tiems.d }}</text>
+            <text class="mh">:</text>
+            <text class="hours">{{ timmerGroup.dhms.tiems.h }}</text>
+            <text class="mh">:</text>
+            <text class="minutes">{{ timmerGroup.dhms.tiems.m }}</text>
+            <text class="mh">:</text>
+            <text class="seconds">{{ timmerGroup.dhms.tiems.s }}</text>
+        </view><!-- time -->
+
+        <!-- friend_group -->
+        <view class="friend_group">
+
+            <view class="o" wx:for="{{ pinInfo.group_num }}" wx:key="index">
+
+                <block wx:if="{{ index >= pinInfo.buy_num }}">
+                    <image class="headimg" src="{{ IMGSERVICE }}/activity/wenhao.png" mode="widthFix"></image>
+                </block>
+
+                <block wx:elif="{{ pinInfo.groupbuy_list[index].is_owner == 1 }}">
+                    <image class="decorate" src="{{ IMGSERVICE }}/center/hg.png" mode="widthFix"></image>
+                    <image class="headimg" src="{{ pinInfo.groupbuy_list[index].headimg }}" mode="widthFix"></image>
+                    <view class="headman">团长</view>
+                </block>
+
+                <block wx:else>
+                    <image class="headimg" src="{{ pinInfo.groupbuy_list[index].headimg }}" mode="widthFix"></image>
+                </block>
+
+            </view>
+            
+        </view>
+        <!-- friend_group -->
+
+        <!-- btn -->
+        <view class="btn join" wx:if="{{ pinInfo.status == 0 && pinInfo.is_join == 0 }}" data-type="ok" bindtap="joinBtn">立即参与</view>
+        
+        <button wx:if="{{ pinInfo.status == 0 }}" open-type="share" class="btn {{ pinInfo.isMe ? 'me' : 'invite' }}">邀请好友</button>
+
+        <view wx:if="{{ pinInfo.status == 1 && pinInfo.is_join == 1 }}" class="btn gift" bindtap="getPrize">领取奖品</view>
+
+        <view class="btn see" bindtap="moreActivity">查看其他活动</view>
+
+        <!-- btn -->
+
+
+    </view><!-- main_container -->
+
+</view><!-- o_pin_status -->
+
+
+<view wx:if="{{ pinInfo.other_group_buy.length }}">
+
+  <!-- cut -->
+    <view class="cut">
+
+    <!-- cut_now -->
+    <view class="cut_now">
+
+        <view class="now_title">
+          <view class="em low"></view>
+          <view class="null"></view>
+          <view class="em high"></view>
+          <view class="span">大家正在团</view>
+          <view class="em high"></view>
+          <view class="null"></view>
+          <view class="em low"></view>
+        </view>
+
+        <view class="pro_list" wx:for="{{ pinInfo.other_group_buy }}" wx:key="index">
+        
+          <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}" bindtap="jumpDetail"></view>
+
+          <view class="spimg_right">
+
+                <view class="sp_title">{{ item.title }}</view>
+
+                <view class="down">
+
+                    <view class="down_left">
+
+                      <view class="progress">
+                        <progress percent="{{ item.buy_num/item.group_num*100 }}" color="#E3413E" stroke-width="13" border-radius="7"></progress>
+                        <view class="send">还差{{ item.group_num - item.buy_num }}人成功</view>
+                      </view>
+                      <view class="residue">剩余<text class="red">{{ item.stock }}</text>件</view>
+      
+                    </view>
+
+                    <view class="cut_on" data-index="{{ index }}" data-type="ok" bindtap="joinOtherBtn">立即参与</view>
+  
+                </view>
+
+          </view>
+
+        </view>
+
+    </view>
+  </view>  
+</view>  
+
+
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" style="z-index:999;" wx:if="{{ isVehicleOwnerHidePop }}">
+    <qc-activePop popType="{{ popType }}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
+
+    </qc-activePop>
+</view>

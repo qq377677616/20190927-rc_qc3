@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的奖品", 
+  "usingComponents": {
+    "showLoading": "/components/showLoading/showLoading",
+    "forms": "/components/forms/form"
+  }
+}

@@ -1,0 +1,81 @@
+<!--pages/o_card_bag/o_card_bag.wxml-->
+
+<!-- o_card_bag_page -->
+<view class="o_card_bag_page">
+
+    <!-- nav_area -->
+    <view class="nav_area">
+        <view bindtap="update_status" data-status="1" class="nav_item {{ 1 == card_status ? 'active' : ''}}">
+            <view data-status="1" class="span">未使用</view>
+            <view class="border"></view>
+        </view>
+
+        <view bindtap="update_status" data-status="2" class="nav_item {{ 2 == card_status ? 'active' : ''}}">
+            <view data-status="2" class="span">已使用</view>
+            <view class="border"></view>
+        </view>
+
+        <view bindtap="update_status" data-status="3" class="nav_item {{ 3 == card_status ? 'active' : ''}}">
+            <view data-status="3" class="span">已过期</view>
+            <view class="border"></view>
+        </view>
+    </view><!-- nav_area -->
+	<view class="nocard" wx:if="{{!cardList.length>0}}">-暂无卡券-</view>
+    <!-- card_list -->
+    <view class="card_list">
+
+        <view  bindtap="toCardDetail" data-cardid="{{item.card_id}}" class="card_item fadeIn" wx:for="{{cardList}}"  wx:if="{{ card_status == 2 || card_status == 3 }}">
+        
+            <view   class="main" style="background-image:url({{ IMGSERVICE }}/o_card_bag/bg.png);">
+                
+                <view class="l_area">
+
+                    <view class="image">
+                        <image src="{{item.card_thumb}}" mode="widthFix"></image>
+                    </view>
+
+                    <view class="info">
+                        <view class="title">{{item.card_name}}</view>
+                        <view class="date">{{item.card_time}}</view>
+                    </view>
+
+                </view>
+
+                <view class="r_area">
+                    <view wx:if="{{ card_status == 1 }}" class="btn use_btn">立即使用</view>
+                    <view wx:elif="{{ card_status == 2 }}" class="btn used_btn">已使用</view>
+                    <view wx:else class="{{ card_status == 3 }}">已过期</view>
+                </view>
+
+            </view>
+        </view>
+        
+		
+        <view bindtap="toCardDetail" data-cardid="{{item.card_id}}" class="card_item fadeIn" wx:for="{{cardList}}" wx:if="{{ card_status == 1}}">
+            <view class="main" style="background-image:url({{ IMGSERVICE }}/o_card_bag/bg_active.png);">
+                
+                <view class="l_area">
+
+                    <view class="image">
+                        <image src="{{item.card_thumb}}" mode="widthFix"></image>
+                    </view>
+
+                    <view class="info">
+                        <view class="title">{{item.card_name}}</view>
+                        <view class="date">{{item.card_time}}</view>
+                    </view>
+
+                </view>
+
+                <view class="r_area">
+                    <view wx:if="{{ card_status == 1 }}" class="btn use_btn">立即使用</view>
+                    <view wx:elif="{{ card_status == 2 }}" class="btn used_btn">已使用</view>
+                    <view wx:else class="{{ card_status == 3 }}">已过期</view>
+                </view>
+
+            </view>
+        </view>
+
+    </view><!-- card_list -->
+
+</view><!-- o_card_bag_page -->

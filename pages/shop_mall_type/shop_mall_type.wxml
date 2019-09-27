@@ -1,0 +1,46 @@
+<!--pages/shop_mall_type/shop_mall_type.wxml-->
+
+
+<!-- shop_mall_type -->
+<view class="shop_mall_type" hidden="{{ show }}">
+
+    <!-- sidebar -->
+    <scroll-view scroll-y class="sidebar">
+        <view class="sidebar-item {{ classListId == item.cate_id ? 'active' : '' }}" wx:for="{{ classList }}" wx:key="index" data-id="{{ item.cate_id }}" bindtap="classListSwitch">{{ item.name }}</view>
+    </scroll-view><!-- sidebar -->
+
+    <!-- goods_list -->
+    <scroll-view class="goods_list" scroll-y lower-threshold="100" bindscrolltolower="scrollBottom">
+        <view class="content">
+
+            <view class="goods_item fadeIn" wx:for="{{ goodsList }}" wx:key="index" data-id="{{ item.goods_id }}" bindtap="goodsDetail">
+                <view class="image">
+                    <image src="{{ item.thumb }}" mode="widthFix"></image>
+                </view>
+
+                <view class="info_area">
+                    <view class="title nowrap">{{ item.title }}</view>
+                    
+                    <view class="info">
+                        <view class="v">
+                            <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+                            <view class="span">{{ item.vcoin }}</view>
+                        </view>
+
+                        <view class="cart iconfont icon_gouwuche"></view>
+                    </view>
+                </view>
+            </view>
+            
+
+        </view>
+
+        <!-- qc-More -->
+        <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
+
+    </scroll-view><!-- goods_list -->
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+
+</view><!-- shop_mall_type -->

@@ -1,0 +1,7 @@
+<cover-view class="body flex-cen">
+  <cover-image src="./404.png" mode="widthFix"></cover-image>
+  <cover-view class="h3">网络请求失败</cover-view>
+  <cover-view class="p">请检查您的网络</cover-view>
+  <cover-view class="p">重新加载吧</cover-view>
+  <cover-view class="button" bindtap="reload">重新加载</cover-view>
+</cover-view>

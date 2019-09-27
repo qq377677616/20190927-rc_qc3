@@ -1,0 +1,13 @@
+<view class="whole">
+	<view><text class="txt1">写留言</text></view>
+	<view>
+		<textarea class="areaBox" placeholder="请认真写下你的评论(编辑字数50个字内)..." placeholder-class="p_style" value="{{remarkContent}}" bindinput="changeIpt" maxlength="50"></textarea>
+	</view>
+	<view class="fb_btn">
+		<form bindsubmit="formSubmit" bindreset="formReset" report-submit="true">
+			<button class="remarkbtn" form-type="submit" bindsubmit="bindsubmit"></button>
+		</form>
+		<image mode="widthFix" src="{{IMGSERVICE}}/center/fabuimg.png"></image>
+		<text class="txt2">发布</text>
+	</view>
+</view>

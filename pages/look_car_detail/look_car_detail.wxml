@@ -1,0 +1,270 @@
+<!-- pages/look_car_detail/look_car_detail.wxml -->
+<view class="car-detail-content">
+    <!-- nav_area -->
+    <view class="nav_area">
+        <view class="nav_item {{ navIndex == 0 ? 'active' : '' }}" data-index="0" bindtap="navList">车型介绍</view>
+        <view class="nav_item {{ navIndex == 1 ? 'active' : '' }}" data-index="1" bindtap="navList">参数配置</view>
+    </view>
+    <!-- top -->
+    <block wx:if="{{ navIndex == 0 }}">
+    <view class="o-o" style="background-image:url('{{IMGSERVICE}}/car_detail/1_01s.jpg')">
+        <view class="T90-con b {{scrollTop + windowHeight >= scrollTopList[0] ? 'on' : ''}} doms" id="dom1">
+          <image class="T90" src="{{IMGSERVICE}}/car_detail/T90.png" mode="widthFix"></image>
+          <image class="title" src="{{IMGSERVICE}}/car_detail/kjzx.png" mode="widthFix"></image>
+        </view>
+    </view>
+
+    <view class="o-t" style="background-image:url('{{IMGSERVICE}}/car_detail/1_02.jpg')">
+        <view class="bg b {{scrollTop + windowHeight >= scrollTopList[1] ? 'on' : ''}} doms" id="dom2">
+          <image class="bg-title" src="{{IMGSERVICE}}/car_detail/mxwg.png" mode="widthFix"></image>
+          <view class="img">
+            <image class="bg-txt" src="{{IMGSERVICE}}/car_detail/six_color.png" mode="widthFix"></image>
+            <view class="ul">
+              <view class="li" wx:for="{{3}}" wx:key="key{{index}}" data-index="{{index}}" bindtap="selectMySwiper1"></view>
+            </view>
+          </view>
+        </view>
+        <view class="hx b">
+          <view  class="hx1 {{nowIndex == 0 ? 's_show' : '' }}"></view>
+          <view  class="hx2 {{nowIndex == 1 ? 's_show' : '' }}"></view>
+          <view  class="hx3 {{nowIndex == 2 ? 's_show' : '' }}"></view>
+          </view>
+          <view class="sj b">
+            <image class="sjx1 {{nowIndex == 0 ? 's_show' : '' }}" src="{{IMGSERVICE}}/car_detail/sjx.png" mode="widthFix"></image>
+            <image class="sjx2 {{nowIndex == 1 ? 's_show' : '' }}" src="{{IMGSERVICE}}/car_detail/sjx.png" mode="widthFix"></image>
+            <image class="sjx3 {{nowIndex == 2 ? 's_show' : '' }}" src="{{IMGSERVICE}}/car_detail/sjx.png" mode="widthFix"></image>
+        </view>
+    </view>
+
+    <view class="o-th" style="background-image:url('{{IMGSERVICE}}/car_detail/1_03.jpg')">
+
+          <swiper class="swiper my-swiper1" bindchange="swiperFirst" style='height:{{swiperH}};' circular="true" current="{{swiper1Current}}">
+            <swiper-item class="swiper-item">
+                <view class='car-box'>
+                    <image class="op" wx:for="{{carList}}"  wx:for-index="carIndex" wx:key="carIndex" class='le-img car-n {{nowIdx==index ? "le-active" : ""}} {{colorNow == carIndex ? "show_color" : ""}}' bindload='getHeight' src='{{IMGSERVICE}}{{item}}' mode="widthFix"></image>
+                </view>
+                <view class="car-c">
+                    <view class="car-c-next" wx:for="{{colorList}}" wx:for-item="colorItem" wx:for-index="colorIndex" wx:key="colorIndex">
+                        <view class='car-color-box {{colorNow == colorIndex ? "bor" : ""}}' catchtap="changeCar" data-index="{{colorIndex}}">
+                            <view class="car-color" style="background:{{colorItem.color}}"></view>
+                        </view>
+                        <view class='c-name s {{colorNow == colorIndex ? "bigger" : ""}}'>
+                            {{colorItem.title}}
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class="swiper-item">
+                <image class='le-img' bindload='getHeight' src='{{IMGSERVICE}}/car_detail/car-xyh2.png' style='height:{{swiperH}};' mode="widthFix"></image>
+                <view class="car-c">
+                    <!-- <view class="">溜背式外观</view> -->
+                </view>
+            </swiper-item>
+            <swiper-item class="swiper-item">
+                <image class='le-img {{nowSIdx==index ? "le-active" : ""}}' bindload='getHeight' src='{{IMGSERVICE}}/car_detail/car-xyh3.png' style='height:{{swiperH}};' mode="widthFix"></image>
+                <!-- <view class="car-c">全新家族-V-Galaxy前脸</view> -->
+            </swiper-item>
+        </swiper>
+
+    </view>
+
+    <view class="o-fo" style="background-image:url('{{IMGSERVICE}}/car_detail/1_04.jpg')">
+
+        <view class="wd">
+            <image hidden="{{nowSIdx!=0}}" class="fd_title" src="{{IMGSERVICE}}/car_detail/fd_txt1.png" mode="widthFix"></image>
+            <image hidden="{{nowSIdx!=1}}" class="fd_title" src="{{IMGSERVICE}}/car_detail/fd_txt2.png" mode="widthFix"></image>
+        </view>
+        <swiper bindchange="swiperSecond" class="sw1" previous-margin='50px' next-margin='50px' bindchange="swiperSecond" style='height:{{swiperH}};' circular="true" current="{{nowSIdx}}">
+            <swiper-item class="swi1" wx:for='{{imgList}}' wx:key=''>
+                <image class='le-img {{nowSIdx == index ? "le-active" : ""}}' bindload='getHeight' src='{{IMGSERVICE}}{{item.img}}' style='height:{{swiperH}};'></image>
+            </swiper-item>
+        </swiper>
+        <view><image src="{{IMGSERVICE}}{{imgList[nowSIdx].str}}" mode="widthFix" class="str"></image></view>
+    </view>
+
+    <view class="o-fi" style="background-image:url('{{IMGSERVICE}}/car_detail/1_05.jpg')">
+          <view class="bg2 b {{scrollTop + windowHeight >= scrollTopList[2] ? 'on' : ''}} doms" id="dom3">
+            <image class="bg-title2" src="{{IMGSERVICE}}/car_detail/kjjyns.png" mode="widthFix"></image>
+            <view class="img">
+              <image class="bg-txt2" src="{{IMGSERVICE}}/car_detail/dsyqjtc.png" mode="widthFix"></image>
+              <view class="ul">
+                <view class="li" wx:for="{{2}}" wx:key="key{{index}}" data-index="{{index}}" bindtap="selectMySwiper2"></view>
+              </view>
+            </view>  
+          </view>
+          <view class="fi-hx bb">
+            <view class="hx1 {{nowTIdx == 0 ? 's_show' : ''}}" ></view>
+            <view class="hx2 {{nowTIdx == 1 ? 's_show' : ''}}" ></view>
+          </view>
+          <view class="fi-sjx b">
+              <image class="sjx1 {{nowTIdx == 0 ? 's_show' : ''}}" src="{{IMGSERVICE}}/car_detail/sjx.png" mode="widthFix"></image>
+              <image class="sjx2 {{nowTIdx == 1 ? 's_show' : ''}}" src="{{IMGSERVICE}}/car_detail/sjx.png" mode="widthFix"></image>
+          </view>
+    </view>
+
+    <view class="o-si"  style="background-image:url('{{IMGSERVICE}}/car_detail/1_06.jpg')">
+          <swiper class="chuk"  style='height:{{swiperH}};' bindchange="swiperThird" circular="true" current="{{swiper2Current}}">
+            <swiper-item class="chu-item">
+                <view class='car-box'>
+                    <image class='le-img' bindload='getHeight' src='{{IMGSERVICE}}/car_detail/chuk.png' style='height:562rpx !important;margin-top:5px'></image>
+                </view>
+            </swiper-item>
+            <swiper-item class="chu-item">
+                <view class='car-box'>
+                    <image class='le-img' bindload='getHeight' src='{{IMGSERVICE}}/car_detail/chuk2.png' style='height:562rpx !important;margin-top:5px'></image>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+
+    <view class="o-se" style="background-image:url('{{IMGSERVICE}}/car_detail/1_07.jpg')">
+      <view class="T90-con t {{scrollTop + windowHeight >= scrollTopList[3] ? 'on' : ''}} doms" id="dom4">
+        <image class="T90" src="{{IMGSERVICE}}/car_detail/T90.png" mode="widthFix"></image>
+        <image class="title" src="{{IMGSERVICE}}/car_detail/ssjc.png" mode="widthFix"></image>
+      </view>
+    </view>
+
+    <view class="o-e" style="background-image:url('{{IMGSERVICE}}/car_detail/1_08.jpg')">
+      <view class="T90-con t {{scrollTop + windowHeight >= scrollTopList[4] ? 'on' : ''}} doms" id="dom5">
+        <image class="T90" src="{{IMGSERVICE}}/car_detail/T90.png" mode="widthFix"></image>
+        <image class="title" src="{{IMGSERVICE}}/car_detail/qwkj.png" mode="widthFix"></image>
+      </view>
+    </view>
+
+    <view class="o-n" style="background-image:url('{{IMGSERVICE}}/car_detail/1_09.jpg')">
+        <view class="n-view">
+          <image class="n-title" hidden="{{onSwiperIndex==1}}" src="{{IMGSERVICE}}/car_detail/gzn_txt1.png" mode="widthFix"></image>
+          <image class="n-title two" hidden="{{onSwiperIndex==0}}" src="{{IMGSERVICE}}/car_detail/gzn_txt2s.png" mode="widthFix"></image>
+         </view>
+         <swiper bindchange="swiperFour" class="sw3" previous-margin='50px' next-margin='50px' bindchange="onSwiperBindchange" style='height:{{swiperH}};' circular="true" current="{{onSwiperIndex}}">
+            <swiper-item class="swi1 swi2" wx:for="{{gznList}}"  wx:key=''>
+                <image class='le-img {{onSwiperIndex == index ? "le-active" : ""}}' bindload='getHeight' src='{{IMGSERVICE}}{{item.img}}' style='height:{{swiperH}};'></image>
+            </swiper-item>
+        </swiper>
+        <view class="img-box"><image src="{{IMGSERVICE}}{{gznList[onSwiperIndex].str}}" mode="widthFix" class="str {{onSwiperIndex == 1 ? 'two' : ''}}"></image></view>
+    </view>
+
+    <view class="o-te" style="background-image:url('{{IMGSERVICE}}/car_detail/1_10.jpg')">
+          
+    </view>
+
+    <view class="o-el" style="background-image:url('{{IMGSERVICE}}/car_detail/1_06.jpg')">
+         <view class="el-view">
+          <image hidden="{{nowFiIdx != 0}}" class="image1" src="{{IMGSERVICE}}/car_detail/fz_txt1.png" mode="widthFix"></image>
+          <image hidden="{{nowFiIdx != 1}}" class="image2" src="{{IMGSERVICE}}/car_detail/fz_txt2.png" mode="widthFix"></image>
+          <image hidden="{{nowFiIdx != 2}}" class="image3" src="{{IMGSERVICE}}/car_detail/fz_txt3.png" mode="widthFix"></image>
+         </view>
+         <swiper class="sw4" previous-margin='50px' next-margin='50px' bindchange="swiperFive" style='height:{{swiperH}};' circular="true">
+                <swiper-item wx:for='{{videoList}}' wx:key=''>
+                    <video controls="{{false}}" autoplay="{{true}}" loop="{{true}}" class='le-img {{nowFiIdx==index ? "le-active" : ""}}' bindload='getHeight' src='{{IMGSERVICE}}{{item}}' style='height:{{swiperH}};'></video>
+                </swiper-item>
+          </swiper>
+    </view>
+
+    <view class="o-tv" style="background-image:url('{{IMGSERVICE}}/car_detail/1_12.jpg')">
+      <view class="T90-con t {{scrollTop + windowHeight >= scrollTopList[5] ? 'on' : ''}} doms" id="dom6">
+        <image class="T90" src="{{IMGSERVICE}}/car_detail/T90.png" mode="widthFix"></image>
+        <image class="title" src="{{IMGSERVICE}}/car_detail/hzpz.png" mode="widthFix"></image>
+      </view>
+    </view>
+
+    <view class="o-tt" style="background-image:url('{{IMGSERVICE}}/car_detail/1_13.jpg')">
+        <view class="bg b {{scrollTop + windowHeight >= scrollTopList[6] ? 'on' : ''}} doms" id="dom7">
+          <view class="img">
+              <image class="bg-txt" src="{{IMGSERVICE}}/car_detail/ln.png" mode="widthFix"></image>
+              <view class="ul">
+                <view class="li" wx:for="{{3}}" wx:key="key{{index}}" data-index="{{index}}" bindtap="selectMySwiper3"></view>
+              </view>
+            </view> 
+        </view>
+        <view class="hx bb">
+          <view class="hx1 {{swiper3Current == 0 ? 's_show' : ''}}"></view>
+          <view class="hx2 {{swiper3Current == 1 ? 's_show' : ''}}" ></view>
+          <view class="hx3 {{swiper3Current == 2 ? 's_show' : ''}}" ></view>
+        </view>
+        <view class="sj b">
+            <image class="sjx1 {{swiper3Current == 0 ? 's_show' : ''}}" src="{{IMGSERVICE}}/car_detail/sjx.png" mode="widthFix"></image>
+            <image class="sjx2 {{swiper3Current == 1 ? 's_show' : ''}}" src="{{IMGSERVICE}}/car_detail/sjx.png" mode="widthFix"></image>
+            <image class="sjx3 {{swiper3Current == 2 ? 's_show' : ''}}" src="{{IMGSERVICE}}/car_detail/sjx.png" mode="widthFix"></image>
+        </view>
+    </view>
+
+    <view class="o-ft" style="background-image:url('{{IMGSERVICE}}/car_detail/1_14.jpg')">
+        <swiper class="chuk" bindchange="swiperSix" style='height:{{swiperH}};' circular="true" current="{{swiper3Current}}">
+            <swiper-item class="chu-item">
+                <view class='car-box'>
+                    <image class='le-img' bindload='getHeight' src='{{IMGSERVICE}}/car_detail/gpz_txt3.png' style='height:{{swiperH}};'></image>
+                </view>
+            </swiper-item>
+            <swiper-item class="chu-item">
+                <view class='car-box'>
+                    <image class='le-img' bindload='getHeight' src='{{IMGSERVICE}}/car_detail/gpz_txt2.png' style='height:{{swiperH}};'></image>
+                </view>
+            </swiper-item>
+             <swiper-item class="chu-item">
+                <view class='car-box'>
+                    <image class='le-img' bindload='getHeight' src='{{IMGSERVICE}}/car_detail/gpz_txt1.png' style='height:{{swiperH}};'></image>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+    </block>
+    <block wx:if="{{ navIndex == 1 }}">
+            <view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
+
+                <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
+                    <view class="label">{{item.value}}</view>
+                </view>
+                <view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
+                    <view class="lable">{{item.name}}</view>
+                    <view class="span">{{isSwitchIng ? '--' : item.value}}</view>
+                </view>
+            </view>
+          <view class="group">
+            <view class="li config_area flex-bet remarks">
+                <view class="lable">备注：</view>
+                <!-- <view class="span">{{remarks || '暂无相关备注信息'}}</view> -->
+                <view class="span">
+                  <view wx:for="{{lookCarDetail.remarks}}" wx:key="key{{index}}">{{item}}</view>
+                </view>
+            </view>
+          </view>
+        </block>
+    <!-- footer -->
+    <view class="footer" bindtap="downPayment">
+        即刻预约，享上市好礼
+    </view>
+    <!-- 留资弹窗-->
+    <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
+        <forms bindsubmit="submit" bindclose="isShowForm" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
+    </view>
+    <!-- 选择车款-->
+    <view class="select_car flex-cen" wx:if="{{ navIndex == 1 }}">
+      <view class="text"><view>级别</view><view>选择</view></view>
+      <!-- <picker class="picker" mode="selector" bindchange="bindRegionChange" range="{{type_list}}" value="0">
+      </picker> -->
+      <picker class="picker" bindchange="bindRegionChange" value="{{index}}" range="{{car_type_list}}">
+        <view class="picker"></view>
+      </picker>
+    </view>
+    <!-- 两个icon -->
+    <view class="icon-box {{isIconShow ? 'right-left' : ''}}" wx:key="key{{index}}" wx:if="{{ navIndex == 0 }}">
+       <block wx:if="{{isShowIcon == 2}}">
+        <view class="li flex-cen" wx:for="{{iconList2}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
+          <image src="{{item.img}}" mode="widthFix"></image>
+        </view>
+        </block>
+      <block wx:if="{{isShowIcon == 1}}">
+      <view class="li flex-cen" wx:for="{{iconList}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
+        <image class="{{(index != 0 && isAnimate) ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
+      </view>
+      </block>
+      <block wx:if="{{isShowIcon == 0}}">
+        <view class="li flex-cen" wx:for="{{iconLists}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
+          <image class="{{isAnimate ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
+        </view>
+      </block>
+    </view>
+    <!-- title4 -->
+    <!-- science -->
+</view>

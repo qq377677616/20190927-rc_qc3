@@ -1,0 +1,37 @@
+/* pages/pages-list/poster/poster.wxss */
+/* canvas-mask */
+.canvas-mask{position: fixed;left: 0;top: 0;z-index:999;width: 100%;height: 100%; background-color: #F0F0F0;display: flex;flex-direction: column;}
+.canvas-mask .content{width:574rpx;}
+.canvas-mask .content .myCanvas{width:100%;background-color: #fff;border-radius: 20rpx;background-size: cover;background-position: center center}
+/* .canvas-mask .content .btn{width: 60%;height: 62rpx;background-color: #e53333;color: #fff;font-size: 26rpx;border-radius: 62rpx;text-align: center;line-height: 62rpx;margin-left: auto;margin-right: auto; margin-top: 50rpx;} */
+.share-box {position: relative;}
+.share-box .btn-share {width: 100%;height: 100%;position: absolute; background: transparent;border: 0;}
+.share-box .btn-share::after{border: 0 !important;}
+#myCanvas{width:573px;height:1019px;position: fixed;left: 100%;top: 0;}
+
+.no_box{
+  margin-top: 36rpx;
+}
+
+.canvas-mask .content {
+  margin-bottom: 136rpx;
+}
+
+.flex-aro{
+  position: absolute;
+  top: 89%;
+  width: 641rpx;
+  height: 91rpx;
+  margin-right: 100rpx;
+}
+
+.flex-aro view{
+  width: 281rpx;
+  height: 91rpx;
+  background-size: cover;
+}
+
+
+
+
+

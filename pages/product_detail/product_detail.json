@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "qc-page404":"/components/page404/page404"
+  }
+}

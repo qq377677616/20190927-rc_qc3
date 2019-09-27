@@ -1,0 +1,52 @@
+<!--pages/community/community.wxml-->
+
+<!-- community_page -->
+<view class="community_page">
+
+    <!-- item -->
+    <view class="item" wx:for="{{articleData}}" wx:key="item" bindtap="remark" data-rid="{{item.article_id}}">
+
+        <view class="up_info">
+            <image mode="widthFix" src="{{(item.headimg&&item.headimg!=null)?item.headimg:IMGSERVICE+'/center/car_bg.png'}}"></image>
+            <view class="name"><text class="nowrap">{{(item.nickname&&item.nickname!=null)?item.nickname:'暂无昵称'}}</text></view>
+        </view>
+
+        <view class="photo_area">
+            <view class="photo_item">
+                <image mode="widthFix" src="{{(item.images&&item.images!=null)?item.images:IMGSERVICE+'/center/car_bg.png'}}"></image>
+            </view>
+
+            <!-- <view class="photo_item">
+                <image mode="widthFix" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2930044225,931260109&fm=26&gp=0.jpg"></image>
+            </view> -->
+
+        </view>
+
+        <view class="theme">
+            <view class="span" wx:if="{{item.is_top==1}}">置顶</view>
+            <view class="p nowrap">{{item.title}}</view>
+        </view>
+
+        <view class="operation_area">
+            <view class="operation_item" catchtap="giveLike" data-arid="{{item.article_id}}">
+                <veiw class="icon iconfont icon_dz {{item.is_favorite==0?'':'addcolor'}}"></veiw>
+                <view class="span">{{item.favorite_num}}</view>
+            </view>
+
+            <view class="operation_item" catchtap="remark" data-rid="{{item.article_id}}" data-type="bottom">
+                <veiw class="icon iconfont icon_pl"></veiw>
+                <view class="span">{{item.reply_num}}</view>
+            </view>
+
+            <view class="operation_item" catchtap="shareFriend">
+				<button class="shareBtn" open-type="share" data-rid="{{item.article_id}}" data-img="{{item.images}}" data-title="{{item.title}}"></button>
+                <veiw class="icon iconfont icon_fx"></veiw>
+                <!-- <view class="span">分享</view> -->
+            </view>
+        </view>
+
+    </view><!-- item -->
+    <!-- qc-Tabbar -->
+    <qc-Tabbar></qc-Tabbar><!-- qc-Tabbar -->
+
+</view><!-- community_page -->

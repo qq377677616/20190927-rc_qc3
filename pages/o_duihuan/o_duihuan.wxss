@@ -1,0 +1,155 @@
+/* pages/o_duihuan/o_duihuan.wxss */
+page{
+    height: 100%;
+    background-color: #F3F3F3;
+}
+
+.whole{
+    
+}
+.hand_tab{
+	position: fixed;
+	left: 0;
+    top: 0;
+    z-index:1;
+    width:100%;
+    height: 90rpx;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.hand_tab>view{
+    flex:1;
+    color:#999;
+    font-size: 30rpx; 
+    position: relative;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+.hand_tab>.checked:after{
+	display: block;
+	content: '';
+	width:52rpx;
+	height: 5rpx;
+	border-radius: 20rpx;
+	background-color:#333; 
+	position: absolute;
+	left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+.center_box{
+    padding: 90rpx 28rpx 27rpx;
+    box-sizing: border-box;
+}
+.items{
+    width:100%;
+    background-color: white; 
+    border-radius: 14rpx;
+    padding: 30rpx 28rpx;
+    box-sizing: border-box;
+}
+.items>view:nth-child(1){
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 46rpx;
+    align-items: center;
+    border-bottom: 1rpx solid #eee;
+    padding-bottom:16rpx; 
+}
+.order_num{
+   font-size: 24rpx;
+   color: #333; 
+}
+.order_status{
+    width:118rpx;
+    height: 46rpx;
+    color: #145CBF;
+    font-size: 24rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 23rpx;
+    border: 1rpx solid #145CBF;
+}
+.order_time{
+    width: 100%;
+    margin-top:30rpx; 
+}
+.order_time>text{
+    font-size:24rpx;
+    color: #333; 
+}
+.carList{
+    display: flex;
+    justify-content: start;
+    margin-top:38rpx; 
+}
+.carList.mul{
+    display:inline-block;
+    margin-right: 37rpx;
+}
+.carList>view{
+    flex:0 0 auto;
+    width:156rpx;
+    height: 156rpx;
+    border-radius:10rpx;
+    background: center no-repeat;
+    background-size: cover;  
+	position: relative;
+}
+.carList>.car_info{
+    width: 0;
+    flex:1;
+	font-size: 30rpx;
+	color: #333;
+}
+.carNum{
+	display: block;
+	width: 100%;
+	font-size:24rpx;
+	color: #999;
+	margin-top: 20rpx; 
+}
+.carName{
+	display: block;
+	width: 100%;
+}
+.carList>view:not(:nth-child(1)){
+    margin-left: 37rpx;
+}
+.order_price{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 26rpx;
+}
+.order_price>text:nth-child(1){
+    color: #999;
+    font-size: 26rpx;
+    margin-right: 10rpx;
+}
+.order_price>text:nth-child(2){
+    color: #145CBF;
+    font-size: 28rpx;
+}
+.center_box>.items{
+    margin-top: 23rpx;
+}
+.corner{
+	display: block;
+	width: 32rpx;
+	height: 32rpx;
+	border-radius: 50%;
+	background-color: #F1403E;
+	color: white;
+	text-align: center;
+	line-height: 32rpx;
+	font-size: 22rpx;
+	position: absolute;
+	right:-8rpx;
+	top: -8rpx;
+}

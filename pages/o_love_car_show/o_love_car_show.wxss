@@ -1,0 +1,70 @@
+/* pages/o_love_car_show/o_love_car_show.wxss */
+
+page {
+    height: 100%;
+    background: #f0f0f0;
+}
+
+.o_love_car_show_page {
+    padding:25rpx 28rpx;
+}
+
+/* info_area */
+.info_area {
+    padding: 0 26rpx 0rpx 33rpx;
+    background: #fff;
+    border-radius: 10rpx;
+}
+
+.info_area:not(:first-of-type){
+    margin-top: 22rpx;
+}
+
+.info_area .group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 114rpx;
+}
+
+.info_area .group:not(:last-of-type) {
+    border-bottom: 1rpx solid #eeeeee;
+}
+
+.info_area .group image {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+}
+
+.info_area .group .span {
+    font-size: 30rpx;
+    color: #666666;
+}
+
+.info_area .group .p {
+    font-size: 30rpx;
+    color: #333333;
+}/* info_area */
+
+/* btn */
+.btn{
+    height: 90rpx;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius:10rpx;
+}
+.btn.ok{
+    color: #fff;
+    background-image:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    box-shadow:0 10rpx 10rpx rgba(32,161,224,0.6);
+    margin-top: 122rpx;
+}
+.btn.reset{
+    color: #124EB9;
+    border:1rpx solid #20A1E0;
+    margin-top: 50rpx;
+}/* btn */

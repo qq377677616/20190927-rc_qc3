@@ -1,0 +1,62 @@
+<!--pages/upload_show/upload_show.wxml-->
+<view class="upload_show" style="background-image:url('{{IMGSERVICEZ}}/activity/bg.png');background-size:cover;">
+
+  <view class="head">
+        <my-header title="上传展示" btnIcon="back" bind:headerBack="headerBack"></my-header>
+  </view>
+
+  <view class="top_bg">
+
+      <view class="pad">
+        
+        <image src="{{IMGSERVICEZ}}/center/car_bg.png"></image>
+
+        <view class="headimg">
+
+            <view class="pic">
+                     <image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3987907653,720009510&fm=26&gp=0.jpg"></image>
+                     <view class="img_right">
+                        <view class="name">小希</view>
+                        <view class="time">上传时间: 2019.05</view>
+                     </view>
+            </view>
+
+
+            <view class="not_list">
+              <view class="tuoyuan">未上榜</view>
+              <view class="now">
+                <view class="txt1">当前票数:</view>
+                <view class="txt2">964</view>
+              </view>
+            </view>
+
+        </view>
+
+      </view>
+
+  </view>
+
+  <view class="down_bg">
+  
+      <view class="down_pad">
+
+        <view class="tit_img">
+           <image mode="widthFix" src="{{IMGSERVICEZ}}/activity/dian_heart.png"></image>
+        </view>
+
+        <view class="per_img">
+          <image  wx:for="{{5}}" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3987907653,720009510&fm=26&gp=0.jpg"></image>
+          <image wx:for="{{5}}" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1688026885,2773767715&fm=26&gp=0.jpg"></image>
+        </view>
+
+      </view>
+
+  </view>
+
+  <view class="btn">
+    <view class="btn_list">回到列表</view>
+    <view class="btn_share">分享好友</view>
+  </view>
+
+
+</view>

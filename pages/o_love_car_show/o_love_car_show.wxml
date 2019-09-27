@@ -1,0 +1,46 @@
+<!--pages/o_love_car_show/o_love_car_show.wxml-->
+
+<!-- o_love_car_show_page -->
+<view class="o_love_car_show_page">
+
+    <view class="info_area">
+        <view class="group">
+            <view class="span">头像</view>
+            <image src="{{carObj.headimg}}" mode="widthFix"></image>
+        </view>
+
+        <view class="group">
+            <view class="span">昵称</view>
+            <view class="p">{{carObj.nickname}}</view>
+        </view>
+    </view>
+
+    <view class="info_area">
+
+        <view class="group">
+            <view class="span">车主认证</view>
+            <view class="p">已认证</view>
+        </view>
+        
+        <view class="group">
+            <view class="span">手机号码</view>
+            <view class="p">{{carObj.car_info.mobile}}</view>
+        </view>
+
+        <view class="group">
+            <view class="span">我的座驾</view>
+            <view class="p nowrap">{{carObj.car_info.car_name}}</view>
+        </view>
+
+        <view class="group">
+            <view class="span">车牌号码</view>
+            <view class="p">{{carObj.car_info.car_license}}</view>
+        </view>
+    </view>
+
+    <view class="btn ok" bindtap="bindBack">确 定</view>
+
+    <view class="btn reset" bindtap="removeBind">解除绑定</view>
+
+
+</view><!-- o_love_car_show_page -->

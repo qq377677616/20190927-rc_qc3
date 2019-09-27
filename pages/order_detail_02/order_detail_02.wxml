@@ -1,0 +1,94 @@
+<!-- pages/order_detail_02/order_detail_02.wxml -->
+
+<!-- order_detail_page -->
+<view class="order_detail_page">
+
+    <!-- order_status -->
+    <view class="order_status">
+
+        <image src="{{ IMGSERVICE }}/order_detail_02/complete.png" mode="widthFix"></image>
+
+        <view class="span nowrap">订单已完成 订单已完成订单已完成订单已完成</view>
+
+        <view class="date">2019-09-09  18:08:06</view>
+
+    </view><!-- order_status -->
+
+    <!-- card_list -->
+    <view class="card_list">
+
+        <!-- card_item -->
+        <view class="card_item" wx:for="{{ 3 }}">
+
+            <view class="image">
+                <image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=229883606,3154095630&fm=26&gp=0.jpg" mode="widthFix"></image>
+            </view>
+
+            <view class="info">
+                <view class="section card_name_btn">
+                    <view class="card_name nowrap">卡券 卡券卡券卡券卡券卡券卡券卡券</view>
+                    <view class="btn">已领取</view>
+                </view>
+                <view class="section total_num">
+                    <view class="num">X1</view>
+                </view>
+                <view class="section prize">
+                    <view class="prize nowrap">V豆: 2000 2000200020002000200020002000200020002000</view>
+                </view>
+            </view>
+
+        </view><!-- card_item -->
+
+        <!-- card_item -->
+        <view class="card_item" wx:for="{{ 3 }}">
+
+            <view class="image">
+                <image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=229883606,3154095630&fm=26&gp=0.jpg" mode="widthFix"></image>
+            </view>
+
+            <view class="info">
+                <view class="section card_name_btn">
+                    <view class="card_name nowrap">卡券 卡券卡券卡券卡券卡券卡券卡券</view>
+                    <view class="btn active">领取</view>
+                </view>
+                <view class="section total_num">
+                    <view class="num">X1</view>
+                </view>
+                <view class="section prize">
+                    <view class="prize nowrap">V豆: 2000 2000200020002000200020002000200020002000</view>
+                </view>
+            </view>
+
+        </view><!-- card_item -->
+
+        <!-- total_v -->
+        <view class="total_v">
+            共计 <text class="span">V豆: 4000</text>
+        </view><!-- total_v -->
+
+
+    </view><!-- card_list -->
+
+    <!-- order_info -->
+    <view class="order_info">
+
+        <view class="title nowrap">订单信息</view>
+
+        <view class="section">
+            <view class="span">订单编号</view>
+            <view class="p nowrap">64033214065648 64033214065648640332140656486403321406564864033214065648</view>
+        </view>
+
+        <view class="section">
+            <view class="span">下单时间</view>
+            <view class="p nowrap">2019-09-09  18:08:06</view>
+        </view>
+
+        <view class="section">
+            <view class="span">支付方式</view>
+            <view class="p nowrap">在线兑换</view>
+        </view>
+
+    </view><!-- order_info -->
+
+</view><!-- order_detail_page -->

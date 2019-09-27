@@ -1,0 +1,25 @@
+<!--活动弹窗组件 type=1 活动已结束弹窗 type=2 暂未授权弹窗 type=3 未绑定车主-->
+<view class="whole" >
+	<view class="Actpop" wx:if="{{popType==1}}">
+		<text class="txt1">很遗憾!</text>
+		<text class="txt2">活动已结束</text>
+		<view class="btn1" bindtap="otherAct">看看其他活动</view>
+		<image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="closePop"></image>
+	</view>
+	<!-- wx:if="{{type==2}}" -->
+	<view class="Actpop Actpop2" wx:elif="{{popType==2}}">
+		<text class="txt1 txt3">您暂无授权</text>
+		<text class="txt2 txt4">无法参与活动</text>
+		<view class="btn1">立即授权 <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="AuthBannerJump" class="shouquan"></button></view>
+		<view class="btn1 btn2" bindtap="closePop">暂不授权</view>
+		<image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="closePop"></image>
+	</view>
+	<!-- wx:if="{{type==3}}" -->
+	<view class="Actpop Actpop2" wx:if="{{popType==3}}">
+		<text class="txt1 txt3">活动仅限车主参与</text>
+		<text class="txt2 txt4">您暂未绑定车主噢</text>
+		<view class="btn1" bindtap="bindCarer">立即绑定</view>
+		<view class="btn1 btn2" bindtap="closePop">暂不绑定</view>
+	</view>
+</view>
+

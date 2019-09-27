@@ -1,0 +1,22 @@
+<!--components/LingQu_complete/cmp.wxml-->
+
+
+<!-- linqu_complete_mask -->
+<view class="linqu_complete_mask">
+
+    <view class="main">
+
+        <view class="title">领取成功</view>
+
+        <view class="tips">邀请好友助力获得更高奖励</view>
+
+        <view class="share_btn">去分享</view>
+
+        <view class="more">去查看其他活动</view>
+
+        <view class="close_btn iconfont icon_del"></view>
+
+    </view>
+
+</view>
+<!-- linqu_complete_mask -->

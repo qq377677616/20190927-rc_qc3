@@ -1,0 +1,111 @@
+/* components/LingQu/cmp.wxss */
+
+
+
+
+.prize_mask{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    left:0;
+    top:0;
+}
+
+/* main */
+.main{
+    width: 560rpx;
+    background-color: #fff;
+    padding: 35rpx 43rpx 67rpx;
+    background-size:100%;
+    background-position: center bottom;
+    background-repeat:no-repeat;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translatex(-50%) translatey(-50%);
+    border-radius:46rpx;
+    box-sizing: border-box;
+}
+.main .title{
+    font-size: 36rpx;
+    color: #333;
+    text-align: center;
+    margin-bottom: 32rpx;
+}
+.main .list{
+    
+}
+.main .list .item{
+    height: 112rpx;
+    display: flex;
+    background-size:cover;
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+.main .list .item:not(:first-of-type){
+    margin-top: 10rpx;
+}
+.main .list .item .label{
+    width: 75rpx;
+    flex:0 0 auto;
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main .list .item.use .label{
+    color: #333;
+}
+.main .list .item.used .label{
+    color: #C2C2C2;
+}
+.main .list .item .info{
+    width: 0;
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+}
+.main .list .item.use .info{
+    color: #333;
+}
+.main .list .item.used .info{
+    color: #C2C2C2;
+}
+.main .list .item .info .span{
+    font-size: 36rpx;
+    margin-right: 10rpx;
+}
+.main .get_btn{
+    width: 332rpx;
+    height: 70rpx;
+    font-size: 32rpx;
+    color: #124FB9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius:35rpx;
+    margin: 103rpx auto 0;
+}
+.main .close_btn{
+    color: #fff;
+    font-size: 50rpx;
+    position: absolute;
+    left:50%;
+    bottom:-100rpx;
+    transform: translatex(-50%);
+}
+.main .close_btn::after{
+    content:'';
+    position: absolute;
+    left:50%;
+    top:0;
+    transform: translatex(-50%) translatey(-100%);
+    width: 3rpx;
+    height: 50rpx;
+    background:linear-gradient(0deg,rgba(255,255,255,1),rgba(255,255,255,0));
+}
+/* main */

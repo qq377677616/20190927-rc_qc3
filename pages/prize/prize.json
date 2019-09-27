@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "抽奖",
+    "usingComponents": {
+      "forms": "/components/forms/form",
+      "showLoading": "/components/showLoading/showLoading",
+      "activePop": "/components/activePop/activePop",
+      "pop": "/components/LingQu_gift/cmp",
+      "rule": "/components/rule/rule"
+    }
+}

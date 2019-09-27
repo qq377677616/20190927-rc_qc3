@@ -1,0 +1,92 @@
+<!--pages/o_dot/o_dot.wxml-->
+
+<!-- o_dot_page -->
+<view class="o_dot_page">
+
+    <!-- local_area -->
+    <view class="local_area">
+
+        <view class="current_local">
+            当前位置: 
+            <text class="icon iconfont icon_wdwd"></text>
+            <view class="rowbox">
+				  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+						<view class="picker">
+						{{ citys }}
+						</view>
+			   	   </picker>
+			</view>
+        </view>
+
+        <!-- <view class="re_local" bindtap="re_local">
+            <text class="icon iconfont icon_wdwd"></text>
+            重新定位
+        </view> -->
+
+    </view><!-- local_area -->
+
+    <!-- main_container -->
+    <view class="main_container">
+
+        <!-- store_list -->
+        <view class="store_list" wx:if="{{status==1}}">
+
+
+            <view class="tips nowrap">我的购车门店</view>
+
+            <view class="main fadeIn">
+
+                <!-- <view class="image">
+                    <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+                </view> -->
+
+                <view class="info">
+
+                    <view class="title">{{mystroe.name}}</view>
+
+                    <view class="tel_local">
+                        <view class="tel nowrap">电话: {{mystroe.service_tel}}</view>
+                        <view class="dis">{{mystroe.distance}}</view>
+                    </view>
+
+                    <view class="address">地址：{{mystroe.address}}</view>
+
+                </view>
+
+            </view>
+
+        </view><!-- store_list -->
+
+        <!-- store_list -->
+		<view class="nostroe" wx:if="{{nostroe}}">附近暂无购车门店~</view>
+        <view class="store_list nearby" wx:if="{{storeList.length>0}}">
+
+
+            <view class="tips nowrap">我附近的门店</view>
+
+            <view class="main fadeIn" wx:for="{{storeList}}" wx:key="item">
+
+                <!-- <view class="image">
+                    <image src="http://img1.imgtn.bdimg.com/it/u=331362085,1572888372&fm=11&gp=0.jpg" mode="widthFix"></image>
+                </view> -->
+
+                <view class="info">
+
+                    <view class="title">{{item.name}}</view>
+
+                    <view class="tel_local">
+                        <view class="tel nowrap">电话: {{item.service_tel}}</view>
+                        <view class="dis">{{item.distance}}</view>
+                    </view>
+
+                    <view class="address clamp_02">地址：{{item.address}}</view>
+
+                </view>
+
+            </view>
+
+        </view><!-- store_list -->
+
+    </view><!-- main_container -->
+    
+</view><!-- o_dot_page -->

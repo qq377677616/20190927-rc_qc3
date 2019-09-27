@@ -1,0 +1,35 @@
+/* pages/login/login.wxss */
+
+page{
+    height: 100%;
+}
+.login-page{
+    height: 100%;
+    box-sizing: border-box;
+    padding: 187rpx 57rpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+}
+.logo{
+    width: 194rpx;
+    margin-bottom: 311rpx;
+}
+.auth-btn{
+    align-self:stretch;
+    height: 60rpx;
+    font-size: 31rpx;
+    color: #b60c17;
+    line-height: 60rpx;
+    font-weight: bold;
+    letter-spacing: 3rpx;
+    text-align:center;
+    background-color: #ffde7d;
+    border-radius: 60rpx;
+}
+.auth-btn::after{
+    border:none;
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "海报图",
+  "usingComponents": {
+    "showModal": "/components/showModal/showModal"
+  }
+}

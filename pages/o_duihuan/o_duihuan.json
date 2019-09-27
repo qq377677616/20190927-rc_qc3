@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的订单",
+  "usingComponents": {
+    "qc-More":"/components/More/cmp",
+    "qc-page404":"/components/page404/page404"
+  }
+}

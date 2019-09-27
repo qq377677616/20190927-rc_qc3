@@ -1,0 +1,14 @@
+<!--pages/upload/upload.wxml-->
+<view class="not_uploaded">
+
+    <view class="search">
+      <image src="{{IMGSERVICEZ}}/activity/no_upload.png"></image>
+    </view>
+
+    <view class="txt">您暂未上传作品</view>
+
+    <view class="go_upload" bindtap="upload">去上传</view>
+
+    <view class="no_upload" bindtap="no_upload">暂不上传</view>
+
+</view>

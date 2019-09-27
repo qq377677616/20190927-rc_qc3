@@ -1,0 +1,251 @@
+/* pages/friendHelp/friendHelp.wxss */
+page{
+	background-color: #F3F3F3;
+}
+.handImg{
+	width: 100%;
+	height:433rpx;
+	background: center no-repeat;
+	background-size: cover; 
+	position: relative;
+}
+.helpBox{
+	width: 692rpx;
+	height: 471rpx;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: white;
+	border-radius: 16rpx;
+	top: 234rpx;
+	padding: 42rpx 30rpx;
+	box-sizing: border-box;
+}
+.helpBox2{
+	height: 620rpx;
+}
+.userBox{
+	width: 100%;
+	display: flex;
+}
+.userImg{
+	width: 86rpx;
+	height: 86rpx;
+	border-radius: 50%;
+	background: center no-repeat;
+	background-size: cover;
+}
+.userInfo{
+	flex: 1;
+	padding-left: 17rpx;
+	padding-top: 15rpx;
+	box-sizing: border-box;
+}
+.userNick{
+	width:300rpx;
+	display: block;
+	color:#999999;
+	font-size: 24rpx; 
+}
+.userTxt{
+	width:300rpx;
+	display: block;
+	color:#333333;
+	font-size: 28rpx;
+	margin-top: 10rpx;
+}
+.helpBtn,.myEnter{
+	width:586rpx;
+	height:90rpx;
+	background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
+	border-radius:10px;
+	margin:0 auto;
+	margin-top:69rpx;  
+	text-align: center;
+	line-height: 90rpx;
+}
+.helpBtn>text{
+	width:183rpx;
+	height:29rpx;
+	font-size:30rpx;
+	font-family:Source Han Sans CN;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+}
+.myEnter{
+	width:586rpx;
+	height:90rpx;
+	border:1px solid #199DDF;
+	border-radius:10rpx;
+	background: transparent;
+	margin-top:29rpx;
+}
+.myEnter>text{
+	width:146rpx;
+	height:29rpx;
+	font-size:30rpx;
+	font-family:Source Han Sans CN;
+	font-weight:400;
+	color:rgba(21,97,193,1);
+}
+.centerHelp,.centerHelp2{
+	width: 269rpx;
+	height: 33rpx;
+	margin: 0 auto;
+	margin-top: 332rpx;
+	background: center no-repeat;
+	background-size: cover;
+}
+.centerHelp2{
+	margin-top: 463rpx;
+}
+.help_list{
+	width:693rpx;
+	margin: 0 auto;
+	margin-top: 31rpx;
+	background-color: white;
+	border-radius:16rpx;
+	height: 1310rpx;  
+	padding:0 33rpx;
+	box-sizing: border-box; 
+}
+.help_item{
+	width: 100%;
+	height: 131rpx;
+	box-sizing: border-box;
+	border-bottom: 1rpx solid #eee;
+	display: flex;
+}
+.leftBox{
+	width: 350rpx;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.l_item1{
+	width: 60rpx;
+	color: #333333;
+	font-size: 30rpx;
+}
+.l_item2{
+	width:74rpx;
+	height: 74rpx;
+	border-radius: 50%;
+	background: center no-repeat;
+	background-size: cover; 
+}
+.l_item3{
+	width: 150rpx;
+	margin-left: 33rpx;
+	color: #666;
+	font-size: 30rpx;
+}
+.rightBox{
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	color: #999;
+	font-size: 24rpx;
+}
+.helpsuccBox{
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0,0, 0.4);
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.succPop{
+	width:560rpx;
+	height: 465rpx;
+	background-color: white;
+	border-radius:  40rpx;
+	padding-top:107rpx;
+	box-sizing: border-box; 
+	position: relative;
+}
+.succTxt{
+	width: 100%;
+	text-align: center;
+	color:#333333;
+	font-size: 36rpx; 
+	font-weight: bold;
+}
+.succBtn{
+	width:332rpx;
+	height: 70rpx;
+	background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
+	text-align: center;
+	line-height: 70rpx;
+	color: white;
+	font-size:28rpx;
+	margin: 0 auto;
+	border-radius:35rpx;
+	margin-top: 106rpx;  
+}
+.look_other{
+	width: 100%;
+	text-align: center;
+	color:#333;
+	font-size: 28rpx;
+	margin-top: 39rpx; 
+}
+.closeBtn{
+	width:50rpx;
+	height:auto;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom:-100rpx;  
+}
+.readyTxt{
+	width: 100%;
+	text-align: center;
+	font-size: 30rpx;
+	color: #333;
+}
+.quanBox{
+	width: 580rpx;
+	height: 179rpx;
+	background: center no-repeat;
+	background-size: cover;
+	margin: 0 auto;
+	margin-top: 48rpx;
+	padding: 0 37rpx;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+}
+.quan1{
+	width: 100rpx;
+	writing-mode:vertical-lr;
+	font-size:30rpx;
+	font-family:Source Han Sans CN;
+	font-weight:500;
+	color:rgba(241,64,62,1);
+}
+.quan2{
+	width:352rpx;
+	font-size:48rpx;
+	font-family:Source Han Sans CN;
+	font-weight:500;
+	color:rgba(241,64,62,1);	
+}
+.addstyle{
+	font-size:30rpx; 
+}
+.quan3{
+	width: 126rpx;
+	height: 52rpx;
+	border-radius: 26rpx;
+	background-color: #F1403E;
+	color: white;
+	font-size: 30rpx;
+	text-align: center;
+	line-height: 52rpx;
+}

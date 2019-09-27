@@ -1,0 +1,56 @@
+/* pages/up_succ/up_succ.wxss */
+.whole{
+	width: 100vw;
+	height: 100vh;
+	background-color: #7A7A7B;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.centerBox{
+	width: 620rpx;
+	height: 640rpx;
+	background: center no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+.shopDel{
+	width:360rpx;
+	height: 120rpx;
+	/* background-color: red; */
+	margin-left: 25rpx;
+	margin-top: 80rpx;
+}
+.jijintxt{
+	color: #FFA94D;
+	font-size: 30rpx;
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 10rpx;
+}
+.moneys{
+	display: block;
+	width: 100%;
+	text-align: center;
+	/* margin-top:10rpx; */
+	font-size:60rpx;
+	font-family:Source Han Serif CN;
+	font-weight:800;
+	color:rgba(241,16,13,1);  
+}
+.moneys>.yuan{
+	font-size:30rpx;	
+}
+.enterCard{
+	width: 360rpx;
+	height: 80rpx;
+	border-radius: 38rpx;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 82rpx;
+}

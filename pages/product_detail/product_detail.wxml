@@ -1,0 +1,182 @@
+<!--pages/product_detail/product_detail.wxml-->
+
+<import src="../../utils/wxParse/wxParse.wxml" />
+
+<!-- product_detail_page -->
+<view class="product_detail_page">
+
+    <!-- swiper-area -->
+    <view class="swiper_area">
+
+        <swiper 
+            circular="true" 
+            autoplay="true" 
+            interval="2500" 
+            bindchange="dotchange">
+
+            <swiper-item wx:for="{{ goodsDetail.goods_album }}" wx:key="index" style="background-image:url({{ item }});"></swiper-item>
+           
+
+        </swiper>
+
+        <view class="dots">
+            <view wx:for="{{ goodsDetail.goods_album }}" wx:key="index" class="dot_item {{dotIndex == index ? 'active' : ''}}">
+                <view class="tiao"></view>
+            </view>
+            <view class="dot_item"></view>
+        </view>
+
+    </view><!-- swiper-area -->
+
+    <!-- product_name -->
+    <view class="product_name">
+
+        <view class="info">
+            <view class="title">
+                <!-- <view class="h2">产品名称：</view> -->
+                <view class="span nowrap">{{ goodsDetail.title }}</view>
+            </view>
+
+            <view class="v_label">
+
+                <view class="v">
+                    <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+
+                    <vie class="span">{{ goodsDetail.vcoin }}</vie>
+                </view>
+
+                <view class="label" wx:if="{{ goodsDetail.car_owner == 1 }}">车主专享</view>
+
+                <view class="label type">{{ goodsDetail.type == 1 ? '到店领取' : goodsDetail.type == 2 ? '快递到家' : '在线领取' }}</view>
+
+            </view>
+        </view>
+
+        <view class="cart" data-type="cart" bindtap="chooseSpec">
+            <view class="icon iconfont icon_gouwuche"></view>
+
+            <view class="span">加入购物车</view>
+        </view>
+
+    </view><!-- product_name -->
+
+
+    <!-- pruduct_image -->
+    <view class="pruduct_image" wx:if="{{ goodsDetail.goods_detail_img }}">
+
+        <view class="title">商品详情</view>
+
+        <view class="image_list">
+            <image class="fadeIn" src="{{ goodsDetail.goods_detail_img }}" mode="widthFix"></image>
+        </view>
+
+    </view><!-- pruduct_image -->
+
+    <!-- product_explain -->
+    <view class="product_explain fadeIn">
+        <view class="title">温馨提示</view>
+
+        <!-- <view class="section">
+            <view class="h2">革新经典，出众格调</view>
+            <view class="p">Air Jordan 1 High Zip 采用出众设计和拉链封口，换新演绎经典AJ1风范。</view>
+        </view>
+
+        <view class="section">
+            <view class="h2">漫步云端</view>
+            <view class="p">鞋底加入 Air 缓震技术，塑造轻盈非凡、响应灵敏的缓震性能, 畅想无拘日常运动体验。稳固设计，助力飞驰拉链封口，便于轻松穿脱且稳固贴合。</view>
+        </view> -->
+
+        <template is="wxParse" data="{{ wxParseData:product_explain.nodes }}"/>
+    </view><!-- product_explain -->
+
+    <!-- prompt_mask -->
+    <view class="prompt_mask" hidden="{{ specHidden }}" bindtap="closeBtn">
+
+        <view class="main fadeIn" catchtap="stopPropagation">
+
+            <view class="info">
+                <view class="image">
+                    <image src="{{ goodsDetail.attr_info[attr.__index].image == null ? goodsDetail.thumb : goodsDetail.attr_info[attr.__index].image }}" mode="widthFix"></image>            
+                </view>
+
+                <view class="right">
+                    <view class="title nowrap">{{ goodsDetail.title }}</view>
+
+                    <view class="v">
+                        <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+
+                        <view class="span">{{ goodsDetail.attr_info[attr.__index].vcoin == null ? goodsDetail.vcoin : goodsDetail.attr_info[attr.__index].vcoin }}</view>
+                    </view>
+                </view>
+
+                <view class="close_btn iconfont icon_del" bindtap="closeBtn"></view>
+            </view>
+
+            <view class="attr_group" wx:for="{{ goodsDetail.goods_attr }}" wx:key="index">
+
+                <block>
+                    <view class="view_title">{{ item.name }}</view>
+                    <view class="attr_item {{ attr.__indexArr[index] == sitem.id ? 'active' : '' }}" wx:for="{{ item.list }}" wx:for-index="sindex" wx:for-item="sitem" wx:key="sindex" data-pindex="{{ index }}" data-sindex="{{ sindex }}" bindtap="chooseAttr">{{ sitem.name }}</view>
+                </block>
+
+            </view>
+
+            <view class="number_stock">
+                <view class="stock">
+                    <text class="span" space="nbsp">库存: {{ goodsDetail.attr_info[attr.__index].number == null ? goodsDetail.number : goodsDetail.attr_info[attr.__index].number }}</text>
+                </view>
+
+                <view class="number">
+                    <text class="span" space="nbsp">数量: </text>
+
+                    <view class="sub_num_add">
+                        <view class="span sub iconfont icon_jian" data-type="delete" bindtap="addAndDelete"></view>
+                        <view class="span num">{{ attr.__number }}</view>
+                        <view class="span add iconfont icon_jia" data-type="add" bindtap="addAndDelete"></view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="submit" bindtap="submitBtn">{{ attr.__type == 'cart' ? '加入购物车' : '立即兑换' }}</view>
+
+        </view>
+
+    </view><!-- prompt_mask -->
+
+    <!-- footer -->
+    <view class="footer">
+
+        <button class="btn" open-type="contact">
+            <view class="icon iconfont icon_kefu"></view>
+            <view class="span">客服</view>
+        </button>
+        <view class="btn" bindtap="shopCart">
+            <view class="icon iconfont icon_gouwuche"></view>
+            <view class="span">购物车</view>
+        </view>
+
+        <view class="submit" data-type="pay" bindtap="chooseSpec">立即兑换</view>
+
+    </view><!-- footer -->
+
+    <!-- tips_mask -->
+    <view class="tips_mask" wx:if="{{ bindCarIf }}">
+
+        <view class="main">
+
+            <text class="title">该商品为车主专享商品\n您暂不是车主</text>
+
+            <view class="btn bind" bindtap="bind">立即绑定</view>
+
+            <view class="btn unbind" bindtap="unbind">暂不绑定</view>
+
+        </view>
+
+    </view>
+    <!-- tips_mask -->
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+
+
+</view><!-- product_detail_page -->

@@ -1,0 +1,118 @@
+/* pages/shop_mall_type/shop_mall_type.wxss */
+
+page {
+    height: 100%;
+    background-color: #F5F5F5;
+}
+
+.shop_mall_type {
+    height: 100%;
+    display: flex;
+}
+
+/* sidebar */
+
+.sidebar {
+    height: 100%;
+    width: 206rpx;
+    background-color: #fff;
+    flex: 0 0 auto;
+}
+
+.sidebar .sidebar-item {
+    font-size: 28rpx;
+    color: #999;
+    height: 98rpx;
+    border-left: 5rpx solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-left: 10rpx solid transparent;
+}
+.sidebar .sidebar-item:not(:first-of-type){
+    box-shadow:0 1rpx 0 1rpx #F5F5F5;
+}
+.sidebar .sidebar-item.active {
+    border-left-color: #1354BB;
+    color: #333;
+    background-color: #F5F5F5;
+    box-shadow:none;
+}
+
+/* sidebar */
+
+/* goods_list */
+
+.goods_list {
+    flex: 1;
+    padding: 0 18rpx;
+    overflow: hidden;
+}
+
+.goods_list .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    align-content: flex-start;
+    margin-left: -20rpx;
+    margin-top: -20rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+
+.goods_list .content .goods_item{
+    width: 244rpx;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius:18rpx;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+}
+.goods_list .content .goods_item .image{
+    height: 244rpx;
+    overflow: hidden;
+    position: relative;
+}
+.goods_list .content .goods_item .image image{
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translatex(-50%) translatey(-50%);
+}
+.goods_list .content .goods_item .info_area{
+    padding: 20rpx 22rpx;
+}
+.goods_list .content .goods_item .info_area .title{
+    font-size: 24rpx;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 12rpx;
+}
+.goods_list .content .goods_item .info_area .info{
+    font-size: 22rpx;
+    color: #3F3F3F;
+    display: flex;
+    align-items: center;
+}
+.goods_list .content .goods_item .info_area .info .v{
+    display: flex;
+    align-items: center;
+    flex:1;
+}
+.goods_list .content .goods_item .info_area .info .v .v_mark{
+    margin-right: 6rpx;
+    width: 30rpx;
+}
+.goods_list .content .goods_item .info_area .info .v .span{
+    
+}
+.goods_list .content .goods_item .info_area .info .cart{
+    flex:0 0 auto;
+    font-size: 28rpx;
+    color: #E3413E;
+    visibility:hidden;
+}
+
+/* goods_list */

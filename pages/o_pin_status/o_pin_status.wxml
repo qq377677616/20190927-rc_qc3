@@ -1,0 +1,72 @@
+<!-- pages/o_pin_status/o_pin_status.wxml -->
+
+<!-- o_pin_status -->
+<view class="o_pin_status">
+
+    <!-- main_container -->
+    <view class="main_container">
+
+        <!-- goods_area -->
+        <view class="goods_area">
+
+            <view class="image">
+                <image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1923021936,3946571272&fm=26&gp=0.jpg" mode="widthFix"></image>
+            </view>
+
+            <view class="info">
+
+                <view class="title nowrap">D60EV火热销售中</view>
+
+                <view class="v nowrap">
+                    V豆2000
+                </view> 
+
+                <view class="pin nowrap">已拼3000件</view>
+
+            </view>
+
+        </view><!-- goods_area -->
+
+        <!-- pin_status -->
+        <view class="pin_status">
+            4人团 拼团中 4人团 拼团成功 4人团 拼团失败
+        </view><!-- pin_status -->
+
+        <!-- tips -->
+        <view class="tips">已参与2人，邀请好友一起拼团 您已拼团成功啦 快来领取奖品吧 好可惜 拼团人数不足 很抱歉 您来晚了</view><!-- tips -->
+
+        <!-- time -->
+        <view class="time">
+            <view class="span">距离结束还剩:</view>
+            <text class="hours">01</text>
+            <text class="mh">:</text>
+            <text class="minutes">01</text>
+            <text class="mh">:</text>
+            <text class="seconds">01</text>
+        </view><!-- time -->
+
+        <!-- friend_group -->
+        <view class="friend_group">
+
+            <view class="o">
+                <image class="decorate" src="{{ IMGSERVICE }}/center/hg.png" mode="widthFix"></image>
+                <image class="headimg" src="http://img0.imgtn.bdimg.com/it/u=14652,3113399682&fm=26&gp=0.jpg" mode="widthFix"></image>
+            </view>
+
+            <view class="friend_headimg">
+                <image src="http://img0.imgtn.bdimg.com/it/u=14652,3113399682&fm=26&gp=0.jpg" mode="widthFix"></image>
+            </view>
+
+        </view><!-- friend_group -->
+
+        <!-- btn -->
+        <view class="btn invite">邀请好友</view>
+
+        <view class="btn prize">领取奖品</view>
+        
+        <view class="btn home">返回首页</view><!-- btn -->
+
+
+    </view><!-- main_container -->
+
+</view><!-- o_pin_status -->

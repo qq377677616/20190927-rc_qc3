@@ -1,0 +1,42 @@
+/* components/rule/rule.wxss */
+
+/* rule_mask */
+
+.rule_mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+}
+
+.rule_mask .main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translatex(-50%) translatey(-50%);
+}
+
+.rule_mask .main .rule {
+    width: 640rpx;
+    height: 900rpx;
+    overflow: auto;
+    border-radius: 40rpx;
+    background-color: #fff;
+}
+
+.rule_mask .main .rule image {
+    width: 100%;
+    border-radius: 40rpx;
+}
+
+.rule_mask .main .close_btn {
+    width: 50rpx;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translatex(40rpx) translatey(-40rpx);
+}
+
+/* rule_mask */
