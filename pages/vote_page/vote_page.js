@@ -13,6 +13,8 @@ Page({
 		IMGSERVICEZ: app.globalData.IMGSERVICE,
 		voteList: [],
 		page: 1,
+    firstShow:false,
+    options:[],
 	},
 
 	/**
@@ -24,6 +26,9 @@ Page({
 		request_01.login(()=>{
       this.getrankList();
 		})
+    this.setData({
+      options,
+    })
 	},
 
 	/**
@@ -31,13 +36,20 @@ Page({
 	 */
 	onReady: function () {
     tool.loading_h();
+    this.setData({
+      firstShow:true
+    })
 	},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+    this.setData({ voteList:[],page:1});
+    let options = this.data.options
+    if(this.data.firstShow){
+      this.onLoad(options);
+    }
 	},
 
 	/**
@@ -102,6 +114,7 @@ Page({
 		}).catch((reason)=>{
 			console.log(reason);
 		})
+    tool.loading_h();
 	},
 	goVote(e) {
 		console.log(e)

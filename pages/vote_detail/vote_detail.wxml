@@ -34,9 +34,9 @@
       <view class="image">
         <image src="{{vote_info.headimg}}"></image>
       </view>
-      <view>{{vote_info.nickname}}</view>
+      <view class="nickname">{{vote_info.nickname}}</view>
     </view>
-    <view class="content">{{vote_info.rank}}</view>
+    <view wx:if="{{isHid}}" class="content">排行榜第{{vote_info.rank}}名</view>
   </view>
   <!-- share-mask -->
   <!-- <view class="share-mask" wx:if="{{ isShare }}">

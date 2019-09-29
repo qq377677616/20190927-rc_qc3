@@ -17,8 +17,8 @@
 
         <view class="describe">
           <view class="ms">作品描述</view>
-            <textarea bindinput="bindinput" maxlength="50" placeholder-class="pla" placeholder="请添加与活动相关的描述:">
-          <view class="txt">0/50</view>
+            <textarea bindinput="bindinput" maxlength="20" placeholder-class="pla" placeholder="请添加与活动相关的描述:">
+          <view class="txt">{{cursor}}/20</view>
           </textarea>
         </view>
 

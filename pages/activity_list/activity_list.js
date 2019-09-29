@@ -1,4 +1,4 @@
-// pages/activity_list/activity_list.js
+﻿// pages/activity_list/activity_list.js
 const request_01 = require('../../utils/request/request_01.js');
 
 const router = require('../../utils/tool/router.js');
