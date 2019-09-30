@@ -23,6 +23,7 @@ Page({
     isShare:false,
     isXin:false,
     num:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
+    firstShow:false,
   },
 
   isShare() {
@@ -55,10 +56,11 @@ Page({
       tool.alert('活动已结束');
       return;
     }
-    const activity_id = this.data.activity_id;
-    const user_id = wx.getStorageSync('userInfo').user_id
-    const vote_id = this.data.vote_id;
+    let activity_id = this.data.activity_id;
+    let user_id = wx.getStorageSync('userInfo').user_id
+    let vote_id = this.data.vote_id;
     let is_favorite = this.data.is_favorite;
+    let vote_info = this.data.vote_info
     let type = 1;
     if (is_favorite == 0) {
       let isZan = this.data.isZan;
@@ -70,10 +72,16 @@ Page({
         if (isZan == 27) {
           clearInterval(ding)
           this.setData({
-            isZan: 4
+            isZan: 4,
+            is_favorite:1,
           })
         }
-      }, 50)  
+      }, 50)
+      is_favorite = 1
+      vote_info.votes = vote_info.votes+1
+      this.setData({
+        vote_info,
+      })
         request_05.doVote({ user_id, vote_id, type }).then(res => {
           tool.alert(res.data.msg)
         })
@@ -88,16 +96,22 @@ Page({
     
   // 分享
   bindShare() {
-    const activity_id = this.data.activity_id
-    console.log("activity_id", activity_id)
-    const user_id = wx.getStorageSync('userInfo').user_id
-    const vote_id = this.data.vote_id;
-    const type = 2;
-    router.jump_nav({
-      url: `/pages/poster/poster?activity_id=${activity_id}`,
-    })
-    request_05.doVote({ user_id, vote_id, type }).then(res => {
-      console.log(res);
+    let activity_id = this.data.activity_id
+    let user_id = wx.getStorageSync('userInfo').user_id
+    let vote_id = this.data.vote_id;
+    let type = 2;
+    request_05.myVote({ activity_id, user_id}).then(res=>{
+      console.log('res.data.data.is_join', res.data.data.is_join)
+      if(res.data.data.is_join==0){
+        tool.alert('您还没有自己的作品哦~')
+      }else{
+        router.jump_nav({
+          url: `/pages/poster/poster?activity_id=${activity_id}&vote_id=${vote_id}`,
+        })
+        request_05.doVote({ user_id, vote_id, type }).then(res => {
+          console.log(res);
+        })
+      }
     })
   },
 
@@ -114,12 +128,38 @@ Page({
 
   // 初始化数据
   initData(options){
+    console.log(options)
+    let activity_id = '';
+    let vote_id = '';
+    let parent_id = '';
+    if(options.scene) {
+      let scene = decodeURIComponent(options.scene);
+      console.log(scene)
+      scene.split('&').forEach((item) => {
+        console.log(item.split('='))
+        if (item.split('=')[0] == 'p') {//找到channel_id并存储
+          parent_id = item.split('=')[1]
+        }
+        if (item.split('=')[0] == 'a') {//找到channel_id并存储
+          activity_id = item.split('=')[1]
+        }
+        if (item.split('=')[0] == 'v') {//找到user_id并存储
+          vote_id = item.split('=')[1]
+        }
+      })
+    }else {
+      console.log(options)
+      activity_id = options.activity_id;
+      vote_id = options.vote_id;
+    }
+    
     tool.loading('加载中')
-    const activity_id = options.activity_id;
+    
     console.log("activity_id", activity_id)
-    const vote_id = options.vote_id;
-    const hav_rank = 1;
-    const user_id = wx.getStorageSync('userInfo').user_id;
+    console.log("vote_id", vote_id)
+    
+    let hav_rank = 1;
+    let user_id = wx.getStorageSync('userInfo').user_id;
     this.setData({
       activity_id,
     })
@@ -131,11 +171,11 @@ Page({
     })
 
     if(vote_id!=null){
-      console.log("{ user_id, vote_id, hav_rank }",{ user_id, vote_id, hav_rank })
       request_05.voteDetail({ user_id, vote_id, hav_rank }).then(res => {
         console.log("voteDetail",res)
-        const vote_info = res.data.data;
-        const is_favorite = res.data.data.is_favorite;
+        let vote_info = res.data.data;
+        let is_favorite = res.data.data.is_favorite;
+        console.log('vote_info.rank',vote_info.rank)
         if (vote_info.is_favorite==0){
           this.setData({//未点赞
             isZan:3
@@ -150,8 +190,10 @@ Page({
           vote_id,
           is_favorite,
           isXin:true,
+          isHid:true,
         })
       })
+      tool.loading_h(); 
     }else{
       request_05.myVote({ user_id, activity_id }).then(res => {
         console.log("detail",res);
@@ -161,8 +203,10 @@ Page({
          this.setData({
            vote_info,
            vote_id,
+           isHid:false,
         })
       })
+      tool.loading_h(); 
     }
   },
 
@@ -184,6 +228,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('options', options)
     request_01.login(() => {
       this.initData(options);
     })
@@ -192,6 +237,12 @@ Page({
     let user_id = options.user_id
     let type = options.type
     let activity_id = options.activity_id
+    this.setData({
+      options,
+      activity_id,
+      vote_id,
+      user_id
+    })
   },
 
   /**
@@ -199,13 +250,19 @@ Page({
    */
   onReady: function () {
     tool.loading_h(); 
+    this.setData({
+      firstShow:true
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let options = this.data.options
+    if(this.data.firstShow){
+      this.initData(options)
+    }
   },
 
   /**
@@ -244,10 +301,11 @@ Page({
     let vote_id = this.data.vote_id;
     let activity_id = this.data.activity_id;
     let type = 1;
+    let parent_id = this.data.parent_id;
     console.log(vote_id,user_id);
     let obj = {
       title: '大侠请留步！帮我点个赞，赢京东500元购物卡！',
-      path: `/pages/vote_detail/vote_detail?hav_rank=1&vote_id=${vote_id}&user_id=${user_id}&type=${type}&activity_id=${activity_id}`,
+      path: `/pages/vote_detail/vote_detail?vote_id=${vote_id}&user_id=${user_id}&activity_id=${activity_id}&parent_id=${parent_id}`,
       imageUrl: this.data.IMGSERVICE + "/activity/vote.jpg"
     };
     return obj; 

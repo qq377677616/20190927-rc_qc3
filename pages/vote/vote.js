@@ -49,21 +49,24 @@ Page({
     const activity_id = this.data.activity_id
     const user_id = wx.getStorageSync('userInfo').user_id
     let userIndex = this.data.userIndex; //当年swiper下标
-    let vote_id = this.data.videoList[userIndex].vote_id
-    let is_favorite = this.data.videoList[userIndex].is_favorite
-    let votes = this.data.videoList[userIndex].votes;
+    let vote_id = this.data.VideoBg[userIndex].vote_id
+    console.log('vote_id', vote_id)
+    let is_favorite = this.data.VideoBg[userIndex].is_favorite
+    let votes = this.data.VideoBg[userIndex].votes;
     const type = 1;
     if (is_favorite == 0) {
       let _clickIndex = e.currentTarget.dataset.index
       console.log("_clickIndex", _clickIndex)
       this.sequenceStart("sequenceList", _clickIndex).then(() => {
-        let _videoList = this.data.videoList
-        _videoList[_clickIndex].curIndex = 6
-        this.data.videoList[userIndex].is_favorite = 1
-        this.data.videoList[userIndex].votes = this.data.videoList[userIndex].votes + 1
-        this.setData({ videoList: _videoList.length > 0 ? _videoList:this.data.videoList})
+        let _VideoBg = this.data.VideoBg
+        _VideoBg[_clickIndex].curIndex = 6
+        this.data.VideoBg[userIndex].is_favorite = 1
+        this.data.VideoBg[userIndex].votes = this.data.VideoBg[userIndex].votes + 1
+        this.setData({ VideoBg: _VideoBg.length > 0 ? _VideoBg:this.data.VideoBg})
         request_05.doVote({ user_id, vote_id, type }).then(res => {
-          tool.alert(res.data.msg)
+            if(res.data.status==1){
+              tool.alert(res.data.msg)
+            }
         })
       })
     } else {
@@ -116,12 +119,12 @@ Page({
     let _num = 1
     return new Promise(resolve => {
       let autoSequence = setInterval(() => {
-        let _videoList = this.data.videoList
-        _videoList[clickIndex].curIndex++
+        let _VideoBg = this.data.VideoBg
+        _VideoBg[clickIndex].curIndex++
         let _curSequenceIndex = this.data[`${sequence}Index`] || 0
         _curSequenceIndex++
-        if (_videoList[clickIndex].curIndex <= this.data[sequence][0].num) {
-          this.setData({ videoList: _videoList })
+        if (_VideoBg[clickIndex].curIndex <= this.data[sequence][0].num) {
+          this.setData({ VideoBg: _VideoBg })
         } else {
           if ((typeof (this.data[sequence][0].loop) == 'boolean' && this.data[sequence][0].loop) || (typeof (this.data[sequence][0].loop) == 'number' && _num < this.data[sequence][0].loop)) {
             _num++
@@ -225,7 +228,7 @@ Page({
     const activity_id = this.data.activity_id
     const userIndex = this.data.userIndex; //当年swiper下标
     const user_id = wx.getStorageSync('userInfo').user_id
-    const vote_id = this.data.videoList[userIndex].vote_id;
+    const vote_id = this.data.VideoBg[userIndex].vote_id;
     const type = 2;
 
     request_05.doVote({ user_id, vote_id, type }).then(res => {
@@ -247,6 +250,7 @@ Page({
     let num = this.data.is_join;
     console.log(num)
     let activity_id = this.data.activity_id;
+    console.log('activity_id', activity_id)
     switch (num) {
       case 0:
         router.jump_nav({
@@ -274,32 +278,17 @@ Page({
 
   // 初始化数据
   initData(options) {
-    let pages = getCurrentPages();
-    let prevPage = pages.length - 1;
-    this.setData({
-      prevPage,
-    })
-
     tool.loading('加载中')
-
+    let activity_id = options.activity_id;
     const userInfo = wx.getStorageSync('userInfo');
     let headimg = wx.getStorageSync('userInfo').headimg;
     let user_id = wx.getStorageSync('userInfo').user_id;
-    console.log(user_id);
-    let activity_id = options.activity_id;
-    wx.setStorageSync('activity_id', activity_id)
     this.setData({
       userInfo,
       activity_id,
       headimg,
+      options,
     })
-
-
-    if (options.user_id) {
-      router.jump_nav({
-        url: `/pages/vote_detail/vote_detail?activity_id=${activity_id}`,
-      })
-    }
 
     // 投票活动首页
     request_05.voteIndex({ user_id, activity_id }).then(res => {
@@ -326,7 +315,7 @@ Page({
       }
       // 判断活动是否结束   状态 1 - 正常 3 - 活动未开始 4 - 活动已结束 只有为1可上传
       // if (res.data.data.status == 4) {
-      //   // 判断用户是否参与   状态 0未参与 1参与
+        // 判断用户是否参与   状态 0未参与 1参与
       //   if (res.data.data.is_join == 0) {
       //     tool.alert('活动已结束');
       //     setTimeout(() => {
@@ -353,11 +342,8 @@ Page({
     let banIndex = request_05.voteRandPlay({ user_id, activity_id }).then(res => {
       const _ban = res.data.data
       const videoList = this.data.videoList;
-      console.log("videoList", videoList)
-      console.log(_ban)
       for (var i = 0; i < _ban.length; i++) {
         //为0时 未点赞
-        console.log(_ban[i].is_favorite)
         if (_ban[i].is_favorite == 0) {
           _ban[i].curIndex = 8;
         }
@@ -380,16 +366,14 @@ Page({
         is_join,
       })
     })
+
+    tool.loading_h();
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let activity_id = options.activity_id;
-    this.setData({
-      activity_id,
-    });
     request_01.login(() => {
       this.initData(options);
     })
@@ -398,7 +382,14 @@ Page({
         isHome:true
       })
     }
+
     this.sequenceInit("sequenceList")//序列帧初始化
+
+    if (options.user_id!=null) {
+      router.jump_nav({
+        url: `/pages/vote_detail/vote_detail?activity_id=${activity_id}`,
+      })
+    }
   },
 
   /**
@@ -416,42 +407,45 @@ Page({
    */
   onShow: function () {
     tool.loading('加载中')
+    const options = this.data.options;
     const firstShow = this.data.firstShow;
-    if (firstShow) {
-      let activity_id = this.data.activity_id;
-      let user_id = wx.getStorageSync('userInfo').user_id
-      let banIndex = request_05.voteRandPlay({ user_id, activity_id }).then(res => {
-        const _ban = res.data.data
-        console.log(_ban)
-        for (var i = 0; i < _ban.length; i++) {
-          //为0时 未点赞
-          console.log(_ban[i].is_favorite)
-          if (_ban[i].is_favorite == 0) {
-            _ban[i].curIndex = 8;
-          }
-          else {
-            //已经点赞
-            _ban[i].curIndex = 6;
-          }
-        }
-        this.setData({
-          videoList: _ban.length > 0 ? _ban : this.data.videoList
-          })
-        })
-     }
-
-    let user_id = wx.getStorageSync('userInfo').user_id;
-    let activity_id = this.data.activity_id;
-    let myVote = request_05.myVote({ user_id, activity_id }).then(res => {
-      const myInfo = res.data.data.info;
-      const is_join = res.data.data.is_join;
-      this.setData({
-        myInfo,
-        is_join,
-      })
-    })
+    if (firstShow){
+      this.initData(options);
+    }
     tool.loading_h();
   },
+      // let activity_id = this.data.activity_id;
+      // let user_id = wx.getStorageSync('userInfo').user_id
+      // let banIndex = request_05.voteRandPlay({ user_id, activity_id }).then(res => {
+      //   const _ban = res.data.data
+      //   console.log(_ban)
+      //   for (var i = 0; i < _ban.length; i++) {
+      //     //为0时 未点赞
+      //     console.log(_ban[i].is_favorite)
+      //     if (_ban[i].is_favorite == 0) {
+      //       _ban[i].curIndex = 8;
+      //     }
+      //     else {
+      //       //已经点赞
+      //       _ban[i].curIndex = 6;
+      //     }
+      //   }
+      //   this.setData({
+      //     VideoBg: _ban.length > 0 ? _ban : this.data.VideoBg
+      //     })
+      //   })
+     
+
+    // let user_id = wx.getStorageSync('userInfo').user_id;
+    // let activity_id = this.data.activity_id;
+    // let myVote = request_05.myVote({ user_id, activity_id }).then(res => {
+    //   const myInfo = res.data.data.info;
+    //   const is_join = res.data.data.is_join;
+    //   this.setData({
+    //     myInfo,
+    //     is_join,
+    //   })
+    // })
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -486,13 +480,12 @@ Page({
    */
   onShareAppMessage: function (options) {
     const userIndex = this.data.userIndex;
-    let vote_id = this.data.videoList[userIndex].vote_id
+    let vote_id = this.data.VideoBg[userIndex].vote_id
     let user_id = wx.getStorageSync('userInfo').user_id;
     let activity_id = this.data.activity_id;
-    console.log(`/pages/vote/vote?user_id=${user_id}&activity_id=${activity_id}`)
     let obj = {
       title: '大侠请留步！帮我点个赞，赢京东500元购物卡！',
-      path: `/pages/vote/vote?activity_id=${activity_id}&isShare=1`,
+      path: `/pages/vote/vote?activity_id=${activity_id}&isShare=1&user_id=${user_id}`,
       imageUrl: this.data.IMGSERVICE + "/activity/vote.jpg"
     };
     return obj;
