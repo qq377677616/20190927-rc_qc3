@@ -20,18 +20,18 @@ Page({
    */
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
-    showModalOption: { 
+    showModalOption: {
       isShow: false,
       type: 0,
       title: "访问手机相册",
       test: "小程序将访问您的手机相册，将生成的海报保存到您的手机相册。",
       cancelText: "取消",
       confirmText: "确定",
-      color_confirm: "#0BB20C",
-      qr_code:'',
-      is_open:1,
-      isIos: 0,
+      color_confirm: "#0BB20C"
     },
+    qr_code: '',
+    is_open: 1,
+    isIos: 0,
     posterImgUrl: ''
   },
 

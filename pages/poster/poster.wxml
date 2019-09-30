@@ -22,6 +22,4 @@
    
    <canvas canvas-id="myCanvas" id="myCanvas"></canvas>
    <showModal showModalOption="{{showModalOption}}" bindoperation="operation"></showModal>
-
-   
 </view>
