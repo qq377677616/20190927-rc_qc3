@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 59,
+			"current": 61,
 			"list": [
 				{
 					"id": -1,
@@ -469,6 +469,21 @@
 					"id": -1,
 					"name": "pages/assemble/pin/pin",
 					"pathName": "pages/assemble/o_pin/o_pin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "selfHelp",
+					"pathName": "pages/selfHelp/selfHelp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "friendHelp",
+					"pathName": "pages/friendHelp/friendHelp",
+					"query": "",
 					"scene": null
 				}
 			]

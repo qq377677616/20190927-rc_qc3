@@ -60,7 +60,7 @@
 
   <view class="time" wx:if="{{time_value<3&&(shopList.my_kj_goods.length>0||shopList.dq_prize.length>0)}}">
 
-      <view class="txt1">{{currTime==today?"还剩":"还有"}}</view>
+      <view class="txt1">{{endStatus==1?"还剩":"还有"}}</view>
       <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.d}}</view>
       <view class="mh">:</view>
       <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.h}}</view>
@@ -68,7 +68,7 @@
       <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.m}}</view>
       <view class="mh">:</view>
       <view style="background-image:url('{{IMGSERVICE}}/activity/red_bg.png')">{{djs.s}}</view>
-      <view class="txt2">{{currTime==today?"结束":"开始"}}</view>
+      <view class="txt2">{{endStatus==1?"结束":"开始"}}</view>
 
   </view>
 
@@ -167,14 +167,16 @@
                       <view class="residue" data-type="ok">剩余<text class="red">{{item.sy_num}}</text>件</view>
       
                     </view>
-                    <view wx:if="{{item.buttom_type==3}}" data-types="no" data-type="ok"  class="cut_on setposition" bindtap="freeGet" data-obj="{{item}}" data-name="{{item.title}}" data-price="{{item.price}}" data-sid="{{item.id}}" data-Image="{{item.thumb}}">
+                    <view wx:if="{{item.buttom_type==3 && endStatus==1}}" data-types="no" data-type="ok"  class="cut_on setposition" bindtap="freeGet" data-obj="{{item}}" data-name="{{item.title}}" data-price="{{item.price}}" data-sid="{{item.id}}" data-Image="{{item.thumb}}">
 						<!-- wx:if="{{!userInfo.nickName}}" -->
 						点击免费拿
 					</view>
 
-                    <view wx:if="{{item.buttom_type==1}}" class="cut_robbed setbold">已经抢过了</view>
+                    <view wx:if="{{item.buttom_type==1 && endStatus==1}}" class="cut_robbed setbold">已经抢过了</view>
 
-                    <view wx:if="{{item.buttom_type==2}}" class="cut_robbed setbold">抢完了</view>
+                    <view wx:if="{{item.buttom_type==2 && endStatus==1}}" class="cut_robbed setbold">抢完了</view>
+
+					<view wx:if="{{endStatus!=1}}" class="cut_robbed setbold">尚未开抢</view>
   
                 </view>
 

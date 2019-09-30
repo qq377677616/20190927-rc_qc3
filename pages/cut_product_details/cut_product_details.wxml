@@ -54,6 +54,8 @@
 
    <view wx:if="{{barType==7}}" class="r_btn b setbg">砍价超时</view>
 
+   <view wx:if="{{barType==8}}" class="r_btn b setbg">尚未开抢</view>
+
 </view>
 
 <!-- </view> -->
