@@ -31,7 +31,7 @@
           <view class="image">
             <image src="{{item.headimg}}"></image>
           </view>
-          <view>{{item.nickname}}</view>
+          <view class="nickname">{{item.nickname}}</view>
         </view>
         <view class="content">{{item.content}}</view>
       </view>

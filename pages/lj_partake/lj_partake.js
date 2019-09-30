@@ -19,6 +19,7 @@ Page({
     IMGSERVICEZ: app.globalData.IMGSERVICE, 
     image:'',
     content:'',
+    cursor:0,
   },
 
   // 上传图片获取图片地址
@@ -57,21 +58,23 @@ Page({
 
   // 获取textarea文本值
   bindinput(e) {
+    console.log('e',e)
     let content = e.detail.value;
+    let cursor = e.detail.cursor;
     this.setData({
       content,
+      cursor
     })
   },
 
   // 点击提交
   formSubmit(e) {
-    const activity_id = wx.getStorageSync('activity_id');
+    const activity_id = this.data.activity_id;
+    console.log("activity_id", activity_id)
     const user_id = wx.getStorageSync('userInfo').user_id;
     const openid = wx.getStorageSync('userInfo').openid;
     let content = this.data.content;
-    let image = this.data.image; 
-    console.log(image);
-    console.log(content);
+    let image = this.data.image;
     let form_id = e.detail.formId;
     if(image==""){
       tool.alert('请上传照片');
@@ -110,9 +113,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request_01.login(()=>{
-      
+    this.setData({
+      activity_id:options.activity_id
     })
+    console.log(options.activity_id)
   },
 
   /**

@@ -27,7 +27,9 @@ Page({
       test: "小程序将访问您的手机相册，将生成的海报保存到您的手机相册。",
       cancelText: "取消",
       confirmText: "确定",
-      color_confirm: "#0BB20C"
+      color_confirm: "#0BB20C",
+      qr_code:'',
+      is_open:1,
     },
     posterImgUrl: ''
   },
@@ -43,14 +45,30 @@ Page({
   },
 
   initData(options){
+    var _this = this;
     let activity_id = options.activity_id;
+    let vote_id = options.vote_id;
     let user_id = wx.getStorageSync('userInfo').user_id;
+    wx.request({
+      url: 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/vote/poster',
+      data: {
+        activity_id: activity_id,
+        page: 'pages/vote_detail/vote_detail',
+        param: `p=${user_id}&v=${vote_id}&a=${activity_id}`
+      },
+      success(res) {
+        console.log('res',res)
+        _this.setData({
+          qr_code:res.data.data.qr_code,
+        })
+        _this.getSharePoster()
+      }
+    })
     request_05.myVote({ activity_id, user_id}).then(res=>{
       let resource = res.data.data.info.resource;
       this.setData({
         resource,
       })
-      this.getSharePoster()
     })
   },
 
@@ -62,17 +80,17 @@ Page({
     this.data.canvasLoading = setTimeout(() => {
       if (!this.data.posterImgUrl) { 
         tool.loading_h()
-        too.jump_back()
+        tool.jump_back()
         tool.alert("海报生成失败，请稍后再试")
       }
     }, 15000)
-    console.log("_this.data.userInfo.avatarUrl", resource)
     Promise.all([
       util.getImgLocalPath(resource),
-      util.getImgLocalPath(_this.data.userInfo.headimg || _this.data.userInfo.avatarUrl),
-      util.getImgLocalPath("https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/activity/QR.png"),
+      util.getImgLocalPath(_this.data.userInfo.headimg || _this.data.userInfo.avatarUrl),     
+      util.getImgLocalPath(_this.data.qr_code),
       tool.getImageInfo(resource),
-      tool.getImageInfo(_this.data.userInfo.headimg || _this.data.userInfo.avatarUrl)
+      tool.getImageInfo(_this.data.userInfo.headimg || _this.data.userInfo.avatarUrl),
+      tool.getImageInfo(_this.data.qr_code)
       ]).then(res => {
         console.log("res", res)
         tool.canvasImg({
@@ -82,7 +100,8 @@ Page({
             // { url: res[0], imgW: 573, imgH: 760, imgX: 0, imgY: 0 },
             { url: res[0], imgW: res[3].width, imgH: res[3].height, drawW: 573, drawH: 760, imgX: 0, imgY: 0 },
             { url: res[1], imgW: res[4].width, imgH: res[4].height, drawW: 90, drawH: 90, imgX: 21, imgY: 808, isRadius: true },
-            { url: res[2], imgW: 210, imgH: 210, imgX: 339, imgY: 790 }
+            { url: res[2], imgW: res[5].width, imgH: res[5].height, drawW: 210, drawH: 210, imgX: 339, imgY: 790 }
+            
           ],
           textList: [
             { string: _this.data.userInfo.nickname, color: '#333', fontSize: '30', fontFamily: 'Arial', bold: false, textX: 131, textY: 821 },
@@ -94,7 +113,8 @@ Page({
           _this.setData({
             isState: true,
             posterImgUrl: res,
-            canvasHidden: true
+            canvasHidden: true,
+            is_open:0
           })
           //_this.savePhoto()
         })

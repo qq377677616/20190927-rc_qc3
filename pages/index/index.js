@@ -363,14 +363,14 @@ Page({
       break;
       case 3:
       //3	点亮
-        alert.alert({
-          str:'敬请期待'
+        router.jump_nav({
+          url: `/pages/prize/prize?activity_id=${activity_id}`,
         })
       break;
       case 4:
       //4	集攒
-        alert.alert({
-          str:'敬请期待'
+        router.jump_nav({
+          url: `/pages/vote/vote?activity_id=${activity_id}`,
         })
       break;
       case 5:
@@ -382,21 +382,21 @@ Page({
       break;
       case 7:
       //7	报名
-        alert.alert({
-          str:'敬请期待'
-        })  
+        router.jump_nav({
+          url: `/pages/sign_up/sign_up?activity_id=${activity_id}`,
+        })
       break;
       case 11:
       //11	看车
-        alert.alert({
-          str:'敬请期待'
+        router.jump_nav({
+          url: `/pages/vote/vote?activity_id=${activity_id}`,
         })
       break;
       case 12:
       //12	摇红包
-        alert.alert({
-          str:'敬请期待'
-        })
+      router.jump_nav({
+        url: `/pages/vote/vote?activity_id=${activity_id}`,
+      })
       break;
       case 13:
         //13	砍价

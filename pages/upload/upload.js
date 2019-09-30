@@ -17,30 +17,23 @@ Page({
   },
 
   upload(){
-    let activity_id = wx.getStorageSync('activity_id');
+    let activity_id = this.data.activity_id;
     router.jump_red({
-      url: `/pages/lj_partake/lj_partake`,
+        url: `/pages/lj_partake/lj_partake?activity_id=${activity_id}`,
       })
     },
     no_upload() {
      router.jump_back();
     },
 
-
-  initData(options){
-    let activity_id = options.activity_id;
-    this.setData({
-      activity_id,
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request_01.login(()=>{
-      this.initData(options);
+    this.setData({
+      activity_id:options.activity_id
     })
+
   },
 
   /**

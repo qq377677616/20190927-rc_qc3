@@ -1,6 +1,8 @@
 {
+  "navigationBarTitleText": "报名",
   "usingComponents": {
-    "forms": "/components/forms/form"
-  },
-  "navigationBarTitleText": "报名"
+    "qc-rule":"/components/rule/rule",
+    "forms": "/components/forms/form",
+    "qc-activePop":"/components/activePop/activePop"
+  }
 }
