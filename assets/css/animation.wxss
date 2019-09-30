@@ -66,11 +66,11 @@
   animation: fadeShow .3s forwards;
 }
 /*上下晃动*/
-@keyframes wobble {
+@keyframes wobble1 {
   0%{transform:translateY(-8rpx) rotateY(5deg);}
   100%{transform:translateY(8rpx) rotateY(-5deg);}
 }
-.wobble{animation:wobble 2s infinite alternate;}
+.wobble1{animation:wobble1 2s infinite alternate;}
 @keyframes wobble2 {
   0%{transform:translateY(-8rpx);}
   100%{transform:translateY(8rpx);}

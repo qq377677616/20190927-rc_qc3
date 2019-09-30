@@ -18,6 +18,30 @@
 
         </view>
 
-    </view><!-- main -->
+        <view class="shou" style="background-image:url('{{ IMGSERVICE }}/activity/shou.png')"></view>
 
+    </view><!-- main -->
+	<!-- 领券弹窗 -->
+	<view class="getQuan" wx:if="{{quanPop}}">
+		<view class="centerBoxpop" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_01.png')">
+			<text class="txt_1">恭喜您获得了</text>
+			<view class="card_1" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_02.png')">
+				<view class="quanTxt_1"><text>优惠券</text></view>
+				<view class="quanTxt_2"><text>388</text><text>元</text></view>
+				<view class="quanTxt_3"><text>购车券</text></view>
+			</view>
+			<view class="card_1 card_2" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_03.png')">
+				<view class="quanTxt_1 quanTxt_4"><text>优惠券</text></view>
+				<view class="quanTxt_2 quanTxt_5"><text>388</text><text>元</text></view>
+				<view class="quanTxt_3 quanTxt_6"><text>购车券</text></view>
+			</view>
+			<view class="card_1 card_2" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_03.png')">
+				<view class="quanTxt_1 quanTxt_4"><text>优惠券</text></view>
+				<view class="quanTxt_2 quanTxt_5"><text>388</text><text>元</text></view>
+				<view class="quanTxt_3 quanTxt_6"><text>购车券</text></view>
+			</view>
+			<view class="lq_btn"><text>立即领取</text></view>
+			<image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn"></image>
+		</view>
+	</view>
 </view><!-- shake_shake_page -->

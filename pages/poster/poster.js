@@ -30,6 +30,7 @@ Page({
       color_confirm: "#0BB20C",
       qr_code:'',
       is_open:1,
+      isIos: 0,
     },
     posterImgUrl: ''
   },
@@ -41,6 +42,9 @@ Page({
     request_01.login(()=>{
       this.initData(options);
       this.setData({ userInfo: wx.getStorageSync("userInfo")})
+    })
+    tool.getSystemInfo().then(res => {
+      this.setData({ isIos: res.model.includes("iPhone") ? 1 : 2 })
     })
   },
 
@@ -111,6 +115,7 @@ Page({
         }, res => {
           tool.loading_h();
           _this.setData({
+            isPosterOk:true,
             isState: true,
             posterImgUrl: res,
             canvasHidden: true,

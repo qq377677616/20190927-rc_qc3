@@ -15,6 +15,7 @@
 
 .canvas-mask .content {
   margin-bottom: 136rpx;
+  transform-style:preserve-3d;perspective:2000rpx;
 }
 
 .flex-aro{
@@ -32,7 +33,7 @@
 }
 
 .canvas{
-  width:573rpx;height:1019rpx;position: absolute;left:12%;top: 3%;
+  width:573rpx;height:80vh;position: absolute;left:12%;top: 3%;
   border: 1rpx solid #ccc;
   display: flex;
   flex-direction: column;

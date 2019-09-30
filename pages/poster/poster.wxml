@@ -3,18 +3,19 @@
   <view class="canvas-mask flex-cen">
       <view class="content riseShow">
          <!-- <view class="myCanvas" style="background-image:url('{{ posterImgUrl }}')"></view> -->
-         <image class="myCanvas" mode="widthFix" src="{{ posterImgUrl }}"></image>
-         <view class="canvas" wx:if="{{is_open != 0}}">
+         <image class="myCanvas {{isPosterOk ? (isIos == 1 ? 'wobble2' : 'wobble1') : ''}}" mode="widthFix" src="{{ posterImgUrl }}"></image>
+        
+      </view>
+      <view class="flex-aro">
+           <view style="background-image:url('{{IMGSERVICE}}/activity/noSave.png')" class="btn1" bindtap="noSavePhoto"></view>
+           <view style="background-image:url('{{IMGSERVICE}}/activity/savePhoto.png')" class="btn2" bindtap="savePhoto"></view>
+      </view>
+      <view class="canvas" wx:if="{{is_open != 0}}">
             <view class="pic"></view>
             <view class="down">
               <view class="down-left"></view>
               <view class="down-right"></view>
             </view>
-         </view>
-      </view>
-      <view class="flex-aro">
-           <view style="background-image:url('{{IMGSERVICE}}/activity/noSave.png')" class="btn1" bindtap="noSavePhoto"></view>
-           <view style="background-image:url('{{IMGSERVICE}}/activity/savePhoto.png')" class="btn2" bindtap="savePhoto"></view>
       </view>
       <view class="no_boc"></view>
    </view>
