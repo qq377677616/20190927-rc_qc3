@@ -64,7 +64,7 @@ const videoPlay = (ele, isFullScreen = true) => {
   // }
 }
 //获取手机系统信息
-const getSystem = () => {
+const getSystemInfo = () => {
   return new Promise((resolve, reject) => {
     wx.getSystemInfo({
       success(res) {
@@ -252,7 +252,7 @@ module.exports = {
   loading_h,
   getDom,
   videoPlay,
-  getSystem,
+  getSystemInfo,
   jump_nav,
   jump_red,
   jump_swi,
