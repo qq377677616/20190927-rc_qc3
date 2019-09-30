@@ -1,7 +1,7 @@
 /* pages/pages-list/poster/poster.wxss */
 /* canvas-mask */
 .canvas-mask{position: fixed;left: 0;top: 0;z-index:999;width: 100%;height: 100%; background-color: #F0F0F0;display: flex;flex-direction: column;}
-.canvas-mask .content{width:574rpx;}
+.canvas-mask .content{width:574rpx;height:1019rpx;}
 .canvas-mask .content .myCanvas{width:100%;background-color: #fff;border-radius: 20rpx;background-size: cover;background-position: center center}
 /* .canvas-mask .content .btn{width: 60%;height: 62rpx;background-color: #e53333;color: #fff;font-size: 26rpx;border-radius: 62rpx;text-align: center;line-height: 62rpx;margin-left: auto;margin-right: auto; margin-top: 50rpx;} */
 .share-box {position: relative;}
@@ -30,6 +30,46 @@
   height: 91rpx;
   background-size: cover;
 }
+
+.canvas{
+  width:573rpx;height:1019rpx;position: absolute;left:12%;top: 3%;
+  border: 1rpx solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas .pic{
+  width: 100%;
+  height: 760rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.canvas .down{
+  width: 100%;
+  height: 259rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.canvas .down .down-left{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  border: 1rpx solid #ccc;
+  margin-left: 28rpx;
+  margin-top: 28rpx;
+}
+
+.canvas .down .down-right{
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 50%;
+  border: 1rpx solid #ccc;
+  margin-right: 28rpx;
+  margin-top: 28rpx;
+}
+
+
 
 
 

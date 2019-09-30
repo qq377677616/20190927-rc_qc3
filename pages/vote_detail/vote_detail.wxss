@@ -134,33 +134,44 @@ page{
 
 /* .down_right */
 
-.down_left{
+.down_left {
   position: absolute;
-  top: 65%;
+  top: 72%;
   left: 5%;
 }
 
-.down_left view{
+.down_left view {
   color: #FFF;
   font-size: 30rpx;
 }
 
-.down_left view:last-child{
+.down_left .nickname {
   font-size: 24rpx;
-  margin-top: 29rpx;
   margin-left: 16rpx;
 }
 
-.down_left .left_img{
+.down_left .left_img {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
-.down_left .left_img .image image{
+.down_left .left_img .image {
   margin-right: 11rpx;
   width: 90rpx;
   height: 90rpx;
-  border-radius:50%;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.down_left .content{
+  margin-top: 29rpx;
+}
+
+.down_left .left_img .image image {
+  margin-right: 11rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
   background-size: cover;
 }
 

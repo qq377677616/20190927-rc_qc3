@@ -24,10 +24,13 @@ App({
     wx.setStorageSync("shareIds", _shareIds)
     //腾讯统计
     auth.statistics(500695944)
+
     //锁
+    const keyGroup = wx.getStorageSync('keyGroup');
     wx.setStorageSync('keyGroup', {
       giftKey:true,//见面礼开关
-      pinKey:true,//拼团开关
+      pinKey:keyGroup.pinKey == false ? false : true,//拼团开关
+      signUpKey:keyGroup.signUpKey == false ? false : true,//报名开关
     })
   },
   globalData: {
