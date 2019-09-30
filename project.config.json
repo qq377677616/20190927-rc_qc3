@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 60,
+			"current": 61,
 			"list": [
 				{
 					"id": -1,
@@ -477,10 +477,17 @@
 					"scene": null
 				},
 				{
-					"id": 60,
-					"name": "sign_up",
-					"pathName": "pages/sign_up/sign_up",
-					"query": "activity_id=45",
+					"id": -1,
+					"name": "selfHelp",
+					"pathName": "pages/selfHelp/selfHelp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "friendHelp",
+					"pathName": "pages/friendHelp/friendHelp",
+					"query": "",
 					"scene": null
 				},
 				{

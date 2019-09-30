@@ -45,13 +45,14 @@ Page({
 	isfirst:1,
 	isshare:false,
 	kucun:false,
+	endStatus:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-	  console.log('砍价首页参数',options);
+	  console.log('参数',options);
 	//   alert.alert({ str:options.isshare})
 	  this.setData({ isshare: options.isshare=="6"})
 	  wx.setStorageSync("activity_id", options.activity_id || wx.getStorageSync('activity_id')) 
@@ -158,7 +159,8 @@ Page({
 			  this.setData({ 
 				  shopList: res.data.data,
 				  iscarActive:res.data.data.car_owner==1,
-				  activeStatus:res.data.status
+				  activeStatus:res.data.status,
+				  endStatus: res.data.data.end_status
 				})
 			  this.setRule();
 			  if (res.data.data.end_time>0){
@@ -235,7 +237,8 @@ Page({
 		console.log("点击正在进行中正行")
 		console.log(e);
 		let ing = e.currentTarget.dataset.ing;
-		ing = ing == 2 ? 5 : (ing = ing == 1 ? 6 : ing);  
+		ing = ing == 2 ? 5 : (ing = ing == 1 ? 6 : ing);
+		ing = this.data.endStatus == 1?ing:8;  
 		console.log(ing)
 		let shopid = e.currentTarget.dataset.shopid;
 		route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopid + '&b_type=' + ing });
