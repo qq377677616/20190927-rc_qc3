@@ -6,14 +6,14 @@ Component({
 	 * 组件的属性列表
 	 */
 	properties: {
-		popType:{
-			type:String,
-			value:0
+		popType: {
+			type: String,
+			value: 0
 		},
-    text: {
-      type: String,
-      value: '暂时不能参与该活动'
-    }
+		text: {
+			type: String,
+			value: '暂时不能参与该活动'
+		}
 	},
 
 	/**
@@ -21,32 +21,43 @@ Component({
 	 */
 	data: {
 		IMGSERVICE: app.globalData.IMGSERVICE,
-		popShow:true
+		popShow: true
 	},
 
 	/**
 	 * 组件的方法列表
 	 */
 	methods: {
-		otherAct(){
-      this.closePop()
-			route.jump_back()	
+		otherAct() {
+			let pages = getCurrentPages();
+			let len = pages.length;
+
+			this.closePop()
+
+			if( len > 1 ){
+				route.jump_back()
+			}
+			else{
+				route.jump_nav({
+					url:`/pages/activity_list/activity_list`
+				})
+			}
 		},
-		closePop(){
+		closePop() {
 			//this.setData({ popShow:false})
-      this.triggerEvent("close")
+			this.triggerEvent("close")
 		},
 		AuthBannerJump(e) {
-      if (!e.detail.userInfo) return
+			if (!e.detail.userInfo) return
 			// let obj = {};
 			// obj.headimg = e.detail.userInfo.avatarUrl;
 			// obj.nickname = e.detail.userInfo.nickName;
-			this.setData({popShow:false})
-      this.triggerEvent('getParme', e.detail);
+			this.setData({ popShow: false })
+			this.triggerEvent('getParme', e.detail);
 		},
-		bindCarer(){
-      this.closePop()
-			route.jump_nav({ url:'/pages/o_love_car/o_love_car?pageType=back'});
-		}	
+		bindCarer() {
+			this.closePop()
+			route.jump_nav({ url: '/pages/o_love_car/o_love_car?pageType=back' });
+		}
 	}
 })

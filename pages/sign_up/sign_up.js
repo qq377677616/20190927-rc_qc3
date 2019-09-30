@@ -1,168 +1,41 @@
 // pages/sign_up/sign_up.js
+const request_01 = require('../../utils/request/request_01.js');
 
-const request_01 = require('../../utils/request/request_01.js')
+const request_05 = require('../../utils/request/request_05.js');
 
-const request_05 = require('../../utils/request/request_05.js')
+const router = require('../../utils/tool/router.js');
 
-const tool = require('../../utils/tool/tool.js')
+const alert = require('../../utils/tool/alert.js');
 
 const app = getApp();
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    IMGSERVICE: app.globalData.IMGSERVICE,  
+    IMGSERVICE: app.globalData.IMGSERVICE,
+    options: {},
+    firstShow: false,
+    signInfo: {},
+    winInfo: {},
+    keyGroup:{},
+    activityShow:false,
+    ruleShow: false,
     isShowForm: false,
-    isShowSuc: false,
-    isPrize:false,
-    isGoPrize:false,
-    formsType: 3,//0为门店弹窗、1为详细地址弹窗、2为看车弹窗
-    info:{}//信息
-    
-  },
-  
-  isShowRule() {
-    this.isHidePop();
+    formType: '',
+    formId: '',
+    isWinShow: true,
+    isTipsShow: false,
+    tipsText: '',
+    isWinPromptShow: true,
   },
 
-  // 规则弹窗打开关闭
-  isHidePop() {
-    this.setData({ isShow: !this.data.isShow });
-  },
-
-  //留资弹窗打开关闭
-  isShowForm() {
-    this.setData({ isShowForm: !this.data.isShowForm })
-  },
-
-  // 报名弹窗打开关闭
-  close(){
-    this.setData({ isShowSuc: !this.data.isShowSuc })
-  },
-
-  // 是否中奖弹窗打开关闭
-  isPrize(){
-    this.setData({ isGoPrize: !this.data.isGoPrize })
-  },
-
-  // 获奖名单弹窗打开关闭
-  close_prize(){
-    this.setData({ isPrize: !this.data.isPrize })
-  },
-
-  // 领取留资打开、关闭
-  // isPrize(){
-  //   this.setData({ isPrize: !this.data.isPrize})
-  // },
-
-  // 点击打开中奖名单
-  goPrize(){
-    this.isPrize();
-    this.close_prize();
-  },
-
-  // 获取formId
-  formSubmit(e) {
-    let formId = e.detail.formId;
-    this.setData({
-      formId,
-    })
-    this.isShowForm();
-  },
-
-  //留资领取
-  submit(e) {
-    console.log("留资表单", e.detail);
-    let activity_id = this.data.activity_id;
-    let user_id = wx.getStorageSync('userInfo').user_id;
-    let mobile = e.detail.phone;
-    let name = e.detail.name;
-    let form_id = this.data.formId;
-    let verify_code = e.detail.code;
-    let is_join = this.data.is_join; //判断是否参与   0活动未开始，1活动中，用户未参与， 2活动中，用户已参与， 3活动结束，用户未参与， 4活动结束，用户已参与
-    switch(is_join){
-      case 1:
-        request_05.participate({ activity_id, user_id, name, mobile, form_id }).then(res => {
-          if (res.data.msg == "报名成功") {
-            tool.alert('报名成功');
-            setTimeout(() => {
-              this.isShowForm();
-              this.close();
-            }, 1000)
-          }
-        })
-        break;
-      case 2:
-        request_05.getUserMessage({ activity_id, user_id }).then(res => {
-          console.log(res);
-          if (res.data.status == 1) {
-            tool.alert('领取成功');
-          }
-        })
-        break;
-    } 
-  },
-
-  // 领取奖品
-  getPrize(e) {
-    this.setData({ formsType: 1 })
-    this.isShowForm();
-  },
-
-  // 初始化data
-  initData(options){
-    const activity_id = parseInt(options.activity_id);
-    const user_id = wx.getStorageSync('userInfo').user_id;
-    request_05.enterApply({ activity_id, user_id }).then(res=>{
-      console.log(res);
-      let is_join = res.data.data.status;
-      let img_list = (res.data.data.img_list).slice(0,4);
-      this.setData({ 
-        info:res.data.data,
-        img_list,
-        activity_id,
-        is_join
-      });
-    if(res.data.data.status==2){
-      request_05.hasParticipate({activity_id,user_id}).then(res=>{
-        console.log(res);
-        let user_activity = res.data.data.user_activity;
-        let the_winning_list = res.data.data.the_winning_list;
-        this.setData({
-          user_activity,
-          the_winning_list,
-        })
-        let height;
-        switch (user_activity.status){
-          case 1 :
-            // 控制scollview高度
-            height = 335;
-            this.setData({
-              height
-            })
-            this.isPrize();
-            break;
-
-          case 0:
-            height = 450;
-            this.setData({
-              height
-            })
-            this.close_prize();
-            break;
-        }
-      })
-    }
-  })
-},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request_01.login(()=>{
+    request_01.login(() => {
       this.initData(options);
     })
   },
@@ -171,16 +44,25 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      firstShow: true,
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const firstShow = this.data.firstShow;
+    const options = this.data.options;
+
+    //返回刷新
+    if (firstShow) {
+      this.onLoad(options)
+    }
 
   },
-  
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -213,6 +95,211 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    const options = this.data.options;
 
-  }
+    return {
+      // title:'',
+      // imageUrl:`${IMGSERVICE}/pin/pin.jpg`,
+      path: `/pages/sign_up/sign_up?activity_id=${options.activity_id}&pageType=index`,
+    }
+  },
+  //页面初始化
+  initData(options) {
+    const userInfo = wx.getStorageSync('userInfo');
+
+    //数据初始化
+    alert.loading({
+      str:'加载中'
+    })
+
+    Promise.all([
+      request_05.enterApply({
+        activity_id: options.activity_id,
+        user_id: userInfo.user_id,
+      }),
+      request_05.hasParticipate({
+        activity_id: options.activity_id,
+        user_id: userInfo.user_id,
+      }),
+    ])
+      .then((value) => {
+        //success
+        
+        const signInfo = value[0].data.data;
+        const winInfo = value[1].data.data;
+        const keyGroup = wx.getStorageSync('keyGroup');
+
+        this.setData({
+          signInfo,//报名信息
+          winInfo,//奖品信息
+          keyGroup,
+          ruleShow:keyGroup.signUpKey,//首次弹规则弹窗
+          activityShow:keyGroup.signUpKey ? false : true,//首次弹规则不展示活动 未开始 结束 提示框
+        })
+      })
+      .catch((reason) => {
+        //fail
+
+      })
+      .then(() => {
+        //complete
+        alert.loading_h()
+        this.setData({
+          options,
+        })
+      })
+  },
+  //rule规格按钮
+  isShowRule() {
+    const ruleShow = this.data.ruleShow;
+    const keyGroup = this.data.keyGroup;
+
+    if( keyGroup.signUpKey ){
+        //如果第一次关闭规则弹窗
+        this.setData({
+            activityShow:true,
+        })
+    } 
+
+    keyGroup.signUpKey = false;
+
+    wx.setStorageSync('keyGroup', keyGroup)//存本地
+
+    //切换规则弹窗
+    this.setData({
+      ruleShow: !ruleShow,
+    })
+  },
+  //我要报名
+  signUp(e) {
+    const formId = e.detail.formId;
+    const signInfo = this.data.signInfo;
+
+    //是否车主
+    if ((wx.getStorageSync("userInfo").user_type == 0 && signInfo.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+
+    this.setData({
+      formType: 3,
+      formId,
+      isShowForm: true,
+    })
+  },
+  //关闭留资弹窗
+  isShowForm() {
+    this.setData({
+      isShowForm: false,
+    })
+  },
+  //提交表单
+  submit(e) {
+    const detail = e.detail;
+    const formId = this.data.formId;
+    const options = this.data.options;
+    const userInfo = wx.getStorageSync('userInfo');
+
+    //报名
+    request_05.participate({
+      activity_id: options.activity_id,
+      user_id: userInfo.user_id,
+      name: detail.name,
+      mobile: detail.phone,
+      form_id: formId,
+      verify_code: detail.code || '',
+    })
+      .then((value) => {
+        //success
+        const msg = value.data.msg;
+        const status = value.data.status;
+        let tipsText;
+
+
+        if (status == 1) {
+          //报名成功
+          tipsText = '已报名成功\n坐等锦鲤附身！';
+        }
+        else {
+          //报名失败
+          tipsText = msg;
+        }
+
+        this.setData({
+          isTipsShow: true,
+          tipsText,
+          isShowForm: false,
+        })
+
+
+      })
+      .catch((reason) => {
+        //fail
+
+      })
+      .then(() => {
+        //complete
+
+      })
+
+
+  },
+  //领取奖品
+  getBtn(){
+    router.jump_nav({
+      url:`/pages/o_prize/o_prize`
+    })
+  },
+  //公布弹窗滚动加载
+  winListScroll(e) {
+
+  },
+  //关闭公布弹窗
+  isWinShow() {
+    this.setData({
+      isWinShow: false,
+    })
+  },
+  //关闭报名提示弹窗
+  isTipsShow() {
+    const options = this.data.options;
+
+    //刷新页面
+    this.onLoad(options)
+
+    this.setData({
+      isTipsShow: false,
+    })
+  },
+  //关闭中奖提示弹窗
+  isWinPromptShow() {
+    this.setData({
+      isWinPromptShow: false
+    })
+  },
+  //判断是否授权和是否是车主
+  isVehicleOwner(e) {
+    const signInfo = this.data.signInfo;
+    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !signInfo.car_owner)) return;
+    if (!wx.getStorageSync("userInfo").nickName) {
+      this.setData({ popType: 2 })
+    }
+    else if (wx.getStorageSync("userInfo").user_type == 0) {
+      this.setData({ popType: 3 })
+    }
+
+    this.isVehicleOwnerHidePop()
+  },
+  //授完权后处理
+  getParme(e) {
+    this.isVehicleOwnerHidePop()
+
+    request_01.setUserInfo(e)
+      .then(res => {
+        this.isVehicleOwner()
+      })
+  },
+  //是否授权、绑定车主弹窗
+  isVehicleOwnerHidePop() {
+    this.setData({
+      isVehicleOwnerHidePop: !this.data.isVehicleOwnerHidePop
+    })
+  },
 })
