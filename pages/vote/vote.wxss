@@ -12,6 +12,7 @@ page {
   border-radius: 50%;
 }
 
+
 .vote_bg {
   height: 100%;
   width: 750rpx;
@@ -280,10 +281,9 @@ video {
 .btn_share {
   position: absolute;
   display: block;
-  width: 200rpx;
-  height: 200rpx;
-  top: 2;
-  left: 23%;
+  width: 100rpx;
+  height: 100rpx;
+  top: 2%;
 }
 
 .heart image {
@@ -455,10 +455,11 @@ video {
 .rulsbox {
   width: 114rpx;
   height: 60rpx;
+  font-size: 24rpx;
   text-align: center;
   line-height: 60rpx;
-  color: #FFF;
-  background-color: #000000;
+  color: #FFFFFF;
+  background:rgba(35,35,35,0.3);
   left: 0;
   border-top-right-radius: 30rpx;
   border-bottom-right-radius: 30rpx;
@@ -466,17 +467,17 @@ video {
   top: 63rpx;
   border: 2rpx solid #FFF;
   border-left: 0;
-  opacity: 0.5;
   z-index: 1;
 }
 
 .rankbox {
   width: 166rpx;
   height: 60rpx;
+  font-size: 24rpx;
   text-align: center;
   line-height: 60rpx;
-  color: #FFF;
-  background-color: #000000;
+  color:rgba(255,255,255,2);
+  background-color:rgba(35,35,35,0.3);
   border-top-left-radius: 30rpx;
   border-bottom-left-radius: 30rpx;
   position: fixed;
@@ -484,7 +485,6 @@ video {
   top: 63rpx;
   border: 2rpx solid #FFF;
   border-right: 0;
-  opacity: 0.5;
   z-index: 1;
 }
 
@@ -630,6 +630,28 @@ video {
   height: 60rpx;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.txt_index{
+  font-size: 24rpx;
+}
+
+.home image{
+  width: 63rpx;
+  height: 63rpx;
+}
+
+.home view{
+  font-size: 24rpx;
+  color: #FFF;
+  margin-top: 10rpx;
 }
 
 .win_list{

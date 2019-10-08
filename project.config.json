@@ -494,6 +494,28 @@
 					"id": -1,
 					"name": "poster",
 					"pathName": "pages/poster/poster",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "friendHelp",
+					"pathName": "pages/friendHelp/friendHelp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 64,
+					"name": "vote",
+					"pathName": "pages/vote/vote",
+					"query": "activity_id=43",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "ad",
+					"pathName": "pages/ad/ad",
+					"query": "activity_id=43",
 					"scene": null
 				}
 			]
