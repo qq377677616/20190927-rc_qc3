@@ -8,7 +8,7 @@
   <!-- main -->
   <view class="main">
 
-    <view class="rule" bindtap="isShowRule">
+    <view class="rule" bindtap="openRule">
       <view class="text">报名规则</view>
       <view class="icon iconfont icon_more"></view>
     </view>
@@ -90,13 +90,19 @@
           <!-- <view class="status">恭喜中奖</view> -->
         </view>
 
-        <view class="win_item active">
+        <!-- <view class="win_item active">
           <image class="headimg" src="{{ winInfo.user_activity.headimg }}" mode="widthFix"></image>
           <view class="name nowrap">{{ winInfo.user_activity.nickname }}</view>
           <view class="status">{{ winInfo.user_activity.status == 1 ? '恭喜中奖' : '未获奖' }}</view>
-        </view>
+        </view> -->
 
       </scroll-view>
+
+      <view class="user_item active">
+        <image class="headimg" src="{{ winInfo.user_activity.headimg }}" mode="widthFix"></image>
+        <view class="name nowrap">{{ winInfo.user_activity.nickname }}</view>
+        <view class="status">{{ winInfo.user_activity.status == 1 ? '恭喜中奖' : '未获奖' }}</view>
+      </view>
       
 
 
@@ -135,7 +141,7 @@
 
 <!-- rule_mask -->
 <view class="pof fadeIn" style="z-index:999;" wx:if="{{ ruleShow }}">
-  <qc-rule bindclose="isShowRule" ruleImg="{{ signInfo.rule }}"></qc-rule>
+  <qc-rule bindclose="closeRule" ruleImg="{{ signInfo.rule }}"></qc-rule>
 </view>
 <!-- rule_mask -->
 

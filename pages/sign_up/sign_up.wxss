@@ -194,9 +194,10 @@ page {
   overflow: hidden;
 }
 .win_mask .win_main .win_list{
-  height:500rpx;
+  height:400rpx;
 }
-.win_mask .win_main .win_list .win_item{
+.win_mask .win_main .win_list .win_item,
+.win_mask .win_main .user_item{
   display: flex;
   align-items:center;
   height:99rpx;
@@ -204,13 +205,15 @@ page {
   border-color:transparent;
   border-width:0 20rpx 0 20rpx;
 }
-.win_mask .win_main .win_list .win_item.active{
+.win_mask .win_main .win_list .win_item.active,
+.win_mask .win_main .user_item.active{
   background:rgba(241,64,62,0.1);
 }
 .win_mask .win_main .win_list .win_item:not(:first-of-type){
   border-top:1rpx solid #EEE;
 }
-.win_mask .win_main .win_list .win_item .label{
+.win_mask .win_main .win_list .win_item .label,
+.win_mask .win_main .user_item .label{
   flex:0 0 auto;
   font-size: 28rpx;
   color: #333;
@@ -218,20 +221,23 @@ page {
   width: 76rpx;
   text-align:center;
 }
-.win_mask .win_main .win_list .win_item .headimg{
+.win_mask .win_main .win_list .win_item .headimg,
+.win_mask .win_main .user_item .headimg{
   flex:0 0 auto;
   width: 57rpx;
   height:57rpx;
   border-radius: 50%;
   margin-right: 21rpx;
 }
-.win_mask .win_main .win_list .win_item .name{
+.win_mask .win_main .win_list .win_item .name,
+.win_mask .win_main .user_item .name{
   width: 0;
   flex:1;
   font-size: 26rpx;
   color: #666;
 }
-.win_mask .win_main .win_list .win_item .status{
+.win_mask .win_main .win_list .win_item .status,
+.win_mask .win_main .user_item .status{
   flex:0 0 auto;
   color: #F1403E;
   font-size: 26rpx;
