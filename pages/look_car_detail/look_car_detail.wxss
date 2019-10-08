@@ -9,7 +9,7 @@
     left:0;
     top:0;
     z-index: 100;
-    background: #eee;
+    background: #fff;
 }
 
 .nav_area .nav_item {
