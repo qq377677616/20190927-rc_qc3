@@ -5,6 +5,7 @@
 
     <!-- nav_area -->
     <view class="nav_area">
+        <view class="bg" style="left:{{navIndex * 50}}%"></view>
         <view class="nav_item {{ navIndex == 0 ? 'active' : '' }}" data-index="0" bindtap="navList">车型介绍</view>
         <view class="nav_item {{ navIndex == 1 ? 'active' : '' }}" data-index="1" bindtap="navList">参数配置</view>
     </view>
@@ -12,7 +13,7 @@
 
     <!-- main -->
     <scroll-view scroll-y class="main" scroll-top="{{scrollTop}}">
-        <block wx:if="{{ navIndex == 1 }}">
+        <view hidden="{{ navIndex == 0 }}">
             <view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
 
                 <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
@@ -43,12 +44,12 @@
               </view>
           </view>
         </view>
-        </block>
-        <block wx:else>
+        </view>
+        <view hidden="{{}}">
             <view class="image_item">
                 <image src="{{ lookCarDetail.car_details_img }}" mode="widthFix" bindload="bindload"></image>
             </view>
-        </block>
+        </view>
 
     </scroll-view>
     <!-- main -->
