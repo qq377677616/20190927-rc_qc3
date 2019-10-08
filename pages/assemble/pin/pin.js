@@ -66,14 +66,16 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        //关闭规则提示
+        this.ruleHideBtn()
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        //关闭规则提示
+        this.ruleHideBtn()
     },
 
     /**
