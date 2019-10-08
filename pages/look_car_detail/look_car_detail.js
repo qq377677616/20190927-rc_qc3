@@ -101,7 +101,8 @@ Page({
     swiper3Current: 0,
     animateInit: null,
     isSwitchIng: false,
-    isShowIcon: -1
+    isShowIcon: -1,
+    sss: true
   },
 
   onLoad: function (options) {

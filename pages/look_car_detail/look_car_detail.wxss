@@ -16,30 +16,35 @@
     font-size: 28rpx;
     color: #333;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     position: relative;
     font-weight: bold;
-    padding-bottom: 18rpx;
+    z-index: 5;
+    transition: all .3s linear;
+    /* padding-bottom: 18rpx; */
 }
 
 .nav_area .nav_item.active {
-    color: #124EB9;
+    color: #fff;
+    /* background: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1)); */
 }
 
-.nav_area .nav_item::after {
+.nav_area .bg {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translatex(-50%);
-    width: 120rpx;
-    height: 6rpx;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #999;
+    z-index: 0;
+    transition: all .3s linear;
 }
 
-.nav_area .nav_item.active::after {
+/* .nav_area .nav_item.active::after {
     background-image: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1));
-}
+} */
 /* .top */
 /* pages/car_detail2/car_detail2.wxss */
 .car-detail-content{
