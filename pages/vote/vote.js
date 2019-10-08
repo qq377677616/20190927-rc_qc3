@@ -175,7 +175,6 @@ Page({
     this.setData({ rulspop: false });
     if (!wx.getStorageSync("isRule").vote);
     this.activestatus();
-    
   },
   activestatus(){
     let activity_id = this.data.activity_id;
@@ -224,7 +223,6 @@ Page({
 
   // 分享好友
   shareFriend() {
-
     const activity_id = this.data.activity_id
     const userIndex = this.data.userIndex; //当年swiper下标
     const user_id = wx.getStorageSync('userInfo').user_id
@@ -233,6 +231,12 @@ Page({
 
     request_05.doVote({ user_id, vote_id, type }).then(res => {
       console.log(res);
+    })
+  },
+
+  toHome(){
+    router.jump_red({
+      url: `/pages/activity_list/activity_list`,
     })
   },
 
@@ -414,38 +418,6 @@ Page({
     }
     tool.loading_h();
   },
-      // let activity_id = this.data.activity_id;
-      // let user_id = wx.getStorageSync('userInfo').user_id
-      // let banIndex = request_05.voteRandPlay({ user_id, activity_id }).then(res => {
-      //   const _ban = res.data.data
-      //   console.log(_ban)
-      //   for (var i = 0; i < _ban.length; i++) {
-      //     //为0时 未点赞
-      //     console.log(_ban[i].is_favorite)
-      //     if (_ban[i].is_favorite == 0) {
-      //       _ban[i].curIndex = 8;
-      //     }
-      //     else {
-      //       //已经点赞
-      //       _ban[i].curIndex = 6;
-      //     }
-      //   }
-      //   this.setData({
-      //     VideoBg: _ban.length > 0 ? _ban : this.data.VideoBg
-      //     })
-      //   })
-     
-
-    // let user_id = wx.getStorageSync('userInfo').user_id;
-    // let activity_id = this.data.activity_id;
-    // let myVote = request_05.myVote({ user_id, activity_id }).then(res => {
-    //   const myInfo = res.data.data.info;
-    //   const is_join = res.data.data.is_join;
-    //   this.setData({
-    //     myInfo,
-    //     is_join,
-    //   })
-    // })
 
   /**
    * 生命周期函数--监听页面隐藏

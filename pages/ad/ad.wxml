@@ -9,8 +9,8 @@
         <my-header title="" btnIcon="back" bind:headerBack="headerBack"></my-header>
   </view>
 
-  <view class="time">
-    <view bindtap="tiao">跳过</view>
+  <view class="time" bindtap="tiao">
+    <view>跳过</view>
     <view wx:if="{{min!=0}}">{{min}}s</view>
   </view>
 

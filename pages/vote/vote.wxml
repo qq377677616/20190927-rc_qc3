@@ -1,8 +1,8 @@
 <!-- pages/vote/vote.wxml -->
 <view class="vote_bg" bindtap="isVehicleOwner">
   <view bindtap="openRule" class="rulsbox">规 则</view>
-  <view bindtap="votePageJump" class="rankbox">排 行 榜</view>
-  <view wx:if="{{isHome}}" bindtap="back_home" class="rulsbox back-home">首 页</view>
+  <view bindtap="votePageJump" class="rankbox"><text>排 行 榜</text></view>
+  <!-- <view wx:if="{{true}}" bindtap="back_home" class="rulsbox back-home">首 页</view> -->
   <swiper vertical="true" bindchange="swiperChange">
     <swiper-item wx:for="{{VideoBg}}">
       <!-- <image  class="bg" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3987907653,720009510&fm=26&gp=0.jpg">
@@ -24,6 +24,10 @@
           <button open-type="share" class="btn_share" bindtap="shareFriend"></button>
           <view>{{item.shares}}</view>
         </view>
+        <view bindtap="toHome" class="home" wx:if="{{isHome}}">
+          <image src="{{IMGSERVICE}}/activity/home.png"></image>
+          <view class="txt_index">查看更多</view>
+        </view>
       </view>
       <view class="btn_can" bindtap="toPartake" data-type="ok" wx:if="{{is_join==0}}">立即参与</view>
       <view class="down_left">
@@ -37,25 +41,12 @@
       </view>
     </swiper-item>
   </swiper>
-  <!-- 游戏规则弹窗 -->
-  <!-- <view class="popup flex-cen" wx:if="{{rulspop}}">
-          <view class="rule-box fadeShow">
-          <view class="box">
-          <scroll-view scroll-y>
-          <image src="{{info.rule}}" mode="widthFix"></image>
-          </scroll-view>
-          </view>
-          <image class="close-btn" src="{{IMGSERVICE}}/prize/close.png" bindtap="closePop"></image>
-          </view>
-    </view> -->
 </view>
+
+<!-- 规则 -->
 <view class="pof fadeShow" wx:if="{{rulspop}}">
   <rule bindclose="closePop" ruleImg="{{indexInfo.rule}}"></rule>
 </view>
-<!-- 授权、去绑定车主弹窗 -->
-
-
-
 
 <!-- win_list -->
 
@@ -114,8 +105,9 @@
 <!-- win_list -->
 
 
-
+<!-- 授权、去绑定车主弹窗 -->
 <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
   <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
 </view>
+
 <!-- <image  class="img {{cur_index == index ? 'op':''}}" bindtap="test" wx:for="{{image_list}}" src="{{item.src}}"></image> -->
