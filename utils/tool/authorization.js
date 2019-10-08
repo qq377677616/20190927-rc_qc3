@@ -74,17 +74,19 @@ const isSettingScope = (scope, callback) => {
   })
 }
 /*判断是否授权*/
-const isSetting = callBack => {
-  wx.getSetting({
-    success: res => {
-      //授过权
-      if (res.authSetting['scope.userInfo']) {
-        callBack(true)
-        //未授权  
-      } else {
-        callBack(false)
+const isSetting = scope => {
+  return new Promise(resolve => {
+    wx.getSetting({
+      success: res => {
+        //授过权
+        if (res.authSetting[scope]) {
+          resolve(true)
+          //未授权  
+        } else {
+          resolve(false)
+        }
       }
-    }
+    })
   })
 }
 //打开授权设置
