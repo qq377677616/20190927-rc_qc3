@@ -14,7 +14,7 @@
 			<view class="myEnter"><text>我也要参与</text></view>
 		</view>
 		<!-- 查看其他活动BOX -->
-		<view class="helpBox helpBox2" wx:if="{{false}}">
+		<view class="helpBox helpBox2" wx:if="{{helpList.length == 10}}">
 			<view class="readyTxt">已经有10位好友助力，快来领取奖品</view>
 			<view class="quanBox" style="background-image:url({{IMGSERVICE}}/center/quan.png)">
 				<view class="quan1">优惠券</view>
@@ -26,35 +26,27 @@
 		</view>		
 	</view>
   <!-- 自己进入 -->
-  <view wx:if="{{true}}">
+  <view wx:if="{{helpList.length<10}}">
     <view class="helpBox helpBox2">
         <view class="readyTxt">陈小东</view>
         <view class="moreTxt">呼朋唤友助你获得更多奖励</view>
         <view class="firendList">
           <view class="setflex">
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>	
-            <view class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>
+            <view wx:for="{{helpList}}" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>
+            <view wx:for="{{10-helpList.length}}" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>
           </view>
-          <view class="firendNum">已有5位好友为您助力</view>
+          <view class="firendNum">已有{{helpList.length}}位好友为您助力</view>
         </view>
       </view>	
       <view class="userImg1" style="background-image:url({{IMGSERVICE}}/center/car_bg.png)"></view>	
-      <view class="myEnter1"><text>寻找好友帮忙</text></view>
+      <view class="myEnter1" wx:if="{{helpList.length<10}}"><button>寻找好友帮忙</button></view>
       <view class="myEnter"><text>查看其他活动</text></view>
     </view>
 	<!-- 给好友助力Box -->
-	<view class="centerHelp" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)" hidden="{{true}}"></view>
+	<view class="centerHelp" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)" wx:if="{{isShow}}"></view>
 	<!-- 查看其他活动BOX -->
-	<view class="centerHelp2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png);margin-top:{{height}}rpx"></view>
-	<view class="help_list">
+	<view class="centerHelp2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png);margin-top:{{height}}rpx" wx:if="{{isShow}}"></view>
+	<view class="help_list" wx:if="{{isShow}}">
 		<view class="help_item" wx:for="{{helpList}}">
 			<view class="leftBox">
 				<view class="l_item1 nowrap"><text>{{index+1}}</text></view>

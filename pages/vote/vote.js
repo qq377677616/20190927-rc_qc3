@@ -458,7 +458,7 @@ Page({
     let obj = {
       title: '大侠请留步！帮我点个赞，赢京东500元购物卡！',
       path: `/pages/vote/vote?activity_id=${activity_id}&isShare=1&user_id=${user_id}`,
-      imageUrl: this.data.IMGSERVICE + "/activity/vote.jpg"
+      imageUrl: this.data.IMGSERVICE + "/activity/share_out.jpg"
     };
     return obj;
   }
