@@ -121,9 +121,10 @@ Page({
       this.setData({ windowHeight: res.windowHeight })
     })
     //是否显示最新icon
-    api.isShowIcon().then(res => {
-      this.setData({ isShowIcon: 1})
-    })
+    this.setData({ isShowIcon: 1 })
+    // api.isShowIcon().then(res => {
+    //   this.setData({ isShowIcon: 1})
+    // })
   },
   //初始化dom信息
   scrollShowInit() {
