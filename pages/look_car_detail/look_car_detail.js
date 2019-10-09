@@ -84,9 +84,9 @@ Page({
     ],
     car_type_list_index: 0,
     iconList: [
-      { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' },
-      { img: app.globalData.IMGSERVICE + '/car_detail/icon_01s.png', url: '/pages/bargain_index/bargain_index?activity_id=47' },
-      { img: app.globalData.IMGSERVICE + '/car_detail/icon_02s.png', url: '/pages/assemble/pin/pin?activity_id=44' }
+      { img: app.globalData.IMGSERVICE + '/car_detail/icon_01.png', url: '/pages/bargain_index/bargain_index?activity_id=47' },
+      { img: app.globalData.IMGSERVICE + '/car_detail/icon_02.png', url: '/pages/assemble/pin/pin?activity_id=44' },
+      { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' }
     ],
     iconLists: [
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_01.png', url: '/pages/bargain_index/bargain_index?activity_id=47' },
@@ -122,8 +122,7 @@ Page({
     })
     //是否显示最新icon
     api.isShowIcon().then(res => {
-      console.log("res.data.status", res.data.status)
-      this.setData({ isShowIcon: res.data.status})
+      this.setData({ isShowIcon: 1})
     })
   },
   //初始化dom信息

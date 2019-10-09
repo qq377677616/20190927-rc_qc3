@@ -632,9 +632,10 @@ swiper {
 .select_car .picker{position: absolute;width:100%;height:100%;left:0;top:0;}
 .group .li .span{color:#999;}
 .icon-box{position: fixed;right:0;bottom:215rpx;z-index: 500;}
-.icon-box .li{width:139rpx;}
-.icon-box .li:nth-child(1){width:128rpx;margin: 0 0 15rpx 4rpx !important;}
-.icon-box .li:nth-child(2){width:131rpx;}
+.icon-box .li{width:130rpx;}
+.icon-box .li:nth-child(3){width:140rpx;position: relative;right:10rpx;}
+/* .icon-box .li:nth-child(1){width:128rpx;margin: 0 0 15rpx 4rpx !important;}
+.icon-box .li:nth-child(2){width:131rpx;} */
 .icon-box .li image{width:100%;}
 .icon-box .li:not(:last-child){margin-bottom: 12rpx;}
 @keyframes shadow {
