@@ -16,14 +16,14 @@ page {
 .nav_area {
     flex: 0 0 auto;
     display: flex;
-    height: 65rpx;
+    height: 80rpx;
     background: #fff;
     position: relative;
 }
 
 .nav_area .nav_item {
     flex: 1;
-    font-size: 26rpx;
+    font-size: 28rpx;
     color: #333;
     display: flex;
     align-items: center;

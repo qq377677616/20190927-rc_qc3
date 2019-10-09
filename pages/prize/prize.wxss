@@ -1,3 +1,4 @@
+.prize{overflow-x: hidden;}
 .bg,.page1 .con,.popup{position: fixed;width:100%;height:100%;left:0;top:0;z-index: 0;}
 .page1{position: absolute;width:100%;left:0;top:0;}
 .con{z-index: 5}
@@ -23,7 +24,8 @@
 .page2 .top .edge{width:100%;position: absolute;bottom:88%;left:0;z-index: 1;}
 .bottom .title{text-align: center;font-size: 32rpx;color:#FD4F4E;padding-bottom: 37rpx;}
 .bottom .title image{width:361rpx;}
-.prize-list{width:92.6%;margin:0 auto;border-radius: 20rpx;background: #fff;padding:12rpx 30rpx;box-sizing: border-box;}
+.prize-list{width:92.6%;margin:0 auto;border-radius: 20rpx;background: #fff;padding:12rpx 30rpx;box-sizing: border-box;position: relative;}
+.prize-list::after{content: "";display: block;width:100%;height:100%;position: absolute;left:0;top:0;}
 .page2 .p-header,.page2 swiper-item{font-size:24rpx;color:#F77D7B;}
 .page2 swiper{height:576rpx;}
 .page2 .p-header view,.page2 swiper-item view{width:28%;height:96rpx;line-height: 96rpx;text-align: center;}

@@ -2,7 +2,7 @@
 .nav_area {
     flex: 0 0 auto;
     display: flex;
-    height: 65rpx;
+    height: 80rpx;
     background-color: #fff;
     position: fixed;
     width:100%;
@@ -14,7 +14,7 @@
 
 .nav_area .nav_item {
     flex: 1;
-    font-size: 26rpx;
+    font-size: 28rpx;
     color: #333;
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
 .car-detail-content{
   width: 750rpx;
   overflow-x: hidden;
-  padding:65rpx 0 130rpx;
+  padding:80rpx 0 130rpx;
 }
 
 .top {
