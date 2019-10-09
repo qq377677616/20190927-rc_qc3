@@ -199,6 +199,15 @@ page{
 	line-height: 90rpx;
   color: #FFF;
 }
+.myEnter1>button{
+  width:586rpx;
+	height:90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:30rpx;
+  color: #FFF;
+}
 .helpBtn>text{
 	width:183rpx;
 	height:29rpx;
