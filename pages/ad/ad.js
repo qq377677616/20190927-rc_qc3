@@ -21,6 +21,14 @@ Page({
     isStart:false,
   },
 
+  tiao() {
+    console.log(1111)
+    const activity_id = this.data.activity_id;
+    router.jump_red({
+      url: `/pages/vote/vote?activity_id=${activity_id}`,
+    })
+  },
+
   initData(options){
     tool.loading('加载中')
     let _this = this;
@@ -33,7 +41,6 @@ Page({
     })
     tool.loading_h();
       let ding = setInterval(function () {
-        console.log(1);
         let min = _this.data.min;
         min--;
         _this.setData({
@@ -46,8 +53,6 @@ Page({
           })
         }
       }, 1000);
-
-
       this.setData({
         ding,
       })

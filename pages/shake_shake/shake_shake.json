@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "rule": "/components/rule/rule",
+    "activePop": "/components/activePop/activePop",
+    "forms": "/components/forms/form"
+  },
+  "navigationBarTitleText": "摇红包"
 }

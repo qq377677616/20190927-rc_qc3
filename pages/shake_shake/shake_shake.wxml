@@ -1,23 +1,76 @@
 <!--pages/shake_shake/shake_shake.wxml-->
 
 <!-- shake_shake_page -->
-<view class="shake_shake_page" style="background-image:url(http://img3.imgtn.bdimg.com/it/u=1057516799,1768438258&fm=26&gp=0.jpg)">
+<view class="shake_shake_page" style="background-image:url({{activity_info.banner}})" bindtap="isVehicleOwner">
 
     <!-- main -->
     <view class="main">
 
         <image class="yao" src="{{ IMGSERVICE }}/shake_shake/ziti.png" mode="widthFix"></image>
 
-        <view class="rule">活动规则</view>
+        <view class="rule" bindtap="openRule">活动规则</view>
 
         <view class="btn_group">
 
-            <view class="btn">摇一摇</view>
+            <view class="btn" bindtap="joinShake" data-type="ok">摇一摇</view>
 
-            <view class="tips">参与机会(3)</view>
+            <view class="tips">参与机会({{shake_num}})</view>
 
         </view>
 
-    </view><!-- main -->
+        <view class="shou" style="background-image:url('{{ IMGSERVICE }}/activity/shou.png')" wx:if="{{startShake}}"></view>
 
+    </view><!-- main -->
+	<!-- 第三次弹窗 -->
+	<view class="getQuan" wx:if="{{quanPop}}">
+		<view class="centerBoxpop" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_01.png')">
+			<text class="txt_1">恭喜您获得了</text>
+			<view class="card_1" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_02.png')">
+				<view class="quanTxt_1"><text>优惠券</text></view>
+				<view class="quanTxt_2"><text>{{prize_info.prize_name}}</text><text>元</text></view>
+				<view class="quanTxt_3"><text>购车券</text></view>
+			</view>
+			<view class="card_1 card_2" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_03.png')" wx:for="{{other_prize}}">
+				<view class="quanTxt_1 quanTxt_4"><text>优惠券</text></view>
+				<view class="quanTxt_2 quanTxt_5"><text>{{item.prize_name}}</text><text>元</text></view>
+				<view class="quanTxt_3 quanTxt_6"><text>购车券</text></view>
+			</view>
+			<view class="lq_btn" bindtap="getPrize"><text>立即领取</text></view>
+			<!-- <image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="closeBtn"></image> -->
+		</view>
+	</view>
+  <!-- 前两次弹窗 -->
+  <view class="getQuan" wx:if="{{openAj}}">
+		<view class="centerBoxpop" style="background-image:url('{{ IMGSERVICE }}/activity/aj.png')">
+      <view class="cur">
+        <view class="shoe" style="background-image:url('{{prize_info.prize_img}}')">
+        </view>
+        <view class="s-txt">{{prize_info.prize_name}}购车券</view>
+      </view>
+      <view class="btn-once" bindtap="once"></view>
+      <view class="x" bindtap="isOpen"></view>
+		</view>
+	</view>
+  <!-- 领取成功 -->
+  <view class="whole" wx:if="{{isSuc}}">
+    <view class="Actpop">
+      <text class="txt1">领取成功</text>
+      <text class="txt2">邀请好友助力获得更高奖励</text>
+      <view class="btn1" bindtap="toFriendHelp">去分享</view>
+      <view class="btn2">去查看其他活动</view>
+      <image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="isSuc"></image>
+    </view>
+  </view>
+  <!-- 规则 -->
+  <view class="pof fadeShow" wx:if="{{rulspop}}">
+    <rule bindclose="closePop" ruleImg="{{activity_info.rule}}"></rule>
+  </view>
+  <!-- 留资弹窗 -->
+  <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
+    <forms bindsubmit="submit" bindclose="isShowForm" type="{{ formType }}"></forms>
+  </view>
 </view><!-- shake_shake_page -->
+<!-- 授权、去绑定车主弹窗 -->
+  <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+    <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
+  </view>

@@ -29,7 +29,6 @@ page {
     color: #FFF;
     position: absolute;
     right:0;
-
 }
 .bg_top .rule {
     top:80rpx;

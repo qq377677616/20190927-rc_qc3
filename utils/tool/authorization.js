@@ -53,41 +53,53 @@ const login = () => {
         })
     })
 }
-
-//判断用户是否授权
-const isSetting = (scope) => {
-    return new Promise((resolve, reject)=>{
-        wx.getSetting({
-            success(res){
-                
-              if (res.authSetting[scope]) {//已授权过
-                    resolve(true)
-                } else {//未授权 
-                    resolve(false)
-                }
-
-            },
-            fail(reason){//失败
-                reject(reason)
-            }
+/*查询用户是否否授权了 scope*/
+const isSettingScope = (scope, callback) => {
+  wx.getSetting({
+    success(res) {
+      if (!res.authSetting[scope]) {
+        wx.authorize({
+          scope: scope,
+          success() {//这里是用户同意授权后的回调
+            callback({ status: 1, message: "用户已授权" })
+          },
+          fail() {//这里是用户拒绝授权后的回调
+            callback({ status: 0, message: "用户未授权" })
+          }
         })
-    })
+      } else {//用户已经授权过了
+        callback({ status: 2, message: "用户已经授权过了" })
+      }
+    }
+  })
 }
-
-//打开授权设置页
-const openSetting = () => {
-    return new Promise((resolve, reject)=>{
-        wx.openSetting({
-            success(res) {//打开授权设置页成功
-                resolve(res)
-            },
-            fail(reason){//打开授权设置页失败
-                reject(reason)
-            }
-        })
+/*判断是否授权*/
+const isSetting = scope => {
+  return new Promise(resolve => {
+    wx.getSetting({
+      success: res => {
+        //授过权
+        if (res.authSetting[scope]) {
+          resolve(true)
+          //未授权  
+        } else {
+          resolve(false)
+        }
+      }
     })
+  })
 }
-
+//打开授权设置
+const openSetting = (callback) => {
+  wx.openSetting({
+    success(res) {
+      if (callback) callback(res)
+      console.log(res)
+      console.log("【授权情况】")
+      console.log(res.authSetting)
+    }
+  })
+}
 
 
 module.exports = {
@@ -95,6 +107,7 @@ module.exports = {
     getUser,//获取用户个人信息(普通微信)
     isCheckSession,//检查登录态会话密钥session_key是否过期
     login,//登录后获取openid和session_key（普通微信）
+    isSettingScope,
     isSetting,//判断用户是否授权
-    openSetting,//打开授权设置页
+    openSetting//打开授权设置页
 }

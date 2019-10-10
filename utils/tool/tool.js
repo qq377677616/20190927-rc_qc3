@@ -245,6 +245,27 @@ const addCard = data => {
     })
   })
 }
+//小程序环境
+const getWxEnvVersion = () => {
+  return new Promise(resolve => {
+    console.log('__wxConfig', __wxConfig);
+    console.log('__wxConfig.envVersion', __wxConfig.envVersion);
+    let version = __wxConfig.envVersion;
+    switch (version) {
+      case 'develop':
+        resolve ({envVersion: '开发版'})        
+        break;
+      case 'trial':
+        resolve ({ envVersion: '体验版' })
+        break;
+      case 'release':
+        resolve ({ envVersion: '线上版' })
+        break;
+      default:
+        resolve ({ envVersion: '测试版' })
+    }
+  })
+}
 module.exports = {
   alert,
   showModal,
@@ -261,5 +282,6 @@ module.exports = {
   canvasImg,
   getPosition,
   getImageInfo,
-  addCard
+  addCard,
+  getWxEnvVersion
 }

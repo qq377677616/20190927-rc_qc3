@@ -17,6 +17,9 @@ Page({
     IMGSERVICE: app.globalData.IMGSERVICE,
     options: {},
     firstShow: false,
+    page:1,
+    scrollKey:true,
+    scrollPrivateKey:true,
     signInfo: {},
     winInfo: {},
     keyGroup:{},
@@ -58,6 +61,12 @@ Page({
 
     //返回刷新
     if (firstShow) {
+      this.setData({
+        page:1,
+        scrollKey:true,
+        scrollPrivateKey:true,
+      })
+
       this.onLoad(options)
     }
 
@@ -67,14 +76,16 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    //关闭规则提示
+    this.closeRule()
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    //关闭规则提示
+    this.closeRule()
   },
 
   /**
@@ -120,6 +131,7 @@ Page({
       request_05.hasParticipate({
         activity_id: options.activity_id,
         user_id: userInfo.user_id,
+        page:1,
       }),
     ])
       .then((value) => {
@@ -149,8 +161,8 @@ Page({
         })
       })
   },
-  //rule规格按钮
-  isShowRule() {
+  //关闭rule规格按钮
+  closeRule() {
     const ruleShow = this.data.ruleShow;
     const keyGroup = this.data.keyGroup;
 
@@ -167,7 +179,13 @@ Page({
 
     //切换规则弹窗
     this.setData({
-      ruleShow: !ruleShow,
+      ruleShow: false,
+    })
+  },
+  //打开rule规则按钮
+  openRule(){
+    this.setData({
+      ruleShow:true,
     })
   },
   //我要报名
@@ -249,6 +267,56 @@ Page({
   },
   //公布弹窗滚动加载
   winListScroll(e) {
+    const options = this.data.options;
+    const userInfo = wx.getStorageSync('userInfo');
+    const scrollKey = this.data.scrollKey;
+    const scrollPrivateKey = this.data.scrollPrivateKey;
+    const page = this.data.page;
+
+    //滚动加载时、不允许操作
+    if( !scrollKey || !scrollPrivateKey )return;
+
+    this.setData({
+      scrollKey:false,
+    })
+
+    request_05.hasParticipate({
+      activity_id: options.activity_id,
+      user_id: userInfo.user_id,
+      page:page + 1,
+    })
+      .then((value)=>{
+        //success
+        const the_winning_list = value.data.data.the_winning_list;
+        const winInfo = this.data.winInfo;
+        let scrollPrivateKey;
+
+        if( the_winning_list.length ){//有数据返回
+          scrollPrivateKey = true;
+        }
+        else{//无数据返回
+          scrollPrivateKey = false;
+        }
+
+        winInfo.the_winning_list = [...winInfo.the_winning_list, ...the_winning_list];
+
+        this.setData({
+          scrollPrivateKey,
+          winInfo,
+          page:page + 1,
+        })
+
+      })
+      .catch((reason)=>{
+        //fail
+
+      })
+      .then(()=>{
+        //complete
+        this.setData({
+          scrollKey:true,
+        })
+      })
 
   },
   //关闭公布弹窗

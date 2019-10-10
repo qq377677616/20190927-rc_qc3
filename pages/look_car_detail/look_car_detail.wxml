@@ -2,11 +2,12 @@
 <view class="car-detail-content">
     <!-- nav_area -->
     <view class="nav_area">
+        <view class="bg" style="left:{{navIndex * 50}}%"></view>
         <view class="nav_item {{ navIndex == 0 ? 'active' : '' }}" data-index="0" bindtap="navList">车型介绍</view>
         <view class="nav_item {{ navIndex == 1 ? 'active' : '' }}" data-index="1" bindtap="navList">参数配置</view>
     </view>
     <!-- top -->
-    <block wx:if="{{ navIndex == 0 }}">
+    <view hidden="{{navIndex == 1}}">
     <view class="o-o" style="background-image:url('{{IMGSERVICE}}/car_detail/1_01s.jpg')">
         <view class="T90-con b {{scrollTop + windowHeight >= scrollTopList[0] ? 'on' : ''}} doms" id="dom1">
           <image class="T90" src="{{IMGSERVICE}}/car_detail/T90.png" mode="widthFix"></image>
@@ -208,8 +209,8 @@
             </swiper-item>
         </swiper>
     </view>
-    </block>
-    <block wx:if="{{ navIndex == 1 }}">
+    </view>
+    <view hidden="{{ navIndex == 0 }}">
             <view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
 
                 <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
@@ -229,7 +230,7 @@
                 </view>
             </view>
           </view>
-        </block>
+        </view>
     <!-- footer -->
     <view class="footer" bindtap="downPayment">
         即刻预约，享上市好礼
@@ -249,21 +250,21 @@
     </view>
     <!-- 两个icon -->
     <view class="icon-box {{isIconShow ? 'right-left' : ''}}" wx:key="key{{index}}" wx:if="{{ navIndex == 0 }}">
-       <block wx:if="{{isShowIcon == 2}}">
+       <view wx:if="{{isShowIcon == 2}}">
         <view class="li flex-cen" wx:for="{{iconList2}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
           <image src="{{item.img}}" mode="widthFix"></image>
         </view>
-        </block>
-      <block wx:if="{{isShowIcon == 1}}">
+        </view> 
+      <view wx:if="{{isShowIcon == 1}}">
       <view class="li flex-cen" wx:for="{{iconList}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
-        <image class="{{(index != 0 && isAnimate) ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
+        <image class="{{(index != 2 && isAnimate) ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
       </view>
-      </block>
-      <block wx:if="{{isShowIcon == 0}}">
+      </view>
+      <view wx:if="{{isShowIcon == 0}}">
         <view class="li flex-cen" wx:for="{{iconLists}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
           <image class="{{isAnimate ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
         </view>
-      </block>
+      </view>
     </view>
     <!-- title4 -->
     <!-- science -->

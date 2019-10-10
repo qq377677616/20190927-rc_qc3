@@ -31,6 +31,8 @@ Page({
     scrollTop: 0,
     isSwitchIng: false,
     iconList: [
+      { img: app.globalData.IMGSERVICE + '/car_detail/icon_01.png', url: '/pages/bargain_index/bargain_index?activity_id=47' },
+      { img: app.globalData.IMGSERVICE + '/car_detail/icon_02.png', url: '/pages/assemble/pin/pin?activity_id=44' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' }
     ]
   },
@@ -46,6 +48,26 @@ Page({
     request_01.login(() => {
       this.initData(options)
     })
+  },
+  //两个icon动画
+  aimateInit() {
+    if (this.data.isAnimate) return
+    clearInterval(this.data.animateInit)
+    this.data.animateInit = setInterval(() => {
+      this.setData({ isAnimate: true })
+      setTimeout(res => {
+        this.setData({ isAnimate: false });
+      }, 800)
+    }, 3000)
+  },
+  onShow() {
+    this.aimateInit()
+  },
+  onHide() {
+    clearInterval(this.data.animateInit)
+  },
+  onUnload() {
+    clearInterval(this.data.animateInit)
   },
   //选择车款
   bindRegionChange(e) {

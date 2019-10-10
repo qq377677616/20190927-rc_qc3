@@ -2,51 +2,137 @@
 <view class="whole">
 	<view class="handImg" style="background-image:url({{IMGSERVICE}}/center/giftbg1.png)">
 		<!-- 给好友助力Box -->
-		<view class="helpBox" hidden="{{true}}">
+		<view class="helpBox" wx:if="{{isShowFriend}}">
 			<view class="userBox">
-				<view class="userImg" style="background-image:url({{IMGSERVICE}}/center/giftbg1.png)"></view>
+				<view class="userImg" style="background-image:url({{user_info.headimg}})"></view>
 				<view class="userInfo">
-					<text class="userNick">格律风诗</text>
+					<text class="userNick">{{user_info.nickname}}</text>
 					<text class="userTxt">请帮我助力！</text>
 				</view>
 			</view>	
-			<view class="helpBtn"><text>助TA一臂之力</text></view>
-			<view class="myEnter"><text>我也要参与</text></view>
+			<view class="helpBtn mt2" bindtap="helpH"><text>助TA一臂之力</text></view>
+			<view class="myEnter" bindtap="toShake"><text>我也要参与</text></view>
 		</view>
 		<!-- 查看其他活动BOX -->
-		<view class="helpBox helpBox2">
-			<view class="readyTxt">已经有10位好友助力，快来领取奖品</view>
-			<view class="quanBox" style="background-image:url({{IMGSERVICE}}/center/quan.png)">
+		<view class="helpBox helpBox2" wx:if="{{isTen}}">
+			<view class="readyTxt">已经有{{help_num}}位好友助力，快来领取奖品</view>
+			<view class="quanBox" style="background-image:url({{IMGSERVICE}}/center/quan.png)" wx:if="{{is_upgrade==0}}">
 				<view class="quan1">优惠券</view>
-				<view class="quan2 nowrap">￥888<text class="addstyle">元购车基金</text></view>
-				<view class="quan3">领取</view>
+				<view class="quan2 nowrap">￥{{upgrade_prize.prize_name}}<text class="addstyle">元购车基金</text></view>
+				<view class="quan3" bindtap="lqPrize">领取</view>
 			</view>
-			<view class="helpBtn"><text>继续分享获取更多好礼</text></view>
-			<view class="myEnter"><text>查看其他活动</text></view>
+      <view class="quanBox quanBox2" style="background-image:url({{IMGSERVICE}}/center/getQuan_03.png)" wx:if="{{is_upgrade==1}}">
+				<view class="quan1">优惠券</view>
+				<view class="quan2 nowrap">￥{{upgrade_prize.prize_name}}<text class="addstyle">元购车基金</text></view>
+				<view class="quan3 hasQuan">已领取</view>
+			</view>
+			<view class="helpBtn mt1"><button open-type="share" bindtap="shareFriend">继续分享获取更多好礼</button></view>
+			<view class="myEnter" bindtap="toActivityList"><text>查看其他活动</text></view>
 		</view>		
 	</view>
+  <!-- 自己进入 -->
+  <view wx:if="{{isShowMe}}">
+    <view class="helpBox helpBox2">
+        <view class="readyTxt">{{user_info.nickname}}</view>
+        <view class="moreTxt" wx:if="{{activity_status==1}}">呼朋唤友助你获得更多奖励</view>
+        <view class="moreTxt" wx:if="{{activity_status==3}}">助力失败，活动已经结束了</view>
+        <view class="firendList">
+          <scroll-view scroll-y style="height:200rpx;">
+            <view class="setflex">
+              <view wx:for="{{helpList}}" class="friendItem" style="background-image:url({{item.headimg}})"></view>
+              <view wx:for="{{10}}" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>
+            </view>
+          </scroll-view>
+          <!-- <view class="setflex">
+            <view wx:for="{{helpList}}" class="friendItem" style="background-image:url({{item.headimg}})"></view>
+            <view wx:for="{{10-helpList.length}}" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>
+          </view> -->
+          <view class="firendNum">已有{{helpList.length}}位好友为您助力</view>
+        </view>
+      </view>	
+      <view class="userImg1" style="background-image:url({{user_info.headimg}})"></view>	
+      <view class="myEnter1"><button open-type="share" bindtap="shareFriend">寻找好友帮忙</button></view>
+      <view class="myEnter" bindtap="toActivityList" style="margin-top:{{mTop}}rpx"><text>查看其他活动</text></view>
+    </view>
 	<!-- 给好友助力Box -->
-	<view class="centerHelp" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)" hidden="{{true}}"></view>
+	<view class="centerHelp" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)" wx:if="{{false}}"></view>
 	<!-- 查看其他活动BOX -->
-	<view class="centerHelp2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)"></view>
-	<view class="help_list">
-		<view class="help_item" wx:for="{{helpList}}">
+	<view class="centerHelp2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png);margin-top:{{height}}rpx" wx:if="{{isShow && helpList.length>0}}"></view>
+	<view class="help_list" wx:if="{{isShow && helpList.length>0}}">
+    <swiper vertical="true" display-multiple-items="4" interval="1500" autoplay="{{helpList.length>4}}" circular="true" style="height:520rpx">
+				<swiper-item class="flex-cen" wx:for="{{helpList}}" wx:for-item="item">
+					    <view class="help_item">
+                    <view class="leftBox">
+                      <view class="l_item1 nowrap"><text>{{index+1}}</text></view>
+                      <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
+                      <view class="l_item3 nowrap"><text>{{item.nickname}}</text></view>
+                    </view>
+                    <view class="rightBox">
+                      <text>{{item.create_time}}</text>
+                    </view>
+              </view>
+				</swiper-item>
+        <swiper-item class="flex-cen" wx:for="{{4-helpList.length}}"  wx:if="{{helpList.length<4}}">
+					    <view class="help_item">
+                    <view class="leftBox">
+                      <view class="l_item1 nowrap"><text>-</text></view>
+                      <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
+                      <view class="l_item3 nowrap"><text>-</text></view>
+                    </view>
+                    <view class="rightBox">
+                      <text>-</text>
+                    </view>
+              </view>
+				</swiper-item>
+			</swiper>
+    </view>
+    <!-- 手滑 -->
+    <!-- <scroll-view scroll-y style="max-height:650rpx;">
+        <view class="help_item" wx:for="{{helpList}}">
+        <view class="leftBox">
+          <view class="l_item1 nowrap"><text>{{index+1}}</text></view>
+          <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
+          <view class="l_item3 nowrap"><text>{{item.nickname}}</text></view>
+        </view>
+        <view class="rightBox">
+          <text>{{item.create_time}}</text>
+        </view>
+       </view>
+    </scroll-view> -->
+    <!-- 自动 --> 
+    <!-- 原样式 -->
+		<!-- <view class="help_item" wx:for="{{helpList}}">
 			<view class="leftBox">
-				<view class="l_item1 nowrap"><text>{{index+1}}2</text></view>
-				<view class="l_item2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)"></view>
-				<view class="l_item3 nowrap"><text>陈小东</text></view>
+				<view class="l_item1 nowrap"><text>{{index+1}}</text></view>
+				<view class="l_item2" style="background-image:url({{item.headimg}})"></view>
+				<view class="l_item3 nowrap"><text>{{item.nickname}}</text></view>
 			</view>
 			<view class="rightBox">
-				<text>2019-08-09</text>
+				<text>{{item.create_time}}</text>
 			</view>
-		</view>
-	</view>
-	<view class="helpsuccBox" hidden="{{true}}">
+		</view> -->
+	<view class="helpsuccBox" wx:if="{{helpSuc}}">
 		<view class="succPop">
-			<view class="succTxt"><text>助力成功!</text></view>
-			<view class="succBtn">知道了</view>
-			<view class="look_other"><text>去查看其他活动</text></view>
-			<image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn"></image>
+			<view class="succTxt"><text>太给力了!</text></view>
+			<view class="succTxt succTxt2"><text>你已经为好友助力!</text></view>
+			<view class="succBtn">和好友一起要红包吧!</view>
+			<image bindtap="closeSuc" mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn"></image>
 		</view>
 	</view>
 </view>
+
+<!-- 升级弹窗 -->
+  <view class="getQuan" wx:if="{{isSuc}}">
+		<view class="centerBoxpop" style="background-image:url('{{ IMGSERVICE }}/activity/sjsuc.png')">
+      <view class="cur">
+        <view class="quanTxt_2"><text>388</text><text>元</text></view>
+      </view>
+      <view class="btn-once" bindtap="once">放入卡包</view>
+      
+		</view>
+	</view>
+
+<!-- 授权、去绑定车主弹窗 -->
+  <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+    <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
+  </view>

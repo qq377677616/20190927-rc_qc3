@@ -395,7 +395,7 @@ Page({
       case 12:
       //12	摇红包
       router.jump_nav({
-        url: `/pages/vote/vote?activity_id=${activity_id}`,
+        url: `/pages/shake_shake/shake_shake?activity_id=${activity_id}`,
       })
       break;
       case 13:

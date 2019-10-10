@@ -273,6 +273,113 @@ const myActivityList = (data) => {
   })
 } 
 
+/** 
+ * 
+ * 
+ * 摇一摇模块
+*/
+
+//摇一摇首页
+const shakeDetail = (data) => {
+  let url = `${SERVICE}/api3/shake/shake_detail`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
+
+//摇一摇
+const shake = (data) => {
+  let url = `${SERVICE}/api3/shake/shake`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
+
+//好友助力页面
+const shakeInfo = (data) => {
+  let url = `${SERVICE}/api3/shake/shake_info`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
+
+//助力操作
+const shakeHelp = (data) => {
+  let url = `${SERVICE}/api3/shake/shake_help`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
+
+//升级卡券
+const upgradePrize = (data) => {
+  let url = `${SERVICE}/api3/shake/upgrade_prize`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
+
+//核销码上报
+const updateCardCode = (data) => {
+  let url = `${SERVICE}/api3/shake/update_card_code`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
 
 
 module.exports = {
@@ -290,6 +397,12 @@ module.exports = {
   doVote,
   voteRandPlay,
   voteIndex,
+  shakeDetail,
+  shake,
+  shakeInfo,
+  shakeHelp,
+  upgradePrize,
+  updateCardCode,
 }
 
 
