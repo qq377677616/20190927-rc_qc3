@@ -1,4 +1,4 @@
-﻿// pages/activity_list/activity_list.js
+// pages/activity_list/activity_list.js
 const request_01 = require('../../utils/request/request_01.js');
 
 const router = require('../../utils/tool/router.js');
@@ -277,7 +277,7 @@ Page({
       case 12:
         //摇红包
         router.jump_nav({
-          url: `/pages/vote/vote?activity_id=${activity_id}`,
+          url: `/pages/shake_shake/shake_shake?activity_id=${activity_id}`,
         })
       break;
       case 13:

@@ -23,7 +23,7 @@
 		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.0",
+	"libVersion": "2.8.3",
 	"appid": "wx1d585c8c2fffe589",
 	"projectname": "new_rc_qc_3.0",
 	"debugOptions": {
@@ -324,13 +324,6 @@
 				},
 				{
 					"id": -1,
-					"name": "shake_shake",
-					"pathName": "pages/shake_shake/shake_shake",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "sign_up",
 					"pathName": "pages/sign_up/sign_up",
 					"query": "",
@@ -368,13 +361,6 @@
 					"id": -1,
 					"name": "bargain_state",
 					"pathName": "pages/bargain_state/bargain_state",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "friendHelp",
-					"pathName": "pages/friendHelp/friendHelp",
 					"query": "",
 					"scene": null
 				},
@@ -485,22 +471,8 @@
 				},
 				{
 					"id": -1,
-					"name": "friendHelp",
-					"pathName": "pages/friendHelp/friendHelp",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "poster",
 					"pathName": "pages/poster/poster",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "friendHelp",
-					"pathName": "pages/friendHelp/friendHelp",
 					"query": "",
 					"scene": null
 				},
@@ -520,9 +492,16 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/product_detail/product_detail",
-					"pathName": "pages/product_detail/product_detail",
-					"query": "goods_id=136",
+					"name": "shake_shake",
+					"pathName": "pages/shake_shake/shake_shake",
+					"query": "activity_id=49",
+					"scene": null
+				},
+				{
+					"id": 63,
+					"name": "friendHelp",
+					"pathName": "pages/friendHelp/friendHelp",
+					"query": "shake_id=1&activity_id=49&openid=oORV85RFhl5mMHSVSume8NNby3pM",
 					"scene": null
 				}
 			]

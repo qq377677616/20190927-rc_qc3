@@ -199,6 +199,7 @@ const shake_one_shake2 = (isOpen, shakeSpeed = 100, interval = 2000, audio, call
     callBack({ status: 0})
     return;
   }
+  
   wx.onAccelerometerChange(shake)
   //wx.startAccelerometer()
   //编写摇一摇方法
@@ -224,6 +225,7 @@ const shake_one_shake2 = (isOpen, shakeSpeed = 100, interval = 2000, audio, call
           audioCtx.setSrc(audio.split(",")[1]) //音频文件，第三方的可自行选择
           audioCtx.play() //播发音频
         }
+        
         callBack({ status: 1 })
         setTimeout(() => {
           stsw = true
