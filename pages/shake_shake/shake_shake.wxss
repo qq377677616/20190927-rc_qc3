@@ -312,5 +312,5 @@ page{
 	height: auto;
 	position: absolute;
 	bottom: -100rpx;
-  left: 45%;
+  left: 42%;
 }

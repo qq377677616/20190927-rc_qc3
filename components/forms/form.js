@@ -146,6 +146,7 @@ Component({
       this.qqmapsdk = new QQMapWX({
         key: 'GW3BZ-NMN6J-JSEFT-FTC6R-F7DA3-Z3FVJ'
       })
+      console.log("this.qqmapsdk", this.qqmapsdk)
       this.qqmapsdk.reverseGeocoder({
         success: res => {//成功后的回调
           console.log("定位后返回", res)
