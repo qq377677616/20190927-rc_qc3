@@ -94,8 +94,6 @@ const openSetting = () => {
   return new Promise(resolve => {
     wx.openSetting({
       success(res) {
-        console.log(res)
-        console.log("【授权情况】")
         resolve(res)
       }
     })
