@@ -26,7 +26,7 @@ Page({
     videoList: [
       { videoUrl: 'https://game.flyh5.cn/resources/game/wechat/szq/images/video_04.mp4', resource: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_02.jpg', curIndex: 8 },
     ],
-    sequenceList: { url: 'https://game.flyh5.cn/resources/game/wechat/szq/images/love/love_', num: 28, speed: 60, loop: false },
+    sequenceList: { url: 'https://game.flyh5.cn/resources/game/wechat/szq/images/love/love_', num: 33, speed: 60, loop: false },
     curIndexArr: [],
     sequenceListIndex0: 8,
     prevIndex: 0,
@@ -59,7 +59,6 @@ Page({
       console.log("_clickIndex", _clickIndex)
       this.sequenceStart("sequenceList", _clickIndex).then(() => {
         let _VideoBg = this.data.VideoBg
-        _VideoBg[_clickIndex].curIndex = 6
         this.data.VideoBg[userIndex].is_favorite = 1
         this.data.VideoBg[userIndex].votes = this.data.VideoBg[userIndex].votes + 1
         this.setData({ VideoBg: _VideoBg.length > 0 ? _VideoBg:this.data.VideoBg})
@@ -123,13 +122,14 @@ Page({
         _VideoBg[clickIndex].curIndex++
         let _curSequenceIndex = this.data[`${sequence}Index`] || 0
         _curSequenceIndex++
-        if (_VideoBg[clickIndex].curIndex <= this.data[sequence][0].num) {
+        if (_VideoBg[clickIndex].curIndex < this.data[sequence][0].num-1) {
           this.setData({ VideoBg: _VideoBg })
         } else {
           if ((typeof (this.data[sequence][0].loop) == 'boolean' && this.data[sequence][0].loop) || (typeof (this.data[sequence][0].loop) == 'number' && _num < this.data[sequence][0].loop)) {
             _num++
           } else {
             clearInterval(autoSequence)
+            this.setData({ VideoBg: _VideoBg })
             resolve()
           }
         }

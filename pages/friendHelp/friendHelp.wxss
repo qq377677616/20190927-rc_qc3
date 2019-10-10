@@ -198,6 +198,10 @@ page{
 	text-align: center;
 	line-height: 90rpx;
 }
+.gray{
+  background: #999 !important;
+  opacity: 0.5;
+}
 .mt1{
   margin-top: 35rpx;
 }
