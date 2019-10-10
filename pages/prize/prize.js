@@ -87,7 +87,7 @@ Page({
   start() {
     if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return
     let _self = this
-    if (this.data.isPrize && this.data.userInfo.nickName) {
+    if (this.data.isPrize && wx.getStorageSync("userInfo").nickName) {
       api.getPrize({ user_id: wx.getStorageSync("userInfo").user_id, activity_id: this.data.activity_id }).then(res => {
         console.log(res)
         if (res.data.status == 1) {

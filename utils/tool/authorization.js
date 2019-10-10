@@ -90,14 +90,13 @@ const isSetting = scope => {
   })
 }
 //打开授权设置
-const openSetting = (callback) => {
-  wx.openSetting({
-    success(res) {
-      if (callback) callback(res)
-      console.log(res)
-      console.log("【授权情况】")
-      console.log(res.authSetting)
-    }
+const openSetting = () => {
+  return new Promise(resolve => {
+    wx.openSetting({
+      success(res) {
+        resolve(res)
+      }
+    })
   })
 }
 

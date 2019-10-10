@@ -132,6 +132,7 @@
 				</view>
 				<!-- <text class="shopTip nowrap">砍价已过期</text> -->
 			</view>
+			<view class="barStatus" style="background-image:url({{IMGSERVICE}}/center/nonum.png)" wx:if="{{!sy_num>0}}"></view>
 		</view>
 		<view class="tipTxt"><text>已砍￥<text class="addcolor">{{shopInfo.kj_price}}</text>元,还剩￥<text class="addcolor">{{shopInfo.sy_price}}</text>元</text></view>
 		<view class="progess">
