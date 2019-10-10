@@ -207,24 +207,26 @@ Page({
     let activity_id = options.activity_id;
     this.setData({ isOpen : false })
     tool.alert("摇一摇成功")
-    request_05.shake({ openid, activity_id }).then(res => {
-      console.log(res);
-      this.setData({
-        prize_info: res.data.data.prize_info,
-      })
-      if (res.data.data.shake_num > 0) {
+    setTimeout(()=>{
+      request_05.shake({ openid, activity_id }).then(res => {
+        console.log(res);
         this.setData({
-          openAj: true,
+          prize_info: res.data.data.prize_info,
         })
-      } else {
-        if (res.data.data.is_send_prize == 1) {
+        if (res.data.data.shake_num > 0) {
           this.setData({
-            quanPop: true,
-            other_prize: res.data.data.other_prize,
+            openAj: true,
           })
+        } else {
+          if (res.data.data.is_send_prize == 1) {
+            this.setData({
+              quanPop: true,
+              other_prize: res.data.data.other_prize,
+            })
+          }
         }
-      }
-    })
+      })
+    },1000)
   },
   // 参与摇红包
   joinShake() {

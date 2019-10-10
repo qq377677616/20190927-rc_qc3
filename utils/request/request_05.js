@@ -364,7 +364,7 @@ const upgradePrize = (data) => {
   })
 } 
 
-//升级卡券
+//核销码上报
 const updateCardCode = (data) => {
   let url = `${SERVICE}/api3/shake/update_card_code`
   return new Promise((resolve, reject) => {

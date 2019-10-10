@@ -104,6 +104,7 @@ Page({
   },
 
   lqPrize(){
+    var _this = this;
     let options = this.data.options;
     let activity_id = this.data.activity_id;
     let openid = wx.getStorageSync('userInfo').openid;
@@ -117,9 +118,9 @@ Page({
           let card_code = res.cardList[0].code;
           request_05.updateCardCode({ activity_id, openid, card_code}).then(res=>{
             console.log('update_card_code',res)
-            if (res.data.data.status==1){
+            if (res.data.status==1){
               tool.alert('领取成功')
-              this.initData(options)
+              _this.initData(options)
             }
           })
         }

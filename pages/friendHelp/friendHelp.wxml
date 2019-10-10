@@ -58,8 +58,36 @@
 	<view class="centerHelp" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)" wx:if="{{false}}"></view>
 	<!-- 查看其他活动BOX -->
 	<view class="centerHelp2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png);margin-top:{{height}}rpx" wx:if="{{isShow && helpList.length>0}}"></view>
-	<view class="help_list" wx:if="{{isShow}}">
-    <scroll-view scroll-y style="max-height:650rpx;">
+	<view class="help_list" wx:if="{{isShow && helpList.length>0}}">
+    <swiper vertical="true" display-multiple-items="4" interval="1500" autoplay="{{helpList.length>4}}" circular="true" style="height:520rpx">
+				<swiper-item class="flex-cen" wx:for="{{helpList}}" wx:for-item="item">
+					    <view class="help_item">
+                    <view class="leftBox">
+                      <view class="l_item1 nowrap"><text>{{index+1}}</text></view>
+                      <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
+                      <view class="l_item3 nowrap"><text>{{item.nickname}}</text></view>
+                    </view>
+                    <view class="rightBox">
+                      <text>{{item.create_time}}</text>
+                    </view>
+              </view>
+				</swiper-item>
+        <swiper-item class="flex-cen" wx:for="{{4-helpList.length}}"  wx:if="{{helpList.length<4}}">
+					    <view class="help_item">
+                    <view class="leftBox">
+                      <view class="l_item1 nowrap"><text>-</text></view>
+                      <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
+                      <view class="l_item3 nowrap"><text>-</text></view>
+                    </view>
+                    <view class="rightBox">
+                      <text>-</text>
+                    </view>
+              </view>
+				</swiper-item>
+			</swiper>
+    </view>
+    <!-- 手滑 -->
+    <!-- <scroll-view scroll-y style="max-height:650rpx;">
         <view class="help_item" wx:for="{{helpList}}">
         <view class="leftBox">
           <view class="l_item1 nowrap"><text>{{index+1}}</text></view>
@@ -70,8 +98,10 @@
           <text>{{item.create_time}}</text>
         </view>
        </view>
-    </scroll-view>
-		<!-- <view class="help_item" wx:for="{{helpList}}" wx:for="{{20}}">
+    </scroll-view> -->
+    <!-- 自动 --> 
+    <!-- 原样式 -->
+		<!-- <view class="help_item" wx:for="{{helpList}}">
 			<view class="leftBox">
 				<view class="l_item1 nowrap"><text>{{index+1}}</text></view>
 				<view class="l_item2" style="background-image:url({{item.headimg}})"></view>
@@ -81,7 +111,6 @@
 				<text>{{item.create_time}}</text>
 			</view>
 		</view> -->
-	</view>
 	<view class="helpsuccBox" wx:if="{{helpSuc}}">
 		<view class="succPop">
 			<view class="succTxt"><text>太给力了!</text></view>
