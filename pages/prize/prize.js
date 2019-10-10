@@ -29,7 +29,7 @@ Page({
       img: getApp().globalData.IMGSERVICE + '/center/car_bg.png'
     },
     iscarActive: false,
-    activityIsStartEnd: 1,//活动状态1为进行中，1为未开始，2为已结束
+    activityIsStartEnd: 1,//活动状态1为进行中，2为未开始，3为已结束
     prize_info: {}
   },
   onLoad(opation) {
@@ -69,6 +69,8 @@ Page({
       let _isRule = wx.getStorageSync("isRule") || {}
       _isRule.prize = true
       wx.setStorageSync("isRule", _isRule)
+    } else {
+      this.isActivityOpen()
     }
   },
   //获取奖品列表
@@ -269,12 +271,15 @@ Page({
     this.setData({ isShowForm: !this.data.isShowForm })
   },
   //抽奖规则弹窗
-  isHidePop(){
+  isHidePop() {
     this.setData({ isHidePop: !this.data.isHidePop })
-    console.log("this.data.isHidePop", this.data.isHidePop)
     console.log("this.data.activityIsStartEnd", this.data.activityIsStartEnd)
-    if (this.data.isHidePop && this.data.activityIsStartEnd != 1) {
-      if (this.data.activityIsStartEnd == 2 ) {
+    if (this.data.isHidePop) this.isActivityOpen()
+  },
+  //活动是否正常开启
+  isActivityOpen() {
+    if (this.data.activityIsStartEnd != 1) {
+      if (this.data.activityIsStartEnd == 2) {
         this.setData({ popType: 1, activePopText: '很抱歉，活动还没未开始，敬请期待~' })
       } else if (this.data.activityIsStartEnd == 3) {
         this.setData({ popType: 1, activePopText: '很抱歉，活动已结束' })
@@ -283,7 +288,7 @@ Page({
     }
   },
   //中奖弹窗
-  isHidePrize(){
+  isHidePrize() {
     this.setData({ isHidePrize: !this.data.isHidePrize })
   },
   //点击中奖弹窗
