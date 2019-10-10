@@ -254,10 +254,10 @@
         <view class="li flex-cen" wx:for="{{iconList2}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
           <image src="{{item.img}}" mode="widthFix"></image>
         </view>
-        </view>
+        </view> 
       <view wx:if="{{isShowIcon == 1}}">
       <view class="li flex-cen" wx:for="{{iconList}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
-        <image class="{{(index != 0 && isAnimate) ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
+        <image class="{{(index != 2 && isAnimate) ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
       </view>
       </view>
       <view wx:if="{{isShowIcon == 0}}">

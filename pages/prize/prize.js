@@ -50,7 +50,7 @@ Page({
       if (res.data.status == 1) {
         this.setData({ 
           iscarActive: res.data.data.car_owner,
-          activityIsStartEnd: res.data.data,           
+          activityIsStartEnd: res.data.data.status,    
           prizeDetails: res.data.data,
           ortherList: this.addArr(res.data.data.draw_log_list, 6)
         })
@@ -271,13 +271,15 @@ Page({
   //抽奖规则弹窗
   isHidePop(){
     this.setData({ isHidePop: !this.data.isHidePop })
+    console.log("this.data.isHidePop", this.data.isHidePop)
+    console.log("this.data.activityIsStartEnd", this.data.activityIsStartEnd)
     if (this.data.isHidePop && this.data.activityIsStartEnd != 1) {
       if (this.data.activityIsStartEnd == 2 ) {
         this.setData({ popType: 1, activePopText: '很抱歉，活动还没未开始，敬请期待~' })
       } else if (this.data.activityIsStartEnd == 3) {
         this.setData({ popType: 1, activePopText: '很抱歉，活动已结束' })
       }
-        this.isVehicleOwnerHidePop()
+      this.isVehicleOwnerHidePop()
     }
   },
   //中奖弹窗
