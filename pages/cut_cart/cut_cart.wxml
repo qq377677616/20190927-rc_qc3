@@ -52,9 +52,10 @@
                     <view class="specs nowrap no">规格:</view>
 
                     <view class="v_num">
-                        <view class="v">
+                        <view class="v setposition">
                             <!-- <view class="icon iconfont icon_jfrw"></view> -->
-                            <view class="span">￥{{barshopData.shopPrice}}</view>
+							<view class="setlat">￥0.00</view>
+                            <view class="span setdel">￥{{barshopData.shopPrice}}</view>
                         </view>
                         <view class="num">x1</view>
                     </view>

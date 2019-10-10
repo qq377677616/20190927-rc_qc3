@@ -344,6 +344,7 @@ body {
 		text-align: center;
 		left: 50%;
 		transform: translateX(-50%);
+		padding-bottom: 20rpx;
 	}
 	.setmar2{
 		position: absolute;
