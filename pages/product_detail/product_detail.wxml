@@ -111,15 +111,17 @@
 
                 <view class="close_btn iconfont icon_del" bindtap="closeBtn"></view>
             </view>
+            
+            <scroll-view scroll-y class="attr_area" wx:if="{{ goodsDetail.goods_attr.length }}">
+                <view class="attr_group" wx:for="{{ goodsDetail.goods_attr }}" wx:key="index">
 
-            <view class="attr_group" wx:for="{{ goodsDetail.goods_attr }}" wx:key="index">
+                    <block>
+                        <view class="view_title">{{ item.name }}</view>
+                        <view class="attr_item {{ attr.__indexArr[index] == sitem.id ? 'active' : '' }}" wx:for="{{ item.list }}" wx:for-index="sindex" wx:for-item="sitem" wx:key="sindex" data-pindex="{{ index }}" data-sindex="{{ sindex }}" bindtap="chooseAttr">{{ sitem.name }}</view>
+                    </block>
 
-                <block>
-                    <view class="view_title">{{ item.name }}</view>
-                    <view class="attr_item {{ attr.__indexArr[index] == sitem.id ? 'active' : '' }}" wx:for="{{ item.list }}" wx:for-index="sindex" wx:for-item="sitem" wx:key="sindex" data-pindex="{{ index }}" data-sindex="{{ sindex }}" bindtap="chooseAttr">{{ sitem.name }}</view>
-                </block>
-
-            </view>
+                </view>
+            </scroll-view>
 
             <view class="number_stock">
                 <view class="stock">

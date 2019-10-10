@@ -316,8 +316,13 @@ Page({
 
     }
 
+    alert.loading({
+      str:'结算中'
+    })
+
     promise
       .then((value)=>{
+       
         //success
         const msg = value.data.msg;
         const status = value.data.status;
@@ -355,6 +360,12 @@ Page({
         alert.alert({
           str:JSON.stringify( reason )
         })
+      })
+      .then(()=>{
+        //complete
+        
+        alert.loading_h()
+
       })
   },
 })

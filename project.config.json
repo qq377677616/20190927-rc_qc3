@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 61,
+			"current": 66,
 			"list": [
 				{
 					"id": -1,
@@ -516,6 +516,13 @@
 					"name": "ad",
 					"pathName": "pages/ad/ad",
 					"query": "activity_id=43",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/product_detail/product_detail",
+					"pathName": "pages/product_detail/product_detail",
+					"query": "goods_id=136",
 					"scene": null
 				}
 			]

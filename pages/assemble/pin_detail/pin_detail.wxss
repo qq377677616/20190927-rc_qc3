@@ -174,33 +174,41 @@ page{
 
 .two_line{
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-top: 60rpx;
 }
 
 .two_line .two_left{
+  width: 0;
+  flex:1;
   display: flex;
   align-items: center;
 }
 
 .two_line .two_left image{
+  flex:0 0 auto;
   width: 84rpx;
   height: 84rpx;
   border-radius: 50%;
 }
 
 .two_line .two_left .txt1{
+  width: 0;
+  flex:1;
   font-size: 26rpx;
   color: #666;
   margin-left: 26rpx;
 }
 
 .two_line .two_right {
+  width: 0;
+  flex:1;
   display: flex;
 }
 
 .two_line .two_right .txt_right{
+  width: 0;
+  flex:1;
   display: flex;
   flex-direction: column;
   font-size: 20rpx;
@@ -208,6 +216,7 @@ page{
 }
 
 .two_line .two_right .join{
+  flex:0 0 auto;
   margin-left: 14rpx;
   width: 146rpx;
   height: 60rpx;

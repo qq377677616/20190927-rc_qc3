@@ -76,14 +76,16 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    //关闭规则提示
+    this.closeRule()
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    //关闭规则提示
+    this.closeRule()
   },
 
   /**
@@ -139,7 +141,6 @@ Page({
         const winInfo = value[1].data.data;
         const keyGroup = wx.getStorageSync('keyGroup');
 
-        winInfo.the_winning_list = [...winInfo.the_winning_list, ...winInfo.the_winning_list]
         this.setData({
           signInfo,//报名信息
           winInfo,//奖品信息
