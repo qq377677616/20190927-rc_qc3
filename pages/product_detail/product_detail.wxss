@@ -246,6 +246,10 @@ page{
     font-size: 36rpx;
     color: #999;
 }
+.prompt_mask .main .attr_area{
+    max-height:400rpx;
+    overflow: auto;
+}
 .prompt_mask .main .attr_group{
     padding: 20rpx 36rpx 0;
     border-bottom: 3rpx solid rgba(239,239,239,1);
