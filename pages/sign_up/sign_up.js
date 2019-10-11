@@ -31,7 +31,7 @@ Page({
     isWinShow: true,
     isTipsShow: false,
     tipsText: '',
-    isWinPromptShow: true,
+    isWinPromptShow: false,
   },
 
   /**
@@ -78,6 +78,8 @@ Page({
   onHide: function () {
     //关闭规则提示
     this.closeRule()
+    //关闭中奖提示
+    this.isWinPromptShow()
   },
 
   /**
@@ -86,6 +88,8 @@ Page({
   onUnload: function () {
     //关闭规则提示
     this.closeRule()
+    //关闭中奖提示
+    this.isWinPromptShow()
   },
 
   /**
@@ -146,6 +150,7 @@ Page({
           winInfo,//奖品信息
           keyGroup,
           ruleShow:keyGroup.signUpKey,//首次弹规则弹窗
+          isWinPromptShow:keyGroup.signUpWin,//只在首次弹中奖提示框
           activityShow:keyGroup.signUpKey ? false : true,//首次弹规则不展示活动 未开始 结束 提示框
         })
       })
@@ -338,8 +343,14 @@ Page({
   },
   //关闭中奖提示弹窗
   isWinPromptShow() {
+    const keyGroup = this.data.keyGroup;
+
+    keyGroup.signUpWin = false;
+
+    wx.setStorageSync('keyGroup', keyGroup)//存本地
+
     this.setData({
-      isWinPromptShow: false
+      isWinPromptShow: false,
     })
   },
   //判断是否授权和是否是车主
