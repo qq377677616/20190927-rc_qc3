@@ -40,7 +40,7 @@
         <view class="my-prize"> 
           <view class="h3">您的抽奖机会<text>({{prizeDetails.my_draw_num}}/{{prizeDetails.draw_num}})</text></view>
           <view class="btns flex-cen">
-            <view class="button" bindtap="router" data-url="/pages/task/task">赚积分换大奖</view>
+            <view class="button" bindtap="router" data-url="/pages/task/task">赚V豆换好礼</view>
             <view class="button"  bindtap="router" data-url="/pages/activity_list/activity_list">查看更多精彩</view>
           </view>
         </view> 
@@ -51,7 +51,7 @@
         <view class="prize-list">
           <view class="p-header flex-cen"><view>中奖用户</view><view class="text">奖品</view><view>中奖时间</view></view>
           <swiper vertical="true" display-multiple-items="6" interval="1500" autoplay="true" circular="true">
-            <swiper-item class="flex-cen" wx:for="{{ortherList}}" wx:key="key{{index}}"><view>{{item.nickname}}</view><view class="text">{{item.prize_name}}</view><view>{{item.create_time}}</view></swiper-item>
+            <swiper-item class="flex-cen" wx:for="{{ortherList}}" wx:key="key{{index}}"><view>{{item.nickname || '**车主'}}</view><view class="text">{{item.prize_name || '**奖品'}}</view><view>{{item.create_time || '-'}}</view></swiper-item>
           </swiper>
         </view>
       </view>

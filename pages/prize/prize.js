@@ -88,6 +88,10 @@ Page({
     if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return
     let _self = this
     if (this.data.isPrize && wx.getStorageSync("userInfo").nickName) {
+      if (this.data.prizeDetails.my_draw_num >= this.data.prizeDetails.draw_num) {
+        tool.alert("您的抽奖机会用完啦~")
+        return
+      }
       api.getPrize({ user_id: wx.getStorageSync("userInfo").user_id, activity_id: this.data.activity_id }).then(res => {
         console.log(res)
         if (res.data.status == 1) {
