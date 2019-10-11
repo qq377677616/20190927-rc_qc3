@@ -135,7 +135,7 @@ page{
 	height: 200rpx;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 }
 .firendNum{
 	flex: 1;
@@ -150,7 +150,7 @@ page{
 	background: center no-repeat;
 	background-size: cover;
 	border-radius: 50%;
-	margin-right: 30rpx;
+	margin-right: 40rpx;
   margin-top: 35rpx;
 }
 .friendItem:nth-child(5n){
