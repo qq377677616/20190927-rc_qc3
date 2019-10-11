@@ -97,6 +97,7 @@ Page({
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
     request_05.shakeDetail({openid,activity_id}).then(res=>{
+      console.log(res)
       this.setRule()      //规则永久弹一次
       this.setData({
         activity_id,
