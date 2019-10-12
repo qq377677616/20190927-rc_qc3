@@ -73,7 +73,7 @@ Page({
     }else{
       if (options.shake_id) {
         let shake_id = options.shake_id;
-        let openid = options.openid;
+        let openid = wx.getStorageSync('userInfo').openid;
         console.log('shake_id',shake_id)
         console.log('openid', openid)
         request_05.shakeInfo({ shake_id, openid }).then(res => {
@@ -112,6 +112,7 @@ Page({
       request_05.shakeHelp({ shake_id, openid }).then(res => {
         console.log(res)
         if (res.data.status == 1) {
+          this.initData(options)
           this.setData({
             helpSuc: true
           })
@@ -167,11 +168,9 @@ Page({
 
   // 关闭助力成功弹窗
   closeSuc(){
-    let options = this.data.options
     this.setData({
       helpSuc:false
     })
-    this.initData(options);
   },
 
 	/**
