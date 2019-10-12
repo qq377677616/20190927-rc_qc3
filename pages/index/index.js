@@ -97,6 +97,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options,'options')
     mta.Page.init()//腾讯统计
     if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", { channel_id: wx.getStorageSync("shareIds").channel_id, page: 'home' })
     request_01.login(()=>{

@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 64,
 			"list": [
 				{
 					"id": -1,
@@ -502,6 +502,12 @@
 					"name": "friendHelp",
 					"pathName": "pages/friendHelp/friendHelp",
 					"query": "shake_id=36&activity_id=49&openid=oORV85RFhl5mMHSVSume8NNby3pM",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "qicheng_h5",
+					"pathName": "pages/qicheng_h5/qicheng_h5",
 					"scene": null
 				}
 			]
