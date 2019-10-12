@@ -19,7 +19,7 @@ Page({
     height:0,
     isShow:false,
     isShowMe:true,
-    isShowFriend:false,
+    isShowFriend:false, 
     helpSuc:false,      //是否助力成功弹窗
     isTen:false,        //是否可以升级卡券
     mTop:29,              
@@ -31,7 +31,7 @@ Page({
     if (!options.openid||options.openid == wx.getStorageSync('userInfo').openid){
       request_05.shakeDetail({ openid, activity_id }).then(res => {
         console.log('shakeDetail', res)
-        let headimgList = res.data.data.help_list.slice(0, res.data.data.shake_info.help_num) 
+        let headimgList = res.data.data.help_list.slice(0, res.data.data.max_help_num)
         this.setData({
           helpList: res.data.data.help_list,
           shake_id: res.data.data.shake_info.shake_id,
@@ -39,7 +39,7 @@ Page({
           user_info: res.data.data.user_info,
           activity_status: res.data.data.activity_info.status,
           upgrade_prize: res.data.data.upgrade_prize,
-          help_num: res.data.data.shake_info.help_num,
+          help_num2: res.data.data.max_help_num,
           is_upgrade: res.data.data.shake_info.is_upgrade,
           headimgList,
           activity_id,
@@ -74,6 +74,8 @@ Page({
       if (options.shake_id) {
         let shake_id = options.shake_id;
         let openid = options.openid;
+        console.log('shake_id',shake_id)
+        console.log('openid', openid)
         request_05.shakeInfo({ shake_id, openid }).then(res => {
           console.log('res', res);
           let user_info = res.data.data.user_info
