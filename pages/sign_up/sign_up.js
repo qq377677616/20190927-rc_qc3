@@ -76,20 +76,32 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    const signInfo = this.data.signInfo;
+    const winInfo = this.data.winInfo;
+
     //关闭规则提示
     this.closeRule()
     //关闭中奖提示
-    this.isWinPromptShow()
+    if( (signInfo.status == 4) && winInfo.user_activity.status == 1 ){
+      this.isWinPromptShow()
+    }
+    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    const signInfo = this.data.signInfo;
+    const winInfo = this.data.winInfo;
+
     //关闭规则提示
     this.closeRule()
     //关闭中奖提示
-    this.isWinPromptShow()
+    if( (signInfo.status == 4) && winInfo.user_activity.status == 1 ){
+      this.isWinPromptShow()
+    }
   },
 
   /**
