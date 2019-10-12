@@ -13,7 +13,7 @@ Page({
     let _userInfo = wx.getStorageSync('userInfo');
     
     // &phoneNumber=${_userInfo.phone}
-    let _h5Url = `${this.data.h5Url}?nickName=${encodeURIComponent(_userInfo.nickName)}&headimgurl=${_userInfo.avatarUrl}&user_id=${_userInfo.user_id}&openid=${_userInfo.openid}`;
+    let _h5Url = `${this.data.h5Url}?nickname=${encodeURIComponent(_userInfo.nickName)}&headimgurl=${_userInfo.avatarUrl}&user_id=${_userInfo.user_id}&openid=${_userInfo.openid}`;
     this.setData({ h5Url: _h5Url })
     console.log("【最终跳转到h5的链接】", this.data.h5Url)
   },

@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 64,
+			"current": 65,
 			"list": [
 				{
 					"id": -1,
@@ -508,6 +508,14 @@
 					"id": -1,
 					"name": "qicheng_h5",
 					"pathName": "pages/qicheng_h5/qicheng_h5",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 65,
+					"name": "o_prize_detail_page",
+					"pathName": "pages/o_prize_detail/o_prize_detail",
+					"query": "",
 					"scene": null
 				}
 			]
