@@ -224,7 +224,7 @@ page{
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 370rpx;
+  height: 310rpx;
   background-color: #d2d2d2;
   border-top-left-radius: 19rpx;
   border-top-right-radius: 19rpx;
@@ -232,6 +232,7 @@ page{
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  animation-duration:.3s !important;
 }
 .share-mask .content .close-btn{
   align-self: flex-end;
@@ -245,9 +246,10 @@ page{
   height: 45rpx;
 }
 .share-mask .content .share-way{
-  flex:1;
   display: flex;
+  margin-top: 20rpx;
 }
+.share-mask .content .share-way text{padding-top: 10rpx;}
 .share-mask .content .share-way view,
 .share-mask .content .share-way button{
   flex:1;
