@@ -34,15 +34,17 @@
 
 .canvas{
   width:573rpx;height:80vh;position: absolute;left:12%;top: 3%;
-  border: 1rpx solid #ccc;
+  border: 1rpx solid #eee;
   display: flex;
   flex-direction: column;
+  background: #fff;
+  border-radius: 20rpx;
 }
 
 .canvas .pic{
   width: 100%;
   height: 760rpx;
-  border-bottom: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #eee;
 }
 
 .canvas .down{
@@ -56,18 +58,20 @@
   width: 90rpx;
   height: 90rpx;
   border-radius: 50%;
-  border: 1rpx solid #ccc;
+  background: #eee;
   margin-left: 28rpx;
   margin-top: 28rpx;
+  opacity: .5;
 }
 
 .canvas .down .down-right{
   width: 210rpx;
   height: 210rpx;
   border-radius: 50%;
-  border: 1rpx solid #ccc;
   margin-right: 28rpx;
   margin-top: 28rpx;
+  background: #eee;
+  opacity: .5;
 }
 
 
