@@ -42,7 +42,7 @@
           <scroll-view scroll-y style="height:200rpx;">
             <view class="setflex">
               <view wx:for="{{headimgList}}" wx:key="index" class="friendItem" style="background-image:url({{item.headimg}})"></view>
-              <view wx:for="{{help_num-headimgList.length}}" wx:key="index" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)" wx:if="{{headimgList<help_num}}"></view>
+              <view wx:for="{{help_num2-headimgList.length}}" wx:key="index" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)" wx:if="{{headimgList.length<help_num2}}"></view>
               </view>
           </scroll-view>
           <!-- <view class="setflex">
@@ -130,7 +130,6 @@
         <view class="quanTxt_2"><text>388</text><text>元</text></view>
       </view>
       <view class="btn-once" bindtap="once">放入卡包</view>
-      
 		</view>
 	</view>
 
