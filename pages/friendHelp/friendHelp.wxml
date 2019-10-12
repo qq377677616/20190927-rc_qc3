@@ -28,7 +28,7 @@
 				<view class="quan3 hasQuan">已领取</view>
 			</view>
 			<view class="helpBtn mt1" wx:if="{{is_upgrade==0}}" ><button open-type="share" bindtap="shareFriend">继续分享获取更多好礼</button></view>
-			<view class="helpBtn mt1 gray" wx:if="{{is_upgrade==1}}"><button>已经领取礼品,可查看其他活动</button></view>
+			<view class="helpBtn mt1 gray" wx:if="{{is_upgrade==1}}"><button>已领取</button></view>
 			<view class="myEnter" bindtap="toActivityList"><text>查看其他活动</text></view>
 		</view>		
 	</view>
@@ -41,9 +41,9 @@
         <view class="firendList">
           <scroll-view scroll-y style="height:200rpx;">
             <view class="setflex">
-              <view wx:for="{{helpList}}" wx:key="index" class="friendItem" style="background-image:url({{item.headimg}})"></view>
-              <view wx:for="{{10-helpList.length}}" wx:key="index" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)" wx:if="{{helpList.length<10}}"></view>
-            </view>
+              <view wx:for="{{headimgList}}" wx:key="index" class="friendItem" style="background-image:url({{item.headimg}})"></view>
+              <view wx:for="{{help_num-headimgList.length}}" wx:key="index" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)" wx:if="{{headimgList<help_num}}"></view>
+              </view>
           </scroll-view>
           <!-- <view class="setflex">
             <view wx:for="{{helpList}}" class="friendItem" style="background-image:url({{item.headimg}})"></view>

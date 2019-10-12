@@ -20,31 +20,28 @@ Page({
     isShow:false,
     isShowMe:true,
     isShowFriend:false,
-    helpSuc:false,
-    isTen:false,
-    mTop:29,
-    isHelpH:true,    //是否可以助力
+    helpSuc:false,      //是否助力成功弹窗
+    isTen:false,        //是否可以升级卡券
+    mTop:29,              
+    isHelpH:true,       //是否可以助力
 	},
   initData(options) {
     let activity_id = options.activity_id;
-    console.log('option',options);
     let openid = wx.getStorageSync('userInfo').openid;
-    console.log(options.openid)
-    console.log(wx.getStorageSync('userInfo').openid)
-    console.log(options.openid)
-    console.log(wx.getStorageSync('userInfo').openid)
-    console.log(options.shake_id)
     if (!options.openid||options.openid == wx.getStorageSync('userInfo').openid){
       request_05.shakeDetail({ openid, activity_id }).then(res => {
         console.log('shakeDetail', res)
+        let headimgList = res.data.data.help_list.slice(0, res.data.data.shake_info.help_num) 
         this.setData({
           helpList: res.data.data.help_list,
           shake_id: res.data.data.shake_info.shake_id,
+          help_num: res.data.data.shake_info.help_num,
           user_info: res.data.data.user_info,
           activity_status: res.data.data.activity_info.status,
           upgrade_prize: res.data.data.upgrade_prize,
           help_num: res.data.data.shake_info.help_num,
           is_upgrade: res.data.data.shake_info.is_upgrade,
+          headimgList,
           activity_id,
         })
         if (res.data.data.activity_info.status == 3) {
@@ -91,6 +88,7 @@ Page({
             user_info,
             helpList,
             is_help: res.data.data.is_help,
+            activity_id,
           })
           if (res.data.status == 0) {
             tool.alert(res.data.msg);
@@ -101,11 +99,6 @@ Page({
         })
       } 
     }
-    
-     
-    //   if (options.openid != wx.getStorageSync('userInfo').openid) {
-          
-    // }
   },
 
   // 助力
@@ -127,6 +120,7 @@ Page({
     }      
   },
 
+  // 领取奖品
   lqPrize(){
     var _this = this;
     let options = this.data.options;
@@ -163,6 +157,7 @@ Page({
   // 去摇一摇
   toShake(){
     let activity_id = this.data.activity_id;
+    console.log(activity_id)
     router.jump_red({
       url: `/pages/shake_shake/shake_shake?activity_id=${activity_id}`,
     })

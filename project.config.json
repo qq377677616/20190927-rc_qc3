@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 66,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -501,7 +501,7 @@
 					"id": 63,
 					"name": "friendHelp",
 					"pathName": "pages/friendHelp/friendHelp",
-					"query": "shake_id=1&activity_id=49&openid=oORV85RFhl5mMHSVSume8NNby3pM",
+					"query": "shake_id=36&activity_id=49&openid=oORV85RFhl5mMHSVSume8NNby3pM",
 					"scene": null
 				}
 			]
