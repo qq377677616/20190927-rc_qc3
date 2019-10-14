@@ -1,6 +1,9 @@
 const _request = require('./_request.js');
 
-const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
+import request_01 from "./request_01.js"
+const SERVICE = request_01.SERVICE;
+
+// const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
 // const SERVICE = "https://weixinfslb.venucia.com";
 
 //投票活动人数接口

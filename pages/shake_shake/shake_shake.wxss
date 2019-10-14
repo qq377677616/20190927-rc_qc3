@@ -1,196 +1,237 @@
 /* pages/shake_shake/shake_shake.wxss */
 
-page{
-    height:100%;
+page {
+  height: 100%;
 }
-.shake_shake_page{
-    height:100%;
-    background-size:cover;
-    background-position:center center;
-    background-repeat:no-repeat;
+
+.shake_shake_page {
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 /* main */
-.cake{animation:move 3s 0s infinite;-webkit-animation:move 3s 0s infinite;transform-origin:bottom;-webkit-transform-origin:bottom;}
 
-@keyframes move
-{
-    0%, 65%{ 
-      -webkit-transform:rotate(0deg);
-      transform:rotate(0deg);
-    }
-    70% {  
-      -webkit-transform:rotate(6deg);
-      transform:rotate(6deg);
-    }
-    75% {  
-      -webkit-transform:rotate(-6deg);
-      transform:rotate(-6deg);
-    }
-    80% {  
-      -webkit-transform:rotate(6deg);
-      transform:rotate(6deg);
-    }
-    85% {  
-      -webkit-transform:rotate(-6deg);
-      transform:rotate(-6deg);
-    }
-    90% {  
-      -webkit-transform:rotate(6deg);
-      transform:rotate(6deg);
-    }
-    95% {  
-      -webkit-transform:rotate(-6deg);
-      transform:rotate(-6deg);
-    }
-    100% {  
-      -webkit-transform:rotate(0deg);
-      transform:rotate(0deg);
-    }
+.cake {
+  animation: move 3s 0s infinite;
+  -webkit-animation: move 3s 0s infinite;
+  transform-origin: bottom;
+  -webkit-transform-origin: bottom;
 }
 
-@-webkit-keyframes move
-{
-    0%, 65%{ 
-      -webkit-transform:rotate(0deg);
-      transform:rotate(0deg);
-    }
-    70% {  
-      -webkit-transform:rotate(6deg);
-      transform:rotate(6deg);
-    }
-    75% {  
-      -webkit-transform:rotate(-6deg);
-      transform:rotate(-6deg);
-    }
-    80% {  
-      -webkit-transform:rotate(6deg);
-      transform:rotate(6deg);
-    }
-    85% {  
-      -webkit-transform:rotate(-6deg);
-      transform:rotate(-6deg);
-    }
-    90% {  
-      -webkit-transform:rotate(6deg);
-      transform:rotate(6deg);
-    }
-    95% {  
-      -webkit-transform:rotate(-6deg);
-      transform:rotate(-6deg);
-    }
-    100% {  
-      -webkit-transform:rotate(0deg);
-      transform:rotate(0deg);
-    }
+@keyframes move {
+  0%, 65% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  70% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  85% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  90% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  95% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 }
 
-.forms-box{position: fixed;width:100%;height:100%;left:0;top:0;z-index: 999;}
-.main .yao{
-    width: 313rpx;
-    position: fixed;
-    left:50%;
-    top:150rpx;
-    transform: translatex(-50%);
-}
-.main .rule{
-    position: fixed;
-    right:0;
-    top:44rpx;
-    height: 50rpx;
-    padding: 0 20rpx;
-    background-color: rgba(255,255,255,0.2);
-    font-size: 24rpx;
-    color: #fff;
-    line-height: 50rpx;
-    border-radius:25rpx 0 0 25rpx;
-}
-.main .btn_group{
-    position: fixed;
-    bottom: 98rpx;
-    width: 514rpx;
-    left:50%;
-    transform: translatex(-50%);
-}
-.main .btn_group .btn{
-    height: 80rpx;
-    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
-    border-radius:14rpx;
-    font-size: 30rpx;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24rpx;
-}
-.main .btn_group .tips{
-    font-size: 24rpx;
-    color: #fff;
-    text-align: center;
-}/* main */
+@-webkit-keyframes move {
+  0%, 65% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 
-.shou{
-    width: 194rpx;
-    height: 186rpx;
-    background-size: cover;
-    position: absolute;
-    top: 40%;
-    left: 40%;
+  70% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  85% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  90% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+
+  95% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 }
+
+.forms-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+
+.main .yao {
+  width: 313rpx;
+  position: fixed;
+  left: 50%;
+  top: 150rpx;
+  transform: translatex(-50%);
+}
+
+.main .rule {
+  position: fixed;
+  right: 0;
+  top: 44rpx;
+  height: 50rpx;
+  padding: 0 20rpx;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 50rpx;
+  border-radius: 25rpx 0 0 25rpx;
+}
+
+.main .btn_group {
+  position: fixed;
+  bottom: 98rpx;
+  width: 514rpx;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.main .btn_group .btn {
+  height: 80rpx;
+  background: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1));
+  border-radius: 14rpx;
+  font-size: 30rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24rpx;
+}
+
+.main .btn_group .tips {
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+}
+
+/* main */
+
+.shou {
+  width: 194rpx;
+  height: 186rpx;
+  background-size: cover;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+
 /* yls 添加样式 */
-.getQuan{
-	width: 100vw;
-	height: 100vh;
-  	background:rgba(0,0,0,0.5);
-	position: fixed;
-	left: 0;
-	top: 0;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
+
+.getQuan {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
-.centerBoxpop{
-	width: 683rpx;
-	height: 814rpx;
-	background: center no-repeat;
-	background-size: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top:116rpx;
-	box-sizing: border-box; 
-	position: relative;
+
+.centerBoxpop {
+  width: 683rpx;
+  height: 814rpx;
+  background: center no-repeat;
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 116rpx;
+  box-sizing: border-box;
+  position: relative;
 }
-.cur{
+
+.cur {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.shoe{
+
+.shoe {
   width: 146rpx;
   height: 86rpx;
   background-size: cover;
   margin-top: 108rpx;
   margin-left: -105rpx;
 }
-.s-txt{
-  font-size:30rpx;
-  font-family:Source Han Serif CN;
-  font-weight:400;
+
+.s-txt {
+  font-size: 30rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 400;
   margin-top: 12rpx;
   margin-left: -105rpx;
-  color: #333333;
+  color: #333;
 }
-.btn-once{
+
+.btn-once {
   width: 345rpx;
   height: 90rpx;
-  border-radius:40px;
+  border-radius: 40px;
   position: absolute;
   bottom: 26%;
   left: 34%;
-  margin-left:-105rpx; 
+  margin-left: -105rpx;
 }
-.x{
+
+.x {
   width: 50rpx;
   height: 50rpx;
   border-radius: 50%;
@@ -198,189 +239,213 @@ page{
   bottom: 5%;
   left: 39%;
 }
-.txt_1{
-	font-size:30rpx;
-	font-family:Source Han Serif CN;
-	font-weight:600;
-	color:rgba(51,51,51,1);
-	margin-right: 80rpx;
+
+.txt_1 {
+  font-size: 30rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 1);
+  margin-right: 80rpx;
 }
-.card_1{
-	width:332rpx;
-	height: 78rpx;
-	background: center no-repeat;
-	background-size: 100%; 
-	margin-right: 80rpx;
-	margin-top: 42rpx;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
+
+.card_1 {
+  width: 332rpx;
+  height: 78rpx;
+  background: center no-repeat;
+  background-size: 100%;
+  margin-right: 80rpx;
+  margin-top: 42rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-.card_2{
-	margin-top:25rpx; 
+
+.card_2 {
+  margin-top: 25rpx;
 }
-.quanTxt_1{
-	width: 60rpx;
-	display: flex;
-	justify-content: center;
+
+.quanTxt_1 {
+  width: 60rpx;
+  display: flex;
+  justify-content: center;
 }
-.quanTxt_1>text{
-	writing-mode:vertical-lr;
-	font-size:18rpx;
-	font-family:Source Han Sans CN;
-	font-weight:400;
-	color:rgba(241,64,62,1);
+
+.quanTxt_1>text {
+  writing-mode: vertical-lr;
+  font-size: 18rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: rgba(241, 64, 62, 1);
 }
-.quanTxt_2{
-	width: 158rpx;
-	text-align: center;
+
+.quanTxt_2 {
+  width: 158rpx;
+  text-align: center;
 }
-.quanTxt_2>text:nth-child(1){
-	font-size:48rpx;
-	font-family:Source Han Serif CN;
-	font-weight:800;
-	color:rgba(241,16,13,1);
+
+.quanTxt_2>text:nth-child(1) {
+  font-size: 48rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 800;
+  color: rgba(241, 16, 13, 1);
 }
-.quanTxt_2>text:nth-child(2){
-	font-size:30rpx;
-	font-family:Source Han Serif CN;
-	font-weight:800;
-	color:rgba(241,16,13,1);
+
+.quanTxt_2>text:nth-child(2) {
+  font-size: 30rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 800;
+  color: rgba(241, 16, 13, 1);
 }
-.quanTxt_3{
-	width:110rpx;
-	text-align: center; 
+
+.quanTxt_3 {
+  width: 110rpx;
+  text-align: center;
 }
-.quanTxt_3>text{
-	font-size:24rpx;
-	font-family:Source Han Serif CN;
-	font-weight:400;
-	color:rgba(51,51,51,1);
+
+.quanTxt_3>text {
+  font-size: 24rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
 }
-.quanTxt_4{
-	width: 70rpx;
+
+.quanTxt_4 {
+  width: 70rpx;
 }
-.quanTxt_5{
-	width: 148rpx;
+
+.quanTxt_5 {
+  width: 148rpx;
 }
-.quanTxt_5>text:nth-child(1){
-	font-size:36rpx;
-	font-family:Source Han Serif CN;
-	font-weight:400;
-	color:rgba(102,102,102,1);
+
+.quanTxt_5>text:nth-child(1) {
+  font-size: 36rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
 }
-.quanTxt_5>text:nth-child(2){
-	font-size:30rpx;
-	font-family:Source Han Serif CN;
-	font-weight:400;
-	color:rgba(102,102,102,1);
+
+.quanTxt_5>text:nth-child(2) {
+  font-size: 30rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
 }
-.quanTxt_4>text{
-	color: #666;
+
+.quanTxt_4>text {
+  color: #666;
 }
-.quanTxt_6>text{
-	display: block;
-	font-size:24rpx;
-	font-family:Source Han Serif CN;
-	font-weight:400;
-	color:rgba(102,102,102,1);
-	margin-top: -10rpx;
+
+.quanTxt_6>text {
+  display: block;
+  font-size: 24rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  margin-top: -10rpx;
 }
-.lq_btn{
-	width: 330rpx;
-	height: 80rpx;
-	background:linear-gradient(0deg,rgba(236,170,97,1),rgba(252,207,158,1));
-	/* box-shadow:0rpx 0rpx 90rpx 0rpx rgba(0, 0, 0, 1); */
-	border-radius:40rpx;
-	margin-right: 80rpx;
-	margin-top:127rpx; 
-	text-align: center;
-	line-height: 80rpx;
+
+.lq_btn {
+  width: 330rpx;
+  height: 80rpx;
+  background: linear-gradient(0deg, rgba(236, 170, 97, 1), rgba(252, 207, 158, 1));
+  /* box-shadow:0rpx 0rpx 90rpx 0rpx rgba(0, 0, 0, 1); */
+  border-radius: 40rpx;
+  margin-right: 80rpx;
+  margin-top: 127rpx;
+  text-align: center;
+  line-height: 80rpx;
 }
-.lq_btn>text{
-	font-size:34rpx;
-	font-family:Source Han Serif CN;
-	font-weight:bold;
-	color:rgba(231,15,12,1);
+
+.lq_btn>text {
+  font-size: 34rpx;
+  font-family: Source Han Serif CN;
+  font-weight: bold;
+  color: rgba(231, 15, 12, 1);
 }
-.closeBtn{
-	width: 50rpx;
-	height: auto;
-	position: absolute;
-	bottom: -30rpx;
-	left: 280rpx;
+
+.closeBtn {
+  width: 50rpx;
+  height: auto;
+  position: absolute;
+  bottom: -30rpx;
+  left: 280rpx;
 }
+
 /* yls 添加样式 */
 
-.whole{
-	width: 100vw;
-	height: 100vh;
-	background-color:rgba(0,0,0,.7);
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 999; 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.whole {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.Actpop{
-	width: 560rpx;
-	height: 465rpx;
-	background-color: white;
-	border-radius:30rpx;
-	padding-top: 52rpx;
-	box-sizing: border-box;
-	display: flex;
-	/* justify-content: center; */
-	align-items: center;
-	flex-direction: column; 
-	position: relative;
+
+.Actpop {
+  width: 560rpx;
+  height: 465rpx;
+  background-color: white;
+  border-radius: 30rpx;
+  padding-top: 52rpx;
+  box-sizing: border-box;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
-.txt1{
-	color: #333;
-	font-size: 36rpx;
-	display: block;
-	font-weight:bold;
+
+.txt1 {
+  color: #333;
+  font-size: 36rpx;
+  display: block;
+  font-weight: bold;
 }
-.txt2{
-	margin-top:39rpx; 
+
+.txt2 {
+  margin-top: 39rpx;
   text-align: center;
-  color: #999999;
-  font-size:28rpx;
+  color: #999;
+  font-size: 28rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
-.btn1{
-	width: 332rpx;
-	height: 70rpx;
-	background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
-  border-radius:35rpx;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size:28rpx;
-	font-family:Source Han Sans CN;
-	font-weight:400;
-	color:rgba(255,255,255,1); 
-	margin-top: 79rpx;
-	position: relative;
+
+.btn1 {
+  width: 332rpx;
+  height: 70rpx;
+  background: linear-gradient(90deg, rgba(32, 161, 224, 1), rgba(18, 77, 184, 1));
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 79rpx;
+  position: relative;
 }
 
-.btn2{
-  font-size:28rpx;
-  font-family:Source Han Sans CN;
-  font-weight:400;
+.btn2 {
+  font-size: 28rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
   color: #333;
   margin-top: 43rpx;
 }
 
-.closeBtn{
-	width: 50rpx;
-	height: auto;
-	position: absolute;
-	bottom: -100rpx;
+.closeBtn {
+  width: 50rpx;
+  height: auto;
+  position: absolute;
+  bottom: -100rpx;
   left: 42%;
 }
