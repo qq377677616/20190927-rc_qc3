@@ -1,5 +1,10 @@
-// pages/order_wuliu/order_wuliu.js
+// pages/o_prize_detail/o_prize_detail.js
+
+const mta = require('../../utils/public/mta_analysis.js')
+
 const request_01 = require('../../utils/request/request_01.js');
+
+const request_03 = require('../../utils/request/request_03.js');
 
 const method = require('../../utils/tool/method.js');
 
@@ -16,7 +21,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderWuliu:{},
+    IMGSERVICE: app.globalData.IMGSERVICE,
+    prizeInfo:{},
   },
 
   /**
@@ -70,46 +76,40 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   //页面初始化
   initData(options){
     const userInfo = wx.getStorageSync('userInfo');
-    let promise;
-    if( options.pageType == 'o_prize_detail' ){
-      //奖品详情物流信息
-      promise = Promise.all([
-        request_01.prizeWuliu({
-          user_id:userInfo.user_id,
-          prize_id:options.prize_id,
-        })
-      ])
-    }
-    else{
-      //订单详情物流信息
-      promise = Promise.all([
-        request_01.orderWuliu({
-          user_id:userInfo.user_id,
-          order_id:options.order_id,
-        })
-      ])
-    }
+    
 
-    promise
+    Promise.all([
+      request_03.prizeDetail({
+        user_id:userInfo.user_id,
+        prize_id:options.prize_id,
+      })
+    ])
       .then((value)=>{
         //success
-        const orderWuliu = value[0].data.data;
+        const prizeInfo = value[0].data.data; 
+
         this.setData({
-          orderWuliu,
+          prizeInfo,
         })
       })
       .catch((reason)=>{
         //fail
-        
+
       })
+      .then(()=>{
+        //complete
+
+      })
+  },
+  //查看快递物流
+  lookWuLiu() {
+    const prizeInfo = this.data.prizeInfo;
+    const prize_id = prizeInfo.prize_id;
+    router.jump_nav({
+      url: `/pages/order_wuliu/order_wuliu?pageType=o_prize_detail&prize_id=${prize_id}`,
+    })
   },
 })

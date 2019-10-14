@@ -3,7 +3,7 @@
 <!-- o_prize_page -->
 <view class="o_prize_page">
     <!-- prize_item -->
-    <view class="prize_item fadeIn" wx:for="{{prizeList}}" wx:key="key{{index}}">
+    <view class="prize_item fadeIn" wx:for="{{prizeList}}" wx:key="key{{index}}" data-index="{{index}}" catchtap="lookDetail">
         <view class="image">
             <image src="{{item.prize_img}}" mode="widthFix"></image>
         </view>
@@ -11,7 +11,7 @@
             <view class="title nowrap">{{item.prize_name}}</view>
             <view class="date nowrap">获奖时间：{{item.create_time}}</view>
         </view>
-          <view class="btn active" wx:if="{{item.status == 0 || item.prize_type == 3}}" data-index="{{index}}" bindtap="jump">{{item.prize_type == 3 ? '兑换码' : '立即领取'}}</view>
+          <view class="btn active" wx:if="{{item.status == 0 || item.prize_type == 3}}" data-index="{{index}}" catchtap="jump">{{item.prize_type == 3 ? '兑换码' : '立即领取'}}</view>
         <view class="btn" wx:else>已兑换</view>
     </view><!-- prize_item -->
     <view class="not-more {{moreType==0?'addheight':''}}">{{moreType == 0 ? '您还没有奖品哦，快去参与活动拿奖品吧～' : '我是有底线的~'}}</view>
@@ -21,7 +21,7 @@
       <!-- <forms bindsubmit="submit" bindclose="isShowForm" type="2" vehicle="{{vehicle}}"></forms> -->
       <forms bindsubmit="submit" bindclose="isShowForm" type="{{formsType}}"></forms>
     </view>
-    <!-- 兑换码弹窗 -->
+    <!-- 兑换码弹窗 wx:if="{{isShowCode}}"-->
     <view class="forms-box flex-cen code" wx:if="{{isShowCode}}">
       <view class="box fadeShow">
         <view class="h3"><view>请凭激活码自行</view><view>前往对应平台自助兑换</view></view>

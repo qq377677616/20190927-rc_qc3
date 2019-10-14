@@ -261,7 +261,7 @@ Page({
 	},
 	goShopdel(e){//我正在砍的商品点击整行进入商品详情
 	     // b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了
-		let shopObj = e.currentTarget.dataset.obj;
+		let shopObj = e.currentTarget.dataset.obj; 
 		let obj = {};
 		console.log('继续砍价对象', shopObj);
 		obj.titleImg = wx.getStorageSync('userInfo').headimg;
@@ -270,7 +270,11 @@ Page({
 		obj.id = shopObj.id;
 		shopObj.status = shopObj.status == 3 ? 4 : shopObj.status;
 		shopObj.status = shopObj.sy_num > 0 ? shopObj.status:5;
-		route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type='+shopObj.status + '&shopobj=' + JSON.stringify(obj) })	
+		if (shopObj.status!=5){
+			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + shopObj.status + '&shopobj=' + JSON.stringify(obj) })	
+		}else{
+			route.jump_nav({ url: '/pages/bargain_state/bargain_state?shopobj=' + JSON.stringify(shopObj) });	
+		}
 		this.setData({ rulspop: false, cutpop: false, barPop: false })
 	},
 
@@ -406,7 +410,12 @@ Page({
 		shopObj.titleImg = wx.getStorageSync('userInfo').headimg;
 		shopObj.nickname = wx.getStorageSync('userInfo').nickname;
 		shopObj.openid = wx.getStorageSync("userInfo").openid;//wx.getStorageSync('userInfo').openid;
-		route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + b_type + '&shopobj=' + JSON.stringify(shopObj) })
+		console.log(shopObj.buttom_type, "剩余数量", shopObj.sy_num);
+		if (shopObj.buttom_type != 3 && shopObj.sy_num>0){
+			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + b_type + '&shopobj=' + JSON.stringify(shopObj) })
+		}else{
+			route.jump_nav({ url: '/pages/bargain_state/bargain_state?shopobj=' + JSON.stringify(shopObj) });
+		}
 	},
 	goHome(){
 		route.jump_nav({url:"/pages/index/index"})

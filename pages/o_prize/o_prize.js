@@ -21,7 +21,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options){
     request_01.login(() => { 
       this.myPrizeList() 
     })
@@ -51,6 +51,21 @@ Page({
       }
     })
   },
+  //查看详情
+  lookDetail(e){
+    const index = e.currentTarget.dataset.index;
+    const prizeList = this.data.prizeList;
+    const item = prizeList[index];
+    const prize_id = item.prize_id;
+    
+    //没领取的微信卡卷、快递 不允许查看奖品详情
+    if( item.status == 0 )return;
+
+    //奖品详情
+    route.jump_nav({ 
+      url:`/pages/o_prize_detail/o_prize_detail?prize_id=${prize_id}`
+    })
+  },
   //跳转
   jump(e) {
     let _item = this.data.prizeList[e.currentTarget.dataset.index]
@@ -62,6 +77,7 @@ Page({
     if (_type != 3) {
       this.isShowForm()
     } else {
+      console.log(_item,'_item')
       if (!_item.xuni_code) {
         tool.alert("兑换码获取失败，请稍后再试~")
         return
@@ -183,7 +199,18 @@ Page({
   onReachBottom: function () {
     this.myPrizeList()
   },
-
+  setClipboar(){
+	  var that = this;
+	  wx.setClipboardData({
+		  //准备复制的数据
+		  data: that.data.code,
+		  success: function (res) {
+			  wx.showToast({
+				  title: '复制成功',
+			  });
+		  }
+	  });
+  }
   /**
    * 用户点击右上角分享
    */

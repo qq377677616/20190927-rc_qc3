@@ -663,9 +663,26 @@ const orderDetail = (data) => {
     })
 }
 
-//我的订单列表
+//查询快递信息
 const orderWuliu = (data) => {
     let url = `${SERVICE}/api3/order/shipping_info`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url, 
+            data
+        })
+        .then(res => {
+            resolve(res)
+        })
+        .catch((reason)=>{
+            reject(reason)
+        })
+    })
+}
+
+//奖品物流查询
+const prizeWuliu = (data) => {
+    let url = `${SERVICE}/api3/prize/shipping_info`
     return new Promise((resolve, reject) => {
         _request.request({
             url, 
@@ -1431,6 +1448,7 @@ module.exports = {
     orderList,
     orderDetail,
     orderWuliu,
+    prizeWuliu,
     activityList,
     activityDetail,
     joinActivity,
