@@ -73,9 +73,22 @@
         <view class="name nowrap">{{ winInfo.user_activity.nickname }}</view>
         <view class="status">{{ winInfo.user_activity.status == 1 ? '恭喜中奖' : '未获奖' }}</view>
       </view>
-      <view wx:if="{{ winInfo.user_activity.status == 1 }}" class="get_btn" bindtap="getBtn">
-        领取奖品
-      </view>
+
+      <block wx:if="{{ winInfo.user_activity.status == 1 }}">
+          <block wx:if="{{ prize_status == 0 }}">
+              <view class="get_btn" bindtap="getBtn">
+                领取奖品
+              </view>
+          </block>
+          <block wx:else>
+
+              <view class="get_btn already">
+                {{ winInfo.user_activity.prize_type == 3 ? '已兑换' : '已领取' }}
+              </view>
+
+          </block>
+      </block>
+
     </view>
     <view class="close_btn iconfont icon_del" bindtap="isWinShow"></view>
   </view>

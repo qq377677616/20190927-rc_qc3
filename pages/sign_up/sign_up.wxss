@@ -267,6 +267,10 @@ page {
   color: #fff;
 }
 
+.win_mask .win_main .win_content .get_btn.already {
+  background-image: linear-gradient(to left, rgba(129, 128, 130, 1), rgba(172, 171, 173, 1));
+}
+
 .win_mask .win_main .close_btn {
   color: #fff;
   font-size: 50rpx;
@@ -440,8 +444,8 @@ page {
 
 /* win_prompt_mask */
 
-
 /* code_mask */
+
 .code_mask {
   position: fixed;
   width: 100%;
@@ -454,15 +458,15 @@ page {
 
 .code_mask .main {
   width: 505rpx;
-  text-align:center;
+  text-align: center;
   padding: 60rpx 52rpx;
   border-radius: 30rpx;
-  box-sizing:border-box;
+  box-sizing: border-box;
   background-color: #fff;
   position: absolute;
-  left:50%;
-  top:50%;
-  transform:translatex(-50%) translatey(-50%);
+  left: 50%;
+  top: 50%;
+  transform: translatex(-50%) translatey(-50%);
 }
 
 .code_mask .main .h3 {

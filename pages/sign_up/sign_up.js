@@ -9,6 +9,8 @@ const router = require('../../utils/tool/router.js');
 
 const alert = require('../../utils/tool/alert.js');
 
+import tool from '../../utils/tool/tool.js';
+
 const app = getApp();
 Page({
 
@@ -24,6 +26,7 @@ Page({
     scrollPrivateKey: true,
     signInfo: {},
     winInfo: {},
+    prize_status:'',
     keyGroup: {},
     activityShow: false,
     ruleShow: false,
@@ -36,6 +39,7 @@ Page({
     tipsText: '',
     isWinPromptShow: false,
     isCodeShow:false,
+    code:''
   },
 
   /**
@@ -168,6 +172,7 @@ Page({
           ruleShow: keyGroup.signUpKey,//首次弹规则弹窗
           isWinPromptShow: keyGroup.signUpWin,//只在首次弹中奖提示框
           activityShow: keyGroup.signUpKey ? false : true,//首次弹规则不展示活动 未开始 结束 提示框
+          prize_status:winInfo.user_activity.prize_status,//单独提出奖品领取状态
         })
       })
       .catch((reason) => {
@@ -241,8 +246,12 @@ Page({
     const user_activity = winInfo.user_activity;
 
     if( buttonType == 'signUp' ){
-
       //报名
+
+      alert.loading({
+        str:'报名中'
+      })
+
       request_05.participate({
         activity_id: options.activity_id,
         user_id: userInfo.user_id,
@@ -256,6 +265,7 @@ Page({
           const msg = value.data.msg;
           const status = value.data.status;
           let tipsText;
+          alert.loading_h()
 
 
           if (status == 1) {
@@ -275,9 +285,17 @@ Page({
 
 
         })
+        .catch((reason)=>{
+          //fail
+          alert.loading_h()
+        })
     }
     else{
       //领取奖品
+
+      alert.loading({
+        str:'提交中'
+      })
       request_03.pushForm({
         user_id: userInfo.user_id,
         openid: userInfo.openid,
@@ -292,35 +310,50 @@ Page({
         .then((res)=>{
           //success
           const status = res.data.status;
+          const _data = res.data.data;
+          alert.loading_h()
 
           if (status == 1) {
             //留资成功
-            let _data = res.data.data
-            if (this.data.prize_info.prize_type == 1) {
-              // let _cardExt = '{"nonce_str": "' + _data.card_info.nonceStr + '",  "timestamp": "' + _data.card_info.timestamp + '", "signature":"' + _data.card_info.signature + '"}'
-              // console.log("_cardExt", _cardExt)
-              // this.addCard(_data.card_info.card_id, _cardExt, _data.data_id)
+
+            if (user_activity.prize_type == 1) {
+              //微信卡卷
               this.addCard([res.data.data.card_info], _data.data_id)
-            } else if (this.data.prize_info.prize_type == 2) {
-              tool.loading("信息提交中")
-              setTimeout(() => {
-                tool.loading_h()
-                this.isShowForm()
-                tool.showModal("领取成功", "您的信息已提交成功，近期将会有工作人员电话联系您，敬请留意~", "好的,#124DB8", false)
-              }, 800)
-            } else if (this.data.prize_info.prize_type == 3) {
-              tool.loading("信息提交中")
-              setTimeout(() => {
-                tool.loading_h()
-                this.setData({ code: _data.xuni_code })
-                this.isShowForm()
-                this.isShowCode()
-              })  
+              
+            } 
+            else if (user_activity.prize_type == 2) {
+              //快递
+
+              this.isShowForm()//关闭留资框
+
+              tool.showModal("领取成功", "您的信息已提交成功，近期将会有工作人员电话联系您，敬请留意~", "好的,#124DB8", false)
+            
+              this.setData({
+                prize_status:1,//已领取
+              })
+            } 
+            else if (user_activity.prize_type == 3) {
+              //虚拟卡卷
+
+              this.isShowForm()//关闭留资框
+
+              this.setData({
+                code: _data.xuni_code,//存取返回的code
+                isCodeShow:true,//展示code兑换码弹框
+                prize_status:1,//已领取
+              })
             }
+
           } else {
+
             //留资失败
             tool.alert(res.data.msg)
+
           }
+        })
+        .catch((reason)=>{
+          //fail
+          alert.loading_h()
         })
 
 
@@ -332,26 +365,98 @@ Page({
   getBtn(e) {
     const winInfo = this.data.winInfo;
     const user_activity = winInfo.user_activity;
-    let isShowForm;
 
+    //虚拟卡卷、微信卡卷、快递
+    this.setData({
+      formType: user_activity.prize_type == 2 ? '1' : '0',//0为门店弹窗、1为详细地址弹窗
+      isShowForm: true,
+      buttonType:'receive_prize',
+    })
+  },
+  //领取卡券
+  addCard(cardList, data_id) {
+    alert.loading({
+      str:'卡卷领取中'
+    })
+    tool.addCard(cardList)
+      .then(res => {
+        //success
+        alert.loading_h()
 
-    if (user_activity.prize_type == 3) {
-      //虚拟卡卷
-      this.setData({
+        console.log("卡券返回", res)
+        if (res.errMsg == "addCard:ok") {
 
-        isCodeShow:true,
-        buttonType:'receive_prize',
+          console.log("卡券领取成功")
+          this.cardCheck(data_id, res.cardList[0].code)
+
+        } 
+        else {
+
+          alert.alert({
+            str:"卡券领取失败"
+          })
+
+        }
+      }).catch(err => {
+        //fail
+        alert.loading_h()
+
+        console.log("err", err)
+        alert.alert({
+          str:"卡券领取失败"
+        })
       })
-    }
-    else {
-      //微信卡卷、快递
-      this.setData({
-        formType: user_activity.prize_type == 1 ? '0' : '1',//0为门店弹窗、1为详细地址弹窗
-        isShowForm: true,
-        buttonType:'receive_prize',
-      })
-    }
+  },
+  //卡券核销上报
+  cardCheck(data_id, card_code) {
+    const userInfo = wx.getStorageSync("userInfo");
+    const winInfo = this.data.winInfo;
+    const user_activity = winInfo.user_activity;
 
+    alert.loading({
+      str:'卡卷正在领取'
+    })
+    api.cardCheck({
+      user_id: userInfo.user_id, 	
+      prize_log_id: user_activity.prize_log_id, 	
+      data_id: data_id,	 
+      card_code: card_code
+    })
+      .then(res => {
+        //success
+        console.log("卡券核销上报返回", res)
+        alert.loading_h()
+
+        if (res.statusCode == 200) {
+
+          alert.alert({
+            str:"卡券领取成功"
+          })
+
+          this.isShowForm()//关闭留资框
+
+          this.setData({
+            prize_status:1,//已领取
+          })
+
+        }
+      })
+      .catch((reason)=>{
+        //fail
+        alert.loading_h()
+
+        alert.alert({
+          str:"卡券领取失败"
+        })
+      })
+  },
+  //复制兑换码
+  setClipboar(){
+	  let code = this.data.code;
+	  wx.setClipboardData({
+		  //准备复制的数据
+		  data: code,
+	  });
   },
   //公布弹窗滚动加载
   winListScroll(e) {
