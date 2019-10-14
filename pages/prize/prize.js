@@ -46,7 +46,6 @@ Page({
   //获取抽奖详情
   getPrizeDetails(){
     api.getPrizeDetails({ user_id: wx.getStorageSync("userInfo").user_id, activity_id: this.data.activity_id }).then(res => {
-      console.log("res", res)
       if (res.data.status == 1) {
         this.setData({ 
           iscarActive: res.data.data.car_owner,
@@ -76,7 +75,6 @@ Page({
   //获取奖品列表
   getPrizeList() {
     api.getPrizeList({ activity_id: this.data.activity_id }).then(res => {
-      console.log("res", res)
       if (res.statusCode == 200) {
         this.setData({ prizeList: res.data.data})
         setTimeout(() => { this.setData({ isPrizeList: true }) }, 500)
@@ -93,7 +91,6 @@ Page({
         return
       }
       api.getPrize({ user_id: wx.getStorageSync("userInfo").user_id, activity_id: this.data.activity_id }).then(res => {
-        console.log(res)
         if (res.data.status == 1) {
           let _num = this.data.prizeList.findIndex(item => item.id == res.data.data.prize_info.prize_id)
           var _curIndex = this.data.curIndex
@@ -303,7 +300,7 @@ Page({
         this.isShowForm()
       } else {
         tool.alert("v豆领取成功")
-        this.getPrizeDetails()
+        setTimeout(() => { this.getPrizeDetails() }, 1500)
       }
     } else {
       console.log("点击关闭")

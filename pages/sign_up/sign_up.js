@@ -277,10 +277,44 @@ Page({
 
   },
   //领取奖品
-  getBtn(){
-    router.jump_nav({
-      url:`/pages/o_prize/o_prize`
-    })
+  getBtn(e){
+    const winInfo = this.data.winInfo;
+    const user_activity = winInfo.user_activity;
+    let isShowForm;
+
+    
+    // if( user_activity.prize_type == 3 ){
+    //   //虚拟卡卷
+
+    // }
+    // else{
+    //   //微信卡卷、快递
+    //   this.setData({ 
+    //     formType: _type == 2 ? '1' : '0',
+    //     isShowForm: true,
+    //   })
+    // }
+
+    // if (_type != 3) {
+    //   this.isShowForm()
+    // } else {
+    //   console.log(_item,'_item')
+    //   if (!_item.xuni_code) {
+    //     tool.alert("兑换码获取失败，请稍后再试~")
+    //     return
+    //   }
+    //   this.setData({ code: _item.xuni_code })
+    //   this.isShowCode()
+    // }
+
+    // this.setData({ 
+    //   formType: _type == 2 ? '1' : '0',
+    //   isShowForm: true,
+    // })
+    // router.jump_nav({
+    //   url:`/pages/o_prize/o_prize`,
+    //   // url:`/pages/o_prize/o_prize?pageType=capital&prize_id=` + prize_id
+    // })
   },
   //公布弹窗滚动加载
   winListScroll(e) {

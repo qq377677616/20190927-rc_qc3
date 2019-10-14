@@ -79,16 +79,30 @@ Page({
   //页面初始化
   initData(options){
     const userInfo = wx.getStorageSync('userInfo');
-    Promise.all([
-      request_01.orderWuliu({
-        user_id:userInfo.user_id,
-        order_id:options.order_id,
-      })
-    ])
+    let promise;
+    if( options.pageType == 'o_prize_detail' ){
+      //奖品详情物流信息
+      promise = Promise.all([
+        request_01.prizeWuliu({
+          user_id:userInfo.user_id,
+          prize_id:options.prize_id,
+        })
+      ])
+    }
+    else{
+      //订单详情物流信息
+      promise = Promise.all([
+        request_01.orderWuliu({
+          user_id:userInfo.user_id,
+          order_id:options.order_id,
+        })
+      ])
+    }
+
+    promise
       .then((value)=>{
         //success
         const orderWuliu = value[0].data.data;
-
         this.setData({
           orderWuliu,
         })
