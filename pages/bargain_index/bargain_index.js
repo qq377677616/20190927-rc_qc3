@@ -107,6 +107,7 @@ Page({
   onShow: function () {
 	  this.bar_shopList();
 	  this.get_barNnm();
+	  this.getBargain();
 	  this.setData({ isfirst:1})
   },
 
@@ -264,19 +265,22 @@ Page({
 		 //  "status": 1,//砍价状态1:正在砍价  2:砍价完成  3:已领取 （接口返回）
 	     // b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了 （自己定义）
 		let shopObj = e.currentTarget.dataset.obj; 
+		// console.log(shopObj);
+		// return;
 		let obj = {};
 		let shopType = 2;
-		console.log('继续砍价对象', shopObj);
+		console.log('状态', e.currentTarget.dataset.obj.status);
 		obj.titleImg = wx.getStorageSync('userInfo').headimg;
 		obj.nickname = wx.getStorageSync('userInfo').nickname;
 		obj.openid = wx.getStorageSync("userInfo").openid;//wx.getStorageSync('userInfo').openid;
 		obj.id = shopObj.id;
-		shopObj.status = shopObj.status == 3 ? 4 : shopObj.status;
-		shopObj.status = shopObj.sy_num > 0 ? shopObj.status:5;
 		if (e.currentTarget.dataset.obj.status == 4){//是否是待领取状态
+			console.log(e.currentTarget.dataset.obj.status)
 			route.jump_nav({ url: "/pages/order_detail/order_detail?order_id=" + e.currentTarget.dataset.obj.order_id });
 			return;
 		}
+		shopObj.status = shopObj.status == 3 ? 4 : shopObj.status;
+		shopObj.status = shopObj.sy_num > 0 ? shopObj.status : 5;
 		if (shopObj.status != 5 && shopObj.status != 4){
 			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + shopObj.status + '&shopobj=' + JSON.stringify(obj) })	
 		} else if (shopObj.status == 4) { //已领取 微信卡券跳转到卡包  非微信卡券  我的订单
@@ -287,7 +291,7 @@ Page({
 					route.jump_nav({ url: '/pages/o_duihuan/o_duihuan' })
 				}
 		}else{
-			route.jump_nav({ url: '/pages/bargain_state/bargain_state?shopobj=' + JSON.stringify(shopObj) });	
+			route.jump_nav({ url: '/pages/bargain_state/bargain_state?shopobj=' + JSON.stringify(obj) });	
 		}
 		this.setData({ rulspop: false, cutpop: false, barPop: false })
 	},
