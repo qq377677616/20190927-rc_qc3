@@ -6,13 +6,13 @@ const router = require('../../utils/tool/router.js');
 
 const util = require('../../utils/tool/util.js');
 
-const tool = require('../../utils/tool/tool.js') 
+const tool = require('../../utils/tool/tool.js')
 
 const request_05 = require('../../utils/request/request_05.js')
 
 import api from '../../utils/request/request_03.js'
 
-const app = getApp();//获取应用实例
+const app = getApp(); //获取应用实例
 
 Page({
 
@@ -21,21 +21,21 @@ Page({
    */
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
-	  quanPop:false,  //第三次弹窗
-    openAj:false,   //前两次弹窗
-    rulspop:false,  //规则弹窗
-    isSuc:false,    //领取成功弹窗
-    isVehicleOwnerHidePop:false,
-    isShowForm: false,  //留资弹窗
+    quanPop: false, //第三次弹窗
+    openAj: false, //前两次弹窗
+    rulspop: false, //规则弹窗
+    isSuc: false, //领取成功弹窗
+    isVehicleOwnerHidePop: false,
+    isShowForm: false, //留资弹窗
     formType: '',
-    startShake:false,
-    isOpen:true,
+    startShake: false,
+    isOpen: true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     request_01.login(() => {
       this.initData(options);
     })
@@ -47,49 +47,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
@@ -97,33 +97,36 @@ Page({
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
     console.log('activity_id', activity_id)
-    request_05.shakeDetail({openid,activity_id}).then(res=>{
+    request_05.shakeDetail({
+      openid,
+      activity_id
+    }).then(res => {
       console.log(res)
-      this.setRule()      //规则永久弹一次
+      this.setRule() //规则永久弹一次
       this.setData({
         activity_id,
-        activity_info:res.data.data.activity_info,
-        car_owner: res.data.data.activity_info.car_owner,  //车主
-        shake_num: res.data.data.shake_info.shake_num,     //抽奖次数
+        activity_info: res.data.data.activity_info,
+        car_owner: res.data.data.activity_info.car_owner, //车主
+        shake_num: res.data.data.shake_info.shake_num, //抽奖次数
       })
       // 用户抽奖完，是否领奖
-      if(res.data.data.shake_info.shake_num==0){
-        if (res.data.data.shake_info.is_receive==0){
+      if (res.data.data.shake_info.shake_num == 0) {
+        if (res.data.data.shake_info.is_receive == 0) {
           this.setData({
             quanPop: true,
             other_prize: res.data.data.other_prize,
             prize_log_id: res.data.data.prize_log_id,
             prize_info: res.data.data.prize_info
           })
-        }else{
+        } else {
           router.jump_red({
             url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
           })
         }
       }
       // 判断活动状态  1-正常  2-活动未开始 3-活动已结束
-      let activityStatus = res.data.data.activity_info.status;     //活动状态
-      let shake_num = res.data.data.shake_info.shake_num;         //是否参与    
+      let activityStatus = res.data.data.activity_info.status; //活动状态
+      let shake_num = res.data.data.shake_info.shake_num; //是否参与    
       if (activityStatus == 3) {
         if (shake_num == 3) {
           this.setData({
@@ -152,7 +155,7 @@ Page({
   },
 
   /*摇一摇2*/
-  shake_one_shake2(callBack){
+  shake_one_shake2(callBack) {
     var _this = this
     //首先定义一下，全局变量
     let lastTime = 0; //此变量用来记录上次摇动的时间
@@ -207,10 +210,15 @@ Page({
     let options = this.data.options;
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
-    this.setData({ isOpen : false })
+    this.setData({
+      isOpen: false
+    })
     tool.alert("摇一摇成功")
-    setTimeout(()=>{
-      request_05.shake({ openid, activity_id }).then(res => {
+    setTimeout(() => {
+      request_05.shake({
+        openid,
+        activity_id
+      }).then(res => {
         console.log(res);
         this.setData({
           prize_info: res.data.data.prize_info,
@@ -230,7 +238,7 @@ Page({
           }
         }
       })
-    },1000)
+    }, 1000)
   },
   // 参与摇红包
   joinShake() {
@@ -239,26 +247,30 @@ Page({
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
     let isShake = true;
-    if(this.data.shake_num==0){
+    if (this.data.shake_num == 0) {
       tool.alert('您的抽奖次数已经用完了哦~')
-    }else{
-      this.setData({ startShake : true })
+    } else {
+      this.setData({
+        startShake: true
+      })
       if (this.data.startShake) {
         this.shake_one_shake2()
       }
-  }
-},
+    }
+  },
 
   getPrize() {
     this.closeBtn();
-    this.setData({ quanPop: !this.data.quanPop })
+    this.setData({
+      quanPop: !this.data.quanPop
+    })
     this.setData({
       formType: 4,
       isShowForm: true,
     })
   },
 
-  toFriendHelp(){
+  toFriendHelp() {
     let activity_id = this.data.activity_id;
     router.jump_red({
       url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
@@ -269,7 +281,9 @@ Page({
   once() {
     this.isOpen();
     this.joinShake();
-    this.setData({ isOpen: true })
+    this.setData({
+      isOpen: true
+    })
   },
 
   // 打开规则弹窗
@@ -313,7 +327,9 @@ Page({
           tool.loading("信息提交中")
           setTimeout(() => {
             tool.loading_h()
-            this.setData({ code: _data.xuni_code })
+            this.setData({
+              code: _data.xuni_code
+            })
             this.isShowForm()
             this.isShowCode()
           })
@@ -355,7 +371,9 @@ Page({
         this.isShowLoading()
         // tool.alert("卡券领取成功")
         this.isShowForm()
-        this.setData({ quanPop: false })
+        this.setData({
+          quanPop: false
+        })
         this.isSuc()
         // if (this.data.prize_info.prize_type == 3) {
         //   this.isShowCode()
@@ -371,23 +389,35 @@ Page({
   },
   //留资弹窗打开、关闭
   isShowForm() {
-    this.setData({ isShowForm: !this.data.isShowForm })
+    this.setData({
+      isShowForm: !this.data.isShowForm
+    })
   },
   //抽奖规则弹窗
   isHidePop() {
-    this.setData({ isHidePop: !this.data.isHidePop })
+    this.setData({
+      isHidePop: !this.data.isHidePop
+    })
     if (this.data.isHidePop && this.data.activityIsStartEnd != 1) {
       if (this.data.activityIsStartEnd == 2) {
-        this.setData({ popType: 1, activePopText: '很抱歉，活动还没未开始，敬请期待~' })
+        this.setData({
+          popType: 1,
+          activePopText: '很抱歉，活动还没未开始，敬请期待~'
+        })
       } else if (this.data.activityIsStartEnd == 3) {
-        this.setData({ popType: 1, activePopText: '很抱歉，活动已结束' })
+        this.setData({
+          popType: 1,
+          activePopText: '很抱歉，活动已结束'
+        })
       }
       this.isVehicleOwnerHidePop()
     }
   },
   //中奖弹窗
   isHidePrize() {
-    this.setData({ isHidePrize: !this.data.isHidePrize })
+    this.setData({
+      isHidePrize: !this.data.isHidePrize
+    })
   },
 
   // 关闭规则弹窗
@@ -396,13 +426,17 @@ Page({
   },
 
   isSuc() {
-    this.setData({ isSuc: !this.data.isSuc })
+    this.setData({
+      isSuc: !this.data.isSuc
+    })
     let options = this.data.options
   },
 
   // 切换规则弹窗
   isOpenRule() {
-    this.setData({ rulspop: !this.data.rulspop })
+    this.setData({
+      rulspop: !this.data.rulspop
+    })
   },
 
   //关闭留资弹窗
@@ -414,19 +448,27 @@ Page({
 
   // 关闭前两次中奖弹窗
   isOpen() {
-    this.setData({ openAj: !this.data.openAj })
-    this.setData({ isOpen : true})
+    this.setData({
+      openAj: !this.data.openAj
+    })
+    this.setData({
+      isOpen: true
+    })
   },
 
   // 关闭第三次中奖弹窗
   closeBtn() {
-    this.setData({ quanPop: !this.data.quanPop })
+    this.setData({
+      quanPop: !this.data.quanPop
+    })
   },
 
   // 弹窗永久弹一次
   setRule() {
     if (!wx.getStorageSync("isRule").vote) {
-      this.setData({ rulspop: true });
+      this.setData({
+        rulspop: true
+      });
       let _isRule = wx.getStorageSync("isRule") || {}
       _isRule.vote = true
       wx.setStorageSync("isRule", _isRule)
@@ -437,10 +479,13 @@ Page({
   isVehicleOwner(e) {
     if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
     if (!wx.getStorageSync("userInfo").nickName) {
-      this.setData({ popType: 2 })
-    }
-    else if (wx.getStorageSync("userInfo").user_type == 0) {
-      this.setData({ popType: 3 })
+      this.setData({
+        popType: 2
+      })
+    } else if (wx.getStorageSync("userInfo").user_type == 0) {
+      this.setData({
+        popType: 3
+      })
     }
 
     this.isVehicleOwnerHidePop()

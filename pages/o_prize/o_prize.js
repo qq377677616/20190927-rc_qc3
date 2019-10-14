@@ -90,6 +90,7 @@ Page({
     if (_type != 3) {
       this.isShowForm()
     } else {
+      console.log(_item,'_item')
       if (!_item.xuni_code) {
 		  this.isShowForm() 
         // tool.alert("兑换码获取失败，请稍后再试~")

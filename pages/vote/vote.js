@@ -21,34 +21,60 @@ Page({
     isShow: false,
     isRed: false,
     isShare: false,
-    defuImg:"https://game.flyh5.cn/resources/game/wechat/szq/images/img_02.jpg",
-    VideoBg:[],
-    videoList: [
-      { videoUrl: 'https://game.flyh5.cn/resources/game/wechat/szq/images/video_04.mp4', resource: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_02.jpg', curIndex: 8 },
+    defuImg: "https://game.flyh5.cn/resources/game/wechat/szq/images/img_02.jpg",
+    VideoBg: [],
+    videoList: [{
+        videoUrl: 'https://game.flyh5.cn/resources/game/wechat/szq/images/video_02.mp4',
+        resource: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_02.jpg',
+        curIndex: 8
+      }, {
+        videoUrl: 'https://game.flyh5.cn/resources/game/wechat/szq/images/video_03.mp4',
+        resource: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_02.jpg',
+        curIndex: 8
+      },
+      {
+        videoUrl: 'https://game.flyh5.cn/resources/game/wechat/szq/images/video_04.mp4',
+        resource: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_02.jpg',
+        curIndex: 8
+      },
     ],
-    sequenceList: { url: 'https://game.flyh5.cn/resources/game/wechat/szq/images/love/love_', num: 33, speed: 60, loop: false },
+    sequenceList: {
+      url: 'https://game.flyh5.cn/resources/game/wechat/szq/images/love/love_',
+      num: 33,
+      speed: 60,
+      loop: false
+    },
     curIndexArr: [],
     sequenceListIndex0: 8,
     prevIndex: 0,
     imgVideoType: 1,
     rulspop: false,
     userIndex: 0,
-    activeStatus:0,
-    text:"活动暂未开放",
-    isjoin:false,
-    show_rank_list:0,
-    isPrize:false,
+    activeStatus: 0,
+    text: "活动暂未开放",
+    isjoin: false,
+    show_rank_list: 0,
+    isPrize: false,
   },
 
-  start(e) {//序列动画开始
+  // 获取swiper下标
+  swiperChange(e) {
+    const userIndex = e.detail.current;
+    console.log(e)
+    this.setData({
+      userIndex,
+    })
+  },
+
+  start(e) { //序列动画开始
     console.log(this.data.activeStatus)
-    if (this.data.activeStatus == 4){
+    if (this.data.activeStatus == 4) {
       tool.alert('活动已结束');
       return;
     }
     const activity_id = this.data.activity_id
     const user_id = wx.getStorageSync('userInfo').user_id
-    let userIndex = this.data.userIndex; //当年swiper下标
+    let userIndex = this.data.userIndex; //当前swiper下标
     let vote_id = this.data.VideoBg[userIndex].vote_id
     console.log('vote_id', vote_id)
     let is_favorite = this.data.VideoBg[userIndex].is_favorite
@@ -61,16 +87,26 @@ Page({
         let _VideoBg = this.data.VideoBg
         this.data.VideoBg[userIndex].is_favorite = 1
         this.data.VideoBg[userIndex].votes = this.data.VideoBg[userIndex].votes + 1
-        this.setData({ VideoBg: _VideoBg.length > 0 ? _VideoBg:this.data.VideoBg})
-        request_05.doVote({ user_id, vote_id, type }).then(res => {
-            if(res.data.status==1){
-              tool.alert(res.data.msg)
-            }
+        this.setData({
+          VideoBg: _VideoBg.length > 0 ? _VideoBg : this.data.VideoBg
+        })
+        request_05.doVote({
+          user_id,
+          vote_id,
+          type
+        }).then(res => {
+          if (res.data.status == 1) {
+            tool.alert(res.data.msg)
+          }
         })
       })
     } else {
-      request_05.doVote({ user_id, vote_id, type }).then(res => {
-        if (res.data.msg =="您今天已为她/他投票"){
+      request_05.doVote({
+        user_id,
+        vote_id,
+        type
+      }).then(res => {
+        if (res.data.msg == "您今天已为她/他投票") {
           tool.alert('您今天已为TA投过票~');
         }
       })
@@ -82,35 +118,16 @@ Page({
     let _url = this.data[sequence].url
     let _num = this.data[sequence].num
     for (let i = 0; i < _num; i++) {
-      _sequence.push({ url: `${_url}${i + 1}.png`, speed: this.data[sequence].speed, num: _num, loop: this.data[sequence].loop })
-    }
-    this.setData({ [sequence]: _sequence })
-  },
-
-  //判断是否授权和是否是车主
-  isVehicleOwner(e) {
-    // if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok' && (this.data.iscarActive == 1 ? true : false) ) || (wx.getStorageSync("userInfo").nickName && !(this.data.iscarActive == 1 ? true : false))) return
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.iscarActive)) return
-    if (!wx.getStorageSync("userInfo").nickName) {
-      this.setData({ popType: 2 })
-    } else if (wx.getStorageSync("userInfo").user_type == 0) {
-      this.setData({ popType: 3 })
-    }
-    this.isVehicleOwnerHidePop()
-  },
-  //授完权后处理
-  getParme(e) {
-    this.isVehicleOwnerHidePop()
-    request_01.setUserInfo(e).then(res => {
-      this.setData({
-        userInfo: wx.getStorageSync('userInfo')
+      _sequence.push({
+        url: `${_url}${i + 1}.png`,
+        speed: this.data[sequence].speed,
+        num: _num,
+        loop: this.data[sequence].loop
       })
-      this.isVehicleOwner()
+    }
+    this.setData({
+      [sequence]: _sequence
     })
-  },
-  //是否授权、绑定车主弹窗
-  isVehicleOwnerHidePop() {
-    this.setData({ isVehicleOwnerHidePop: !this.data.isVehicleOwnerHidePop })
   },
 
   //序列动画开始
@@ -120,63 +137,28 @@ Page({
       let autoSequence = setInterval(() => {
         let _VideoBg = this.data.VideoBg
         _VideoBg[clickIndex].curIndex++
-        let _curSequenceIndex = this.data[`${sequence}Index`] || 0
+          let _curSequenceIndex = this.data[`${sequence}Index`] || 0
         _curSequenceIndex++
-        if (_VideoBg[clickIndex].curIndex < this.data[sequence][0].num-1) {
-          this.setData({ VideoBg: _VideoBg })
+        if (_VideoBg[clickIndex].curIndex < this.data[sequence][0].num - 1) {
+          this.setData({
+            VideoBg: _VideoBg
+          })
         } else {
-          if ((typeof (this.data[sequence][0].loop) == 'boolean' && this.data[sequence][0].loop) || (typeof (this.data[sequence][0].loop) == 'number' && _num < this.data[sequence][0].loop)) {
+          if ((typeof(this.data[sequence][0].loop) == 'boolean' && this.data[sequence][0].loop) || (typeof(this.data[sequence][0].loop) == 'number' && _num < this.data[sequence][0].loop)) {
             _num++
           } else {
             clearInterval(autoSequence)
-            this.setData({ VideoBg: _VideoBg })
+            this.setData({
+              VideoBg: _VideoBg
+            })
             resolve()
           }
         }
       }, this.data[sequence][0].speed)
     })
   },
-
-  getPrize(){
-    router.jump_nav({
-      url:`/pages/o_prize/o_prize`
-    })
-  },
-
-  back_home(){
-    router.jump_nav({
-      url:`/pages/index/index`
-    })
-  },
-
-  close_prize(){
-    this.setData({ isPrize: !this.data.isPrize })
-  },
-
-  // 打开关闭分享弹窗
-  isShare() {
-    this.setData({ isShare: !this.data.isShare });
-  },
-
-  // 规则图片打开关闭
-  isHidePop() {
-    this.setData({ isShow: !this.data.isShow });
-  },
-
-  isRed() {
-    this.setData({ isRed: !this.data.isRed });
-  },
-
-  openRule() {
-    this.setData({ rulspop: true });
-  },
-  closePop() {
-    // 判断活动是否结束   状态 1 - 正常 3 - 活动未开始 4 - 活动已结束 只有为1可上传
-    this.setData({ rulspop: false });
-    if (!wx.getStorageSync("isRule").vote);
-    this.activestatus();
-  },
-  activestatus(){
+  
+  activestatus() {
     let activity_id = this.data.activity_id;
     if (this.data.activeStatus == 3) {
       this.setData({
@@ -193,12 +175,10 @@ Page({
             url: `/pages/index/index`,
           })
         }, 1500)
-      } 
-      else {
+      } else {
         if (this.data.show_rank_list == 1) {
           this.close_prize();
-        }
-        else if (this.data.show_rank_list == 2) {
+        } else if (this.data.show_rank_list == 2) {
           this.close_prize();
         }
       }
@@ -229,22 +209,18 @@ Page({
     const vote_id = this.data.VideoBg[userIndex].vote_id;
     const type = 2;
 
-    request_05.doVote({ user_id, vote_id, type }).then(res => {
+    request_05.doVote({
+      user_id,
+      vote_id,
+      type
+    }).then(res => {
       console.log(res);
     })
   },
-
-  toHome(){
+  
+  toHome() {
     router.jump_red({
       url: `/pages/activity_list/activity_list`,
-    })
-  },
-
-  // 获取swiper下标
-  swiperChange(e) {
-    const userIndex = e.detail.current;
-    this.setData({
-      userIndex,
     })
   },
 
@@ -269,17 +245,6 @@ Page({
     }
   },
 
-  // 弹窗永久弹一次
-  setRule() {
-    if (!wx.getStorageSync("isRule").vote) {
-      this.setData({ rulspop: true });
-      let _isRule = wx.getStorageSync("isRule") || {}
-      _isRule.vote = true
-      wx.setStorageSync("isRule", _isRule)
-    }
-  },
-
-
   // 初始化数据
   initData(options) {
     tool.loading('加载中')
@@ -295,63 +260,49 @@ Page({
     })
 
     // 投票活动首页
-    request_05.voteIndex({ user_id, activity_id }).then(res => {
+    request_05.voteIndex({
+      user_id,
+      activity_id
+    }).then(res => {
       console.log("voteIndex", res);
       let indexInfo = res.data.data;
       let iscarActive = res.data.data.car_owner;
       let rank_list = res.data.data.rank_list
-      console.log("rank_list", rank_list)
       let is_win = res.data.data.is_win
-      if(res.data.status==1){
+      if (res.data.status == 1) {
         this.setData({
           indexInfo,
           iscarActive,
-          activeStatus:res.data.data.status,
+          activeStatus: res.data.data.status,
           isjoin: res.data.data.is_join,
           rank_list,
           is_win,
-          show_rank_list:res.data.data.show_rank_list
+          vote_type: res.data.data.vote_type,
+          show_rank_list: res.data.data.show_rank_list
         })
         console.log(wx.getStorageSync("isRule").vote);
         if (wx.getStorageSync("isRule").vote)
-        this.activestatus();
+          this.activestatus();
         this.setRule();
       }
-      // 判断活动是否结束   状态 1 - 正常 3 - 活动未开始 4 - 活动已结束 只有为1可上传
-      // if (res.data.data.status == 4) {
-        // 判断用户是否参与   状态 0未参与 1参与
-      //   if (res.data.data.is_join == 0) {
-      //     tool.alert('活动已结束');
-      //     setTimeout(() => {
-      //       router.jump_nav({
-      //         url: `/pages/index/index`,
-      //       })
-      //     })
-      //   } else {
-      //     if (res.data.data.show_rank_list == 1) {
-      //       router.jump_nav({
-      //         url: `/pages/activity_publish/activity_publish`,
-      //       })
-      //     }
-      //     if (res.data.data.show_rank_list == 2) {
-      //       router.jump_nav({
-      //         url: `/pages/activity_publish/activity_publish`,
-      //       })
-      //     }
-      //   }
-      // }
     })
 
     // 投票轮播首页
-    let banIndex = request_05.voteRandPlay({ user_id, activity_id }).then(res => {
-      const _ban = res.data.data
+    let banIndex = request_05.voteRandPlay({
+      user_id,
+      activity_id
+    }).then(res => {
+      const _ban = res.data.data;
       const videoList = this.data.videoList;
+      const ctx = wx.createCanvasContext('myCanvas')
+      ctx.drawImage(videoList[0], 0, 0, 150, 100)
+      ctx.draw()
+      console.log('ctx', ctx)
       for (var i = 0; i < _ban.length; i++) {
         //为0时 未点赞
         if (_ban[i].is_favorite == 0) {
           _ban[i].curIndex = 8;
-        }
-        else {
+        } else {
           //已经点赞
           _ban[i].curIndex = 6;
         }
@@ -362,7 +313,10 @@ Page({
     })
 
     // 我的投票信息
-    let myVote = request_05.myVote({ user_id, activity_id }).then(res => {
+    let myVote = request_05.myVote({
+      user_id,
+      activity_id
+    }).then(res => {
       const myInfo = res.data.data.info;
       const is_join = res.data.data.is_join;
       this.setData({
@@ -370,26 +324,122 @@ Page({
         is_join,
       })
     })
-
     tool.loading_h();
+  },
+
+  // 弹窗永久弹一次
+  setRule() {
+    if (!wx.getStorageSync("isRule").vote) {
+      this.setData({
+        rulspop: true
+      });
+      let _isRule = wx.getStorageSync("isRule") || {}
+      _isRule.vote = true
+      wx.setStorageSync("isRule", _isRule)
+    }
+  },
+
+  getPrize() {
+    router.jump_nav({
+      url: `/pages/o_prize/o_prize`
+    })
+  },
+
+  back_home() {
+    router.jump_nav({
+      url: `/pages/index/index`
+    })
+  },
+
+  close_prize() {
+    this.setData({
+      isPrize: !this.data.isPrize
+    })
+  },
+
+  // 打开关闭分享弹窗
+  isShare() {
+    this.setData({
+      isShare: !this.data.isShare
+    });
+  },
+
+  // 规则图片打开关闭
+  isHidePop() {
+    this.setData({
+      isShow: !this.data.isShow
+    });
+  },
+
+  isRed() {
+    this.setData({
+      isRed: !this.data.isRed
+    });
+  },
+
+  //打开规则
+  openRule() {
+    this.setData({
+      rulspop: true
+    });
+  },
+  closePop() {
+    // 判断活动是否结束   状态 1 - 正常 3 - 活动未开始 4 - 活动已结束 只有为1可上传
+    this.setData({
+      rulspop: false
+    });
+    if (!wx.getStorageSync("isRule").vote);
+    this.activestatus();
+  },
+
+  //判断是否授权和是否是车主
+  isVehicleOwner(e) {
+    // if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok' && (this.data.iscarActive == 1 ? true : false) ) || (wx.getStorageSync("userInfo").nickName && !(this.data.iscarActive == 1 ? true : false))) return
+    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.iscarActive)) return
+    if (!wx.getStorageSync("userInfo").nickName) {
+      this.setData({
+        popType: 2
+      })
+    } else if (wx.getStorageSync("userInfo").user_type == 0) {
+      this.setData({
+        popType: 3
+      })
+    }
+    this.isVehicleOwnerHidePop()
+  },
+  //授完权后处理
+  getParme(e) {
+    this.isVehicleOwnerHidePop()
+    request_01.setUserInfo(e).then(res => {
+      this.setData({
+        userInfo: wx.getStorageSync('userInfo')
+      })
+      this.isVehicleOwner()
+    })
+  },
+  //是否授权、绑定车主弹窗
+  isVehicleOwnerHidePop() {
+    this.setData({
+      isVehicleOwnerHidePop: !this.data.isVehicleOwnerHidePop
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     request_01.login(() => {
       this.initData(options);
     })
-    if(options.isShare){
+    if (options.isShare) {
       this.setData({
-        isHome:true
+        isHome: true
       })
     }
 
-    this.sequenceInit("sequenceList")//序列帧初始化
+    this.sequenceInit("sequenceList") //序列帧初始化
 
-    if (options.user_id!=null) {
+    if (options.user_id != null) {
       router.jump_nav({
         url: `/pages/vote_detail/vote_detail?activity_id=${activity_id}`,
       })
@@ -399,7 +449,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     tool.loading_h();
     this.setData({
       firstShow: true,
@@ -409,11 +459,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     tool.loading('加载中')
     const options = this.data.options;
     const firstShow = this.data.firstShow;
-    if (firstShow){
+    if (firstShow) {
       this.initData(options);
     }
     tool.loading_h();
@@ -422,35 +472,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-    
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (options) {
+  onShareAppMessage: function(options) {
     const userIndex = this.data.userIndex;
     let vote_id = this.data.VideoBg[userIndex].vote_id
     let user_id = wx.getStorageSync('userInfo').user_id;

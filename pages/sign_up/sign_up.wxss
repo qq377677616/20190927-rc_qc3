@@ -104,7 +104,7 @@ page {
   justify-content: center;
   box-sizing: border-box;
   border-radius: 10rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
 }
 .main .info .btn_group form{
   flex:1;

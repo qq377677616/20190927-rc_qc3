@@ -80,6 +80,7 @@ Component({
         name: this.data.name,
         storeCode: (this.data.type != 1 && this.data.type != 3) ? this.data.storeList[this.data.storeList_index].code : '',
         region: this.data.region,
+        address: this.data.address,
         code: this.data.code
       }
       this.triggerEvent("submit", _data)
