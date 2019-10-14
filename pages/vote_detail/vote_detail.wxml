@@ -1,5 +1,6 @@
 <!-- pages/vote_detail/vote_detail.wxml -->
 <view class="vote_bg">
+  <!-- <video src="{{videoUrl}}" data-index="{{index}}" id="video{{index}}" object-fit="fill" loop="{{true}}" autoplay="{{true}}" controls="{{false}}" class="image-video"></video> -->
   <view class="bg" style="background-image:url('{{vote_info.resource}}')"></view>
   <!-- <image class="bg" src="{{vote_info.resource}}" model="widthFix">
   </image> -->
