@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 65,
+			"current": 38,
 			"list": [
 				{
 					"id": -1,
@@ -323,10 +323,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 38,
 					"name": "sign_up",
 					"pathName": "pages/sign_up/sign_up",
-					"query": "",
+					"query": "activity_id=45",
 					"scene": null
 				},
 				{
@@ -516,6 +516,13 @@
 					"name": "o_prize_detail_page",
 					"pathName": "pages/o_prize_detail/o_prize_detail",
 					"query": "prize_id=532",
+					"scene": null
+				},
+				{
+					"id": 66,
+					"name": "order_wuliu",
+					"pathName": "pages/order_wuliu/order_wuliu",
+					"query": "pageType=o_prize_detail&prize_id=22",
 					"scene": null
 				}
 			]

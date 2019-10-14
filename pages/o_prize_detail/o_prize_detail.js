@@ -90,7 +90,6 @@ Page({
       .then((value)=>{
         //success
         const prizeInfo = value[0].data.data; 
-        console.log(prizeInfo)
 
         this.setData({
           prizeInfo,
@@ -104,5 +103,13 @@ Page({
         //complete
 
       })
+  },
+  //查看快递物流
+  lookWuLiu() {
+    const prizeInfo = this.data.prizeInfo;
+    const prize_id = prizeInfo.prize_id;
+    router.jump_nav({
+      url: `/pages/order_wuliu/order_wuliu?pageType=o_prize_detail&prize_id=${prize_id}`,
+    })
   },
 })
