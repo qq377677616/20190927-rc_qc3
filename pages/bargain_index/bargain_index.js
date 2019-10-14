@@ -229,7 +229,8 @@ Page({
 		}
 		
 	},
-	goshopDel2(e) {//正在进行中商品点击整行进入商品详情
+	goshopDel2(e) {
+		//正在进行中商品点击整行进入商品详情
 		if (e.target.dataset.types == 'no') return;
 		console.log(55555)
 		// this.setData({ ok: this.data.iscarActive ? "ok" : "false" });
@@ -260,9 +261,11 @@ Page({
 		this.setData({ rulspop: false, cutpop: false, barPop: false });
 	},
 	goShopdel(e){//我正在砍的商品点击整行进入商品详情
-	     // b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了
+		 //  "status": 1,//砍价状态1:正在砍价  2:砍价完成  3:已领取 （接口返回）
+	     // b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了 （自己定义）
 		let shopObj = e.currentTarget.dataset.obj; 
 		let obj = {};
+		let shopType = 2;
 		console.log('继续砍价对象', shopObj);
 		obj.titleImg = wx.getStorageSync('userInfo').headimg;
 		obj.nickname = wx.getStorageSync('userInfo').nickname;
@@ -270,8 +273,19 @@ Page({
 		obj.id = shopObj.id;
 		shopObj.status = shopObj.status == 3 ? 4 : shopObj.status;
 		shopObj.status = shopObj.sy_num > 0 ? shopObj.status:5;
-		if (shopObj.status!=5){
+		if (e.currentTarget.dataset.obj.status == 4){//是否是待领取状态
+			route.jump_nav({ url: "/pages/order_detail/order_detail?order_id=" + e.currentTarget.dataset.obj.order_id });
+			return;
+		}
+		if (shopObj.status != 5 && shopObj.status != 4){
 			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + shopObj.status + '&shopobj=' + JSON.stringify(obj) })	
+		} else if (shopObj.status == 4) { //已领取 微信卡券跳转到卡包  非微信卡券  我的订单
+			console.log("是否是卡券", shopObj.type) 
+			    if (shopObj.type == 1) { 
+					route.jump_nav({ url: '/pages/o_card_bag/o_card_bag' })
+				} else {
+					route.jump_nav({ url: '/pages/o_duihuan/o_duihuan' })
+				}
 		}else{
 			route.jump_nav({ url: '/pages/bargain_state/bargain_state?shopobj=' + JSON.stringify(shopObj) });	
 		}
@@ -307,11 +321,7 @@ Page({
 		}
 		request_04.getWolrd(dat).then((res)=>{
 			console.log(res.data)
-			if(res.data.status==0&&type!=1){
-				route.jump_nav({ url: "/pages/order_detail/order_detail?order_id="+res.data.data.order_id});
-			} else if (res.data.status == 0 && type == 1){
-				route.jump_nav({ url: "/pages/o_card_bag/o_card_bag" });	
-			}
+			route.jump_nav({ url: "/pages/order_detail/order_detail?order_id="+res.data.data.order_id});
 		}).catch((reason)=>{
 			console.log(reason)
 		})
@@ -401,18 +411,31 @@ Page({
 	bargainDel(e){
 		console.log(55)
 		// console.log(e);
-		// b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了
+		// "buttom_type": 1,//按钮状态 1:待领取  2:已领取  3:已超时  4:砍价中,
 		let shopObj = e.currentTarget.dataset.obj;
 		let b_type = shopObj.buttom_type;
+		let shopType = 2;
+		console.log("领取状态",shopObj.buttom_type)
 		b_type = b_type == 1 ? 2 : (b_type = b_type == 2 ? 4 : (b_type = b_type == 3 ? 7 : (b_type = b_type == 4 ? 1 : b_type)));
 		b_type = shopObj.sy_num > 0 ? b_type:5;
 		console.log(b_type, '==', b_type, '==', shopObj.sy_num)
 		shopObj.titleImg = wx.getStorageSync('userInfo').headimg;
 		shopObj.nickname = wx.getStorageSync('userInfo').nickname;
 		shopObj.openid = wx.getStorageSync("userInfo").openid;//wx.getStorageSync('userInfo').openid;
-		console.log(shopObj.buttom_type, "剩余数量", shopObj.sy_num);
-		if (shopObj.buttom_type != 3 && shopObj.sy_num>0){
+		console.log("商品类型", shopObj.type);
+		if (shopObj.buttom_type == 5){
+			route.jump_nav({ url: "/pages/order_detail/order_detail?order_id=" + shopObj.order_id });
+			return;
+		}
+		if (shopObj.buttom_type != 3 && shopObj.sy_num > 0 && shopObj.buttom_type != 2){
 			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + b_type + '&shopobj=' + JSON.stringify(shopObj) })
+		} else if (shopObj.buttom_type == 2) {//已领取 微信卡券跳转到卡包  非微信卡券  我的订单 
+			if (shopObj.type==1){
+				route.jump_nav({ url: '/pages/o_card_bag/o_card_bag' })
+			}else{
+				route.jump_nav({ url: '/pages/o_duihuan/o_duihuan' })	
+			}	
+			// console.log("已领取")
 		}else{
 			route.jump_nav({ url: '/pages/bargain_state/bargain_state?shopobj=' + JSON.stringify(shopObj) });
 		}

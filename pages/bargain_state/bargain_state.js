@@ -205,11 +205,9 @@ Page({
 		}
 		request_04.getWolrd(dat).then((res) => {
 			console.log(res.data)
-			if (res.data.status == 0&&res.data.type!=1) {
+			if (res.data.status == 0) {
 				route.jump_nav({ url: "/pages/order_detail/order_detail?order_id=" + res.data.data.order_id });
 				this.getBarcarod();
-			} else if (res.data.status == 0 && res.data.type == 1){
-				route.jump_nav({ url: "/pages/o_card_bag/o_card_bag" });	
 			}else{
 				alert.alert({str:res.data.msg})
 			}
