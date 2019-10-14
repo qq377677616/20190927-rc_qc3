@@ -1,150 +1,109 @@
-<!--pages/sign_up/sign_up.wxml-->
-
-
-
+<!-- pages/sign_up/sign_up.wxml -->
 <!-- sign_up_page -->
 <view class="sign_up_page" style="background-image:url({{ signInfo.banner }});" bindtap="isVehicleOwner">
-
   <!-- main -->
   <view class="main">
-
     <view class="rule" bindtap="openRule">
       <view class="text">报名规则</view>
       <view class="icon iconfont icon_more"></view>
     </view>
-
     <view class="car_type">D60EV</view>
-
     <view class="span">火热销售中</view>
-
     <!-- info -->
     <view class="info">
-
       <!-- headimg -->
       <view class="headimg">
         <view class="image">
-
           <block wx:if="{{ signInfo.img_list.length }}">
             <image wx:for="{{ signInfo.img_list }}" wx:key="index" wx:if="{{ index < 5 }}" src="{{ item.headimg }}" mode="widthFix"></image>
           </block>
-
           <block wx:else>
             <image src="{{ IMGSERVICE }}/home/om.png" mode="widthFix"></image>
           </block>
-
         </view>
         <view class="p nowrap">已有{{ signInfo.join_num }}人参与</view>
       </view>
       <!-- headimg -->
-      
       <!-- btn_group -->
       <view class="btn_group">
-
         <block wx:if="{{ signInfo.status == 0 || signInfo.status == 1 || signInfo.status == 3 }}">
           <form bindsubmit="signUp" bindreset="formReset" report-submit="true">
-            <button class="btn sign_up" form-type="submit" data-type="ok" bindsubmit="bindsubmit">我要报名</button>
+            <button class="btn sign_up" form-type="submit" data-type="ok" bindsubmit="bindsubmit">
+              我要报名
+            </button>
           </form>
         </block>
-
         <block wx:elif="{{ signInfo.status == 2 || signInfo.status == 4 }}">
           <button open-type="share" class="btn share">邀请好友一起参与</button>
           <view class="btn signed">您已报名</view>
         </block>
-
       </view>
       <!-- btn_group -->
-
     </view>
     <!-- info -->
-
   </view>
   <!-- main -->
-
-  
 </view>
 <!-- sign_up_page -->
-
 <!-- win_mask -->
 <view class="win_mask fadeIn" wx:if="{{ isWinShow && (signInfo.status == 4) }}">
-
   <view class="win_main">
-
     <view class="title" style="background-image:url({{ IMGSERVICE }}/activity/title_bg.png);">
-
       <image src="{{ IMGSERVICE }}/activity/hjmd.png" mode="widthFix"></image>
-
       <view class="span">
         <view class="text">活动结束</view>
       </view>
-
     </view>
-
     <view class="win_content">
-
-      <scroll-view scroll-y bindscrolltolower="winListScroll" class="win_list"> 
-
+      <scroll-view scroll-y bindscrolltolower="winListScroll" class="win_list">
         <view class="win_item" wx:for="{{ winInfo.the_winning_list }}" wx:key="index">
           <!-- <view class="label nowrap">{{ index + 1 }}</view> -->
           <image class="headimg" src="{{ item.headimg }}" mode="widthFix"></image>
           <view class="name nowrap">{{ item.nickname }}</view>
           <!-- <view class="status">恭喜中奖</view> -->
         </view>
-
         <!-- <view class="win_item active">
           <image class="headimg" src="{{ winInfo.user_activity.headimg }}" mode="widthFix"></image>
           <view class="name nowrap">{{ winInfo.user_activity.nickname }}</view>
           <view class="status">{{ winInfo.user_activity.status == 1 ? '恭喜中奖' : '未获奖' }}</view>
         </view> -->
-
       </scroll-view>
-
       <view class="user_item active">
         <image class="headimg" src="{{ winInfo.user_activity.headimg }}" mode="widthFix"></image>
         <view class="name nowrap">{{ winInfo.user_activity.nickname }}</view>
         <view class="status">{{ winInfo.user_activity.status == 1 ? '恭喜中奖' : '未获奖' }}</view>
       </view>
-      
-
-
-      <view wx:if="{{ winInfo.user_activity.status == 1 }}" class="get_btn" bindtap="getBtn">领取奖品</view>
+      <view wx:if="{{ winInfo.user_activity.status == 1 }}" class="get_btn" bindtap="getBtn">
+        领取奖品
+      </view>
     </view>
-
     <view class="close_btn iconfont icon_del" bindtap="isWinShow"></view>
-
   </view>
-
-</view><!-- win_mask -->
-
+</view>
+<!-- win_mask -->
 <!-- win_prompt_mask -->
 <view class="win_prompt_mask fadeIn" wx:if="{{ isWinPromptShow && (signInfo.status == 4) && winInfo.user_activity.status == 1 }}">
-
-    <view class="win_prompt_main">
-      <image src="{{ IMGSERVICE }}/activity/win_prompt.png" mode="widthFix"></image>
-      <view class="span">恭喜你，中奖了</view>
-      <view class="get_btn" bindtap="isWinPromptShow">去领取奖品</view>
-      <view class="close_btn iconfont icon_del" bindtap="isWinPromptShow"></view>
-    </view>
-
+  <view class="win_prompt_main">
+    <image src="{{ IMGSERVICE }}/activity/win_prompt.png" mode="widthFix"></image>
+    <view class="span">恭喜你，中奖了</view>
+    <view class="get_btn" bindtap="isWinPromptShow">去领取奖品</view>
+    <view class="close_btn iconfont icon_del" bindtap="isWinPromptShow"></view>
+  </view>
 </view>
 <!-- win_prompt_mask -->
-
 <!-- qc-activePop -->
 <qc-activePop wx:if="{{ (signInfo.status == 0 || signInfo.status == 3) && activityShow }}" popType="{{ 1 }}" text="{{ signInfo.status == 0 ? '活动未开始' : signInfo.status == 3 ? '活动已结束' : '' }}"></qc-activePop>
 <!-- qc-activePop -->
-
-
 <!-- 留资弹窗 -->
 <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
   <forms bindsubmit="submit" bindclose="isShowForm" type="{{ formType }}"></forms>
 </view>
 <!-- 留资弹窗 -->
-
 <!-- rule_mask -->
 <view class="pof fadeIn" style="z-index:999;" wx:if="{{ ruleShow }}">
   <qc-rule bindclose="closeRule" ruleImg="{{ signInfo.rule }}"></qc-rule>
 </view>
 <!-- rule_mask -->
-
 <!-- tips_mask -->
 <view class="tips_mask fadeIn" wx:if="{{ isTipsShow }}">
   <view class="main">
@@ -154,11 +113,21 @@
   </view>
 </view>
 <!-- tips_mask -->
-
 <!-- 授权、去绑定车主弹窗 -->
 <view class="pof fadeShow" style="z-index:999;" wx:if="{{ isVehicleOwnerHidePop }}">
-    <qc-activePop popType="{{ popType }}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></qc-activePop>
+  <qc-activePop popType="{{ popType }}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></qc-activePop>
 </view>
 <!-- 授权、去绑定车主弹窗 -->
-
-
+<!-- 兑换码弹窗  -->
+<view class="code_mask fadeIn" wx:if="{{ isCodeShow }}">
+  <view class="main">
+    <view class="h3">
+      <view>请凭激活码自行</view>
+      <view>前往对应平台自助兑换</view>
+    </view>
+    <view class="p">{{ code }}</view>
+    <view class="btn" bindtap="setClipboar">复制商品码</view>
+    <view class="close_btn iconfont icon_del" bindtap="closeCode"></view>
+  </view>
+</view>
+<!-- 兑换码弹窗  -->

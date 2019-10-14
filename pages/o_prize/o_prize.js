@@ -10,7 +10,7 @@ Page({
    */
   data: {
     isShowForm: false,
-    formsType: 2,//0为门店弹窗、1为详细地址弹窗、2为看车弹窗
+    formsType: 2,//0为门店弹窗、1为详细地址弹窗、2为看车弹窗、3为报名留资弹窗
     prizeList: [],
     page: 1,
     moreType: 1,
