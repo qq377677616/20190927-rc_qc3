@@ -46,7 +46,6 @@ Page({
   //获取抽奖详情
   getPrizeDetails(){
     api.getPrizeDetails({ user_id: wx.getStorageSync("userInfo").user_id, activity_id: this.data.activity_id }).then(res => {
-      console.log("res", res)
       if (res.data.status == 1) {
         this.setData({ 
           iscarActive: res.data.data.car_owner,
@@ -76,7 +75,6 @@ Page({
   //获取奖品列表
   getPrizeList() {
     api.getPrizeList({ activity_id: this.data.activity_id }).then(res => {
-      console.log("res", res)
       if (res.statusCode == 200) {
         this.setData({ prizeList: res.data.data})
         setTimeout(() => { this.setData({ isPrizeList: true }) }, 500)
