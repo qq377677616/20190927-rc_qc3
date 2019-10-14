@@ -7,12 +7,8 @@
   <!-- <view wx:if="{{true}}" bindtap="back_home" class="rulsbox back-home">首 页</view> -->
   <swiper vertical="true" bindchange="swiperChange">
     <swiper-item wx:for="{{VideoBg}}">
-      <!-- <image  class="bg" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3987907653,720009510&fm=26&gp=0.jpg">
-    </image> -->
-      <video wx:if="{{imgVideoType == 0}}" src="{{item.videoUrl}}" id="video{{index}}" object-fit="fill" loop="{{true}}" controls='{{false}}' class="image-video"></video>
-      <!-- <image wx:else src="{{item.resource}}" model="widthFix" class="image-video"></image> -->
-      <!-- {{item.resource}}== -->
-      <view class="image-video" style="background-image:url({{item.resource}})"></view>
+      <video wx:if="{{index==userIndex && vote_type==1}}" src="{{item.videoUrl}}" data-index="{{index}}" id="video{{index}}" object-fit="fill" loop="{{true}}" autoplay="{{true}}" controls="{{false}}" class="image-video" bindtap="livePrlyer"></video>
+      <view bindtap="bintImg" class="image-video" style="background-image:url({{item.resource}})"></view>
       <view class="down_right">
         <view class="headimg" data-type="ok" bindtap="toVoteDetail">
           <image data-type="ok" src="{{userInfo.avatarUrl || IMGSERVICE + '/home/om.png'}}"></image>
