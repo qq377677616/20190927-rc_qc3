@@ -183,7 +183,18 @@ Page({
   onReachBottom: function () {
     this.myPrizeList()
   },
-
+  setClipboar(){
+	  var that = this;
+	  wx.setClipboardData({
+		  //准备复制的数据
+		  data: that.data.code,
+		  success: function (res) {
+			  wx.showToast({
+				  title: '复制成功',
+			  });
+		  }
+	  });
+  }
   /**
    * 用户点击右上角分享
    */

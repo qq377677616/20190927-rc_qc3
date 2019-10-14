@@ -21,7 +21,7 @@
       <!-- <forms bindsubmit="submit" bindclose="isShowForm" type="2" vehicle="{{vehicle}}"></forms> -->
       <forms bindsubmit="submit" bindclose="isShowForm" type="{{formsType}}"></forms>
     </view>
-    <!-- 兑换码弹窗 -->
+    <!-- 兑换码弹窗 wx:if="{{isShowCode}}"-->
     <view class="forms-box flex-cen code" wx:if="{{isShowCode}}">
       <view class="box fadeShow">
         <view class="h3"><view>请凭激活码自行</view><view>前往对应平台自助兑换</view></view>
