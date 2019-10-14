@@ -21,7 +21,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options){
     request_01.login(() => { 
       this.myPrizeList() 
     })
@@ -199,7 +199,18 @@ Page({
   onReachBottom: function () {
     this.myPrizeList()
   },
-
+  setClipboar(){
+	  var that = this;
+	  wx.setClipboardData({
+		  //准备复制的数据
+		  data: that.data.code,
+		  success: function (res) {
+			  wx.showToast({
+				  title: '复制成功',
+			  });
+		  }
+	  });
+  }
   /**
    * 用户点击右上角分享
    */
