@@ -4,7 +4,7 @@
 <view class="order_detail_page">
 
     <!-- order_status -->
-    <view class="handbox" wx:if="{{ prizeInfo.type == 2 || prizeInfo.type == 1 }}">
+    <view class="handbox" wx:if="{{ prizeInfo.prize_type == 2 }}">
         <image src="{{ IMGSERVICE }}/center/flish_1.png" mode="widthFix"></image>
         <view class="info">
             <view class="title nowrap">{{ prizeInfo.status_text }}</view>

@@ -172,8 +172,9 @@ Page({
           ruleShow: keyGroup.signUpKey,//首次弹规则弹窗
           isWinPromptShow: keyGroup.signUpWin,//只在首次弹中奖提示框
           activityShow: keyGroup.signUpKey ? false : true,//首次弹规则不展示活动 未开始 结束 提示框
-          prize_status:winInfo.user_activity.prize_status,//单独提出奖品领取状态
+          prize_status:winInfo.user_activity ? winInfo.user_activity.prize_status : '',//单独提出奖品领取状态
         })
+
       })
       .catch((reason) => {
         //fail
