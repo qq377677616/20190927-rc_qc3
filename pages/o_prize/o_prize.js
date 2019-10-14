@@ -51,6 +51,21 @@ Page({
       }
     })
   },
+  //查看详情
+  lookDetail(e){
+    const index = e.currentTarget.dataset.index;
+    const prizeList = this.data.prizeList;
+    const item = prizeList[index];
+    const prize_id = item.prize_id;
+    
+    //没领取的微信卡卷、快递 不允许查看奖品详情
+    if( item.status == 0 )return;
+
+    //奖品详情
+    route.jump_nav({ 
+      url:`/pages/o_prize_detail/o_prize_detail?prize_id=${prize_id}`
+    })
+  },
   //跳转
   jump(e) {
     let _item = this.data.prizeList[e.currentTarget.dataset.index]

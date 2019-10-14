@@ -515,7 +515,7 @@
 					"id": 65,
 					"name": "o_prize_detail_page",
 					"pathName": "pages/o_prize_detail/o_prize_detail",
-					"query": "",
+					"query": "prize_id=532",
 					"scene": null
 				}
 			]
