@@ -96,7 +96,9 @@ Page({
   initData(options) {
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
+    console.log('activity_id', activity_id)
     request_05.shakeDetail({openid,activity_id}).then(res=>{
+      console.log(res)
       this.setRule()      //规则永久弹一次
       this.setData({
         activity_id,
@@ -214,11 +216,13 @@ Page({
           prize_info: res.data.data.prize_info,
         })
         if (res.data.data.shake_num > 0) {
+          this.initData(options)
           this.setData({
             openAj: true,
           })
         } else {
           if (res.data.data.is_send_prize == 1) {
+            this.initData(options)
             this.setData({
               quanPop: true,
               other_prize: res.data.data.other_prize,
@@ -264,8 +268,6 @@ Page({
   // 点击再摇一次
   once() {
     this.isOpen();
-    let options = this.data.options;
-    this.initData(options); 
     this.joinShake();
     this.setData({ isOpen: true })
   },
@@ -413,16 +415,12 @@ Page({
   // 关闭前两次中奖弹窗
   isOpen() {
     this.setData({ openAj: !this.data.openAj })
-    let options = this.data.options;
-    this.initData(options)
     this.setData({ isOpen : true})
   },
 
   // 关闭第三次中奖弹窗
   closeBtn() {
     this.setData({ quanPop: !this.data.quanPop })
-    let options = this.data.options;
-    this.initData(options)
   },
 
   // 弹窗永久弹一次

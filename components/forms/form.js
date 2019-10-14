@@ -273,6 +273,7 @@ Component({
     openSetting() {
       if (this.data.isSettingLocation) return
       gets.openSetting().then(res => {
+        console.log("res", res)
         if (res.authSetting["scope.userLocation"]) {
           this.data.isSettingLocation = true
           this.getPosition()

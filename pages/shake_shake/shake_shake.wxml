@@ -18,7 +18,7 @@
 
         </view>
 
-        <view class="shou" style="background-image:url('{{ IMGSERVICE }}/activity/shou.png')" wx:if="{{startShake}}"></view>
+        <view class="shou cake" style="background-image:url('{{ IMGSERVICE }}/activity/shou.png')" wx:if="{{startShake}}"></view>
 
     </view><!-- main -->
 	<!-- 第三次弹窗 -->
@@ -36,7 +36,7 @@
 				<view class="quanTxt_3 quanTxt_6"><text>购车券</text></view>
 			</view>
 			<view class="lq_btn" bindtap="getPrize"><text>立即领取</text></view>
-			<!-- <image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="closeBtn"></image> -->
+			<image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="closeBtn"></image>
 		</view>
 	</view>
   <!-- 前两次弹窗 -->

@@ -4,7 +4,7 @@
 <view class="game_list_page">
 
     <!-- game_item -->
-    <view class="game_item fadeIn" wx:for="{{ gameList }}" wx:key="index">
+    <view class="game_item fadeIn" wx:for="{{ gameList }}" wx:key="index"  data-index="{{ index }}" bindtap="playGame">
 
         <view class="game_image" style="background-image:url({{ item.game_banner }})"></view>
 
@@ -13,7 +13,7 @@
                 <view class="title nowrap">{{ item.game_name }}</view>
                 <view class="span nowrap">{{ item.game_intro }}</view>
             </view>
-            <view class="btn" data-index="{{ index }}" bindtap="playGame">进入游戏</view> 
+            <view class="btn">进入游戏</view> 
         </view>
 
     </view><!-- game_item -->

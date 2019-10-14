@@ -62,7 +62,7 @@
   <!-- share-mask -->
    <view class="share-mask" wx:if="{{ isShare }}">
 
-      <view class="content riseShow">
+      <view class="content riseShow bottom-top">
          <view class="close-btn" bindtap="isShare">
             <image src="{{IMGSERVICE}}/prize/close.png"></image>
          </view>

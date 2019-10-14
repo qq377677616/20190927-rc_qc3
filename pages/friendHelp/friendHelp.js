@@ -19,90 +19,111 @@ Page({
     height:0,
     isShow:false,
     isShowMe:true,
-    isShowFriend:false,
-    helpSuc:false,
-    isTen:false,
-    mTop:29,
+    isShowFriend:false, 
+    helpSuc:false,      //是否助力成功弹窗
+    isTen:false,        //是否可以升级卡券
+    mTop:29,              
+    isHelpH:true,       //是否可以助力
 	},
   initData(options) {
     let activity_id = options.activity_id;
     let openid = wx.getStorageSync('userInfo').openid;
-    request_05.shakeDetail({ openid, activity_id }).then(res => {
-      console.log('shakeDetail',res)
-      this.setData({
-        helpList: res.data.data.help_list,
-        shake_id: res.data.data.shake_info.shake_id,
-        user_info:res.data.data.user_info,
-        activity_status: res.data.data.activity_info.status,
-        upgrade_prize: res.data.data.upgrade_prize,
-        help_num: res.data.data.shake_info.help_num,
-        is_upgrade: res.data.data.shake_info.is_upgrade,
-        activity_id,
-        options,
-      })
-      if (res.data.data.activity_info.status == 3) {
-        if (res.data.data.help_list.length == 10){
-          this.setData({
-            isShowMe: false,
-            isShow: true,
-            isTen: true,
-            height: 480
-          })
-        }else{
-          this.setData({
-            isVehicleOwnerHidePop: true,
-            popType: 1,
-            text: "活动已结束"
-          })
-        }
-      }else{
-        if (res.data.data.can_upgrade == 1) {
-          this.setData({
-            isShowMe: false,
-            isShow: true,
-            isTen: true,
-            height: 480
-          })
-        }
-      }
-    })
-   
-      if (options.openid != wx.getStorageSync('userInfo').openid) {
-        if (options.shake_id) {
-          let shake_id = options.shake_id;
-          let openid = wx.getStorageSync('userInfo').openid;
-          request_05.shakeInfo({ shake_id, openid }).then(res => {
-            console.log('res', res);
-            let user_info = res.data.data.user_info
+    if (!options.openid||options.openid == wx.getStorageSync('userInfo').openid){
+      request_05.shakeDetail({ openid, activity_id }).then(res => {
+        console.log('shakeDetail', res)
+        let headimgList = res.data.data.help_list.slice(0, res.data.data.max_help_num)
+        this.setData({
+          helpList: res.data.data.help_list,
+          shake_id: res.data.data.shake_info.shake_id,
+          help_num: res.data.data.shake_info.help_num,
+          user_info: res.data.data.user_info,
+          activity_status: res.data.data.activity_info.status,
+          upgrade_prize: res.data.data.upgrade_prize,
+          help_num2: res.data.data.max_help_num,
+          is_upgrade: res.data.data.shake_info.is_upgrade,
+          headimgList,
+          activity_id,
+        })
+        if (res.data.data.activity_info.status == 3) {
+          if (res.data.data.can_upgrade == 1) {
             this.setData({
               isShowMe: false,
-              isShowFriend: true,
-              user_info,
               isShow: true,
-              isTen: false,
-              height: 330
+              isTen: true,
+              height: 480
             })
-          })
+          } else {
+            this.setData({
+              isVehicleOwnerHidePop: true,
+              popType: 1,
+              text: "活动已结束"
+            })
+          }
+        } else {
+          if (res.data.data.can_upgrade == 1) {
+            this.setData({
+              isShowMe: false,
+              isShow: true,
+              isTen: true,
+              height: 480
+            })
+          }
         }
+      })
+    }else{
+      if (options.shake_id) {
+        let shake_id = options.shake_id;
+        let openid = wx.getStorageSync('userInfo').openid;
+        console.log('shake_id',shake_id)
+        console.log('openid', openid)
+        request_05.shakeInfo({ shake_id, openid }).then(res => {
+          console.log('res', res);
+          let user_info = res.data.data.user_info
+          let helpList = res.data.data.help_list
+          this.setData({
+            isShowMe: false,
+            isShowFriend: true,
+            isShow: true,
+            isTen: false,
+            height: 330,
+            shake_id,
+            user_info,
+            helpList,
+            is_help: res.data.data.is_help,
+            activity_id,
+          })
+          if (res.data.status == 0) {
+            tool.alert(res.data.msg);
+            this.setData({
+              isHelpH: false,
+            })
+          }
+        })
+      } 
     }
   },
 
   // 助力
   helpH(){
+    if (this.data.isHelpH){
+      let options = this.data.options
       let shake_id = this.data.shake_id
       let openid = wx.getStorageSync('userInfo').openid
-      request_05.shakeHelp({ shake_id, openid}).then(res=>{
+      request_05.shakeHelp({ shake_id, openid }).then(res => {
         console.log(res)
-        if(res.data.status==1){
+        if (res.data.status == 1) {
+          this.initData(options)
           this.setData({
             helpSuc: true
           })
-        }else{
-          tool.alert('您已为TA助力过了哦~')
         }
       })
+    }else{
+      tool.alert('用户已助力完成,不可助力')
+    }      
   },
 
+  // 领取奖品
   lqPrize(){
     var _this = this;
     let options = this.data.options;
@@ -139,6 +160,7 @@ Page({
   // 去摇一摇
   toShake(){
     let activity_id = this.data.activity_id;
+    console.log(activity_id)
     router.jump_red({
       url: `/pages/shake_shake/shake_shake?activity_id=${activity_id}`,
     })
@@ -146,17 +168,16 @@ Page({
 
   // 关闭助力成功弹窗
   closeSuc(){
-    let options = this.data.options
     this.setData({
       helpSuc:false
     })
-    this.initData(options);
   },
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+    
     this.setData({
       options,
     })
@@ -212,6 +233,7 @@ Page({
 	 */
 	onShareAppMessage: function () {
       let openid = wx.getStorageSync('userInfo').openid;
+      console.log(openid)
       let activity_id = this.data.activity_id;
       let shake_id = this.data.shake_id;
       let obj = {

@@ -71,7 +71,9 @@
     "pages/cut_cart/cut_cart",
     "pages/baoming_lz/baoming_lz",
     "pages/assemble/o_pin_status/o_pin_status",
-    "pages/vote_detail/vote_detail"
+    "pages/vote_detail/vote_detail",
+    "pages/qicheng_h5/qicheng_h5",
+    "pages/o_prize_detail/o_prize_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
