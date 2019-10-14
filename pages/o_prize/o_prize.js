@@ -23,14 +23,20 @@ Page({
    */
   onLoad: function (options){
     request_01.login(() => { 
+	  this.setData({prizeList:[]})
       this.myPrizeList() 
     })
+  },
+  onShow(){
+	  this.setData({ prizeList: [],page:1})
+	  this.myPrizeList();
   },
 	goshopstroe(){//去商城
 		route.jump_nav({ url:"/pages/activity_list/activity_list"})
 	},
   //奖品列表
   myPrizeList() {
+	let _prizeList = [];
     let _data = {
       user_id: wx.getStorageSync("userInfo").user_id,
       openid: wx.getStorageSync("userInfo").openid,
@@ -39,15 +45,22 @@ Page({
     api.myPrizeList(_data).then(res => {
       console.log("res", res)
       if (res.data.status == 1) {
-        let _prizeList = this.data.prizeList
-        _prizeList = _prizeList.concat(res.data.data.list)
+        //   _prizeList = this.data.prizeList
+		//   console.log(this.data.prizeList);
+		  console.log(this.data.page);
+		if(this.data.page!=1){
+			_prizeList = res.data.data.list.concat(this.data.prizeList);
+		}else{
+			_prizeList = res.data.data.list;
+		}
+		  
         this.setData({ prizeList: _prizeList })
         if (this.data.page == 1 && res.data.data.list.length<1) {
           this.setData({ moreType: 0 })
         } else if (res.data.data.list.length < 10) {
           this.setData({ moreType: 2 })
         } 
-        this.data.page += 1
+        // this.data.page += 1
       }
     })
   },
@@ -78,7 +91,8 @@ Page({
       this.isShowForm()
     } else {
       if (!_item.xuni_code) {
-        tool.alert("兑换码获取失败，请稍后再试~")
+		  this.isShowForm() 
+        // tool.alert("兑换码获取失败，请稍后再试~")
         return
       }
       this.setData({ code: _item.xuni_code })
@@ -128,6 +142,7 @@ Page({
   },
   //刷新按钮状态
   refreshStatus() {
+	// this.setData({ prizeList:[]})
     let _prizeList = this.data.prizeList
     _prizeList[this.data.curIndex].status = 1
     this.setData({ prizeList: _prizeList })
@@ -196,9 +211,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+	// console.log(1)
+	this.setData({page:++this.data.page});
     this.myPrizeList()
   },
   setClipboar(){
+	  console.log(11)
 	  var that = this;
 	  wx.setClipboardData({
 		  //准备复制的数据

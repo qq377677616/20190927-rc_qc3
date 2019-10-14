@@ -345,7 +345,7 @@ page{
     color: #FFF;
   }
 
-  .cut_now .pro_list .down .cut_on{
+  .cut_now .pro_list .down .cut_on,.cut_on{
     width: 191rpx;
     height: 58rpx;
     background:linear-gradient(90deg,rgba(223,51,48,1),rgba(239,77,74,1));
@@ -358,7 +358,13 @@ page{
     color: #FFF;
 	font-weight: bold;
   }
-
+ .addbg{
+	  background:linear-gradient(90deg,rgba(32,161,224,1),rgba(34,116,208,1)) !important;
+ } 
+.cut_on{
+	 width: 160rpx;
+	 margin-right: 26rpx;
+ }
   .cut_now .pro_list .down .cut_robbed{
     width: 191rpx;
     height: 58rpx;
@@ -502,7 +508,7 @@ page{
 	flex: 0 0 auto;
 	border-radius: 10rpx;
 }
-.cut_record_box .next_box .list .list_left .cut_suc{
+.cut_record_box .next_box .list .list_left .cut_suc,.cut_suc2{
   position: absolute;
   bottom: 0;
   width: 180rpx;
@@ -516,7 +522,9 @@ page{
   font-size: 24rpx;
   border-radius: 0 0 10rpx 10rpx;
 }
-
+.cut_suc2{
+	width: 160rpx;
+}
 .cut_record_box .next_box .list .list_right{
   height: 180rpx;
   margin-left: 18rpx;

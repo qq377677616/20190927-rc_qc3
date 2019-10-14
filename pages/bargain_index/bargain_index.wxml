@@ -124,7 +124,8 @@
 					<view wx:if="{{item.status==3}}" class="cut_robbed setbold" data-cid="{{item.id}}">已领取</view>
                     <view wx:if="{{item.status==2}}" class="cut_suc setbold" catchtap="getworld" data-cid="{{item.id}}" data-type="{{item.type}}">砍价成功, 领取奖品</view>
                     <view wx:if="{{item.status==1&&item.sy_num>0}}" class="cut_on setbold" catchtap="continueBargain" data-obj="{{item}}">继续砍价</view>
-					<view wx:if="{{!item.sy_num>0&&item.status!=2&&item.status!=3}}" class="cut_robbed setbold"  data-obj="{{item}}">抢完了</view>
+					<view wx:if="{{!item.sy_num>0&&item.status!=2&&item.status!=3&&item.status!=4}}" class="cut_robbed setbold"  data-obj="{{item}}">抢完了</view>
+					<view wx:if="{{item.status==4}}" class="cut_on setbold addbg"  data-obj="{{item}}">待领取</view>
                 	</view>
 			</view>
           </view>
@@ -299,11 +300,12 @@
 
                         <view class="right_down">
                              <view class="date">砍价日期：{{item.true_date}}</view>       
-                              <view class="unclaimed setbold" wx:if="{{item.buttom_type==1}}">待领取</view>
+                              <view class="unclaimed setbold" wx:if="{{item.buttom_type==1||item.buttom_type==5}}">待领取</view>
                               <view  wx:if="{{item.buttom_type==2}}" class="gray setbold">已领取</view>
                               <view wx:if="{{item.buttom_type==3}}" class="gray setbold">砍价超时</view>
 							  <view class="unclaimed setbold" wx:if="{{item.buttom_type==4&&item.sy_num>0}}">进行中</view>
 							  <view wx:if="{{item.buttom_type==4&&!item.sy_num>0}}" class="gray setbold">抢完了</view>
+							  <!-- <view wx:if="{{item.buttom_type==5}}" class="cut_on setbold">去使用</view> -->
                         </view>
 
                   </view>
