@@ -277,9 +277,13 @@ Page({
 
   },
   //领取奖品
-  getBtn(){
+  getBtn(e){
+    const winInfo = this.data.winInfo;
+    const prize_id = winInfo.user_activity.prize_log_id;
+
     router.jump_nav({
-      url:`/pages/o_prize/o_prize`
+      url:`/pages/o_prize/o_prize`,
+      // url:`/pages/o_prize/o_prize?pageType=capital&prize_id=` + prize_id
     })
   },
   //公布弹窗滚动加载

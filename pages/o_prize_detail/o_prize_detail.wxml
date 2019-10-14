@@ -84,14 +84,14 @@
         <!-- <view class="section">
             <view class="span">订单来源</view>
             <view class="p nowrap">{{ prizeInfo.from }}</view>
-        </view>
+        </view> -->
 
-        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+        <view class="section" wx:if="{{ !(prizeInfo.type == 2) }}">
             <view class="span">门店名称</view>
-            <view class="p">{{ orderDetail.dealer_info.name }}</view>
+            <view class="p">{{ prizeInfo.dlr_name }}</view>
         </view>
 
-        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+        <!-- <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
             <view class="span">门店地址</view>
             <view class="p">{{ orderDetail.dealer_info.address }}</view>
         </view>
