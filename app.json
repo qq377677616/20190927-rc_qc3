@@ -83,7 +83,8 @@
     "navigationBarTextStyle": "black"
   },
   "navigateToMiniProgramAppIdList": [
-    "wx69e1bbc408d94fd3"
+    "wx69e1bbc408d94fd3",
+    "wxba3c5eeb3be161db"
   ],
   "sitemapLocation": "sitemap.json",
   "networkTimeout": {
