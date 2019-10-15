@@ -198,22 +198,40 @@ page{
 	text-align: center;
 	line-height: 90rpx;
 }
+.card_bag{
+  width:590rpx;
+	height:94rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
+  border-radius: 10rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
+}
 .gray{
+  width:590rpx;
+	height:94rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
   background: #999 !important;
   opacity: 0.5;
 }
-.f3{
-  border: 0 !important;
+.wh{
+  width:590rpx;
+	height:94rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .mt1{
   margin-top: 35rpx;
 }
 .mt1 button{
-  width:586rpx;
-	height:90rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #FFFFFF;
   font-size: 30rpx;
 }
@@ -291,7 +309,7 @@ page{
 }
 .help_item{
 	width: 100%;
-	height: 132rpx;
+	height: 131rpx;
 	box-sizing: border-box;
 	border-bottom: 1rpx solid #eee;
 	display: flex;
@@ -446,6 +464,7 @@ page{
 .hasQuan{
   background-color: #999;
   font-size: 24rpx;
+  opacity: 0.5;
 }
 
 
@@ -460,6 +479,9 @@ page{
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+}
+.bg{
+  background:rgba(0,0,0,0.5);
 }
 .centerBoxpop{
 	width: 683rpx;

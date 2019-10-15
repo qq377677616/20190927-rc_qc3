@@ -22,6 +22,7 @@ Page({
     isShowFriend: false,
     helpSuc: false, //是否助力成功弹窗
     isTen: false, //是否可以升级卡券
+    isSuc:false,
     mTop: 29,
     isHelpH: true, //是否可以助力
   },
@@ -65,6 +66,11 @@ Page({
           }
         } else {
           if (res.data.data.can_upgrade == 1) {
+            if (res.data.data.shake_info.is_upgrade==0){
+              this.setData({
+                isSuc:true,
+              })
+            }
             this.setData({
               isShowMe: false,
               isShow: true,
@@ -166,6 +172,12 @@ Page({
     })
   },
 
+  toCard_bag_page(){
+    router.jump_red({
+      url: `/pages/o_card_bag/o_card_bag`
+    })
+  },
+
 
   // 查看其他活动
   toActivityList() {
@@ -187,6 +199,13 @@ Page({
   closeSuc() {
     this.setData({
       helpSuc: false
+    })
+  },
+
+  // 关闭升级成功弹窗
+  once(){
+    this.setData({
+      isSuc: false
     })
   },
 
