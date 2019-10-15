@@ -27,21 +27,21 @@
       <!-- 抽奖转盘 -->
       <view class="top">
         <image class="edge" src="{{IMGSERVICE}}/prize/icon.png" mode="widthFix"></image>
-        <view class="prize-box {{isPrizeList ? 'on' : ''}}">
+        <view class="prize-box on {{isPrizeList ? 'on' : ''}}">
           <view class="ul {{ isPrize ? 'shadow' : ''}}">
             <view class="li flex-cen {{curIndex == index ? 'cur' : ''}}" wx:for="{{prizeList}}" wx:key="{{item.id}}">
               <image src="{{item.prize_img}}" mode="widthFix"></image>
               {{item.prize_name}}
             </view>
-            <!-- <li class="btn {{isPrizeList ? 'fadeShow' : ''}}" data-type="ok" bindtap="start">{{isPrize ? '立即抽奖' : '抽奖中...'}}<button wx:if="{{!userInfo.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button></li> -->
-            <li class="btn {{isPrizeList ? 'fadeShow' : ''}}" data-type="ok" bindtap="start">{{isPrize ? '立即抽奖' : '抽奖中...'}}</li>
+            <!-- <li class="btn {{isPrizeList ? 'fadeShow' : ''}}" data-type="ok" bindtap="start">{{isPrize ? '立即抽奖' : '抽奖中...'}}</li> -->
+            <li class="btn" data-type="ok" bindtap="start">{{isPrize ? '立即抽奖' : '抽奖中...'}}</li>
           </view>
         </view>
         <view class="my-prize"> 
           <view class="h3">您的抽奖机会<text>({{prizeDetails.my_draw_num}}/{{prizeDetails.draw_num}})</text></view>
           <view class="btns flex-cen">
-            <view class="button" bindtap="router" data-url="/pages/task/task">赚V豆换好礼</view>
-            <view class="button"  bindtap="router" data-url="/pages/activity_list/activity_list">查看更多精彩</view>
+            <view class="button" bindtap="router" data-url="/pages/shop_mall/shop_mall">更多好礼</view>
+            <view class="button"  bindtap="router" data-url="/pages/activity_list/activity_list">更多精彩</view>
           </view>
         </view> 
       </view>

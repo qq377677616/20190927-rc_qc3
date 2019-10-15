@@ -4,14 +4,14 @@ import request_01 from '../../utils/request/request_01.js'
 import api from '../../utils/request/request_03.js'
 import utils from '../../utils/public/util.js'
 
-Page({
+Page({ 
   data: {
     IMGSERVICE: getApp().globalData.IMGSERVICE,
     type: 0,
     isHidePrize: true,
     isHidePop: true,
-    step: 8 * 5,
     curIndex: 0,
+    step: 10 * 3,
     speed: 260,
     start_num: 6,
     isPrize: true,
@@ -86,10 +86,10 @@ Page({
     if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return
     let _self = this
     if (this.data.isPrize && wx.getStorageSync("userInfo").nickName) {
-      if (this.data.prizeDetails.my_draw_num >= this.data.prizeDetails.draw_num) {
-        tool.alert("您的抽奖机会用完啦~")
-        return
-      }
+      // if (this.data.prizeDetails.my_draw_num >= this.data.prizeDetails.draw_num) {
+      //   tool.alert("您的抽奖机会用完啦~")
+      //   return
+      // }
       api.getPrize({ user_id: wx.getStorageSync("userInfo").user_id, activity_id: this.data.activity_id }).then(res => {
         if (res.data.status == 1) {
           let _num = this.data.prizeList.findIndex(item => item.id == res.data.data.prize_info.prize_id)
@@ -127,7 +127,7 @@ Page({
               } else if (_prize_num >= _self.data.start_num && _prize_num < _self.data.start_num * 4) {
                 _speed += 6
               } else {
-                _speed += 16
+                _speed += 20
               }
               _auto = setInterval(auto_prize, _speed)
               _self.setData({ curIndex: _curIndex })
@@ -341,7 +341,7 @@ Page({
       tool.alert('正在抽奖中,请稍后')
       return
     }
-    tool.jump_nav(e.currentTarget.dataset.url)
+    tool.jump_nav(`${e.currentTarget.dataset.url}?activity_id=${this.data.activity_id}`)
   },
   jump() {
     if (!this.data.isPrize) {
