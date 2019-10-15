@@ -100,18 +100,18 @@
         </view>
       </swiper-item>
       <swiper-item class="flex-cen" wx:for="{{4-helpList.length}}" wx:if="{{helpList.length<4}}" wx:key="index">
-        <view class="help_item">
+        <view class="help_item f3">
           <view class="leftBox">
             <view class="l_item1 nowrap">
-              <text>-</text>
+              <text></text>
             </view>
             <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
             <view class="l_item3 nowrap">
-              <text>-</text>
+              <text></text>
             </view>
           </view>
           <view class="rightBox">
-            <text>-</text>
+            <text></text>
           </view>
         </view>
       </swiper-item>
