@@ -4,7 +4,7 @@ import request_01 from '../../utils/request/request_01.js'
 import api from '../../utils/request/request_03.js'
 import route from "../../utils/tool/router.js"
 Page({
-
+ 
   /**
    * 页面的初始数据
    */
@@ -21,7 +21,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options){
+  onLoad: function (opation){
+    console.log("options", opation)
+    this.setData({
+      activity_id: opation.activity_id || ''
+    })
     request_01.login(() => { 
 	  this.setData({prizeList:[]})
       this.myPrizeList() 
@@ -35,11 +39,12 @@ Page({
 		route.jump_nav({ url:"/pages/activity_list/activity_list"})
 	},
   //奖品列表
-  myPrizeList() {
+  myPrizeList() { 
 	let _prizeList = [];
     let _data = {
       user_id: wx.getStorageSync("userInfo").user_id,
       openid: wx.getStorageSync("userInfo").openid,
+      activity_id: this.data.activity_id,
       page: this.data.page || 1
     }
     api.myPrizeList(_data).then(res => {
