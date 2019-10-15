@@ -28,9 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    request_01.login(()=>{
-      
-    })
+    request_01.login(()=>{})
   },
 
   /**
@@ -110,7 +108,20 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    wx.updateShareMenu({
+      withShareTicket: true,
+      isUpdatableMessage: true,
+      activityId: '47', // 活动 ID
+      templateInfo: {
+        parameterList: [{
+          name: 'member_count',
+          value: '1'
+        }, {
+          name: 'room_limit',
+          value: '3'
+        }]
+      }
+    })
   },
   //确定
   sureBtn() {
