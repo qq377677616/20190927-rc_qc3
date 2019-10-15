@@ -145,30 +145,40 @@ Page({
     let options = this.data.options;
     let activity_id = this.data.activity_id;
     let openid = wx.getStorageSync('userInfo').openid;
-    request_05.upgradePrize({
-      activity_id,
-      openid
-    }).then(res => {
-      console.log(res)
-      let card_list = [res.data.data.card_info];
-      wx.addCard({
-        cardList: card_list,
-        success(res) {
-          console.log('cardList', res)
-          let card_code = res.cardList[0].code;
-          request_05.updateCardCode({
+    wx.showModal({
+      title: '提示',
+      content: '领取后将不能升级卡券,您确定要领取吗？',
+      success(res) {
+        if (res.confirm) {
+          request_05.upgradePrize({
             activity_id,
-            openid,
-            card_code
+            openid
           }).then(res => {
-            console.log('update_card_code', res)
-            if (res.data.status == 1) {
-              tool.alert('领取成功')
-              _this.initData(options)
-            }
+            console.log(res)
+            let card_list = [res.data.data.card_info];
+            wx.addCard({
+              cardList: card_list,
+              success(res) {
+                console.log('cardList', res)
+                let card_code = res.cardList[0].code;
+                request_05.updateCardCode({
+                  activity_id,
+                  openid,
+                  card_code
+                }).then(res => {
+                  console.log('update_card_code', res)
+                  if (res.data.status == 1) {
+                    tool.alert('领取成功')
+                    _this.initData(options)
+                  }
+                })
+              }
+            })
           })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
         }
-      })
+      }
     })
   },
 
