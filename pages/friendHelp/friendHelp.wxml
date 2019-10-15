@@ -30,18 +30,21 @@
         </view>
         <view class="quan3" bindtap="lqPrize">领取</view>
       </view>
-      <view class="quanBox quanBox2" style="background-image:url({{IMGSERVICE}}/center/getQuan_03.png)" wx:if="{{is_upgrade==1}}">
+      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/center/quan2.png)" wx:if="{{is_upgrade==1}}">
         <view class="quan1">优惠券</view>
         <view class="quan2 nowrap">￥{{upgrade_prize.prize_name}}
-          <text class="addstyle">元购车基金</text>
+          <text class="addstyle nowrap">元购车基金</text>
         </view>
-        <view class="quan3 hasQuan">已领取</view>
+        <view class="quan3 hasQuan" bindtap="toCard_bag_page">已领取</view>
       </view>
-      <view class="helpBtn mt1" wx:if="{{is_upgrade==0}}">
+      <view class="helpBtn mt1" wx:if="{{is_upgrade==0 && help_num!=help_num2}}">
         <button open-type="share" bindtap="shareFriend">继续分享获取更多好礼</button>
       </view>
+      <view class="helpBtn mt1 wh" wx:if="{{is_upgrade==0 && help_num==help_num2}}">
+        <button bindtap="lqPrize">放入卡包</button>
+      </view>
       <view class="helpBtn mt1 gray" wx:if="{{is_upgrade==1}}">
-        <button>已领取</button>
+        <button>放入卡包</button>
       </view>
       <view class="myEnter" bindtap="toActivityList">
         <text>查看其他活动</text>
@@ -82,7 +85,7 @@
   <view class="centerHelp2" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png);margin-top:{{height}}rpx" wx:if="{{isShow && helpList.length>0}}"></view>
   <view class="help_list" wx:if="{{isShow && helpList.length>0}}">
     <!-- 自动 -->
-    <swiper vertical="true" display-multiple-items="4" interval="1500" autoplay="{{helpList.length>4}}" circular="true" style="height:520rpx">
+    <swiper vertical="true" display-multiple-items="4" interval="1500" autoplay="{{helpList.length>4}}" circular="true" style="height:516rpx">
       <swiper-item class="flex-cen" wx:for="{{helpList}}" wx:for-item="item" wx:key="index">
         <view class="help_item">
           <view class="leftBox">
@@ -100,18 +103,18 @@
         </view>
       </swiper-item>
       <swiper-item class="flex-cen" wx:for="{{4-helpList.length}}" wx:if="{{helpList.length<4}}" wx:key="index">
-        <view class="help_item">
+        <view class="help_item f3">
           <view class="leftBox">
             <view class="l_item1 nowrap">
-              <text>-</text>
+              <text></text>
             </view>
             <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
             <view class="l_item3 nowrap">
-              <text>-</text>
+              <text></text>
             </view>
           </view>
           <view class="rightBox">
-            <text>-</text>
+            <text></text>
           </view>
         </view>
       </swiper-item>
@@ -156,15 +159,15 @@
 </view>
 
 <!-- 升级弹窗 -->
-<view class="getQuan" wx:if="{{isSuc}}">
+<view class="getQuan bg" wx:if="{{isSuc}}">
   <view class="centerBoxpop" style="background-image:url('{{ IMGSERVICE }}/activity/sjsuc.png')">
     <view class="cur">
       <view class="quanTxt_2">
-        <text>388</text>
+        <text>{{upgrade_prize.prize_name}}</text>
         <text>元</text>
       </view>
     </view>
-    <view class="btn-once" bindtap="once">放入卡包</view>
+    <view class="btn-once" bindtap="once">去领取</view>
   </view>
 </view>
 

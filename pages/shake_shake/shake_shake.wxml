@@ -18,15 +18,17 @@
 
     </view>
 
-    <view class="shou cake" style="background-image:url('{{ IMGSERVICE }}/activity/shou.png')" wx:if="{{startShake}}"></view>
+    <view class="allPing" wx:if="{{startShake}}" catchtap="onceClick">
+      <view class="shou cake" style="background-image:url('{{ IMGSERVICE }}/activity/shou.png')"></view>
+    </view>
 
   </view>
   <!-- main -->
   <!-- 第三次弹窗 -->
   <view class="getQuan" wx:if="{{quanPop}}">
-    <view class="centerBoxpop" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_01.png')">
+    <view class="centerBoxpop centerBoxpop2" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_01.png')">
       <text class="txt_1">恭喜您获得了</text>
-      <view class="card_1" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_02.png')">
+      <view class="card_1 card_1_mtb" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_02.png')">
         <view class="quanTxt_1">
           <text>优惠券</text>
         </view>
@@ -38,8 +40,8 @@
           <text>购车券</text>
         </view>
       </view>
-      <view class="card_1 card_2" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_03.png')" wx:for="{{other_prize}}">
-        <view class="quanTxt_1 quanTxt_4">
+      <view class="card_1 card_2" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_03.png?v_1')" wx:for="{{other_prize}}">
+        <view class="quanTxt_1 quanTxt_4 quanTxt_8">
           <text>优惠券</text>
         </view>
         <view class="quanTxt_2 quanTxt_5">

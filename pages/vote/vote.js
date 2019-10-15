@@ -294,10 +294,6 @@ Page({
     }).then(res => {
       const _ban = res.data.data;
       const videoList = this.data.videoList;
-      const ctx = wx.createCanvasContext('myCanvas')
-      ctx.drawImage(videoList[0], 0, 0, 150, 100)
-      ctx.draw()
-      console.log('ctx', ctx)
       for (var i = 0; i < _ban.length; i++) {
         //为0时 未点赞
         if (_ban[i].is_favorite == 0) {
