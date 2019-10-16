@@ -266,6 +266,13 @@ page{
 	font-weight:400;
 	color:rgba(255,255,255,1);
 }
+.btnShare{
+  width:586rpx;
+	height:90rpx;
+  display:  flex;
+  align-items: center;
+  justify-content: center;
+}
 .myEnter{
 	width:586rpx;
 	height:90rpx;

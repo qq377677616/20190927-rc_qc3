@@ -22,7 +22,7 @@ Page({
     isShowFriend: false,
     helpSuc: false, //是否助力成功弹窗
     isTen: false, //是否可以升级卡券
-    isSuc:false,
+    isSuc: false,
     mTop: 29,
     isHelpH: true, //是否可以助力
   },
@@ -45,6 +45,7 @@ Page({
           upgrade_prize: res.data.data.upgrade_prize,
           help_num2: res.data.data.max_help_num,
           is_upgrade: res.data.data.shake_info.is_upgrade,
+          max_help_num_upgrade: res.data.data.max_help_num_upgrade,
           headimgList,
           activity_id,
         })
@@ -66,9 +67,9 @@ Page({
           }
         } else {
           if (res.data.data.can_upgrade == 1) {
-            if (res.data.data.shake_info.is_upgrade==0){
+            if (res.data.data.shake_info.is_upgrade == 0) {
               this.setData({
-                isSuc:true,
+                isSuc: true,
               })
             }
             this.setData({
@@ -84,6 +85,8 @@ Page({
       if (options.shake_id) {
         let shake_id = options.shake_id;
         let openid = wx.getStorageSync('userInfo').openid;
+        let oOpenid = options.openid;
+        let activity_id = options.activity_id;
         console.log('shake_id', shake_id)
         console.log('openid', openid)
         request_05.shakeInfo({
@@ -98,7 +101,7 @@ Page({
             isShowFriend: true,
             isShow: true,
             isTen: false,
-            height: 330,
+            height: 330, 
             shake_id,
             user_info,
             helpList,
@@ -107,6 +110,17 @@ Page({
           })
           if (res.data.status == 0) {
             tool.alert(res.data.msg);
+            this.setData({
+              isHelpH: false,
+            })
+          }
+        })
+        request_05.shakeDetail({ oOpenid, activity_id}).then(res=>{
+          this.setData({
+            help_num: res.data.data.shake_info.help_num,
+            max_help_num_upgrade: res.data.data.max_help_num_upgrade,
+          })
+          if (max_help_num_upgrade <= help_num){
             this.setData({
               isHelpH: false,
             })
@@ -139,51 +153,94 @@ Page({
     }
   },
 
+  //分享获取更多好礼
+  shareFriend(){
+    let headimgList = this.data.helpList.slice(0, this.data.max_help_num_upgrade);
+    let help_num2 = this.data.max_help_num_upgrade;
+    this.setData({
+      isShowMe: true,
+      isShow: false,
+      isTen: false,
+      headimgList,
+      help_num2
+    })
+  },
+
   // 领取奖品
   lqPrize() {
+    let help_num = this.data.help_num;
+    let help_num2 = this.data.help_num2;
     var _this = this;
     let options = this.data.options;
     let activity_id = this.data.activity_id;
     let openid = wx.getStorageSync('userInfo').openid;
-    wx.showModal({
-      title: '提示',
-      content: '领取后将不能升级卡券,您确定要领取吗？',
-      success(res) {
-        if (res.confirm) {
-          request_05.upgradePrize({
-            activity_id,
-            openid
-          }).then(res => {
-            console.log(res)
-            let card_list = [res.data.data.card_info];
-            wx.addCard({
-              cardList: card_list,
-              success(res) {
-                console.log('cardList', res)
-                let card_code = res.cardList[0].code;
-                request_05.updateCardCode({
-                  activity_id,
-                  openid,
-                  card_code
-                }).then(res => {
-                  console.log('update_card_code', res)
-                  if (res.data.status == 1) {
-                    tool.alert('领取成功')
-                    _this.initData(options)
-                  }
-                })
+    if (this.data.max_help_num_upgrade>help_num) {
+      wx.showModal({
+        title: '提示',
+        content: '领取后将不能升级卡券,您确定要领取吗？',
+        success(res) {
+          if (res.confirm) {
+            request_05.upgradePrize({
+              activity_id,
+              openid
+            }).then(res => {
+              console.log(res)
+              let card_list = [res.data.data.card_info];
+              wx.addCard({
+                cardList: card_list,
+                success(res) {
+                  console.log('cardList', res)
+                  let card_code = res.cardList[0].code;
+                  request_05.updateCardCode({
+                    activity_id,
+                    openid,
+                    card_code
+                  }).then(res => {
+                    console.log('update_card_code', res)
+                    if (res.data.status == 1) {
+                      tool.alert('领取成功')
+                      _this.initData(options)
+                    }
+                  })
+                }
+              })
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    } else {
+      request_05.upgradePrize({
+        activity_id,
+        openid
+      }).then(res => {
+        console.log(res)
+        let card_list = [res.data.data.card_info];
+        wx.addCard({
+          cardList: card_list,
+          success(res) {
+            console.log('cardList', res)
+            let card_code = res.cardList[0].code;
+            request_05.updateCardCode({
+              activity_id,
+              openid,
+              card_code
+            }).then(res => {
+              console.log('update_card_code', res)
+              if (res.data.status == 1) {
+                tool.alert('领取成功')
+                _this.initData(options)
               }
             })
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
+          }
+        })
+      })
+    }
   },
 
-  toCard_bag_page(){
-    router.jump_red({
+  toCard_bag_page() {
+    router.jump_nav({
       url: `/pages/o_card_bag/o_card_bag`
     })
   },
@@ -213,7 +270,7 @@ Page({
   },
 
   // 关闭升级成功弹窗
-  once(){
+  once() {
     this.setData({
       isSuc: false
     })
