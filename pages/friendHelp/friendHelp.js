@@ -86,6 +86,7 @@ Page({
         let shake_id = options.shake_id;
         let openid = wx.getStorageSync('userInfo').openid;
         let oOpenid = options.openid;
+        console.log(oOpenid)
         let activity_id = options.activity_id;
         console.log('shake_id', shake_id)
         console.log('openid', openid)
@@ -105,22 +106,17 @@ Page({
             shake_id,
             user_info,
             helpList,
+            can_help:res.data.data.can_help,
             is_help: res.data.data.is_help,
             activity_id,
           })
-          if (res.data.status == 0) {
-            tool.alert(res.data.msg);
+          if(res.data.data.can_help==0){
             this.setData({
               isHelpH: false,
             })
           }
-        })
-        request_05.shakeDetail({ oOpenid, activity_id}).then(res=>{
-          this.setData({
-            help_num: res.data.data.shake_info.help_num,
-            max_help_num_upgrade: res.data.data.max_help_num_upgrade,
-          })
-          if (max_help_num_upgrade <= help_num){
+          if (res.data.status == 0) {
+            tool.alert(res.data.msg);
             this.setData({
               isHelpH: false,
             })
