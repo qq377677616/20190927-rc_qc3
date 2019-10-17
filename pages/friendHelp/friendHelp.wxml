@@ -1,5 +1,5 @@
 <!-- 好友助力页面 -->
-<view class="whole">
+<view class="whole" bindtap="isVehicleOwner">
   <view class="handImg" style="background-image:url({{IMGSERVICE}}/center/giftbg1.png)">
     <!-- 给好友助力Box -->
     <view class="helpBox" wx:if="{{isShowFriend}}">
@@ -10,7 +10,7 @@
           <text class="userTxt">请帮我助力！</text>
         </view>
       </view>
-      <view class="helpBtn mt2" bindtap="helpH" wx:if="{{is_help==0 && can_help==1}}">
+      <view data-type="ok" class="helpBtn mt2" bindtap="helpH" wx:if="{{is_help==0 && can_help==1}}">
         <text>助TA一臂之力</text>
       </view>
       <view class="helpBtn mt2 gray" wx:if="{{is_help==1}}">

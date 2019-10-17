@@ -128,6 +128,7 @@ Page({
 
   // 助力
   helpH() {
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
     if (this.data.isHelpH) {
       let options = this.data.options
       let shake_id = this.data.shake_id
