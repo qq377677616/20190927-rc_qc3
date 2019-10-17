@@ -135,6 +135,8 @@ Page({
           tool.showModal("领取成功", "您的信息已提交成功，近期将会有工作人员电话联系您，敬请留意~", "好的,#124DB8", false)
         }, 800)
       } else if (this.data.prize_type == 3) {
+        this.setData({ prizeList: []})
+        this.myPrizeList();
         tool.loading("信息提交中")
         setTimeout(() => {
           tool.loading_h()
@@ -226,6 +228,7 @@ Page({
 	  var that = this;
 	  wx.setClipboardData({
 		  //准备复制的数据
+       
 		  data: that.data.code,
 		  success: function (res) {
 			  wx.showToast({
