@@ -284,7 +284,7 @@ Page({
 		if (shopObj.status != 5 && shopObj.status != 4){
 			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + shopObj.status + '&shopobj=' + JSON.stringify(obj) })	
 		} else if (shopObj.status == 4) { //已领取 微信卡券跳转到卡包  非微信卡券  我的订单
-			console.log("是否是卡券", shopObj.type) 
+			    console.log("是否是卡券", shopObj.type) 
 			    if (shopObj.type == 1) { 
 					route.jump_nav({ url: '/pages/o_card_bag/o_card_bag' })
 				} else {

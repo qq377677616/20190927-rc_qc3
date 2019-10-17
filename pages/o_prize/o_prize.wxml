@@ -26,7 +26,7 @@
       <view class="box fadeShow">
         <view class="h3"><view>请凭激活码自行</view><view>前往对应平台自助兑换</view></view>
         <view class="p">{{code}}</view>
-        <view class="btn" bindtap="setClipboar">复制商品码</view>
+        <view class="btn" bindtap="setClipboar">去使用</view>
         <view class="close_btn iconfont icon_del" bindtap="isShowCode"></view>
       </view>
     </view>

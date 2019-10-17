@@ -15,7 +15,8 @@ Page({
     page: 1,
     moreType: 1,
     loadingText: '卡券领取中',
-    code: '8888-8888-8888-8888'
+    code: '8888-8888-8888-8888',
+	card_id:""
   },
 
   /**
@@ -96,7 +97,7 @@ Page({
         // tool.alert("兑换码获取失败，请稍后再试~")
         return
       }
-      this.setData({ code: _item.xuni_code })
+	  this.setData({ code: _item.xuni_code, card_id: _item.card_id})
       this.isShowCode()
     }
   },
@@ -134,7 +135,7 @@ Page({
         setTimeout(() => {
           tool.loading_h()
           this.refreshStatus()
-          this.setData({ code: _data.xuni_code })
+		  this.setData({ code: _data.xuni_code, card_id:_data.card_id||""})
           this.isShowForm()
           this.isShowCode()
         })
@@ -219,15 +220,29 @@ Page({
   setClipboar(){
 	  console.log(11)
 	  var that = this;
-	  wx.setClipboardData({
-		  //准备复制的数据
-		  data: that.data.code,
-		  success: function (res) {
-			  wx.showToast({
-				  title: '复制成功',
-			  });
-		  }
-	  });
+	  console.log(this.data.card_id);
+	  let card_code = that.data.code;
+	  console.log(card_code);
+	  wx.navigateToMiniProgram({
+	      appId: 'wxac2f82a4cb0029ca',
+	      path:  '',
+	      extraData:  {
+				card_code,
+	      },
+	      envVersion:  'trial',//develop、trial、release
+	      success(res)  {
+		        // 打开成功
+	      }
+	      })
+	//   wx.setClipboardData({
+	// 	  //准备复制的数据
+	// 	  data: that.data.code,
+	// 	  success: function (res) {
+	// 		  wx.showToast({
+	// 			  title: '复制成功',
+	// 		  });
+	// 	  }
+	//   });
   }
   /**
    * 用户点击右上角分享

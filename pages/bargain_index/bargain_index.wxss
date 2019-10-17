@@ -363,7 +363,7 @@ page{
  } 
 .cut_on{
 	 width: 160rpx;
-	 margin-right: 26rpx;
+	 /* margin-right: 26rpx; */
  }
   .cut_now .pro_list .down .cut_robbed{
     width: 191rpx;
