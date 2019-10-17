@@ -56,6 +56,8 @@
                     </view>
                     <view class="section code_copy">
                         <view class="code nowrap">兑换码: {{ prizeInfo.card_code }}</view>
+                        <view class="copy" wx:if="{{ prizeInfo.card_id == 159 }}" bindtap="getBtn">去领取</view>
+                        <view class="copy" wx:else bindtap="copyBtn">复制</view>
                     </view>
                 </view>
             </block>
