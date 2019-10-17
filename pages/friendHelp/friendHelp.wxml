@@ -16,7 +16,7 @@
       <view class="helpBtn mt2 gray" wx:if="{{is_help==1}}">
         <text>已助力</text>
       </view>
-      <view class="helpBtn mt2 gray" wx:if="{{is_help==0 && can_help==0}}">
+      <view class="helpBtn mt2 gray"  bindtap="helpH" wx:if="{{is_help==0 && can_help==0}}">
         助TA一臂之力
       </view>
       <view class="myEnter" bindtap="toShake">
@@ -76,7 +76,7 @@
     </view>
     <view class="userImg1" style="background-image:url({{user_info.headimg}})"></view>
     <view class="myEnter1">
-      <button open-type="share" bindtap="shareFriend">寻找好友帮忙</button>
+      <button open-type="share">寻找好友帮忙</button>
     </view>
     <view class="myEnter" bindtap="toActivityList" style="margin-top:{{mTop}}rpx">
       <text>查看其他活动</text>
