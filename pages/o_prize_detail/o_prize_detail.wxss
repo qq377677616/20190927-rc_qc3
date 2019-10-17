@@ -148,6 +148,19 @@ page {
     color: #333;
 }
 
+.card_list .card_item .info .section .copy{
+    flex:0 0 auto;
+    font-size:24rpx;
+    color: #666;
+    width: 98rpx;
+    height: 46rpx;
+    border:1rpx solid rgba(229,229,229,1);
+    border-radius:10rpx;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 44rpx;
+}
+
 .card_list .card_item .info>.title{
     font-weight: bold;
     font-size: 30rpx;

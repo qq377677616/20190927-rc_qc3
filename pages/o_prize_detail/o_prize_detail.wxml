@@ -4,7 +4,7 @@
 <view class="order_detail_page">
 
     <!-- order_status -->
-    <view class="handbox" wx:if="{{ prizeInfo.type == 2 || prizeInfo.type == 1 }}">
+    <view class="handbox" wx:if="{{ prizeInfo.prize_type == 2 }}">
         <image src="{{ IMGSERVICE }}/center/flish_1.png" mode="widthFix"></image>
         <view class="info">
             <view class="title nowrap">{{ prizeInfo.status_text }}</view>
@@ -56,6 +56,8 @@
                     </view>
                     <view class="section code_copy">
                         <view class="code nowrap">兑换码: {{ prizeInfo.card_code }}</view>
+                        <view class="copy" wx:if="{{ prizeInfo.card_id == 159 }}" bindtap="getBtn">去领取</view>
+                        <view class="copy" wx:else bindtap="copyBtn">复制</view>
                     </view>
                 </view>
             </block>
@@ -74,29 +76,29 @@
     <!-- order_info -->
     <view class="order_info">
 
-        <view class="title nowrap">订单信息</view>
+        <view class="title nowrap">奖品信息</view>
 
         <view class="section">
-            <view class="span">下单时间</view>
+            <view class="span">中奖时间</view>
             <view class="p nowrap">{{ prizeInfo.create_time }}</view>
         </view>
 
         <!-- <view class="section">
-            <view class="span">订单来源</view>
+            <view class="span">奖品来源</view>
             <view class="p nowrap">{{ prizeInfo.from }}</view>
         </view> -->
 
-        <view class="section" wx:if="{{ !(prizeInfo.type == 2) }}">
+        <view class="section" wx:if="{{ !(prizeInfo.prize_type == 2) }}">
             <view class="span">门店名称</view>
             <view class="p">{{ prizeInfo.dlr_name }}</view>
         </view>
 
-        <!-- <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+        <!-- <view class="section" wx:if="{{ !(orderDetail.prize_type == 2) }}">
             <view class="span">门店地址</view>
             <view class="p">{{ orderDetail.dealer_info.address }}</view>
         </view>
 
-        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+        <view class="section" wx:if="{{ !(orderDetail.prize_type == 2) }}">
             <view class="span">门店电话</view>
             <view class="p nowrap">{{ orderDetail.dealer_info.service_tel }}</view>
         </view> -->
@@ -104,7 +106,7 @@
     </view><!-- order_info -->
 
     <!-- order_info -->
-    <view class="order_info" wx:if="{{ prizeInfo.type == 2 }}">
+    <view class="order_info" wx:if="{{ prizeInfo.prize_type == 2 }}">
         <view class="title nowrap">配送信息</view>
         <view class="section">
             <view class="span">快递公司</view>
@@ -114,10 +116,10 @@
             <view class="span">收货人</view>
             <view class="p nowrap">{{ prizeInfo.name + prizeInfo.mobile }}</view>
         </view>
-        <view class="section">
+        <!-- <view class="section">
             <view class="span">配送地址</view>
             <view class="p clamp_02">{{ prizeInfo.address }}</view>
-        </view>
+        </view> -->
     </view><!-- order_info -->
 
 </view><!-- order_detail_page -->

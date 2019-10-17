@@ -29,7 +29,7 @@ Page({
     isShowForm: false, //留资弹窗
     formType: '',
     startShake: false,
-    isOpen: true,
+    isOpen: false,
   },
 
   /**
@@ -150,7 +150,6 @@ Page({
       }
     })
 
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
 
   },
 
@@ -211,7 +210,7 @@ Page({
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
     this.setData({
-      isOpen: false
+      isOpen: false,
     })
     tool.alert("摇一摇成功")
     setTimeout(() => {
@@ -240,6 +239,12 @@ Page({
       })
     }, 1000)
   },
+  // 点击屏幕
+  onceClick() {
+    if (this.data.isOpen) {
+      this.shakeOk()
+    }
+  },
   // 参与摇红包
   joinShake() {
     if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
@@ -251,6 +256,7 @@ Page({
       tool.alert('您的抽奖次数已经用完了哦~')
     } else {
       this.setData({
+        isOpen: true,
         startShake: true
       })
       if (this.data.startShake) {
@@ -258,7 +264,13 @@ Page({
       }
     }
   },
+  // 点击再摇一次
+  once() {
+    this.isOpen();
+    this.joinShake();
+  },
 
+  // 领取奖品
   getPrize() {
     this.closeBtn();
     this.setData({
@@ -274,15 +286,6 @@ Page({
     let activity_id = this.data.activity_id;
     router.jump_red({
       url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
-    })
-  },
-
-  // 点击再摇一次
-  once() {
-    this.isOpen();
-    this.joinShake();
-    this.setData({
-      isOpen: true
     })
   },
 
@@ -449,17 +452,16 @@ Page({
   // 关闭前两次中奖弹窗
   isOpen() {
     this.setData({
-      openAj: !this.data.openAj
-    })
-    this.setData({
-      isOpen: true
+      openAj: !this.data.openAj,
+      startShake: false
     })
   },
 
   // 关闭第三次中奖弹窗
   closeBtn() {
     this.setData({
-      quanPop: !this.data.quanPop
+      quanPop: !this.data.quanPop,
+      startShake: false
     })
   },
 

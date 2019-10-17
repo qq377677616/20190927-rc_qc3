@@ -112,4 +112,31 @@ Page({
       url: `/pages/order_wuliu/order_wuliu?pageType=o_prize_detail&prize_id=${prize_id}`,
     })
   },
+  //去领取
+  getBtn(){
+    const prizeInfo = this.data.prizeInfo;
+    const card_code = prizeInfo.card_code;
+    
+    wx.navigateToMiniProgram({
+      appId:'wxac2f82a4cb0029ca',
+      path: '',
+      extraData: {
+        card_code,
+      },
+      envVersion: 'trial',//develop、trial、release
+      success(res) {
+        // 打开成功
+      }
+    })
+  },
+
+  //复制
+  copyBtn(){
+    const prizeInfo = this.data.prizeInfo;
+    const card_code = prizeInfo.card_code;
+    wx.setClipboardData({
+		  //准备复制的数据
+		  data: card_code,
+	  });
+  },
 })
