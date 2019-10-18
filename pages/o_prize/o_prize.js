@@ -229,27 +229,30 @@ Page({
 		var that = this;
 		console.log(this.data.card_id);
 		let card_code = that.data.code;
-		console.log(card_code);
-		wx.navigateToMiniProgram({
-			appId: 'wxac2f82a4cb0029ca',
-			path: '',
-			extraData: {
-				card_code,
-			},
-			envVersion: 'trial',//develop、trial、release
-			success(res) {
-				// 打开成功
-			}
-		})
-		//   wx.setClipboardData({
-		// 	  //准备复制的数据
-		// 	  data: that.data.code,
-		// 	  success: function (res) {
-		// 		  wx.showToast({
-		// 			  title: '复制成功',
-		// 		  });
-		// 	  }
-		//   });
+		console.log(this.data.card_id);
+		if (this.data.card_id==159){
+			wx.navigateToMiniProgram({
+				appId: 'wxac2f82a4cb0029ca',
+				path: '',
+				extraData: {
+					card_code,
+				},
+				envVersion: 'trial',//develop、trial、release
+				success(res) {
+					// 打开成功
+				}
+			})
+		}else{
+			wx.setClipboardData({
+				//准备复制的数据
+				data: that.data.code,
+				success: function (res) {
+					wx.showToast({
+						title: '复制成功',
+					});
+				}
+			});
+		}
 	}
 	/**
 	 * 用户点击右上角分享
