@@ -25,11 +25,13 @@ Page({
     openAj: false, //前两次弹窗
     rulspop: false, //规则弹窗
     isSuc: false, //领取成功弹窗
+    isSucNo: false,
     isVehicleOwnerHidePop: false,
     isShowForm: false, //留资弹窗
     formType: '',
     startShake: false,
     isOpen: false,
+    firstTime:0,
   },
 
   /**
@@ -97,6 +99,7 @@ Page({
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
     console.log('activity_id', activity_id)
+    console.log(openid)
     request_05.shakeDetail({
       openid,
       activity_id
@@ -108,6 +111,7 @@ Page({
         activity_info: res.data.data.activity_info,
         car_owner: res.data.data.activity_info.car_owner, //车主
         shake_num: res.data.data.shake_info.shake_num, //抽奖次数
+        have_upgrade: res.data.data.have_upgrade //是否可以升级
       })
       // 用户抽奖完，是否领奖
       if (res.data.data.shake_info.shake_num == 0) {
@@ -119,14 +123,26 @@ Page({
             prize_info: res.data.data.prize_info
           })
         } else {
-          router.jump_red({
-            url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
-          })
+          console.log('have_upgrade',res.data.data.have_upgrade)
+          if (res.data.data.have_upgrade == 1){
+            this.setData({
+              max_upgrade_prize: res.data.data.max_upgrade_prize
+            })
+            if(this.data.firstTime==1){
+              this.isSuc()
+            }else{
+              router.jump_red({
+                url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
+              })
+            }
+          }else{
+            this.isSucNo();
+          }
         }
       }
       // 判断活动状态  1-正常  2-活动未开始 3-活动已结束
       let activityStatus = res.data.data.activity_info.status; //活动状态
-      let shake_num = res.data.data.shake_info.shake_num; //是否参与    
+      let shake_num = res.data.data.shake_info.shake_num; //是否参与
       if (activityStatus == 3) {
         if (shake_num == 3) {
           this.setData({
@@ -377,13 +393,21 @@ Page({
         this.setData({
           quanPop: false
         })
-        this.isSuc()
-        // if (this.data.prize_info.prize_type == 3) {
-        //   this.isShowCode()
-        // }
+        let options = this.data.options;
+        this.initData(options)
+        this.setData({
+          firstTime:1,
+        })
       }
     })
   },
+
+  toActicityList(){
+    router.jump_red({
+      url: `/pages/activity_list/activity_list`,
+    })
+  },
+
   //自定义loading框
   isShowLoading() {
     this.setData({
@@ -433,6 +457,12 @@ Page({
       isSuc: !this.data.isSuc
     })
     let options = this.data.options
+  },
+
+  isSucNo() {
+    this.setData({
+      isSucNo: !this.data.isSucNo
+    })
   },
 
   // 切换规则弹窗
