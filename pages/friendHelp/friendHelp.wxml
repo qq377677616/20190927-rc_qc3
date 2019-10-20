@@ -41,7 +41,7 @@
         <view class="quan3 hasQuan" bindtap="toCard_bag_page">已领取</view>
       </view>
       <view class="helpBtn mt1" wx:if="{{is_upgrade==0 && help_num<max_help_num_upgrade}}">
-        <button class="btnShare" bindtap="shareFriend">继续分享获取更多好礼</button>
+        <button class="btnShare" bindtap="shareFriend">继续分享升级好礼</button>
       </view>
       <view class="helpBtn mt1 wh" wx:if="{{is_upgrade==0 && help_num>=max_help_num_upgrade}}">
         <button bindtap="lqPrize">放入卡包</button>
@@ -76,12 +76,32 @@
     </view>
     <view class="userImg1" style="background-image:url({{user_info.headimg}})"></view>
     <view class="myEnter1">
-      <button open-type="share">寻找好友帮忙</button>
+      <button bindtap="isShare">寻找好友帮忙</button>
     </view>
     <view class="myEnter" bindtap="toActivityList" style="margin-top:{{mTop}}rpx">
       <text>查看其他活动</text>
     </view>
   </view>
+  <!-- share-mask -->
+   <view class="share-mask" wx:if="{{ isShare }}">
+      <view class="content riseShow bottom-top">
+         <view class="close-btn" bindtap="isShare">
+            <image src="{{IMGSERVICE}}/prize/close.png"></image>
+         </view>
+         
+         <view class="share-way">
+            <view bindtap="bindShare">
+               <image src="{{IMGSERVICE}}/activity/district_pyq.png"></image>
+               <text>分享到朋友圈</text>
+            </view>
+            <button class="share-box" open-type="share">
+               <image src="{{IMGSERVICE}}/activity/district_wx.png"></image>
+               <text>分享给好友</text>
+            </button>
+         </view>
+      </view>
+
+   </view><!-- share-mask -->
   <!-- 给好友助力Box -->
   <view class="centerHelp" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)" wx:if="{{false}}"></view>
   <!-- 查看其他活动BOX -->
