@@ -116,10 +116,9 @@ Page({
   getBtn(){
     const prizeInfo = this.data.prizeInfo;
     const card_code = prizeInfo.card_code;
-    
     wx.navigateToMiniProgram({
-      appId:'wxac2f82a4cb0029ca',
-      path: '',
+      appId:'wx8f4ba17d7b77a1df',
+      path: 'pages/busicard/busicard?card_code=' + card_code,
       extraData: {
         card_code,
       },

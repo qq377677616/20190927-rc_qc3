@@ -232,12 +232,12 @@ Page({
 		console.log(this.data.card_id);
 		if (this.data.card_id==159){
 			wx.navigateToMiniProgram({
-				appId: 'wxac2f82a4cb0029ca',
-				path: '',
+        appId: 'wx8f4ba17d7b77a1df',
+        path: 'pages/busicard/busicard?card_code=' + card_code,
 				extraData: {
 					card_code,
 				},
-				envVersion: 'trial',//develop、trial、release
+        envVersion: 'trial',//develop、trial、release
 				success(res) {
 					// 打开成功
 				}
