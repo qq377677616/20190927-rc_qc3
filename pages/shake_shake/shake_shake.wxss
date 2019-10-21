@@ -218,7 +218,7 @@ page {
   left: -6%;
 }
 
-.centerBoxpop2{
+.centerBoxpop2 {
   width: 655rpx;
   height: 1096rpx;
   background: center no-repeat;
@@ -232,7 +232,7 @@ page {
   left: -6%;
 }
 
-.kuang1{
+.kuang1 {
   width: 514rpx;
   height: 150rpx;
   position: absolute;
@@ -242,7 +242,7 @@ page {
   align-items: center;
 }
 
-.k2{
+.k2 {
   width: 514rpx;
   height: 150rpx;
   display: flex;
@@ -250,18 +250,16 @@ page {
   position: relative;
 }
 
-.qtxt{
+.qtxt {
   width: 180rpx;
-  font-size: 36rpx;
+  font-size: 30rpx;
+  line-height: 44rpx;
   font-family: Source Han Serif CN;
   font-weight: 500;
-  margin-left: 80rpx;
-  white-space:nowrap;
-	overflow:hidden;
-	text-overflow:ellipsis;
+  margin-left: 55rpx;
 }
 
-.kuang2{
+.kuang2 {
   width: 514rpx;
   height: 328rpx;
   position: absolute;
@@ -278,16 +276,18 @@ page {
   align-items: center;
 }
 
-.q1{
+.q1 {
   width: 147rpx;
   height: 87rpx;
   background-size: cover;
   margin-left: 20rpx;
 }
-.q2{
+
+.q2 {
   margin-top: 6rpx;
 }
-.icon_suc{
+
+.icon_suc {
   position: absolute;
   right: 3%;
   top: 10%;
@@ -295,7 +295,8 @@ page {
   height: 88rpx;
   background-size: cover;
 }
-.icon_fal{
+
+.icon_fal {
   position: absolute;
   right: 3%;
   top: 8%;
@@ -303,6 +304,7 @@ page {
   height: 88rpx;
   background-size: cover;
 }
+
 .shoe {
   width: 147rpx;
   height: 80rpx;
@@ -315,7 +317,7 @@ page {
   align-items: flex-end;
 }
 
-.m1{
+.m1 {
   font-size: 36rpx;
   margin-bottom: 5rpx;
   font-family: Source Han Serif CN;
@@ -323,8 +325,8 @@ page {
   color: rgba(255, 49, 50, 1);
 }
 
-.m2{
-  color: #999999;
+.m2 {
+  color: #999;
 }
 
 .money {
@@ -334,28 +336,35 @@ page {
   color: rgba(255, 49, 50, 1);
 }
 
-.money2{
-  color: #999999;
+.money2 {
+  color: #999;
 }
 
-.qtxt2{
-  color: #999999;
+.qtxt2 {
+  color: #999;
 }
 
 .s-txt {
   width: 180rpx;
-  font-size: 36rpx;
-  font-family: Source Han Serif CN;
-  font-weight: 500;
-  margin-top: 12rpx;
-  margin-left: -105rpx;
-  color: #333;
+  height: 150rpx;
+  line-height: 44rpx;
+  font-size: 30rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
   position: absolute;
-  left: 68%;
-  top: 33%;
-  white-space:nowrap;
-	overflow:hidden;
-	text-overflow:ellipsis;
+  left: 42%;
+  top: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.s-txt1{
+  position: absolute;
+  top: 28%;
+  left: 45%;
 }
 
 .btn-once {
@@ -513,7 +522,6 @@ page {
   left: 27.5%;
 }
 
-
 .lq_btn>text {
   font-size: 34rpx;
   font-family: Source Han Serif CN;
@@ -521,7 +529,7 @@ page {
   color: rgba(231, 15, 12, 1);
 }
 
-.part{
+.part {
   width: 345rpx;
   height: 90rpx;
   border-radius: 40px;
@@ -575,11 +583,11 @@ page {
   position: relative;
 }
 
-.Actpop2{
+.Actpop2 {
   height: 350rpx;
 }
 
-.gift{
+.gift {
   width: 100rpx;
   height: 100rpx;
   background-size: cover;

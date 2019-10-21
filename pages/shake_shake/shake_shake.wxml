@@ -93,7 +93,7 @@
       <view class="cur">
         <view class="shoe" style="background-image:url('{{prize_info.prize_img}}')">
         </view>
-        <view class="s-txt">{{prize_info.prize_name}}</view>
+        <view class="s-txt s-txt1">{{prize_info.prize_name}}</view>
       </view>
       <view class="btn-once" bindtap="once">再摇一次</view>
       <view class="x" bindtap="isOpen"></view>
@@ -103,7 +103,7 @@
   <view class="whole" wx:if="{{isSuc}}">
     <view class="Actpop">
       <text class="txt1">领取成功</text>
-      <text class="txt2">邀请好友升级{{max_upgrade_prize.prize_name}}购车券</text>
+      <text class="txt2">邀请好友升级至{{max_upgrade_prize.prize_name}}</text>
       <view class="gift" style="background-image:url('{{max_upgrade_prize.prize_img}}')"></view>
       <view class="btn1" bindtap="toFriendHelp">去分享</view>
       <view class="btn2">去查看其他活动</view>
