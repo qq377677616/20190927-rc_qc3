@@ -3,11 +3,13 @@
 
 <!-- prize_mask -->
 <view class="prize_mask">
-    <view class="main" style="background-image:url({{ IMGSERVICE }}{{types == 0 ? '/center/getwordpop.png' : '/center/getwordpop2.png'}});">
+    <view class="main" style="background-image:url({{ IMGSERVICE }}{{types == 0 ? '/center/getwordpop.png' : '/center/getwordpop2s.png'}});">
 		<view class="world_box">
-			<view class="worldImg" style="background-image:url({{data.img}})"></view>
-			<view class="worldName"><text>{{data.name}}</text></view>
-			<view class="runBox" bindtap="runFunction" data-type="1"></view>
+      <view class="flex-cen">
+			  <view class="worldImg" style="background-image:url({{data.img}})"></view>
+        <view class="worldName"><text>{{data.name}}</text></view>
+      </view>
+      <view class="runBox" bindtap="runFunction" data-type="1"></view>
 			<view class="closeBtn" bindtap="runFunction"  data-type="0"></view>
 		</view>
     </view>
