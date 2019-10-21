@@ -18,10 +18,11 @@
           <view class="btn" catchtap="jump" wx:if="{{isShareEnter}}">回到首页</view>
         </view>
         <view class="btn-box">
-          <view class="btn" bindtap="router" data-url="/pages/o_prize/o_prize">我的奖品</view>
-          <view class="btn">V豆：{{prizeDetails.my_vcoin >= 10000 ? '9999+' : prizeDetails.my_vcoin}}</view>
+          <view class="btn" bindtap="router" data-url="/pages/o_prize/o_prize">我的奖品<text class="iconfont icon_more"></text></view>
+          <!-- <view class="btn">V豆：{{prizeDetails.my_vcoin >= 10000 ? '9999+' : prizeDetails.my_vcoin}}</view> -->
         </view>
       </view>
+      <view class="my-v" style="background-image:url({{IMGSERVICE}}/prize/icon_01.png)">我的V豆：{{prizeDetails.my_vcoin >= 10000 ? '9999+' : prizeDetails.my_vcoin}}</view>
     </view>
     <view class="con">
       <!-- 抽奖转盘 -->

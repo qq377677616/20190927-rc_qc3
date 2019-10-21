@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 38,
+			"current": 67,
 			"list": [
 				{
 					"id": -1,
@@ -523,6 +523,13 @@
 					"name": "order_wuliu",
 					"pathName": "pages/order_wuliu/order_wuliu",
 					"query": "pageType=o_prize_detail&prize_id=22",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/prize/prize",
+					"pathName": "pages/prize/prize",
+					"query": "activity_id=36",
 					"scene": null
 				}
 			]

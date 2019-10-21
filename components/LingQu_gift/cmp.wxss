@@ -1,7 +1,9 @@
 /* components/LingQu_gift/cmp.wxss */
-
-
-
+.flex-cen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .prize_mask{
     width: 100vw;
     height: 100vh;
@@ -14,22 +16,23 @@
 
 /* main */
 .main{
-    width: 667rpx;
+    width: 654rpx;
     /* background-color: #fff; */
-	height: 676rpx;
+  	height: 782rpx;
     background-size:100%;
     background-position: center bottom;
     background-repeat:no-repeat;
     position: absolute;
-    right: 0;
+    left: 50%;
     top:50%;
-    transform:translatey(-50%);
+    transform:translate(-50%, -50%);
     border-radius:46rpx;
     box-sizing: border-box;
-	display: flex;
-	justify-content: center;
-	padding-top: 140rpx;
+	  display: flex;
+	  justify-content: center;
+	  padding-top: 140rpx;
 }
+/* .runBox,.closeBtn{background: green;} */
 .main .title{
     font-size: 36rpx;
     color: #333;
@@ -77,39 +80,44 @@
     background:linear-gradient(0deg,rgba(255,255,255,1),rgba(255,255,255,0));
 }
 .world_box{
-	height: 160rpx;
+	/* height: 160rpx; */
 	/* background-color: red; */
-	margin-right: 80rpx;
-	padding-top: 20rpx;
+	/* margin-right: 80rpx; */
+	padding-top: 87rpx;
 	box-sizing: border-box;
 	position: relative;
   text-align: center;
 }
 .worldImg{
-	width: 180rpx;
-	height: 80rpx;
+	width: 120rpx;
+	height: 120rpx;
 	background-color: sandybrown;
 	background: center no-repeat;
 	background-size: cover;
-  margin:-20rpx auto 0;
+  /* margin-right: 50rpx; */
+  /* margin:-20rpx auto 0; */
 }
 .worldName{
-	text-align: center;
-	margin-top: 18rpx;
-  width:272rpx;
+	/* text-align: center; */
+	/* margin-top: 18rpx; */
+  width:250rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  padding-left: 66rpx;
+  /* background: green; */
+  text-align: left;
 }
 .closeBtn{
-	width: 50rpx;
-	height: 50rpx;
+	width: 100rpx;
+	height: 100rpx;
 	/* background-color: red; */
 	position: absolute;
-	left: 50%;
+	left: 56%;
 	transform: translateX(-68%);
-	bottom: -378rpx;
+	bottom: -16rpx;
 	border-radius: 50%;
+  /* opacity: .5; */
 }
 .runBox{
 	width: 330rpx;
@@ -117,9 +125,9 @@
 	/* background-color: aquamarine; */
 	border-radius: 36rpx;
 	position: absolute;
-	left: 50%;
+	left: 52%;
   transform: translateX(-50%);
-	bottom: -205rpx;
+	bottom: 148rpx;
 	z-index: 99;
 }
 /* main */

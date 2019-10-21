@@ -16,8 +16,9 @@
 .page2 .banner .btns .btn{width:156rpx;height:60rpx;line-height: 60rpx;text-align: center;border:2rpx solid rgba(255,255,255,.8);font-size: 26rpx;color:#fff;background: #064E6E;transition: all .5s;}
 .page2 .banner .btns .btn:not(:last-child){margin-bottom: 8rpx;}
 .page2 .banner .btn-box:first-child .btn{border-radius: 0 60rpx 60rpx 0;margin-left: -10rpx;transform: translateX(-100%);}
-.page2 .banner .btn-box:last-child .btn{border-radius: 60rpx 0 0 60rpx;margin-right: -10rpx;transform: translateX(100%);}
+.page2 .banner .btn-box:last-child .btn{border-radius: 60rpx 0 0 60rpx;margin-right: -16rpx;transform: translateX(100%);}
 .page2 .banner .btns.on .btn{transform: translateX(0);}
+.page2 .banner .btns .iconfont{font-size: 24rpx;}
 .page2 .banner .btn-box:last-child .btn:last-child{font-size: 22rpx;}
 .page2 .banner image{height:100%;width:100%;}
 .page2 .top{padding:0 0 63rpx;position:  relative;margin-top: -40rpx;}
@@ -75,6 +76,7 @@
 .close_btn{font-size: 50rpx;color:#fff;position: absolute;bottom:-100rpx;left:50%;transform: translateX(-50%);}
 .close_btn::after{content:"";display: block;width:2rpx;height:50rpx;background: linear-gradient(0, #fff, transparent);bottom:90%;left:calc(50% - 1rpx);position: absolute;}
 .pof{z-index: 200;}
+.my-v{padding:0 24rpx 0 74rpx;height:70rpx;line-height: 70rpx;background-size: 44rpx 44rpx !important;background-repeat: no-repeat !important;background-position: left 18rpx center !important;border-radius: 35rpx;border: 2rpx solid rgba(255,255,255,.8);background: #064E6E;position: absolute;bottom:52rpx;left:50%;transform: translateX(-50%);font-size: 30rpx;color:#fff;}
 @keyframes shadow {
   0%{ box-shadow: 0 0 6rpx 5rpx #FEE449;border-radius: 16rpx; }
   100%{ box-shadow: 0 0 10rpx 10rpx #FEE449;border-radius: 16rpx; }
