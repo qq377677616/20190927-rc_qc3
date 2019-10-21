@@ -252,7 +252,7 @@ page {
 
 .qtxt {
   width: 180rpx;
-  font-size: 35rpx;
+  font-size: 29rpx;
   line-height: 44rpx;
   font-family: Source Han Serif CN;
   font-weight: 500;
@@ -348,7 +348,7 @@ page {
   width: 180rpx;
   height: 150rpx;
   line-height: 44rpx;
-  font-size: 35rpx;
+  font-size: 29rpx;
   font-family: Source Han Sans CN;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
