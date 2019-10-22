@@ -19,7 +19,7 @@
 .page2 .banner .btn-box:last-child .btn{border-radius: 60rpx 0 0 60rpx;margin-right: -13rpx;transform: translateX(100%);padding-left: 4rpx;}
 .page2 .banner .btns.on .btn{transform: translateX(0);}
 .page2 .banner .btns .iconfont{font-size: 24rpx;}
-.page2 .banner .btn-box:last-child .btn:last-child{font-size: 22rpx;}
+.page2 .banner .btn-box:last-child .btn:last-child{font-size: 24rpx;}
 .page2 .banner image{height:100%;width:100%;}
 .page2 .top{padding:0 0 63rpx;position:  relative;margin-top: -40rpx;}
 .page2 .top .edge{width:100%;position: absolute;bottom:88%;left:0;z-index: 1;}
@@ -35,7 +35,7 @@
 .prize-box{width:641rpx;height:490rpx;background: #FF6C6A;border-radius: 20rpx;padding:30rpx;margin:0 auto;position: relative;z-index: 100;}
 .top .ul{position: relative;}
 .top .ul .li{width:152rpx;height:152rpx;border:1rpx solid #E1CCBC;box-sizing: border-box;text-align: center;font-size: 24rpx;flex-direction: column;border-radius: 16rpx;background: #fff;box-shadow: 0 6rpx 0 3rpx #F73F3D;position: relative;opacity:0;transition: .2s;}
-.top .ul .li image{width:70rpx;}
+.top .ul .li image{width:78rpx;margin-bottom: 12rpx;}
 /* .top .ul .li.cur{background: #F7D6AD;color:#fff;border-color:#F7D6AD;} */
 .top .ul .li.cur::after{content:"";display: block;width:100%;height:100%;border:5rpx solid #FEE449;box-sizing: border-box;position: absolute;left:0;top:0;box-shadow: 0 0 6rpx 5rpx #FEE449;border-radius: 16rpx;}
 .top .ul.shadow .li.cur::after{animation: shadow .6s infinite alternate;}
