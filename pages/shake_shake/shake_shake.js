@@ -408,6 +408,12 @@ Page({
     })
   },
 
+  toPrizeDetail(){
+    router.jump_nav({
+      url: `/pages/o_prize/o_prize`,
+    })
+  },
+
   //自定义loading框
   isShowLoading() {
     this.setData({

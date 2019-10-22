@@ -53,6 +53,7 @@ Page({
   },
 
   initData(options) {
+    this.setData({options})
     if (options.vote_id) {
       var _this = this;
       let activity_id = options.activity_id;
@@ -136,42 +137,43 @@ Page({
       tool.getImageInfo(_this.data.qr_code)
     ]).then(res => {
       console.log("res", res)
-      tool.canvasImg({
-        canvasId: 'myCanvas',
-        canvasSize: '573*1019',
-        imgList: [
-          // { url: res[0], imgW: 573, imgH: 760, imgX: 0, imgY: 0 },
-          {
-            url: res[0],
-            imgW: res[3].width,
-            imgH: res[3].height,
-            drawW: 573,
-            drawH: 760,
-            imgX: 0,
-            imgY: 0
-          },
-          {
-            url: res[1],
-            imgW: res[4].width,
-            imgH: res[4].height,
-            drawW: 90,
-            drawH: 90,
-            imgX: 21,
-            imgY: 808,
-            isRadius: true
-          },
-          {
-            url: res[2],
-            imgW: res[5].width,
-            imgH: res[5].height,
-            drawW: 210,
-            drawH: 210,
-            imgX: 339,
-            imgY: 790
-          }
+      if(this.data.options.vote_id){
+        tool.canvasImg({
+          canvasId: 'myCanvas',
+          canvasSize: '573*1019',
+          imgList: [
+            // { url: res[0], imgW: 573, imgH: 760, imgX: 0, imgY: 0 },
+            {
+              url: res[0],
+              imgW: res[3].width,
+              imgH: res[3].height,
+              drawW: 573,
+              drawH: 760,
+              imgX: 0,
+              imgY: 0
+            },
+            {
+              url: res[1],
+              imgW: res[4].width,
+              imgH: res[4].height,
+              drawW: 90,
+              drawH: 90,
+              imgX: 21,
+              imgY: 808,
+              isRadius: true
+            },
+            {
+              url: res[2],
+              imgW: res[5].width,
+              imgH: res[5].height,
+              drawW: 210,
+              drawH: 210,
+              imgX: 339,
+              imgY: 790
+            }
 
-        ],
-        textList: [{
+          ],
+          textList: [{
             string: _this.data.userInfo.nickname,
             color: '#333',
             fontSize: '30',
@@ -191,19 +193,79 @@ Page({
             wrap: 11,
             lineHeight: 30
           },
-          // { string: '长按识别二维码，马上进入体验', color: '#9fa0a0', fontSize: '13', fontFamily: 'Arial', bold: false, textX: 364, textY: 977 }
-        ]
-      }, res => {
-        tool.loading_h();
-        _this.setData({
-          isPosterOk: true,
-          isState: true,
-          posterImgUrl: res,
-          canvasHidden: true,
-          is_open: 0
+            // { string: '长按识别二维码，马上进入体验', color: '#9fa0a0', fontSize: '13', fontFamily: 'Arial', bold: false, textX: 364, textY: 977 }
+          ]
+        }, res => {
+          tool.loading_h();
+          _this.setData({
+            isPosterOk: true,
+            isState: true,
+            posterImgUrl: res,
+            canvasHidden: true,
+            is_open: 0
+          })
+          //_this.savePhoto()
         })
-        //_this.savePhoto()
-      })
+      }else{
+        tool.canvasImg({
+          canvasId: 'myCanvas',
+          canvasSize: '573*1019',
+          imgList: [
+            // { url: res[0], imgW: 573, imgH: 760, imgX: 0, imgY: 0 },
+            {
+              url: res[0],
+              imgW: res[3].width,
+              imgH: res[3].height,
+              drawW: 573,
+              drawH: 760,
+              imgX: 0,
+              imgY: 0
+            },
+            {
+              url: res[1],
+              imgW: res[4].width,
+              imgH: res[4].height,
+              drawW: 90,
+              drawH: 90,
+              imgX: 21,
+              imgY: 808,
+              isRadius: true
+            },
+            {
+              url: res[2],
+              imgW: res[5].width,
+              imgH: res[5].height,
+              drawW: 210,
+              drawH: 210,
+              imgX: 339,
+              imgY: 790
+            }
+
+          ],
+          textList: [{
+            string: _this.data.userInfo.nickname,
+            color: '#333',
+            fontSize: '30',
+            fontFamily: 'Arial',
+            bold: false,
+            textX: 131,
+            textY: 821
+          },
+            // { string: '长按识别二维码，马上进入体验', color: '#9fa0a0', fontSize: '13', fontFamily: 'Arial', bold: false, textX: 364, textY: 977 }
+          ]
+        }, res => {
+          tool.loading_h();
+          _this.setData({
+            isPosterOk: true,
+            isState: true,
+            posterImgUrl: res,
+            canvasHidden: true,
+            is_open: 0
+          })
+          //_this.savePhoto()
+        })
+      }
+      
     })
 
   },

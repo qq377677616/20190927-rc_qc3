@@ -95,8 +95,10 @@ Page({
         } else {
           if (res.data.data.can_upgrade == 1) {
             if (res.data.data.shake_info.is_upgrade == 0) {
+              let quanMoney = res.data.data.upgrade_prize.prize_name.slice(0,3)
               this.setData({
                 isSuc: true,
+                quanMoney,
               })
             }
             this.setData({
@@ -125,12 +127,13 @@ Page({
             isShowFriend: true,
             isShow: true,
             isTen: false,
-            height: 330,
+            height: 580,
             shake_id,
             user_info,
             helpList,
             can_help: res.data.data.can_help,
             is_help: res.data.data.is_help,
+            help_img: res.data.data.help_img,
             activity_id,
           })
           if (res.data.data.can_help == 0) {
