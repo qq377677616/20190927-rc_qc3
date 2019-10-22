@@ -280,8 +280,10 @@ page {
 .q1 {
   width: 147rpx;
   height: 87rpx;
-  background-size: cover;
   margin-left: 20rpx;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .q2 {
@@ -309,7 +311,9 @@ page {
 .shoe {
   width: 147rpx;
   height: 80rpx;
-  background-size: cover;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
   position: absolute;
   left: 15%;
   top: 31%;
