@@ -31,17 +31,21 @@
     <!-- 查看其他活动BOX -->
     <view class="helpBox helpBox2" wx:if="{{isTen}}">
       <view class="readyTxt">已经有{{help_num}}位好友助力，快来领取奖品</view>
-      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/center/quan.png)" wx:if="{{is_upgrade==0}}">
-        <view class="quan1">优惠券</view>
-        <view class="quan2 nowrap">￥{{upgrade_prize.prize_name}}
-          <text class="addstyle">元购车基金</text>
+      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/activity/lq_suc.png)" wx:if="{{is_upgrade==0}}">
+        <view class="shoe-pre">
+          <view class="shoe" style="background-image:url('{{upgrade_prize.prize_img}}')">
+          </view>
+        </view>
+        <view class="quan2 nowrap">{{upgrade_prize.prize_name}}
         </view>
         <view class="quan3" bindtap="lqPrize">领取</view>
       </view>
-      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/center/quan2.png)" wx:if="{{is_upgrade==1}}">
-        <view class="quan1">优惠券</view>
-        <view class="quan2 nowrap">￥{{upgrade_prize.prize_name}}
-          <text class="addstyle nowrap">元购车基金</text>
+      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/activity/lq_fal.png)" wx:if="{{is_upgrade==1}}">
+        <view class="shoe-pre">
+          <view class="shoe" style="background-image:url('{{upgrade_prize.prize_img}}')">
+          </view>
+        </view>
+        <view class="quan2 q2 nowrap">{{upgrade_prize.prize_name}}
         </view>
         <view class="quan3 hasQuan" bindtap="toCard_bag_page">已领取</view>
       </view>
@@ -88,25 +92,26 @@
     </view>
   </view>
   <!-- share-mask -->
-   <view class="share-mask" wx:if="{{ isShare }}">
-      <view class="content riseShow bottom-top">
-         <view class="close-btn" bindtap="isShare">
-            <image src="{{IMGSERVICE}}/prize/close.png"></image>
-         </view>
-         
-         <view class="share-way">
-            <view bindtap="bindShare">
-               <image src="{{IMGSERVICE}}/activity/district_pyq.png"></image>
-               <text>分享到朋友圈</text>
-            </view>
-            <button class="share-box" open-type="share">
-               <image src="{{IMGSERVICE}}/activity/district_wx.png"></image>
-               <text>分享给好友</text>
-            </button>
-         </view>
+  <view class="share-mask" wx:if="{{ isShare }}">
+    <view class="content riseShow bottom-top">
+      <view class="close-btn" bindtap="isShare">
+        <image src="{{IMGSERVICE}}/prize/close.png"></image>
       </view>
 
-   </view><!-- share-mask -->
+      <view class="share-way">
+        <view bindtap="bindShare">
+          <image src="{{IMGSERVICE}}/activity/district_pyq.png"></image>
+          <text>分享到朋友圈</text>
+        </view>
+        <button class="share-box" open-type="share">
+          <image src="{{IMGSERVICE}}/activity/district_wx.png"></image>
+          <text>分享给好友</text>
+        </button>
+      </view>
+    </view>
+
+  </view>
+  <!-- share-mask -->
   <!-- 给好友助力Box -->
   <view class="centerHelp" style="background-image:url({{IMGSERVICE}}/center/zhuli_1.png)" wx:if="{{false}}"></view>
   <!-- 查看其他活动BOX -->

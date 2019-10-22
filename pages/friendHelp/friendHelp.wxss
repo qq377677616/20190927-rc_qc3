@@ -76,7 +76,7 @@ page {
 }
 
 .red {
-  background: linear-gradient(90deg,rgba(239, 77, 74, 1), rgba(223, 51, 51, 1)) !important;
+  background: linear-gradient(90deg, rgba(239, 77, 74, 1), rgba(223, 51, 51, 1)) !important;
   border: 0 !important;
 }
 
@@ -471,7 +471,7 @@ page {
 .succBtn {
   width: 332rpx;
   height: 70rpx;
-  background: linear-gradient(90deg,rgba(239, 77, 74, 1), rgba(223, 51, 51, 1)) !important;
+  background: linear-gradient(90deg, rgba(239, 77, 74, 1), rgba(223, 51, 51, 1)) !important;
   text-align: center;
   line-height: 70rpx;
   color: white;
@@ -512,7 +512,6 @@ page {
   background-size: cover;
   margin: 0 auto;
   margin-top: 48rpx;
-  padding: 0 37rpx;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -541,11 +540,19 @@ page {
 }
 
 .quan2 {
-  width: 352rpx;
-  font-size: 48rpx;
+  width: 224rpx;
+  font-size: 30rpx;
   font-family: Source Han Sans CN;
+  margin-left: 30rpx;
   font-weight: 500;
   color: rgba(241, 64, 62, 1);
+}
+
+.q2 {
+  font-size: 30rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
 }
 
 .addstyle {
@@ -564,9 +571,11 @@ page {
 }
 
 .hasQuan {
-  background-color: #999;
-  font-size: 24rpx;
-  opacity: 0.5;
+  font-size: 26rpx;
+  color: #999;
+  border: 1px solid rgba(125, 125, 125, 1);
+  border-radius: 26px;
+  background-color: #f1f1f1;
 }
 
 /* yls 添加样式 */
@@ -604,14 +613,6 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.shoe {
-  width: 146rpx;
-  height: 86rpx;
-  background-size: cover;
-  margin-top: 108rpx;
-  margin-left: -105rpx;
 }
 
 .s-txt {
@@ -743,3 +744,19 @@ page {
 }
 
 /* share-mask */
+
+.shoe-pre {
+  width: 170rpx;
+  height: 170rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shoe {
+  width: 120rpx;
+  height: 80rpx;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

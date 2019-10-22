@@ -382,7 +382,7 @@ Page({
     let obj = {
       title: '大侠请留步！帮我点个赞，赢京东500元购物卡！',
       path: `/pages/friendHelp/friendHelp?shake_id=${shake_id}&openid=${openid}&activity_id=${activity_id}`,
-      imageUrl: this.data.IMGSERVICE + "/activity/share_out.jpg"
+      imageUrl: this.data.IMGSERVICE + "/activity/share_shake.jpg"
     };
     return obj;
   },
