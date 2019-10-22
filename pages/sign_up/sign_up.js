@@ -39,7 +39,8 @@ Page({
     tipsText: '',
     isWinPromptShow: false,
     isCodeShow:false,
-    code:''
+    code:'',
+    isEnrolment:false,
   },
 
   /**
@@ -230,6 +231,14 @@ Page({
       buttonType:'signUp'
     })
   },
+  //已报名
+  enrolmentBtn(){
+    const isEnrolment = this.data.isEnrolment;
+    this.setData({
+      isEnrolment:!isEnrolment,
+    })
+  },
+  //
   //关闭留资弹窗
   isShowForm() {
     this.setData({
