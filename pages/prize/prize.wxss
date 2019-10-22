@@ -53,7 +53,7 @@
 .top .ul .li:nth-child(7),.top .ul .li:nth-child(8),.top .ul .li:nth-child(9){transform: translateX(100%);}
 .top .ul .li:nth-child(10){transform: translateY(100%);} */
 .prize-box.on .ul .li{transform: translate(0, 0) scale(1);opacity: 1;}
-.page2 .con .btn{width:315rpx;height:126rpx;background: #FF3634;position: absolute;left:163rpx;top:183rpx;line-height: 126rpx;text-align: center;font-size: 40rpx;color:#fff;border-radius: 20rpx;opacity: 1;transition: .6s;animation-delay: 2s;}
+.page2 .con .btn{width:315rpx;height:126rpx;background: #FF3634;position: absolute;left:163rpx;top:183rpx;line-height: 126rpx;text-align: center;font-size: 34rpx;color:#fff;border-radius: 20rpx;opacity: 1;transition: .6s;animation-delay: 2s;}
 .page2 .con .btn button{position: absolute;width:100%;height:100%;left:0;top:0;}
 .my-prize{text-align: center;}
 .my-prize .h3{margin-top:8rpx;font-size: 24rpx;color:#1352BA;margin:47rpx 0 37rpx;font-weight: bold;}
