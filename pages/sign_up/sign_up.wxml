@@ -35,7 +35,7 @@
         </block>
         <block wx:elif="{{ signInfo.status == 2 || signInfo.status == 4 }}">
           <button open-type="share" class="btn share">邀请好友一起参与</button>
-          <view class="btn signed">您已报名</view>
+          <view class="btn signed" bindtap="enrolmentBtn">您已报名</view>
         </block>
       </view>
       <!-- btn_group -->
@@ -45,6 +45,15 @@
   <!-- main -->
 </view>
 <!-- sign_up_page -->
+
+<!-- enrolment-mask -->
+<view class="enrolment-mask" wx:if="{{ isEnrolment }}">
+  <view class="enrolment-main">
+    <view class="p">{{ signInfo.copy_writer }}</view>
+    <view class="btn" bindtap="enrolmentBtn">确定</view>
+  </view>
+</view>
+<!-- enrolment-mask -->
 <!-- win_mask -->
 <view class="win_mask fadeIn" wx:if="{{ isWinShow && (signInfo.status == 4) }}">
   <view class="win_main">
@@ -104,6 +113,7 @@
   </view>
 </view>
 <!-- win_prompt_mask -->
+
 <!-- qc-activePop -->
 <qc-activePop wx:if="{{ (signInfo.status == 0 || signInfo.status == 3) && activityShow }}" popType="{{ 1 }}" text="{{ signInfo.status == 0 ? '活动未开始' : signInfo.status == 3 ? '活动已结束' : '' }}"></qc-activePop>
 <!-- qc-activePop -->
@@ -144,3 +154,5 @@
   </view>
 </view>
 <!-- 兑换码弹窗  -->
+
+
