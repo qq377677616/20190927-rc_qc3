@@ -1,3 +1,7 @@
+@font-face {
+  font-family:'ygyxsziti2';
+  src: url('https://game.flyh5.cn/resources/game/wechat/szq/images/ygyxsziti2.0.ttf');
+}
 view, text, input, button, textarea {
     letter-spacing: 3rpx;
     line-height: 1.2em;

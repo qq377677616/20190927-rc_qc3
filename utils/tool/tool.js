@@ -190,6 +190,7 @@ const canvasImg = (options, callback) => {
     //ctx.draw(true)
   }
   ctx.draw(true, () => {
+    console.log("wx.canvasToTempFilePath", wx.canvasToTempFilePath)
     if (callback) {
       setTimeout(() => {
         wx.canvasToTempFilePath({
