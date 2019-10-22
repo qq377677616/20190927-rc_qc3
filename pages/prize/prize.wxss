@@ -34,7 +34,7 @@
 .page2 .p-header .text,.page2 swiper-item .text{width:44%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .prize-box{width:641rpx;height:490rpx;background: #FF6C6A;border-radius: 20rpx;padding:30rpx;margin:0 auto;position: relative;z-index: 100;}
 .top .ul{position: relative;}
-.top .ul .li{width:152rpx;height:152rpx;border:1rpx solid #E1CCBC;box-sizing: border-box;text-align: center;font-size: 24rpx;flex-direction: column;border-radius: 16rpx;background: #fff;box-shadow: 0 6rpx 0 3rpx #F73F3D;position: relative;opacity:0;transition: .2s;}
+.top .ul .li{width:152rpx;height:152rpx;border:1rpx solid #E1CCBC;box-sizing: border-box;text-align: center;font-size: 24rpx;flex-direction: column;border-radius: 16rpx;background: #fff;box-shadow: 0 6rpx 0 3rpx #F73F3D;position: relative;opacity:0;transition: .2s;color:#666;}
 .top .ul .li image{width:78rpx;margin-bottom: 12rpx;}
 /* .top .ul .li.cur{background: #F7D6AD;color:#fff;border-color:#F7D6AD;} */
 .top .ul .li.cur::after{content:"";display: block;width:100%;height:100%;border:5rpx solid #FEE449;box-sizing: border-box;position: absolute;left:0;top:0;box-shadow: 0 0 6rpx 5rpx #FEE449;border-radius: 16rpx;}
