@@ -1398,36 +1398,36 @@ const login = (callback)=>{
     })
 
 }
-//授权
-const setUserInfo = (e) => {
-  return new Promise((resolve, reject) => {
-    tool.loading("授权中")
-    const userInfo = e.detail.userInfo
-    if (userInfo) {
-      Object.assign(userInfo, wx.getStorageSync("userInfo") || {})
-      wx.setStorageSync("userInfo", userInfo)
-      tool.loading_h()
-      //这里做上传头像昵称给后台操作
-      uploadUserInfo({
-        user_id: wx.getStorageSync("userInfo").user_id,
-        nickname: userInfo.nickName,
-        headimg: userInfo.avatarUrl,
-        gender: 1
-      }).then(res => {
-        tool.loading_h()
-        resolve(true)
-      }).catch(err => {
-        reject(err)
-      })
-    } else {
-      tool.loading_h()
-      // tool.showModal('授权', '为了更好的体验，请先授权', '好的,#124DB8', false)
-      resolve(false)
-    }
-  })
-}
+// //授权
+// const setUserInfo = (e) => {
+//   return new Promise((resolve, reject) => {
+//     tool.loading("授权中")
+//     const userInfo = e.detail.userInfo
+//     if (userInfo) {
+//       Object.assign(userInfo, wx.getStorageSync("userInfo") || {})
+//       wx.setStorageSync("userInfo", userInfo)
+//       tool.loading_h()
+//       //这里做上传头像昵称给后台操作
+//       uploadUserInfo({
+//         user_id: wx.getStorageSync("userInfo").user_id,
+//         nickname: userInfo.nickName,
+//         headimg: userInfo.avatarUrl,
+//         gender: 1
+//       }).then(res => {
+//         tool.loading_h()
+//         resolve(true)
+//       }).catch(err => {
+//         reject(err)
+//       })
+//     } else {
+//       tool.loading_h()
+//       // tool.showModal('授权', '为了更好的体验，请先授权', '好的,#124DB8', false)
+//       resolve(false)
+//     }
+//   })
+// }
 //绑定车主授权
-const setUserInfo2 = (e) => {
+const setUserInfo = (e) => {
     return new Promise((resolve, reject) => {
       tool.loading("授权中")
       const detail = e.detail;
@@ -1533,7 +1533,6 @@ module.exports = {
     joinPin,
     getUserInfo,
     setUserInfo,
-    setUserInfo2,
     getSessionKey,
     getUnionid,
     getPhone,

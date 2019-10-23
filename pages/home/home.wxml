@@ -4,13 +4,19 @@
     <!-- header -->
     <view class="header" >
         <view class="image">
-            <image wx:if="{{ userInfo.avatarUrl }}" class="my_photo" mode="widthFix" src="{{ userInfo.avatarUrl }}" bindtap="goInfo"></image>
-            <image wx:else class="my_photo" mode="widthFix" src="{{ IMGSERVICE }}/home/om.png"></image>
+            <block wx:if="{{ userInfo.avatarUrl }}">
+                <image class="my_photo" mode="widthFix" src="{{ userInfo.avatarUrl }}" bindtap="goInfo"></image>
+            </block>
+            <block wx:else>
+                <image class="my_photo" mode="widthFix" src="{{ IMGSERVICE }}/home/om.png"></image>
+            </block>
 			<button wx:if="{{!userInfo.nickName }}" class="sethandimg nowrap" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
         </view>
         <view class="info_area">
-            <view wx:if="{{ userInfo.nickName }}" class="name nowrap" bindtap="goInfo" >
-                {{ userInfo.nickName  }}
+            <view wx:if="{{ userInfo.nickName }}" class="name" bindtap="goInfo" >
+                <view class="nick-name nowrap">
+                    {{ userInfo.nickName }}
+                </view>
 				<text class="iconfont icon-bianji setsize"></text>
             </view>
             <!-- <view wx:else class="name nowrap" bindtap="signInBtn">点击登录</view> -->
@@ -32,6 +38,12 @@
         <view class="btn bind_btn" wx:else data-type="bind" catchtap="bindCarUser">
             绑定车主
         </view>
+
+        
+        <button class="refresh-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            <image src="{{ IMGSERVICE }}/home/refresh.png" mode="widthFix"></image>
+            <view class="span">刷新</view>
+        </button>
         
 
 

@@ -130,10 +130,8 @@ Page({
   },
   //授权
   getUserInfo(e) {
-    request_01.setUserInfo2(e).then(res => {
-      console.log('e', e)
+    request_01.setUserInfo(e).then(res => {
       if (res) {
-        console.log("授权、上传头像昵称成功")
         this.setData({
           userInfo: wx.getStorageSync("userInfo")
         })

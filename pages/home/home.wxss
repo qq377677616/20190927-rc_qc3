@@ -41,7 +41,16 @@ page{
     color:rgba(51,51,51,1);
     padding-bottom: 25rpx;
     display: flex;
-	align-items: center;
+    align-items: center;
+    padding-right: 50%;
+}
+.header .info_area .name .nick-name{
+    width: 0;
+    flex:1;
+}
+.header .info_area .name .setsize{
+    flex:0 0 auto;
+	font-size: 40rpx;
 }
 .header .info_area .v_coin{
     display: flex;
@@ -69,9 +78,8 @@ page{
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
+    top: 69rpx;
     right: -28rpx;
-    margin-top: -33rpx;
 }
 .header .bind_btn{
     background-color:#333;
@@ -84,7 +92,25 @@ page{
 .header .binded_btn .icon{
     margin-right: 14rpx;
     font-size: 32rpx;
-}/* header */
+}
+.header .refresh-btn{
+    position: absolute;
+    top: 160rpx;
+    right: -28rpx;
+    display: flex;
+    align-items:center;
+    color: #666;
+    font-size: 26rpx;
+    padding: 0 30rpx;
+}
+.header .refresh-btn image{
+    width: 26rpx;
+    margin-right: 12rpx;
+}
+.header .refresh-btn image{
+
+}
+/* header */
 
 /* nav_area */
 .nav_area{
@@ -170,7 +196,4 @@ page{
 	/* background-color: red; */
 	left: 0;
 	top: 0;
-}
-.setsize{
-	font-size: 40rpx;
 }
