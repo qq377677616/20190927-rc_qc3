@@ -25,7 +25,7 @@
   </view>
   <!-- main -->
   <!-- 第三次弹窗 -->
-  <view class="getQuan" wx:if="{{quanPop}}">
+  <!-- <view class="getQuan" wx:if="{{quanPop}}">
     <view class="centerBoxpop centerBoxpop2" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_01.png')">
       <text class="txt_1">恭喜您获得了</text>
       <view class="card_1 card_1_mtb" style="background-image:url('{{ IMGSERVICE }}/center/getQuan_02.png')">
@@ -57,9 +57,27 @@
       </view>
       <image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="closeBtn"></image>
     </view>
+  </view> -->
+  <view class="getQuan" wx:if="{{quanPop}}">
+    <view class="centerBoxpop centerBoxpop2" style="background-image:url('{{ IMGSERVICE }}/activity/kuang3.png')">
+      <view class="kuang1">
+        <view class="q1" style="background-image:url('{{prize_info.prize_img}}')"></view>
+        <view class="s-txt">{{prize_info.prize_name}}</view>
+        <view class="icon_suc" style="background-image:url('{{ IMGSERVICE }}/activity/icon_suc.png')"></view>
+      </view>
+      <view class="kuang2">
+        <view class="k2" wx:for="{{other_prize}}">
+          <view class="q1 q2" style="background-image:url('{{item.prize_img}}')"></view>
+          <view class="qtxt qtxt2">{{item.prize_name}}</view>
+          <view class="icon_fal" style="background-image:url('{{ IMGSERVICE }}/activity/icon_fal.png')"></view>
+        </view>
+      </view>
+      <view class="part" bindtap="getPrize">立即领取</view>
+      <view class="closeBtn" bindtap="closeBtn"></view>
+    </view>
   </view>
   <!-- 前两次弹窗 -->
-  <view class="getQuan" wx:if="{{openAj}}">
+  <!-- <view class="getQuan" wx:if="{{openAj}}">
     <view class="centerBoxpop" style="background-image:url('{{ IMGSERVICE }}/activity/aj.png')">
       <view class="cur">
         <view class="shoe" style="background-image:url('{{prize_info.prize_img}}')">
@@ -69,15 +87,37 @@
       <view class="btn-once" bindtap="once"></view>
       <view class="x" bindtap="isOpen"></view>
     </view>
+  </view> -->
+  <view class="getQuan" wx:if="{{openAj}}">
+    <view class="centerBoxpop" style="background-image:url('{{ IMGSERVICE }}/activity/kuang1.png')">
+      <view class="cur">
+        <view class="shoe" style="background-image:url('{{prize_info.prize_img}}')">
+        </view>
+        <view class="s-txt s-txt1">{{prize_info.prize_name}}</view>
+      </view>
+      <view class="btn-once" bindtap="once">再摇一次</view>
+      <view class="x" bindtap="isOpen"></view>
+    </view>
   </view>
   <!-- 领取成功 -->
   <view class="whole" wx:if="{{isSuc}}">
     <view class="Actpop">
-      <text class="txt1">领取成功</text>
-      <text class="txt2">邀请好友助力获得更高奖励</text>
+      <text class="txt1">领取成功!</text>
+      <text class="txt2">邀请好友升级至{{max_upgrade_prize.prize_name}}</text>
+      <view class="gift">
+        <image src="{{max_upgrade_prize.prize_img}}" mode="widthFix"></image>
+      </view>
       <view class="btn1" bindtap="toFriendHelp">去分享</view>
-      <view class="btn2">去查看其他活动</view>
-      <image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="isSuc"></image>
+      <view class="btn2" bindtap="toActicityList">去查看其他活动</view>
+      <!-- <image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="isSuc"></image> -->
+    </view>
+  </view>
+<!-- 领取后没有升级选项 -->
+  <view class="whole" wx:if="{{isSucNo}}">
+    <view class="Actpop Actpop2">
+      <text class="txt1">领取成功!</text>
+      <view class="btn1 b1" bindtap="toPrizeDetail">查看</view>
+      <view class="btn2" bindtap="toActicityList">去查看其他活动</view>
     </view>
   </view>
   <!-- 规则 -->

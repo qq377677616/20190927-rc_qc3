@@ -135,6 +135,50 @@ page {
 
 /* main */
 
+/* enrolment-mask */
+.enrolment-mask{
+  position: fixed;
+  left:0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index:999;
+}
+.enrolment-mask .enrolment-main{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:translatex(-50%) translatey(-50%);
+  background-color: #fff;
+  width: 505rpx;
+  border-radius: 30rpx;
+  padding-top: 52rpx;
+  padding-bottom: 52rpx;
+  box-sizing: border-box;
+}
+.enrolment-mask .enrolment-main .p{
+  color: #333;
+  font-size: 36rpx;
+  padding: 20rpx;
+  text-align: center;
+  margin-bottom: 80rpx;
+}
+.enrolment-mask .enrolment-main .btn{
+  width: 332rpx;
+  height: 70rpx;
+  background: linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: rgba(255,255,255,1);
+  margin-top: 35rpx;
+  margin: auto;
+}
+/* enrolment-mask */
+
 /* win_mask */
 
 .win_mask {

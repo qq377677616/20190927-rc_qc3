@@ -501,7 +501,7 @@
 					"id": 63,
 					"name": "friendHelp",
 					"pathName": "pages/friendHelp/friendHelp",
-					"query": "shake_id=9&activity_id=49&openid=oORV85cER_ban1Crg8T_dhDRkArk",
+					"query": "shake_id=48&activity_id=49&openid=oORV85cER_ban1Crg8T_dhDRkArk",
 					"scene": null
 				},
 				{
@@ -527,8 +527,9 @@
 				},
 				{
 					"id": -1,
-					"name": "uploadPhotos",
-					"pathName": "pages/uploadPhotos/uploadPhotos",
+					"name": "pages/prize/prize",
+					"pathName": "pages/prize/prize",
+					"query": "activity_id=36",
 					"scene": null
 				}
 			]

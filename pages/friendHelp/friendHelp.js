@@ -25,11 +25,38 @@ Page({
     isSuc: false,
     mTop: 29,
     isHelpH: true, //是否可以助力
+    isShare: false,
   },
   initData(options) {
-    let activity_id = options.activity_id;
-    let openid = wx.getStorageSync('userInfo').openid;
-    if (!options.openid || options.openid == wx.getStorageSync('userInfo').openid) {
+    console.log(options)
+    let openid = wx.getStorageSync('userInfo').openid;;
+    let activity_id = '';
+    let parent_id = '';
+    let shake_id ='';
+    if (options.scene) {
+      let scene = decodeURIComponent(options.scene);
+      console.log(scene)
+      scene.split('&').forEach((item) => {
+        console.log(item.split('='))
+        if (item.split('=')[0] == 'p') {//找到channel_id并存储
+          parent_id = item.split('=')[1]
+        }
+        if (item.split('=')[0] == 's') {//找到channel_id并存储
+          shake_id = item.split('=')[1]
+        }
+        if (item.split('=')[0] == 'a') {//找到user_id并存储
+          activity_id = item.split('=')[1]
+        }
+      })
+    } else {
+      console.log(options)
+      shake_id = options.shake_id;
+      activity_id = options.activity_id;
+    }
+
+    // let activity_id = options.activity_id;
+    // let openid = wx.getStorageSync('userInfo').openid;
+    if ((!options.openid && parent_id =='') || options.openid == wx.getStorageSync('userInfo').openid) {
       request_05.shakeDetail({
         openid,
         activity_id
@@ -68,8 +95,10 @@ Page({
         } else {
           if (res.data.data.can_upgrade == 1) {
             if (res.data.data.shake_info.is_upgrade == 0) {
+              let quanMoney = res.data.data.upgrade_prize.prize_name.slice(0,3)
               this.setData({
                 isSuc: true,
+                quanMoney,
               })
             }
             this.setData({
@@ -82,12 +111,8 @@ Page({
         }
       })
     } else {
-      if (options.shake_id) {
-        let shake_id = options.shake_id;
-        let openid = wx.getStorageSync('userInfo').openid;
-        let oOpenid = options.openid;
-        console.log(oOpenid)
-        let activity_id = options.activity_id;
+      console.log(shake_id)
+      if (shake_id) {
         console.log('shake_id', shake_id)
         console.log('openid', openid)
         request_05.shakeInfo({
@@ -102,15 +127,16 @@ Page({
             isShowFriend: true,
             isShow: true,
             isTen: false,
-            height: 330, 
+            height: 580,
             shake_id,
             user_info,
             helpList,
-            can_help:res.data.data.can_help,
+            can_help: res.data.data.can_help,
             is_help: res.data.data.is_help,
+            help_img: res.data.data.help_img,
             activity_id,
           })
-          if(res.data.data.can_help==0){
+          if (res.data.data.can_help == 0) {
             this.setData({
               isHelpH: false,
             })
@@ -151,7 +177,7 @@ Page({
   },
 
   //分享获取更多好礼
-  shareFriend(){
+  shareFriend() {
     let headimgList = this.data.helpList.slice(0, this.data.max_help_num_upgrade);
     let help_num2 = this.data.max_help_num_upgrade;
     this.setData({
@@ -163,6 +189,23 @@ Page({
     })
   },
 
+  // 打开关闭分享
+  isShare() {
+    this.setData({
+      isShare: !this.data.isShare
+    });
+  },
+
+  // 分享朋友圈
+  bindShare() {
+    let activity_id = this.data.options.activity_id
+    let shake_id = this.data.shake_id
+    let openid = wx.getStorageSync('userInfo').openid
+    router.jump_nav({
+      url: `/pages/poster/poster?activity_id=${activity_id}&openid=${openid}&shake_id=${shake_id}`,
+    })
+  },
+
   // 领取奖品
   lqPrize() {
     let help_num = this.data.help_num;
@@ -171,10 +214,10 @@ Page({
     let options = this.data.options;
     let activity_id = this.data.activity_id;
     let openid = wx.getStorageSync('userInfo').openid;
-    if (this.data.max_help_num_upgrade>help_num) {
+    if (this.data.max_help_num_upgrade > help_num) {
       wx.showModal({
         title: '提示',
-        content: '领取后将不能升级卡券,您确定要领取吗？',
+        content: '领取后将不能升级礼品/卡券,您确定要领取吗？',
         success(res) {
           if (res.confirm) {
             request_05.upgradePrize({
@@ -339,7 +382,7 @@ Page({
     let obj = {
       title: '大侠请留步！帮我点个赞，赢京东500元购物卡！',
       path: `/pages/friendHelp/friendHelp?shake_id=${shake_id}&openid=${openid}&activity_id=${activity_id}`,
-      imageUrl: this.data.IMGSERVICE + "/activity/share_out.jpg"
+      imageUrl: this.data.IMGSERVICE + "/activity/share_shake.jpg"
     };
     return obj;
   },
