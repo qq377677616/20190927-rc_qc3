@@ -7,6 +7,7 @@ const alert = require('../tool/alert.js');
 const tool = require('../tool/tool.js');
 
 const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
+// const SERVICE = "http://dfldata-test.dongfeng-nissan.com.cn/fslb/public/index.php";
 // const SERVICE = "https://weixinfslb.venucia.com";
 
 //版本控制
@@ -295,7 +296,8 @@ const getOrderId = (data) => {
 
 //车主认证
 const carAuth = (data) => {
-    let url = `${SERVICE}/api3/user/car_owner_auth`
+    // let url = `${SERVICE}/api3/user/car_owner_auth`
+    let url = `${SERVICE}/api3/member/bind_member`
     return new Promise((resolve, reject) => {
         _request.request({
             url, 
@@ -936,6 +938,23 @@ const getSessionKey = (data) => {
     })
 }
 
+//根据code获取session_key授权
+const getUnionid = (data) => {
+    let url = `${SERVICE}/api3/oauth/de_union_id`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url, 
+            data
+        })
+        .then(res => {
+            resolve(res)
+        })
+        .catch((reason)=>{
+            reject(reason)
+        })
+    })
+}
+
 //手机号解密并保存
 const getPhone = (data) => {
     let url = `${SERVICE}/api3/oauth/de_phone`
@@ -1337,18 +1356,28 @@ const login = (callback)=>{
             authorization.login()
                 .then((value) => {
 
-                    return getUserInfo({
-                        code: value.code,
-                        parent_id: wx.getStorageSync("shareIds").parent_id,
-                        channel_id: wx.getStorageSync("shareIds").channel_id
-                    })
+                    return Promise.all([
+                        getUserInfo({
+                            code: value.code,
+                            parent_id: wx.getStorageSync("shareIds").parent_id,
+                            channel_id: wx.getStorageSync("shareIds").channel_id
+                        }),
+                        getSessionKey({
+                            code: value.code,
+                        })
+                    ])
                 })
                 .then((value) => {
-                    const data = value.data.data;
-                    if (data.errcode && data.errmsg) {
+                    const data = value[0].data.data;
+                    const data2 = value[1].data.data;
+                    if( (data.errcode && data.errmsg) || (data2.errcode && data2.errmsg) ) {
                         login(callback)
                     } else {
                         console.log('<<<',data,'>>>')
+                        console.log('<<<',data2,'>>>')
+
+                        Object.assign(data, data2)
+
                         wx.setStorageSync('userInfo', data)
 
                         alert.loading_h();
@@ -1397,6 +1426,48 @@ const setUserInfo = (e) => {
     }
   })
 }
+//绑定车主授权
+const setUserInfo2 = (e) => {
+    return new Promise((resolve, reject) => {
+      tool.loading("授权中")
+      const detail = e.detail;
+      const userInfo = detail.userInfo;
+      
+      
+      if (userInfo) {
+        Object.assign(userInfo, { encryptedData:detail.encryptedData, iv:detail.iv }, wx.getStorageSync("userInfo") || {})
+        wx.setStorageSync("userInfo", userInfo)
+        tool.loading_h()
+        //这里做上传头像昵称给后台操作
+        uploadUserInfo({
+          user_id: wx.getStorageSync("userInfo").user_id,
+          nickname: userInfo.nickName,
+          headimg: userInfo.avatarUrl,
+          gender: 1
+        }).then(res => {
+
+          getUnionid({
+                user_id:userInfo.user_id,//用户ID
+                encrypted_data:userInfo.encryptedData,//加密数据
+                session_key:userInfo.session_key,//上一个接口获得的session_key
+                iv:userInfo.iv,//加密数据匹配的iv                  
+            })
+            .then((value)=>{
+
+                resolve(true)
+
+            })
+
+        }).catch(err => {
+          reject(err)
+        })
+      } else {
+        tool.loading_h()
+        // tool.showModal('授权', '为了更好的体验，请先授权', '好的,#124DB8', false)
+        resolve(false)
+      }
+    })
+  }
 //上传头像昵称
 const uploadUserInfo = (data) => {
   let url = `${SERVICE}/api3/oauth/perfect`
@@ -1462,7 +1533,9 @@ module.exports = {
     joinPin,
     getUserInfo,
     setUserInfo,
+    setUserInfo2,
     getSessionKey,
+    getUnionid,
     getPhone,
     perfectInfo,
     indexBanner,

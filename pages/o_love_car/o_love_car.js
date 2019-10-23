@@ -22,8 +22,10 @@ Page({
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
     options:{},
+    isNextShow:false,
     vinCode:'',
     code:'',
+    tel:'',
     tipsIf:false,
     failText:'',
   },
@@ -48,7 +50,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
@@ -120,10 +121,34 @@ Page({
       code:value,
     })
   },
+  //手机号码
+  telInput(e){
+    const value = e.detail.value;
+    this.setData({
+      tel:value,
+    })
+  },
+  //授权
+  getUserInfo(e) {
+    request_01.setUserInfo2(e).then(res => {
+      console.log('e', e)
+      if (res) {
+        console.log("授权、上传头像昵称成功")
+        this.setData({
+          userInfo: wx.getStorageSync("userInfo")
+        })
+
+
+
+        this.nextBtn()
+      }
+    }).catch(err => { console.log("err", err) })
+  },
   //下一步
   nextBtn() {
     const vinCode = this.data.vinCode;
     const code = this.data.code;
+    const userInfo = wx.getStorageSync('userInfo');
     let result;
     const validationArr = [
       {
@@ -153,12 +178,32 @@ Page({
 
     if( this.mcaptcha.validate(code) ){
       //code码验证成功
-      alert.alert({
-        str:'验证成功',
-      });
+      
 
-      //车主认证
-      this.carAuth(vinCode)
+      if( this.isLicenseNo(vinCode) ){
+        //车牌号效验成功
+
+        this.setData({
+          isNextShow:true,
+        })
+
+
+      }
+      else{
+        //车牌号效验失败、识别为vin码
+
+        //车主认证
+        this.carAuth({
+          user_id:userInfo.user_id,//用户ID
+          openid:userInfo.openid,//openid
+          check_type:2,//绑定类型 2-VIN码 3-车牌号
+          check_info:vinCode,//VIN码或车牌号
+          mobile:'',//当check_type=2时，必填 手机号/客户姓名
+        })
+
+      }
+
+      
     }
     else{
       //code码验证失败
@@ -168,18 +213,43 @@ Page({
     }
 
   },
-  //车主认证
-  carAuth(vin){
+  //效验车牌号
+  isLicenseNo(str) {
+      return /(^[\u4E00-\u9FA5]{1}[A-Z0-9]{6}$)|(^[A-Z]{2}[A-Z0-9]{2}[A-Z0-9\u4E00-\u9FA5]{1}[A-Z0-9]{4}$)|(^[\u4E00-\u9FA5]{1}[A-Z0-9]{5}[挂学警军港澳]{1}$)|(^[A-Z]{2}[0-9]{5}$)|(^(08|38){1}[A-Z0-9]{4}[A-Z0-9挂学警军港澳]{1}$)/.test(str);
+  },
+  //保存
+  saveBtn(){
+    const tel = this.data.tel;
     const userInfo = wx.getStorageSync('userInfo');
+    const vinCode = this.data.vinCode
+
+
+    if( /^1[3456789]\d{9}$/.test(tel) ){
+      //手机号效验成功
+      this.carAuth({
+        user_id:userInfo.user_id,//用户ID
+        openid:userInfo.openid,//openid
+        check_type:3,//绑定类型 2-VIN码 3-车牌号
+        check_info:vinCode,//VIN码或车牌号
+        mobile:tel,//当check_type=2时，必填 手机号/客户姓名
+      })
+    }
+    else{
+      //手机号效验失败
+      alert.alert({
+        str:'请输入正确手机号',
+      });
+    }
+
+  },
+  //车主认证
+  carAuth(data={}){
+    
 
     alert.loading({
       str:'认证中'
     })
-    request_01.carAuth({
-      user_id:userInfo.user_id,//用户ID
-      openid:userInfo.openid,//openid
-      vin,//vin
-    })
+    request_01.carAuth(data)
       .then((value)=>{
         //success
         const status = value.data.status;
@@ -218,6 +288,7 @@ Page({
           })
         }
 
+        
 
       })
       .catch((reason)=>{
@@ -229,6 +300,8 @@ Page({
       })
       .then(()=>{
         //complete
+
+        
       })
   },
   //验证失败提示

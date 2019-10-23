@@ -6,10 +6,10 @@
     <!-- form_area -->
     <view class="form_area">
         <view class="group number">
-            <input type="text" placeholder="请输入VIN码" value="{{ vinCode }}" bindinput="vinInput"/>
+            <input wx:if="{{ !isNextShow }}" type="text" placeholder="请输入车牌号/VIN码" value="{{ vinCode }}" bindinput="vinInput"/>
         </view>
         <view class="group code">
-            <input type="text" maxlength="12" placeholder="请输入验证码" value="{{ code }}" bindinput="codeInput"/>
+            <input wx:if="{{ !isNextShow }}" type="text" maxlength="12" placeholder="请输入验证码" value="{{ code }}" bindinput="codeInput"/>
             <canvas class="canvas" width="160" height="58" canvas-id="canvas" bindtap="refreshCode"></canvas>
         </view>
     </view><!-- form_area -->
@@ -23,7 +23,11 @@
     </view><!-- vin_area -->
 
     <!-- submit_btn -->
-    <view class="submit_btn" bindtap="nextBtn">下一步</view><!-- submit_btn -->
+    <!-- <view wx:if="{{ userInfo.nickName }}" class="submit_btn" bindtap="nextBtn">下一步</view> -->
+
+    <button class="submit_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        下一步
+    </button><!-- submit_btn -->
 
     <!-- tips_mask -->
     <view class="tips_mask" wx:if="{{ tipsIf }}">
@@ -38,5 +42,21 @@
 
     </view>
     <!-- tips_mask -->
+
+    <!-- next-mask -->
+    <view class="next-mask" wx:if="{{ isNextShow }}">
+
+        <view class="content_container">
+    
+            <view class="input_group">
+                <input placeholder="请输入手机号码" type="text" value="{{ tel }}" bindinput="telInput"/>
+            </view>
+    
+            <view class="next_btn" bindtap="saveBtn">保存</view>
+    
+        </view>
+    
+    </view>
+    <!-- next-mask -->
 
 </view><!-- o_love_car_page -->

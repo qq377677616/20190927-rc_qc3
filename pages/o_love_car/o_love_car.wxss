@@ -94,6 +94,7 @@ page{
     position: fixed;
     left:0;
     top:0;
+    z-index:999;
 }
 
 .tips_mask .main{
@@ -132,3 +133,90 @@ page{
     text-align: center;
 }
 /* tips_mask */
+
+
+
+
+/* next-mask */
+.next-mask{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F3F3F3;
+}
+.next-mask .content_container{
+    padding:25rpx 28rpx;
+}
+.next-mask .content_container .input_group{
+    display: flex;
+    margin-bottom: 80rpx;
+}
+.next-mask .content_container .input_group input{
+    flex:1;
+    background-color: #fff;
+    padding: 0 37rpx;
+    height: 102rpx;
+    font-size:26rpx;
+    color: #000;
+    border-radius: 14rpx;
+}
+.next-mask .content_container .input_group input::placeholder{
+    color: #666;
+}
+.next-mask .content_container .next_btn{
+    height: 90rpx;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    border-radius:10rpx;
+    font-size: 30rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:0 8rpx 8rpx rgba(32, 161, 224, 0.6);
+}
+
+
+.next-mask .bind_fail_mask{
+    background-color: rgba(0,0,0,0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.next-mask .bind_fail_mask .prompt{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 505rpx;
+    border-radius:30rpx;
+    background-color: #fff;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    padding:0 0 72rpx;
+}
+.next-mask .bind_fail_mask .prompt .p{
+    font-size: 36rpx;
+    color: #333;
+    height: 247rpx;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.next-mask .bind_fail_mask .prompt .know_btn{
+    width: 332rpx;
+    height: 60rpx;
+    border-radius:30rpx;
+    font-size: 28rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:linear-gradient(to left,rgba(18,77,184,1),rgba(32,161,224,1));
+    box-shadow:0 8rpx 8rpx rgba(32,161,224,0.6);
+}
+/* next-mask */

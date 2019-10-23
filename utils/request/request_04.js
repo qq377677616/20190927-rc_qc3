@@ -221,7 +221,8 @@ const getcarInfo = (data) => {
 }
 // 车主解绑
 const removeCarinfo = (data) => {
-	let url = `${SERVICE}/api3/user/car_owner_remove`
+	// let url = `${SERVICE}/api3/user/car_owner_remove`
+	let url = `${SERVICE}/api3/member/un_bind_member`
 	return new Promise((resolve, reject) => {
 		_request.request({
 			url,
