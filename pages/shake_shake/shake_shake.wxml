@@ -6,7 +6,7 @@
   <!-- main -->
   <view class="main">
 
-    <image class="yao" src="{{ IMGSERVICE }}/shake_shake/ziti.png" mode="widthFix"></image>
+    <!-- <image class="yao" src="{{ IMGSERVICE }}/shake_shake/ziti.png" mode="widthFix"></image> -->
 
     <view class="rule" bindtap="openRule">活动规则</view>
 
@@ -19,7 +19,10 @@
     </view>
 
     <view class="allPing" wx:if="{{startShake}}" catchtap="onceClick">
-      <view class="shou cake" style="background-image:url('{{ IMGSERVICE }}/activity/shou.png')"></view>
+      <view class="contain-shou">
+        <view class="shou cake" style="background-image:url('{{ IMGSERVICE }}/activity/shake_icon.png')">
+        </view>
+      </view>
     </view>
 
   </view>
@@ -112,7 +115,7 @@
       <!-- <image mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn" bindtap="isSuc"></image> -->
     </view>
   </view>
-<!-- 领取后没有升级选项 -->
+  <!-- 领取后没有升级选项 -->
   <view class="whole" wx:if="{{isSucNo}}">
     <view class="Actpop Actpop2">
       <text class="txt1">领取成功!</text>

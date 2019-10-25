@@ -128,16 +128,17 @@ page {
   top: 44rpx;
   height: 50rpx;
   padding: 0 20rpx;
-  background-color: rgba(255, 255, 255, 0.2);
-  font-size: 24rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
   color: #fff;
+  font-size: 24rpx;
   line-height: 50rpx;
   border-radius: 25rpx 0 0 25rpx;
 }
 
 .main .btn_group {
   position: fixed;
-  bottom: 98rpx;
+  bottom: 40rpx;
   width: 514rpx;
   left: 50%;
   transform: translatex(-50%);
@@ -157,19 +158,21 @@ page {
 
 .main .btn_group .tips {
   font-size: 24rpx;
-  color: #fff;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
   text-align: center;
 }
 
 /* main */
 
 .shou {
-  width: 194rpx;
-  height: 186rpx;
+  width: 211rpx;
+  height: 212rpx;
   background-size: cover;
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 42%;
+  left: 38%;
 }
 
 .allPing {
@@ -603,13 +606,13 @@ page {
   align-items: center;
 }
 
-.gift image{
+.gift image {
   object-fit: cover;
   width: 200rpx;
 }
 
 .txt1 {
-  color: linear-gradient(90deg,rgba(239, 77, 74, 1), rgba(223, 51, 51, 1));
+  color: #f1403e;
   font-size: 36rpx;
   display: block;
   font-weight: bold;
