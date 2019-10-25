@@ -4,12 +4,12 @@
 <view class="o_love_car_page">
 
     <!-- form_area -->
-    <view class="form_area">
+    <view class="form_area" hidden="{{ isNextShow }}">
         <view class="group number">
-            <input wx:if="{{ !isNextShow }}" type="text" placeholder="请输入车牌号/VIN码" value="{{ vinCode }}" bindinput="vinInput"/>
+            <input type="text" placeholder="请输入车牌号/VIN码" value="{{ vinCode }}" bindinput="vinInput"/>
         </view>
         <view class="group code">
-            <input wx:if="{{ !isNextShow }}" type="text" maxlength="12" placeholder="请输入验证码" value="{{ code }}" bindinput="codeInput"/>
+            <input type="text" maxlength="12" placeholder="请输入验证码" value="{{ code }}" bindinput="codeInput"/>
             <canvas class="canvas" width="160" height="58" canvas-id="canvas" bindtap="refreshCode"></canvas>
         </view>
     </view><!-- form_area -->

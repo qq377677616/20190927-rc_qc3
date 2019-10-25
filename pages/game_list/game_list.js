@@ -108,7 +108,7 @@ Page({
       extraData: {
         foo: 'bar'
       },
-      envVersion: 'trial',//develop、trial、release
+      envVersion: 'release',//develop、trial、release
       success(res) {
         // 打开成功
       }

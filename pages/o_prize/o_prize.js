@@ -237,7 +237,7 @@ Page({
 				extraData: {
 					card_code,
 				},
-        envVersion: 'trial',//develop、trial、release
+        envVersion: 'release',//develop、trial、release
 				success(res) {
 					// 打开成功
 				}
