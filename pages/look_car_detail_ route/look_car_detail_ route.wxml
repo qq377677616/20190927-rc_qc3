@@ -1,0 +1,14 @@
+<!--pages/look_car_detail_ route/look_car_detail_ route.wxml-->
+<view class="look_car_detail_route">
+  <image src="{{IMGSERVICE}}/activity/route/{{bg}}" mode="widthFix">
+  </image>
+  <video src="{{IMGSERVICE}}/activity/route/{{video}}.mp4" autoplay="{{true}}" loop	="true"></video>
+  <view class="swiper">
+    <view class="txt">{{txt}}</view>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
+        <swiper-item wx:for="{{imgList}}">
+          <image src="{{IMGSERVICE}}/activity/route/{{item}}.jpg"></image>
+        </swiper-item>
+    </swiper>
+  </view>
+</view>

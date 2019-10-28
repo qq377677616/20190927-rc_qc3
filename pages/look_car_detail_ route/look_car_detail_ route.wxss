@@ -1,0 +1,51 @@
+/* pages/look_car_detail_ route/look_car_detail_ route.wxss */
+
+.look_car_detail_route {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.look_car_detail_route image {
+  width: 687rpx;
+  margin-top: 42rpx;
+  position: relative;
+}
+
+.look_car_detail_route video {
+  position: absolute;
+  top: 175rpx;
+  width: 100%;
+  height: 391rpx;
+}
+
+.swiper {
+  width: 100%;
+  height: 500rpx;
+  margin-top: 48rpx;
+  position: relative;
+}
+
+.swiper swiper {
+  height: 100%;
+}
+
+.swiper .txt {
+  position: absolute;
+  bottom: 39rpx;
+  left: 35rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #fff;
+  z-index: 1;
+}
+
+.swiper swiper swiper-item {
+  height: 100%;
+}
+
+.swiper swiper image {
+  width: 750rpx;
+  height: 501rpx;
+}

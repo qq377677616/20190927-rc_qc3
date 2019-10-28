@@ -74,7 +74,8 @@
 		"pages/vote_detail/vote_detail",
 		"pages/qicheng_h5/qicheng_h5",
 		"pages/o_prize_detail/o_prize_detail",
-		"pages/order_wuliu/order_wuliu"
+		"pages/order_wuliu/order_wuliu",
+    "pages/look_car_detail_ route/look_car_detail_ route"
 	],
 	"window": {
 		"backgroundTextStyle": "light",

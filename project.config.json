@@ -538,6 +538,13 @@
 					"pathName": "pages/look_car_detail/look_car_detail",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "look_car_detail_ route",
+					"pathName": "pages/look_car_detail_ route/look_car_detail_ route",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

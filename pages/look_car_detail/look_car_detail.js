@@ -65,6 +65,12 @@ Page({
       "/car_detail/fz2.png",
       "/car_detail/fz3.png",
     ],
+    imgFourList:[  //东西南北路线
+      "route/1.png",
+      "route/2.png",
+      "route/3.png",
+      "route/4.png",
+    ],
     videoList: [//视频列表
       "/car_detail/video_01.mp4",
       "/car_detail/video_02.mp4",
@@ -199,8 +205,10 @@ Page({
   },
   //导航列表
   navList(e) {
+    console.log(e);
     const index = e.currentTarget.dataset.index;
     const navIndex = this.data.navIndex;
+    console.log('navIndex', navIndex)
     if (navIndex == index) return;
     this.setData({
       navIndex: index,
@@ -208,6 +216,13 @@ Page({
     wx.pageScrollTo({
       scrollTop: 0,
       duration: 300
+    })
+  },
+  // 跳往路线
+  toDetailRoute(e){
+    let index = e.currentTarget.dataset.index;
+    router.jump_nav({
+      url: `/pages/look_car_detail_ route/look_car_detail_ route?index=${index}`,
     })
   },
   //立即下定

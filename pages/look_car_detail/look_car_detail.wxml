@@ -2,12 +2,13 @@
 <view class="car-detail-content">
     <!-- nav_area -->
     <view class="nav_area">
-        <view class="bg" style="left:{{navIndex * 50}}%"></view>
+        <view class="bg" style="left:{{navIndex * 33.3}}%"></view>
         <view class="nav_item {{ navIndex == 0 ? 'active' : '' }}" data-index="0" bindtap="navList">车型介绍</view>
         <view class="nav_item {{ navIndex == 1 ? 'active' : '' }}" data-index="1" bindtap="navList">参数配置</view>
+        <view class="nav_item {{ navIndex == 2 ? 'active' : '' }}" data-index="2" bindtap="navList">精彩美图</view>
     </view>
     <!-- top -->
-    <view hidden="{{navIndex == 1}}">
+    <view wx:if="{{navIndex==0}}">
     <view class="o-o" style="background-image:url('{{IMGSERVICE}}/car_detail/1_01s.jpg')">
         <view class="T90-con b {{scrollTop + windowHeight >= scrollTopList[0] ? 'on' : ''}} doms" id="dom1">
           <image class="T90" src="{{IMGSERVICE}}/car_detail/T90.png" mode="widthFix"></image>
@@ -210,7 +211,7 @@
         </swiper>
     </view>
     </view>
-    <view hidden="{{ navIndex == 0 }}">
+    <view wx:if="{{navIndex==1}}">
             <view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
 
                 <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
@@ -231,6 +232,18 @@
             </view>
           </view>
         </view>
+
+        <view class="beauPic" wx:if="{{navIndex==2}}">
+            <video src="{{IMGSERVICE}}/activity/route/index.mp4" autoplay="true" loop	="true"></video>
+            <view class="title">
+              <image src="{{IMGSERVICE}}/activity/route/icon.png"></image>
+              <view>推荐旅游路线</view>
+            </view>
+            <view class="picList" wx:for="{{imgFourList}}" data-index="{{index}}" bindtap="toDetailRoute">
+              <image src="{{IMGSERVICE}}/activity/{{item}}" mode="widthFix"></image>
+            </view> 
+        </view>
+
     <!-- footer -->
     <view class="footer" bindtap="downPayment">
         即刻预约，享上市好礼{{isShowIcon[0]}}
