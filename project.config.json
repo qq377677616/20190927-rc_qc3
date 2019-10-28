@@ -531,6 +531,13 @@
 					"pathName": "pages/prize/prize",
 					"query": "activity_id=36",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "看车详情T90",
+					"pathName": "pages/look_car_detail/look_car_detail",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
