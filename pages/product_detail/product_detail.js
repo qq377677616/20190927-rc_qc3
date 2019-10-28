@@ -274,6 +274,10 @@ Page({
       url:'/pages/o_love_car/o_love_car?pageType=back'
     })
   },
+  //商品已下架确定按钮
+  shelveBtn(){
+    router.jump_back()
+  },
   //提交
   submitBtn(){
     const goodsDetail = this.data.goodsDetail;

@@ -111,7 +111,7 @@
     <!-- pro_list -->
 
     <!-- qc-activePop -->
-    <qc-activePop wx:if="{{ !(pinIndex.activity_info.status == 1) && activityShow }}" popType="{{ 1 }}" text="{{ pinIndex.activity_info.status == 1 ? '活动正在进行中' : pinIndex.activity_info.status ==  2 ? '活动未开始' : '活动已结束' }}"></qc-activePop>
+    <qc-activePop wx:if="{{ !(pinIndex.activity_info.status == 1) && activityShow }}" popType="{{ 1 }}" text="{{ pinIndex.activity_info.status == 1 ? '活动正在进行中' : pinIndex.activity_info.status ==  2 ? ('活动预计'+pinIndex.activity_info.start_date+'号开启 敬请期待') : '活动已结束' }}"></qc-activePop>
     <!-- qc-activePop -->
 
     <!-- qc-More -->
