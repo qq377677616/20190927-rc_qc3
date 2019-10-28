@@ -46,6 +46,7 @@ Page({
 	isshare:false,
 	kucun:false,
 	endStatus:0,
+	praTime:null,
   },
 
   /**
@@ -156,14 +157,14 @@ Page({
 		  user_id:this.data.userInfo.user_id
 	  }
 	  request_04.bargain_shop_list(dat).then((res)=>{
+		  this.setData({ activeStatus: res.data.status, praTime: res.data.status==1005?res.data.data.start_date.split(" ")[0]:''})
 		  if(res.data.status==0){
 			  this.setData({ 
 				  shopList: res.data.data,
 				  iscarActive:res.data.data.car_owner==1,
-				  activeStatus:res.data.status,
 				  endStatus: res.data.data.end_status
 				})
-			  this.setRule();
+			  
 			  if (res.data.data.end_time>0){
 				    // console.log("执行")
 				    clearInterval(shopTimes);
@@ -181,7 +182,8 @@ Page({
 			  }else{
 				  console.log('昨天砍价已结束')
 			  }
-		  }
+		  } 
+		  this.setRule();
 	  }).catch((reason)=>{
 		  console.log(reason)
 	  })
@@ -372,11 +374,13 @@ Page({
 	closePop(){//关闭弹窗
 	    console.log("关闭活动规则");
 		let ruleStatus  =  this.data.activeStatus;
+		console.log(ruleStatus);
 		if (ruleStatus=="1005"){
+			console.log(11)
 			this.setData({ 
 				isVehicleOwnerHidePop: true, 
 				popType:1,
-				poptxt:"活动暂未开始"
+				poptxt: "活动预计" + this.data.praTime +"号开启 敬请期待"
 				})
 		} else if (ruleStatus == "1006"){
 			this.setData({
@@ -401,7 +405,7 @@ Page({
 				this.setData({
 					isVehicleOwnerHidePop: true,
 					popType: 1,
-					poptxt: "活动暂未开始"
+					poptxt: "活动预计" + this.data.praTime + "号开启 敬请期待"
 				})
 			} else if (this.data.activeStatus == "1006") {
 				this.setData({

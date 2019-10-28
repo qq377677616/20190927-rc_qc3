@@ -90,7 +90,7 @@ Page({
 		let _item = this.data.prizeList[e.currentTarget.dataset.index]
 		let _type = _item.prize_type
 		let _id = _item.prize_id
-		this.setData({ formsType: _type == 2 ? '1' : '0', curIndex: e.currentTarget.dataset.index })
+		this.setData({ formsType: _type == 2 ? '1' : '0', curIndex: e.currentTarget.dataset.index })//0为门店弹窗、1为详细地址弹窗、2为看车弹窗、3为报名留资弹窗
 		this.data.prize_type = _type
 		this.data.prize_log_id = _id
 		if (_type != 3) {
