@@ -75,7 +75,7 @@
 		"pages/qicheng_h5/qicheng_h5",
 		"pages/o_prize_detail/o_prize_detail",
 		"pages/order_wuliu/order_wuliu",
-    "pages/look_car_detail_ route/look_car_detail_ route"
+    "pages/look_car_detail_route/look_car_detail_route"
 	],
 	"window": {
 		"backgroundTextStyle": "light",

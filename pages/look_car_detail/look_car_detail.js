@@ -222,7 +222,7 @@ Page({
   toDetailRoute(e){
     let index = e.currentTarget.dataset.index;
     router.jump_nav({
-      url: `/pages/look_car_detail_ route/look_car_detail_ route?index=${index}`,
+      url: `/pages/look_car_detail_route/look_car_detail_route?index=${index}`,
     })
   },
   //立即下定
