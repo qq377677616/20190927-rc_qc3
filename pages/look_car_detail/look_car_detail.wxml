@@ -233,7 +233,7 @@
         </view>
     <!-- footer -->
     <view class="footer" bindtap="downPayment">
-        即刻预约，享上市好礼
+        即刻预约，享上市好礼{{isShowIcon[0]}}
     </view>
     <!-- 留资弹窗-->
     <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
@@ -250,20 +250,8 @@
     </view>
     <!-- 两个icon -->
     <view class="icon-box {{isIconShow ? 'right-left' : ''}}" wx:key="key{{index}}" wx:if="{{ navIndex == 0 }}">
-       <view wx:if="{{isShowIcon == 2}}">
-        <view class="li flex-cen" wx:for="{{iconList2}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
-          <image src="{{item.img}}" mode="widthFix"></image>
-        </view>
-        </view> 
-      <view wx:if="{{isShowIcon == 1}}">
-      <view class="li flex-cen" wx:for="{{iconList}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
+      <view class="li flex-cen" wx:for="{{iconList}}" wx:if="{{isShowIcon['btn' + (index + 1)] == 1}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
         <image class="{{(index != 2 && isAnimate) ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
-      </view>
-      </view>
-      <view wx:if="{{isShowIcon == 0}}">
-        <view class="li flex-cen" wx:for="{{iconLists}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
-          <image class="{{isAnimate ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
-        </view>
       </view>
     </view>
     <!-- title4 -->
