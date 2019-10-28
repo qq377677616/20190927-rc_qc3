@@ -95,13 +95,13 @@ page{
 }
 .header .refresh-btn{
     position: absolute;
-    top: 160rpx;
+    top: 140rpx;
     right: -28rpx;
     display: flex;
     align-items:center;
     color: #666;
     font-size: 26rpx;
-    padding: 0 30rpx;
+    padding: 20rpx 30rpx;
 }
 .header .refresh-btn image{
     width: 26rpx;

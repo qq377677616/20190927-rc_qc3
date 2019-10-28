@@ -180,5 +180,14 @@
     <!-- qc-page404 -->
     <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
 
+    <!-- isShelve-mask -->
+    <view class="isShelve-mask" wx:if="{{ goodsDetail.status == 0 }}">
+      <view class="content">
+        <view class="p">该商品已下架</view>
+        <view class="btn" bindtap="shelveBtn">确定</view>
+      </view>
+    </view>
+    <!-- isShelve-mask -->
+
 
 </view><!-- product_detail_page -->

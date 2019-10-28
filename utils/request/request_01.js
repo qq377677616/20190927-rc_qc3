@@ -15,15 +15,15 @@ const tag = (data) => {
     let url = 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/oauth/version'
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -38,15 +38,15 @@ const taskIndex = (data) => {
     let url = `${SERVICE}/api3/task/task_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -55,15 +55,15 @@ const addShopCart = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/add_shopping_cart`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -72,15 +72,15 @@ const editShopCart = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/edit_shopping_cart`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -89,15 +89,15 @@ const shopCartList = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/shopping_cart_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -106,15 +106,15 @@ const deleteShopCart = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/del_shopping_cart`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -123,15 +123,15 @@ const settlementShopCart = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/settlement_shopping_cart`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -146,15 +146,15 @@ const homeInfo = (data) => {
     let url = `${SERVICE}/api3/user/user_index`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -163,15 +163,15 @@ const personalInfo = (data) => {
     let url = `${SERVICE}/api3/user/my_info`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -180,32 +180,32 @@ const vdouSrouse = (data) => {
     let url = `${SERVICE}/api3/user/my_vcoin_log`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
 //我的预约试驾
 const myReservationDriving = (data) => {
-	let url = `${SERVICE}/api3/testdrive/my_test_drive`;
+    let url = `${SERVICE}/api3/testdrive/my_test_drive`;
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -214,15 +214,15 @@ const signInInfo = (data) => {
     let url = `${SERVICE}/api3/user/sign_in_info`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -231,15 +231,15 @@ const signIn = (data) => {
     let url = `${SERVICE}/api3/user/do_sign_in`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -248,15 +248,15 @@ const groupList = (data) => {
     let url = `${SERVICE}/api3/groupbuy/my_groupbuy_order_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -265,15 +265,15 @@ const groupDetail = (data) => {
     let url = `${SERVICE}/api3/groupbuy/my_groupbuy_order_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -282,15 +282,15 @@ const getOrderId = (data) => {
     let url = `${SERVICE}/api3/groupbuy/receive_prize`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -300,15 +300,15 @@ const carAuth = (data) => {
     let url = `${SERVICE}/api3/member/bind_member`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -323,15 +323,15 @@ const publishArticle = (data) => {
     let url = `${SERVICE}/api3/article/release_article`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -340,15 +340,15 @@ const articleList = (data) => {
     let url = `${SERVICE}/api3/article/article_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -357,15 +357,15 @@ const likeArticle = (data) => {
     let url = `${SERVICE}/api3/article/favorite_article`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -374,15 +374,15 @@ const forwardArticle = (data) => {
     let url = `${SERVICE}/api3/article/relay_article`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -391,15 +391,15 @@ const commentArticle = (data) => {
     let url = `${SERVICE}/api3/article/reply_article`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -414,15 +414,15 @@ const shopMall = (data) => {
     let url = `${SERVICE}/api3/shop/shop_index`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -431,15 +431,15 @@ const goodsList = (data) => {
     let url = `${SERVICE}/api3/shop/goods_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -448,15 +448,15 @@ const goodsSettlement = (data) => {
     let url = `${SERVICE}/api3/shop/settlement`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -465,15 +465,15 @@ const goodsDetail = (data) => {
     let url = `${SERVICE}/api3/shop/goods_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -482,15 +482,15 @@ const classList = (data) => {
     let url = `${SERVICE}/api3/shop/cate_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -505,15 +505,15 @@ const EV_Draw = (data) => {
     let url = `${SERVICE}/api/evgame/lottery_draw`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -522,15 +522,15 @@ const EV_Share = (data) => {
     let url = `${SERVICE}/api/evgame/share_game`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -539,15 +539,15 @@ const EV_RetainInfo = (data) => {
     let url = `${SERVICE}/api/evgame/receive_prize`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -556,15 +556,15 @@ const EV_isOwner = (data) => {
     let url = `${SERVICE}/api/evgame/check_identity`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -573,15 +573,15 @@ const EV_broadcastList = (data) => {
     let url = `${SERVICE}/api/evgame/win_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -590,15 +590,15 @@ const EV_myPrize = (data) => {
     let url = `${SERVICE}/api/evgame/my_prize`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -613,15 +613,15 @@ const storeList = (data) => {
     let url = `${SERVICE}/api3/dealer/dealer_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -636,15 +636,15 @@ const orderList = (data) => {
     let url = `${SERVICE}/api3/order/my_order_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -653,15 +653,15 @@ const orderDetail = (data) => {
     let url = `${SERVICE}/api3/order/my_order_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -670,15 +670,15 @@ const orderWuliu = (data) => {
     let url = `${SERVICE}/api3/order/shipping_info`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -687,15 +687,15 @@ const prizeWuliu = (data) => {
     let url = `${SERVICE}/api3/prize/shipping_info`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -710,15 +710,15 @@ const activityList = (data) => {
     let url = `${SERVICE}/api3/activity/activity_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -727,15 +727,15 @@ const activityDetail = (data) => {
     let url = `${SERVICE}/api3/activity/activity_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -744,15 +744,15 @@ const joinActivity = (data) => {
     let url = `${SERVICE}/api3/activity/join_activity`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -761,15 +761,15 @@ const getStatus = (data) => {
     let url = `${SERVICE}/api3/ninepay/join_status`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -778,15 +778,15 @@ const receivePay = (data) => {
     let url = `${SERVICE}/api3/ninepay/pay`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -801,15 +801,15 @@ const pinIndex = (data) => {
     let url = `${SERVICE}/api3/groupbuy/group_buy_index`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -818,15 +818,15 @@ const pinGoodsList = (data) => {
     let url = `${SERVICE}/api3/groupbuy/goods_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -835,15 +835,15 @@ const pinGoodsDetail = (data) => {
     let url = `${SERVICE}/api3/groupbuy/goods_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -852,15 +852,15 @@ const launchPin = (data) => {
     let url = `${SERVICE}/api3/groupbuy/group_buying`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -869,15 +869,15 @@ const pinDetail = (data) => {
     let url = `${SERVICE}/api3/groupbuy/groupbuy_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -886,15 +886,15 @@ const joinPin = (data) => {
     let url = `${SERVICE}/api3/groupbuy/join_group_buying`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -909,15 +909,15 @@ const getUserInfo = (data) => {
     let url = `${SERVICE}/api3/oauth/oauth_reg`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -926,15 +926,15 @@ const getSessionKey = (data) => {
     let url = `${SERVICE}/api3/oauth/oauth_get`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -943,15 +943,15 @@ const getUnionid = (data) => {
     let url = `${SERVICE}/api3/oauth/de_union_id`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -960,15 +960,15 @@ const getPhone = (data) => {
     let url = `${SERVICE}/api3/oauth/de_phone`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -977,15 +977,15 @@ const perfectInfo = (data) => {
     let url = `${SERVICE}/api3/oauth/perfect`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -1000,15 +1000,15 @@ const indexBanner = (data) => {
     let url = `${SERVICE}/api3/index/banner`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -1017,15 +1017,15 @@ const indexActivity = (data) => {
     let url = `${SERVICE}/api3/index/recommend_activity`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -1034,15 +1034,15 @@ const gameList = (data) => {
     let url = `${SERVICE}/api3/index/game_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -1051,15 +1051,15 @@ const lookCarList = (data) => {
     let url = `${SERVICE}/api3/lookcar/car_list`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -1068,15 +1068,15 @@ const lookCarDetail = (data) => {
     let url = `${SERVICE}/api3/lookcar/car_details`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -1085,15 +1085,15 @@ const lookCarSubmit = (data) => {
     let url = `${SERVICE}/api3/testdrive/look_car_log`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 // /**
@@ -1130,15 +1130,15 @@ const addAddress = (data) => {
     let url = `${SERVICE}/api3/address/add_address`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -1147,15 +1147,15 @@ const editAddress = (data) => {
     let url = `${SERVICE}/api3/address/edit_address`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 
@@ -1164,167 +1164,167 @@ const deleteAddress = (data) => {
     let url = `${SERVICE}/api3/address/del_address`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 const prizeList = (data) => {//我的兑换列表
-	let url = `${SERVICE}/api3/prize/my_prize_list`
-	return new Promise((resolve, reject) => {
-		_request.request({
-			url,
-			data
-		})
-			.then(res => {
-				resolve(res)
-			})
-			.catch((reason) => {
-				reject(reason)
-			})
-	})
+    let url = `${SERVICE}/api3/prize/my_prize_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
 }
 //我的收货地址列表exchange
 const addressList = (data) => {
     let url = `${SERVICE}/api3/address/my_address`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 //我的收货地址列表-yls-0910
 const exchangeList = (data) => {
-	let url = `${SERVICE}/api3/order/my_order_list`
-	return new Promise((resolve, reject) => {
-		_request.request({
-			url,
-			data
-		})
-			.then(res => {
-				resolve(res)
-			})
-			.catch((reason) => {
-				reject(reason)
-			})
-	})
+    let url = `${SERVICE}/api3/order/my_order_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
 }
 //获取默认地址
 const defaultAddress = (data) => {
     let url = `${SERVICE}/api3/address/default_address`
     return new Promise((resolve, reject) => {
         _request.request({
-            url, 
+            url,
             data
         })
-        .then(res => {
-            resolve(res)
-        })
-        .catch((reason)=>{
-            reject(reason)
-        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
 }
 //文件视频/上传-yls-0910
-const uploadFiles = (data)=>{
-	let url = `${SERVICE}/api3/upload/upload_image`;
-	return new Promise((resolve, reject) => {
-		wx.chooseImage({
-			success(res) {
-				const tempFilePaths = res.tempFilePaths
-				wx.uploadFile({
-					url: url, 
-					filePath: tempFilePaths[0],
-					name: 'file',
-					formData: {},
-					success(res) {
-						const data = res.data
-						resolve(JSON.parse(data))
-					}
-				})
-			},
-			fail(err){
-				reject(err)
-			}
-		})	
-	})
+const uploadFiles = (data) => {
+    let url = `${SERVICE}/api3/upload/upload_image`;
+    return new Promise((resolve, reject) => {
+        wx.chooseImage({
+            success(res) {
+                const tempFilePaths = res.tempFilePaths
+                wx.uploadFile({
+                    url: url,
+                    filePath: tempFilePaths[0],
+                    name: 'file',
+                    formData: {},
+                    success(res) {
+                        const data = res.data
+                        resolve(JSON.parse(data))
+                    }
+                })
+            },
+            fail(err) {
+                reject(err)
+            }
+        })
+    })
 }
 // 投票排行榜列表yls
 const voteList = (data) => {
-	let url = `${SERVICE}/api3/vote/vote_list`
-	return new Promise((resolve, reject) => {
-		_request.request({
-			url,
-			data
-		})
-			.then(res => {
-				resolve(res)
-			})
-			.catch((reason) => {
-				reject(reason)
-			})
-	})
+    let url = `${SERVICE}/api3/vote/vote_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
 }
 // 为别人投票接口yls
 const voteing = (data) => {
-	let url = `${SERVICE}/api3/vote/do_vote`
-	return new Promise((resolve, reject) => {
-		_request.request({
-			url,
-			data
-		})
-			.then(res => {
-				resolve(res)
-			})
-			.catch((reason) => {
-				reject(reason)
-			})
-	})
+    let url = `${SERVICE}/api3/vote/do_vote`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
 }
 //评论接口yls
 const remarkArt = (data) => {
-	let url = `${SERVICE}/api3/article/reply_article`
-	return new Promise((resolve, reject) => {
-		_request.request({
-			url,
-			data
-		})
-			.then(res => {
-				resolve(res)
-			})
-			.catch((reason) => {
-				reject(reason)
-			})
-	})
+    let url = `${SERVICE}/api3/article/reply_article`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
 }
 //文章详情接口
 const articleDel = (data) => {
-	let url = `${SERVICE}/api3/article/article_detail`
-	return new Promise((resolve, reject) => {
-		_request.request({
-			url,
-			data
-		})
-			.then(res => {
-				resolve(res)
-			})
-			.catch((reason) => {
-				reject(reason)
-			})
-	})
+    let url = `${SERVICE}/api3/article/article_detail`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
 }
 
 
@@ -1334,24 +1334,24 @@ const articleDel = (data) => {
  * 
  */
 //登录
-const login = (callback)=>{
+const login = (callback) => {
 
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) => {
 
         const userInfo = wx.getStorageSync('userInfo');
 
         alert.loading({
             str: '登录中'
         })
-       
 
-        if( userInfo.user_id ){//本地已保存用户信息
-         
+
+        if (userInfo.user_id) {//本地已保存用户信息
+
             alert.loading_h();
             callback()
             // resolve()
 
-        }else{//本地未保存用户信息
+        } else {//本地未保存用户信息
 
             authorization.login()
                 .then((value) => {
@@ -1370,11 +1370,11 @@ const login = (callback)=>{
                 .then((value) => {
                     const data = value[0].data.data;
                     const data2 = value[1].data.data;
-                    if( (data.errcode && data.errmsg) || (data2.errcode && data2.errmsg) ) {
+                    if ((data.errcode && data.errmsg) || (data2.errcode && data2.errmsg)) {
                         login(callback)
                     } else {
-                        console.log('<<<',data,'>>>')
-                        console.log('<<<',data2,'>>>')
+                        console.log('<<<', data, '>>>')
+                        console.log('<<<', data2, '>>>')
 
                         Object.assign(data, data2)
 
@@ -1429,60 +1429,66 @@ const login = (callback)=>{
 //绑定车主授权
 const setUserInfo = (e) => {
     return new Promise((resolve, reject) => {
-      tool.loading("授权中")
-      const detail = e.detail;
-      const userInfo = detail.userInfo;
-      
-      
-      if (userInfo) {
-        Object.assign(userInfo, { encryptedData:detail.encryptedData, iv:detail.iv }, wx.getStorageSync("userInfo") || {})
-        wx.setStorageSync("userInfo", userInfo)
-        tool.loading_h()
-        //这里做上传头像昵称给后台操作
-        uploadUserInfo({
-          user_id: wx.getStorageSync("userInfo").user_id,
-          nickname: userInfo.nickName,
-          headimg: userInfo.avatarUrl,
-          gender: 1
-        }).then(res => {
+        tool.loading("授权中")
+        const detail = e.detail;
+        const userInfo = detail.userInfo;
 
-          getUnionid({
-                user_id:userInfo.user_id,//用户ID
-                encrypted_data:userInfo.encryptedData,//加密数据
-                session_key:userInfo.session_key,//上一个接口获得的session_key
-                iv:userInfo.iv,//加密数据匹配的iv                  
+
+        if (userInfo) {
+            Object.assign(userInfo, { encryptedData: detail.encryptedData, iv: detail.iv }, wx.getStorageSync("userInfo") || {})
+            wx.setStorageSync("userInfo", userInfo)
+
+            //这里做上传头像昵称给后台操作
+            uploadUserInfo({
+                user_id: wx.getStorageSync("userInfo").user_id,
+                nickname: userInfo.nickName,
+                headimg: userInfo.avatarUrl,
+                gender: 1
+            }).then(res => {
+                tool.loading_h()
+
+                getUnionid({
+                    user_id: userInfo.user_id,//用户ID
+                    encrypted_data: userInfo.encryptedData,//加密数据
+                    session_key: userInfo.session_key,//上一个接口获得的session_key
+                    iv: userInfo.iv,//加密数据匹配的iv                  
+                })
+                    .then((value) => {
+                        //success
+                        resolve(true)
+
+                    })
+                    .catch((reason) => {
+                        //fail
+                        resolve(reason)
+
+                    })
+
+            }).catch(err => {
+                reject(err)
             })
-            .then((value)=>{
-
-                resolve(true)
-
-            })
-
-        }).catch(err => {
-          reject(err)
-        })
-      } else {
-        tool.loading_h()
-        // tool.showModal('授权', '为了更好的体验，请先授权', '好的,#124DB8', false)
-        resolve(false)
-      }
+        } else {
+            tool.loading_h()
+            // tool.showModal('授权', '为了更好的体验，请先授权', '好的,#124DB8', false)
+            resolve(false)
+        }
     })
-  }
+}
 //上传头像昵称
 const uploadUserInfo = (data) => {
-  let url = `${SERVICE}/api3/oauth/perfect`
-  return new Promise((resolve, reject) => {
-    _request.request({
-      url,
-      data
+    let url = `${SERVICE}/api3/oauth/perfect`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
     })
-    .then(res => {
-      resolve(res)
-    })
-    .catch((reason) => {
-      reject(reason)
-    })
-  })
 }
 
 module.exports = {
@@ -1553,12 +1559,12 @@ module.exports = {
     vdouSrouse,
     exchangeList,
     defaultAddress,
-  	prizeList,
-  	uploadFiles,
-  	voteList,
-  	voteing,
-  	remarkArt,
-  	articleDel,
+    prizeList,
+    uploadFiles,
+    voteList,
+    voteing,
+    remarkArt,
+    articleDel,
     login,
     SERVICE,
 }
