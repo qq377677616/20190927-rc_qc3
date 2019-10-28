@@ -122,9 +122,11 @@ Page({
     })
     //是否显示最新icon
     this.setData({ isShowIcon: 1 })
-    // api.isShowIcon().then(res => {
-    //   this.setData({ isShowIcon: 1})
-    // })
+    api.isShowIcon().then(res => {
+      console.log("显示icon返回", res)
+      this.setData({ isShowIcon: res.data.data})
+      console.log("isShowIcon", this.data.isShowIcon)
+    })
   },
   //初始化dom信息
   scrollShowInit() {

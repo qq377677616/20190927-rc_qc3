@@ -13,6 +13,8 @@ const authorization = require('../../utils/tool/authorization.js');
 
 const alert = require('../../utils/tool/alert.js');
 
+const api = require('../../utils/request/request_03.js');
+
 const app = getApp();//获取应用实例
 Page({
 
@@ -47,6 +49,13 @@ Page({
     if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", { channelid: wx.getStorageSync("shareIds").channel_id})
     request_01.login(() => {
       this.initData(options)
+    })
+    //是否显示最新icon
+    this.setData({ isShowIcon: 1 })
+    api.isShowIcon().then(res => {
+      console.log("显示icon返回", res)
+      this.setData({ isShowIcon: res.data.data })
+      console.log("isShowIcon", this.data.isShowIcon)
     })
   },
   //两个icon动画

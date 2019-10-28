@@ -40,7 +40,7 @@
         </view>
 
         
-        <button class="refresh-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        <button class="refresh-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{ userInfo.avatarUrl }}">
             <image src="{{ IMGSERVICE }}/home/refresh.png" mode="widthFix"></image>
             <view class="span">刷新</view>
         </button>
