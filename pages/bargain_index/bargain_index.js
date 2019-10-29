@@ -238,8 +238,13 @@ Page({
 		console.log(55555)
 		// this.setData({ ok: this.data.iscarActive ? "ok" : "false" });
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return;
-		console.log("点击正在进行中正行")
-		console.log(e);
+		console.log("是否是车主商品", wx.getStorageSync("userInfo").user_type,e.currentTarget.dataset.car);
+		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.car==1){
+			console.log("hello")
+			this.setData({ popType: 4 });
+			this.isVehicleOwnerHidePop();
+			return;
+		}
 		let ing = e.currentTarget.dataset.ing;
 		ing = ing == 2 ? 5 : (ing = ing == 1 ? 6 : ing);
 		ing = this.data.endStatus == 1?ing:8;  
