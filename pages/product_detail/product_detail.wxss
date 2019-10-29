@@ -174,7 +174,6 @@ page{
 .pruduct_image .image_list image{
     display: block;
     width: 100%;
-    margin-bottom: 20rpx;
 }/* pruduct_image */
 
 /* prompt_mask */

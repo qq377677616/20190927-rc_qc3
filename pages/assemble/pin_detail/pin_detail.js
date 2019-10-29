@@ -175,8 +175,24 @@ Page({
   },
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
+    const type = e.target.dataset.type;
+    const btn = e.target.dataset.btn;
+    const index = e.target.dataset.index;
     const pinDetail = this.data.pinDetail;
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !pinDetail.car_owner)) return;
+    const goods_car_owner = btn == 'join' ? pinDetail.group_buy_list[index].goods_car_owner : pinDetail.goods_car_owner;
+    
+
+    //用户已授权，用户是车主。
+    //事件源对象不符合条件的按钮。
+    //用户已授权，活动不是车主活动，商品不是车主商品。
+
+    if (
+      (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
+      || (type != 'ok') 
+      || (wx.getStorageSync("userInfo").nickName && !pinDetail.car_owner && !goods_car_owner)
+    ) return;
+
+
     if (!wx.getStorageSync("userInfo").nickName) {
       this.setData({ popType: 2 })
     }
@@ -236,10 +252,17 @@ Page({
     const index = e.currentTarget.dataset.index;
     const pinDetail = this.data.pinDetail;
     const groupbuy_id = pinDetail.group_buy_list[index].groupbuy_id;
+    const goods_car_owner = pinDetail.group_buy_list[index].goods_car_owner;
     const userInfo = wx.getStorageSync("userInfo");
 
-    //是否车主
-    if ((wx.getStorageSync("userInfo").user_type == 0 && pinDetail.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+    //用户不是车主，活动是车主活动。
+    //用户不是车主，商品是车主商品。
+    //用户未授权。
+    if (
+      (wx.getStorageSync("userInfo").user_type == 0 && pinDetail.car_owner) 
+      || (wx.getStorageSync("userInfo").user_type == 0 && goods_car_owner) 
+      || !wx.getStorageSync("userInfo").nickName
+    ) return;
 
     if (pinDetail.is_join == 1) return alert.alert({
       str: '您已参与'
@@ -266,8 +289,14 @@ Page({
     const options = this.data.options;
     const userInfo = wx.getStorageSync("userInfo");
     
-    //是否车主
-    if ((wx.getStorageSync("userInfo").user_type == 0 && pinDetail.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+    //用户不是车主，活动是车主活动。
+    //用户不是车主，商品是车主商品。
+    //用户未授权。
+    if (
+      (wx.getStorageSync("userInfo").user_type == 0 && pinDetail.car_owner) 
+      || (wx.getStorageSync("userInfo").user_type == 0 && pinDetail.goods_car_owner) 
+      || !wx.getStorageSync("userInfo").nickName
+    ) return;
 
 
     if (pinDetail.is_join == 1) return alert.alert({

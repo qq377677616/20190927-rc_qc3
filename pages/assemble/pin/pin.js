@@ -264,15 +264,28 @@ Page({
     
     //判断是否授权和是否是车主
     isVehicleOwner(e) {
+        
+        const index = e.target.dataset.index;
+        const type = e.target.dataset.type;
         const pinIndex = this.data.pinIndex;
-        if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !pinIndex.activity_info.car_owner)) return;
-        if (!wx.getStorageSync("userInfo").nickName) {
+
+        //事件源对象不符合条件的按钮。
+        if( type != 'ok' )return;
+        const goods_car_owner = pinIndex.goods_list[index].goods_car_owner;
+
+        //用户已授权，用户是车主。
+        //用户已授权，活动不是车主活动，商品不是车主商品。
+        if (
+            (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
+            || (wx.getStorageSync("userInfo").nickName && !pinIndex.activity_info.car_owner && !goods_car_owner)
+        ) return;
+        
+        if (!wx.getStorageSync("userInfo").nickName) {//用户未授权
             this.setData({ popType: 2 })
         } 
-        else if (wx.getStorageSync("userInfo").user_type == 0) {
+        else if (wx.getStorageSync("userInfo").user_type == 0 ) {//用户不是车主
             this.setData({ popType: 3 })
         }
-        
         this.isVehicleOwnerHidePop()
     },
     //授完权后处理
@@ -372,8 +385,16 @@ Page({
         const index = e.currentTarget.dataset.index;
         const pinIndex = this.data.pinIndex;
         const prize_id = pinIndex.goods_list[index].prize_id;
-        //是否车主
-        if ((wx.getStorageSync("userInfo").user_type == 0 && pinIndex.activity_info.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+        const goods_car_owner = pinIndex.goods_list[index].goods_car_owner;
+        
+        //用户不是车主，活动是车主活动。
+        //用户不是车主，商品是车主商品。
+        //用户未授权。
+        if (
+            (wx.getStorageSync("userInfo").user_type == 0 && pinIndex.activity_info.car_owner) 
+            || (wx.getStorageSync("userInfo").user_type == 0 && goods_car_owner) 
+            || !wx.getStorageSync("userInfo").nickName
+        ) return;
         
         router.jump_nav({
             url: `/pages/assemble/pin_detail/pin_detail?prize_id=${prize_id}`,

@@ -84,7 +84,7 @@
         <!-- friend_group -->
 
         <!-- btn -->
-        <view class="btn join" wx:if="{{ pinInfo.status == 0 && pinInfo.is_join == 0 }}" data-type="ok" bindtap="joinBtn">立即参与</view>
+        <view class="btn join" wx:if="{{ pinInfo.status == 0 && pinInfo.is_join == 0 }}" data-type="ok" data-btn="join" bindtap="joinBtn">立即参与</view>
         
         <button wx:if="{{ pinInfo.status == 0 }}" open-type="share" class="btn {{ pinInfo.isMe ? 'me' : 'invite' }}">邀请好友</button>
 
@@ -138,7 +138,7 @@
       
                     </view>
 
-                    <view class="cut_on" data-index="{{ index }}" data-type="ok" bindtap="joinOtherBtn">立即参与</view>
+                    <view class="cut_on" data-index="{{ index }}" data-type="ok" data-btn="joinOther" bindtap="joinOtherBtn">立即参与</view>
   
                 </view>
 
