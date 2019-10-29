@@ -284,7 +284,8 @@ Page({
             this.setData({ popType: 2 })
         } 
         else if (wx.getStorageSync("userInfo").user_type == 0 ) {//用户不是车主
-            this.setData({ popType: 3 })
+            //该活动、该商品仅限于车主
+            pinIndex.activity_info.car_owner == 1 ? this.setData({ popType: 3 }) : this.setData({ popType: 4 });
         }
         this.isVehicleOwnerHidePop()
     },
