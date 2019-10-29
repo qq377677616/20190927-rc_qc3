@@ -205,10 +205,8 @@ Page({
   },
   //导航列表
   navList(e) {
-    console.log(e);
     const index = e.currentTarget.dataset.index;
     const navIndex = this.data.navIndex;
-    console.log('navIndex', navIndex)
     if (navIndex == index) return;
     this.setData({
       navIndex: index,

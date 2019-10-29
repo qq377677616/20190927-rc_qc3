@@ -25,6 +25,9 @@ Page({
           video:'west_video',
           txt:'认知有界 思想无限'
         })
+        wx.setNavigationBarTitle({
+          title: '领悟沉静之悦'
+        })
         break;
       case '1':
         this.setData({
@@ -32,6 +35,9 @@ Page({
           bg: 'south.png',
           video: 'south_video',
           txt:'生涯有界 未来无限'
+        })
+        wx.setNavigationBarTitle({
+          title: '感受打拼之悦'
         })
         break;
       case '2':
@@ -41,6 +47,9 @@ Page({
           video: 'north_video',
           txt:'视觉有限 视野无限'
         })
+        wx.setNavigationBarTitle({
+          title: '遇见彩色之悦'
+        })
         break;  
       case '3':
         this.setData({
@@ -48,6 +57,9 @@ Page({
           bg: 'east.png',
           video: 'east_video',
           txt:'美食有界 情谊无限'
+        })
+        wx.setNavigationBarTitle({
+          title: '品味美食之悦'
         })
         break;    
     }
