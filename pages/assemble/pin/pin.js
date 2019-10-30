@@ -264,7 +264,7 @@ Page({
     
     //判断是否授权和是否是车主
     isVehicleOwner(e) {
-        console.log(e, '??????????')
+        if(!e)return;
         const index = e.target.dataset.index;
         const type = e.target.dataset.type;
         const pinIndex = this.data.pinIndex;
