@@ -213,7 +213,15 @@ Page({
 	freeGet(e){//点击免费拿
 		// this.setData({ok:this.data.iscarActive?"ok":"ok22"});
 		// 判断看车详情
+		// console.log(e) 
+		// return;
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return;
+		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.obj.car_owner == 1) {
+			console.log("hello")
+			this.setData({ popType: 4 });
+			this.isVehicleOwnerHidePop();
+			return;
+		}
 		if (this.data.restNum>0){
 				let shopName = e.currentTarget.dataset.name;
 				let shopPrice = e.currentTarget.dataset.price;
@@ -238,8 +246,13 @@ Page({
 		console.log(55555)
 		// this.setData({ ok: this.data.iscarActive ? "ok" : "false" });
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return;
-		console.log("点击正在进行中正行")
-		console.log(e);
+		console.log("是否是车主商品", wx.getStorageSync("userInfo").user_type,e.currentTarget.dataset.car);
+		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.car==1){
+			console.log("hello")
+			this.setData({ popType: 4 });
+			this.isVehicleOwnerHidePop();
+			return;
+		}
 		let ing = e.currentTarget.dataset.ing;
 		ing = ing == 2 ? 5 : (ing = ing == 1 ? 6 : ing);
 		ing = this.data.endStatus == 1?ing:8;  

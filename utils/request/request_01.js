@@ -6,9 +6,9 @@ const alert = require('../tool/alert.js');
 
 const tool = require('../tool/tool.js');
 
-// const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
+const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
 // const SERVICE = "http://dfldata-test.dongfeng-nissan.com.cn/fslb/public/index.php";
-const SERVICE = "https://weixinfslb.venucia.com";
+// const SERVICE = "https://weixinfslb.venucia.com";
 
 //版本控制
 const tag = (data) => {
@@ -1353,12 +1353,15 @@ const login = (callback) => {
 
         } else {//本地未保存用户信息
 
-            authorization.login()
+            Promise.all([
+                authorization.login(),
+                authorization.login()
+            ])
                 .then((value) => {
 
                     return Promise.all([
                         getUserInfo({
-                            code: value.code,
+                            code: value[1].code,
                             parent_id: wx.getStorageSync("shareIds").parent_id,
                             channel_id: wx.getStorageSync("shareIds").channel_id
                         }),
@@ -1366,6 +1369,7 @@ const login = (callback) => {
                             code: value.code,
                         })
                     ])
+
                 })
                 .then((value) => {
                     const data = value[0].data.data;

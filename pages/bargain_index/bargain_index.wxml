@@ -147,7 +147,7 @@
 			<image src="{{IMGSERVICE}}/activity/fz_right.png"></image>
 		</view>
 
-        <view class="pro_list" wx:for="{{shopList.dq_prize}}" wx:key="item" data-type="ok" bindtap="goshopDel2" data-ing="{{item.buttom_type}}" data-shopid="{{item.id}}">
+        <view class="pro_list" wx:for="{{shopList.dq_prize}}" wx:key="item" data-type="ok" bindtap="goshopDel2" data-car="{{item.car_owner}}" data-ing="{{item.buttom_type}}" data-shopid="{{item.id}}">
         
           <view class="spimg" style="background-image:url({{item.thumb}})" data-type="ok">
             <view wx:if="{{item==2}}" class="qiang">已抢</view>

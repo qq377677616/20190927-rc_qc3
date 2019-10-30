@@ -54,7 +54,7 @@
               剩余{{ item.dhms.tiems.d + ':' + item.dhms.tiems.h + ':' + item.dhms.tiems.m + ':' + item.dhms.tiems.s }}
             </view>
           </view>
-          <view class="join" data-index="{{ index }}" data-type="ok" bindtap="joinBtn">
+          <view class="join" data-index="{{ index }}" data-type="ok" data-btn="join" bindtap="joinBtn">
             立即参加
           </view>
         </view>
@@ -67,7 +67,7 @@
   <!-- bg_down -->
   <view class="bg_down">
     <view class="bg_title">商品详情</view>
-    <image class="p_pic_down" src="{{ pinDetail.goods_detail_img }}" mode="widthFix"></image>
+    <image class="p_pic_down" wx:for="{{ pinDetail.goods_detail }}" wx:key="index" src="{{ item }}" mode="widthFix"></image>
   </view>
   <view class="xian"></view>
   
@@ -76,11 +76,11 @@
     <view class="ex_title">温馨提示</view>
   </view>
   <view class="ex_txt">
-    <template is="wxParse" data="{{ wxParseData:product_explain.nodes }}" />
+    <template is="wxParse" data="{{ wxParseData:product_explain.nodes }}"/>
   </view>
 
 
-  <view class="r_btn" data-type="ok" bindtap="launchPin">发起拼团</view>
+  <view class="r_btn" data-type="ok" data-btn="launch" bindtap="launchPin">发起拼团</view>
 
 
 </view>

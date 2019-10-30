@@ -62,12 +62,12 @@
 
 
     <!-- pruduct_image -->
-    <view class="pruduct_image" wx:if="{{ goodsDetail.goods_detail_img }}">
+    <view class="pruduct_image" wx:if="{{ goodsDetail.goods_detail.length }}">
 
         <view class="title">商品详情</view>
 
         <view class="image_list">
-            <image class="fadeIn" src="{{ goodsDetail.goods_detail_img }}" mode="widthFix"></image>
+            <image class="fadeIn" wx:for="{{ goodsDetail.goods_detail }}" wx:key="index" src="{{ item }}" mode="widthFix"></image>
         </view>
 
     </view><!-- pruduct_image -->
