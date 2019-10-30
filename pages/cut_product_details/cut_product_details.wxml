@@ -26,8 +26,8 @@
  <view class="bg_down">
       <view class="bg_title">产品图片</view>
       <view class="p_pic_down">
-	  	<view wx:if="{{noImg}}" class="noshuoming">暂无产品图</view>
-	  	<image mode="widthFix" src="{{shopdelData.goods_detail_img}}"></image>
+	  	<view wx:if="{{!shopdelData.goods_detail.length>0}}" class="noshuoming">暂无产品图</view>
+	  	<image mode="widthFix" src="{{item}}" wx:for="{{shopdelData.goods_detail}}"></image>
 	  </view>
  </view> 
 
