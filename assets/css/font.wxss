@@ -1,0 +1,16 @@
+
+    /* IE9 Compat Modes */
+    /* src: url('webFontName.eot');  */
+    /* IE6-IE8 */
+    /* src: url('webFontName.eot?#iefix') format('embedded-opentype'),  */
+    /* Modern Browsers */
+    /* url('webFontName.woff') format('woff'),  */
+    /* Safari, Android, iOS */
+    /* url('webFontName.ttf') format('truetype'),  */
+    /* Legacy iOS */
+    /* url('webFontName.svg#webFontName') format('svg');  */
+
+    @font-face {
+        font-family: 'web';
+        src: url("https://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/verdana/verdanaz.ttf") format('truetype')
+    }

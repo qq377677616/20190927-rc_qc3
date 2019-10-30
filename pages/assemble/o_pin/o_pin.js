@@ -176,12 +176,29 @@ Page({
   },
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
+    
+    const type = e.target.dataset.type;
+    const index =  e.target.dataset.index;
+    const btn =  e.target.dataset.btn;
     const pinInfo = this.data.pinInfo;
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !pinInfo.car_owner)) return;
+    const goods_car_owner = btn == 'joinOther' ? pinInfo.other_group_buy[index].goods_car_owner : pinInfo.goods_car_owner;
+
+    //用户已授权，用户是车主。
+    //事件源对象不符合条件的按钮。
+    //用户已授权，活动不是车主活动，商品不是车主商品。
+    if (
+      (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
+      || (type != 'ok') 
+      || (wx.getStorageSync("userInfo").nickName && !pinInfo.car_owner && !goods_car_owner)
+    ) return;
+
     if (!wx.getStorageSync("userInfo").nickName) {
       this.setData({ popType: 2 })
     } else if (wx.getStorageSync("userInfo").user_type == 0) {
-      this.setData({ popType: 3 })
+
+      //该活动、该商品仅限于车主
+      pinInfo.car_owner == 1 ? this.setData({ popType: 3 }) : this.setData({ popType: 4 });
+      
     }
     this.isVehicleOwnerHidePop()
   },
@@ -214,8 +231,15 @@ Page({
     let newPinfo = {};
 
     const userInfo = wx.getStorageSync("userInfo");
-    //是否车主
-    if ((wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+
+    //用户不是车主，活动是车主活动。
+    //用户不是车主，商品是车主商品。
+    //用户未授权。
+    if (
+      (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner) 
+      || (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.goods_car_owner) 
+      || !wx.getStorageSync("userInfo").nickName
+    ) return;
 
     if (pinInfo.is_join == 1) return alert.alert({
       str: '您正在参与拼团中'
@@ -292,8 +316,16 @@ Page({
     const item = pinInfo.other_group_buy[index];
     let newPinfo = {};
     const userInfo = wx.getStorageSync("userInfo");
-    //是否车主
-    if ((wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+    
+
+    //用户不是车主，活动是车主活动。
+    //用户不是车主，商品是车主商品。
+    //用户未授权。
+    if (
+      (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner) 
+      || (wx.getStorageSync("userInfo").user_type == 0 && item.goods_car_owner) 
+      || !wx.getStorageSync("userInfo").nickName
+    ) return;
 
     Object.assign(newPinfo, {
       title: item.title, // 标题
