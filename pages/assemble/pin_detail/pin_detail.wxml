@@ -67,7 +67,7 @@
   <!-- bg_down -->
   <view class="bg_down">
     <view class="bg_title">商品详情</view>
-    <image class="p_pic_down" src="{{ pinDetail.goods_detail_img }}" mode="widthFix"></image>
+    <image class="p_pic_down" wx:for="{{ pinDetail.goods_detail }}" wx:key="index" src="{{ item }}" mode="widthFix"></image>
   </view>
   <view class="xian"></view>
   
