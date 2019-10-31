@@ -113,6 +113,14 @@ Page({
         shake_num: res.data.data.shake_info.shake_num, //抽奖次数
         have_upgrade: res.data.data.have_upgrade //是否可以升级
       })
+      if (res.data.data.activity_info.status == 3 && res.data.data.shake_info.shake_num>0){
+        this.setData({
+          isVehicleOwnerHidePop: true,
+          popType: 1,
+          text: "活动已结束"
+        })
+        return;
+      }
       // 用户抽奖完，是否领奖
       if (res.data.data.shake_info.shake_num == 0) {
         if (res.data.data.shake_info.is_receive == 0) {
@@ -140,30 +148,30 @@ Page({
           }
         }
       }
-      // 判断活动状态  1-正常  2-活动未开始 3-活动已结束
-      let activityStatus = res.data.data.activity_info.status; //活动状态
-      let shake_num = res.data.data.shake_info.shake_num; //是否参与
-      if (activityStatus == 3) {
-        if (shake_num == 3) {
-          this.setData({
-            isVehicleOwnerHidePop: true,
-            popType: 1,
-            text: "活动已结束"
-          })
-        } else {
-          if (shake_num == 0) {
-            this.setData({
-              isVehicleOwnerHidePop: true,
-              popType: 1,
-              text: "活动已结束"
-            })
-          } else {
-            router.jump_red({
-              url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
-            })
-          }
-        }
-      }
+      // // 判断活动状态  1-正常  2-活动未开始 3-活动已结束
+      // let activityStatus = res.data.data.activity_info.status; //活动状态
+      // let shake_num = res.data.data.shake_info.shake_num; //是否参与
+      // if (activityStatus == 3) {
+      //   if (shake_num == 3) {
+      //     this.setData({
+      //       isVehicleOwnerHidePop: true,
+      //       popType: 1,
+      //       text: "活动已结束"
+      //     })
+      //   } else {
+      //     if (shake_num == 0) {
+      //       this.setData({
+      //         isVehicleOwnerHidePop: true,
+      //         popType: 1,
+      //         text: "活动已结束"
+      //       })
+      //     } else {
+      //       router.jump_red({
+      //         url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
+      //       })
+      //     }
+      //   }
+      // }
     })
 
 
