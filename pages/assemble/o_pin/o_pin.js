@@ -176,7 +176,7 @@ Page({
   },
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    
+    if(!e)return;
     const type = e.target.dataset.type;
     const index =  e.target.dataset.index;
     const btn =  e.target.dataset.btn;
