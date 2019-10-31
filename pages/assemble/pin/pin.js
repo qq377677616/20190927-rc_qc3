@@ -157,7 +157,6 @@ Page({
     onShareAppMessage: function (e) {
         const from = e.from;
         const IMGSERVICE = this.data.IMGSERVICE;
-        
         if( from == 'button' ){
             //btn分享
             const index = e.target.dataset.index;

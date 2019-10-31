@@ -27,7 +27,8 @@
     <!-- pro_list -->
     <block wx:for="{{ pinIndex.goods_list }}" wx:key="index">
       <view class="pro_list fadeIn" wx:if="{{ item.number == 0 }}">
-        <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}" bindtap="jumpDetail">
+        <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}"
+          bindtap="jumpDetail">
           <view class="no_goods">抢光了</view>
         </view>
         <view class="spimg_right">
@@ -41,7 +42,8 @@
       <!-- pro_list -->
       <!-- pro_list -->
       <view class="pro_list fadeIn" wx:elif="{{ item.groupbuy_status == 1 }}">
-        <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}" bindtap="jumpDetail"></view>
+        <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}"
+          bindtap="jumpDetail"></view>
         <view class="spimg_right">
           <view class="sp_title">{{ item.title }}</view>
           <view class="tips" wx:if="{{ item.group_intro }}">{{ item.group_intro }}</view>
@@ -64,14 +66,16 @@
       <!-- pro_list -->
       <!-- pro_list -->
       <view class="pro_list fadeIn" wx:elif="{{ item.groupbuy_status == 3 }}">
-        <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}" bindtap="jumpDetail"></view>
+        <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}"
+          bindtap="jumpDetail"></view>
         <view class="spimg_right">
           <view class="sp_title">{{ item.title }}</view>
           <view class="tips" wx:if="{{ item.group_intro }}">{{ item.group_intro }}</view>
           <view class="down">
             <view class="down_left">
               <view class="progress">
-                <progress percent="{{ item.groupbuy_info.buy_num/item.group_num*100 }}" color="#E3413E" stroke-width="13" border-radius="7"></progress>
+                <progress percent="{{ item.groupbuy_info.buy_num/item.group_num*100 }}" color="#E3413E"
+                  stroke-width="13" border-radius="7"></progress>
                 <view class="send">还差{{ item.group_num - item.groupbuy_info.buy_num }}人成功</view>
               </view>
               <view class="residue">
@@ -87,7 +91,8 @@
       <!-- pro_list -->
       <!-- pro_list -->
       <view class="pro_list fadeIn" wx:elif="{{ item.groupbuy_status == 0 }}">
-        <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}" bindtap="jumpDetail"></view>
+        <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}"
+          bindtap="jumpDetail"></view>
         <view class="spimg_right">
           <view class="sp_title">{{ item.title }}</view>
           <view class="tips" wx:if="{{ item.group_intro }}">{{ item.group_intro }}</view>
@@ -111,7 +116,9 @@
     <!-- pro_list -->
 
     <!-- qc-activePop -->
-    <qc-activePop wx:if="{{ !(pinIndex.activity_info.status == 1) && activityShow }}" popType="{{ 1 }}" text="{{ pinIndex.activity_info.status == 1 ? '活动正在进行中' : pinIndex.activity_info.status ==  2 ? ('活动预计'+pinIndex.activity_info.start_date+'号开启 敬请期待') : '活动已结束' }}"></qc-activePop>
+    <qc-activePop wx:if="{{ !(pinIndex.activity_info.status == 1) && activityShow }}" popType="{{ 1 }}"
+      text="{{ pinIndex.activity_info.status == 1 ? '活动正在进行中' : pinIndex.activity_info.status ==  2 ? ('活动预计'+pinIndex.activity_info.start_date+'号开启 敬请期待') : '活动已结束' }}">
+    </qc-activePop>
     <!-- qc-activePop -->
 
     <!-- qc-More -->
@@ -121,7 +128,7 @@
   </view>
   <!-- cut_now -->
 
-  
+
 
 </view>
 <!-- cut -->
@@ -135,12 +142,11 @@
 <!-- rule_mask -->
 <!-- 授权、去绑定车主弹窗 -->
 <view class="pof fadeShow" style="z-index:999;" wx:if="{{ isVehicleOwnerHidePop }}">
-    <qc-activePop popType="{{ popType }}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
+  <qc-activePop popType="{{ popType }}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
 
-    </qc-activePop>
+  </qc-activePop>
 </view>
 <!-- 授权、去绑定车主弹窗 -->
 <!-- qc-page404 -->
 <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404>
 <!-- qc-page404 -->
-

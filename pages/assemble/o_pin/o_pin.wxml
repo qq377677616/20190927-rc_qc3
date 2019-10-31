@@ -20,7 +20,7 @@
 
                 <view class="v nowrap">
                     {{ pinInfo.vcoin }}V豆
-                </view> 
+                </view>
 
                 <view class="pin nowrap">已拼{{ pinInfo.sale_num }}件</view>
 
@@ -79,14 +79,16 @@
                 </block>
 
             </view>
-            
+
         </view>
         <!-- friend_group -->
 
         <!-- btn -->
-        <view class="btn join" wx:if="{{ pinInfo.status == 0 && pinInfo.is_join == 0 }}" data-type="ok" data-btn="join" bindtap="joinBtn">立即参与</view>
-        
-        <button wx:if="{{ pinInfo.status == 0 }}" open-type="share" class="btn {{ pinInfo.isMe ? 'me' : 'invite' }}">邀请好友</button>
+        <view class="btn join" wx:if="{{ pinInfo.status == 0 && pinInfo.is_join == 0 }}" data-type="ok" data-btn="join"
+            bindtap="joinBtn">立即参与</view>
+
+        <button wx:if="{{ pinInfo.status == 0 }}" open-type="share"
+            class="btn {{ pinInfo.isMe ? 'me' : 'invite' }}">邀请好友</button>
 
         <view wx:if="{{ pinInfo.status == 1 && pinInfo.is_join == 1 }}" class="btn gift" bindtap="getPrize">领取奖品</view>
 
@@ -97,58 +99,64 @@
 
     </view><!-- main_container -->
 
+
+    <view wx:if="{{ pinInfo.other_group_buy.length }}">
+
+        <!-- cut -->
+        <view class="cut">
+
+            <!-- cut_now -->
+            <view class="cut_now">
+
+                <view class="now_title">
+                    <view class="em low"></view>
+                    <view class="null"></view>
+                    <view class="em high"></view>
+                    <view class="span">大家正在团</view>
+                    <view class="em high"></view>
+                    <view class="null"></view>
+                    <view class="em low"></view>
+                </view>
+
+                <view class="pro_list" wx:for="{{ pinInfo.other_group_buy }}" wx:key="index">
+
+                    <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}"
+                        bindtap="jumpDetail"></view>
+
+                    <view class="spimg_right">
+
+                        <view class="sp_title">{{ item.title }}</view>
+
+                        <view class="down">
+
+                            <view class="down_left">
+
+                                <view class="progress">
+                                    <progress percent="{{ item.buy_num/item.group_num*100 }}" color="#E3413E"
+                                        stroke-width="13" border-radius="7"></progress>
+                                    <view class="send">还差{{ item.group_num - item.buy_num }}人成功</view>
+                                </view>
+                                <view class="residue">剩余<text class="red">{{ item.stock }}</text>件</view>
+
+                            </view>
+
+                            <view class="cut_on" data-index="{{ index }}" data-type="ok" data-btn="joinOther"
+                                bindtap="joinOtherBtn">立即参与</view>
+
+                        </view>
+
+                    </view>
+
+                </view>
+
+            </view>
+        </view>
+    </view>
+
 </view><!-- o_pin_status -->
 
 
-<view wx:if="{{ pinInfo.other_group_buy.length }}">
 
-  <!-- cut -->
-    <view class="cut">
-
-    <!-- cut_now -->
-    <view class="cut_now">
-
-        <view class="now_title">
-          <view class="em low"></view>
-          <view class="null"></view>
-          <view class="em high"></view>
-          <view class="span">大家正在团</view>
-          <view class="em high"></view>
-          <view class="null"></view>
-          <view class="em low"></view>
-        </view>
-
-        <view class="pro_list" wx:for="{{ pinInfo.other_group_buy }}" wx:key="index">
-        
-          <view class="spimg" style="background-image:url({{ item.thumb }})" data-index="{{ index }}" bindtap="jumpDetail"></view>
-
-          <view class="spimg_right">
-
-                <view class="sp_title">{{ item.title }}</view>
-
-                <view class="down">
-
-                    <view class="down_left">
-
-                      <view class="progress">
-                        <progress percent="{{ item.buy_num/item.group_num*100 }}" color="#E3413E" stroke-width="13" border-radius="7"></progress>
-                        <view class="send">还差{{ item.group_num - item.buy_num }}人成功</view>
-                      </view>
-                      <view class="residue">剩余<text class="red">{{ item.stock }}</text>件</view>
-      
-                    </view>
-
-                    <view class="cut_on" data-index="{{ index }}" data-type="ok" data-btn="joinOther" bindtap="joinOtherBtn">立即参与</view>
-  
-                </view>
-
-          </view>
-
-        </view>
-
-    </view>
-  </view>  
-</view>  
 
 
 <!-- 授权、去绑定车主弹窗 -->

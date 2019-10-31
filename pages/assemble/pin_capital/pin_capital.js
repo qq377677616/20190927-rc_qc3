@@ -329,6 +329,7 @@ Page({
         const msg = value.data.msg;
         const status = value.data.status;
         const data = value.data.data;
+        alert.loading_h()
         
         if( status == 1 ){//拼团成功
 
@@ -359,6 +360,7 @@ Page({
       })
       .catch((reason)=>{
         //fail
+        alert.loading_h()
         alert.alert({
           str:JSON.stringify( reason )
         })
@@ -366,7 +368,7 @@ Page({
       .then(()=>{
         //complete
         
-        alert.loading_h()
+        
 
       })
   },
