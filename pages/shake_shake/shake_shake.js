@@ -139,9 +139,9 @@ Page({
             if(this.data.firstTime==1){
               this.isSuc()
             }else{
-              router.jump_red({
-                url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
-              })
+              // router.jump_red({
+              //   url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
+              // })
             }
           }else{
             this.isSucNo();
@@ -271,7 +271,7 @@ Page({
   },
   // 参与摇红包
   joinShake() {
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").unionid || !wx.getStorageSync("userInfo").nickName) return;
     let options = this.data.options;
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
@@ -523,8 +523,8 @@ Page({
 
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
-    if (!wx.getStorageSync("userInfo").nickName) {
+    if ((wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
+    if (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) {
       this.setData({
         popType: 2
       })

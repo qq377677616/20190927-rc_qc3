@@ -154,7 +154,7 @@ Page({
 
   // 助力
   helpH() {
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid))  return;
     if (this.data.isHelpH) {
       let options = this.data.options
       let shake_id = this.data.shake_id
@@ -390,8 +390,8 @@ Page({
 
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
-    if (!wx.getStorageSync("userInfo").nickName) {
+    if ((wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
+    if (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) {
       this.setData({
         popType: 2
       })

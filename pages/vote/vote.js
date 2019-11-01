@@ -194,7 +194,7 @@ Page({
 
   //点击参与活动
   toPartake() {
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return;
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
     let activity_id = this.data.activity_id;
     router.jump_nav({
       url: `/pages/lj_partake/lj_partake?activity_id=${activity_id}`,
@@ -226,7 +226,7 @@ Page({
 
   // 点击头像判断是否参与活动
   toVoteDetail() {
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return;
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
     let num = this.data.is_join;
     console.log(num)
     let activity_id = this.data.activity_id;
@@ -391,8 +391,8 @@ Page({
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
     // if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok' && (this.data.iscarActive == 1 ? true : false) ) || (wx.getStorageSync("userInfo").nickName && !(this.data.iscarActive == 1 ? true : false))) return
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.iscarActive)) return
-    if (!wx.getStorageSync("userInfo").nickName) {
+    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").unionid && !this.data.iscarActive)) return
+    if (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) {
       this.setData({
         popType: 2
       })
