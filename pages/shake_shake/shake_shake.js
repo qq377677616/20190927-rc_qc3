@@ -139,9 +139,9 @@ Page({
             if(this.data.firstTime==1){
               this.isSuc()
             }else{
-              // router.jump_red({
-              //   url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
-              // })
+              router.jump_red({
+                url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
+              })
             }
           }else{
             this.isSucNo();
