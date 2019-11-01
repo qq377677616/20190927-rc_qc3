@@ -175,7 +175,7 @@ Page({
 		this.setData({ succPop:false})
 	},
 	friendHelp(){//好友帮忙砍价
-		if (!this.data.userInfo.nickName)return;
+		if (!this.data.userInfo.nickName || !wx.getStorageSync("userInfo").unionid)return;
 		let dat = {
 			openid: wx.getStorageSync('userInfo').openid,
 			kj_id: this.data.kj_id,

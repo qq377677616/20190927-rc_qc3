@@ -151,11 +151,11 @@
 		</view>
 		<view class="statusBtn statusBtn3" bindtap="friendHelp" wx:if="{{!isRight&&sy_num>0}}">
 			<text>帮好友砍价</text>
-			<button wx:if="{{!userInfo.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="shouquan"></button>
+			<button wx:if="{{!userInfo.nickName||!userInfo.unionid}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="shouquan"></button>
 		</view>
 		<view class="statusBtn statusBtn3 statusBtn4" bindtap="selfFreeget" wx:if="{{!isRight}}">
 			<text>我也要免费拿</text>
-			<button wx:if="{{!userInfo.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="shouquan"></button>
+			<button wx:if="{{!userInfo.nickName||!userInfo.unionid}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="shouquan"></button>
 		</view>
 		<view class="statusBtn" wx:if="{{!sy_num>0}}">
 			<text>库存不足</text>
