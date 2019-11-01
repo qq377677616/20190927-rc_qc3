@@ -176,7 +176,7 @@ Page({
   },
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    
+    if(!e)return;
     const type = e.target.dataset.type;
     const index =  e.target.dataset.index;
     const btn =  e.target.dataset.btn;
@@ -186,6 +186,7 @@ Page({
     //用户已授权，用户是车主。
     //事件源对象不符合条件的按钮。
     //用户已授权，活动不是车主活动，商品不是车主商品。
+
     if (
       (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
       || (type != 'ok') 
@@ -317,7 +318,7 @@ Page({
     let newPinfo = {};
     const userInfo = wx.getStorageSync("userInfo");
     
-
+    
     //用户不是车主，活动是车主活动。
     //用户不是车主，商品是车主商品。
     //用户未授权。
@@ -326,6 +327,7 @@ Page({
       || (wx.getStorageSync("userInfo").user_type == 0 && item.goods_car_owner) 
       || !wx.getStorageSync("userInfo").nickName
     ) return;
+
 
     Object.assign(newPinfo, {
       title: item.title, // 标题

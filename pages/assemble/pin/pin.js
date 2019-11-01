@@ -157,7 +157,6 @@ Page({
     onShareAppMessage: function (e) {
         const from = e.from;
         const IMGSERVICE = this.data.IMGSERVICE;
-        
         if( from == 'button' ){
             //btn分享
             const index = e.target.dataset.index;
@@ -264,7 +263,7 @@ Page({
     
     //判断是否授权和是否是车主
     isVehicleOwner(e) {
-        
+        if(!e)return;
         const index = e.target.dataset.index;
         const type = e.target.dataset.type;
         const pinIndex = this.data.pinIndex;

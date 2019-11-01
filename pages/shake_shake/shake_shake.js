@@ -113,6 +113,14 @@ Page({
         shake_num: res.data.data.shake_info.shake_num, //抽奖次数
         have_upgrade: res.data.data.have_upgrade //是否可以升级
       })
+      if (res.data.data.activity_info.status == 3 && res.data.data.shake_info.shake_num>0){
+        this.setData({
+          isVehicleOwnerHidePop: true,
+          popType: 1,
+          text: "活动已结束"
+        })
+        return;
+      }
       // 用户抽奖完，是否领奖
       if (res.data.data.shake_info.shake_num == 0) {
         if (res.data.data.shake_info.is_receive == 0) {
@@ -131,39 +139,39 @@ Page({
             if(this.data.firstTime==1){
               this.isSuc()
             }else{
-              router.jump_red({
-                url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
-              })
+              // router.jump_red({
+              //   url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
+              // })
             }
           }else{
             this.isSucNo();
           }
         }
       }
-      // 判断活动状态  1-正常  2-活动未开始 3-活动已结束
-      let activityStatus = res.data.data.activity_info.status; //活动状态
-      let shake_num = res.data.data.shake_info.shake_num; //是否参与
-      if (activityStatus == 3) {
-        if (shake_num == 3) {
-          this.setData({
-            isVehicleOwnerHidePop: true,
-            popType: 1,
-            text: "活动已结束"
-          })
-        } else {
-          if (shake_num == 0) {
-            this.setData({
-              isVehicleOwnerHidePop: true,
-              popType: 1,
-              text: "活动已结束"
-            })
-          } else {
-            router.jump_red({
-              url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
-            })
-          }
-        }
-      }
+      // // 判断活动状态  1-正常  2-活动未开始 3-活动已结束
+      // let activityStatus = res.data.data.activity_info.status; //活动状态
+      // let shake_num = res.data.data.shake_info.shake_num; //是否参与
+      // if (activityStatus == 3) {
+      //   if (shake_num == 3) {
+      //     this.setData({
+      //       isVehicleOwnerHidePop: true,
+      //       popType: 1,
+      //       text: "活动已结束"
+      //     })
+      //   } else {
+      //     if (shake_num == 0) {
+      //       this.setData({
+      //         isVehicleOwnerHidePop: true,
+      //         popType: 1,
+      //         text: "活动已结束"
+      //       })
+      //     } else {
+      //       router.jump_red({
+      //         url: `/pages/friendHelp/friendHelp?activity_id=${activity_id}`,
+      //       })
+      //     }
+      //   }
+      // }
     })
 
 
@@ -263,7 +271,7 @@ Page({
   },
   // 参与摇红包
   joinShake() {
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName) return;
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").unionid || !wx.getStorageSync("userInfo").nickName) return;
     let options = this.data.options;
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
@@ -515,8 +523,8 @@ Page({
 
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
-    if (!wx.getStorageSync("userInfo").nickName) {
+    if ((wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
+    if (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) {
       this.setData({
         popType: 2
       })

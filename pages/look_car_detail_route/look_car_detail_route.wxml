@@ -11,4 +11,9 @@
         </swiper-item>
     </swiper>
   </view>
+  <view class="border">
+    <view class="border-left"></view>
+    <view class="border-center"></view>
+    <view class="border-right"></view>
+  </view>
 </view>
