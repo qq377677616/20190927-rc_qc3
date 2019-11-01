@@ -130,17 +130,19 @@ Page({
   },
   //授权
   getUserInfo(e) {
-    request_01.setUserInfo(e).then(res => {
-      if (res) {
-        this.setData({
-          userInfo: wx.getStorageSync("userInfo")
-        })
+    request_01.setUserInfo(e, '绑定中')
+    .then((res) => {
+      this.setData({
+        userInfo: wx.getStorageSync("userInfo")
+      })
 
-
-
-        this.nextBtn()
-      }
-    }).catch(err => { console.log("err", err) })
+      this.nextBtn()
+    })
+    .catch((err)=>{
+      err && alert.alert({
+        str:JSON.stringify(err)
+      })
+    })
   },
   //下一步
   nextBtn() {

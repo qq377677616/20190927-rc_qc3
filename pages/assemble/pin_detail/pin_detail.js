@@ -188,13 +188,16 @@ Page({
     //用户已授权，活动不是车主活动，商品不是车主商品。
 
     if (
-      (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
+      (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
       || (type != 'ok') 
-      || (wx.getStorageSync("userInfo").nickName && !pinDetail.car_owner && !goods_car_owner)
+      || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !pinDetail.car_owner && !goods_car_owner)
     ) return;
 
 
-    if (!wx.getStorageSync("userInfo").nickName) {
+    if (
+      !wx.getStorageSync("userInfo").unionid
+      || !wx.getStorageSync("userInfo").nickName
+    ) {
       this.setData({ popType: 2 })
     }
     else if (wx.getStorageSync("userInfo").user_type == 0) {
@@ -264,6 +267,7 @@ Page({
     if (
       (wx.getStorageSync("userInfo").user_type == 0 && pinDetail.car_owner) 
       || (wx.getStorageSync("userInfo").user_type == 0 && goods_car_owner) 
+      || !wx.getStorageSync("userInfo").unionid
       || !wx.getStorageSync("userInfo").nickName
     ) return;
 
@@ -298,6 +302,7 @@ Page({
     if (
       (wx.getStorageSync("userInfo").user_type == 0 && pinDetail.car_owner) 
       || (wx.getStorageSync("userInfo").user_type == 0 && pinDetail.goods_car_owner) 
+      || !wx.getStorageSync("userInfo").unionid
       || !wx.getStorageSync("userInfo").nickName
     ) return;
 

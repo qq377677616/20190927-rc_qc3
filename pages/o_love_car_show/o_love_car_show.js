@@ -4,6 +4,8 @@ const request_04 = require('../../utils/request/request_04.js');
 const request_01 = require('../../utils/request/request_01.js');
 
 const route = require('../../utils/tool/router.js');
+
+const alert = require('../../utils/tool/alert.js');
 Page({
 
   /**
@@ -89,16 +91,27 @@ Page({
 		let dat = {
 			user_id:wx.getStorageSync('userInfo').user_id,
 			openid:wx.getStorageSync('userInfo').openid	
-		}
+    }
+    alert.loading({
+      str:'解绑中'
+    })
 		request_04.removeCarinfo(dat).then((res)=>{
+      alert.loading_h()
 			console.log(res.data)
 			if(res.data.status == 1){
 				obj.user_type = 0;
 				wx.setStorageSync('userInfo', obj);
 				route.jump_back();
 			}
+
+      alert.alert({
+        str: JSON.stringify(res.data.msg)
+      })
 		}).catch((reason)=>{
-			console.log(reason)
+      alert.loading_h()
+      alert.alert({
+        str: JSON.stringify(reason)
+      })
 		})
 	},
 	bindBack(){

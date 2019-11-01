@@ -13,7 +13,7 @@
 			<button wx:if="{{!userInfo.nickName }}" class="sethandimg nowrap" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
         </view>
         <view class="info_area">
-            <view wx:if="{{ userInfo.nickName }}" class="name" bindtap="goInfo" >
+            <view wx:if="{{ userInfo.nickName && userInfo.unionid }}" class="name" bindtap="goInfo" >
                 <view class="nick-name nowrap">
                     {{ userInfo.nickName }}
                 </view>

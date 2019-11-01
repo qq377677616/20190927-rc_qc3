@@ -1349,7 +1349,6 @@ const login = (callback) => {
 
             alert.loading_h();
             callback()
-            // resolve()
 
         } else {//本地未保存用户信息
 
@@ -1358,35 +1357,27 @@ const login = (callback) => {
                 authorization.login()
             ])
                 .then((value) => {
-
                     return Promise.all([
                         getUserInfo({
                             code: value[1].code,
                             parent_id: wx.getStorageSync("shareIds").parent_id,
                             channel_id: wx.getStorageSync("shareIds").channel_id
                         }),
-                        getSessionKey({
-                            code: value.code,
-                        })
                     ])
 
                 })
                 .then((value) => {
                     const data = value[0].data.data;
-                    const data2 = value[1].data.data;
-                    if ((data.errcode && data.errmsg) || (data2.errcode && data2.errmsg)) {
+                    if (data.errcode && data.errmsg) {
                         login(callback)
                     } else {
                         console.log('<<<', data, '>>>')
-                        console.log('<<<', data2, '>>>')
 
-                        Object.assign(data, data2)
 
                         wx.setStorageSync('userInfo', data)
 
                         alert.loading_h();
                         callback()
-                        // resolve()
                     }
                 })
                 .catch((reason) => {
@@ -1396,7 +1387,6 @@ const login = (callback) => {
                         str: reason
                     })
                     callback()
-                    // reject()
                 })
         }
     })
@@ -1430,51 +1420,123 @@ const login = (callback) => {
 //     }
 //   })
 // }
-//绑定车主授权
-const setUserInfo = (e) => {
+
+//获取session_key
+function getCodeSessionKey(callback){
+    Promise.all([
+        authorization.login(),
+        authorization.login()
+    ])
+    .then((value) => {
+        return Promise.all([
+            getSessionKey({
+                code: value[1].code,
+                parent_id: wx.getStorageSync("shareIds").parent_id,
+                channel_id: wx.getStorageSync("shareIds").channel_id
+            }),
+        ])
+
+    })
+    .then((value)=>{
+        const data = value[0].data.data;
+
+        if (data.errcode && data.errmsg) {
+
+            getCodeSessionKey(callback)
+
+        } else {
+            const userinfo = wx.getStorageSync('userInfo');
+
+            Object.assign(userinfo, data)
+
+            wx.setStorageSync('userInfo', userinfo)
+
+            callback()
+        }
+
+    })
+    .catch((reason)=>{
+
+        tool.alert('session_key获取失败')
+        callback()
+
+    })
+}
+
+
+//获取unionid
+function getUnionidRequest(userInfo, resolve){
+
+    //获取session_key
+    getCodeSessionKey(()=>{
+
+        getUnionid({
+            user_id: userInfo.user_id,//用户ID
+            encrypted_data: userInfo.encryptedData,//加密数据
+            session_key: userInfo.session_key,//上一个接口获得的session_key
+            iv: userInfo.iv,//加密数据匹配的iv                  
+        })
+            .then((value) => {
+                const data = value.data.data;
+
+                //success
+                tool.loading_h()
+
+                Object.assign(userInfo, {
+                    unionid:true,
+                })
+                
+                //将btn授权获取的用户数据存于本地
+                wx.setStorageSync("userInfo", userInfo)
+
+                resolve()
+                
+            })
+            .catch((reason) => {
+                //fail
+                tool.loading_h()
+                
+    
+            })
+
+    })
+    
+
+        
+}
+
+//授权
+const setUserInfo = (e, str) => {
     return new Promise((resolve, reject) => {
-        tool.loading("授权中")
+        
         const detail = e.detail;
         const userInfo = detail.userInfo;
 
 
         if (userInfo) {
+            tool.loading(str ? str : "授权中")
+            
+            //btn授权获取的用户数据
             Object.assign(userInfo, { encryptedData: detail.encryptedData, iv: detail.iv }, wx.getStorageSync("userInfo") || {})
-            wx.setStorageSync("userInfo", userInfo)
+            
 
             //这里做上传头像昵称给后台操作
             uploadUserInfo({
-                user_id: wx.getStorageSync("userInfo").user_id,
+                user_id: userInfo.user_id,
                 nickname: userInfo.nickName,
                 headimg: userInfo.avatarUrl,
                 gender: 1
             }).then(res => {
-                tool.loading_h()
-
-                getUnionid({
-                    user_id: userInfo.user_id,//用户ID
-                    encrypted_data: userInfo.encryptedData,//加密数据
-                    session_key: userInfo.session_key,//上一个接口获得的session_key
-                    iv: userInfo.iv,//加密数据匹配的iv                  
-                })
-                    .then((value) => {
-                        //success
-                        resolve(true)
-
-                    })
-                    .catch((reason) => {
-                        //fail
-                        resolve(reason)
-
-                    })
+                
+                //获取unionid
+                getUnionidRequest(userInfo, resolve)
 
             }).catch(err => {
                 reject(err)
             })
         } else {
-            tool.loading_h()
-            // tool.showModal('授权', '为了更好的体验，请先授权', '好的,#124DB8', false)
-            resolve(false)
+            
+            reject()
         }
     })
 }

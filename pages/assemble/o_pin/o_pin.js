@@ -92,6 +92,21 @@ Page({
     const options = this.data.options;
     const userInfo = wx.getStorageSync('userInfo');
     const IMGSERVICE = this.data.IMGSERVICE;
+    const pinInfo = this.data.pinInfo;
+    wx.updateShareMenu({
+      withShareTicket: true,
+      isUpdatableMessage: true,
+      activityId:String(pinInfo.message_id), // 活动 ID
+      templateInfo: {
+        parameterList: [{
+          name: 'member_count',
+          value: String(pinInfo.buy_num)
+        }, {
+          name: 'room_limit',
+          value: String(pinInfo.group_num)
+        }]
+      }
+    })
 
     return {
       title:'组团领好礼，有福一起享！',
@@ -188,12 +203,16 @@ Page({
     //用户已授权，活动不是车主活动，商品不是车主商品。
 
     if (
-      (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
+      (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
       || (type != 'ok') 
-      || (wx.getStorageSync("userInfo").nickName && !pinInfo.car_owner && !goods_car_owner)
+      || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !pinInfo.car_owner && !goods_car_owner)
     ) return;
 
-    if (!wx.getStorageSync("userInfo").nickName) {
+    //用户未授权
+    if (
+      !wx.getStorageSync("userInfo").unionid
+      || !wx.getStorageSync("userInfo").nickName
+    ) {
       this.setData({ popType: 2 })
     } else if (wx.getStorageSync("userInfo").user_type == 0) {
 
@@ -239,6 +258,7 @@ Page({
     if (
       (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner) 
       || (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.goods_car_owner) 
+      || !wx.getStorageSync("userInfo").unionid
       || !wx.getStorageSync("userInfo").nickName
     ) return;
 
@@ -325,6 +345,7 @@ Page({
     if (
       (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner) 
       || (wx.getStorageSync("userInfo").user_type == 0 && item.goods_car_owner) 
+      || !wx.getStorageSync("userInfo").unionid
       || !wx.getStorageSync("userInfo").nickName
     ) return;
 

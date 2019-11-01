@@ -83,9 +83,9 @@ Page({
   },
   //抽奖
   start() {
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return
     let _self = this
-    if (this.data.isPrize && wx.getStorageSync("userInfo").nickName) {
+    if (this.data.isPrize && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").unionid) {
       // if (this.data.prizeDetails.my_draw_num >= this.data.prizeDetails.draw_num) {
       //   tool.alert("您的抽奖机会用完啦~")
       //   return
@@ -149,8 +149,11 @@ Page({
   },
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.iscarActive)) return
-    if (!wx.getStorageSync("userInfo").nickName) {
+    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").unionid && !this.data.iscarActive)) return
+    if (
+      !wx.getStorageSync("userInfo").nickName
+      || !wx.getStorageSync("userInfo").unionid
+    ) {
       this.setData({ popType: 2 })
     } else if (wx.getStorageSync("userInfo").user_type == 0) {
       this.setData({ popType: 3 })

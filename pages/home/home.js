@@ -13,7 +13,7 @@ Page({
    */
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
-    pageKey:false,
+    pageKey: false,
     page404: false,
     options: {},
     firstShow: false,
@@ -41,7 +41,7 @@ Page({
    */
   onReady: function () {
     this.setData({
-      firstShow:true,
+      firstShow: true,
     })
   },
   /**
@@ -51,7 +51,7 @@ Page({
     const options = this.data.options;
     const firstShow = this.data.firstShow;
 
-    if( firstShow ){
+    if (firstShow) {
       this.onLoad(options)
     }
   },
@@ -61,7 +61,7 @@ Page({
     const locationUersInfo = wx.getStorageSync('userInfo');
 
     alert.loading({
-      str:'加载中'
+      str: '加载中'
     })
 
     Promise.all([
@@ -76,7 +76,7 @@ Page({
 
         this.setData({
           personalInfo,
-          pageKey:true,
+          pageKey: true,
         })
 
       })
@@ -109,20 +109,24 @@ Page({
   },
   //显示签到
   signInIf() {
-    this.setData({ 
+    this.setData({
       signInIf: !this.data.signInIf
     })
   },
   //授权
   getUserInfo(e) {
-    request_01.setUserInfo(e).then(res => {
-      if (res) {
+    request_01.setUserInfo(e)
+      .then((res) => {
         console.log("授权、上传头像昵称成功")
         this.setData({
           userInfo: wx.getStorageSync("userInfo")
         })
-      }
-    }).catch(err => { console.log("err", err) })
+      })
+      .catch((err) => {
+        err && alert.alert({
+          str: JSON.stringify(err)
+        })
+      })
   },
   //v豆详情
   vdouDetail() {
@@ -176,11 +180,11 @@ Page({
         break;
     }
   },
-	goInfo(){
-		router.jump_nav({
-			url: '/pages/o_info/o_info',
-		})
-	},
+  goInfo() {
+    router.jump_nav({
+      url: '/pages/o_info/o_info',
+    })
+  },
   //列表跳转
   listJump(e) {
     const index = e.currentTarget.dataset.index;
