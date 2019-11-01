@@ -75,8 +75,8 @@ Page({
 	//判断是否授权和是否是车主
 	isVehicleOwner(e) {
 		console.log('e',e)
-		if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.iscarActive)) return
-		if (!wx.getStorageSync("userInfo").nickName) {
+		if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1 && wx.getStorageSync("userInfo").unionid) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.iscarActive && wx.getStorageSync("userInfo").unionid)) return
+		if (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) {
 			this.setData({ popType: 2 })
 		} else if (wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) {
 			this.setData({ popType: 3 })
@@ -215,7 +215,7 @@ Page({
 		// 判断看车详情
 		// console.log(e) 
 		// return;
-		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return;
+		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.obj.car_owner == 1) {
 			console.log("hello")
 			this.setData({ popType: 4 });
@@ -245,7 +245,7 @@ Page({
 		if (e.target.dataset.types == 'no') return;
 		console.log(55555)
 		// this.setData({ ok: this.data.iscarActive ? "ok" : "false" });
-		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName) return;
+		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		console.log("是否是车主商品", wx.getStorageSync("userInfo").user_type,e.currentTarget.dataset.car);
 		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.car==1){
 			console.log("hello")
