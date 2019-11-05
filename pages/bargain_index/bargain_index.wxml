@@ -225,7 +225,7 @@
 
           <view class="spimg_right">
 
-                <view class="sp_title">{{item.title}}尚</view>
+                <view class="sp_title">{{item.title}}</view>
 
 
                 <view class="down">

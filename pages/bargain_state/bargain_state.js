@@ -120,7 +120,6 @@ Page({
 		shopobj.price = 0;
 		shopobj.self = 1;
 		console.log("传出对象",shopobj);
-		// console.log()
 		wx.updateShareMenu({
 			      withShareTicket:  true,
 			      isUpdatableMessage:  true,
