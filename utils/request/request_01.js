@@ -6,12 +6,12 @@ const alert = require('../tool/alert.js');
 
 const tool = require('../tool/tool.js');
 
-const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
+// const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
 // const SERVICE = "http://dfldata-test.dongfeng-nissan.com.cn/fslb/public/index.php";
-// const SERVICE = "https://weixinfslb.venucia.com";
+const SERVICE = "https://weixinfslb.venucia.com";
 
 //版本控制
-const tag = (data) => {
+const tag = (data) => { 
     let url = 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/oauth/version'
     return new Promise((resolve, reject) => {
         _request.request({
@@ -1479,17 +1479,31 @@ function getUnionidRequest(userInfo, resolve){
             .then((value) => {
                 const data = value.data.data;
 
-                //success
-                tool.loading_h()
-
-                Object.assign(userInfo, {
-                    unionid:true,
+                personalInfo({
+                    user_id:userInfo.user_id,
+                    openid:userInfo.openid,
                 })
-                
-                //将btn授权获取的用户数据存于本地
-                wx.setStorageSync("userInfo", userInfo)
+                .then((value)=>{
+                    const data = value.data.data;
+                    
+                    //success
+                    tool.loading_h()
 
-                resolve()
+                    Object.assign(userInfo, {
+                        unionid:true,
+                        user_type:data.user_type,
+                    })
+                    
+                    //将btn授权获取的用户数据存于本地
+                    wx.setStorageSync("userInfo", userInfo)
+
+                    resolve()
+                })
+                .catch(()=>{
+                    tool.loading_h()
+                })
+
+                
                 
             })
             .catch((reason) => {
