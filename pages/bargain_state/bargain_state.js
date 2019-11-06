@@ -120,20 +120,20 @@ Page({
 		shopobj.price = 0;
 		shopobj.self = 1;
 		console.log("传出对象",shopobj);
-		wx.updateShareMenu({
-			      withShareTicket:  true,
-			      isUpdatableMessage:  true,
-				  activityId: String(this.data.shopInfo.message_id), // 活动 ID
-			      templateInfo:  {
-				        parameterList:  [{
-					          name:  'member_count',
-							  value: String(this.data.shopInfo.kj_num)
-				        },  {
-					          name:  'room_limit',
-								value: String(this.data.shopInfo.kj_all_num)
-				        }]
-			      }
-		})
+		// wx.updateShareMenu({
+		// 	      withShareTicket:  true,
+		// 	      isUpdatableMessage:  true,
+		// 		  activityId: String(this.data.shopInfo.message_id), // 活动 ID
+		// 	      templateInfo:  {
+		// 		        parameterList:  [{
+		// 			          name:  'member_count',
+		// 					  value: String(this.data.shopInfo.kj_num)
+		// 		        },  {
+		// 			          name:  'room_limit',
+		// 						value: String(this.data.shopInfo.kj_all_num)
+		// 		        }]
+		// 	      }
+		// })
 		let obj = {
 			title: '砍到0元免费送，快来帮我砍一刀！',
 			path: '/pages/bargain_state/bargain_state?shopobj=' + JSON.stringify(shopobj),
