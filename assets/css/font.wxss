@@ -10,7 +10,7 @@
     /* Legacy iOS */
     /* url('webFontName.svg#webFontName') format('svg');  */
 
-    @font-face {
+    /* @font-face {
         font-family: 'web';
         src: url("https://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/verdana/verdanaz.ttf") format('truetype')
-    }
+    } */
