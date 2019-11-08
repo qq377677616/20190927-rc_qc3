@@ -1,8 +1,7 @@
-@import "/assets/css/font.wxss";
+
 
 
 view, text, input, button, textarea {
-    font-family:"web"!important;
     letter-spacing: 3rpx;
     line-height: 1.2em;
 }
