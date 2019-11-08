@@ -223,7 +223,7 @@ Page({
 		if (!this.data.has_jh){
 			wx.showToast({
 				icon:"none",
-				title: '本期暂无砍价次数'
+				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
 			})
 			return;
 		}
@@ -257,7 +257,7 @@ Page({
 		if (!this.data.has_jh) {
 			wx.showToast({
 				icon: "none",
-				title: '本期暂无砍价次数'
+				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
 			})
 			return;
 		}
@@ -302,7 +302,7 @@ Page({
 		if (!this.data.has_jh) {
 			wx.showToast({
 				icon: "none",
-				title: '本期暂无砍价次数'
+				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
 			})
 			return;
 		}
@@ -343,7 +343,7 @@ Page({
 		if (!this.data.has_jh) {
 			wx.showToast({
 				icon: "none",
-				title: '本期暂无砍价次数'
+				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
 			})
 			return;
 		}
