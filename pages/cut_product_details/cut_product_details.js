@@ -22,6 +22,7 @@ Page({
 		noImg:false,
 		textArr:["到店领取","邮寄到家","线上领取"],
 		getWay:0,
+		is_jh:false,
 	},
 
 	/**
@@ -31,7 +32,7 @@ Page({
 		// b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了
 		
 		console.log('页面参数', options);
-		this.setData({ barType: options.b_type })
+		this.setData({ barType: options.b_type, is_jh: options.is_jh})
 		//   if(options.shopobj){
 		this.setData({ activity_id: wx.getStorageSync("activity_id"),shopData: options.shopobj ? options.shopobj : '' });
 		//   }
@@ -113,6 +114,13 @@ Page({
 	},
 	freeGet(e) {//点击我要免费拿
 		// this.setData({ barPop: true });
+		if(this.data.is_jh==0){
+			wx.showToast({
+				icon: "none",
+				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
+			})
+			return;
+		}
 		let type = e.currentTarget.dataset.type;
 		let shopobj = {};
 		let shopdelData = this.data.shopdelData;
@@ -148,6 +156,13 @@ Page({
 		})
 	},
 	contBar() {
+		if (this.data.is_jh==0) {
+			wx.showToast({
+				icon: "none",
+				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
+			})
+			return;
+		}
 		route.jump_nav({ url: '/pages/bargain_state/bargain_state?shopobj=' + this.data.shopData });
 	}
 })
