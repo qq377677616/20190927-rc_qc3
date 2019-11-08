@@ -47,6 +47,7 @@ Page({
 	kucun:false,
 	endStatus:0,
 	praTime:null,
+	has_jh:false,
   },
 
   /**
@@ -157,12 +158,14 @@ Page({
 		  user_id:this.data.userInfo.user_id
 	  }
 	  request_04.bargain_shop_list(dat).then((res)=>{
+		  console.log("砍价商品列表数据",res.data);
 		  this.setData({ activeStatus: res.data.status, praTime: res.data.status==1005?res.data.data.start_date.split(" ")[0]:''})
 		  if(res.data.status==0){
 			  this.setData({ 
 				  shopList: res.data.data,
 				  iscarActive:res.data.data.car_owner==1,
-				  endStatus: res.data.data.end_status
+				  endStatus: res.data.data.end_status,
+				  has_jh: res.data.data.is_jx_kj!=0,
 				})
 			  
 			  if (res.data.data.end_time>0){
@@ -215,6 +218,15 @@ Page({
 		// 判断看车详情
 		// console.log(e) 
 		// return;
+		// console.log("点击免费拿")
+		console.log(this.data.has_jh);
+		if (!this.data.has_jh){
+			wx.showToast({
+				icon:"none",
+				title: '本期暂无砍价次数'
+			})
+			return;
+		}
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.obj.car_owner == 1) {
 			console.log("hello")
@@ -242,6 +254,13 @@ Page({
 	},
 	goshopDel2(e) {
 		//正在进行中商品点击整行进入商品详情
+		if (!this.data.has_jh) {
+			wx.showToast({
+				icon: "none",
+				title: '本期暂无砍价次数'
+			})
+			return;
+		}
 		if (e.target.dataset.types == 'no') return;
 		console.log(55555)
 		// this.setData({ ok: this.data.iscarActive ? "ok" : "false" });
@@ -253,6 +272,7 @@ Page({
 			this.isVehicleOwnerHidePop();
 			return;
 		}
+		
 		let ing = e.currentTarget.dataset.ing;
 		ing = ing == 2 ? 5 : (ing = ing == 1 ? 6 : ing);
 		ing = this.data.endStatus == 1?ing:8;  
@@ -279,6 +299,13 @@ Page({
 	goShopdel(e){//我正在砍的商品点击整行进入商品详情
 		 //  "status": 1,//砍价状态1:正在砍价  2:砍价完成  3:已领取 （接口返回）
 	     // b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了 （自己定义）
+		if (!this.data.has_jh) {
+			wx.showToast({
+				icon: "none",
+				title: '本期暂无砍价次数'
+			})
+			return;
+		}
 		let shopObj = e.currentTarget.dataset.obj; 
 		// console.log(shopObj);
 		// return;
@@ -312,6 +339,14 @@ Page({
 	},
 
 	continueBargain(e){//点击继续砍价
+		console.log(212)
+		if (!this.data.has_jh) {
+			wx.showToast({
+				icon: "none",
+				title: '本期暂无砍价次数'
+			})
+			return;
+		}
 	    let shopObj =e.currentTarget.dataset.obj; 
 		let obj = {};
 		obj.titleImg = wx.getStorageSync('userInfo').headimg;
