@@ -125,7 +125,7 @@
                     <view wx:if="{{item.status==2}}" class="cut_suc setbold" catchtap="getworld" data-cid="{{item.id}}" data-type="{{item.type}}">砍价成功, 领取奖品</view>
                     <view wx:if="{{item.status==1&&item.sy_num>0}}" class="cut_on setbold" catchtap="continueBargain" data-obj="{{item}}">继续砍价</view>
 					<view wx:if="{{!item.sy_num>0&&item.status!=2&&item.status!=3&&item.status!=4}}" class="cut_robbed setbold"  data-obj="{{item}}">抢完了</view>
-					<view wx:if="{{item.status==4}}" class="cut_on setbold addbg"  data-obj="{{item}}">待领取</view>
+					<view wx:if="{{item.status==4}}" class="cut_on setbold addbg"  data-obj="{{item}}">卡券待领取</view>
                 	</view>
 			</view>
           </view>
