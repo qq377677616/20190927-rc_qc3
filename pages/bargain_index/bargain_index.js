@@ -214,24 +214,20 @@ Page({
 		this.setData({ time_value:val})
 	},
 	freeGet(e){//点击免费拿
-		// this.setData({ok:this.data.iscarActive?"ok":"ok22"});
-		// 判断看车详情
-		// console.log(e) 
-		// return;
-		// console.log("点击免费拿")
 		console.log(this.data.has_jh);
-		if (this.data.has_jh==0){
-			wx.showToast({
-				icon:"none",
-				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
-			})
-			return;
-		}
+		
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.obj.car_owner == 1) {
 			console.log("hello")
 			this.setData({ popType: 4 });
 			this.isVehicleOwnerHidePop();
+			return;
+		}
+		if (this.data.has_jh == 0) {
+			wx.showToast({
+				icon: "none",
+				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
+			})
 			return;
 		}
 		if (this.data.restNum>0){
