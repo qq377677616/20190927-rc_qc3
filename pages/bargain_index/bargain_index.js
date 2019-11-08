@@ -47,7 +47,7 @@ Page({
 	kucun:false,
 	endStatus:0,
 	praTime:null,
-	has_jh:false,
+	has_jh:0,
   },
 
   /**
@@ -165,7 +165,7 @@ Page({
 				  shopList: res.data.data,
 				  iscarActive:res.data.data.car_owner==1,
 				  endStatus: res.data.data.end_status,
-				  has_jh: res.data.data.is_jx_kj!=0,
+				  has_jh:res.data.data.is_jx_kj,
 				})
 			  
 			  if (res.data.data.end_time>0){
@@ -220,7 +220,7 @@ Page({
 		// return;
 		// console.log("点击免费拿")
 		console.log(this.data.has_jh);
-		if (!this.data.has_jh){
+		if (this.data.has_jh==0){
 			wx.showToast({
 				icon:"none",
 				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
@@ -254,13 +254,6 @@ Page({
 	},
 	goshopDel2(e) {
 		//正在进行中商品点击整行进入商品详情
-		if (!this.data.has_jh) {
-			wx.showToast({
-				icon: "none",
-				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
-			})
-			return;
-		}
 		if (e.target.dataset.types == 'no') return;
 		console.log(55555)
 		// this.setData({ ok: this.data.iscarActive ? "ok" : "false" });
@@ -272,13 +265,12 @@ Page({
 			this.isVehicleOwnerHidePop();
 			return;
 		}
-		
 		let ing = e.currentTarget.dataset.ing;
 		ing = ing == 2 ? 5 : (ing = ing == 1 ? 6 : ing);
 		ing = this.data.endStatus == 1?ing:8;  
 		console.log(ing)
 		let shopid = e.currentTarget.dataset.shopid;
-		route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopid + '&b_type=' + ing });
+		route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopid + '&b_type=' + ing + "&is_jh=" + this.data.has_jh });
 	},
 	startBar(){//点击开始砍价
 		// wx.getStorageSync("userInfo").openid
@@ -299,13 +291,14 @@ Page({
 	goShopdel(e){//我正在砍的商品点击整行进入商品详情
 		 //  "status": 1,//砍价状态1:正在砍价  2:砍价完成  3:已领取 （接口返回）
 	     // b_type:1继续砍价2：砍价完成未领取 点击免费拿 4：已领取 5：抢完了 6 已经抢过了 （自己定义）
-		if (!this.data.has_jh) {
-			wx.showToast({
-				icon: "none",
-				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
-			})
-			return;
-		}
+		console.log("去详情么")
+		// if (!this.data.has_jh) {
+		// 	wx.showToast({
+		// 		icon: "none",
+		// 		title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
+		// 	})
+		// 	return;
+		// }
 		let shopObj = e.currentTarget.dataset.obj; 
 		// console.log(shopObj);
 		// return;
@@ -318,13 +311,13 @@ Page({
 		obj.id = shopObj.id;
 		if (e.currentTarget.dataset.obj.status == 4){//是否是待领取状态
 			console.log(e.currentTarget.dataset.obj.status)
-			route.jump_nav({ url: "/pages/order_detail/order_detail?order_id=" + e.currentTarget.dataset.obj.order_id });
+			route.jump_nav({ url: "/pages/order_detail/order_detail?order_id=" + e.currentTarget.dataset.obj.order_id + "&is_jh=" + this.data.has_jh});
 			return;
 		}
 		shopObj.status = shopObj.status == 3 ? 4 : shopObj.status;
 		shopObj.status = shopObj.sy_num > 0 ? shopObj.status : 5;
 		if (shopObj.status != 5 && shopObj.status != 4){
-			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + shopObj.status + '&shopobj=' + JSON.stringify(obj) })	
+			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + shopObj.status + '&shopobj=' + JSON.stringify(obj) + "&is_jh=" + this.data.has_jh })	
 		} else if (shopObj.status == 4) { //已领取 微信卡券跳转到卡包  非微信卡券  我的订单
 			    console.log("是否是卡券", shopObj.type) 
 			    if (shopObj.type == 1) { 
@@ -339,8 +332,8 @@ Page({
 	},
 
 	continueBargain(e){//点击继续砍价
-		console.log(212)
-		if (!this.data.has_jh) {
+		// console.log(212)
+		if (this.data.has_jh==0) {
 			wx.showToast({
 				icon: "none",
 				title: '非常抱歉 您已达到该活动礼品领取上限 感谢您的参与'
@@ -484,7 +477,7 @@ Page({
 			return;
 		}
 		if (shopObj.buttom_type != 3 && shopObj.sy_num > 0 && shopObj.buttom_type != 2){
-			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + b_type + '&shopobj=' + JSON.stringify(shopObj) })
+			route.jump_nav({ url: '/pages/cut_product_details/cut_product_details?prize_id=' + shopObj.pid + '&b_type=' + b_type + '&shopobj=' + JSON.stringify(shopObj) + "&is_jh=" + this.data.has_jh})
 		} else if (shopObj.buttom_type == 2) {//已领取 微信卡券跳转到卡包  非微信卡券  我的订单 
 			if (shopObj.type==1){
 				route.jump_nav({ url: '/pages/o_card_bag/o_card_bag' })
