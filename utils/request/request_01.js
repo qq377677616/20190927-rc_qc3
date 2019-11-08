@@ -1497,7 +1497,7 @@ function getUnionidRequest(userInfo, resolve){
                     //将btn授权获取的用户数据存于本地
                     wx.setStorageSync("userInfo", userInfo)
 
-                    resolve()
+                    resolve(true)
                 })
                 .catch(()=>{
                     tool.loading_h()
