@@ -1,0 +1,40 @@
+<!--pages/look_car_detail_03/look_car_detail.wxml-->
+<view class="page-container">
+
+    <view class="banner">
+        <image src="https://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/banner.jpg" mode="widthFix"></image>
+    </view>
+
+
+    <view class="section">
+        <view class="h2">
+            <spna class="en">V-GALAXY</spna>
+            <span class="zh">V-星河家族前脸</span>
+        </view>
+
+        <view class="swiper_area">
+
+            <swiper 
+                circular="true" 
+                autoplay="true" 
+                interval="2500" 
+                bindchange="dotchange">
+    
+                <swiper-item>
+                    <image></image>
+
+                    <span>家族前脸</span>
+                    <span>V-星河家族前脸</span>
+                </swiper-item>
+               
+    
+            </swiper>
+    
+            <view class="dots">
+                <view class="doc-item"></view>
+            </view>
+    
+        </view>
+    </view>
+
+</view>

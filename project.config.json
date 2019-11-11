@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 70,
+			"current": 71,
 			"list": [
 				{
 					"id": -1,
@@ -551,6 +551,13 @@
 					"name": "pin_detail",
 					"pathName": "pages/assemble/pin_detail/pin_detail",
 					"query": "prize_id=79",
+					"scene": null
+				},
+				{
+					"id": 71,
+					"name": "look_car_detail_03",
+					"pathName": "pages/look_car_detail_03/look_car_detail",
+					"query": "",
 					"scene": null
 				}
 			]
