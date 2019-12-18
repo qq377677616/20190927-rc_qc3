@@ -1,0 +1,34 @@
+/* components/Spike/cmp.wxss */
+
+.dialog-wrapper{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index:3;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.dialog-wrapper .dialog{
+    width: 67%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.dialog-wrapper .dialog .dialog-content{
+    background-color: #fff;
+    border-radius:30rpx;
+    padding: 72rpx 0 72rpx;
+}
+.dialog-wrapper .dialog .dialog-content .icon{
+    width: 118rpx;
+}
+
+.dialog-wrapper .dialog .close{
+    width: 40rpx;
+    display: block;
+    margin: auto;
+}

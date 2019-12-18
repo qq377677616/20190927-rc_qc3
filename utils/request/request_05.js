@@ -133,7 +133,7 @@ const voucherList = (data) => {
   return new Promise((resolve, reject) => {
     _request.request({
       url,
-      data
+      data:{...data, openid:wx.getStorageSync('userInfo').openid}
     })
       .then(res => {
         resolve(res)
@@ -151,7 +151,7 @@ const voucherInfo = (data) => {
   return new Promise((resolve, reject) => {
     _request.request({
       url,
-      data
+      data:{...data, openid:wx.getStorageSync('userInfo').openid}
     })
       .then(res => {
         resolve(res)

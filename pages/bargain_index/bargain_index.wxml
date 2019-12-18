@@ -1,50 +1,51 @@
 <!--pages/bargain_index/bargain_index.wxml-->
 <view class="bargain" bindtap="isVehicleOwner">
 
-<!-- top -->
-<!-- isshare -->
+  <!-- top -->
+  <!-- isshare -->
   <view class="top" style="background-image:url({{banarImage.banner}})">
     <view class="bg" bindtap="actPop">
-        <view>活动规则</view>
-        <image src="{{IMGSERVICE}}/activity/youjiantou.png"></image>
+      <view>活动规则</view>
+      <image src="{{IMGSERVICE}}/activity/youjiantou.png"></image>
     </view>
-	<!-- wx:if="{{isshare}}" -->
-	<view class="bg bg1" bindtap="goHome"  wx:if="{{isshare}}" >
-        <view>回首页</view>
-        <image src="{{IMGSERVICE}}/activity/youjiantou.png"></image>
+    <!-- wx:if="{{isshare}}" -->
+    <view class="bg bg1" bindtap="goHome" wx:if="{{isshare}}">
+      <view>回首页</view>
+      <image src="{{IMGSERVICE}}/activity/youjiantou.png"></image>
     </view>
   </view>
 
-<!-- top -->
+  <!-- top -->
 
-<!-- swiper -->
+  <!-- swiper -->
 
   <view class="bg_swiper">
-  
-      <view class="s_list">
 
-        <view class="lingdang" style="background-image:url('{{IMGSERVICE}}/activity/lingdang.png')"></view>
+    <view class="s_list">
 
-          <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
-              <block wx:for="{{s_list}}" wx:key="item">
-                <swiper-item>
-                  <view class="swiper_item">{{item.nickname}}成功砍价{{item.title}}</view>
-                </swiper-item>
-              </block>
-          </swiper>
-      
-      </view>
+      <view class="lingdang" style="background-image:url('{{IMGSERVICE}}/activity/lingdang.png')"></view>
+
+      <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+        <block wx:for="{{s_list}}" wx:key="item">
+          <swiper-item>
+            <view class="swiper_item">{{item.nickname}}成功砍价{{item.title}}</view>
+          </swiper-item>
+        </block>
+      </swiper>
+
+    </view>
 
   </view>
 
-<!-- swiper -->
+  <!-- swiper -->
 
-<!-- scoll-view -->
-<!-- 默认显示当天 展示一个星期 -->
-  <view class="scroll_box"> 
+  <!-- scoll-view -->
+  <!-- 默认显示当天 展示一个星期 -->
+  <view class="scroll_box">
     <scroll-view scroll-x>
       <view class="dates">
-        <view class="item_list {{currTime==item.dateStr?'active':''}}" wx:for="{{date_list}}" wx:key="item" data-time="{{item.dateStr}}" bindtap="selectTime">
+        <view class="item_list {{currTime==item.dateStr?'active':''}}" wx:for="{{date_list}}" wx:key="item"
+          data-time="{{item.dateStr}}" bindtap="selectTime">
           {{item.timelist}}
         </view>
       </view>
@@ -60,189 +61,204 @@
 
   <view class="time" wx:if="{{time_value<3&&(shopList.my_kj_goods.length>0||shopList.dq_prize.length>0)}}">
 
-      <view class="txt1">{{endStatus==1?"还剩":"还有"}}</view>
-      <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.d}}</view>
-      <view class="mh">:</view>
-      <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.h}}</view>
-      <view class="mh">:</view>
-      <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.m}}</view>
-      <view class="mh">:</view>
-      <view style="background-image:url('{{IMGSERVICE}}/activity/red_bg.png')">{{djs.s}}</view>
-      <view class="txt2">{{endStatus==1?"结束":"开始"}}</view>
+    <view class="txt1">{{endStatus==1?"还剩":"还有"}}</view>
+    <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.d}}</view>
+    <view class="mh">:</view>
+    <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.h}}</view>
+    <view class="mh">:</view>
+    <view style="background-image:url('{{IMGSERVICE}}/activity/black_bg.png')">{{djs.m}}</view>
+    <view class="mh">:</view>
+    <view style="background-image:url('{{IMGSERVICE}}/activity/red_bg.png')">{{djs.s}}</view>
+    <view class="txt2">{{endStatus==1?"结束":"开始"}}</view>
 
   </view>
 
   <!-- time -->
 
-<!-- footer -->
+  <!-- footer -->
 
-<view wx:if="{{currTime==today&&time_value<3}}">
+  <view wx:if="{{currTime==today&&time_value<3}}">
 
-  <!-- cut -->
+    <!-- cut -->
     <view class="cut">
 
-    <!-- cut_now -->
-    <view class="cut_now" wx:if="{{shopList.my_kj_goods.length>0}}">
+      <!-- cut_now -->
+      <view class="cut_now" wx:if="{{shopList.my_kj_goods.length>0}}">
 
         <view class="cen">
-			<image src="{{IMGSERVICE}}/activity/fz_left.png"></image>
-			<view class="txt">我正在砍的商品</view>
-			<image src="{{IMGSERVICE}}/activity/fz_right.png"></image>
-		</view>
+          <image src="{{IMGSERVICE}}/activity/fz_left.png"></image>
+          <view class="txt">我正在砍的商品</view>
+          <image src="{{IMGSERVICE}}/activity/fz_right.png"></image>
+        </view>
 
         <view class="pro_list" wx:for="{{shopList.my_kj_goods}}" wx:key="item" bindtap="goShopdel" data-obj="{{item}}">
-        
-          <view class="spimg" style="background-image:url({{item.thumb}})"></view>
+
+          <view class="spimg" style="background-image:url({{item.thumb}})">
+            <image wx:if="{{ item.car_owner == 1 }}" class="label" src="{{ IMGSERVICE }}/spike/index_icon_04.png"
+                    mode="widthFix"></image>
+          </view>
 
           <view class="spimg_right">
 
-                <view class="sp_title nowrap">{{item.title}}</view>
-				<view>
-				<view class="sp_title nowrap contBox" wx:if="{{item.status==1}}">
-					<text>已砍</text>
-					<text class="addcolor">{{item.kj_price}}</text>
-					<text>元,还差</text>
-					<text class="addcolor">{{item.sy_price}}</text>
-					<text>元</text>
-				</view>
-                <view class="cy_num">
-                   <view class="red">{{item.cy_num}}</view> 
-                   <view>人参与</view> 
+            <view class="sp_title nowrap">{{item.title}}</view>
+            <view>
+              <view class="sp_title nowrap contBox" wx:if="{{item.status==1}}">
+                <text>已砍</text>
+                <text class="addcolor">{{item.kj_price}}</text>
+                <text>元,还差</text>
+                <text class="addcolor">{{item.sy_price}}</text>
+                <text>元</text>
+              </view>
+              <view class="cy_num">
+                <view class="red">{{item.cy_num}}</view>
+                <view>人参与</view>
+              </view>
+
+              <view class="down setmargin">
+
+                <view class="down_left">
+
+                  <view class="progress">
+                    <progress percent="{{item.percent}}" color="#E3413E" stroke-width="13" border-radius="7"></progress>
+                    <view class="send">已送出{{item.percent}}%</view>
+                  </view>
+                  <view class="residue">剩余<text class="red">{{item.sy_num}}</text>件</view>
+
                 </view>
-
-                <view class="down setmargin">
-
-                    <view class="down_left">
-
-                      <view class="progress">
-                        <progress percent="{{item.percent}}" color="#E3413E" stroke-width="13" border-radius="7"></progress>
-                        <view class="send">已送出{{item.percent}}%</view>
-                      </view>
-                      <view class="residue">剩余<text class="red">{{item.sy_num}}</text>件</view>
-      
-                    </view>
-					<view wx:if="{{item.status==3}}" class="cut_robbed setbold" data-cid="{{item.id}}">已领取</view>
-                    <view wx:if="{{item.status==2}}" class="cut_suc setbold" catchtap="getworld" data-cid="{{item.id}}" data-type="{{item.type}}">砍价成功, 领取奖品</view>
-                    <view wx:if="{{item.status==1&&item.sy_num>0}}" class="cut_on setbold" catchtap="continueBargain" data-obj="{{item}}">继续砍价</view>
-					<view wx:if="{{!item.sy_num>0&&item.status!=2&&item.status!=3&&item.status!=4}}" class="cut_robbed setbold"  data-obj="{{item}}">抢完了</view>
-					<view wx:if="{{item.status==4}}" class="cut_on setbold addbg"  data-obj="{{item}}">待领取</view>
-                	</view>
-			</view>
+                <view wx:if="{{item.status==3}}" class="cut_robbed setbold" data-cid="{{item.id}}">已领取</view>
+                <view wx:if="{{item.status==2}}" class="cut_suc setbold" catchtap="getworld" data-cid="{{item.id}}"
+                  data-type="{{item.type}}" data-orderId="{{ item.order_id }}">砍价成功, 领取奖品</view>
+                <view wx:if="{{item.status==1&&item.sy_num>0}}" class="cut_on setbold" catchtap="continueBargain"
+                  data-obj="{{item}}">继续砍价</view>
+                <view wx:if="{{!item.sy_num>0&&item.status!=2&&item.status!=3&&item.status!=4}}"
+                  class="cut_robbed setbold" data-obj="{{item}}">抢完了</view>
+                <view wx:if="{{item.status==4}}" class="cut_on setbold addbg" data-obj="{{item}}">待领取</view>
+              </view>
+            </view>
           </view>
 
         </view>
 
-    </view>
+      </view>
 
-    <!-- cut_now -->
+      <!-- cut_now -->
 
 
-    <!-- cut_now 2 -->
+      <!-- cut_now 2 -->
 
-    <view class="cut_now" wx:if="{{shopList.dq_prize.length>0}}">
+      <view class="cut_now" wx:if="{{shopList.dq_prize.length>0}}">
 
         <view class="cen">
-			<image src="{{IMGSERVICE}}/activity/fz_left.png"></image>
-			<view class="txt">正在进行中</view>
-			<image src="{{IMGSERVICE}}/activity/fz_right.png"></image>
-		</view>
+          <image src="{{IMGSERVICE}}/activity/fz_left.png"></image>
+          <view class="txt">正在进行中</view>
+          <image src="{{IMGSERVICE}}/activity/fz_right.png"></image>
+        </view>
 
-        <view class="pro_list" wx:for="{{shopList.dq_prize}}" wx:key="item" data-type="ok" bindtap="goshopDel2" data-car="{{item.car_owner}}" data-ing="{{item.buttom_type}}" data-shopid="{{item.id}}">
-        
+        <view class="pro_list" wx:for="{{shopList.dq_prize}}" wx:key="item" data-type="ok" bindtap="goshopDel2"
+          data-car="{{item.car_owner}}" data-ing="{{item.buttom_type}}" data-shopid="{{item.id}}">
+
           <view class="spimg" style="background-image:url({{item.thumb}})" data-type="ok">
+            <image wx:if="{{ item.car_owner == 1 }}" class="label" src="{{ IMGSERVICE }}/spike/index_icon_04.png"
+                    mode="widthFix"></image>
             <view wx:if="{{item==2}}" class="qiang">已抢</view>
             <view wx:if="{{item==3}}" class="qiang">抢完了</view>
           </view>
 
           <view class="spimg_right" data-type="ok">
 
-                <view class="sp_title setStyle" data-type="ok">{{item.title}}</view>
+            <view class="sp_title setStyle" data-type="ok">{{item.title}}</view>
 
 
-                <view class="down">
+            <view class="down">
 
-                    <view class="down_left">
+              <view class="down_left">
 
-                      <view class="have_per" data-type="ok">已有<text class="red">{{item.true_num}}</text>人免费拿</view>
+                <view class="have_per" data-type="ok">已有<text class="red">{{item.true_num}}</text>人免费拿</view>
 
-                      <view class="residue" data-type="ok">剩余<text class="red">{{item.sy_num}}</text>件</view>
-      
-                    </view>
-                    <view wx:if="{{item.buttom_type==3 && endStatus==1}}" data-types="no" data-type="ok"  class="cut_on setposition" bindtap="freeGet" data-obj="{{item}}" data-name="{{item.title}}" data-price="{{item.price}}" data-sid="{{item.id}}" data-Image="{{item.thumb}}">
-						<!-- wx:if="{{!userInfo.nickName}}" -->
-						点击免费拿
-					</view>
+                <view class="residue" data-type="ok">剩余<text class="red">{{item.sy_num}}</text>件</view>
 
-                    <view wx:if="{{item.buttom_type==1 && endStatus==1}}" class="cut_robbed setbold">已经抢过了</view>
+              </view>
+              <view wx:if="{{item.buttom_type==3 && endStatus==1}}" data-types="no" data-type="ok"
+                class="cut_on setposition" bindtap="freeGet" data-obj="{{item}}" data-name="{{item.title}}"
+                data-price="{{item.price}}" data-sid="{{item.id}}" data-Image="{{item.thumb}}">
+                <!-- wx:if="{{!userInfo.nickName}}" -->
+                点击免费拿
+              </view>
 
-                    <view wx:if="{{item.buttom_type==2 && endStatus==1}}" class="cut_robbed setbold">抢完了</view>
+              <view wx:if="{{item.buttom_type==1 && endStatus==1}}" class="cut_robbed setbold">已经抢过了</view>
 
-					<view wx:if="{{endStatus!=1}}" class="cut_robbed setbold">尚未开抢</view>
-  
-                </view>
+              <view wx:if="{{item.buttom_type==2 && endStatus==1}}" class="cut_robbed setbold">抢完了</view>
+
+              <view wx:if="{{endStatus!=1}}" class="cut_robbed setbold">尚未开抢</view>
+
+            </view>
 
           </view>
 
         </view>
-    
+
+      </view>
+
+      <!-- cut_now 2 -->
+
+
     </view>
 
-    <!-- cut_now 2 -->
-  
-  
-  </view>
+    <!-- cut -->
 
-  <!-- cut -->
+    <view class="tab" wx:if="{{!(shopList.my_kj_goods.length==0&& shopList.dq_prize.length==0)}}">
 
-  <view class="tab" wx:if="{{!(shopList.my_kj_goods.length==0&& shopList.dq_prize.length==0)}}">
-  
-    <view class="tab_xian"></view>
-    <view class="tab_txt">您已经到底了</view>
-    <view class="tab_xian"></view>
+      <view class="tab_xian"></view>
+      <view class="tab_txt">您已经到底了</view>
+      <view class="tab_xian"></view>
+
+    </view>
 
   </view>
 
-</view>
-
-<!-- footer  -->
+  <!-- footer  -->
 
 
-<!-- tomorrow -->
+  <!-- tomorrow -->
 
-  <view class="cut" wx:if="{{currTime!=today&&time_value<3&&(shopList.my_kj_goods.length>0||shopList.dq_prize.length>0)}}">
+  <view class="cut"
+    wx:if="{{currTime!=today&&time_value<3&&(shopList.my_kj_goods.length>0||shopList.dq_prize.length>0)}}">
 
-      <view class="cut_now">
+    <view class="cut_now">
 
-        <view class="cen">
-			<image src="{{IMGSERVICE}}/activity/fz_left.png"></image>
-			<view class="txt">本活动尚未开始</view>
-			<image src="{{IMGSERVICE}}/activity/fz_right.png"></image>
-		</view>
+      <view class="cen">
+        <image src="{{IMGSERVICE}}/activity/fz_left.png"></image>
+        <view class="txt">本活动尚未开始</view>
+        <image src="{{IMGSERVICE}}/activity/fz_right.png"></image>
+      </view>
 
-        <view class="pro_list" wx:for="{{shopList.dq_prize}}" wx:key="item">
-        
-          <view class="spimg" style="background-image:url({{item.thumb}})"></view>
+      <view class="pro_list" wx:for="{{shopList.dq_prize}}" wx:key="item">
 
-          <view class="spimg_right">
+        <view class="spimg" style="background-image:url({{item.thumb}})">
+          <image wx:if="{{ item.car_owner == 1 }}" class="label" src="{{ IMGSERVICE }}/spike/index_icon_04.png"
+                    mode="widthFix"></image>
+        </view>
 
-                <view class="sp_title">{{item.title}}</view>
+        <view class="spimg_right">
+
+          <view class="sp_title">{{item.title}}</view>
 
 
-                <view class="down">
+          <view class="down">
 
-                    <view class="down_left">
+            <view class="down_left">
 
-                      <view class="residue">剩余<text class="red">{{item.sy_num}}</text>件</view>
-                    </view>
+              <view class="residue">剩余<text class="red">{{item.sy_num}}</text>件</view>
+            </view>
 
-                    <view  class="cut_robbed">尚未开抢</view>
-  
-                </view>
+            <view class="cut_robbed">尚未开抢</view>
 
           </view>
 
         </view>
-    
+
+      </view>
+
     </view>
 
 
@@ -255,8 +271,8 @@
 
   <view class="four_day" wx:if="{{time_value>=3||(!shopList.my_kj_goods.length>0&&!shopList.dq_prize.length>0)}}">
 
-        <view class="gift" style="background-image:url('{{IMGSERVICE}}/activity/gift_box.png')"></view>
-		<view class="txt">更多好礼，敬请期待 ~</view>
+    <view class="gift" style="background-image:url('{{IMGSERVICE}}/activity/gift_box.png')"></view>
+    <view class="txt">更多好礼，敬请期待 ~</view>
   </view>
 
   <!-- four_day -->
@@ -266,59 +282,60 @@
 
   <view class="cut_record" wx:if="{{cutpop}}">
 
-      <view class="cut_record_box">
+    <view class="cut_record_box">
 
-          <view class="cut_top">
-              <view class="t_left">
-                <view class="zstiao"></view>
-                <view style="font-weight:bold;">砍价记录</view>
-              </view>
-              <view class="x closeX" style="background-image:url('{{IMGSERVICE}}/activity/X.png')" ></view>
-			  <view class="closePop2" bindtap="closePop"></view>
-          </view>
-
-          <view class="next_box">
-
-            <scroll-view scroll-y>
-			  <view class="norecord" wx:if="{{!barRecord.length>0}}"><text>暂无砍价记录</text></view>
-              <view class="list" catchtap="bargainDel" wx:if="{{barRecord.length>0}}" wx:for="{{barRecord}}" wx:key="item" data-obj="{{item}}">
-                    <view class="list_left" style="background-image:url({{item.thumb}})">
-
-                    <view class="cut_suc" wx:if="{{item.buttom_type==1||item.buttom_type==2}}">砍价成功</view> 
-                    
-                    <view wx:if="{{item.buttom_type==3}}" class="cut_suc">砍价失败</view> 
-
-					<view wx:if="{{item.buttom_type==4&&item.sy_num>0}}" class="cut_suc">进行中</view> 
-
-					<view wx:if="{{item.buttom_type==4&&!item.sy_num>0}}" class="cut_suc">抢完了</view> 
-                    
-                    </view>
-              
-                  <view class="list_right">
-
-                        <view class="right_top">{{item.title}}</view>
-
-                        <view class="right_down">
-                             <view class="date">砍价日期：{{item.true_date}}</view>       
-                              <view class="unclaimed setbold" wx:if="{{item.buttom_type==1||item.buttom_type==5}}">待领取</view>
-                              <view  wx:if="{{item.buttom_type==2}}" class="gray setbold">已领取</view>
-                              <view wx:if="{{item.buttom_type==3}}" class="gray setbold">砍价超时</view>
-							  <view class="unclaimed setbold" wx:if="{{item.buttom_type==4&&item.sy_num>0}}">进行中</view>
-							  <view wx:if="{{item.buttom_type==4&&!item.sy_num>0}}" class="gray setbold">抢完了</view>
-							  <!-- <view wx:if="{{item.buttom_type==5}}" class="cut_on setbold">去使用</view> -->
-                        </view>
-
-                  </view>
-
-              </view>
-            
-            </scroll-view>
-
-
-          </view>
-      
+      <view class="cut_top">
+        <view class="t_left">
+          <view class="zstiao"></view>
+          <view style="font-weight:bold;">砍价记录</view>
+        </view>
+        <view class="x closeX" style="background-image:url('{{IMGSERVICE}}/activity/X.png')"></view>
+        <view class="closePop2" bindtap="closePop"></view>
       </view>
-  
+
+      <view class="next_box">
+
+        <scroll-view scroll-y>
+          <view class="norecord" wx:if="{{!barRecord.length>0}}"><text>暂无砍价记录</text></view>
+          <view class="list" catchtap="bargainDel" wx:if="{{barRecord.length>0}}" wx:for="{{barRecord}}" wx:key="item"
+            data-obj="{{item}}">
+            <view class="list_left" style="background-image:url({{item.thumb}})">
+
+              <view class="cut_suc" wx:if="{{item.buttom_type==1||item.buttom_type==2}}">砍价成功</view>
+
+              <view wx:if="{{item.buttom_type==3}}" class="cut_suc">砍价失败</view>
+
+              <view wx:if="{{item.buttom_type==4&&item.sy_num>0}}" class="cut_suc">进行中</view>
+
+              <view wx:if="{{item.buttom_type==4&&!item.sy_num>0}}" class="cut_suc">抢完了</view>
+
+            </view>
+
+            <view class="list_right">
+
+              <view class="right_top">{{item.title}}</view>
+
+              <view class="right_down">
+                <view class="date">砍价日期：{{item.true_date}}</view>
+                <view class="unclaimed setbold" wx:if="{{item.buttom_type==1||item.buttom_type==5}}">待领取</view>
+                <view wx:if="{{item.buttom_type==2}}" class="gray setbold">已领取</view>
+                <view wx:if="{{item.buttom_type==3}}" class="gray setbold">砍价超时</view>
+                <view class="unclaimed setbold" wx:if="{{item.buttom_type==4&&item.sy_num>0}}">进行中</view>
+                <view wx:if="{{item.buttom_type==4&&!item.sy_num>0}}" class="gray setbold">抢完了</view>
+                <!-- <view wx:if="{{item.buttom_type==5}}" class="cut_on setbold">去使用</view> -->
+              </view>
+
+            </view>
+
+          </view>
+
+        </scroll-view>
+
+
+      </view>
+
+    </view>
+
   </view>
 
   <!-- cut_record -->
@@ -326,50 +343,67 @@
 
   <!-- cut_product -->
 
-      <view class="cut_product" wx:if="{{barPop}}">
+  <view class="cut_product" wx:if="{{barPop}}">
 
-          <view class="cut_product_box">
+    <view class="cut_product_box">
 
-            <view class="cut_top">
-                <view class="t_left">
-                  <view class="zstiao"></view>
-                  <view>已选择该商品</view>
-                </view>
-                <view class="x" style="background-image:url('{{IMGSERVICE}}/activity/X.png')" bindtap="closePop"></view>
-            </view>
-
-            <view class="next_box">
-
-                <view class="list">
-
-                    <view class="list_left" style="background-image:url({{freeImage}})">
-                    </view>
-              
-                  <view class="list_right">
-
-                        <view class="right_top">{{barName}}</view>
-                        <view class="right_down">价值<text class="red">{{barPrice}}</text>元,砍到免费拿</view>
-
-                  </view>
-
-                </view>
-
-            </view>
-
-            <view class="btn_start" bindtap="startBar">开始砍价</view>
-          
-          </view>
-      
+      <view class="cut_top">
+        <view class="t_left">
+          <view class="zstiao"></view>
+          <view>已选择该商品</view>
+        </view>
+        <view class="x" style="background-image:url('{{IMGSERVICE}}/activity/X.png')" bindtap="closePop"></view>
       </view>
-<!-- 规则弹窗 -->
-<view class="pof fadeShow" wx:if="{{rulspop}}">
-  <rule bindclose="closePop" ruleImg="{{banarImage.rule}}"></rule>
+
+      <view class="next_box">
+
+        <view class="list">
+
+          <view class="list_left" style="background-image:url({{freeImage}})">
+          </view>
+
+          <view class="list_right">
+
+            <view class="right_top">{{barName}}</view>
+            <view class="right_down">价值<text class="red">{{barPrice}}</text>元,砍到免费拿</view>
+
+          </view>
+
+        </view>
+
+      </view>
+
+      <view class="btn_start" bindtap="startBar">开始砍价</view>
+
+    </view>
+
+  </view>
+  <!-- 规则弹窗 -->
+  <view class="pof fadeShow" wx:if="{{rulspop}}">
+    <rule bindclose="closePop" ruleImg="{{banarImage.rule}}"></rule>
+  </view>
 </view>
+
+<!-- 兑换码弹窗  -->
+<view class="code_mask fadeIn" wx:if="{{ isCodeShow }}">
+  <view class="main">
+    <view class="h3">
+      <view>请凭激活码自行</view>
+      <view>前往对应平台自助兑换</view>
+    </view>
+    <view class="p">{{ code }}</view>
+    <view class="btn" bindtap="setClipboar">复制商品码</view>
+    <view class="close_btn iconfont icon_del" bindtap="closeCode"></view>
+  </view>
 </view>
+<!-- 兑换码弹窗  -->
+
+<!-- 自定义loading -->
+<showLoading wx:if="{{isShowLoading}}" loadingText="{{ loadingText }}"></showLoading>
+
 <!-- 授权、去绑定车主弹窗 -->
-<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}" >
-	<activePop popType="{{popType}}" text="{{poptxt}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
+<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+  <activePop popType="{{popType}}" text="{{poptxt}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
+  </activePop>
 </view>
 <!-- 活动状态弹窗 -->
-
-

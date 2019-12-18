@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "showLoading": "/components/showLoading/showLoading"
+  },
   "navigationBarTitleText": "商品详情"
 }

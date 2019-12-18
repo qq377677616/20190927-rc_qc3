@@ -301,7 +301,7 @@ Page({
       quanPop: !this.data.quanPop
     })
     this.setData({
-      formType: 4,
+      formType: 5,
       isShowForm: true,
     })
   },

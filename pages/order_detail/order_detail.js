@@ -46,12 +46,14 @@ Page({
       console.log("留资接口返回", res)
       // let _data = res.data.data
       // let _cardExt = '{"nonce_str": "' + _data.nonceStr + '",  "timestamp": "' + _data.timestamp + '", "signature":"' + _data.signature + '"}'
-      this.addCard(res.data.data, _data.data_id)
+      console.warn(res.data.data)
+      this.addCard(res.data.data)
     })
   },
   //领取卡券
-  addCard(cardList, data_id) {
+  addCard(cardList) {
     this.isShowLoading()
+    console.warn(cardList)
     tool.addCard(cardList).then(res => {
       console.log("卡券返回", res)
       if (res.errMsg == "addCard:ok") {
@@ -60,7 +62,7 @@ Page({
         for (let i = 0; i < res.cardList.length; i++) {
           _card_code += ((i == 0 ? '' : ',') + res.cardList[i].code)
         }
-        this.cardCheck(data_id, _card_code)
+        this.cardCheck(_card_code)
       } else {
         this.isShowLoading()
         tool.alert("卡券领取失败")
@@ -72,11 +74,10 @@ Page({
     })
   },
   //卡券核销上报
-  cardCheck(data_id, card_code) {
+  cardCheck(card_code) {
     let _data = {
       user_id: wx.getStorageSync("userInfo").user_id,
       order_goods_id: this.data.order_goods_id,
-      // data_id: data_id,
       card_code: card_code
     }
     api.orderCheck(_data).then(res => {

@@ -1,0 +1,20 @@
+<!--components/Spike/cmp.wxml-->
+
+<view class="dialog-wrapper fadeIn">
+
+    <view class="dialog">
+
+        <view class="dialog-content">
+            <slot name="icon"></slot>
+            <slot name="status"></slot>
+            <slot name="p"></slot>
+            <slot name="btn"></slot>
+            <slot name="cancel"></slot>
+            <slot name="tips"></slot>
+        </view>
+
+        <image mode="widthFix" src="{{ IMGSERVICE }}/center/icon_close.png" class="close" bindtap="closePop"></image>
+
+    </view>
+
+</view>

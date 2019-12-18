@@ -281,7 +281,7 @@ Page({
     const userInfo = wx.getStorageSync('userInfo');
     const storeList = this.data.storeList;//门店列表
     const storeIndex = this.data.storeIndex;//门店索引
-    let promise, url;
+    let promise, url, shopCartList;
     //收货人信息必填
     if( !currentAddressItem.address_id )return alert.alert({
       str:'请填写收货人信息'
@@ -312,8 +312,7 @@ Page({
       if( !(cartDetail.type == 2) && !storeList.length )return alert.alert({
         str:'请选择领取的门店'
       });
-
-      cartDetail.shopCartList = cartDetail.shopCartList.map((item)=>{//筛选ID
+      shopCartList = cartDetail.shopCartList.map((item)=>{//筛选ID
         return item.shopping_cart_id;
       })
 
@@ -324,7 +323,7 @@ Page({
         address_id:currentAddressItem.address_id,//收货人信息 id
         remark:'',//备注
         dealer_code:cartDetail.type == 2 ? '' : storeList[storeIndex].code,//门店id 为快递时门店id非必选
-        shopping_cart_ids:JSON.stringify( cartDetail.shopCartList ),//结算购物车id 格式：json数组 例子[1,2,3]
+        shopping_cart_ids:JSON.stringify( shopCartList ),//结算购物车id 格式：json数组 例子[1,2,3]
       })
 
     }

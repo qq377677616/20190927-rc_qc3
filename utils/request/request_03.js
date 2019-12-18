@@ -51,7 +51,7 @@ const channelUpload = (data, url = '/api3/oauth/bind_channel') => { return myReq
 const isShowIcon = (data, url = 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/index/aaaa') => { return myRequest(data, url, 'post', true) }
 
 //奖品详情
-const prizeDetail = (data, url = '/api3/prize/my_prize_detail') => { return myRequest(data, url) }
+const prizeDetail = (data, url = '/api3/prize/my_prize_detail') => { return myRequest({...data, openid:wx.getStorageSync('userInfo').openid}, url) }
 
 module.exports = {
   myRequest,

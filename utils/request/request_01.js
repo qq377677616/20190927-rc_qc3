@@ -6,12 +6,12 @@ const alert = require('../tool/alert.js');
 
 const tool = require('../tool/tool.js');
 
-// const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
+const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
 // const SERVICE = "http://dfldata-test.dongfeng-nissan.com.cn/fslb/public/index.php";
-const SERVICE = "https://weixinfslb.venucia.com";
+// const SERVICE = "https://weixinfslb.venucia.com";
 
 //版本控制
-const tag = (data) => { 
+const tag = (data) => {
     let url = 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/oauth/version'
     return new Promise((resolve, reject) => {
         _request.request({
@@ -637,7 +637,7 @@ const orderList = (data) => {
     return new Promise((resolve, reject) => {
         _request.request({
             url,
-            data
+            data:{...data, openid:wx.getStorageSync('userInfo').openid}
         })
             .then(res => {
                 resolve(res)
@@ -654,7 +654,7 @@ const orderDetail = (data) => {
     return new Promise((resolve, reject) => {
         _request.request({
             url,
-            data
+            data:{...data, openid:wx.getStorageSync('userInfo').openid}
         })
             .then(res => {
                 resolve(res)
@@ -1212,7 +1212,7 @@ const exchangeList = (data) => {
     return new Promise((resolve, reject) => {
         _request.request({
             url,
-            data
+            data:{...data, openid:wx.getStorageSync('userInfo').openid}
         })
             .then(res => {
                 resolve(res)
@@ -1228,7 +1228,7 @@ const defaultAddress = (data) => {
     return new Promise((resolve, reject) => {
         _request.request({
             url,
-            data
+            data:{...data, openid:wx.getStorageSync('userInfo').openid}
         })
             .then(res => {
                 resolve(res)
@@ -1348,9 +1348,41 @@ const login = (callback) => {
         if (userInfo.user_id) {//本地已保存用户信息
 
             alert.loading_h();
-            callback()
 
+            authorization.isCheckSession()
+            .then((value)=>{
+                console.warn('//未过期，并且在本生命周期一直有效')
+            })
+            .catch((reason)=>{//已经失效，需要重新执行登录流程
+                getCode()
+            })
+
+            //更新用户是否为车主(服务号可以绑定车主问题)
+            homeInfo({
+                openid: userInfo.openid,
+                user_id: userInfo.user_id,
+            })
+                .then((value) => {
+                    //success
+                    const data = value.data.data;
+
+                    wx.setStorageSync('userInfo', Object.assign(userInfo, {
+                        user_type: data.user_type,
+                    }))
+                })
+                .catch((reason) => {
+                    //fail
+                })
+                .then(() => {
+                    //complete
+                    callback()
+                })
+
+
+                
         } else {//本地未保存用户信息
+
+            
 
             Promise.all([
                 authorization.login(),
@@ -1369,6 +1401,7 @@ const login = (callback) => {
                 .then((value) => {
                     const data = value[0].data.data;
                     if (data.errcode && data.errmsg) {
+
                         login(callback)
                     } else {
                         console.log('<<<', data, '>>>')
@@ -1421,142 +1454,347 @@ const login = (callback) => {
 //   })
 // }
 
-//获取session_key
-function getCodeSessionKey(callback){
-    Promise.all([
-        authorization.login(),
-        authorization.login()
-    ])
-    .then((value) => {
-        return Promise.all([
-            getSessionKey({
-                code: value[1].code,
-                parent_id: wx.getStorageSync("shareIds").parent_id,
-                channel_id: wx.getStorageSync("shareIds").channel_id
-            }),
-        ])
 
+function unionid(resolve){
+    tool.loading("授权中")
+    const userInfo = wx.getStorageSync('userInfo');
+    getUnionid({
+        user_id: userInfo.user_id,//用户ID
+        encrypted_data: userInfo.encryptedData,//加密数据
+        session_key: userInfo.session_key,//上一个接口获得的session_key
+        iv: userInfo.iv,//加密数据匹配的iv                  
     })
     .then((value)=>{
-        const data = value[0].data.data;
+        
 
-        if (data.errcode && data.errmsg) {
+        //拼接所有信息（unionid）
+        Object.assign(userInfo, {
+            unionid: true
+        })
 
-            getCodeSessionKey(callback)
-
-        } else {
-            const userinfo = wx.getStorageSync('userInfo');
-
-            Object.assign(userinfo, data)
-
-            wx.setStorageSync('userInfo', userinfo)
-
-            callback()
-        }
-
-    })
-    .catch((reason)=>{
-
-        tool.alert('session_key获取失败')
-        callback()
-
-    })
-}
+        //存储用户信息到本地（unionid）
+        console.warn(userInfo, {
+            unionid: true
+        },'unionid')
+        wx.setStorageSync('userInfo', userInfo)
 
 
-//获取unionid
-function getUnionidRequest(userInfo, resolve){
-
-    //获取session_key
-    getCodeSessionKey(()=>{
-
-        getUnionid({
-            user_id: userInfo.user_id,//用户ID
-            encrypted_data: userInfo.encryptedData,//加密数据
-            session_key: userInfo.session_key,//上一个接口获得的session_key
-            iv: userInfo.iv,//加密数据匹配的iv                  
+        //更新用户是否是车主
+        personalInfo({
+            user_id: userInfo.user_id,
+            openid: userInfo.openid,
         })
             .then((value) => {
                 const data = value.data.data;
-
-                personalInfo({
-                    user_id:userInfo.user_id,
-                    openid:userInfo.openid,
-                })
-                .then((value)=>{
-                    const data = value.data.data;
-                    
-                    //success
-                    tool.loading_h()
-
-                    Object.assign(userInfo, {
-                        unionid:true,
-                        user_type:data.user_type,
-                    })
-                    
-                    //将btn授权获取的用户数据存于本地
-                    wx.setStorageSync("userInfo", userInfo)
-
-                    resolve(true)
-                })
-                .catch(()=>{
-                    tool.loading_h()
+                tool.loading_h()
+                //拼接所有信息（user_type）
+                Object.assign(userInfo, {
+                    user_type: data.user_type,
                 })
 
-                
-                
+                //存储用户信息到本地（user_type）
+                console.warn(userInfo, {
+                    user_type: data.user_type,
+                },'user_type')
+                wx.setStorageSync("userInfo", userInfo)
+
+                resolve(true)
             })
             .catch((reason) => {
                 //fail
                 tool.loading_h()
-                
-    
+                tool.alert(`车主信息获取失败：${reason}`)
             })
 
     })
-    
+    .catch((reason)=>{
+        //fail
+        tool.loading_h()
+        tool.alert(`unionid获取失败：${reason}`)
+    })
+}
+function sessionKey({resolve, code}){
 
-        
+    const shareIds = wx.getStorageSync("shareIds");
+
+    //获取sessionKey
+    getSessionKey({
+        code,
+        parent_id: shareIds.parent_id,
+        channel_id: shareIds.channel_id
+    })
+    .then((value)=>{
+        const data = value.data.data;
+        const userInfo = wx.getStorageSync('userInfo');
+
+        if ( data.errcode && data.errmsg ) {
+
+            //fail
+            tool.alert(`session_key获取失败：${data.errcode}${data.errmsg}`)
+
+        } else {
+
+            //拼接所有信息（sessionKey）
+            Object.assign(userInfo, data)
+
+            //存储用户信息到本地（sessionKey）
+            console.warn(userInfo, {
+                session_key:data.session_key
+            },'sessionKey')
+            wx.setStorageSync('userInfo', userInfo)
+
+            //获取unionid
+            // unionid(resolve)
+        }
+    })
+    .catch((reason)=>{
+        //fail
+        tool.alert(`session_key获取失败：${reason}`)
+    })
+}
+
+function getCode(resolve){
+
+    //递归获取code
+    Promise.all([
+        authorization.login(),
+        authorization.login()
+    ])
+    .then((value)=>{
+
+        //获取sessionKey
+        sessionKey({
+            resolve,
+            code:value[1].code,
+        })
+
+    })
+    .catch(()=>{
+        //递归
+        getCode(resolve)
+    })
 }
 
 //授权
-const setUserInfo = (e, str) => {
+const setUserInfo = (e) => {
+
     return new Promise((resolve, reject) => {
-        
-        const detail = e.detail;
-        const userInfo = detail.userInfo;
 
+        const detail = e.detail;//加密信息
+        if (detail.errMsg == 'getUserInfo:ok') 
+        {
+            tool.loading("授权中")
+            
+            const userInfo = wx.getStorageSync("userInfo");//旧用户信息
+            const newUserInfo = detail.userInfo;//新用户信息
 
-        if (userInfo) {
-            tool.loading(str ? str : "授权中")
-            
-            //btn授权获取的用户数据
-            Object.assign(userInfo, { encryptedData: detail.encryptedData, iv: detail.iv }, wx.getStorageSync("userInfo") || {})
-            
+            //拼接所有信息（加密信息）
+            Object.assign(userInfo, newUserInfo, { 
+                encryptedData: detail.encryptedData, 
+                iv: detail.iv 
+            })
+
 
             //这里做上传头像昵称给后台操作
             uploadUserInfo({
                 user_id: userInfo.user_id,
                 nickname: userInfo.nickName,
                 headimg: userInfo.avatarUrl,
-                gender: 1
+                gender: userInfo.gender
             }).then(res => {
-                
-                //获取unionid
-                getUnionidRequest(userInfo, resolve)
+                tool.loading_h()
 
+                //存储用户信息到本地（加密信息）
+                console.warn(userInfo, { 
+                    encryptedData: detail.encryptedData, 
+                    iv: detail.iv 
+                },'加密信息')
+                wx.setStorageSync("userInfo",userInfo)
+
+                // 获取code => session_key
+                // getCode(resolve)
+
+                //获取unionid
+                unionid(resolve)
             }).catch(err => {
+                tool.loading_h()
                 reject(err)
             })
-        } else {
-            
-            reject()
+        } else 
+        {
+            reject('授权失败')
         }
+
     })
+
+
+
 }
+
 //上传头像昵称
 const uploadUserInfo = (data) => {
     let url = `${SERVICE}/api3/oauth/perfect`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+
+//秒杀活动首页
+const spikeIndex = (data) => {
+    let url = `${SERVICE}/api3/seckill/detail`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动商品
+const spikeGoodsList = (data) => {
+    let url = `${SERVICE}/api3/seckill/goods_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动预约
+const spikeAppo = (data) => {
+    let url = `${SERVICE}/api3/seckill/leave_info`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动秒杀
+const spikeSpike = (data) => {
+    let url = `${SERVICE}/api3/seckill/seckill`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动商品详情
+const spikeGoodsDetail = (data) => {
+    let url = `${SERVICE}/api3/seckill/goods_detail`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动领取奖品
+const spikeReceive = (data) => {
+    let url = `${SERVICE}/api3/seckill/receive`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//预约信息回填
+const spikeBackfill = (data) => {
+    let url = `${SERVICE}/api3/seckill/order_info`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀记录
+const spikeLog = (data) => {
+    let url = `${SERVICE}/api3/seckill/my_seckill`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//时间段列表
+const spikeTimeList = (data) => {
+    let url = `${SERVICE}/api3/seckill/time_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//时间段列表
+const spikeTips = (data) => {
+    let url = `${SERVICE}/api3/seckill/remind_me`
     return new Promise((resolve, reject) => {
         _request.request({
             url,
@@ -1647,4 +1885,14 @@ module.exports = {
     articleDel,
     login,
     SERVICE,
+    spikeIndex,
+    spikeGoodsList,
+    spikeAppo,
+    spikeSpike,
+    spikeGoodsDetail,
+    spikeReceive,
+    spikeBackfill,
+    spikeLog,
+    spikeTimeList,
+    spikeTips,
 }

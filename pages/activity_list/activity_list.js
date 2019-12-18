@@ -225,6 +225,8 @@ Page({
     const screen = activityList[index].screen;
     wx.setStorageSync('screen', screen);
     const activity_type = activityList[index].activity_type;
+
+
     switch (activity_type){
       case 1:
         //抽奖
@@ -284,6 +286,12 @@ Page({
         //13	砍价
         router.jump_nav({
           url: `/pages/bargain_index/bargain_index?activity_id=${activity_id}`,
+        })
+      break;
+      case 14:
+        //14	秒杀
+        router.jump_nav({
+          url: `/pages/spike_index/spike_index?activity_id=${activity_id}`,
         })
       break;
     }

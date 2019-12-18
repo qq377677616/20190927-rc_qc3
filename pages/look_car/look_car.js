@@ -113,6 +113,12 @@ Page({
         url:`/pages/look_car_detail/look_car_detail?id=${9}`,
       })
     }
+    else if( id == 11 ) {
+      // 跳转T90页面
+      router.jump_nav({
+        url:`/pages/look_car_detail_03/look_car_detail?id=${11}`,
+      })
+    }
     else {
       // 跳转通用看车页
       router.jump_nav({

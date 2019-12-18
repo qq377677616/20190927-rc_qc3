@@ -18,19 +18,19 @@ Page({
 		replyData: [],
 		page: 1,
 		currtotle: 0,
-		toView:'',
-		iscoin:false,
-		nomore:false,
-		boxHeight:0,
-		type:''
+		toView: '',
+		iscoin: false,
+		nomore: false,
+		boxHeight: 0,
+		type: ''
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		console.log('type',options);
-		this.setData({ type: options.type,rid: parseInt(options.rid)})
+		console.log('type', options);
+		this.setData({ type: options.type, rid: parseInt(options.rid) })
 		require_01.login(() => {
 			this.articleDel();//文章详情
 			this.reply_list();//评论列表
@@ -53,7 +53,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-		this.setData({page:1})
+		this.setData({ page: 1 })
 	},
 
 	/**
@@ -89,10 +89,10 @@ Page({
 	 */
 	onShareAppMessage: function (option) {
 		let image = option.target.dataset.img;
-		console.log(image)
+		const rid = this.data.rid;
 		let obj = {
 			title: this.data.artDel.title,
-			path: '/pages/community_detail/community_detail',
+			path: '/pages/community_detail/community_detail?rid=' + rid,
 			imageUrl: image
 		};
 		return obj;
@@ -106,9 +106,9 @@ Page({
 			console.log(res.data)
 			if (res.data.status == 1) {
 				console.log(666)
-				this.setData({ artDel: res.data.data, iscoin: res.data.data.vcoin>0?true:false})
-				if (this.data.type =="bottom")
-				this.goViews();
+				this.setData({ artDel: res.data.data, iscoin: res.data.data.vcoin > 0 ? true : false })
+				if (this.data.type == "bottom")
+					this.goViews();
 			}
 		}).catch((reason) => {
 			console.log(reason)
@@ -130,7 +130,7 @@ Page({
 				this.setData({ replyData: arr, currtotle: res.data.data.list.length })
 			} else {
 				// alert.alert({ str: '没有更多评论了！' })
-				this.setData({ nomore: this.data.page == 1?true:false}) 
+				this.setData({ nomore: this.data.page == 1 ? true : false })
 			}
 		}).catch((reason) => {
 			console.log(reason)
@@ -194,10 +194,10 @@ Page({
 	showRemark() {
 		route.jump_nav({ url: '/pages/addRemark/addRemark?rid=' + this.data.rid })
 	},
-	goViews(){
-		this.setData({ toView:"bottom"})
+	goViews() {
+		this.setData({ toView: "bottom" })
 	},
-	goldClose(){
-		this.setData({iscoin:false})
+	goldClose() {
+		this.setData({ iscoin: false })
 	}
 })

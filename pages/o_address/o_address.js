@@ -152,7 +152,8 @@ Page({
 
     Promise.all([
       request_01.addressList({
-        user_id: userInfo.user_id
+        user_id: userInfo.user_id,
+        openid: userInfo.openid,
       })
     ])
       .then((value) => {

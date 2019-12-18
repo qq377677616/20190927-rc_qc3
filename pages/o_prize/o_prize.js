@@ -133,7 +133,8 @@ Page({
 					tool.loading_h()
 					this.isShowForm()
 					this.refreshStatus()
-					tool.showModal("领取成功", "您的信息已提交成功，近期将会有工作人员电话联系您，敬请留意~", "好的,#124DB8", false)
+					// tool.showModal("领取成功", "您的信息已提交成功，近期将会有工作人员电话联系您，敬请留意~", "好的,#124DB8", false)
+          tool.jump_nav(`/pages/o_prize_detail/o_prize_detail?prize_id=${this.data.prizeList[this.data.curIndex].prize_id}`)
 				}, 800)
 			} else if (this.data.prize_type == 3) {
 				this.setData({ prizeList: [] })
@@ -145,7 +146,7 @@ Page({
 					this.setData({ code: _data.xuni_code, card_id: _data.card_id || "" })
 					this.isShowForm()
 					this.isShowCode()
-				})
+				}, 800)
 			}
 		})
 	},

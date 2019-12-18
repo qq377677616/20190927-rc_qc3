@@ -1,0 +1,363 @@
+<!--pages/spike_index/spike_index.wxml-->
+
+
+<view class="page" bindtap="isVehicleOwner">
+    <!-- header -->
+    <view class="header">
+        <view class="banner">
+            <image class="img" mode="widthFix" src="{{ spikeIndex.activity_info.banner }}"></image>
+            <view class="rule-btn" bindtap="ruleVisibleHandler">
+                <view class="span">活动规则</view>
+                <view class="iconfont icon_more more"></view>
+            </view>
+        </view>
+
+        <view class="scroll-info">
+            <image class="icon" src="{{ IMGSERVICE }}/spike/index_icon_01.png" mode="widthFix"></image>
+            <swiper vertical circular="true" autoplay="true" interval="2500">
+                <swiper-item class="nowrap" wx:for="{{ spikeIndex.msg_list }}" wx:key="index">{{ item }}</swiper-item>
+                <swiper-item class="nowrap" wx:if="{{ spikeIndex.msg_list.length == 0 }}">敬请期待</swiper-item>
+            </swiper>
+        </view>
+    </view>
+
+    <!-- show-time -->
+    <view class="show-time">
+        <scroll-view class="date" scroll-x scroll-anchoring>
+
+            <view class="view">
+                <view class="span fadeIn {{ dateIndex == index ? 'active' : '' }}" wx:for="{{ spikeIndex.date_list }}"
+                    wx:key="index" data-index="{{ index }}" bindtap="dateBtn">{{ item.date }}
+                </view>
+            </view>
+
+        </scroll-view>
+        <scroll-view class="hours" scroll-x scroll-anchoring>
+
+            <view class="view">
+                <view class="span fadeIn {{ timeIndex == index ? 'active' : '' }}" wx:for="{{ timeList }}"
+                    wx:key="index" data-index="{{ index }}" bindtap="timeBtn">
+                    <text>{{ item.time }}</text>
+                    <text wx:if="{{ item.status == 1 }}">进行中</text>
+                    <text wx:elif="{{ item.status == 2 }}">即将开始</text>
+                    <text wx:else>已结束</text>
+                </view>
+            </view>
+
+        </scroll-view>
+    </view>
+
+    <!-- count-down -->
+    <view class="count-down">
+
+        <block wx:if="{{ timeList[timeIndex].status == 3 }}">
+            <view class="over">已结束</view>
+        </block>
+
+        <block wx:else>
+            <view class="text">还有</view>
+
+            <view class="span black fadeIn"
+                style="background:url({{ IMGSERVICE }}/spike/index_icon_02.png) no-repeat center center/cover;">
+                {{ countDown[0] }}</view>
+
+            <view class="colon">:</view>
+
+            <view class="span black fadeIn"
+                style="background:url({{ IMGSERVICE }}/spike/index_icon_02.png) no-repeat center center/cover;">
+                {{ countDown[1] }}</view>
+
+            <view class="colon">:</view>
+
+            <view class="span black fadeIn"
+                style="background:url({{ IMGSERVICE }}/spike/index_icon_02.png) no-repeat center center/cover;">
+                {{ countDown[2] }}</view>
+
+            <view class="colon">:</view>
+
+            <view class="span red fadeIn"
+                style="background:url({{ IMGSERVICE }}/spike/index_icon_03.png) no-repeat center center/cover;">
+                {{ countDown[3] }}</view>
+
+            <view wx:if="{{ timeList[timeIndex].status == 1 }}" class="text">结束</view>
+            <view wx:else class="text">开始</view>
+        </block>
+
+    </view>
+
+    <!-- goods-list -->
+    <view class="goods-list">
+
+        <view class="item fadeIn" wx:for="{{ spikeGoodsList }}" wx:key="index">
+            <view class="img" data-index="{{ index }}" bindtap="opBtn">
+                <image class="banner" src="{{ item.thumb }}" mode="widthFix"></image>
+                <image wx:if="{{ item.car_owner == 1 }}" class="label" src="{{ IMGSERVICE }}/spike/index_icon_04.png"
+                    mode="widthFix"></image>
+            </view>
+
+            <view class="content">
+                <view class="title">
+                    <view class="h2 clamp_02">{{ item.title }}</view>
+                    <view class="text">
+                        <view class="em">{{ item.order_num }}</view>
+                        <view class="span">人预约</view>
+                    </view>
+                </view>
+
+                <view class="bottom">
+                    <view class="progress-price">
+                        <view class="progress">
+                            <view class="bar" style="width: {{ item.number/item.goods_num*100 }}%"></view>
+                            <view class="text nowrap">仅剩{{ item.number }}件</view>
+                        </view>
+
+                        <view class="price">
+                            <view class="span">￥0</view>
+                            <view class="del">￥{{ item.vcoin }}</view>
+                        </view>
+                    </view>
+
+
+
+                    <block wx:if="{{ spikeIndex.activity_info.status == 1 }}">
+
+                        <!-- <view wx:if="{{ item.is_order == 0 }}" class="btn appoed">无资格秒杀</view>
+                        <view wx:elif="{{ timeList[timeIndex].status == 3 }}" class="btn appoed">已结束</view>
+                        <view wx:elif="{{ timeList[timeIndex].status == 2 }}" class="btn appo" data-btnType="spikeBtn"
+                            data-index="{{ index }}" bindtap="opBtn">已预约</view>
+                        <view wx:elif="{{ item.is_skill == 1 }}" class="btn receive" data-btnType="receiveBtn"
+                            data-index="{{ index }}" bindtap="opBtn">立即领取</view>
+                        <view wx:else class="btn appo" data-btnType="spikeBtn" data-index="{{ index }}"
+                            bindtap="opBtn">立即秒杀</view> -->
+
+                        <!-- <view wx:if="{{ item.is_order == 0 }}" class="btn appoed">无资格秒杀</view>
+                        <view wx:elif="{{ timeList[timeIndex].status == 3 }}" class="btn appoed">已结束</view>
+                        <view wx:elif="{{ timeList[timeIndex].status == 2 }}" class="btn appoed">未开始</view>
+                        <view wx:elif="{{ item.is_skill == 1 }}" class="btn receive" data-btnType="receiveBtn"
+                            data-index="{{ index }}" bindtap="opBtn">
+                            {{ (item.order_id > 0 && item.is_receive == 1) ? '查看订单' : '立即领取' }}</view>
+                        <view wx:elif="{{ item.is_skill == 0 }}" class="btn appo" data-btnType="spikeBtn"
+                            data-index="{{ index }}" bindtap="opBtn">立即秒杀</view> -->
+
+                        <view wx:if="{{ spikeIndex.activity_info.status == 1 && item.number == 0 }}" class="btn appoed">已秒完</view>
+                        <view wx:elif="{{  spikeIndex.order_status == 0 }}" class="btn appoed">无资格秒杀</view>
+                        <view wx:elif="{{ timeList[timeIndex].status == 3 }}" class="btn appoed">已结束</view>
+                        <!-- <form wx:elif="{{ timeList[timeIndex].status == 2 }}" bindsubmit="opBtn" bindreset="formReset" report-submit="true">
+                            <button class="btn appo" form-type="submit" data-btnType="tipsBtn" data-index="{{ index }}" bindsubmit="bindsubmit">提醒我</button>
+                        </form> -->
+                        <view wx:elif="{{ timeList[timeIndex].status == 2 && item.is_remind == 1 }}" class="btn appoed">已预约提醒</view>
+                        <view wx:elif="{{ timeList[timeIndex].status == 2 && item.is_remind == 0 }}" class="btn appo" data-btnType="tipsBtn" data-index="{{ index }}" bindtap="opBtn">提醒我</view>
+                        
+                        <view wx:elif="{{ item.is_skill == 1 }}" class="btn receive" data-btnType="receiveBtn" data-index="{{ index }}" bindtap="opBtn">{{ (item.order_id > 0 && item.is_receive == 1) ? '查看订单' : '立即领取' }}</view>
+                        <view 
+                        wx:elif="{{ item.is_skill == 0 && (spikeIndex.order_status == 1 && item.car_owner == 1) || (spikeIndex.order_status == 2 && item.car_owner == 0) || spikeIndex.order_status == 3 }}" 
+                        class="btn appo" 
+                        data-btnType="spikeBtn"
+                        data-index="{{ index }}" 
+                        bindtap="opBtn">立即秒杀</view>
+                        <view wx:else class="btn appoed">无资格秒杀</view>
+
+                    </block>
+                    <block wx:elif="{{ spikeIndex.activity_info.status == 4 }}">
+
+                        <view wx:if="{{ item.is_order == 1 }}" class="btn appoed">已预约</view>
+                        <!-- <form wx:else bindsubmit="opBtn" bindreset="formReset" report-submit="true">
+                            <button class="btn appo" form-type="submit" data-btnType="appoBtn" data-index="{{ index }}" data-type="ok" bindsubmit="bindsubmit">立即预约</button>
+                        </form> -->
+                        <view wx:else class="btn appo" data-btnType="appoBtn" data-index="{{ index }}" data-type="ok" bindtap="opBtn">立即预约</view>
+                    </block>
+                    <block wx:else>
+                        <view class="btn appoed">已结束</view>
+                    </block>
+
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+    <!-- spike-log -->
+    <view class="spike-log" bindtap="spikeLogBtn">
+        <text>我的\n秒杀</text>
+    </view>
+
+    <!-- qc-rule -->
+    <view class="fadeIn" wx:if="{{ ruleVisible }}">
+        <qc-rule bindclose="ruleVisibleHandler" ruleImg="{{ spikeIndex.activity_info.rule }}">
+        </qc-rule>
+    </view>
+
+    <!-- qc-spike-result -->
+    <qc-spike-result wx:if="{{ spikeResultVisible }}" bindclose="spikeResultVisible">
+
+        <!-- 秒杀成功 -->
+        <!-- <block wx:if="{{ false }}">
+            <image class="qc-spike-result-icon" slot="icon" mode="widthFix"
+                src="{{ IMGSERVICE }}/spike/pop_icon_02.jpg">
+            </image>
+
+            <view class="qc-spike-result-p" slot="p">
+                <text decode>恭喜您, 秒杀成功!\n请点击下方按钮领取礼品</text>
+            </view>
+
+            <view class="qc-spike-result-btn" slot="btn">领取</view>
+
+            <view class="qc-spike-result-tips" slot="tips">
+                <text decode>请在24小时内领取礼品\n超时将默认失效！</text>
+            </view>
+        </block> -->
+
+        <!-- 秒杀失败 -->
+        <!-- <block wx:elif="{{ false }}">
+            <image class="qc-spike-result-icon" slot="icon" mode="widthFix"
+                src="{{ IMGSERVICE }}/spike/pop_icon_03.jpg">
+            </image>
+
+            <view class="qc-spike-result-p" slot="p">
+                <text decode>很遗憾, 您的手速慢了\n商品已经秒杀完了</text>
+            </view>
+
+            <view class="qc-spike-result-btn" slot="btn">查看其他商品</view>
+        </block> -->
+
+        <!-- 安慰奖 -->
+        <!-- <block wx:elif="{{ false }}">
+            <view class="qc-spike-result-status fail" slot="status">
+                <view class="h2">很遗憾，商品已秒完！</view>
+                <view class="p">
+                    <text decode>送上一份小礼品！\n小小心意，请笑纳</text>
+                </view>
+            </view>
+
+            <view class="qc-spike-result-btn" slot="btn">立即领取</view>
+
+            <view class="qc-spike-result-cancel" slot="cancel">放弃领取</view>
+        </block> -->
+
+
+        <!-- 绑定车主 -->
+        <block wx:if="{{ spikeResultVisible == 'bindCar' }}">
+            <view class="qc-spike-result-p" slot="p">
+                <text decode>
+                    本商品仅限车主参与\n您暂未认证车主噢
+                </text>
+            </view>
+
+            <view class="qc-spike-result-btn" bindtap="goBindCar" slot="btn">立即认证</view>
+
+            <view class="qc-spike-result-cancel" bindtap="spikeResultVisible" slot="cancel">暂不认证</view>
+        </block>
+
+
+
+
+        <!-- 活动结束 活动未开始 -->
+        <block wx:elif="{{ spikeResultVisible == 'notOpen' }}">
+
+            <view wx:if="{{ spikeIndex.activity_info.status == 3 }}" class="qc-spike-result-p" slot="p">
+                <text decode>
+                    很遗憾, 本次活动已结束\n下次活动即将开启\n敬请期待！
+                </text>
+            </view>
+
+            <view wx:if="{{ spikeIndex.activity_info.status == 2 }}" class="qc-spike-result-p" slot="p">
+                <text decode>
+                    活动将于\n<text class="date">{{ spikeIndex.activity_info.start_date }}</text>开启\n敬请期待！
+                </text>
+            </view>
+
+            <view class="qc-spike-result-btn" bindtap="lookOtherActivity" slot="btn">查看其他活动</view>
+
+        </block>
+
+
+        <!-- 提交 -->
+        <block wx:elif="{{ spikeResultVisible == 'successAppo' }}">
+
+            <image class="qc-spike-result-icon" slot="icon" mode="widthFix"
+                src="{{ IMGSERVICE }}/spike/pop_icon_02.jpg">
+            </image>
+
+            <view class="qc-spike-result-status success" slot="status">
+                <view class="h2">预约成功</view>
+                <view class="tips">
+                    <text>正式秒杀前\n将有微信消息通知，请留意</text>
+                </view>
+            </view>
+
+            <view class="qc-spike-result-btn" bindtap="lookOtherActivity" slot="btn">查看其他活动</view>
+
+        </block>
+
+    </qc-spike-result>
+
+    <!-- 兑换码弹窗  -->
+    <view class="code_mask fadeIn" wx:if="{{ isCodeShow }}">
+        <view class="main">
+            <view class="h3">
+                <view>请凭激活码自行</view>
+                <view>前往对应平台自助兑换</view>
+            </view>
+            <view class="p">{{ code }}</view>
+            <view class="btn" bindtap="setClipboar">复制商品码</view>
+            <view class="close_btn iconfont icon_del" bindtap="closeCode"></view>
+        </view>
+    </view>
+    <!-- 兑换码弹窗  -->
+
+
+    <!-- 预约-留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ appoFormsVisible }}">
+        <forms bindsubmit="appoSubmit" bindclose="appoFormsVisible" type="{{ formsType_04 }}" vehicle="{{ vehicle }}">
+        </forms>
+    </view>
+    <!-- 预约-留资弹窗 -->
+
+
+
+    <!-- 卡卷领取-留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ KJFormsVisible }}">
+        <forms bindsubmit="receiveSubmit" bindclose="KJFormsVisible" btnText="{{ btnText }}" type="{{ formsType_04 }}" vehicle="{{ vehicle }}">
+        </forms>
+    </view>
+    <!-- 卡卷领取-留资弹窗 -->
+
+    <!-- 快递领取-留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ KDFormsVisible }}">
+        <forms bindsubmit="receiveSubmit" bindclose="KDFormsVisible" btnText="{{ btnText }}" type="{{ formsType_01 }}" vehicle="{{ vehicle }}">
+        </forms>
+    </view>
+    <!-- 快递领取-留资弹窗 -->
+
+    <!-- 卡卷领取-回填留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ backfillKJFormsVisible }}">
+        <forms-backfill bindsubmit="receiveSubmit" bindclose="backfillKJFormsVisible" type="{{ formsType_04 }}"
+            vehicle="{{ vehicle }}">
+        </forms-backfill>
+    </view>
+    <!-- 卡卷领取-回填留资弹窗 -->
+
+    <!-- 快递领取-回填留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ backfillKDFormsVisible }}">
+        <forms-backfill bindsubmit="receiveSubmit" bindclose="backfillKDFormsVisible" type="{{ formsType_01 }}"
+            vehicle="{{ vehicle }}"></forms-backfill>
+    </view>
+    <!-- 快递领取-回填留资弹窗 -->
+
+    <!-- 自定义loading -->
+    <showLoading wx:if="{{isShowLoading}}" loadingText="{{ loadingText }}"></showLoading>
+
+    <!-- qc-page404 -->
+    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+
+
+</view>
+
+
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" style="z-index:999;" wx:if="{{ isVehicleOwnerHidePop }}">
+    <qc-activePop popType="{{ popType }}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
+
+    </qc-activePop>
+</view>
+<!-- 授权、去绑定车主弹窗 -->

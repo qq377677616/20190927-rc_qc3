@@ -557,7 +557,49 @@
 					"id": 71,
 					"name": "look_car_detail_03",
 					"pathName": "pages/look_car_detail_03/look_car_detail",
-					"query": "",
+					"query": "id=11",
+					"scene": null
+				},
+				{
+					"id": 72,
+					"name": "spike_index",
+					"pathName": "pages/spike_index/spike_index",
+					"query": "activity_id=53",
+					"scene": null
+				},
+				{
+					"id": 73,
+					"name": "spike_detail",
+					"pathName": "pages/spike_detail/spike_detail",
+					"query": "activity_id=53&skill_id=3",
+					"scene": null
+				},
+				{
+					"id": 74,
+					"name": "pages/assemble/pin/pin",
+					"pathName": "pages/assemble/pin/pin",
+					"query": "activity_id=43",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "spike_log",
+					"pathName": "pages/spike_log/spike_log",
+					"query": "activity_id=53&skill_id=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addRemark/addRemark",
+					"pathName": "pages/addRemark/addRemark",
+					"query": "rid=208",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addRemark",
+					"pathName": "pages/addRemark/addRemark",
+					"query": "rid=208",
 					"scene": null
 				}
 			]

@@ -1,0 +1,81 @@
+<!--pages/spike_log/spike_log.wxml-->
+
+
+<view class="page">
+
+    <scroll-view scroll-y class="log-list" bindscrolltolower="scrollLoad">
+
+        <view class="log-item fadeIn" wx:for="{{ spikeLog }}" wx:key="index">
+            <view class="image">
+                <image src="{{ item.thumb }}" mode="widthFix"></image>
+            </view>
+
+            <view class="content">
+                <view class="title clamp_02">{{ item.title }}</view>
+                
+                <view class="bottom">
+                    <view class="get-time">获取时间：{{ item.create_time }}</view>
+                    <view wx:if="{{ item.is_overdue == 1 }}" class="btn overdue">已过期</view>
+                    <view wx:elif="{{ item.is_receive == 1 }}" class="btn receive" data-index="{{ index }}"
+                        data-btnType="look" bindtap="opBtn">查看订单</view>
+                    <view wx:else class="btn receive" data-index="{{ index }}" data-btnType="receive" bindtap="opBtn">
+                        立即领取</view>
+                </view>
+            </view>
+        </view>
+
+        <!-- qc-More -->
+        <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
+
+    </scroll-view>
+
+
+    <!-- 兑换码弹窗  -->
+    <view class="code_mask fadeIn" wx:if="{{ isCodeShow }}">
+        <view class="main">
+            <view class="h3">
+                <view>请凭激活码自行</view>
+                <view>前往对应平台自助兑换</view>
+            </view>
+            <view class="p">{{ code }}</view>
+            <view class="btn" bindtap="setClipboar">复制商品码</view>
+            <view class="close_btn iconfont icon_del" bindtap="closeCode"></view>
+        </view>
+    </view>
+    <!-- 兑换码弹窗  -->
+
+
+    <!-- 卡卷领取-留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ KJFormsVisible }}">
+        <forms bindsubmit="receiveSubmit" bindclose="KJFormsVisible" btnText="{{ btnText }}" type="{{ formsType_04 }}"
+            vehicle="{{ vehicle }}">
+        </forms>
+    </view>
+    <!-- 卡卷领取-留资弹窗 -->
+
+    <!-- 快递领取-留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ KDFormsVisible }}">
+        <forms bindsubmit="receiveSubmit" bindclose="KDFormsVisible" btnText="{{ btnText }}" type="{{ formsType_01 }}"
+            vehicle="{{ vehicle }}"></forms>
+    </view>
+    <!-- 快递领取-留资弹窗 -->
+
+    <!-- 卡卷领取-回填留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ backfillKJFormsVisible }}">
+        <forms-backfill bindsubmit="receiveSubmit" bindclose="backfillKJFormsVisible" type="{{ formsType_04 }}"
+            vehicle="{{ vehicle }}">
+        </forms-backfill>
+    </view>
+    <!-- 卡卷领取-回填留资弹窗 -->
+    
+    <!-- 快递领取-回填留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ backfillKDFormsVisible }}">
+        <forms-backfill bindsubmit="receiveSubmit" bindclose="backfillKDFormsVisible" type="{{ formsType_01 }}"
+            vehicle="{{ vehicle }}"></forms-backfill>
+    </view>
+    <!-- 快递领取-回填留资弹窗 -->
+
+    <!-- 自定义loading -->
+    <showLoading wx:if="{{isShowLoading}}" loadingText="{{ loadingText }}"></showLoading>
+
+</view>

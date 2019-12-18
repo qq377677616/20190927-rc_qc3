@@ -292,24 +292,33 @@ Page({
     }
 
     //有属性 无属性 选择数量不能大于库存
+    // if( 
+    //   ( (goodsDetail.goods_attr.length) && (attr.__number > goodsDetail.attr_info[attr.__index].number) ) 
+    //   || ( !goodsDetail.goods_attr.length && (attr.__number > goodsDetail.number) )
+    // ){
+    //   return alert.alert({
+    //     str:'选择的商品数不能大于库存'
+    //   })
+    // }
+
     if( 
-      ( (goodsDetail.goods_attr.length) && (attr.__number > goodsDetail.attr_info[attr.__index].number) ) 
-      || ( !goodsDetail.goods_attr.length && (attr.__number > goodsDetail.number) )
+      ( (goodsDetail.goods_attr.length) && (0 == goodsDetail.attr_info[attr.__index].number) ) 
+      || ( !goodsDetail.goods_attr.length && (0 == goodsDetail.number) )
     ){
       return alert.alert({
-        str:'选择的商品数不能大于库存'
+        str:'库存不足'
       })
     }
     
 
-    //(有属性 无属性) 已购数量 加 选择数量 不能大于限购数量
-    if( 
-      ( (goodsDetail.max_buy > 0) && ( (attr.__number + goodsDetail.buy_num) > goodsDetail.max_buy ) )
-    ){
-      return alert.alert({
-        str:'您购买商品数已大于限购数'
-      })
-    }
+    // //(有属性 无属性) 已购数量 加 选择数量 不能大于限购数量
+    // if( 
+    //   ( (goodsDetail.max_buy > 0) && ( (attr.__number + goodsDetail.buy_num) > goodsDetail.max_buy ) )
+    // ){
+    //   return alert.alert({
+    //     str:'您购买商品数已大于限购数'
+    //   })
+    // }
 
     
     

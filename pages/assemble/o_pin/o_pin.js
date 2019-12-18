@@ -12,6 +12,10 @@ const authorization = require('../../../utils/tool/authorization.js');
 
 const alert = require('../../../utils/tool/alert.js');
 
+
+import tool from '../../../utils/tool/tool.js';
+import api from '../../../utils/request/request_03.js'
+
 const app = getApp(); //获取应用实例
 
 Page({
@@ -26,6 +30,10 @@ Page({
     show: false,
     pinInfo: {},
     timmerGroup: {},
+    isCodeShow: false,
+    code:'',
+    loadingText: '卡券领取中',
+	  isShowLoading:false,
   },
 
   /**
@@ -96,7 +104,7 @@ Page({
     wx.updateShareMenu({
       withShareTicket: true,
       isUpdatableMessage: true,
-      activityId:String(pinInfo.message_id), // 活动 ID
+      activityId: String(pinInfo.message_id), // 活动 ID
       templateInfo: {
         parameterList: [{
           name: 'member_count',
@@ -109,8 +117,8 @@ Page({
     })
 
     return {
-      title:'组团领好礼，有福一起享！',
-      imageUrl:`${IMGSERVICE}/pin/pin.jpg`,
+      title: '组团领好礼，有福一起享！',
+      imageUrl: `${IMGSERVICE}/pin/pin.jpg`,
       path: `/pages/assemble/o_pin/o_pin?groupbuy_id=${options.groupbuy_id}&user_id=${userInfo.user_id}`,
     };
   },
@@ -191,10 +199,10 @@ Page({
   },
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    if(!e)return;
+    if (!e) return;
     const type = e.target.dataset.type;
-    const index =  e.target.dataset.index;
-    const btn =  e.target.dataset.btn;
+    const index = e.target.dataset.index;
+    const btn = e.target.dataset.btn;
     const pinInfo = this.data.pinInfo;
     const goods_car_owner = btn == 'joinOther' ? pinInfo.other_group_buy[index].goods_car_owner : pinInfo.goods_car_owner;
 
@@ -203,8 +211,8 @@ Page({
     //用户已授权，活动不是车主活动，商品不是车主商品。
 
     if (
-      (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) 
-      || (type != 'ok') 
+      (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1)
+      || (type != 'ok')
       || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !pinInfo.car_owner && !goods_car_owner)
     ) return;
 
@@ -218,7 +226,7 @@ Page({
 
       //该活动、该商品仅限于车主
       pinInfo.car_owner == 1 ? this.setData({ popType: 3 }) : this.setData({ popType: 4 });
-      
+
     }
     this.isVehicleOwnerHidePop()
   },
@@ -256,8 +264,8 @@ Page({
     //用户不是车主，商品是车主商品。
     //用户未授权。
     if (
-      (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner) 
-      || (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.goods_car_owner) 
+      (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner)
+      || (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.goods_car_owner)
       || !wx.getStorageSync("userInfo").unionid
       || !wx.getStorageSync("userInfo").nickName
     ) return;
@@ -272,7 +280,7 @@ Page({
       thumb: pinInfo.thumb,// 产品图片
       groupbuy_id: options.groupbuy_id,//拼团id
       __number: 1,//拼团商品数量
-      vcoin:pinInfo.price//原价
+      vcoin: pinInfo.price//原价
     })
 
     app.globalData.pinDetail = newPinfo;//将拼团商品详情存于全局
@@ -282,19 +290,66 @@ Page({
     })
   },
   //领取奖品
+  // getPrize() {
+  //   const options = this.data.options;
+  //   const userInfo = wx.getStorageSync('userInfo');
+  //   const pinInfo = this.data.pinInfo;
+  //   const order_id = pinInfo.my_groupbuy_info.order_id;
+  //   if (order_id) {
+  //     //无order_id
+  //     router.jump_nav({
+  //       url: `/pages/order_detail/order_detail?order_id=${order_id}`,
+  //     })
+  //   }
+  //   else {
+  //     //无order_id
+  //     request_01.getOrderId({
+  //       user_id: userInfo.user_id,
+  //       groupbuy_id: options.groupbuy_id,
+  //     })
+  //       .then((value) => {
+  //         //success
+  //         const msg = value.data.msg;
+  //         const status = value.data.status;
+  //         const data = value.data.data;
+
+  //         if (status == 1) {//获取order_id
+  //           router.jump_nav({
+  //             url: `/pages/order_detail/order_detail?order_id=${data.order_id}`,
+  //           })
+  //         }
+  //         else {//获取失败
+  //           alert.alert({
+  //             str: msg,
+  //           })
+  //         }
+  //       })
+  //       .catch((reason) => {
+  //         //fail
+  //         alert.alert({
+  //           str: JSON.stringify(reason)
+  //         })
+  //       })
+  //   }
+  // },
   getPrize() {
     const options = this.data.options;
     const userInfo = wx.getStorageSync('userInfo');
     const pinInfo = this.data.pinInfo;
     const order_id = pinInfo.my_groupbuy_info.order_id;
-    if (order_id) {
-      //无order_id
+    const is_receive = pinInfo.my_groupbuy_info.is_receive;
+
+    if ( is_receive == 1 ) {//已领取
       router.jump_nav({
         url: `/pages/order_detail/order_detail?order_id=${order_id}`,
       })
     }
     else {
-      //无order_id
+
+      alert.loading({
+        str: '领取中'
+      })
+
       request_01.getOrderId({
         user_id: userInfo.user_id,
         groupbuy_id: options.groupbuy_id,
@@ -304,11 +359,32 @@ Page({
           const msg = value.data.msg;
           const status = value.data.status;
           const data = value.data.data;
+          const goods_type = data.goods_type;// 商品类型 1-微信卡券 2-快递 3-虚拟卡券
+          const xuni_code = data.xuni_code;
+          const card_info = data.card_info;
+          const order_goods_id = data.order_goods_id;
 
-          if (status == 1) {//获取order_id
-            router.jump_nav({
-              url: `/pages/order_detail/order_detail?order_id=${data.order_id}`,
-            })
+
+          alert.loading_h()
+
+          if (status == 1) {
+
+            switch (goods_type) {
+              case 1://微信卡券
+                this.addCard(card_info, order_goods_id)
+                break;
+              case 2://快递
+                alert.alert({
+                  str: '领取成功',
+                })
+                break;
+              case 3://虚拟卡券
+                this.setData({
+                  isCodeShow: true,
+                  code: xuni_code,
+                })
+                break;
+            }
           }
           else {//获取失败
             alert.alert({
@@ -318,11 +394,75 @@ Page({
         })
         .catch((reason) => {
           //fail
+          alert.loading_h()
           alert.alert({
             str: JSON.stringify(reason)
           })
         })
     }
+  },
+  //领取卡券
+  addCard(cardList, order_goods_id) {
+    this.isShowLoading()
+    tool.addCard(cardList).then(res => {
+      console.log("卡券返回", res)
+      if (res.errMsg == "addCard:ok") {
+
+        console.log("卡券领取成功", res)
+        let _card_code = ''
+
+        for (let i = 0; i < res.cardList.length; i++) {
+          _card_code += ((i == 0 ? '' : ',') + res.cardList[i].code)
+        }
+        this.cardCheck(_card_code, order_goods_id)
+      } else {
+        this.isShowLoading()
+        tool.alert("卡券领取失败")
+      }
+    }).catch(err => {
+      console.log("err", err)
+      this.isShowLoading()
+      tool.alert("卡券领取失败")
+    })
+  },
+  //卡券核销上报
+  cardCheck(card_code, order_goods_id) {
+    let _data = {
+      user_id: wx.getStorageSync("userInfo").user_id,
+      order_goods_id,
+      card_code: card_code
+    }
+    api.orderCheck(_data).then(res => {
+      console.log("卡券核销上报返回", res)
+      if (res.statusCode == 200) {
+        this.isShowLoading()
+        tool.alert("卡券领取成功，请到我的卡包查看卡券使用详情")
+        // let _orderDetail = this.data.orderDetail
+        // _orderDetail.order_goods[this.data.curIndex].is_receive = 1
+        // console.log("_orderDetail", _orderDetail)
+        // this.setData({ orderDetail: _orderDetail })
+      }
+    })
+  },
+  //自定义loading框
+  isShowLoading() {
+    this.setData({
+      isShowLoading: !this.data.isShowLoading
+    })
+  },
+  //关闭虚拟兑换窗口
+  closeCode() {
+    this.setData({
+      isCodeShow: false,
+    })
+  },
+  //复制兑换码
+  setClipboar() {
+    let code = this.data.code;
+    wx.setClipboardData({
+      //准备复制的数据
+      data: code,
+    });
   },
   //查看更多活动
   moreActivity() {
@@ -337,14 +477,14 @@ Page({
     const item = pinInfo.other_group_buy[index];
     let newPinfo = {};
     const userInfo = wx.getStorageSync("userInfo");
-    
-    
+
+
     //用户不是车主，活动是车主活动。
     //用户不是车主，商品是车主商品。
     //用户未授权。
     if (
-      (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner) 
-      || (wx.getStorageSync("userInfo").user_type == 0 && item.goods_car_owner) 
+      (wx.getStorageSync("userInfo").user_type == 0 && pinInfo.car_owner)
+      || (wx.getStorageSync("userInfo").user_type == 0 && item.goods_car_owner)
       || !wx.getStorageSync("userInfo").unionid
       || !wx.getStorageSync("userInfo").nickName
     ) return;
@@ -354,7 +494,7 @@ Page({
       title: item.title, // 标题
       type: item.type, // 商品类型 1-微信卡券 2-快递 3-虚拟卡券
       real_vcoin: item.real_vcoin, // 拼团价
-      vcoin:item.vcoin,// 原价
+      vcoin: item.vcoin,// 原价
       thumb: item.thumb,// 产品图片
       groupbuy_id: item.groupbuy_id,//拼团id
       __number: 1,//拼团商品数量

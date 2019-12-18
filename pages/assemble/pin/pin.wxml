@@ -59,7 +59,7 @@
                 件
               </view>
             </view>
-            <view class="cut_on blue" data-index="{{ index }}" bindtap="prizeBtn">领取奖品</view>
+            <view class="cut_on blue" data-index="{{ index }}" bindtap="prizeBtn">{{ (item.is_receive == 1 && item.order_id) ? '查看订单' : '领取奖品' }}</view>
           </view>
         </view>
       </view>
@@ -124,6 +124,23 @@
     <!-- qc-More -->
     <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More>
     <!-- qc-More -->
+
+    <!-- 兑换码弹窗  -->
+    <view class="code_mask fadeIn" wx:if="{{ isCodeShow }}">
+      <view class="main">
+        <view class="h3">
+          <view>请凭激活码自行</view>
+          <view>前往对应平台自助兑换</view>
+        </view>
+        <view class="p">{{ code }}</view>
+        <view class="btn" bindtap="setClipboar">复制商品码</view>
+        <view class="close_btn iconfont icon_del" bindtap="closeCode"></view>
+      </view>
+    </view>
+    <!-- 兑换码弹窗  -->
+
+    <!-- 自定义loading -->
+    <showLoading wx:if="{{isShowLoading}}" loadingText="{{ loadingText }}"></showLoading>
 
   </view>
   <!-- cut_now -->

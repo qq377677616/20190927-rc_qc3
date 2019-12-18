@@ -22,6 +22,34 @@
 	height: 200rpx;
 	margin-top: 21rpx;
 }
+
+.code {
+    box-sizing: border-box;
+    height: 102rpx;
+    padding: 22rpx 34rpx;
+    display: flex;
+	align-items: center;
+	box-shadow:0 0 2rpx #333;
+}
+
+.code input {
+    width: 0;
+    flex: 1;
+    font-size: 26rpx;
+    color: #000;
+}
+
+.code input::placeholder {
+    color: #333;
+}
+.code .canvas {
+    flex: 0 0 auto;
+    width: 160rpx;
+    height: 58rpx;
+    border-radius: 14rpx;
+    background-color: #F3EDEF;
+}
+
 .fb_btn{
 	position: relative;
 	display: flex;

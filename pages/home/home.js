@@ -74,6 +74,8 @@ Page({
         //success
         const personalInfo = value[0].data.data;
 
+        
+
         this.setData({
           personalInfo,
           pageKey: true,

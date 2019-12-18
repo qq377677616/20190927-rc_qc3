@@ -6,7 +6,7 @@ import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js'
 Component({
   /**
    * 组件的属性列表
-   */ 
+   */
   properties: {
     type: {
       type: String,
@@ -15,7 +15,11 @@ Component({
     vehicle: {
       type: Object,
       value: {}
-    }
+    },
+    btnText: {
+      type: String,
+      value: ''
+    },
   },
 
   /**
@@ -38,10 +42,10 @@ Component({
   },
   ready() {
     // this.getPosition()
-    if (!wx.getStorageSync('userInfo').mobile) { 
+    if (!wx.getStorageSync('userInfo').mobile) {
       this.myLogin()
     } else {
-      this.setData({ wxPhone: wx.getStorageSync('userInfo').mobile})
+      this.setData({ wxPhone: wx.getStorageSync('userInfo').mobile })
       if (this.data.type != 3) this.getPosition()
     }
     // gets.isSetting("scope.userLocation").then(res => {
@@ -112,7 +116,7 @@ Component({
     getPhoneNumber(e) {
       if (!e.detail.encryptedData) return
       let _data = {
-        user_id: wx.getStorageSync("userInfo").user_id,	
+        user_id: wx.getStorageSync("userInfo").user_id,
         encrypted_data: e.detail.encryptedData,
         session_key: this.data.session_key,
         iv: e.detail.iv
@@ -129,7 +133,11 @@ Component({
     },
     //查询门店列表
     getStoreList() {
-      api.getStoreList({ city: this.data.region[1] }).then(res => {
+      api.getStoreList({
+        city: this.data.region[1],
+        lat: this.data.lat||'',
+        lon: this.data.lon||'',
+      }).then(res => {
         console.log("门店列表", res)
         tool.loading_h()
         if (res.data.data.length == 0) {
@@ -155,13 +163,18 @@ Component({
           let _address_component = res.result.address_component
           let _city = _address_component.province + _address_component.city
           this.setData({ region: [_address_component.province, _address_component.city, _address_component.district] })
+
           let _data = {
             // lon: res.result.location.lng,
-            // lat: res.result.location.lat
+            // lat: res.result.location.lat,
             // province: this.data.region[0],
             city: this.data.region[1]
             // district: this.data.region[2]
           }
+          this.setData({
+            lon: res.result.location.lng,
+            lat: res.result.location.lat,
+          })
           tool.loading_h()
           if (this.data.type != 1) this.getStoreList()
         },
@@ -216,7 +229,7 @@ Component({
         tool.alert("手机号格式有误")
         return
       }
-      this.setData({ isGetCode: 2} )
+      this.setData({ isGetCode: 2 })
       api.getVerificationCode({ user_id: wx.getStorageSync("userInfo").user_id, phone: this.data.phone }).then(res => {
         console.log("res", res)
         if (res.data.status == 1) {
@@ -256,11 +269,11 @@ Component({
     //使用微信手机号
     wxPhone() {
       if (!wx.getStorageSync('userInfo').mobile) return
-      this.setData({ isGetPhone: true, phone: this.data.wxPhone })      
+      this.setData({ isGetPhone: true, phone: this.data.wxPhone })
     },
     //使用其它手机号
     other() {
-      this.setData({ isGetPhone: false, phone: '' })      
+      this.setData({ isGetPhone: false, phone: '' })
     },
     //我同意
     isChecked() {

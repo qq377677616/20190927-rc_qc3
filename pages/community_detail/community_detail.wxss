@@ -62,7 +62,7 @@ body {
 }
 
 .pic_next image,.fwbImg{
-    margin-top: 63rpx;
+    margin-top:63rpx;
     width: 694rpx;
     height: 410rpx;
     border-radius: 10rpx;

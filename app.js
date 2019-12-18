@@ -32,6 +32,7 @@ App({
       pinKey:keyGroup.pinKey == false ? false : true,//拼团开关
       signUpKey:keyGroup.signUpKey == false ? false : true,//报名开关
       signUpWin:keyGroup.signUpWin == false ? false : true,//报名开关
+      spikeKey:keyGroup.spikeKey == false ? false : true,//秒杀开关
     })
   },
   globalData: {

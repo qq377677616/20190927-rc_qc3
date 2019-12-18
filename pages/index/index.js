@@ -123,8 +123,8 @@ Page({
   onShareAppMessage: function () {
     const IMGSERVICE = this.data.IMGSERVICE;
     return {
-        title:'全新启辰T90跨悦上市，点击赢好礼！',
-        imageUrl:`${IMGSERVICE}/index/index.jpg`,
+        title:'启辰星亮相发布，快来预约关注！',
+        imageUrl:`${IMGSERVICE}/index/index_share.jpg`,
         path: '/pages/index/index'
     };
   },
@@ -416,6 +416,12 @@ Page({
         //13	砍价
         router.jump_nav({
           url:`/pages/bargain_index/bargain_index?activity_id=${activity_id}`,
+        })
+      break;
+      case 14:
+        //14	秒杀
+        router.jump_nav({
+          url: `/pages/spike_index/spike_index?activity_id=${activity_id}`,
         })
       break;
     }

@@ -1,0 +1,227 @@
+<!--pages/spike_detail/spike_detail.wxml-->
+
+<wxs src="../../utils/wxs/filter_01.wxs" module="filter"></wxs>
+
+<import src="../../utils/wxParse/wxParse.wxml" />
+
+<view class="page">
+
+    <!-- header -->
+    <view class="header">
+
+        <view class="banner">
+            <image mode="widthFix" src="{{ spikeGoodsDetail.goods_album[0] }}"></image>
+        </view>
+
+        <view class="info" style="background:url({{ IMGSERVICE }}/spike/Details_bg.png) no-repeat center center/cover;">
+            <view class="left">
+                <view class="price">
+                    <view class="span">
+                        ￥0<text class="i">.00</text>
+                    </view>
+                    <view class="tag">仅剩{{ spikeGoodsDetail.number }}件</view>
+                </view>
+
+                <view class="origin">￥{{ spikeGoodsDetail.vcoin }}.00</view>
+            </view>
+
+            <view class="right">
+
+                <block wx:if="{{ spikeGoodsDetail.status == 2 }}">
+                    <view class="tag">限时折扣</view>
+                    <view class="start-time">
+                        {{ spikeGoodsDetail.tips_date }}{{ spikeGoodsDetail.tips_time }}开始
+                    </view>
+                </block>
+                <block wx:elif="{{ spikeGoodsDetail.status == 1 }}">
+                    <view class="label">距结束还剩</view>
+
+                    <view class="count-down">
+                        <view class="span black"
+                            style="background:url({{ IMGSERVICE }}/spike/index_icon_02.png) no-repeat center center/cover;">
+                            {{ countDown[0] }}</view>
+
+                        <view class="colon">:</view>
+
+                        <view class="span black"
+                            style="background:url({{ IMGSERVICE }}/spike/index_icon_02.png) no-repeat center center/cover;">
+                            {{ countDown[1] }}</view>
+
+                        <view class="colon">:</view>
+
+                        <view class="span black"
+                            style="background:url({{ IMGSERVICE }}/spike/index_icon_02.png) no-repeat center center/cover;">
+                            {{ countDown[2] }}</view>
+
+                        <view class="colon">:</view>
+
+                        <view class="span red"
+                            style="background:url({{ IMGSERVICE }}/spike/index_icon_03.png) no-repeat center center/cover;">
+                            {{ countDown[3] }}</view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="over">已结束</view>
+                </block>
+
+            </view>
+        </view>
+
+    </view>
+
+    <!-- goods-title -->
+    <view class="goods-title">
+        <view class="h2">
+            <view wx:if="{{ spikeGoodsDetail.car_owner == 1 }}" class="label">车主专享</view>
+            <view class="p">{{ spikeGoodsDetail.title }}</view>
+        </view>
+
+        <view class="tips">
+            <view class="p">限时抢购，活动结束后恢复原价</view>
+            <!-- <view class="span">
+                <view class="i">6266</view>
+                <view class="text">人想买</view>
+            </view> -->
+        </view>
+    </view>
+
+    <!-- explain -->
+    <view class="section explain">
+        <view class="h2">商品说明</view>
+        <!-- <view class="h3">杯子</view> -->
+        <template is="wxParse" data="{{ wxParseData:product_explain.nodes }}" />
+    </view>
+
+    <!-- detail -->
+    <view class="section detail">
+        <view class="h2">商品详情</view>
+        <image wx:for="{{ spikeGoodsDetail.goods_detail }}" wx:key="index" class="img" mode="widthFix"
+            src="https://game.flyh5.cn/resources/game/admin_yyt/2019/dfqc/15691279765d86fe2895d79.png"></image>
+    </view>
+
+    <!-- qc-spike-result -->
+    <qc-spike-result wx:if="{{ spikeResultVisible }}" bindclose="spikeResultVisible">
+
+        <!-- 秒杀成功 -->
+        <block wx:if="{{ spikeResultVisible == 'success' }}">
+            <image class="qc-spike-result-icon" slot="icon" mode="widthFix"
+                src="{{ IMGSERVICE }}/spike/pop_icon_02.jpg">
+            </image>
+
+            <view class="qc-spike-result-p" slot="p">
+                <text decode>恭喜您, 秒杀成功!\n请点击下方按钮领取礼品</text>
+            </view>
+
+            <view class="qc-spike-result-btn" data-btnType="receiveBtn" bindtap="opBtn" slot="btn">领取</view>
+
+            <view class="qc-spike-result-tips" slot="tips">
+                <text decode>请在24小时内领取礼品\n超时将默认失效！</text>
+            </view>
+        </block>
+
+        <!-- 秒杀失败 -->
+        <block wx:elif="{{ spikeResultVisible == 'fail' }}">
+            <image class="qc-spike-result-icon" slot="icon" mode="widthFix"
+                src="{{ IMGSERVICE }}/spike/pop_icon_03.jpg">
+            </image>
+
+            <view class="qc-spike-result-p" slot="p">
+                <text space decode>{{ filter.replace(spikeResultMsg) }}</text>
+                <!-- 很遗憾, 您的手速慢了\n商品已经秒杀完了 -->
+            </view>
+
+            <view class="qc-spike-result-btn" bindtap="lookOtherGoods" slot="btn">查看其他商品</view>
+        </block>
+
+        <!-- 安慰奖 -->
+        <block wx:elif="{{ spikeResultVisible == 'comfort' }}">
+            <view class="qc-spike-result-status fail" slot="status">
+                <view class="h2">很遗憾，商品已秒完！</view>
+                <view class="p">
+                    <text decode>送上一份小礼品！\n小小心意，请笑纳</text>
+                </view>
+            </view>
+
+            <view class="qc-spike-result-btn" data-btnType="receiveBtn" bindtap="opBtn" slot="btn">立即领取</view>
+
+            <view class="qc-spike-result-cancel" bindtap="spikeResultVisible" slot="cancel">放弃领取</view>
+        </block>
+
+    </qc-spike-result>
+
+
+    <!-- 兑换码弹窗  -->
+    <view class="code_mask fadeIn" wx:if="{{ isCodeShow }}">
+        <view class="main">
+            <view class="h3">
+                <view>请凭激活码自行</view>
+                <view>前往对应平台自助兑换</view>
+            </view>
+            <view class="p">{{ code }}</view>
+            <view class="btn" bindtap="setClipboar">复制商品码</view>
+            <view class="close_btn iconfont icon_del" bindtap="closeCode"></view>
+        </view>
+    </view>
+    <!-- 兑换码弹窗  -->
+
+
+    <!-- 卡卷领取-留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ KJFormsVisible }}">
+        <forms bindsubmit="receiveSubmit" bindclose="KJFormsVisible" btnText="{{ btnText }}" type="{{ formsType_04 }}"
+            vehicle="{{ vehicle }}">
+        </forms>
+    </view>
+    <!-- 卡卷领取-留资弹窗 -->
+
+    <!-- 快递领取-留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ KDFormsVisible }}">
+        <forms bindsubmit="receiveSubmit" bindclose="KDFormsVisible" btnText="{{ btnText }}" type="{{ formsType_01 }}"
+            vehicle="{{ vehicle }}"></forms>
+    </view>
+    <!-- 快递领取-留资弹窗 -->
+
+    <!-- 卡卷领取-回填留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ backfillKJFormsVisible }}">
+        <forms-backfill bindsubmit="receiveSubmit" bindclose="backfillKJFormsVisible" type="{{ formsType_04 }}"
+            vehicle="{{ vehicle }}">
+        </forms-backfill>
+    </view>
+    <!-- 卡卷领取-回填留资弹窗 -->
+
+    <!-- 快递领取-回填留资弹窗 -->
+    <view class="forms-box bottom-top" wx:if="{{ backfillKDFormsVisible }}">
+        <forms-backfill bindsubmit="receiveSubmit" bindclose="backfillKDFormsVisible" type="{{ formsType_01 }}"
+            vehicle="{{ vehicle }}"></forms-backfill>
+    </view>
+    <!-- 快递领取-回填留资弹窗 -->
+
+    <!-- 自定义loading -->
+    <showLoading wx:if="{{isShowLoading}}" loadingText="{{ loadingText }}"></showLoading>
+
+
+    <!-- footer -->
+    <block wx:if="{{ spikeGoodsDetail.status == 1 }}">
+        <view wx:if="{{ spikeGoodsDetail.is_skill == 0 }}" class="footer start" data-btnType="spikeBtn" bindtap="opBtn">
+            立即秒杀
+        </view>
+        <view wx:else class="footer receive" data-btnType="receiveBtn" bindtap="opBtn">
+            {{ (spikeGoodsDetail.order_id > 0 && spikeGoodsDetail.is_receive == 1) ? '查看订单' : '立即领取' }}
+        </view>
+    </block>
+    <block wx:elif="{{ spikeGoodsDetail.status == 2 }}">
+        <view class="footer await">
+            请等待秒杀开始
+        </view>
+    </block>
+    <block wx:elif="{{ spikeGoodsDetail.status == 3 }}">
+        <view class="footer await">
+            活动已结束
+        </view>
+    </block>
+    <block wx:elif="{{ spikeGoodsDetail.status == 4 }}">
+        <view class="footer await">
+            已秒完
+        </view>
+    </block>
+
+</view>

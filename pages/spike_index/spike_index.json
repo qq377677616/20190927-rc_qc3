@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "秒杀",
+  "usingComponents": {
+    "qc-rule":"/components/rule/rule",
+    "qc-spike-result":"/components/Spike/cmp",
+    "qc-activePop":"/components/activePop/activePop",
+    "forms": "/components/forms/form",
+    "forms-backfill": "/components/forms_backfill/form",
+    "showLoading": "/components/showLoading/showLoading",
+    "qc-page404":"/components/page404/page404"
+  }
+}

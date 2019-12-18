@@ -3,7 +3,7 @@
 <!-- o_prize_page -->
 <view class="o_prize_page">
     <!-- prize_item -->
-    <view class="prize_item fadeIn" wx:for="{{prizeList}}" wx:key="key{{index}}" data-index="{{index}}" catchtap="lookDetail">
+    <view class="prize_item fadeIn" wx:for="{{prizeList}}" wx:key="index" data-index="{{index}}" catchtap="lookDetail">
         <view class="image">
             <image src="{{item.prize_img}}" mode="widthFix"></image>
         </view>

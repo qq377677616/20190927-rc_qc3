@@ -42,7 +42,7 @@
             <view class="v_dou">V豆：{{ item.vcoin }}</view>
 
             <view class="btn" wx:if="{{ item.status == 1 }}" data-index="{{ index }}" catchtap="getOrderId">
-              领取奖品
+              {{ (item.order_id && item.is_receive == 1) ? '查看订单' : '领取奖品' }}
             </view>
             
             <view class="btn fail" wx:elif="{{ item.status == 2 }}">fail</view>

@@ -267,6 +267,19 @@ const getWxEnvVersion = () => {
     }
   })
 }
+
+//订阅模板消息
+const requestSubscribeMessage = ()=>{
+  return new Promise((resolve, reject)=>{
+    wx.requestSubscribeMessage({
+      tmplIds: ['liXhFXGRSukyfksHK95S4_qdi0PXoVMfx4igSU9ef8M'],
+      success (res) {
+        resolve(res['liXhFXGRSukyfksHK95S4_qdi0PXoVMfx4igSU9ef8M'])
+      },
+    })
+  })
+}
+
 module.exports = {
   alert,
   showModal,
@@ -284,5 +297,6 @@ module.exports = {
   getPosition,
   getImageInfo,
   addCard,
-  getWxEnvVersion
+  getWxEnvVersion,
+  requestSubscribeMessage
 }

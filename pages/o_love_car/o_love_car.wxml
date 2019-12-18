@@ -20,12 +20,15 @@
         <view class="verify_area">
             <image src="{{ IMGSERVICE }}/center/vincode.jpg" mode="widthFix" bindtap="previewImage"></image>
         </view>
+        <view class="agree" bindtap="isChecked">
+            <view class="checked {{ isChecked ? 'on' : '' }}"></view>
+            您填写的信息将同步至东风启辰服务号，以便改善我们的产品，为您提供更好的服务。
+        </view>
     </view><!-- vin_area -->
 
     <!-- submit_btn -->
-    <!-- <view wx:if="{{ userInfo.nickName }}" class="submit_btn" bindtap="nextBtn">下一步</view> -->
-
-    <button class="submit_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+    <view wx:if="{{ userInfo.nickName && userInfo.unionid }}" class="submit_btn" bindtap="nextBtn">下一步</view>
+    <button wx:else class="submit_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
         下一步
     </button><!-- submit_btn -->
 
@@ -52,7 +55,10 @@
                 <input placeholder="请输入手机号码" type="text" value="{{ tel }}" bindinput="telInput"/>
             </view>
     
-            <view class="next_btn" bindtap="saveBtn">保存</view>
+            <view wx:if="{{ userInfo.nickName && userInfo.unionid }}" class="next_btn" bindtap="saveBtn">保存</view>
+            <button wx:else class="next_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+                保存
+            </button>
     
         </view>
     

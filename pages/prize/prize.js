@@ -210,8 +210,10 @@ Page({
           setTimeout(() => {
             tool.loading_h()
             this.isShowForm()
-            tool.showModal("领取成功", "您的信息已提交成功，近期将会有工作人员电话联系您，敬请留意~", "好的,#124DB8", false)
+            // tool.showModal("领取成功", "您的信息已提交成功，近期将会有工作人员电话联系您，敬请留意~", "好的,#124DB8", false)
+            tool.jump_nav(`/pages/o_prize_detail/o_prize_detail?prize_id=${this.data.popData.prize_log_id}`)
           }, 800)
+
         } else if (this.data.prize_info.prize_type == 3) {
           tool.loading("信息提交中")
           setTimeout(() => {

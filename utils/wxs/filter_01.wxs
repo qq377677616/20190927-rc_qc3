@@ -41,11 +41,22 @@ var cartTotalPrice = function(data){
 var split = function(data, way){
     return data.split(way);
 }
-
+var replace = function(data, pattern){
+    if( typeof data == 'string' ){
+        pattern = data.replace(getRegExp('\\','g'),'');
+    
+        return pattern.replace(getRegExp('n','g'),'\n');
+    }
+    else{
+        return data;
+    }
+    
+}
 module.exports = {
     totalPrice:totalPrice,
     specJoin:specJoin,
     totalNumber:totalNumber,
     cartTotalPrice:cartTotalPrice,
-    split:split
+    split:split,
+    replace:replace,
 }

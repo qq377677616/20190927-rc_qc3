@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "usingComponents": {
+    "qc-spike-result":"/components/Spike/cmp",
+    "qc-activePop":"/components/activePop/activePop",
+    "forms": "/components/forms/form",
+    "forms-backfill": "/components/forms_backfill/form",
+    "showLoading": "/components/showLoading/showLoading"
+  }
+}

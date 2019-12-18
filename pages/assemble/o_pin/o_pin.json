@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "拼团",
   "usingComponents": {
-    "qc-activePop":"/components/activePop/activePop"
+    "qc-activePop":"/components/activePop/activePop",
+    "showLoading": "/components/showLoading/showLoading"
   }
 }

@@ -242,7 +242,7 @@ const getdefault = (data) => {
 	return new Promise((resolve, reject) => {
 		_request.request({
 			url,
-			data
+			data:{...data, openid:wx.getStorageSync('userInfo').openid}
 		})
 			.then(res => {
 				resolve(res)
