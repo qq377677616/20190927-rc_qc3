@@ -79,7 +79,10 @@
     "pages/look_car_detail_03/look_car_detail",
     "pages/spike_index/spike_index",
     "pages/spike_detail/spike_detail",
-    "pages/spike_log/spike_log"
+    "pages/spike_log/spike_log",
+    "pages/binding/owner/owner",
+    "pages/binding/receive/receive",
+    "pages/binding/scratch/Scratch"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,303 @@
+/* pages/binding/owner/owner.wxss */
+
+page {
+  height: 100%;
+}
+
+.owner_page {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* main */
+
+.forms-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+
+.main .yao {
+  width: 313rpx;
+  position: fixed;
+  left: 50%;
+  top: 150rpx;
+  transform: translatex(-50%);
+}
+
+.main .prize {
+  position: fixed;
+  left: 0;
+  top: 36rpx;
+  height: 50rpx;
+  padding: 0 6rpx 0 18rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 50rpx;
+  border-radius: 0rpx 30rpx 30rpx 0rpx;
+}
+
+.main .rule {
+  position: fixed;
+  right: 0;
+  top: 36rpx;
+  height: 50rpx;
+  padding: 0 6rpx 0 18rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 50rpx;
+  border-radius: 30rpx 0 0 30rpx;
+}
+
+.main .btn_group {
+  position: fixed;
+  bottom: 97rpx;
+  width: 514rpx;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.main .btn_group .btn {
+  height: 80rpx;
+  background: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1));
+  border-radius: 14rpx;
+  font-size: 30rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18rpx;
+}
+
+.main .btn_group .txt {
+  font-size: 24rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #fefefe;
+  text-align: center;
+}
+
+.iconfont {
+  font-size: 24rpx;
+}
+
+/* main */
+
+/* 刮奖机会用完弹窗 */
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-cen {
+  width: 560rpx;
+  height: 465rpx;
+  background: #fff;
+  border-radius: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pop-cen .p-txt1, .pop-cen  .p-txt2 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333;
+  margin-top: 111rpx;
+}
+
+.pop-cen .red {
+  color: #ff4643;
+  margin-top: 20rpx;
+}
+
+.pop-cen .p-btn {
+  width: 332rpx;
+  height: 70rpx;
+  margin-top: 92rpx;
+  border-radius: 35rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(32, 161, 224, 1), rgba(18, 77, 184, 1));
+}
+
+.close {
+  width: 50rpx;
+}
+
+/* 领取失败弹窗 */
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-cen2 {
+  width: 560rpx;
+  height: 544rpx;
+  background: #fff;
+  border-radius: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pop-cen2 .fail-icon {
+  width: 122rpx;
+  margin-top: 68rpx;
+}
+
+.pop-cen2 .fail-txt {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333;
+  margin-top: 36rpx;
+}
+
+.pop-cen2 .fail-txt2 {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #666;
+  margin-top: 30rpx;
+}
+
+.pop-cen2 .fail-btn {
+  width: 332rpx;
+  height: 70rpx;
+  margin-top: 70rpx;
+  border-radius: 35rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(32, 161, 224, 1), rgba(18, 77, 184, 1));
+}
+
+/* 活动结束弹窗 */
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-cen3 {
+  width: 505rpx;
+  height: 379rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.end-txt1, .end-txt2, .end-txt3 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333;
+  line-height: 48rpx;
+}
+
+.end-top {
+  margin-top: 62rpx;
+}
+
+.end-btn {
+  width: 332rpx;
+  height: 60rpx;
+  margin-top: 55rpx;
+  border-radius: 35rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(32, 161, 224, 1), rgba(18, 77, 184, 1));
+}
+
+/* 活动未开启 */
+
+.pop-cen4 {
+  width: 505rpx;
+  height: 390rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start-txt {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333;
+  line-height: 48rpx;
+}
+
+.t-top {
+  margin-top: 68rpx;
+}
+
+.t-red {
+  color: #f1403e;
+}
+
+.start-btn {
+  width: 332rpx;
+  height: 60rpx;
+  margin-top: 55rpx;
+  border-radius: 35rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(32, 161, 224, 1), rgba(18, 77, 184, 1));
+}

@@ -601,6 +601,27 @@
 					"pathName": "pages/addRemark/addRemark",
 					"query": "rid=208",
 					"scene": null
+				},
+				{
+					"id": 78,
+					"name": "绑定车主首页",
+					"pathName": "pages/binding/owner/owner",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "车主绑定留资",
+					"pathName": "pages/binding/receive/receive",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "刮刮乐",
+					"pathName": "pages/binding/scratch/Scratch",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

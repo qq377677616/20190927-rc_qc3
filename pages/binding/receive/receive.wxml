@@ -1,0 +1,28 @@
+<!--pages/binding/receive/receive.wxml-->
+<view class="content">
+  <view class="info">
+    <view class="info-list border">
+      <view class="left">
+        <view class="icon iconfont icon-wodexianxing"></view>
+        <view class="txt">填写收货人信息</view>
+      </view>
+      <view class="iconfont icon_more"></view>
+    </view>
+    <view class="info-list">
+      <view class="left">
+        <view class="icon iconfont icon-shouyexianxing"></view>
+        <view class="txt">选择领取的门店</view>
+      </view>
+      <view class="iconfont icon_more"></view>
+    </view>
+  </view>
+  <view class="prize">
+    <view class="pic" style="background:url('http://img0.imgtn.bdimg.com/it/u=2458227883,4095122505&fm=26&gp=0.jpg')"></view>
+    <view class="right">
+      <view class="title">启辰T70启辰T70</view>
+      <view class="time">获奖时间：2019-09-09</view>
+    </view>
+  </view>
+
+  <view class="btn">立即领取</view>
+</view>

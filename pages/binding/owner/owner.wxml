@@ -1,0 +1,85 @@
+<!--pages/binding/owner/owner.wxml-->
+<view class="owner_page" style="background-image:url(http://img1.imgtn.bdimg.com/it/u=3046734071,280857878&fm=26&gp=0.jpg)" bindtap="isVehicleOwner">
+
+  <view class="main">
+
+    <!-- <image class="yao" src="{{ IMGSERVICE }}/shake_shake/ziti.png" mode="widthFix"></image> -->
+
+    <view class="prize">我的奖品
+      <text class="iconfont icon_more">
+        </text>
+    </view>
+
+    <view class="rule">抽奖规则
+      <text class="iconfont icon_more">
+        </text>
+    </view>
+
+    <view class="btn_group">
+
+      <view class="btn">立即抽奖</view>
+
+    </view>
+
+    <view class="btn_group" wx:if="{{false}}">
+      <view class="txt">您暂无刮奖机会，请先绑定车主</view>
+      <view class="btn">立即绑定</view>
+    </view>
+
+  </view>
+
+</view>
+
+
+<!-- 刮奖机会用完弹窗 -->
+<view class="popup" wx:if="{{false}}">
+  <view class="pop-cen">
+    <view class="p-txt1">您的刮奖机会已用完</view>
+    <view class="p-txt2 red">分享好友获得一次刮奖机会</view>
+    <view class="p-btn">确定</view>
+  </view>
+  <image class="close" mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/icon_close.png" role="img">
+    </image>
+</view>
+
+
+<!-- 领取失败弹窗 -->
+<view class="popup" wx:if="{{false}}">
+  <view class="pop-cen2">
+    <image class="fail-icon" src="{{IMGSERVICE}}/center/false_icon.png" mode="widthFix" ></image>
+    <view class="fail-txt">领取失败</view>
+    <view class="fail-txt2">您的信息有误，请重新填写。</view>
+    <view class="fail-btn">确定</view>
+  </view>
+  <image class="close" mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/icon_close.png" role="img">
+    </image>
+</view>
+
+<!-- 活动结束 -->
+<view class="popup" wx:if="{{false}}">
+  <view class="pop-cen3">
+    <view class="end-txt1 end-top">很遗憾, 本次活动已结束</view>
+    <view class="end-txt2">下次活动即将开启</view>
+    <view class="end-txt3">敬请期待！</view>
+    <view class="end-btn">确定</view>
+  </view>
+  <image class="close" mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/icon_close.png" role="img">
+    </image>
+</view>
+
+<!-- 活动未开启 -->
+
+<view class="popup" wx:if="{{false}}">
+  <view class="pop-cen4">
+    <view class="start-txt t-top">活动将于</view>
+    <view class="start-txt">
+    <text class="t-red">2019年10月20日</text>
+    开启</view>
+    <view class="start-txt">敬请期待！</view>
+    <view class="start-btn">查看其他活动</view>
+  </view>
+  <image class="close" mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/icon_close.png" role="img">
+    </image>
+</view>
+
+
