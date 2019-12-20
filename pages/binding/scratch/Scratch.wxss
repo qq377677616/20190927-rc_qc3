@@ -19,10 +19,22 @@
   justify-content: center;
 }
 
-.gua{
+/* 刮刮乐 */
+
+.gua {
   width: 505rpx;
   height: 310rpx;
   margin-top: 190rpx;
+  background: center no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tui-luck{
+  width: 505rpx;
+  height: 310rpx;
 }
 
 .num {
