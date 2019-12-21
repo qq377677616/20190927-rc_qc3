@@ -1,5 +1,5 @@
 <!--pages/binding/owner/owner.wxml-->
-<view class="owner_page" style="background-image:url(http://img1.imgtn.bdimg.com/it/u=3046734071,280857878&fm=26&gp=0.jpg)" bindtap="isVehicleOwner">
+<view class="owner_page" style="background-image:url({{activeData.banner?activeData.banner:(IMGSERVICE+'/guaguale/ggl_bg.png')}})" bindtap="isVehicleOwner">
 
   <view class="main">
 
@@ -10,14 +10,14 @@
         </text>
     </view>
 
-    <view class="rule">抽奖规则
+    <view class="rule" bindtap="actPop">抽奖规则
       <text class="iconfont icon_more">
         </text>
     </view>
 
     <view class="btn_group">
 
-      <view class="btn">立即抽奖</view>
+      <view class="btn" bindtap="startReword" data-type="ok">立即抽奖</view>
 
     </view>
 
@@ -79,7 +79,16 @@
     <view class="start-btn">查看其他活动</view>
   </view>
   <image class="close" mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/icon_close.png" role="img">
-    </image>
+  </image>
 </view>
+ <!-- 规则弹窗 -->
+  <view class="pof fadeShow" wx:if="{{rulePop}}">
+    <rule bindclose="closePop" ruleImg="{{activeData.rule?activeData.rule:ruleimg}}"></rule>
+  </view>
+  <!-- 授权、去绑定车主弹窗 -->
+  <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+	<activePop popType="{{popType}}" text="{{poptxt}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
+	</activePop>
+  </view>
 
 

@@ -268,6 +268,22 @@ const getBuystroe = (data) => {
 			})
 	})
 }
+//刮刮乐  活动首页
+const shaveDel= (data) => {
+	let url = `${SERVICE}/api3/shave/activity_detail`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
 module.exports = {
 	reply_list,
 	addArtlike,
@@ -285,4 +301,5 @@ module.exports = {
 	removeCarinfo,
 	getdefault,
 	getBuystroe,
+	shaveDel,
 }
