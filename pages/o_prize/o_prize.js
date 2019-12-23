@@ -43,7 +43,7 @@ Page({
 	myPrizeList() {
 		let _prizeList = [];
 		let _data = {
-			user_id: wx.getStorageSync("userInfo").user_id,
+			// user_id: wx.getStorageSync("userInfo").user_id,
 			openid: wx.getStorageSync("userInfo").openid,
 			activity_id: this.data.activity_id,
 			page: this.data.page || 1
@@ -71,40 +71,47 @@ Page({
 		})
 	},
 	//查看详情
-	lookDetail(e) {
-		const index = e.currentTarget.dataset.index;
-		const prizeList = this.data.prizeList;
-		const item = prizeList[index];
-		const prize_id = item.prize_id;
+	// lookDetail(e) {
+	// 	const index = e.currentTarget.dataset.index;
+	// 	const prizeList = this.data.prizeList;
+	// 	const item = prizeList[index];
+	// 	const prize_id = item.prize_id;
 
-		//没领取的微信卡卷、快递 不允许查看奖品详情
-		if (item.status == 0) return;
+	// 	//没领取的微信卡卷、快递 不允许查看奖品详情
+	// 	if (item.status == 0) return;
 
-		//奖品详情
-		route.jump_nav({
-			url: `/pages/o_prize_detail/o_prize_detail?prize_id=${prize_id}`
-		})
-	},
+	// 	//奖品详情
+	// 	route.jump_nav({
+	// 		url: `/pages/o_prize_detail/o_prize_detail?prize_id=${prize_id}`
+	// 	})
+	// },
 	//跳转
 	jump(e) {
-		let _item = this.data.prizeList[e.currentTarget.dataset.index]
-		let _type = _item.prize_type
-		let _id = _item.prize_id
-		this.setData({ formsType: _type == 2 ? '1' : '0', curIndex: e.currentTarget.dataset.index })//0为门店弹窗、1为详细地址弹窗、2为看车弹窗、3为报名留资弹窗
-		this.data.prize_type = _type
-		this.data.prize_log_id = _id
-		if (_type != 3) {
-			this.isShowForm()
-		} else {
-			console.log(_item, '_item')
-			if (!_item.xuni_code) {
-				this.isShowForm()
-				// tool.alert("兑换码获取失败，请稍后再试~")
-				return
-			}
-			this.setData({ code: _item.xuni_code, card_id: _item.card_id })
-			this.isShowCode()
+		console.log("领取奖品或查看订单")
+		let obj = e.currentTarget.dataset.obj;
+		if (obj.status=='0'){
+			tool.jump_nav(`/pages/binding/receive/receive?obj=${JSON.stringify(obj)}`)
+		}else{
+			tool.jump_nav(`/pages/order_detail/order_detail?order_id=${obj.order_id}`)
 		}
+		// let _item = this.data.prizeList[e.currentTarget.dataset.index]
+		// let _type = _item.prize_type
+		// let _id = _item.prize_id
+		// this.setData({ formsType: _type == 2 ? '1' : '0', curIndex: e.currentTarget.dataset.index })//0为门店弹窗、1为详细地址弹窗、2为看车弹窗、3为报名留资弹窗
+		// this.data.prize_type = _type
+		// this.data.prize_log_id = _id
+		// if (_type != 3) {
+		// 	this.isShowForm()
+		// } else {
+		// 	console.log(_item, '_item')
+		// 	if (!_item.xuni_code) {
+		// 		this.isShowForm()
+		// 		// tool.alert("兑换码获取失败，请稍后再试~")
+		// 		return
+		// 	}
+		// 	this.setData({ code: _item.xuni_code, card_id: _item.card_id })
+		// 	this.isShowCode()
+		// }
 	},
 	//留资领取
 	submit(e) {
@@ -226,15 +233,14 @@ Page({
 		this.myPrizeList()
 	},
 	setClipboar() {
-		console.log(11)
 		var that = this;
 		console.log(this.data.card_id);
 		let card_code = that.data.code;
 		console.log(this.data.card_id);
 		if (this.data.card_id==159){
 			wx.navigateToMiniProgram({
-        appId: 'wx8f4ba17d7b77a1df',
-        path: 'pages/busicard/busicard?card_code=' + card_code,
+			appId: 'wx8f4ba17d7b77a1df',
+			path: 'pages/busicard/busicard?card_code=' + card_code,
 				extraData: {
 					card_code,
 				},

@@ -43,6 +43,13 @@ Component({
 		bindCarer(){
       this.closePop()
 			route.jump_nav({ url:'/pages/o_love_car/o_love_car?pageType=back'});
+		},
+		goggl() {
+			route.jump_red({ url: `/pages/binding/owner/owner?activity_id=57` })
+		},
+		goback() {
+			route.jump_back();
 		}	
-	}
+	},
+	
 })

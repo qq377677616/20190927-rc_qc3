@@ -2,6 +2,7 @@
 const app = getApp()
 import request4 from "../../../utils/request/request_04.js"
 import request1 from '../../../utils/request/request_01.js'
+import tool from '../../../utils/public/tool.js'
 Page({
 
   /**
@@ -94,7 +95,7 @@ Page({
 				  activeStatus:res.data.status,
 				  praTime: res.data.data.start_date,
 				  ruleimg: res.data.data.rule,
-				  iscarActive: res.data.data.car_owner==1?true:false,
+				  iscarActive: res.data.data.activity_info.car_owner==1?true:false,
 			  })
 			this.setRule();
 		//   }
@@ -136,12 +137,8 @@ Page({
 	},
 	startReword(){
 		//点击立即抽奖
-		console.log("点击抽奖")
-		console.log('1', wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive);
-		console.log('2', !wx.getStorageSync("userInfo").nickName);
-		console.log('3', !wx.getStorageSync("userInfo").unionid);
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
-		console.log("验证通过")
+		tool.jump_nav(`/pages/binding/scratch/Scratch?activity_id=${this.data.parms.activity_id}`)
 	},
 	//判断是否授权和是否是车主
 	isVehicleOwner(e) {
@@ -156,7 +153,19 @@ Page({
 		}
 		this.isVehicleOwnerHidePop()
 	},
+	 //是否授权、绑定车主弹窗
 	isVehicleOwnerHidePop() {
 		this.setData({ isVehicleOwnerHidePop: !this.data.isVehicleOwnerHidePop })
+	},
+	 //授完权后处理
+	getParme(e) {
+		this.isVehicleOwnerHidePop()
+		request1.setUserInfo(e).then(res => {
+			this.isVehicleOwner()
+		})
+	},
+	my_words(){
+		//领取奖品操作
+		tool.jump_nav(`/pages/o_prize/o_prize?activity_id=${this.data.parms.activity_id}`)
 	}
 })

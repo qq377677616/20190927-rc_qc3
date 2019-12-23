@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .guagua {
@@ -31,8 +31,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-
+.coverimg{
+	width: 229px;
+	height: 138px;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	background: center no-repeat/cover;
+}
 .tui-luck{
   width: 505rpx;
   height: 310rpx;
@@ -58,8 +67,16 @@
   font-family: PingFang SC;
   font-weight: bold;
   color: #f61517;
+  position: relative;
 }
-
+.gua-btn>button{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	/* background-color: red; */
+}
 /* 中奖弹窗 */
 
 .popup {
@@ -73,6 +90,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 99999;
 }
 
 .prize-popup {

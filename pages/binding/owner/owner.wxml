@@ -5,7 +5,7 @@
 
     <!-- <image class="yao" src="{{ IMGSERVICE }}/shake_shake/ziti.png" mode="widthFix"></image> -->
 
-    <view class="prize">我的奖品
+    <view class="prize" bindtap="my_words">我的奖品
       <text class="iconfont icon_more">
         </text>
     </view>
