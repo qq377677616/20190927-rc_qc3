@@ -284,6 +284,86 @@ const shaveDel= (data) => {
 			})
 	})
 }
+// 中奖人员列表
+const shaveList = (data) => {
+	let url = `${SERVICE}/api3/shave/shave_detail`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 刮奖 
+const runShave = (data) => {
+	let url = `${SERVICE}/api3/shave/shave`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 分享上报
+const upShare = (data) => {
+	let url = `${SERVICE}/api3/activity/share`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+//奖品页面过来 领取奖品
+const getword = (data) => {
+	let url = `${SERVICE}/api3/prize/perfect_data`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+//领取微信卡券
+const getwxcard = (data) => {
+	let url = `${SERVICE}/api3/order/get_wechat_card`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
 module.exports = {
 	reply_list,
 	addArtlike,
@@ -302,4 +382,9 @@ module.exports = {
 	getdefault,
 	getBuystroe,
 	shaveDel,
+	shaveList,
+	runShave,
+	upShare,
+	getword,
+	getwxcard,
 }

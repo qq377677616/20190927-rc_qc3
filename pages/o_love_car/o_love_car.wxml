@@ -66,3 +66,7 @@
     <!-- next-mask -->
 
 </view><!-- o_love_car_page -->
+<!-- 选择跳转 -->
+<view wx:if="{{bindPop}}"> 
+	<activePop popType="4"></activePop>
+</view>

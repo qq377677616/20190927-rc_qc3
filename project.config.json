@@ -617,16 +617,23 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 80,
 					"name": "刮刮乐",
 					"pathName": "pages/binding/scratch/Scratch",
-					"query": "",
+					"query": "activity_id=57",
 					"scene": null
 				},
 				{
 					"id": 81,
 					"name": "刮刮乐首页",
 					"pathName": "pages/binding/owner/owner",
+					"query": "activity_id=57",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "刮刮乐留资",
+					"pathName": "pages/binding/receive/receive",
 					"query": "activity_id=57",
 					"scene": null
 				}

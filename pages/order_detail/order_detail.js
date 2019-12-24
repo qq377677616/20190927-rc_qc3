@@ -46,14 +46,14 @@ Page({
       console.log("留资接口返回", res)
       // let _data = res.data.data
       // let _cardExt = '{"nonce_str": "' + _data.nonceStr + '",  "timestamp": "' + _data.timestamp + '", "signature":"' + _data.signature + '"}'
-      console.warn(res.data.data)
+      console.log('22',res.data.data)
       this.addCard(res.data.data)
     })
   },
   //领取卡券
   addCard(cardList) {
     this.isShowLoading()
-    console.warn(cardList)
+    console.log('11',cardList)
     tool.addCard(cardList).then(res => {
       console.log("卡券返回", res)
       if (res.errMsg == "addCard:ok") {

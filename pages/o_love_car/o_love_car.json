@@ -1,4 +1,6 @@
 {
 	"navigationBarTitleText": "车主绑定",
-	"usingComponents": {}
+	"usingComponents": {
+		"activePop": "/components/activeStatus/activeStatus"
+	}
 }

@@ -1,28 +1,43 @@
 <!--pages/binding/receive/receive.wxml-->
 <view class="content">
   <view class="info">
-    <view class="info-list border">
+    <view class="info-list border" bindtap="getInfo">
       <view class="left">
         <view class="icon iconfont icon-wodexianxing"></view>
-        <view class="txt">填写收货人信息</view>
+        <view class="txt" >
+			<block wx:if="{{ currentAddressItem.real_address }}">
+				<view class="nowrap">{{ currentAddressItem.name + ' ' + currentAddressItem.mobile }}</view>
+				<view class="nowrap">{{ currentAddressItem.real_address }}</view>
+			</block>
+			<block wx:else>
+				填写收货人信息
+			</block>
+		</view>
       </view>
       <view class="iconfont icon_more"></view>
     </view>
     <view class="info-list">
       <view class="left">
         <view class="icon iconfont icon-shouyexianxing"></view>
-        <view class="txt">选择领取的门店</view>
+         <block wx:if="{{ pickerStoreList.length }}">
+			<picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ picklist }}" value="{{ storeIndex }}">
+				<view class="nowrap txt">{{ pickerStoreList[storeIndex].name }}</view>
+			</picker>
+		</block>
+		<block wx:else>
+			<view class="span nowrap txt" bindtap="getStore">选择领取的门店</view>
+		</block>
       </view>
       <view class="iconfont icon_more"></view>
     </view>
   </view>
   <view class="prize">
-    <view class="pic" style="background:url('http://img0.imgtn.bdimg.com/it/u=2458227883,4095122505&fm=26&gp=0.jpg')"></view>
+    <view class="pic" style="background:url({{parmData.prize_img}})"></view>
     <view class="right">
-      <view class="title">启辰T70启辰T70</view>
-      <view class="time">获奖时间：2019-09-09</view>
+      <view class="title">{{parmData.prize_name}}</view>
+      <view class="time">获奖时间：{{parmData.create_time}}</view>
     </view>
   </view>
 
-  <view class="btn">立即领取</view>
+  <view class="btn" bindtap="formSubmit">立即领取</view>
 </view>
