@@ -12,8 +12,8 @@ Page({
    */
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,//图片基本路劲
-    canvasWidth: 230, //刮刮乐宽
-    canvasHeight: 140, //刮刮乐高
+    canvasWidth: 229, //刮刮乐宽
+    canvasHeight: 137, //刮刮乐高
     prize_img: '', //奖品图片
     img: '',//
 	activity_id:'',//活动id
@@ -24,7 +24,9 @@ Page({
 	wordstus:null,//抽奖状态
 	useNum:0,//刮奖使用次数
 	allNum:0,//刮奖总次数
-	flag:0,
+	flag:0,//记录是第几次
+	prize_log_id:null,//奖品id
+	showbtn:false,
   },
 
   /**
@@ -35,7 +37,7 @@ Page({
     var _this = this
     let ctx2 = wx.createCanvasContext('myCanvas')
     wx.getImageInfo({
-      src: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/guajiang.png',
+      src: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/guajiang.png?v_1',
       success(res) {
         _this.setData({
           img: res.path
@@ -70,10 +72,10 @@ Page({
     tool.loading("刮刮乐初始化")
     setTimeout(() => {
       this.setData({
-        prize_img: 'https://game.flyh5.cn/resources/game/wechat/szq/images/img_12.jpg'
+		  prize_img: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/smimg.png'
       })
       tool.loading_h()
-    }, 800)
+    }, 200)
   },
   //刮完奖回调
   scrapeOk() {
@@ -179,7 +181,8 @@ Page({
 					wordstus:res.data.data.shave_info,
 					wordData: this.addArr(res.data.data.win_list,4),
 					useNum: res.data.data.shave_info.used_num,
-					allNum: res.data.data.shave_info.all_num
+					allNum: res.data.data.shave_info.all_num,
+					showbtn: res.data.data.activity_info.share_num
 					})
 			if (this.data.useNum < this.data.allNum&&this.data.flag==0) this.scrapeInit();
 				this.setData({ flag:++this.data.flag})
@@ -204,7 +207,7 @@ Page({
 		request4.runShave(dat).then((res)=>{
 			if (res.data.status==1){
 				this.shaveList();
-				this.setData({ showWord:true, draw: false, wordDel: res.data.data.prize_info, prize_img: res.data.data.prize_info.prize_img})	
+				this.setData({ prize_log_id:res.data.data.prize_log_id,showWord:true, draw: false, wordDel: res.data.data.prize_info, prize_img: res.data.data.prize_info.prize_img})	
 			}
 		})
 	},
@@ -233,7 +236,16 @@ Page({
 	},
 	my_words(){
 		//领取奖品
-		this.setData({ showWord: false });
-		tool.jump_nav(`/pages/o_prize/o_prize?activity_id=${this.data.activity_id}`)
+		let obj = this.data.wordDel;
+		if (obj.prize_type==4){
+			this.setData({ showWord: false });
+			this.shaveList();
+			if (this.data.useNum < this.data.allNum) this.scrapeInit();
+			return;
+		}
+		this.shaveList()
+		obj.prize_id = this.data.prize_log_id;
+		console.log(obj)
+		tool.jump_nav(`/pages/binding/receive/receive?obj=${JSON.stringify(obj)}`)
 	}
 })

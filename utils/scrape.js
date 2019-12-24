@@ -27,7 +27,7 @@ class Scrape{
     let pattern = this.ctx.createPattern(this.bgPic, 'no-repeat')
     this.ctx.fillStyle = pattern; 
     // this.ctx.fillRect(0, 0, this.width, this.height);
-    this.ctx.drawImage(this.bgPic, 0, 0, this.width, this.height)
+    this.ctx.drawImage(this.bgPic, 0, 0, 243, 141)
     this.ctx.draw();
   }
   eraser(e,bool){
