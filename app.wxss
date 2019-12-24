@@ -1,6 +1,7 @@
 /**app.wxss**/
 
 @import "/assets/iconfont/iconfont.wxss";
+@import "/assets/iconfont/iconfont_02.wxss";
 @import "/assets/css/animation.wxss";
 @import "/assets/css/reset.wxss";
 @import "/assets/css/animate.min.wxss";
