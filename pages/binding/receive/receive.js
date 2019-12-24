@@ -2,6 +2,7 @@
 const request_01 = require('../../../utils/request/request_01.js');
 
 const request_04 = require('../../../utils/request/request_04.js');
+import api from '../../../utils/request/request_03.js'
 
 const router = require('../../../utils/tool/router.js');
 
@@ -10,6 +11,8 @@ const alert = require('../../../utils/tool/alert.js');
 const method = require('../../../utils/tool/method.js');
 
 const tool = require('../../../utils/public/tool.js');
+
+import tool2 from '../../../utils/tool/tool.js'
 
 const app = getApp();//获取应用实例
 Page({
@@ -260,11 +263,8 @@ Page({
 		})
 	},
 	formSubmit(e) {
-		// //领取微信卡券
-		// if (this.data.parmData.prize_type==1){
-		// 	this.getwxcard();
-		// 	return;
-		// }
+		//领取微信卡券
+		
 		//领取非微信卡券
 		if (!this.data.currentAddressItem.address_id || this.data.currentAddressItem.address_id == '') {
 			alert.alert({ str: '请选择地址等信息' });
@@ -278,21 +278,58 @@ Page({
 		}
 		request_04.getword(dat).then((res)=>{
 			if(res.data.status=='1'){
+				if (this.data.parmData.prize_type == 1) {
+					// tool.jump_back();
+					this.addCard([res.data.data.card_info]);
+					return;
+				}
 				tool.jump_red(`/pages/order_detail/order_detail?order_id=${res.data.data.order_id}`)
 			}
 		})
 	},
-	// getwxcard(){
-	// 	let dat = {
-	// 		user_id: wx.getStorageSync("userInfo").user_id,
-	// 		order_goods_id: this.data.parmData.order_goods_id
-	// 	}
-	// 	console.log(dat);
-	// 	return;
-	// 	request_04.getwxcard(dat).then((res)=>{
-	// 		if(res.data.status=='1'){
-	// 			console.log(res.data);
-	// 		}
-	// 	})
-	// }
+	addCard(cardList) {
+		this.isShowLoading()
+		console.log('11', cardList)
+		tool2.addCard(cardList).then(res => {
+			console.log("卡券返回", res)
+			if (res.errMsg == "addCard:ok") {
+				console.log("卡券领取成功")
+				let _card_code = ''
+				for (let i = 0; i < res.cardList.length; i++) {
+					_card_code += ((i == 0 ? '' : ',') + res.cardList[i].code)
+				}
+				this.cardCheck(_card_code)
+			} else {
+				this.isShowLoading()
+				tool2.alert("卡券领取失败")
+			}
+		}).catch(err => {
+			console.log("err", err)
+			this.isShowLoading()
+			tool2.alert("卡券领取失败")
+		})
+	},
+	isShowLoading() {
+		this.setData({
+			isShowLoading: !this.data.isShowLoading
+		})
+	},
+	cardCheck(card_code) {
+		let _data = {
+			user_id: wx.getStorageSync("userInfo").user_id,
+			order_goods_id: this.data.order_goods_id,
+			card_code: card_code
+		}
+		api.orderCheck(_data).then(res => {
+			console.log("卡券核销上报返回", res)
+			if (res.statusCode == 200) {
+				this.isShowLoading()
+				tool2.alert("卡券领取成功，请到我的卡包查看卡券使用详情")
+				let _orderDetail = this.data.orderDetail
+				_orderDetail.order_goods[this.data.curIndex].is_receive = 1
+				console.log("_orderDetail", _orderDetail)
+				this.setData({ orderDetail: _orderDetail })
+			}
+		})
+	}
 })
