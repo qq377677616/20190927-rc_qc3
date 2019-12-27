@@ -364,6 +364,7 @@ const getwxcard = (data) => {
 			})
 	})
 }
+// 刮刮乐  图片加载处理
 module.exports = {
 	reply_list,
 	addArtlike,

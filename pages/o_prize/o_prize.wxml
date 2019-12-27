@@ -11,8 +11,8 @@
             <view class="title nowrap">{{item.prize_name}}</view>
             <view class="date nowrap">获奖时间：{{item.create_time}}</view>
         </view>
-          <view class="btn active" data-obj="{{item}}" data-index="{{index}}" catchtap="jump">{{item.status==1?'查看订单':'立即领取'}}</view>
-        <!-- <view class="btn" wx:else>已兑换</view> -->
+        <view class="btn active" wx:if="{{item.status!=3}}" data-obj="{{item}}" data-index="{{index}}" catchtap="jump">{{item.status==1?'查看订单':'立即领取'}}</view>
+        <view class="btn" wx:if="{{item.status==3}}">已过期</view>
     </view><!-- prize_item -->
     <view class="not-more {{moreType==0?'addheight':''}}">{{moreType == 0 ? '您还没有奖品哦，快去参与活动拿奖品吧～' : '我是有底线的~'}}</view>
     <view class="go_btn" bindtap="goshopstroe" wx:if="{{moreType==0}}">查看活动列表</view>

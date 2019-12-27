@@ -6,8 +6,11 @@
   background-size: 100% 100%;
   display: flex;
   align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  padding-bottom: 35rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  justify-content: center;
 }
 
 .guagua {
@@ -18,6 +21,7 @@
   margin-top: 114rpx;
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 
 /* 刮刮乐 */
@@ -53,6 +57,7 @@
   font-weight: bold;
   color: #fff;
   margin-top: 4rpx;
+  text-align: center;
 }
 
 .gua-btn {
@@ -60,6 +65,7 @@
   height: 60rpx;
   background: linear-gradient(0deg, rgba(255, 158, 0, 1), rgba(255, 223, 78, 1));
   border-radius: 30rpx;
+  margin: 0 auto;
   margin-top: 26rpx;
   line-height: 60rpx;
   text-align: center;
@@ -85,7 +91,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,8 +111,8 @@
 }
 
 .gift {
-  width: 150rpx;
-  margin-top: 144rpx;
+  width: 316rpx;
+  margin-top: 109rpx;
 }
 
 .quan {
@@ -153,15 +159,18 @@
   width: 694rpx;
   border-radius: 20rpx;
   background: #fff;
-  margin: 35rpx 0;
+  margin: 0 auto;
+  padding-top: 47rpx;
+  margin-top: 35rpx;
+  margin-bottom: 35rpx;
 }
 
 .bottom .title {
   text-align: center;
   font-size: 32rpx;
   color: #fd4f4e;
-  padding-bottom: 17rpx;
-  margin-top: 37rpx;
+  /* padding-bottom: 17rpx; */
+  /* margin-top: 37rpx; */
 }
 
 .bottom .title image {
@@ -192,7 +201,7 @@
 }
 
 swiper {
-  height: 384rpx;
+  /* height: 384rpx; */
 }
 
 .p-header view, swiper-item view {
@@ -214,4 +223,36 @@ swiper-item {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+.sethei{
+	height: 100vh;
+	width: 100vw;
+}
+.forbiden{
+	min-height: 0 !important;
+	height: 98vh !important;
+	box-sizing: border-box;
+	overflow-y:hidden; 
+}
+.onload{
+	opacity: 0.01;
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 0;
+}
+.defultimg{
+	width: 471rpx;
+	height: 291rpx;
+	/* background-color: red; */
+	margin-top: 112rpx;
+	background: center no-repeat/cover;
+}
+.shows{
+	opacity: 1
+}
+.hides{
+	opacity: 0;
+	position: relative;
+	z-index: -1;
 }

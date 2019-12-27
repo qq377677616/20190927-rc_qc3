@@ -636,6 +636,13 @@
 					"pathName": "pages/binding/receive/receive",
 					"query": "activity_id=57",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "test2",
+					"pathName": "pages/test2/test2",
+					"query": "activity_id=57",
+					"scene": null
 				}
 			]
 		}

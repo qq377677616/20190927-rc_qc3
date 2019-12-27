@@ -16,12 +16,12 @@
       </view>
       <view class="iconfont icon_more"></view>
     </view>
-    <view class="info-list" wx:if="{{parmData.prize_type==1}}">
+    <view class="info-list" wx:if="{{parmData.prize_type==1||parmData.prize_type==3}}">
       <view class="left">
         <view class="icon iconfont icon-shouyexianxing"></view>
          <block wx:if="{{ pickerStoreList.length }}">
-			<picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ picklist }}" value="{{ storeIndex }}">
-				<view class="nowrap txt">{{ pickerStoreList[storeIndex].name }}</view>
+			<picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}">
+				<view class="nowrap txt">{{ pickerStoreList[storeIndex] }}</view>
 			</picker>
 		</block>
 		<block wx:else>

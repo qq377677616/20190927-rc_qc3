@@ -69,6 +69,7 @@ class Scrape{
     const _this = this;
     _this.page.onTouchStart = function(e){
       _this.eraser(e,true);
+      _this.page[_this.opts.scrapeStart]();
     }
     _this.page.onTouchMove = function (e) {
       _this.eraser(e);

@@ -1,16 +1,20 @@
 <!--pages/binding/scratch/Scratch.wxml-->
+<!-- <scroll-view scroll-y class="sethei"> -->
 <view class="center" style="background-image:url('{{IMGSERVICE}}/center/guaguabg.png')">
+  <view>
   <view class="guagua" style="background-image:url('{{IMGSERVICE}}/center/guagua.png')">
     <!-- <image class="gua" src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2458227883,4095122505&fm=26&gp=0.jpg"></image> -->
     <view class="gua" style="background-image:url('{{IMGSERVICE}}/center/guabian.png')">
-      <view class="coverimg" wx:if="{{useNum==allNum}}" style="background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/guajiang.png?v_1)"></view>
-	  <canvas style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;background: url({{prize_img}}) no-repeat center center;" canvas-id="luck" class="tui-luck" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd"></canvas>
+      <!-- background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/guajiang.png?v_1) -->
+	  <view class="coverimg" wx:if="{{!delMC&&nochange}}" style="background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/nochange.png?v_1)" catchtap="kjbox"></view>
+	  <view class="coverimg" wx:if="{{delMC}}" style="background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/ggl_defult.png?v_1)" catchtap="kjbox"></view>
+	  <canvas class="tui-luck {{!delMC?'shows':'hides'}}"  style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;background: url({{prize_img}}) no-repeat center center;" canvas-id="luck"  bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd"></canvas>
     </view>
   </view>
   <view class="num">您的刮奖机会({{wordstus.used_num}}/{{wordstus.all_num}})</view>
-  <view class="gua-btn" bindtap="showTips" wx:if="{{showbtn!=0}}">
-	  <button open-type="share" wx:if="{{wordstus.is_share=='0'}}"></button>
-	  分享好友获得一次刮奖机会
+  <view class="gua-btn" wx:if="{{showbtn!=0}}">
+	  <button open-type="share" ></button>
+	  邀请其他好友一起参与
   </view>
 
   <!-- 中奖信息列表 -->
@@ -24,16 +28,16 @@
         <view class="text">奖品</view>
         <view>中奖时间</view>
       </view>
-      <swiper vertical="true" display-multiple-items="4" interval="1500" autoplay="true" circular="true">
+      <swiper vertical="true" display-multiple-items="{{wordData.length>3?3:wordData.length+1}}" interval="1500"  circular="true" style="height:265rpx">
         <swiper-item class="flex-cen" wx:for="{{wordData}}" wx:key="item">
-          <view>{{item.nickname }}</view>
-          <view class="text">{{item.prize_name || '-'}}</view>
-          <view>{{item.create_time || '-'}}</view>
+          <view>{{item.nickname}}</view>
+          <view class="text">{{item.prize_name || ''}}</view>
+          <view>{{item.create_time || ''}}</view>
         </swiper-item>
       </swiper>
     </view>
   </view>
-
+  </view>
 </view>
 
 
@@ -42,19 +46,25 @@
 <view class="popup" wx:if="{{showWord&&wordDel.prize_type!=5}}">
   <view class="prize-popup fadeShow" style="background-image:url('{{IMGSERVICE}}/center/bdpopup.png')">
     <image class="gift" src="{{wordDel.prize_img}}" mode="widthFix"></image>
-    <view class="quan">{{wordDel.prize_name}}</view>
+    <!-- <view class="quan">{{wordDel.prize_name}}</view> -->
     <view class="btn" bindtap="my_words"></view>
     <view class="close" bindtap="closePop"></view>
   </view>
 </view>
 
-<!-- 未中奖 -->
+<!-- 未中奖 showWord&&wordDel.prize_type==5-->
 
 <view class="popup" wx:if="{{showWord&&wordDel.prize_type==5}}">
   <view class="prize-popup fadeShow" style="background-image:url('{{IMGSERVICE}}/center/kongkong.png')">
-    <view class="no-txt1">莫灰心</view>
-    <view class="no-txt2">祝您新年好运常相伴！</view>
+    <!-- <view class="no-txt1">莫灰心</view>
+    <view class="no-txt2">祝您新年好运常相伴！</view> -->
+	<view class="defultimg" style="background-image:url('{{IMGSERVICE}}/center/noword.png')"></view>
     <view class="btn" bindtap="closePop"></view>
     <view class="close" bindtap="closePop"></view>
   </view>
+</view>
+<!-- </scroll-view> -->
+<!-- 图片加载处理 -->
+<view class="onload">
+	<image mode="widthFix" src=""></image>
 </view>
