@@ -6,9 +6,9 @@ const alert = require('../tool/alert.js');
 
 const tool = require('../tool/tool.js');
 
-const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
+// const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
 // const SERVICE = "http://dfldata-test.dongfeng-nissan.com.cn/fslb/public/index.php";
-// const SERVICE = "https://weixinfslb.venucia.com";
+const SERVICE = "https://weixinfslb.venucia.com";
 
 //版本控制
 const tag = (data) => {
@@ -1346,7 +1346,6 @@ const login = (callback) => {
 
 
         if (userInfo.user_id) {//本地已保存用户信息
-
             alert.loading_h();
 
             authorization.isCheckSession()
@@ -1383,7 +1382,6 @@ const login = (callback) => {
         } else {//本地未保存用户信息
 
             
-
             Promise.all([
                 authorization.login(),
                 authorization.login()
@@ -1400,6 +1398,7 @@ const login = (callback) => {
                 })
                 .then((value) => {
                     const data = value[0].data.data;
+                    
                     if (data.errcode && data.errmsg) {
 
                         login(callback)
@@ -1415,7 +1414,6 @@ const login = (callback) => {
                 })
                 .catch((reason) => {
                     alert.loading_h();
-
                     alert.alert({
                         str: reason
                     })
@@ -1569,7 +1567,7 @@ function getCode(resolve){
         })
 
     })
-    .catch(()=>{
+    .catch((reason)=>{
         //递归
         getCode(resolve)
     })

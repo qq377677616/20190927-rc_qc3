@@ -9,7 +9,7 @@ const alert = ({ str, icon = "none", duration = 1500, mask = false }) => {
 }
 
 //loading提示框
-const loading = ({ str, mask = true }) => {
+const loading = ({ str, mask = false }) => {
     wx.showLoading({
         title: str,
         mask,

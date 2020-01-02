@@ -1,9 +1,10 @@
 <!--pages/binding/scratch/Scratch.wxml-->
-<view class="center" style="background-image:url('{{IMGSERVICE}}/center/guaguabg.png')">
+<view class="center" style="background-image:url('{{IMGSERVICE}}/center/guaguabg.png')" style="height:200vh">
   <view class="guagua" style="background-image:url('{{IMGSERVICE}}/center/guagua.png')">
     <!-- <image class="gua" src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2458227883,4095122505&fm=26&gp=0.jpg"></image> -->
     <view class="gua" style="background-image:url('{{IMGSERVICE}}/center/guabian.png')">
       <view class="coverimg" wx:if="{{useNum==allNum}}" style="background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/guajiang.png?v_1)"></view>
+      
 	  <canvas style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;background: url({{prize_img}}) no-repeat center center;" canvas-id="luck" class="tui-luck" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd"></canvas>
     </view>
   </view>
@@ -18,6 +19,7 @@
     <view class="title">
       <image src="{{IMGSERVICE}}/center/zj_list.png" mode="widthFix"></image>
     </view>
+
     <view class="prize-list">
       <view class="p-header flex-cen">
         <view>中奖用户</view>
