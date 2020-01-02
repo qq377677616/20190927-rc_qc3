@@ -20,9 +20,9 @@
         <view class="verify_area">
             <image src="{{ IMGSERVICE }}/center/vincode.jpg" mode="widthFix" bindtap="previewImage"></image>
         </view>
-        <view class="agree" bindtap="isChecked">
-            <view class="checked {{ isChecked ? 'on' : '' }}"></view>
-            您填写的信息将同步至东风启辰服务号，以便改善我们的产品，为您提供更好的服务。
+        <view class="agree">
+            <view class="checked {{ isChecked ? 'on' : '' }}" style="display:none;"></view>
+            温馨提示：您填写的信息将同步至东风启辰服务号，以便改善我们的产品，为您提供更好的服务。
         </view>
     </view><!-- vin_area -->
 
@@ -67,6 +67,6 @@
 
 </view><!-- o_love_car_page -->
 <!-- 选择跳转 -->
-<view wx:if="{{bindPop}}"> 
+<!-- <view wx:if="{{true}}"> 
 	<activePop popType="4"></activePop>
-</view>
+</view> -->

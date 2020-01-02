@@ -36,7 +36,7 @@ Component({
     isGetPhone: false,
     isSettingLocation: false,
     address: '',
-    isChecked: false,
+    isChecked: true,
     isGetCode: 0,
     countDown: 60
   },

@@ -1,0 +1,48 @@
+<!--index.wxml-->
+
+<!-- 轮播图-->
+<view class='swiper_cart_box'>
+  <view class="cart_box">
+    <swiper current="{{currpage}}" circular="{{infoLunbo.circular}}" indicator-dots="{{infoLunbo.indicatorDots}}" autoplay="{{infoLunbo.autoplay}}" interval="{{infoLunbo.interval}}" duration="{{infoLunbo.duration}}" indicator-color="{{infoLunbo.indicatorColor}}" indicator-active-color="{{infoLunbo.activeColor}}"
+      class='lunbo_swipper' bindchange="bindchange">
+      <block wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index" wx:key>
+        <swiper-item catchtap="goToxq" data-lubImgid="{{item.carouselUrl}}">
+          <view class="card_info">
+              <image src="{{item.titleImg}}" class="title_img {{(!item.lowprice && !item.highprice) ? 'no_price' : ''}}" mode="widthFix" style="height:auto"></image>
+              <view  class="card_info_title">
+                <view wx:for="{{item.info}}" wx:for-item="infoItem">{{infoItem}}</view>
+              </view>
+              <view class="price_info" wx:if="{{item.lowprice && item.highprice}}">官方指导价<text>{{item.lowprice}}</text>万元-<text>{{item.highprice}}</text>万元</view>
+              <view class="search_btn" catchtap="toSearch">搜索更多</view>
+          </view>
+          <view style="background-image:url({{item.bgUrl}})"class="slide-image" mode="widthFix" bindload="imgload" data-id="{{index}}" ></view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <scroll-view scroll-into-view="xing" class="scroll-view_H" class='lunbo_title' scroll-x="true" style="width:100%" scroll-into-view="{{toview}}" scroll-with-animation="true" scroll-left="{{scrollLeft}}">
+      <view class="scroll-view-item_H" wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index" wx:key>
+        <view id="{{line==6?'xing':item.name}}" class='title' data-num="{{index}}" bindtap="dyjump">
+          <!-- <view >
+            <text class="icon_title">error</text>
+          </view> -->
+          <text class="{{line == index ? 'error' : ''}}">{{item.name}}</text>
+        </view>
+        <!-- <text class='icon_s_left'></text>
+              <text class='icon_s_right'></text> -->
+        <!-- <view class='title' catchtap="clickLine" data-num="2">
+            <text class="{{line == 2 ? 'error' : ''}}">error</text>
+          </view>
+          <view class='title' catchtap="clickLine" data-num="3">
+            <text class="{{line == 3 ? 'error' : ''}}">error</text>
+          </view>
+          <view class='title' catchtap="clickLine" data-num="4">
+            <text class="{{line == 4 ? 'error' : ''}}">error</text>
+          </view>
+          <view class='title' catchtap="clickLine" data-num="5">
+            <text class="{{line == 5 ? 'error' : ''}}">error</text>
+          </view> -->
+      </view>
+    </scroll-view>
+  </view>
+</view>

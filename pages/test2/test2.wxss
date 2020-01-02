@@ -1,0 +1,311 @@
+page {
+  font-family: "PingFang-SC-Medium"
+}
+.card_info {
+  position: absolute;
+  z-index:99;
+}
+.error {
+  position: relative;
+  width: 0;
+  /* padding: 0 30rpx; */
+}
+.card_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size:28rpx;
+  color:#010101;
+  margin-top:87rpx;
+  letter-spacing: 2rpx;
+}
+.card_info_title {
+  margin-top:35rpx;
+}
+.card_info_title view {
+  text-align: center;
+  margin-top:15rpx;
+}
+.card_info_title view:nth-child(1) {
+  margin-top:0;
+}
+.search_btn {
+  padding:30rpx 135rpx;
+  border-radius: 30rpx;
+  border:3rpx solid #000;
+  margin-top:60rpx;
+  letter-spacing: 2rpx;
+}
+
+.lunbo_title .scroll-view-item_H:nth-child(1) .error:before {
+  content: '';
+  position: absolute;
+  top: 50rpx;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  height: 2px;
+  animation: animat_show_right 0.5s linear;
+}
+.icon_s_left,.icon_s_right {
+  display: inline-block;
+  width: 100%;
+  height: 54rpx; 
+}
+.error .icon_s_left {
+  content: '';
+  position: absolute;
+  bottom: -50rpx;    /*设置高度  原先-0rpx*/
+  width: 100%;
+  left: 0;
+  height: 54rpx;   /*设置高度  原先10rpx*/
+  /* height: 100%; */
+  background: -webkit-linear-gradient(315deg, transparent, transparent 45%, #fff, transparent 55%, transparent 100%),
+                -webkit-linear-gradient(45deg, transparent, transparent 45%, #fff, transparent 55%, transparent 100%);
+  background: linear-gradient(135deg, transparent, transparent 45%, #fff, transparent 55%, transparent 100%),
+                linear-gradient(45deg, transparent, transparent 45%, #fff, transparent 55%, transparent 100%);
+  background-size: 25rpx;
+  background-repeat: no-repeat;
+  animation: animat_show 0.5s ease-in-out,0.5s 0.25s ease forwards animat_show1;
+  filter: blur(-1px);
+  display: inline-block;
+} 
+
+.error .icon_s_right {
+  content: '';
+  position: absolute;
+  top: 50rpx; 
+  left: 0rpx;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  height: 2px;
+  animation: animat_show_right 0.5s linear;
+  filter: blur(-1px);
+  display: inline-block;
+}
+.error::before {
+  content: '';
+  position: absolute;
+  bottom: -50rpx;   
+  width: 100%;
+  left: -23rpx;
+  height: 54rpx;   
+  background: -webkit-linear-gradient(315deg, transparent, transparent 45%, #fff, transparent 55%, transparent 100%),
+                -webkit-linear-gradient(45deg, transparent, transparent 45%, #fff, transparent 55%, transparent 100%);
+  background: linear-gradient(135deg, transparent, transparent 45%, #fff, transparent 55%, transparent 100%),
+                linear-gradient(45deg, transparent, transparent 45%, #fff, transparent 55%, transparent 100%);
+  background-size: 25rpx;
+  background-repeat: no-repeat;
+  animation: animat_show 0.5s ease-in-out,0.5s 0.25s ease forwards animat_show1;
+  filter: blur(-1px);
+}
+
+.error::after {
+  content: '';
+  position: absolute;
+  top: 50rpx; 
+  left: 0rpx;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  height: 2px;
+  animation: animat_show_right 0.5s linear;
+  filter: blur(-1px);
+}
+
+@keyframes animat_show {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes animat_show1 {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes animat_show_right {
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.title {
+  position: relative;
+}
+.title .icon_title {
+  padding : 0 10rpx;
+}
+.lunbo_swipper {
+  /* height : 500rpx; */
+  width: 100%;
+  /* margin:40rpx 0; */
+  height: 100%;
+  position: relative;
+}
+
+.lunbo_swipper .slide-image {
+  width: 100%;
+  /* height : 500rpx; */
+  /* margin: 0 auto; */
+  height: 100%;
+  background: center no-repeat/cover;
+}
+
+.lunbo_swipper swiper-item {
+  display: flex;
+  justify-content: center;
+}
+
+.swiper_cart_box {
+  padding-bottom: 100rpx;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.cart_box {
+  height: 100%;
+  position: relative;
+}
+
+.scroll-view_H {
+  white-space: nowrap;
+}
+
+.lunbo_title {
+  position: absolute;
+  width: 100%;
+  bottom: 57rpx;
+  z-index: 99;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  height: 64rpx;
+  color:#fff;
+  overflow-x: scroll;
+  display: flex; 
+  flex-direction:row;
+  white-space: nowrap;
+}
+
+.title_nav {
+  font-size: 30rpx;
+  color: #fff;
+  padding-bottom: 15rpx;
+}
+
+.lunbo_title swiper-item {
+  width: auto;
+  padding: 0 30rpx;
+}
+
+.scroll-view_H {
+  white-space: nowrap;
+}
+
+.scroll-view-item_H {
+  display: inline-block;
+  /* width: 100%;
+  height: 200px; *//* padding:0 30rpx; */
+  position: relative;
+  padding:0 28rpx;
+}
+.line_common {
+  height:4rpx;
+  display: inline-block;
+  background: #fff;
+}
+.line_1 {
+  width: 30rpx;
+  transform: rotate(45deg);
+  animation: animat_show_one 1s linear;
+}
+.line_2 {
+  width: 30rpx;
+  transform: rotate(315deg);
+  position: relative;
+  left: -5rpx;
+  animation: animat_show_two 1.5s linear;
+}
+.line_3 {
+  width: calc(100% + 7rpx);
+  position: relative;
+  left: -10rpx;
+  top:-4rpx;
+  animation: animat_show_three 1.75s linear;
+}
+@keyframes animat_show_one {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 30px;
+  }
+}
+
+@keyframes animat_show_two {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 0;
+  }
+  100% {
+    width: 30px;
+  }
+}
+@keyframes animat_show_three {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 0;
+  }
+  75% {
+    width: 0;
+  }
+  100% {
+    width: calc(100% + 7rpx);
+  }
+}
+.line_show {
+  position: absolute;
+  bottom:-30rpx;
+  left:0;
+  width: 100%;
+  height:30rpx;
+  display: flex;
+  align-items: center;
+}
+.price_info {
+  margin-top:15rpx;
+}
+.price_info text {
+  font-family: "PingFang-SC-Bold";
+  font-weight: bold;
+}
+page .title_img {
+  width: 100%;
+  max-width:250rpx;
+}
+page .no_price {
+  width: 100%;
+  max-width:500rpx;
+}

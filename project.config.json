@@ -23,7 +23,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.3",
+	"libVersion": "2.10.0",
 	"appid": "wx1d585c8c2fffe589",
 	"projectname": "new_rc_qc_3.0",
 	"debugOptions": {
@@ -634,6 +634,13 @@
 					"id": -1,
 					"name": "刮刮乐留资",
 					"pathName": "pages/binding/receive/receive",
+					"query": "activity_id=57",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "test2",
+					"pathName": "pages/test2/test2",
 					"query": "activity_id=57",
 					"scene": null
 				}

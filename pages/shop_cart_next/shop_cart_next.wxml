@@ -26,12 +26,12 @@
             <view class="group" wx:if="{{ !(goodsDetail.type == 2) }}">
                 <view class="icon iconfont icon-shouyexianxing"></view>
                 <block wx:if="{{ pickerStoreList.length }}">
-                    <picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}">
+                    <picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}" style="width:520rpx;">
                         <view class="nowrap">{{ pickerStoreList[storeIndex] }}</view>
                     </picker>
                 </block>
                 <block wx:else>
-                    <view class="span nowrap" bindtap="getStore">选择领取的门店</view>
+                    <view class="span nowrap" bindtap="getStore" style="width:520rpx;">选择领取的门店</view>
                 </block>
                 <view class="go iconfont icon_more"></view>
             </view>

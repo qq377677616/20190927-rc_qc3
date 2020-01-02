@@ -32,12 +32,14 @@ Page({
 		barshopData: {},//砍价商品数据
 		picklist: [],//存pick数据
 		parmData:null,//接收页面参数
+		order_goods_id:null,//订单id
+		isShowLoading:false,
 	},
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		console.log(JSON.parse(options.obj))
+		// console.log(6666,JSON.parse(options.obj))
 		this.setData({ parmData: JSON.parse(options.obj)})
 		request_01.login(() => {
 			this.initData(options)
@@ -59,13 +61,14 @@ Page({
 		this.setData({
 			currentAddressItem,
 		})
-
+		console.log(this.data.parmData.prize_type)
 		//收货人信息必须填写
 		if (!currentAddressItem.area) return;
 
 		//立即兑换商品、购物车商品 为快递时，不用获取门店
 		// console.log('是否需要选择门店', this.data.barshopData.type!=2,this.data.barshopData.type);
-		if (this.data.barshopData.type == 2) return;
+		
+		if (this.data.parmData.prize_type == 2) return;
 		this.getLocation()
 	},
 
@@ -103,14 +106,29 @@ Page({
 	//页面初始化
 	initData(options) {
 		const goodsDetail = app.globalData.goodsDetail;
-		// const cartDetail = app.globalData.cartDetail;
-		let userInfo = wx.getStorageSync('userInfo');
+		const cartDetail = app.globalData.cartDetail;
 		const type = options.type;
+		const userInfo = wx.getStorageSync('userInfo');
+		if (type == 'pay') {//立即支付跳转过来
+			this.setData({
+				goodsDetail,
+			})
+		}
+		else {//购物车跳转过来
+			this.setData({
+				cartDetail,
+			})
+		}
+
+		this.setData({
+			type,
+		})
+
 		alert.loading({
 			str: '加载中'
 		})
 		Promise.all([
-			request_04.getdefault({
+			request_01.defaultAddress({
 				user_id: userInfo.user_id
 			})
 		])
@@ -118,8 +136,9 @@ Page({
 				//success
 				const data = value[0].data.data;
 				const toString = {}.toString;
-				if ( toString.call(data) == '[object Array]' ) {
-					//为空数组 就是没有默认地址
+				if (toString.call(data) == '[object Array]') {
+					//为空数组 就是没有默认地址
+
 				}
 				else {
 					//否则有默认地址
@@ -138,15 +157,21 @@ Page({
 			.then(() => {
 				//complete
 				alert.loading_h()
+
+
 			})
+
+
 	},
+	//定位
 	//定位
 	getLocation() {
 		const currentAddressItem = this.data.currentAddressItem;
-
+		console.log(currentAddressItem);
 		alert.loading({
 			str: '获取门店中'
 		})
+
 		this.setData({//定位中关锁
 			positionKey: false,
 		})
@@ -154,16 +179,74 @@ Page({
 		method.getPosition()
 			.then((value) => {
 				//success
-				console.log(value);
 				const location = value.result;
-				return this.getstroeList();
+
+				return request_01.storeList({
+					city: currentAddressItem.area.split(' ')[1],
+					lon: location.location.lng,
+					lat: location.location.lat,
+				})
+
 			})
 			.catch((reason) => {
 				//fail
-				alert.loading_h();
-				this.getstroeList();
+				return request_01.storeList({
+					city: currentAddressItem.area.split(' ')[1],
+					lon: '',
+					lat: '',
+				})
+
+			})
+			.then((value) => {
+				const storeList = value.data.data;
+				const msg = value.data.msg;
+				const status = value.data.status;
+				let pickerStoreList;
+				alert.loading_h()
+
+				if (status == 1) {//有门店数据返回
+					pickerStoreList = storeList.map((item) => {
+						return item.name;
+					})
+
+					this.setData({
+						storeList,
+						pickerStoreList,
+						storeIndex: 0,
+					})
+				}
+				else {//门店数据返回出错
+
+					this.setData({
+						storeList: [],
+						pickerStoreList: [],
+						storeIndex: 0,
+					})
+
+					alert.alert({
+						str: '门店：' + msg,
+					})
+
+				}
+
+			})
+			.catch((reason) => {
+				//fail
+
+				this.setData({
+					storeList: [],
+					pickerStoreList: [],
+					storeIndex: 0,
+				})
+
+				alert.loading_h()
+				alert.alert({
+					str: '门店：' + JSON.stringify(reason)
+				})
 			})
 			.then(() => {
+				//complete
+
 				this.setData({//定位完开锁
 					positionKey: true,
 				})
@@ -264,26 +347,42 @@ Page({
 	},
 	formSubmit(e) {
 		//领取微信卡券
-		
+		console.log(this.data.parmData)
+		this.isShowLoading();
+		let storeList = this.data.storeList;//门店列表
+		let storeIndex = this.data.storeIndex;
 		//领取非微信卡券
 		if (!this.data.currentAddressItem.address_id || this.data.currentAddressItem.address_id == '') {
 			alert.alert({ str: '请选择地址等信息' });
 			return;
 		}
-		let dat = {
-			prize_id: this.data.parmData.prize_id,
-			openid: wx.getStorageSync("userInfo").openid,
-			address_id: this.data.currentAddressItem.address_id,
-			dlr_code: this.data.pickerStoreList[this.data.storeIndex].code
+		let dat = {};
+		if(this.data.parmData.prize_type==2){
+			dat = {
+				prize_id: this.data.parmData.prize_id,
+				openid: wx.getStorageSync("userInfo").openid,
+				address_id: this.data.currentAddressItem.address_id
+			}
+		}else{
+			dat = {
+				prize_id: this.data.parmData.prize_id,
+				openid: wx.getStorageSync("userInfo").openid,
+				address_id: this.data.currentAddressItem.address_id,
+				dlr_code: storeList[storeIndex].code||''
+			}
 		}
 		request_04.getword(dat).then((res)=>{
+			this.isShowLoading();
 			if(res.data.status=='1'){
-				if (this.data.parmData.prize_type == 1) {
-					// tool.jump_back();
+				if (this.data.parmData.prize_type == 1 && res.data.data.order_goods_id2==0){
+					this.isShowLoading();
+					this.setData({ order_goods_id: res.data.data.order_goods_id})
 					this.addCard([res.data.data.card_info]);
 					return;
 				}
 				tool.jump_red(`/pages/order_detail/order_detail?order_id=${res.data.data.order_id}`)
+			}else{
+				tool.alert(res.data.msg)
 			}
 		})
 	},
@@ -291,6 +390,7 @@ Page({
 		this.isShowLoading()
 		console.log('11', cardList)
 		tool2.addCard(cardList).then(res => {
+			tool.jump_red(`/pages/o_prize/o_prize?activity_id=57`)
 			console.log("卡券返回", res)
 			if (res.errMsg == "addCard:ok") {
 				console.log("卡券领取成功")
@@ -309,12 +409,19 @@ Page({
 			tool2.alert("卡券领取失败")
 		})
 	},
-	isShowLoading() {
+	isShowLoading(){
 		this.setData({
 			isShowLoading: !this.data.isShowLoading
 		})
+		if(this.data.isShowLoading){
+			tool.loading();
+		}else{
+			tool.loading_h();
+		}
 	},
 	cardCheck(card_code) {
+		console.log("上报")
+		console.log(this.data.parmData)
 		let _data = {
 			user_id: wx.getStorageSync("userInfo").user_id,
 			order_goods_id: this.data.order_goods_id,
@@ -323,6 +430,7 @@ Page({
 		api.orderCheck(_data).then(res => {
 			console.log("卡券核销上报返回", res)
 			if (res.statusCode == 200) {
+				
 				this.isShowLoading()
 				tool2.alert("卡券领取成功，请到我的卡包查看卡券使用详情")
 				let _orderDetail = this.data.orderDetail

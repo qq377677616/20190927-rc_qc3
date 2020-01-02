@@ -10,20 +10,20 @@
         </text>
     </view>
 
-    <view class="rule" bindtap="actPop">抽奖规则
+    <view class="rule" bindtap="actPop">活动规则
       <text class="iconfont icon_more">
         </text>
     </view>
 
-    <view class="btn_group">
+    <view class="btn_group" wx:if="{{userInfo.user_type==1}}">
 
-      <view class="btn" bindtap="startReword" data-type="ok">立即抽奖</view>
+      <view class="btn" bindtap="startReword" data-type="ok">立即刮好礼</view>
 
     </view>
 
-    <view class="btn_group" wx:if="{{false}}">
-      <view class="txt">您暂无刮奖机会，请先绑定车主</view>
-      <view class="btn">立即绑定</view>
+    <view class="btn_group"   else>
+      <!-- <view class="txt">您暂无刮奖机会，请先绑定车主</view> -->
+      <view class="btn" bindtap="startReword" data-type="ok">立即刮好礼</view>
     </view>
 
   </view>

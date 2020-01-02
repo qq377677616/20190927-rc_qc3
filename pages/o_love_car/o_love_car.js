@@ -280,33 +280,33 @@ Page({
           alert.alert({
             str: '恭喜您完成车主认证~',
           })
-			this.setData({ bindPop:true});
-        //   //绑定车主成功 存本地
-        //   userInfo.user_type = 1;
-        //   wx.setStorageSync("userInfo", userInfo)
+			// this.setData({ bindPop:true});
+          //绑定车主成功 存本地
+          userInfo.user_type = 1;
+          wx.setStorageSync("userInfo", userInfo)
 
-        //   if (options.pageType == 'back') 
-        //   {
-        //     router.jump_back()
-        //   }else if (options.pageType == 'spike') 
-        //   {
-        //     //秒杀活动非车主预约车主商品
-        //     let pages = getCurrentPages();
-        //     let prevPage = pages[pages.length - 2]; //上一个页面
-        //     if (prevPage) {
-        //       prevPage.VipAppoBtn({
-        //         goods_id: options.goods_id,
-        //         formId: options.formId,
-        //       })
-        //     }
+          if (options.pageType == 'back') 
+          {
+            router.jump_back()
+          }else if (options.pageType == 'spike') 
+          {
+            //秒杀活动非车主预约车主商品
+            let pages = getCurrentPages();
+            let prevPage = pages[pages.length - 2]; //上一个页面
+            if (prevPage) {
+              prevPage.VipAppoBtn({
+                goods_id: options.goods_id,
+                formId: options.formId,
+              })
+            }
 
-        //     router.jump_back()
-        //   }else 
-        //   {
-        //     router.jump_nav({
-        //       url: '/pages/o_love_car_show/o_love_car_show'
-        //     })
-        //   }
+            router.jump_back()
+          }else 
+          {
+            router.jump_nav({
+              url: '/pages/o_love_car_show/o_love_car_show'
+            })
+          }
 
 
         }

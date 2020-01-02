@@ -78,11 +78,11 @@
 
         <!-- footer -->
         <view class="footer">
-			<!-- <form bindsubmit="formSubmit" bindreset="formReset" report-submit="true" class="remarkbtn">
+			<form bindsubmit="formSubmit" bindreset="formReset" report-submit="true" class="remarkbtn">
 				<button class="remarkbtn" form-type="submit" bindsubmit="bindsubmit">
 				  	开始砍价
 				</button>
-			</form> -->
+			</form>
         </view><!-- footer -->
     </block>
 

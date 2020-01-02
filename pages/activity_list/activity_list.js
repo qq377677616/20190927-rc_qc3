@@ -294,6 +294,12 @@ Page({
           url: `/pages/spike_index/spike_index?activity_id=${activity_id}`,
         })
       break;
+		case 15:
+		//15	刮刮乐
+		router.jump_nav({
+			url: `/pages/binding/owner/owner?activity_id=${activity_id}`,
+		})
+		break;
     }
   },
 })

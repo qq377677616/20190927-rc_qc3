@@ -80,7 +80,14 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+	  return {
+		  title: "立即认证启辰车主，即可赢好礼！",
+		  path: `/pages/binding/owner/owner?activity_id=57`,
+		  imageUrl: `${this.data.IMGSERVICE}/guaguale/gglshare.jpg`,
+		  success() {
+			  console.log("通过按钮分享上报")
+		  }
+	  }
   },
   activeStus(){
 	//查询活动状态

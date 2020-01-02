@@ -6,5 +6,6 @@
 	"pop": "/components/LingQu_gift/cmp",
 	"rule": "/components/rule/rule"
 },
-  "navigationBarTitleText": "车主绑定好礼"
+  "navigationBarTitleText": "车主绑定好礼",
+  "disableScroll": true
 }
