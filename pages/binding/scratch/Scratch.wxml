@@ -6,10 +6,11 @@
     <!-- <image class="gua" src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2458227883,4095122505&fm=26&gp=0.jpg"></image> -->
     <view class="gua" style="background-image:url('{{IMGSERVICE}}/center/guabian.png')">
       <!-- background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/guajiang.png?v_1) -->
-	  <view class="coverimg" wx:if="{{!delMC&&nochange}}" style="background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/nochange.png?v_1)" catchtap="kjbox"></view>
-	  <view class="coverimg" wx:if="{{delMC}}" style="background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/ggl_defult.png?v_1)" catchtap="kjbox"></view>
-	  <canvas class="tui-luck {{!delMC?'shows':'hides'}}"  style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;background: url({{prize_img}}) no-repeat center center;" canvas-id="luck"  bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd"></canvas>
-    </view>
+	  <view class="coverimg setindex" wx:if="{{delMC}}" style="background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/ggl_defult.png?v_1)" catchtap="kjbox"></view>
+	  <view  class="coverimg {{xlzindex==index?'setopt':'noopt'}}" wx:for="{{31}}" style="background-image:url({{gglImg+'/1_0000'+index+'.png'}})" catchtap="kjbox"></view>
+	  <view class="coverimg setopt2" style="background-image:url({{prize_img}})"></view>  
+	  <view class="coverimg setopt3" wx:if="{{change}}" style="background-image:url(https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/nochange.png)"></view>
+	</view>
   </view>
   <view class="num">您的刮奖机会({{wordstus.used_num}}/{{wordstus.all_num}})</view>
   <view class="gua-btn" wx:if="{{showbtn!=0}}">
@@ -28,8 +29,8 @@
         <view class="text">奖品</view>
         <view>中奖时间</view>
       </view>
-      <swiper vertical="true" display-multiple-items="{{wordData.length>3?3:wordData.length+1}}" interval="1500"  circular="true" style="height:265rpx">
-        <swiper-item class="flex-cen" wx:for="{{wordData}}" wx:key="item">
+      <swiper vertical="{{true}}" display-multiple-items="{{wordData.length>3?3:wordData.length}}" autoplay="{{wordData.length>3}}" interval="1500"  circular="{{wordData.length>3}}" style="height:265rpx">
+        <swiper-item class="flex-cen" wx:for="{{wordData}}" wx:key="item" style="align-items: start;height:auto !important;">
           <view>{{item.nickname}}</view>
           <view class="text">{{item.prize_name || ''}}</view>
           <view>{{item.create_time || ''}}</view>
@@ -45,7 +46,7 @@
 <!-- 中奖弹窗 showWord&&wordDel.prize_type!=5-->
 <view class="popup" wx:if="{{showWord&&wordDel.prize_type!=5}}">
   <view class="prize-popup fadeShow" style="background-image:url('{{IMGSERVICE}}/center/bdpopup.png')">
-    <image class="gift" src="{{wordDel.prize_img}}" mode="widthFix"></image>
+    <image class="gift" src="{{wordDel.prize_img}}"></image>
     <!-- <view class="quan">{{wordDel.prize_name}}</view> -->
     <view class="btn" bindtap="my_words"></view>
     <view class="close" bindtap="closePop"></view>
@@ -58,7 +59,7 @@
   <view class="prize-popup fadeShow" style="background-image:url('{{IMGSERVICE}}/center/kongkong.png')">
     <!-- <view class="no-txt1">莫灰心</view>
     <view class="no-txt2">祝您新年好运常相伴！</view> -->
-	<view class="defultimg" style="background-image:url('{{IMGSERVICE}}/center/noword.png')"></view>
+	<view class="defultimg" style="background-image:url('{{wordDel.prize_img}}')"></view>
     <view class="btn" bindtap="closePop"></view>
     <view class="close" bindtap="closePop"></view>
   </view>

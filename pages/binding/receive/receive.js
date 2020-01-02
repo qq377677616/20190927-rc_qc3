@@ -61,13 +61,14 @@ Page({
 		this.setData({
 			currentAddressItem,
 		})
-
+		console.log(this.data.parmData.prize_type)
 		//收货人信息必须填写
 		if (!currentAddressItem.area) return;
 
 		//立即兑换商品、购物车商品 为快递时，不用获取门店
 		// console.log('是否需要选择门店', this.data.barshopData.type!=2,this.data.barshopData.type);
-		// if (this.data.barshopData.type == 2) return;
+		
+		if (this.data.parmData.prize_type == 2) return;
 		this.getLocation()
 	},
 
@@ -355,11 +356,20 @@ Page({
 			alert.alert({ str: '请选择地址等信息' });
 			return;
 		}
-		let dat = {
-			prize_id: this.data.parmData.prize_id,
-			openid: wx.getStorageSync("userInfo").openid,
-			address_id: this.data.currentAddressItem.address_id,
-			dlr_code: storeList[storeIndex].code
+		let dat = {};
+		if(this.data.parmData.prize_type==2){
+			dat = {
+				prize_id: this.data.parmData.prize_id,
+				openid: wx.getStorageSync("userInfo").openid,
+				address_id: this.data.currentAddressItem.address_id
+			}
+		}else{
+			dat = {
+				prize_id: this.data.parmData.prize_id,
+				openid: wx.getStorageSync("userInfo").openid,
+				address_id: this.data.currentAddressItem.address_id,
+				dlr_code: storeList[storeIndex].code||''
+			}
 		}
 		request_04.getword(dat).then((res)=>{
 			this.isShowLoading();

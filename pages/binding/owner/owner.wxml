@@ -17,13 +17,13 @@
 
     <view class="btn_group" wx:if="{{userInfo.user_type==1}}">
 
-      <view class="btn" bindtap="startReword" data-type="ok">立即刮奖</view>
+      <view class="btn" bindtap="startReword" data-type="ok">立即刮好礼</view>
 
     </view>
 
-    <view class="btn_group"   wx:if="{{userInfo.user_type==0}}">
+    <view class="btn_group"   else>
       <!-- <view class="txt">您暂无刮奖机会，请先绑定车主</view> -->
-      <view class="btn" bindtap="startReword" data-type="ok">立即刮奖</view>
+      <view class="btn" bindtap="startReword" data-type="ok">立即刮好礼</view>
     </view>
 
   </view>

@@ -216,10 +216,11 @@ Page({
   },
   //banner图跳转
   bannerJump(e){
+	 
     const index = e.currentTarget.dataset.index;
     const listInfo = this.data.listInfo;
     const page = listInfo.banner_list[index].page;
-
+	  console.log(page)
     if( page ){//page页面存在
       router.jump_nav({
         url:`/${page}`,

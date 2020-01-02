@@ -32,6 +32,9 @@ Page({
 	nochange:false,//默认有机会
 	firstend:0,//是否第一次抽奖机会没有
 	dy_info:false,//是否接受订阅消息
+	gglImg:'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/guaguale',//测试图片地址
+	xlzindex:0,//当前序列帧
+	change:false,//默认有机会抽奖
   },
 
   /**
@@ -91,7 +94,6 @@ Page({
   },
   //刮完奖回调
   scrapeOk() {
-	
 	let flag = this.data.firstend;
 	if(flag>0)return;
 	console.log(this.data.useNum == this.data.allNum);
@@ -163,18 +165,18 @@ Page({
 	  if(e.from=="button"){
 		   that.upShare();
 		   return{
-			   title:"刮刮乐",
+			   title:"立即认证启辰车主，即可赢好礼！",
 			   path:`/pages/binding/owner/owner?activity_id=57`,
-			   imageUrl:'https: //game.flyh5.cn/resources/game/wechat/szq/images/img_12.jpg',
+			   imageUrl:`${this.data.IMGSERVICE}/guaguale/gglshare.jpg`,
 			   success(){
 				   console.log("通过按钮分享上报")
 			   }
 		   }	
 	  }else{
 		  return {
-			  title: "刮刮乐",
+			  title: "立即认证启辰车主，即可赢好礼！",
 			  path: `/pages/binding/owner/owner?activity_id=57`,
-			  imageUrl: 'https: //game.flyh5.cn/resources/game/wechat/szq/images/img_12.jpg',
+			  imageUrl: `${this.data.IMGSERVICE}/guaguale/gglshare.jpg`,
 			  success() {
 				  console.log("通过右上角不上报")
 				//   that.upShare();
@@ -199,7 +201,7 @@ Page({
 					showbtn: res.data.data.activity_info.share_num
 					})
 				if (!(this.data.useNum < this.data.allNum)&&this.data.flag==0) {
-					this.setData({ nochange: true, delMC:false});
+					this.setData({ change:true});
 			     }
 				this.setData({ flag:++this.data.flag})
 			}
@@ -226,6 +228,7 @@ Page({
 		console.log("刮奖参数",dat)
 		request4.runShave(dat).then((res)=>{
 			if (res.data.status==1){
+				this.playXLZ();
 				this.shaveList();
 				console.log("刮奖返回",res)
 				this.setData({ create_time:res.data.data.date, prize_log_id:res.data.data.prize_log_id,draw: false, wordDel: res.data.data.prize_info})	
@@ -258,10 +261,7 @@ Page({
 	closePop(){
 		//关闭弹窗this.setData({ isend:0})
 		console.log(this.data.useNum,this.data.allNum);
-		this.setData({ showWord: false, delMC: this.data.useNum < this.data.allNum})
-		// if (this.data.useNum < this.data.allNum){
-		// 	this.setData({ delMC:true})
-		// }
+		this.setData({ showWord: false, delMC: this.data.useNum < this.data.allNum, xlzindex: 0, change: this.data.useNum >= this.data.allNum})
 	},
 	my_words(){
 		//领取奖品
@@ -304,5 +304,17 @@ Page({
 		// 		that.runShave();
 		// 	}
 		// }
+	},
+	playXLZ(){
+		let flag = 0;
+		let time = setInterval(()=>{
+			console.log(flag, '==', this.data.xlzindex);
+			if(flag>28){
+				clearInterval(time);
+				this.setData({showWord: true});
+			}
+			this.setData({ xlzindex: ++this.data.xlzindex})
+			flag++;
+		},50)
 	}
 })

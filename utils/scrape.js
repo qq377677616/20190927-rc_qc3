@@ -66,6 +66,7 @@ class Scrape{
     this.ctx.draw(true);
   }
   bindTouch(){
+	console.log("触摸事件没执行")
     const _this = this;
     _this.page.onTouchStart = function(e){
       _this.eraser(e,true);

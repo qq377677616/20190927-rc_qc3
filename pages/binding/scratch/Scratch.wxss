@@ -45,6 +45,7 @@
 	top:50%;
 	transform: translate(-50%,-50%);
 	background: center no-repeat/cover;
+	z-index: 9;
 }
 .tui-luck{
   width: 505rpx;
@@ -111,7 +112,8 @@
 }
 
 .gift {
-  width: 316rpx;
+  width: 300rpx;
+  height: 300rpx;
   margin-top: 109rpx;
 }
 
@@ -242,17 +244,35 @@ swiper-item {
 	top: 0;
 }
 .defultimg{
-	width: 471rpx;
-	height: 291rpx;
+	width: 300rpx;
+	height: 300rpx;
 	/* background-color: red; */
 	margin-top: 112rpx;
 	background: center no-repeat/cover;
 }
 .shows{
-	opacity: 1
+	opacity: 1;
+	position: relative;
+	z-index: 999;
 }
 .hides{
 	opacity: 0;
 	position: relative;
 	z-index: -1;
+}
+.setindex{
+	z-index: 99;
+}
+.noopt{
+	opacity: 0;
+}
+.setopt{
+	opacity: 1
+}
+.setopt2{
+	z-index: 1;
+	width: 293rpx;
+}
+.setopt3{
+	z-index: 9999;
 }
