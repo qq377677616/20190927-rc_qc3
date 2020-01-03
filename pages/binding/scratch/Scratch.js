@@ -166,7 +166,7 @@ Page({
 		   that.upShare();
 		   return{
 			   title:"立即认证启辰车主，即可赢好礼！",
-			   path:`/pages/binding/owner/owner?activity_id=57`,
+			   path: `/pages/binding/owner/owner?activity_id=${this.data.activity_id}`,
 			   imageUrl:`${this.data.IMGSERVICE}/guaguale/gglshare.jpg`,
 			   success(){
 				   console.log("通过按钮分享上报")
@@ -175,7 +175,7 @@ Page({
 	  }else{
 		  return {
 			  title: "立即认证启辰车主，即可赢好礼！",
-			  path: `/pages/binding/owner/owner?activity_id=57`,
+			  path: `/pages/binding/owner/owner?activity_id=${this.data.activity_id}`,
 			  imageUrl: `${this.data.IMGSERVICE}/guaguale/gglshare.jpg`,
 			  success() {
 				  console.log("通过右上角不上报")
@@ -279,6 +279,7 @@ Page({
 		this.shaveList()
 		obj.prize_id = this.data.prize_log_id;
 		obj.create_time = this.data.create_time;
+		obj.activity_id = this.data.activity_id;
 		this.closePop();
 		tool.jump_nav(`/pages/binding/receive/receive?obj=${JSON.stringify(obj)}`)
 	},

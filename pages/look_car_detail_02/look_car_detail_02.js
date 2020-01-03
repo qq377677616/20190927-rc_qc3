@@ -22,6 +22,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+	IMGSERVICE: app.globalData.IMGSERVICE,
     options: {},
     navIndex: 0,
     lookCarDetail: {},
@@ -224,5 +225,8 @@ Page({
       title: `赶快来预约 ${this.data.lookCarDetail.car_name} 吧~`,
       path: `/pages/look_car_detail_02/look_car_detail_02?id=${this.data.id}`
     }
-  }
+  },
+	moreBtn() {
+		tool.jump_red("/pages/index/index")
+	}
 })

@@ -461,6 +461,7 @@ Page({
   },
   //操作按钮
   opBtn(e) {
+	console.log(66)
     const ctDataset = e.currentTarget.dataset;
 
     const len = Object.keys(ctDataset).length;
