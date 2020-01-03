@@ -108,3 +108,14 @@ page {
   0%{ box-shadow: 0 0 0rpx 2rpx rgba(32, 161, 224, 1);}
   100%{ box-shadow: 0 0 10rpx 4rpx rgba(32, 161, 224, 1);}
 }
+/* 新加icon样式 */
+.float-btn {
+	position: fixed;
+	right: 18rpx;
+	bottom: 180rpx;
+}
+.float-btn image {
+display: block;
+width: 84rpx;
+margin-bottom: 32rpx;
+}

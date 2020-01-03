@@ -390,7 +390,7 @@ Page({
 		this.isShowLoading()
 		console.log('11', cardList)
 		tool2.addCard(cardList).then(res => {
-			tool.jump_red(`/pages/o_prize/o_prize?activity_id=57`)
+			tool.jump_red(`/pages/o_prize/o_prize?activity_id=${this.data.parmData.activity_id}`)
 			console.log("卡券返回", res)
 			if (res.errMsg == "addCard:ok") {
 				console.log("卡券领取成功")

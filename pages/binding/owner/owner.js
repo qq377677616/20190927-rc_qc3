@@ -27,7 +27,7 @@ Page({
 	  this.setData({parms:options})
 	  request1.login(() => {
 		  this.setData({
-			  activity_id: options.activity_id || wx.getStorageSync('activity_id'),
+			  activity_id: options.activity_id,
 			  userInfo: wx.getStorageSync("userInfo"),
 		  });
 		  this.activeStus();
@@ -82,7 +82,7 @@ Page({
   onShareAppMessage: function () {
 	  return {
 		  title: "立即认证启辰车主，即可赢好礼！",
-		  path: `/pages/binding/owner/owner?activity_id=57`,
+		  path: `/pages/binding/owner/owner?activity_id=${this.data.activity_id}`,
 		  imageUrl: `${this.data.IMGSERVICE}/guaguale/gglshare.jpg`,
 		  success() {
 			  console.log("通过按钮分享上报")

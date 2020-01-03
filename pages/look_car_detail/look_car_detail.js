@@ -451,5 +451,8 @@ Page({
     api.channelUpload({ user_id: wx.getStorageSync('userInfo').user_id, channel_id: channel_id}).then(res => {
       console.log("朋友圈渠道上报返回：", res)
     })
-  }
+  },
+	moreBtn(){
+		tool.jump_red("/pages/index/index")
+	}
 })
