@@ -8,21 +8,41 @@ const alert = ({ str, icon = "none", duration = 1500, mask = false }) => {
     })
 }
 
+// //loading提示框
+// const loading = ({ str, mask = false }) => {
+//     wx.showLoading({
+//         title: str,
+//         mask,
+//     })
+// }
+
+// //关闭loading提示框
+// const loading_h = () => {
+//     wx.hideLoading()
+// }
+
 //loading提示框
-const loading = ({ str, mask = true }) => {
-    wx.showLoading({
+const loading = ({ str, icon = "none", duration = 30000, mask = false }) => {
+    wx.showToast({
         title: str,
+        icon,
+        duration,
         mask,
     })
 }
 
 //关闭loading提示框
 const loading_h = () => {
-    wx.hideLoading()
+    wx.showToast({
+        title: '',
+        icon:'none',
+        duration:0,
+        mask:false,
+    })
 }
 
 //确认/取消弹框
-const confirm = ({title = "确认", content = "您确认进行此操作？", confirms = "确认,#333", cancels = "取消,#333"}) => {
+const confirm = ({ title = "确认", content = "您确认进行此操作？", confirms = "确认,#333", cancels = "取消,#333" }) => {
     return new Promise((resolve, reject) => {
         wx.showModal({
             title,

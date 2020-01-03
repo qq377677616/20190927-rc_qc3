@@ -114,6 +114,7 @@ Page({
     mta.Page.init()//腾讯统计
     if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", { channel_id: wx.getStorageSync("shareIds").channel_id, page: 'home' })
     request_01.login(()=>{
+
       this.initData(options)
     })
   },

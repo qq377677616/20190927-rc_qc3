@@ -23,6 +23,7 @@
     <view class="title">
       <image src="{{IMGSERVICE}}/center/zj_list.png" mode="widthFix"></image>
     </view>
+
     <view class="prize-list">
       <view class="p-header flex-cen">
         <view>中奖用户</view>
@@ -67,5 +68,5 @@
 <!-- </scroll-view> -->
 <!-- 图片加载处理 -->
 <view class="onload">
-	<image mode="widthFix" src=""></image>
+	<image mode="widthFix" src="#"></image>
 </view>

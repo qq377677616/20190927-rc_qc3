@@ -188,8 +188,8 @@ Page({
 		// 查询 中奖列表和 刮奖机会
 		let that =this;
 		let dat = {
-			activity_id:this.data.activity_id,
-			openid:this.data.userInfo.openid
+			activity_id: this.data.activity_id,
+			openid: this.data.userInfo.openid
 		}
 		request4.shaveList(dat).then((res)=>{
 			if(res.data.status=='1'){
@@ -206,6 +206,9 @@ Page({
 				this.setData({ flag:++this.data.flag})
 			}
 		})
+		.catch((reason)=>{
+			console.error(reason, '????????????')
+		})
 	},
 	addArr(arr, n) {
 		// 数组填充操作
@@ -216,7 +219,7 @@ Page({
 		}
 		return arr
 	},
-	runShave(){
+	runShave() {
 		//用户刮奖获得奖品
 		let that = this;
 		tool.loading(" ")
@@ -240,33 +243,33 @@ Page({
 			}
 		})
 	},
-	upShare(){
+	upShare() {
 		// 分享成功 获得奖品
 		let dat = {
 			activity_id: this.data.activity_id,
 			openid: this.data.userInfo.openid
 		}
-		request4.upShare(dat).then((res)=>{
-			if(res.data.status=="1"){
+		request4.upShare(dat).then((res) => {
+			if (res.data.status == "1") {
 				console.log("分享成功");
 				this.shaveList();
 			}
 		})
 	},
-	showTips(){
+	showTips() {
 		// 分享过后 提示
 		if (this.data.wordstus.is_share != '0')
-		tool.alert("您已经分享过了!")
+			tool.alert("您已经分享过了!")
 	},
 	closePop(){
 		//关闭弹窗this.setData({ isend:0})
 		console.log(this.data.useNum,this.data.allNum);
 		this.setData({ showWord: false, delMC: this.data.useNum < this.data.allNum, xlzindex: 0, change: this.data.useNum >= this.data.allNum})
 	},
-	my_words(){
+	my_words() {
 		//领取奖品
 		let obj = this.data.wordDel;
-		if (obj.prize_type==4){
+		if (obj.prize_type == 4) {
 			this.setData({ showWord: false });
 			this.shaveList();
 			this.closePop();

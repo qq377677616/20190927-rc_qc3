@@ -1343,8 +1343,7 @@ const login = (callback) => {
         alert.loading({
             str: '登录中'
         })
-
-
+        console.warn('userInfo.user_id：',userInfo.user_id)
         if (userInfo.user_id) {//本地已保存用户信息
 
             alert.loading_h();
@@ -1383,7 +1382,6 @@ const login = (callback) => {
         } else {//本地未保存用户信息
 
             
-
             Promise.all([
                 authorization.login(),
                 authorization.login()
@@ -1400,6 +1398,8 @@ const login = (callback) => {
                 })
                 .then((value) => {
                     const data = value[0].data.data;
+                    alert.loading_h();
+
                     if (data.errcode && data.errmsg) {
 
                         login(callback)
@@ -1408,17 +1408,14 @@ const login = (callback) => {
 
 
                         wx.setStorageSync('userInfo', data)
-
-                        alert.loading_h();
                         callback()
                     }
                 })
                 .catch((reason) => {
                     alert.loading_h();
-
-                    alert.alert({
-                        str: reason
-                    })
+                    // alert.alert({
+                    //     str: reason
+                    // })
                     callback()
                 })
         }
@@ -1503,14 +1500,14 @@ function unionid(resolve){
             .catch((reason) => {
                 //fail
                 tool.loading_h()
-                tool.alert(`车主信息获取失败：${reason}`)
+                // tool.alert(`车主信息获取失败：${reason}`)
             })
 
     })
     .catch((reason)=>{
         //fail
         tool.loading_h()
-        tool.alert(`unionid获取失败：${reason}`)
+        // tool.alert(`unionid获取失败：${reason}`)
     })
 }
 function sessionKey({resolve, code}){
@@ -1530,7 +1527,7 @@ function sessionKey({resolve, code}){
         if ( data.errcode && data.errmsg ) {
 
             //fail
-            tool.alert(`session_key获取失败：${data.errcode}${data.errmsg}`)
+            // tool.alert(`session_key获取失败：${data.errcode}${data.errmsg}`)
 
         } else {
 
@@ -1549,7 +1546,7 @@ function sessionKey({resolve, code}){
     })
     .catch((reason)=>{
         //fail
-        tool.alert(`session_key获取失败：${reason}`)
+        // tool.alert(`session_key获取失败：${reason}`)
     })
 }
 
