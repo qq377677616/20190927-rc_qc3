@@ -491,10 +491,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 62,
 					"name": "shake_shake",
 					"pathName": "pages/shake_shake/shake_shake",
-					"query": "activity_id=49",
+					"query": "activity_id=1",
 					"scene": null
 				},
 				{
@@ -642,6 +642,13 @@
 					"name": "test2",
 					"pathName": "pages/test2/test2",
 					"query": "activity_id=57",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "摇一摇留资",
+					"pathName": "pages/shake_prize/shake_prize",
+					"query": "",
 					"scene": null
 				}
 			]

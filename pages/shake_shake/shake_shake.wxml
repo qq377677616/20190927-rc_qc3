@@ -8,17 +8,17 @@
 
     <!-- <image class="yao" src="{{ IMGSERVICE }}/shake_shake/ziti.png" mode="widthFix"></image> -->
 
-    <view class="rule" bindtap="openRule">活动规则</view>
+    <view class="rule" catchtap="openRule">活动规则</view>
 
     <view class="btn_group">
 
-      <view class="btn" bindtap="joinShake" data-type="ok">摇一摇</view>
+      <!-- <view class="btn" bindtap="joinShake" data-type="ok">摇一摇</view> -->
 
       <view class="tips">参与机会({{shake_num}})</view>
 
     </view>
 
-    <view class="allPing" wx:if="{{startShake}}" catchtap="onceClick">
+    <view class="allPing" wx:if="{{startShake}}" bindtap="onceClick" data-type="ok">
       <view class="contain-shou">
         <view class="shou cake" style="background-image:url('{{ IMGSERVICE }}/activity/shake_icon.png')">
         </view>
@@ -124,7 +124,7 @@
     </view>
   </view>
   <!-- 规则 -->
-  <view class="pof fadeShow" wx:if="{{rulspop}}">
+  <view class="pof fadeShow" wx:if="{{rulspop}}" catchtap="java">
     <rule bindclose="closePop" ruleImg="{{activity_info.rule}}"></rule>
   </view>
   <!-- 留资弹窗 -->

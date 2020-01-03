@@ -43,6 +43,7 @@ page {
   font-size: 24rpx;
   line-height: 50rpx;
   border-radius: 25rpx 0 0 25rpx;
+  z-index: 99;
 }
 
 .main .btn_group {
@@ -51,6 +52,7 @@ page {
   width: 514rpx;
   left: 50%;
   transform: translatex(-50%);
+  z-index: 999;
 }
 
 .main .btn_group .btn {
