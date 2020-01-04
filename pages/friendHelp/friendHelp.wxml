@@ -52,8 +52,8 @@
       <view class="helpBtn mt1" wx:if="{{is_upgrade==0 && help_num<max_help_num_upgrade}}">
         <button class="btnShare" bindtap="shareFriend">继续分享升级好礼</button>
       </view>
-      <view class="helpBtn mt1 wh" wx:if="{{is_upgrade==0 && help_num>=max_help_num_upgrade}}">
-        <button bindtap="lqPrize">放入卡包</button>
+      <view class="helpBtn mt1 wh"  bindtap="lqPrize" wx:if="{{is_upgrade==0 && help_num>=max_help_num_upgrade}}">
+        <button>放入卡包</button>
       </view>
       <view class="helpBtn mt1 gray" wx:if="{{is_upgrade==1}}">
         <button>放入卡包</button>

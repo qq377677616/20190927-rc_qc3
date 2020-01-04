@@ -128,7 +128,10 @@ Page({
             quanPop: true,
             other_prize: res.data.data.other_prize,
             prize_log_id: res.data.data.prize_log_id,
-            prize_info: res.data.data.prize_info
+            prize_info: res.data.data.prize_info,
+            order_id: res.data.data.shake_info.order_id,
+            order_goods_id: res.data.data.shake_info.order_goods_id,
+            create_time: res.data.data.shake_info.create_time,
           })
         } else {
           console.log('have_upgrade', res.data.data.have_upgrade)
@@ -144,9 +147,14 @@ Page({
       } else {
         let keyGroup = wx.getStorageSync('keyGroup')
         let shakeKey = wx.getStorageSync('keyGroup').shakeKey
+        console.log(keyGroup, 'keyGroup')
         if (!shakeKey) {
           if (!this.beforeCheck()) {
+            console.log('没有授权')
             return;
+          } else {
+            console.log('授权了')
+            this.joinShake()
           }
         }
         this.setData({
@@ -163,21 +171,22 @@ Page({
         popType: 2
       })
       this.isVehicleOwnerHidePop()
+      console.log('进来授权')
       return false;
-    } 
+    } else {
+      return true
+    }
     if (wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner == 1) {
       this.setData({
         popType: 3
       })
       this.isVehicleOwnerHidePop()
+      console.log('进来车主')
       return false;
     }
   },
   /*摇一摇2*/
   shake_one_shake2(callBack) {
-    if (!this.beforeCheck()) {
-      return;
-    }
     var _this = this
     //首先定义一下，全局变量
     let lastTime = 0; //此变量用来记录上次摇动的时间
@@ -241,7 +250,7 @@ Page({
         openid,
         activity_id
       }).then(res => {
-        console.log(res);
+        console.log('摇一摇成功', res);
         this.setData({
           prize_info: res.data.data.prize_info,
         })
@@ -264,15 +273,14 @@ Page({
   },
   // 点击屏幕
   onceClick() {
-    console.log(1111111111)
     if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").unionid || !wx.getStorageSync("userInfo").nickName) return;
-    console.log(222222222222)
     if (this.data.isOpen) {
       this.shakeOk()
     }
   },
   // 参与摇红包
   joinShake() {
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").unionid || !wx.getStorageSync("userInfo").nickName) return;
     let options = this.data.options;
     let openid = wx.getStorageSync('userInfo').openid;
     let activity_id = options.activity_id;
@@ -281,7 +289,7 @@ Page({
       tool.alert('您的抽奖次数已经用完了哦~')
     } else {
       this.setData({
-        isOpen: true,
+        // isOpen: true,
         startShake: true
       })
       if (this.data.startShake) {
@@ -297,19 +305,47 @@ Page({
 
   // 领取奖品
   getPrize() {
+    var _this = this
+    let options = this.data.options
+    let user_id = wx.getStorageSync('userInfo').user_id
     let obj = this.data.prize_info
+    let order_id = this.data.order_id
+    let order_goods_id = this.data.order_goods_id
     obj.prize_id = this.data.prize_log_id;
-    router.jump_nav({
-      url: `/pages/shake_prize/shake_prize?obj=${JSON.stringify(obj)}`
-    })
-    // this.closeBtn();
-    // this.setData({
-    //   quanPop: !this.data.quanPop
-    // })
-    // this.setData({
-    //   formType: 5,
-    //   isShowForm: true,
-    // })
+    obj.activity_id = this.data.activity_id;
+    obj.create_time = this.data.create_time
+    if (order_id == 0) {
+      router.jump_red({
+        url: `/pages/shake_prize/shake_prize?obj=${JSON.stringify(obj)}`
+      })
+    } else {
+      request_05.getWechatCard({
+        user_id,
+        order_goods_id
+      }).then(res => {
+        let cardList = res.data.data[0]
+        wx.addCard({
+          cardList: [cardList],
+          success(res) {
+            console.log('cardList', res)
+            let card_code = res.cardList[0].code;
+            request_05.orderCardCode({
+              user_id,
+              order_goods_id,
+              card_code
+            }).then(res => {
+              console.log('update_card_code', res)
+              if (res.data.status == 1) {
+                tool.alert('领取成功')
+                setTimeout(() => {
+                  _this.initData(options)
+                }, 500)
+              }
+            })
+          }
+        })
+      })
+    }
   },
 
   toFriendHelp() {
@@ -512,8 +548,10 @@ Page({
   isOpen() {
     this.setData({
       openAj: !this.data.openAj,
-      startShake: true
+      startShake: true,
+      isOpen: true
     })
+    this.joinShake();
   },
 
   // 关闭第三次中奖弹窗

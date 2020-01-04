@@ -13,50 +13,52 @@ const tool = require('../../utils/public/tool.js');
 
 import tool2 from '../../utils/tool/tool.js'
 
-const app = getApp();//获取应用实例
+const app = getApp(); //获取应用实例
 Page({
-	/**
-	 * 页面的初始数据
-	 */
+  /**
+   * 页面的初始数据
+   */
   data: {
-    IMGSERVICE: app.globalData.IMGSERVICE,//图片基本路径
+    IMGSERVICE: app.globalData.IMGSERVICE, //图片基本路径
     // goodsDetail: {},//商品详情信息
     // cartDetail: {},//
     // type: 'pay',
     currentAddressItem: {},
     storeList: [],
     pickerStoreList: [],
-    storeIndex: 0,//
-    positionKey: true,//是否定位
-    barshopData: {},//砍价商品数据
-    picklist: [],//存pick数据
-    parmData: null,//接收页面参数
-    order_goods_id: null,//订单id
+    storeIndex: 0, //
+    positionKey: true, //是否定位
+    barshopData: {}, //砍价商品数据
+    picklist: [], //存pick数据
+    parmData: null, //接收页面参数
+    order_goods_id: null, //订单id
     isShowLoading: false,
   },
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-  onLoad: function (options) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
     // console.log(6666,JSON.parse(options.obj))
-    this.setData({ parmData: JSON.parse(options.obj) })
+    this.setData({
+      parmData: JSON.parse(options.obj)
+    })
     request_01.login(() => {
       this.initData(options)
     })
   },
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-  onReady: function () {
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
 
   },
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-  onShow: function () {
-    const currentAddressItem = app.globalData.currentAddressItem;//收货人信息
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    const currentAddressItem = app.globalData.currentAddressItem; //收货人信息
     this.setData({
       currentAddressItem,
     })
@@ -71,49 +73,48 @@ Page({
     this.getLocation()
   },
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-  onHide: function () {
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function() {
 
   },
 
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-  onUnload: function () {
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function() {
 
   },
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-  onPullDownRefresh: function () {
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
 
   },
 
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-  onReachBottom: function () {
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
 
   },
 
-	/**
-	 * 用户点击右上角分享
-	 */
+  /**
+   * 用户点击右上角分享
+   */
   //页面初始化
   initData(options) {
     const goodsDetail = app.globalData.goodsDetail;
     const cartDetail = app.globalData.cartDetail;
     const type = options.type;
     const userInfo = wx.getStorageSync('userInfo');
-    if (type == 'pay') {//立即支付跳转过来
+    if (type == 'pay') { //立即支付跳转过来
       this.setData({
         goodsDetail,
       })
-    }
-    else {//购物车跳转过来
+    } else { //购物车跳转过来
       this.setData({
         cartDetail,
       })
@@ -123,14 +124,14 @@ Page({
       type,
     })
 
-    alert.loading({
-      str: '加载中'
-    })
+    // alert.loading({
+    //   str: '加载中'
+    // })
     Promise.all([
-      request_01.defaultAddress({
-        user_id: userInfo.user_id
-      })
-    ])
+        request_01.defaultAddress({
+          user_id: userInfo.user_id
+        })
+      ])
       .then((value) => {
         //success
         const data = value[0].data.data;
@@ -138,8 +139,7 @@ Page({
         if (toString.call(data) == '[object Array]') {
           //为空数组 就是没有默认地址
 
-        }
-        else {
+        } else {
           //否则有默认地址
           app.globalData.currentAddressItem = Object.assign(data, {
             real_address: data.area.replace(/\s+/g, "") + data.address
@@ -171,7 +171,7 @@ Page({
       str: '获取门店中'
     })
 
-    this.setData({//定位中关锁
+    this.setData({ //定位中关锁
       positionKey: false,
     })
 
@@ -203,7 +203,7 @@ Page({
         let pickerStoreList;
         alert.loading_h()
 
-        if (status == 1) {//有门店数据返回
+        if (status == 1) { //有门店数据返回
           pickerStoreList = storeList.map((item) => {
             return item.name;
           })
@@ -213,8 +213,7 @@ Page({
             pickerStoreList,
             storeIndex: 0,
           })
-        }
-        else {//门店数据返回出错
+        } else { //门店数据返回出错
 
           this.setData({
             storeList: [],
@@ -246,7 +245,7 @@ Page({
       .then(() => {
         //complete
 
-        this.setData({//定位完开锁
+        this.setData({ //定位完开锁
           positionKey: true,
         })
       })
@@ -276,7 +275,7 @@ Page({
       const msg = value.data.msg;
       const status = value.data.status;
 
-      if (status == 1) {//有门店数据返回
+      if (status == 1) { //有门店数据返回
         pickerStoreList = storeList.map((item) => {
           return item;
         })
@@ -289,8 +288,7 @@ Page({
           storeIndex: 0,
           picklist,
         })
-      }
-      else {//门店数据返回出错
+      } else { //门店数据返回出错
 
         this.setData({
           storeList: [],
@@ -305,7 +303,7 @@ Page({
   //获取收货人信息
   getInfo() {
     const positionKey = this.data.positionKey;
-    router.jump_nav({//跳转到我的地址页 选择地址
+    router.jump_nav({ //跳转到我的地址页 选择地址
       url: '/pages/o_address/o_address?pageType=back'
     })
   },
@@ -319,14 +317,13 @@ Page({
   },
   //选择获取门店提示
   getStore() {
-    const currentAddressItem = this.data.currentAddressItem;//收货人信息
+    const currentAddressItem = this.data.currentAddressItem; //收货人信息
 
-    if (currentAddressItem.area) {//收货人信息必须填写
+    if (currentAddressItem.area) { //收货人信息必须填写
       alert.alert({
         str: '该区域没有找到相关门店，或门店相关信息出错'
       })
-    }
-    else {//该区域没有门店
+    } else { //该区域没有门店
       alert.alert({
         str: '请填写收货人信息'
       })
@@ -348,11 +345,13 @@ Page({
     //领取微信卡券
     console.log(this.data.parmData)
     this.isShowLoading();
-    let storeList = this.data.storeList;//门店列表
+    let storeList = this.data.storeList; //门店列表
     let storeIndex = this.data.storeIndex;
     //领取非微信卡券
     if (!this.data.currentAddressItem.address_id || this.data.currentAddressItem.address_id == '') {
-      alert.alert({ str: '请选择地址等信息' });
+      alert.alert({
+        str: '请选择地址等信息'
+      });
       return;
     }
     let dat = {};
@@ -375,11 +374,13 @@ Page({
       if (res.data.status == '1') {
         if (this.data.parmData.prize_type == 1 && res.data.data.order_goods_id2 == 0) {
           this.isShowLoading();
-          this.setData({ order_goods_id: res.data.data.order_goods_id })
+          this.setData({
+            order_goods_id: res.data.data.order_goods_id
+          })
           this.addCard([res.data.data.card_info]);
           return;
         }
-        tool.jump_red(`/pages/order_detail/order_detail?order_id=${res.data.data.order_id}`)
+        tool.jump_red(`/pages/shake_shake/shake_shake?activity_id=${this.data.parmData.activity_id}`)
       } else {
         tool.alert(res.data.msg)
       }
@@ -389,7 +390,6 @@ Page({
     this.isShowLoading()
     console.log('11', cardList)
     tool2.addCard(cardList).then(res => {
-      tool.jump_red(`/pages/o_prize/o_prize?activity_id=57`)
       console.log("卡券返回", res)
       if (res.errMsg == "addCard:ok") {
         console.log("卡券领取成功")
@@ -429,9 +429,12 @@ Page({
     api.orderCheck(_data).then(res => {
       console.log("卡券核销上报返回", res)
       if (res.statusCode == 200) {
-
-        this.isShowLoading()
         tool2.alert("卡券领取成功，请到我的卡包查看卡券使用详情")
+        setTimeout(() => {
+          tool.jump_red(`/pages/shake_shake/shake_shake?activity_id=${this.data.parmData.activity_id}`)
+        },500)
+        this.isShowLoading()
+        // tool2.alert("卡券领取成功，请到我的卡包查看卡券使用详情")
         // let _orderDetail = this.data.orderDetail
         // _orderDetail.order_goods[this.data.curIndex].is_receive = 1
         // console.log("_orderDetail", _orderDetail)

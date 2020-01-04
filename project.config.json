@@ -477,10 +477,10 @@
 					"scene": null
 				},
 				{
-					"id": 64,
+					"id": 60,
 					"name": "vote",
 					"pathName": "pages/vote/vote",
-					"query": "activity_id=43",
+					"query": "activity_id=4",
 					"scene": null
 				},
 				{

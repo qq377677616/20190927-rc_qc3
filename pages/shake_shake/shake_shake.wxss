@@ -98,12 +98,13 @@ page {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  z-index: 200;
 }
 
 /* .centerBoxpop {

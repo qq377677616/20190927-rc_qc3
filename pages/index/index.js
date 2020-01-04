@@ -367,7 +367,7 @@ Page({
       case 2:
         //2	投票
         router.jump_nav({
-          url: `/pages/vote/vote?activity_id=${activity_id}`,
+          url: `/pages/vote_page/vote_page?activity_id=${activity_id}`,
         })
         break;
       case 3:

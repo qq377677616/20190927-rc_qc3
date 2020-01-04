@@ -381,6 +381,40 @@ const updateCardCode = (data) => {
   })
 } 
 
+//领取微信卡券
+const getWechatCard = (data) => {
+  let url = `${SERVICE}/api3/order/get_wechat_card`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
+
+//摇一摇核销码上报
+const orderCardCode = (data) => {
+  let url = `${SERVICE}/api3/order/update_card_code`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
+
 
 module.exports = {
   myVote,
@@ -403,6 +437,8 @@ module.exports = {
   shakeHelp,
   upgradePrize,
   updateCardCode,
+  getWechatCard,
+  orderCardCode
 }
 
 
