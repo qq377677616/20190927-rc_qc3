@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"pages": [
 		"pages/index/index",
 		"pages/assemble/pin_capital/pin_capital",
@@ -107,4 +108,114 @@
 			"desc": "你的位置信息将用于小程序位置接口的效果展示"
 		}
 	}
+=======
+  "pages": [
+    "pages/index/index",
+    "pages/assemble/pin_capital/pin_capital",
+    "pages/assemble/pin_detail/pin_detail",
+    "pages/assemble/pin/pin",
+    "pages/assemble/o_pin/o_pin",
+    "pages/vote/vote",
+    "pages/lj_partake/lj_partake",
+    "pages/bargain_index/bargain_index",
+    "pages/activity_publish/activity_publish",
+    "pages/ad/ad",
+    "pages/upload/upload",
+    "pages/upload_show/upload_show",
+    "pages/poster/poster",
+    "pages/activity_list/activity_list",
+    "pages/vote_page/vote_page",
+    "pages/o_dot/o_dot",
+    "pages/o_info/o_info",
+    "pages/o_pin/o_pin",
+    "pages/o_pin_status/o_pin_status",
+    "pages/o_address/o_address",
+    "pages/o_address_add/o_address_add",
+    "pages/o_yuyueshijia/o_yuyueshijia",
+    "pages/o_love_car_next/o_love_car_next",
+    "pages/look_car/look_car",
+    "pages/prize/prize",
+    "pages/receive_card/receive_card",
+    "pages/shop_mall/shop_mall",
+    "pages/home/home",
+    "pages/community/community",
+    "pages/publish_article/publish_article",
+    "pages/webview/webview",
+    "pages/webview_2/webview_2",
+    "pages/guessing/webview",
+    "pages/o_card_bag/o_card_bag",
+    "pages/game_list/game_list",
+    "pages/nearby_store/nearby_store",
+    "pages/o_love_car/o_love_car",
+    "pages/order_detail/order_detail",
+    "pages/o_activity/o_activity",
+    "pages/o_card_bag_rule/o_card_bag_rule",
+    "pages/o_prize/o_prize",
+    "pages/o_duihuan/o_duihuan",
+    "pages/o_duihuan_detail/o_duihuan_detail",
+    "pages/o_duihuan_status/o_duihuan_status",
+    "pages/order_detail_02/order_detail_02",
+    "pages/o_love_car_show/o_love_car_show",
+    "pages/task/task",
+    "pages/o_vdou/o_vdou",
+    "pages/test/test",
+    "pages/shop_cart/shop_cart",
+    "pages/shop_mall_type/shop_mall_type",
+    "pages/shop_mall_plate/shop_mall_plate",
+    "pages/shop_cart_next/shop_cart_next",
+    "pages/shop_cart_submitted/shop_cart_submitted",
+    "pages/community_detail/community_detail",
+    "pages/yuyueshijia_form/yuyueshijia_form",
+    "pages/shake_shake/shake_shake",
+    "pages/sign_up/sign_up",
+    "pages/audit_page/audit_page",
+    "pages/bargain_state/bargain_state",
+    "pages/friendHelp/friendHelp",
+    "pages/jizan/jizan",
+    "pages/selfHelp/selfHelp",
+    "pages/up_succ/up_succ",
+    "pages/uploadPhotos/uploadPhotos",
+    "pages/look_car_detail/look_car_detail",
+    "pages/look_car_detail_02/look_car_detail_02",
+    "pages/cut_product_details/cut_product_details",
+    "pages/cut_cart/cut_cart",
+    "pages/baoming_lz/baoming_lz",
+    "pages/assemble/o_pin_status/o_pin_status",
+    "pages/vote_detail/vote_detail",
+    "pages/qicheng_h5/qicheng_h5",
+    "pages/o_prize_detail/o_prize_detail",
+    "pages/order_wuliu/order_wuliu",
+    "pages/look_car_detail_route/look_car_detail_route",
+    "pages/look_car_detail_03/look_car_detail",
+    "pages/spike_index/spike_index",
+    "pages/spike_detail/spike_detail",
+    "pages/spike_log/spike_log",
+    "pages/binding/owner/owner",
+    "pages/binding/receive/receive",
+    "pages/binding/scratch/Scratch",
+    "pages/test2/test2",
+    "pages/shake_prize/shake_prize"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx69e1bbc408d94fd3",
+    "wxba3c5eeb3be161db",
+    "wx8f4ba17d7b77a1df"
+  ],
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+>>>>>>> 9edb95f8c002cdbaeca3ae01deae8d18dda7b791
 }

@@ -33,6 +33,7 @@ App({
       signUpKey:keyGroup.signUpKey == false ? false : true,//报名开关
       signUpWin:keyGroup.signUpWin == false ? false : true,//报名开关
       spikeKey:keyGroup.spikeKey == false ? false : true,//秒杀开关
+      shakeKey:keyGroup.shakeKey == false ? false : true,//摇一摇开关
     })
   },
 	globalData: {//https://weixinfslb.venucia.com/uploads/assets_3.0

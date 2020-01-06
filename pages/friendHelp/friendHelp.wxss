@@ -290,6 +290,8 @@ page {
 }
 
 .mt1 {
+  width: 590rpx;
+  height: 94rpx;
   margin-top: 35rpx;
 }
 

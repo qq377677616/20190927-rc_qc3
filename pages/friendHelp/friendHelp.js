@@ -119,7 +119,7 @@ Page({
           shake_id,
           openid
         }).then(res => {
-          console.log('res', res);
+          console.log('11111111111111111111', res);
           let user_info = res.data.data.user_info
           let helpList = res.data.data.help_list
           this.setData({

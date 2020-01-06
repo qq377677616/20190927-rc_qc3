@@ -477,10 +477,10 @@
 					"scene": null
 				},
 				{
-					"id": 64,
+					"id": 60,
 					"name": "vote",
 					"pathName": "pages/vote/vote",
-					"query": "activity_id=43",
+					"query": "activity_id=4",
 					"scene": null
 				},
 				{
@@ -491,10 +491,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 62,
 					"name": "shake_shake",
 					"pathName": "pages/shake_shake/shake_shake",
-					"query": "activity_id=49",
+					"query": "activity_id=1",
 					"scene": null
 				},
 				{
@@ -646,9 +646,15 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "spike_ receive",
 					"pathName": "pages/spike_ receive/spike_ receive",
 					"query": "activity_id=57",
+=======
+					"name": "摇一摇留资",
+					"pathName": "pages/shake_prize/shake_prize",
+					"query": "",
+>>>>>>> 9edb95f8c002cdbaeca3ae01deae8d18dda7b791
 					"scene": null
 				}
 			]
