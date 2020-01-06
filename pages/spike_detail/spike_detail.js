@@ -51,6 +51,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	console.log(options);
     request_01.login(() => {
       this.initData(options)
     })
@@ -225,6 +226,8 @@ Page({
   },
   //操作按钮
   opBtn(e) {
+	// console.log('立即领取');
+	// return;
     const btnType = e.currentTarget.dataset.btntype;
 
     switch (btnType) {
@@ -310,8 +313,8 @@ Page({
   receiveBtn() {
     const spikeGoodsDetail = this.data.spikeGoodsDetail;
     let vehicle = this.data.vehicle;
-
-
+	console.log("立即领取");
+	return;
     if( spikeGoodsDetail.order_id > 0 && spikeGoodsDetail.is_receive == 1 ){//已领取
       router.jump_nav({
         url: `/pages/order_detail/order_detail?order_id=${spikeGoodsDetail.order_id}`,

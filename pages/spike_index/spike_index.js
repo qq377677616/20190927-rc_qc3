@@ -461,7 +461,8 @@ Page({
   },
   //操作按钮
   opBtn(e) {
-	console.log(66)
+	// console.log(66)
+	// return;
     const ctDataset = e.currentTarget.dataset;
 
     const len = Object.keys(ctDataset).length;
@@ -690,22 +691,23 @@ Page({
 
     }
     else {//未领取
-
-      const vehicle = {
-        img: data.thumb,
-        title: data.title,
-        price: data.vcoin,
-        total_num: data.goods_num,//总数
-        surplus_num: data.number,//剩余数
-        log_id: data.log_id,
-      }
-      this.setData({
-        vehicle,
-      })
+	console.log("未领取！");
+	return;
+    //   const vehicle = {
+    //     img: data.thumb,
+    //     title: data.title,
+    //     price: data.vcoin,
+    //     total_num: data.goods_num,//总数
+    //     surplus_num: data.number,//剩余数
+    //     log_id: data.log_id,
+    //   }
+    //   this.setData({
+    //     vehicle,
+    //   })
 
 
       //车主商品需要留资、非车主商品需要请求回填接口回填
-      data.car_owner == 1 ? this.spikeCapital(data) : this.spikeBackfill(data)
+    //   data.car_owner == 1 ? this.spikeCapital(data) : this.spikeBackfill(data)
 
     }
 

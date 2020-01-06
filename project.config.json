@@ -643,6 +643,13 @@
 					"pathName": "pages/test2/test2",
 					"query": "activity_id=57",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "spike_ receive",
+					"pathName": "pages/spike_ receive/spike_ receive",
+					"query": "activity_id=57",
+					"scene": null
 				}
 			]
 		}

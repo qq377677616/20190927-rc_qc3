@@ -83,7 +83,8 @@
 		"pages/binding/owner/owner",
 		"pages/binding/receive/receive",
 		"pages/binding/scratch/Scratch",
-		"pages/test2/test2"
+		"pages/test2/test2",
+		"pages/spike_ receive/spike_ receive"
 	],
 	"window": {
 		"backgroundTextStyle": "light",

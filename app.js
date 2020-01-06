@@ -35,9 +35,9 @@ App({
       spikeKey:keyGroup.spikeKey == false ? false : true,//秒杀开关
     })
   },
-  globalData: {
-    userInfo: null,
-	IMGSERVICE: 'https://weixinfslb.venucia.com/uploads/assets_3.0',
+	globalData: {//https://weixinfslb.venucia.com/uploads/assets_3.0
+	userInfo: null,//https://game.flyh5.cn/resources/game/wechat/
+	IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/',
     currentAddressItem: {},
     goodsDetail: {},
     cartDetail: {},

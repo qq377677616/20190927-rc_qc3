@@ -1,0 +1,104 @@
+<!--pages/shop_cart_next/shop_cart_next.wxml-->
+
+<wxs src="../../utils/wxs/filter_01.wxs" module="filter"></wxs>
+
+<!-- shop_cart_next_page -->
+<view class="shop_cart_next_page">
+	<!-- wx:if="{{ type == 'pay' }}" -->
+    <block >
+        <!-- form_area -->
+        <view class="form_area">
+
+            <view class="group" bindtap="getInfo">
+                <view class="icon iconfont icon_wd"></view>
+                <view class="span">
+                    <block wx:if="{{ currentAddressItem.real_address }}">
+                        <view class="nowrap">{{ currentAddressItem.name + ' ' + currentAddressItem.mobile }}</view>
+                        <view class="nowrap">{{ currentAddressItem.real_address }}</view>
+                    </block>
+                    <block wx:else>
+                        填写收货人信息
+                    </block>
+                </view>
+                <view class="go iconfont icon_more"></view>
+            </view>
+
+            <view class="group" wx:if="{{ !(goodsDetail.type == 2) }}">
+                <view class="icon iconfont icon-shouyexianxing"></view>
+                <block wx:if="{{ pickerStoreList.length }}">
+                    <picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}" style="width:520rpx;">
+                        <view class="nowrap">{{ pickerStoreList[storeIndex] }}</view>
+                    </picker>
+                </block>
+                <block wx:else>
+                    <view class="span nowrap" bindtap="getStore" style="width:520rpx;">选择领取的门店</view>
+                </block>
+                <view class="go iconfont icon_more"></view>
+            </view>
+
+        </view><!-- form_area -->
+
+        <!-- cart_list -->
+        <view class="cart_list">
+
+            <!-- cart_item -->
+            <view class="cart_item fadeIn">
+
+                <!-- <view class="checked">
+                    <image wx:if="{{ true }}" src="{{ IMGSERVICE }}/shop_cart/gou.png" mode="widthFix"></image>
+                    <view wx:else class="no"></view>
+                </view> -->
+
+                <view class="image">
+                    <image src="{{ goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].image : goodsDetail.thumb }}" mode="widthFix"></image>
+                </view>
+
+                <view class="info">
+                    <view class="title nowrap">{{ goodsDetail.title }}</view>
+                    <view class="specs nowrap {{ goodsDetail.goods_attr.length ? '' : 'no' }}">规格: {{ filter.specJoin(goodsDetail.goods_attr, goodsDetail.__indexArr) }}</view>
+
+                    <view class="v_num">
+                        <view class="v">
+                            <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
+                            <view class="span">{{ goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin }}</view>
+                        </view>
+                        <view class="num">x{{ goodsDetail.__number }}</view>
+                        <!-- <view class="sub_num_add">
+                            <view class="span sub iconfont icon_jian"></view>
+                            <view class="span num">{{ goodsDetail[goodsDetail.__index].__number }}</view>
+                            <view class="span add iconfont icon_jia"></view>
+                        </view> -->
+                    </view>
+                </view>
+
+                <!-- <image src="{{ IMGSERVICE }}/shop_cart/x.png" mode="widthFix" class="del_btn"></image> -->
+
+            </view><!-- cart_item -->
+
+        </view><!-- cart_list -->
+
+        <!-- total_area -->
+        <view class="total_area">
+
+            <view class="span total">共计{{ goodsDetail.__number }}件产品</view>
+
+            <view class="span price">合计 {{ goodsDetail.__number * (goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin) }} V豆</view>
+
+        </view><!-- total_area -->
+
+        <!-- footer -->
+        <view class="footer">
+
+            <view class="total nowrap">
+                总计: {{ goodsDetail.__number * (goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin) }} V豆
+            </view>
+
+            <view class="btn" bindtap="settlement">结 算</view>
+
+        </view><!-- footer -->
+    </block>
+</view><!-- shop_cart_next_page -->
+
+
+
+

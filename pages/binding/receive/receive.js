@@ -185,6 +185,7 @@ Page({
 					city: currentAddressItem.area.split(' ')[1],
 					lon: location.location.lng,
 					lat: location.location.lat,
+					is_groupbuy:1
 				})
 
 			})
@@ -194,6 +195,7 @@ Page({
 					city: currentAddressItem.area.split(' ')[1],
 					lon: '',
 					lat: '',
+					is_groupbuy:1
 				})
 
 			})

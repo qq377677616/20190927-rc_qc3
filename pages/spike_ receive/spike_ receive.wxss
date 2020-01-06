@@ -1,0 +1,221 @@
+/* pages/shop_cart_next/shop_cart_next.wxss */
+
+page{
+    height: 100%;
+    background-color: #F5F5F5;
+}
+.shop_cart_next_page{
+    padding: 28rpx 28rpx 108rpx;
+}
+
+/* form_area */
+.form_area{
+    border-radius:18rpx;
+    padding: 0 32rpx;
+    background-color: #fff;
+    margin-bottom: 28rpx;
+}
+.form_area .group{
+    min-height: 110rpx;
+    display: flex;
+    align-items: center;
+}
+.form_area .group{
+    border-bottom:1rpx solid #F5F5F5;
+}
+.form_area .group .icon{
+    flex:0 0 auto;
+    font-size: 32rpx;
+    color: #999;
+    margin-right: 20rpx;
+}
+.form_area .group .span{
+    width: 0;
+    flex:1;
+    font-size: 28rpx;
+    color: #333;
+}
+.form_area .group .span view{
+    line-height:1.8em;
+}
+.form_area .group .go{
+    flex:0 0 auto;
+    font-size: 32rpx;
+    color: #999;
+}/* form_area */
+
+
+/* cart_list */
+.cart_list{
+ 
+}
+.cart_list .cart_item{
+    background-color: #fff;
+    border-radius:18rpx;
+    padding: 20rpx 50rpx 20rpx 20rpx;
+    display: flex;
+    position: relative;
+    margin-bottom: 28rpx;
+    box-shadow:0rpx 16rpx 60rpx 0rpx rgba(204,204,204,0.2);
+}
+/* .cart_list .cart_item .checked{
+    flex:0 0 auto;
+    display: flex;
+    align-items: center;
+    padding-right: 20rpx;
+}
+.cart_list .cart_item .checked image{
+    width: 32rpx;
+}
+.cart_list .cart_item .checked .no{
+    width: 32rpx;
+    height: 32rpx;
+    border-radius:50%;
+    border:1rpx solid #C8C8C8;
+} */
+.cart_list .cart_item .image{
+    flex:0 0 auto;
+    width: 134rpx;
+    height: 134rpx;
+    position: relative;
+    overflow: hidden;
+    border-radius:10rpx;
+    margin-right: 20rpx;
+}
+.cart_list .cart_item .image image{
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translatex(-50%) translatey(-50%);
+    border-radius:10rpx;
+}
+.cart_list .cart_item .info{
+    width: 0;
+    flex:1;
+    line-height: 1em;
+}
+.cart_list .cart_item .info .title{
+    font-size:28rpx;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-bottom: 14rpx;
+}
+.cart_list .cart_item .info .specs{
+    font-size:22rpx;
+    color:rgba(153,153,153,1);
+    margin-bottom: 30rpx;
+}
+.cart_list .cart_item .info .specs.no{
+    visibility:hidden;
+}
+.cart_list .cart_item .info .v_num{
+    display: flex;
+    align-items: flex-end;
+}
+.cart_list .cart_item .info .v_num .v{
+    flex:1;
+    display: flex;
+    align-items: center;
+}
+.cart_list .cart_item .info .v_num .v .v_mark{
+    width: 30rpx;
+    margin-right: 10rpx;
+}
+.cart_list .cart_item .info .v_num .v .span{
+    font-size: 22rpx;
+    color: #3F3F3F;
+    font-weight: bold;
+}
+.cart_list .cart_item .info .v_num .num{
+    flex:0 0 auto;
+    font-size: 24rpx;
+    color:#C9C9C9;
+}
+.cart_list .cart_item .info .v_num .sub_num_add{
+    flex:0 0 auto;
+    display: flex;
+    align-items: center;
+}
+.cart_list .cart_item .info .v_num .sub_num_add .span{
+    height: 38rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.cart_list .cart_item .info .v_num .sub_num_add .span.sub{
+    color: #333;
+    font-size: 34rpx;
+    width: 38rpx;
+    border:1rpx solid #333;
+}
+.cart_list .cart_item .info .v_num .sub_num_add .span.num{
+    color: #333;
+    font-size: 28rpx;
+    min-width: 50rpx;
+    border-top:1rpx solid #333;
+    border-bottom:1rpx solid #333;
+}
+.cart_list .cart_item .info .v_num .sub_num_add .span.add{
+    color: #fff;
+    font-size: 34rpx;
+    background-color: #333;
+    width: 38rpx;
+    border:1rpx solid #333;
+}
+/* .cart_list .cart_item .del_btn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40rpx;
+} */
+/* cart_list */
+
+/* total_area */
+.total_area{
+    display: flex;
+    justify-content: space-between;
+    border-radius:18rpx;
+    background-color: #fff;
+    padding: 36rpx 40rpx;
+    font-size: 28rpx;
+    color: #333;
+    font-weight:bold;
+    box-shadow:0rpx 16rpx 60rpx 0rpx rgba(204,204,204,0.2);
+}
+.total_area .span{
+ 
+}/* total_area */
+
+/* footer */
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 108rpx;
+    background-color: #333;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #fff;
+    padding-left: 52rpx;
+    box-sizing: border-box;
+    line-height: 1em;
+}
+.footer .total{
+    width: 0;
+    flex:1;
+    align-self:center;
+}
+.footer .btn{
+    flex:0 0 auto;
+    align-self:stretch;
+    background:linear-gradient(to left,rgba(34,116,208,1),rgba(32,161,224,1));
+    width: 235rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}/* footer */
