@@ -112,8 +112,12 @@
                         </view>
 
                         <view class="price">
-                            <view class="span">￥0</view>
-                            <view class="del">￥{{ item.vcoin }}</view>
+                            <view class="span seticon">
+								<!-- {{item.real_vcoin}} -->
+								<text>{{item.real_vcoin}}</text>
+								<image mode="widthFix" src="{{IMGSERVICE}}/center/vdou.png"></image>
+							</view>
+                            <!-- <view class="del">￥{{ item.vcoin }}</view> -->
                         </view>
                     </view>
 

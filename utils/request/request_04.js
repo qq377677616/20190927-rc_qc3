@@ -364,6 +364,54 @@ const getwxcard = (data) => {
 			})
 	})
 }
+//秒杀领取留资
+const lq_receive = (data) => {
+	let url = `${SERVICE}/api3/seckill/receive`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 秒杀 预约留资
+const yy_receive = (data) => {
+	let url = `${SERVICE}/api3/seckill/leave_info`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 已经留资的回填
+const order_info = (data) => {
+	let url = `${SERVICE}/api3/seckill/order_info`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
 // 刮刮乐  图片加载处理
 module.exports = {
 	reply_list,
@@ -388,4 +436,7 @@ module.exports = {
 	upShare,
 	getword,
 	getwxcard,
+	lq_receive,
+	yy_receive,
+	order_info,
 }

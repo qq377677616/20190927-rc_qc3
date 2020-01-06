@@ -575,3 +575,13 @@ page {
     top: 0;
     z-index: 999;
 }
+/* yls */
+.seticon{
+	display: flex !important;
+	align-items: center;
+}
+.seticon>image{
+	width:30rpx;
+	height: auto; 
+	margin-left: 15rpx;
+}

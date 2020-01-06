@@ -23,7 +23,7 @@
                 <view class="go iconfont icon_more"></view>
             </view>
 
-            <view class="group" wx:if="{{ !(goodsDetail.type == 2) }}">
+            <view class="group" wx:if="{{ !(parmData.type == 2) }}">
                 <view class="icon iconfont icon-shouyexianxing"></view>
                 <block wx:if="{{ pickerStoreList.length }}">
                     <picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}" style="width:520rpx;">
@@ -50,19 +50,19 @@
                 </view> -->
 
                 <view class="image">
-                    <image src="{{ goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].image : goodsDetail.thumb }}" mode="widthFix"></image>
+                    <image src="{{parmData.thumb}}" mode="widthFix"></image>
                 </view>
 
                 <view class="info">
-                    <view class="title nowrap">{{ goodsDetail.title }}</view>
+                    <view class="title nowrap">{{ parmData.title }}</view>
                     <view class="specs nowrap {{ goodsDetail.goods_attr.length ? '' : 'no' }}">规格: {{ filter.specJoin(goodsDetail.goods_attr, goodsDetail.__indexArr) }}</view>
 
                     <view class="v_num">
                         <view class="v">
                             <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
-                            <view class="span">{{ goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin }}</view>
+                            <view class="span">{{parmData.real_vcoin}}</view>
                         </view>
-                        <view class="num">x{{ goodsDetail.__number }}</view>
+                        <view class="num">x1</view>
                         <!-- <view class="sub_num_add">
                             <view class="span sub iconfont icon_jian"></view>
                             <view class="span num">{{ goodsDetail[goodsDetail.__index].__number }}</view>
@@ -80,9 +80,9 @@
         <!-- total_area -->
         <view class="total_area">
 
-            <view class="span total">共计{{ goodsDetail.__number }}件产品</view>
+            <view class="span total">共计 1 件产品</view>
 
-            <view class="span price">合计 {{ goodsDetail.__number * (goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin) }} V豆</view>
+            <view class="span price">合计 {{parmData.real_vcoin}} V豆</view>
 
         </view><!-- total_area -->
 
@@ -90,10 +90,10 @@
         <view class="footer">
 
             <view class="total nowrap">
-                总计: {{ goodsDetail.__number * (goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin) }} V豆
+                总计: {{parmData.real_vcoin}} V豆
             </view>
 
-            <view class="btn" bindtap="settlement">结 算</view>
+            <view class="btn" bindtap="settlement">{{parmData.is_yy==0?'结算':'预约'}}</view>
 
         </view><!-- footer -->
     </block>
