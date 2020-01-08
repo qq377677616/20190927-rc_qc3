@@ -36,8 +36,8 @@ App({
       shakeKey:keyGroup.shakeKey == false ? false : true,//摇一摇开关
     })
   },
-  globalData: {
-    userInfo: null,
+	globalData: {//https://weixinfslb.venucia.com/uploads/assets_3.0
+	userInfo: null,
 	IMGSERVICE: 'https://weixinfslb.venucia.com/uploads/assets_3.0',
     currentAddressItem: {},
     goodsDetail: {},

@@ -185,6 +185,7 @@ Page({
 					city: currentAddressItem.area.split(' ')[1],
 					lon: location.location.lng,
 					lat: location.location.lat,
+					is_groupbuy:1
 				})
 
 			})
@@ -194,6 +195,7 @@ Page({
 					city: currentAddressItem.area.split(' ')[1],
 					lon: '',
 					lat: '',
+					is_groupbuy:1
 				})
 
 			})
@@ -409,16 +411,6 @@ Page({
 			tool2.alert("卡券领取失败")
 		})
 	},
-	isShowLoading(){
-		this.setData({
-			isShowLoading: !this.data.isShowLoading
-		})
-		if(this.data.isShowLoading){
-			tool.loading();
-		}else{
-			tool.loading_h();
-		}
-	},
 	cardCheck(card_code) {
 		console.log("上报")
 		console.log(this.data.parmData)
@@ -430,7 +422,7 @@ Page({
 		api.orderCheck(_data).then(res => {
 			console.log("卡券核销上报返回", res)
 			if (res.statusCode == 200) {
-				
+
 				this.isShowLoading()
 				tool2.alert("卡券领取成功，请到我的卡包查看卡券使用详情")
 				let _orderDetail = this.data.orderDetail
@@ -439,5 +431,15 @@ Page({
 				this.setData({ orderDetail: _orderDetail })
 			}
 		})
+	},
+	isShowLoading(){
+		this.setData({
+			isShowLoading: !this.data.isShowLoading
+		})
+		if(this.data.isShowLoading){
+			tool.loading();
+		}else{
+			tool.loading_h();
+		}
 	}
 })

@@ -44,13 +44,15 @@ Page({
     KDFormsVisible: false,
     backfillKJFormsVisible:false,
     backfillKDFormsVisible:false,
-    
+	is_order:null,//预约次数
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	console.log(options);
+	this.setData({ is_order: options.is_order})
     request_01.login(() => {
       this.initData(options)
     })
@@ -225,6 +227,8 @@ Page({
   },
   //操作按钮
   opBtn(e) {
+	// console.log('立即领取');
+	// return;
     const btnType = e.currentTarget.dataset.btntype;
 
     switch (btnType) {
@@ -307,34 +311,47 @@ Page({
       })
   },
   //立即领取
-  receiveBtn() {
+  receiveBtn(){
     const spikeGoodsDetail = this.data.spikeGoodsDetail;
     let vehicle = this.data.vehicle;
-
-
     if( spikeGoodsDetail.order_id > 0 && spikeGoodsDetail.is_receive == 1 ){//已领取
       router.jump_nav({
         url: `/pages/order_detail/order_detail?order_id=${spikeGoodsDetail.order_id}`,
       })
     }
     else{//未领取
+	  	console.log("去领取");
+		let data = this.data.spikeGoodsDetail;
+		let obj = {};
+		obj.thumb = data.thumb;//商品图片
+		obj.title = data.title;//商品名字
+		obj.type = data.type;//商品类型
+		obj.goods_id = data.goods_id;//商品id
+		obj.is_order = this.data.is_order;// 是否预约
+		obj.real_vcoin = data.real_vcoin;//需要v豆数
+		obj.is_yy = 0;//是否是预约 0是领取
+		obj.log_id = data.log_id;//秒杀记录id
+		obj.activity_id = this.data.options.activity_id;//活动id
+		// console.log(obj);
+		// return;
+		tool.jump_nav(`/pages/spike_ receive/spike_ receive?obj=${JSON.stringify(obj)}`);
+		return;
+    //   vehicle.spikeResultVisible == 'comfort'  ? '' : vehicle = {
+    //     log_id:spikeGoodsDetail.log_id,
+    //     car_owner:spikeGoodsDetail.car_owner,
+    //     type:spikeGoodsDetail.type,
+    //     img:spikeGoodsDetail.thumb,
+    //     title:spikeGoodsDetail.title,
+    //     price:spikeGoodsDetail.vcoin,//原价
+    //     total_num: spikeGoodsDetail.goods_num,//总数
+    //     surplus_num: spikeGoodsDetail.number,//剩余数
+    //   };
 
-      vehicle.spikeResultVisible == 'comfort'  ? '' : vehicle = {
-        log_id:spikeGoodsDetail.log_id,
-        car_owner:spikeGoodsDetail.car_owner,
-        type:spikeGoodsDetail.type,
-        img:spikeGoodsDetail.thumb,
-        title:spikeGoodsDetail.title,
-        price:spikeGoodsDetail.vcoin,//原价
-        total_num: spikeGoodsDetail.goods_num,//总数
-        surplus_num: spikeGoodsDetail.number,//剩余数
-      };
-
-      this.setData({
-        vehicle,
-      })
-      //车主商品需要留资、非车主商品需要请求回填接口回填
-      vehicle.car_owner == 1 ? this.spikeCapital(vehicle) : this.spikeBackfill(vehicle)
+    //   this.setData({
+    //     vehicle,
+    //   })
+    //   //车主商品需要留资、非车主商品需要请求回填接口回填
+    //   vehicle.car_owner == 1 ? this.spikeCapital(vehicle) : this.spikeBackfill(vehicle)
 
     }
     

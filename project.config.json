@@ -646,9 +646,30 @@
 				},
 				{
 					"id": -1,
-					"name": "摇一摇留资",
-					"pathName": "pages/shake_prize/shake_prize",
-					"query": "",
+					"name": "spike_ receive",
+					"pathName": "pages/spike_ receive/spike_ receive",
+					"query": "activity_id=57",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "spike_index",
+					"pathName": "pages/spike_index/spike_index",
+					"query": "activity_id=3",
+					"scene": null
+				},
+				{
+					"id": 86,
+					"name": "spike_detail",
+					"pathName": "pages/spike_detail/spike_detail",
+					"query": "activity_id=3&skill_id=11&is_order=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "spike_log",
+					"pathName": "pages/spike_log/spike_log",
+					"query": "activity_id=3",
 					"scene": null
 				},
 				{

@@ -18,7 +18,7 @@
                     <view wx:if="{{ item.is_overdue == 1 }}" class="btn overdue">已过期</view>
                     <view wx:elif="{{ item.is_receive == 1 }}" class="btn receive" data-index="{{ index }}"
                         data-btnType="look" bindtap="opBtn">查看订单</view>
-                    <view wx:else class="btn receive" data-index="{{ index }}" data-btnType="receive" bindtap="opBtn">
+                    <view wx:else class="btn receive" data-index="{{ index }}" data-btnType="receive" bindtap="opBtn" data-obj="{{item}}">
                         立即领取</view>
                 </view>
             </view>

@@ -16,13 +16,14 @@
         <view class="info" style="background:url({{ IMGSERVICE }}/spike/Details_bg.png) no-repeat center center/cover;">
             <view class="left">
                 <view class="price">
-                    <view class="span">
-                        ￥0<text class="i">.00</text>
+                    <view class="span seticon">
+                        <text>{{spikeGoodsDetail.real_vcoin}}</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/center/vdou.png"></image>
                     </view>
                     <view class="tag">仅剩{{ spikeGoodsDetail.number }}件</view>
                 </view>
 
-                <view class="origin">￥{{ spikeGoodsDetail.vcoin }}.00</view>
+                <!-- <view class="origin">￥{{ spikeGoodsDetail.vcoin }}.00</view> -->
             </view>
 
             <view class="right">
@@ -95,7 +96,7 @@
     <!-- detail -->
     <view class="section detail">
         <view class="h2">商品详情</view>
-        <image wx:for="{{ spikeGoodsDetail.goods_detail }}" wx:key="index" class="img" mode="widthFix"
+        <image wx:for="{{ spikeGoodsDetail.goods_detail }}" wx:key="item" class="img" mode="widthFix"
             src="https://game.flyh5.cn/resources/game/admin_yyt/2019/dfqc/15691279765d86fe2895d79.png"></image>
     </view>
 
@@ -142,7 +143,7 @@
                 </view>
             </view>
 
-            <view class="qc-spike-result-btn" data-btnType="receiveBtn" bindtap="opBtn" slot="btn">立即领取</view>
+            <view class="qc-spike-result-btn" data-btnType="receiveBtn" bindtap="opBtn" slot="btn" >立即领取</view>
 
             <view class="qc-spike-result-cancel" bindtap="spikeResultVisible" slot="cancel">放弃领取</view>
         </block>

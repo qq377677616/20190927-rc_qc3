@@ -50,13 +50,14 @@ Page({
     code: '',
     isShowLoading: false,
     loadingText: '卡券领取中',
-
+	is_DY:0,//是否接受订阅消息
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	console.log(options);
     request_01.login(() => {
       this.initData(options)
     })
@@ -461,7 +462,8 @@ Page({
   },
   //操作按钮
   opBtn(e) {
-	console.log(66)
+	// console.log(66)
+	// return;
     const ctDataset = e.currentTarget.dataset;
 
     const len = Object.keys(ctDataset).length;
@@ -484,7 +486,6 @@ Page({
     switch (btnType) {
       case 'appoBtn':
         //立即预约
-
         //用户不是车主，活动是车主活动。
         //用户未授权。
         if (
@@ -496,7 +497,7 @@ Page({
         tool.requestSubscribeMessage()
           .then((value) => {
             item.formId = value == 'reject' ? 0 : 1;
-
+			  this.setData({ is_DY: item.formId, is_order: item.is_order});
             //order_status--预约状态 0-未预约过不可发起秒杀 1-预约过车主商品，只能砍车主商品 2-预约过普通商品，只能秒杀普通商品 3-预约过车主商品和普通商品 所有商品可以砍价
             if (item.car_owner == 0) {
               //预约 非车主商品、已留资过、没留资过
@@ -549,21 +550,33 @@ Page({
   },
   //立即预约(用户 预约 非车主商品)
   appoBtn(data) {
+	console.log(data);
+	  let obj = {};
+	  obj.thumb = data.thumb;//商品图片
+	  obj.title = data.title;//商品名字
+	  obj.type = data.type;//商品类型
+	  obj.goods_id = data.goods_id;//商品id
+	  obj.is_order = data.is_order;// 是否预约
+	  obj.real_vcoin = data.real_vcoin;//需要v豆数
+	  obj.is_yy = 1;//是否是预约 0是领取 1预约
+	  obj.log_id = '';//秒杀记录id
+	  obj.activity_id = this.data.options.activity_id;//活动id
+	  obj.is_DY = this.data.is_DY;//是否接受订阅消息 0拒绝 1接受
+	  tool.jump_nav(`/pages/spike_ receive/spike_ receive?obj=${JSON.stringify(obj)}`);
+    // const vehicle = {
+    //   img: data.thumb,
+    //   title: data.title,
+    //   price: data.vcoin,
+    //   total_num: data.goods_num,//总数
+    //   surplus_num: data.number,//剩余数
+    //   goods_id: data.goods_id,//商品ID
+    //   formId: data.formId,
+    // }
+    // this.setData({
+    //   vehicle,
+    // })
 
-    const vehicle = {
-      img: data.thumb,
-      title: data.title,
-      price: data.vcoin,
-      total_num: data.goods_num,//总数
-      surplus_num: data.number,//剩余数
-      goods_id: data.goods_id,//商品ID
-      formId: data.formId,
-    }
-    this.setData({
-      vehicle,
-    })
-
-    this.appoFormsVisible()
+    // this.appoFormsVisible()
   },
   //立即预约(车主 预约 车主商品)
   VipAppoBtn(data) {
@@ -676,36 +689,46 @@ Page({
   spikeBtn(data) {
     const options = this.data.options;
     router.jump_nav({
-      url: `/pages/spike_detail/spike_detail?activity_id=${options.activity_id}&skill_id=${data.skill_id}`
+		url: `/pages/spike_detail/spike_detail?activity_id=${options.activity_id}&skill_id=${data.skill_id}&is_order=${this.data.is_order}`
     })
   },
   //立即领取
   receiveBtn(data) {
-
     if (data.order_id > 0 && data.is_receive == 1) {//已领取
-
       router.jump_nav({
         url: `/pages/order_detail/order_detail?order_id=${data.order_id}`,
       })
 
     }
     else {//未领取
-
-      const vehicle = {
-        img: data.thumb,
-        title: data.title,
-        price: data.vcoin,
-        total_num: data.goods_num,//总数
-        surplus_num: data.number,//剩余数
-        log_id: data.log_id,
-      }
-      this.setData({
-        vehicle,
-      })
+	let obj = {};
+		obj.thumb = data.thumb;//商品图片
+		obj.title = data.title;//商品名字
+		obj.type = data.type;//商品类型
+		obj.goods_id = data.goods_id;//商品id
+		obj.is_order = data.is_order;// 是否预约
+		obj.real_vcoin = data.real_vcoin;//需要v豆数
+		obj.is_yy = 0;//是否是预约 0是领取
+		obj.log_id = data.log_id;//秒杀记录id
+		obj.activity_id = this.data.options.activity_id;//活动id
+		// obj.
+		tool.jump_nav(`/pages/spike_ receive/spike_ receive?obj=${JSON.stringify(obj)}`);
+		return;
+    //   const vehicle = {
+    //     img: data.thumb,
+    //     title: data.title,
+    //     price: data.vcoin,
+    //     total_num: data.goods_num,//总数
+    //     surplus_num: data.number,//剩余数
+    //     log_id: data.log_id,
+    //   }
+    //   this.setData({
+    //     vehicle,
+    //   })
 
 
       //车主商品需要留资、非车主商品需要请求回填接口回填
-      data.car_owner == 1 ? this.spikeCapital(data) : this.spikeBackfill(data)
+    //   data.car_owner == 1 ? this.spikeCapital(data) : this.spikeBackfill(data)
 
     }
 
