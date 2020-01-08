@@ -32,19 +32,19 @@ Page({
     let openid = wx.getStorageSync('userInfo').openid;;
     let activity_id = '';
     let parent_id = '';
-    let shake_id ='';
+    let shake_id = '';
     if (options.scene) {
       let scene = decodeURIComponent(options.scene);
       console.log(scene)
       scene.split('&').forEach((item) => {
         console.log(item.split('='))
-        if (item.split('=')[0] == 'p') {//找到channel_id并存储
+        if (item.split('=')[0] == 'p') { //找到channel_id并存储
           parent_id = item.split('=')[1]
         }
-        if (item.split('=')[0] == 's') {//找到channel_id并存储
+        if (item.split('=')[0] == 's') { //找到channel_id并存储
           shake_id = item.split('=')[1]
         }
-        if (item.split('=')[0] == 'a') {//找到user_id并存储
+        if (item.split('=')[0] == 'a') { //找到user_id并存储
           activity_id = item.split('=')[1]
         }
       })
@@ -56,7 +56,7 @@ Page({
 
     // let activity_id = options.activity_id;
     // let openid = wx.getStorageSync('userInfo').openid;
-    if ((!options.openid && parent_id =='') || options.openid == wx.getStorageSync('userInfo').openid) {
+    if ((!options.openid && parent_id == '') || options.openid == wx.getStorageSync('userInfo').openid) {
       request_05.shakeDetail({
         openid,
         activity_id
@@ -95,7 +95,7 @@ Page({
         } else {
           if (res.data.data.can_upgrade == 1) {
             if (res.data.data.shake_info.is_upgrade == 0) {
-              let quanMoney = res.data.data.upgrade_prize.prize_name.slice(0,3)
+              let quanMoney = res.data.data.upgrade_prize.prize_name.split('元')[0]
               this.setData({
                 isSuc: true,
                 quanMoney,
@@ -154,7 +154,7 @@ Page({
 
   // 助力
   helpH() {
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid))  return;
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid)) return;
     if (this.data.isHelpH) {
       let options = this.data.options
       let shake_id = this.data.shake_id
@@ -224,26 +224,29 @@ Page({
               activity_id,
               openid
             }).then(res => {
-              console.log(res)
-              let card_list = [res.data.data.card_info];
-              wx.addCard({
-                cardList: card_list,
-                success(res) {
-                  console.log('cardList', res)
-                  let card_code = res.cardList[0].code;
-                  request_05.updateCardCode({
-                    activity_id,
-                    openid,
-                    card_code
-                  }).then(res => {
-                    console.log('update_card_code', res)
-                    if (res.data.status == 1) {
-                      tool.alert('领取成功')
-                      _this.initData(options)
-                    }
-                  })
-                }
-              })
+              if (res.data.status == 1) {
+                let card_list = [res.data.data.card_info];
+                wx.addCard({
+                  cardList: card_list,
+                  success(res) {
+                    console.log('cardList', res)
+                    let card_code = res.cardList[0].code;
+                    request_05.updateCardCode({
+                      activity_id,
+                      openid,
+                      card_code
+                    }).then(res => {
+                      console.log('update_card_code', res)
+                      if (res.data.status == 1) {
+                        tool.alert('领取成功')
+                        _this.initData(options)
+                      }
+                    })
+                  }
+                })
+              }else{
+                tool.alert(res.data.msg)
+              }
             })
           } else if (res.cancel) {
             console.log('用户点击取消')

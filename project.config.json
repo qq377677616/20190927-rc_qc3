@@ -330,10 +330,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "vote_page",
+					"id": 39,
+					"name": "投票首页",
 					"pathName": "pages/vote_page/vote_page",
-					"query": "",
+					"query": "acticity=4",
 					"scene": null
 				},
 				{
@@ -492,7 +492,7 @@
 				},
 				{
 					"id": 62,
-					"name": "shake_shake",
+					"name": "摇一摇首页",
 					"pathName": "pages/shake_shake/shake_shake",
 					"query": "activity_id=1",
 					"scene": null
@@ -649,6 +649,27 @@
 					"name": "摇一摇留资",
 					"pathName": "pages/shake_prize/shake_prize",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 85,
+					"name": "投票首页",
+					"pathName": "pages/vote_page/vote_page",
+					"query": "activity_id=9",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "投票轮播页",
+					"pathName": "pages/vote/vote",
+					"query": "activity_id=9",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "投票详情",
+					"pathName": "pages/vote_detail/vote_detail",
+					"query": "vote_id=1&user_id=60&activity_id=9",
 					"scene": null
 				}
 			]

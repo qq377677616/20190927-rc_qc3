@@ -84,7 +84,8 @@
     "pages/binding/receive/receive",
     "pages/binding/scratch/Scratch",
     "pages/test2/test2",
-    "pages/shake_prize/shake_prize"
+    "pages/shake_prize/shake_prize",
+    "pages/vote_prize/vote_prize"
   ],
   "window": {
     "backgroundTextStyle": "light",

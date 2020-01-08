@@ -1,19 +1,102 @@
-<view class="whole">
-	<view class="noRank" wx:if="{{!voteList.length>0}}">暂无数据~</view>
-	<view class="pro_list" data-id="{{item.vote_id}}" wx:for="{{voteList}}" wx:key="item" bindtap="goVotedel" >
-		<view class="dotImg" style="background-image:url({{item.resource}})"></view>
-		<view class="user_box">
-			<view class="handImg" style="background-image:url({{item.headimg}})"></view>
-			<view class="infoBox">
-				<text class="userName nowrap">{{item.nickname}}</text>
-				<text class="userRank">第{{index+1}}名</text>
-			</view>
-		</view>
-		<view class="dotBtn" style="background-image:url({{IMGSERVICEZ}}/center/heart-normal.png)" catchtap="goVote" hidden="{{item.is_favorite!=0}}" data-vote="{{item.vote_id}}">
-			<view class="dotNum nowrap"><text>{{item.votes}}</text></view>
-		</view>
-		<view class="dotBtn dotBtn2" style="background-image:url({{IMGSERVICEZ}}/center/heart-select.png)" catchtap="goVote"  data-vote="{{item.vote_id}}" hidden="{{item.is_favorite==0}}">
-			<view class="dotNum nowrap dotNum2"><text>{{item.votes}}</text></view>
-		</view>
-	</view>
+<view class="vote_bg" bindtap="isVehicleOwner">
+  <view class="banner">
+    <image class="ban-img" src="{{indexData.banner}}" mode="widthFix"></image>
+    <view class="rule-btn" bindtap="switchRule">
+      <view class="span">活动规则</view>
+      <view class="iconfont icon_more more"></view>
+    </view>
+  </view>
+  <view class="whole">
+    <view class="noRank" wx:if="{{!voteList.length>0}}">当前暂无相关作品~</view>
+    <view class="btn_can" bindtap="toPartake" data-type="ok" wx:if="{{!voteList.length>0 && indexData.is_join==0}}">立即参与</view>
+    <view class="pro_list" data-id="{{item.vote_id}}" data-index="{{index}}" wx:for="{{voteList}}" wx:key="item" bindtap="goVotedel">
+      <view class="dotImg" style="background-image:url({{item.resource}})"></view>
+      <view class="user_box">
+        <view class="handImg" style="background-image:url({{item.headimg}})"></view>
+        <view class="infoBox">
+          <text class="userName nowrap">{{item.nickname}}</text>
+          <text class="userRank">第{{index+1}}名</text>
+        </view>
+      </view>
+      <view class="dotBtn" style="background-image:url({{IMGSERVICEZ}}/center/heart-normal.png)" catchtap="goVote" hidden="{{item.is_favorite!=0}}" data-vote="{{item.vote_id}}">
+        <view class="dotNum nowrap">
+          <text>{{item.votes}}</text>
+        </view>
+      </view>
+      <view class="dotBtn dotBtn2" style="background-image:url({{IMGSERVICEZ}}/center/heart-select.png)" catchtap="goVote" data-vote="{{item.vote_id}}" hidden="{{item.is_favorite==0}}">
+        <view class="dotNum nowrap dotNum2">
+          <text>{{item.votes}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
+
+
+<!-- 规则 -->
+<view class="pof fadeShow" wx:if="{{rulspop}}">
+  <rule bindclose="switchRule" ruleImg="{{indexData.rule}}"></rule>
+</view>
+
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+  <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
+</view>
+
+<!-- win_list -->
+
+<view class="bg_color" wx:if="{{isPrize}}">
+
+  <view class="top">
+    <image src="{{IMGSERVICEZ}}/activity/bg(1).png"></image>
+    <view class="img" style="background-image:url('{{IMGSERVICEZ}}/activity/hjmd.png')"></view>
+    <view class="img_next">
+      <view class="xian"></view>
+      <view class="over" wx:if="{{indexData.show_rank_list==1}}">{{indexData.rating_time}}</view>
+      <view class="over" wx:else>活动结束</view>
+      <view class="xian"></view>
+    </view>
+  </view>
+
+  <view class="win_list">
+
+    <scroll-view scroll-y style="height:335rpx;">
+
+      <view class="list" wx:for="{{indexData.rank_list}}">
+        <image wx:if="{{item.num==1}}" class="one" src="{{IMGSERVICEZ}}/activity/1.png"></image>
+        <image wx:elif="{{item.num==2}}" class="one" src="{{IMGSERVICEZ}}/activity/2.png"></image>
+        <image wx:elif="{{item.num==3}}" class="one" src="{{IMGSERVICEZ}}/activity/3.png"></image>
+        <view class="num">{{index+1}}</view>
+        <image class="headimg" src="{{item.headimg}}"></image>
+        <view class="name">{{item.nickname}}</view>
+        <view class="vote-num">{{item.votes}}</view>
+      </view>
+
+    </scroll-view>
+
+    <view class="l_list">
+
+      <view class="list">
+        <view class="num">*</view>
+        <image class="headimg" src="{{myInfo.headimg}}"></image>
+        <view class="name">{{myInfo.nickname}}</view>
+        <view class="vote-num">{{myInfo.votes}}</view>
+      </view>
+
+      <view wx:if="{{indexData.is_win==1}}" class="list_right">恭喜获奖</view>
+      <view wx:else class="list_right">未获奖</view>
+
+    </view>
+
+    <view wx:if="{{indexData.is_win==1 && indexData.prize_info.is_receive==0}}" bindtap="getPrize" class="btn">领取奖品</view>
+    <view wx:if="{{indexData.is_win==1 && indexData.prize_info.is_receive==1}}" bindtap="getPrize" class="btn">查看订单</view>
+    <view wx:if="{{indexData.is_win==0}}" bindtap="getPrize" class="btn">您未获奖</view>
+
+  </view>
+
+  <view bindtap="close_prize" class="x" style="background-image:url('{{IMGSERVICEZ}}/center/icon_close.png')"></view>
+
+</view>
+
+
+<!-- win_list -->

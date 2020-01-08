@@ -4,5 +4,6 @@
     "activePop": "/components/activePop/activePop",
     "forms": "/components/forms/form"
   },
-  "navigationBarTitleText": "摇一摇"
+  "navigationBarTitleText": "摇一摇",
+  "disableScroll":true
 }

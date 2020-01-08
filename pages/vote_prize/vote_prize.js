@@ -1,3 +1,4 @@
+// pages/vote_prize/vote_prize.js
 const request_01 = require('../../utils/request/request_01.js');
 
 const request_04 = require('../../utils/request/request_04.js');
@@ -380,7 +381,7 @@ Page({
           this.addCard([res.data.data.card_info]);
           return;
         }
-        tool.jump_red(`/pages/shake_shake/shake_shake?activity_id=${this.data.parmData.activity_id}`)
+        tool.jump_red(`/pages/vote_page/vote_page?activity_id=${this.data.parmData.activity_id}`)
       } else {
         tool.alert(res.data.msg)
       }
@@ -390,6 +391,7 @@ Page({
     this.isShowLoading()
     console.log('11', cardList)
     tool2.addCard(cardList).then(res => {
+      tool.jump_red(`/pages/vote_page/vote_page?activity_id=${this.data.parmData.activity_id}`)
       console.log("卡券返回", res)
       if (res.errMsg == "addCard:ok") {
         console.log("卡券领取成功")

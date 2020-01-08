@@ -104,6 +104,7 @@ Page({
       openid,
       activity_id
     }).then(res => {
+      console.log(res.data.status, '123131232')
       console.log(res)
       this.setRule() //规则永久弹一次
       this.setData({
@@ -244,29 +245,33 @@ Page({
     this.setData({
       isOpen: false,
     })
-    tool.alert("摇一摇成功")
     setTimeout(() => {
       request_05.shake({
         openid,
         activity_id
       }).then(res => {
-        console.log('摇一摇成功', res);
-        this.setData({
-          prize_info: res.data.data.prize_info,
-        })
-        if (res.data.data.shake_num > 0) {
-          this.initData(options)
+        if (res.data.status == 1) {
+          tool.alert("摇一摇成功")
+          console.log('摇一摇成功', res);
           this.setData({
-            openAj: true,
+            prize_info: res.data.data.prize_info,
           })
-        } else {
-          if (res.data.data.is_send_prize == 1) {
+          if (res.data.data.shake_num > 0) {
             this.initData(options)
             this.setData({
-              quanPop: true,
-              other_prize: res.data.data.other_prize,
+              openAj: true,
             })
+          } else {
+            if (res.data.data.is_send_prize == 1) {
+              this.initData(options)
+              this.setData({
+                quanPop: true,
+                other_prize: res.data.data.other_prize,
+              })
+            }
           }
+        }else{
+          tool.alert(res.data.msg)
         }
       })
     }, 1000)
@@ -564,12 +569,12 @@ Page({
 
   // 弹窗永久弹一次
   setRule() {
-    if (!wx.getStorageSync("isRule").vote) {
+    if (!wx.getStorageSync("isRule").shake) {
       this.setData({
         rulspop: true
       });
       let _isRule = wx.getStorageSync("isRule") || {}
-      _isRule.vote = true
+      _isRule.shake = true
       wx.setStorageSync("isRule", _isRule)
     }
   },

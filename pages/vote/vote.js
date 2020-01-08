@@ -49,7 +49,6 @@ Page({
     prevIndex: 0,
     imgVideoType: 1,
     rulspop: false,
-    userIndex: 0,
     activeStatus: 0,
     text: "活动暂未开放",
     isjoin: false,
@@ -60,7 +59,7 @@ Page({
   // 获取swiper下标
   swiperChange(e) {
     const userIndex = e.detail.current;
-    console.log(e)
+    console.log(userIndex,'userIndex')
     this.setData({
       userIndex,
     })
@@ -157,44 +156,10 @@ Page({
       }, this.data[sequence][0].speed)
     })
   },
-  
-  activestatus() {
-    let activity_id = this.data.activity_id;
-    if (this.data.activeStatus == 3) {
-      this.setData({
-        isVehicleOwnerHidePop: true,
-        popType: 1,
-        text: "活动暂未开始"
-      })
-    } else if (this.data.activeStatus == 4) {
-      console.log("活动结束")
-      if (this.data.isjoin == 0) {
-        tool.alert('活动已结束');
-        setTimeout(() => {
-          router.jump_nav({
-            url: `/pages/index/index`,
-          })
-        }, 1500)
-      } else {
-        if (this.data.show_rank_list == 1) {
-          this.close_prize();
-        } else if (this.data.show_rank_list == 2) {
-          this.close_prize();
-        }
-      }
-    }
-  },
-  // 排行榜
-  votePageJump() {
-    let activity_id = this.data.activity_id;
-    router.jump_nav({
-      url: `/pages/vote_page/vote_page?activity_id=${activity_id}`,
-    })
-  },
 
   //点击参与活动
   toPartake() {
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
     let activity_id = this.data.activity_id;
     router.jump_nav({
       url: `/pages/lj_partake/lj_partake?activity_id=${activity_id}`,
@@ -203,18 +168,18 @@ Page({
 
   // 分享好友
   shareFriend() {
-    const activity_id = this.data.activity_id
-    const userIndex = this.data.userIndex; //当年swiper下标
-    const user_id = wx.getStorageSync('userInfo').user_id
-    const vote_id = this.data.VideoBg[userIndex].vote_id;
-    const type = 2;
-
+    let activity_id = this.data.activity_id
+    let userIndex = this.data.userIndex; //当年swiper下标
+    let user_id = wx.getStorageSync('userInfo').user_id
+    let vote_id = this.data.VideoBg[userIndex].vote_id;
+    let options = this.data.options
+    let type = 2;
     request_05.doVote({
       user_id,
       vote_id,
       type
     }).then(res => {
-      console.log(res);
+      this.initData(options)
     })
   },
   
@@ -249,10 +214,13 @@ Page({
   initData(options) {
     tool.loading('加载中')
     let activity_id = options.activity_id;
+    let userIndex = options.index
+    console.log(userIndex,'userIndex')
     const userInfo = wx.getStorageSync('userInfo');
     let headimg = wx.getStorageSync('userInfo').headimg;
     let user_id = wx.getStorageSync('userInfo').user_id;
     this.setData({
+      userIndex,
       userInfo,
       activity_id,
       headimg,
@@ -265,26 +233,11 @@ Page({
       activity_id
     }).then(res => {
       console.log("voteIndex", res);
-      let indexInfo = res.data.data;
-      let iscarActive = res.data.data.car_owner;
-      let rank_list = res.data.data.rank_list
-      let is_win = res.data.data.is_win
-      if (res.data.status == 1) {
         this.setData({
-          indexInfo,
-          iscarActive,
-          activeStatus: res.data.data.status,
+          indexInfo: res.data.data,
+          car_owner:res.data.data.car_owner,
           isjoin: res.data.data.is_join,
-          rank_list,
-          is_win,
-          vote_type: res.data.data.vote_type,
-          show_rank_list: res.data.data.show_rank_list
         })
-        console.log(wx.getStorageSync("isRule").vote);
-        if (wx.getStorageSync("isRule").vote)
-          this.activestatus();
-        this.setRule();
-      }
     })
 
     // 投票轮播首页
@@ -323,33 +276,9 @@ Page({
     tool.loading_h();
   },
 
-  // 弹窗永久弹一次
-  setRule() {
-    if (!wx.getStorageSync("isRule").vote) {
-      this.setData({
-        rulspop: true
-      });
-      let _isRule = wx.getStorageSync("isRule") || {}
-      _isRule.vote = true
-      wx.setStorageSync("isRule", _isRule)
-    }
-  },
-
-  getPrize() {
-    router.jump_nav({
-      url: `/pages/o_prize/o_prize`
-    })
-  },
-
   back_home() {
     router.jump_nav({
       url: `/pages/index/index`
-    })
-  },
-
-  close_prize() {
-    this.setData({
-      isPrize: !this.data.isPrize
     })
   },
 
@@ -357,13 +286,6 @@ Page({
   isShare() {
     this.setData({
       isShare: !this.data.isShare
-    });
-  },
-
-  // 规则图片打开关闭
-  isHidePop() {
-    this.setData({
-      isShow: !this.data.isShow
     });
   },
 
@@ -390,13 +312,13 @@ Page({
 
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    // if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok' && (this.data.iscarActive == 1 ? true : false) ) || (wx.getStorageSync("userInfo").nickName && !(this.data.iscarActive == 1 ? true : false))) return
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").unionid && !this.data.iscarActive)) return
+    console.log('e', e)
+    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1 && wx.getStorageSync("userInfo").unionid) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.car_owner && wx.getStorageSync("userInfo").unionid)) return
     if (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) {
       this.setData({
         popType: 2
       })
-    } else if (wx.getStorageSync("userInfo").user_type == 0) {
+    } else if (wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) {
       this.setData({
         popType: 3
       })
@@ -405,12 +327,11 @@ Page({
   },
   //授完权后处理
   getParme(e) {
+    let options = this.data.options
     this.isVehicleOwnerHidePop()
     request_01.setUserInfo(e).then(res => {
-      this.setData({
-        userInfo: wx.getStorageSync('userInfo')
-      })
       this.isVehicleOwner()
+      this.initData(options)
     })
   },
   //是否授权、绑定车主弹窗
@@ -456,13 +377,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    tool.loading('加载中')
-    const options = this.data.options;
-    const firstShow = this.data.firstShow;
-    if (firstShow) {
-      this.initData(options);
-    }
-    tool.loading_h();
+    
   },
 
   /**
@@ -499,11 +414,12 @@ Page({
   onShareAppMessage: function(options) {
     const userIndex = this.data.userIndex;
     let vote_id = this.data.VideoBg[userIndex].vote_id
+    console.log(vote_id,'vote_id')
     let user_id = wx.getStorageSync('userInfo').user_id;
     let activity_id = this.data.activity_id;
     let obj = {
       title: '大侠请留步！帮我点个赞，赢京东500元购物卡！',
-      path: `/pages/vote/vote?activity_id=${activity_id}&isShare=1&user_id=${user_id}`,
+      path: `/pages/vote/vote?activity_id=${activity_id}&isShare=1&user_id=${user_id}&userIndex=${userIndex}`,
       imageUrl: this.data.IMGSERVICE + "/activity/share_out.jpg"
     };
     return obj;

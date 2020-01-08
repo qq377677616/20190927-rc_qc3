@@ -58,7 +58,7 @@ Page({
       var _this = this;
       let activity_id = options.activity_id;
       let vote_id = options.vote_id;
-      let user_id = wx.getStorageSync('userInfo').user_id;
+      let user_id = options.user_id;
       wx.request({
         url: 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/vote/poster',
         data: {
@@ -78,9 +78,10 @@ Page({
         activity_id,
         user_id
       }).then(res => {
-        let resource = res.data.data.info.resource;
         this.setData({
-          resource,
+          resource: res.data.data.info.resource,
+          nickname: res.data.data.info.nickname,
+          headimg: res.data.data.info.headimg
         })
       })
     } else {
@@ -129,11 +130,11 @@ Page({
       }
     }, 15000)
     Promise.all([
-      util.getImgLocalPath(resource),
-      util.getImgLocalPath(_this.data.userInfo.headimg || _this.data.userInfo.avatarUrl),
+      util.getImgLocalPath(_this.data.resource),
+      util.getImgLocalPath(_this.data.headimg || _this.data.userInfo.avatarUrl),
       util.getImgLocalPath(_this.data.qr_code),
       tool.getImageInfo(resource),
-      tool.getImageInfo(_this.data.userInfo.headimg || _this.data.userInfo.avatarUrl),
+      tool.getImageInfo(_this.data.headimg || _this.data.userInfo.avatarUrl),
       tool.getImageInfo(_this.data.qr_code)
     ]).then(res => {
       console.log("res", res)
@@ -174,7 +175,7 @@ Page({
 
           ],
           textList: [{
-            string: _this.data.userInfo.nickname,
+            string: _this.data.nickname,
             color: '#333',
             fontSize: '30',
             fontFamily: 'Arial',

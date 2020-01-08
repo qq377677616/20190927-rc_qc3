@@ -39,26 +39,6 @@
     </view>
     <view wx:if="{{isHid}}" class="content">排行榜第{{vote_info.rank}}名</view>
   </view>
-  <!-- share-mask -->
-  <!-- <view class="share-mask" wx:if="{{ isShare }}">
-    <view class="content riseShow">
-      <view class="close-btn" bindtap="isShare">
-        <image src="{{IMGSERVICE}}/prize/close.png"></image>
-      </view>
-      <view class="share-way">
-        <view bindtap="bindShare">
-          <image src="{{IMGSERVICE}}/activity/district_pyq.png"></image>
-          <text>分享朋友圈</text>
-        </view>
-        <view class="share-box" bindtap="shareFriend">
-          <image src="{{IMGSERVICE}}/activity/district_wx.png"></image>
-          <text>分享给好友</text>
-          <button open-type="share" class="btn_share"></button>
-        </view>
-      </view>
-    </view>
-  </view> -->
-  <!-- share-mask -->
 
   <!-- share-mask -->
    <view class="share-mask" wx:if="{{ isShare }}">

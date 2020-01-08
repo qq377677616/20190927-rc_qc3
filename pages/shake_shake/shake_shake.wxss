@@ -23,6 +23,10 @@ page {
   z-index: 999;
 }
 
+.shake_title{
+  width: 80rpx;
+}
+
 .main .yao {
   width: 313rpx;
   position: fixed;
@@ -193,9 +197,9 @@ page {
 }
 
 .q1 {
-  width: 147rpx;
-  height: 87rpx;
-  margin-left: 20rpx;
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 55rpx;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -224,14 +228,14 @@ page {
 }
 
 .shoe {
-  width: 147rpx;
-  height: 80rpx;
+  width: 120rpx;
+  height: 120rpx;
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
   position: absolute;
   left: 15%;
-  top: 31%;
+  top: 30%;
   display: flex;
   justify-content: center;
   align-items: flex-end;

@@ -6,7 +6,7 @@
   <!-- main -->
   <view class="main">
 
-    <!-- <image class="yao" src="{{ IMGSERVICE }}/shake_shake/ziti.png" mode="widthFix"></image> -->
+    <image class="shake_title" src="{{IMGSERVICE}}/activity/shake_title.png" mode="widthFix"></image>
 
     <view class="rule" catchtap="openRule">活动规则</view>
 

@@ -1,12 +1,13 @@
 <!-- pages/vote/vote.wxml -->
 <view class="vote_bg" bindtap="isVehicleOwner">
-  <view bindtap="openRule" class="rulsbox">规 则</view>
+  <!-- <view bindtap="openRule" class="rulsbox">规 则</view>
   <view bindtap="votePageJump" class="rankbox">
     <text>排 行 榜</text>
-  </view>
+  </view> -->
   <!-- <view wx:if="{{true}}" bindtap="back_home" class="rulsbox back-home">首 页</view> -->
-  <swiper vertical="true" bindchange="swiperChange">
+  <swiper vertical="true" bindchange="swiperChange" current="{{userIndex}}">
     <swiper-item wx:for="{{VideoBg}}">
+      <view class='rt_pos1' wx:if="{{userIndex>0}}"></view>
       <video wx:if="{{index==userIndex && vote_type==1}}" src="{{item.videoUrl}}" data-index="{{index}}" id="video{{index}}" object-fit="fill" loop="{{true}}" autoplay="{{true}}" controls="{{false}}" class="image-video" bindtap="livePrlyer"></video>
       <view bindtap="bintImg" class="image-video" style="background-image:url({{item.resource}})"></view>
       <view class="down_right">
@@ -17,17 +18,21 @@
           <image class="image {{item.curIndex == indexs ? 'on' : ''}}" wx:for="{{sequenceList}}" wx:for-item="items" wx:for-index="indexs" wx:key="key{{indexs}}" src="{{items.url}}"></image>
           <view class="zan_num">{{item.votes}}</view>
         </view>
-        <view class="share" bindtap="bindShare" bindtap="isShare">
+        <view class="share">
           <image src="{{IMGSERVICE}}/activity/share.png"></image>
           <button open-type="share" class="btn_share" bindtap="shareFriend"></button>
           <view>{{item.shares}}</view>
+        </view>
+        <view class="share share2" bindtap="toPartake" wx:if="{{is_join==0}}">
+          <image src="{{IMGSERVICE}}/activity/join.png" data-type="ok"></image>
+          <view class="join_txt" data-type="ok">立即参与</view>
         </view>
         <view bindtap="toHome" class="home" wx:if="{{isHome}}">
           <image src="{{IMGSERVICE}}/activity/home.png"></image>
           <view class="txt_index">查看更多</view>
         </view>
       </view>
-      <view class="btn_can" bindtap="toPartake" data-type="ok" wx:if="{{is_join==0}}">立即参与</view>
+      <!-- <view class="btn_can" bindtap="toPartake" data-type="ok" wx:if="{{is_join==1}}">立即参与</view> -->
       <view class="down_left">
         <view class="left_img">
           <view class="image">
@@ -37,18 +42,20 @@
         </view>
         <view class="content">{{item.content}}</view>
       </view>
+      <view class='rt_pos2' wx:if="{{userIndex<VideoBg.length-1}}"></view>
     </swiper-item>
   </swiper>
 </view>
 
-<!-- 规则 -->
-<view class="pof fadeShow" wx:if="{{rulspop}}">
-  <rule bindclose="closePop" ruleImg="{{indexInfo.rule}}"></rule>
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+  <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
 </view>
+
 
 <!-- win_list -->
 
-<view class="bg_color" wx:if="{{isPrize}}">
+<!-- <view class="bg_color" wx:if="{{isPrize}}">
 
   <view class="top">
     <image src="{{IMGSERVICE}}/activity/bg(1).png"></image>
@@ -97,15 +104,9 @@
 
   <view bindtap="close_prize" class="x" style="background-image:url('{{IMGSERVICE}}/center/icon_close.png')"></view>
 
-</view>
+</view> -->
 
 
 <!-- win_list -->
-
-
-<!-- 授权、去绑定车主弹窗 -->
-<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
-  <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
-</view>
 
 <!-- <image  class="img {{cur_index == index ? 'op':''}}" bindtap="test" wx:for="{{image_list}}" src="{{item.src}}"></image> -->

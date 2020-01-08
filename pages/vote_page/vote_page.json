@@ -1,3 +1,7 @@
 {
- "navigationBarTitleText": "我要投票"
+  "usingComponents": {
+    "rule": "/components/rule/rule",
+    "activePop": "/components/activePop/activePop"
+  },
+  "navigationBarTitleText": "我要投票"
 }
