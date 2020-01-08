@@ -31,14 +31,14 @@ Page({
 		pickerStoreList: [],
 		storeIndex: 0,
 		positionKey: true,
-		parmData:{},//接收页面参数
-		area:'',//省市区
-		address:'',//详细地址
-		dealer_code:'',//专营店编码
-		mobile:'',//手机号
-		useName:'',//留资用户姓名
-		ht_code:'',//回填专营店码
-		order_goods_id:null,//订单id
+		parmData: {},//接收页面参数
+		area: '',//省市区
+		address: '',//详细地址
+		dealer_code: '',//专营店编码
+		mobile: '',//手机号
+		useName: '',//留资用户姓名
+		ht_code: '',//回填专营店码
+		order_goods_id: null,//订单id
 	},
 
 	/**
@@ -46,7 +46,7 @@ Page({
 	 */
 	onLoad: function (options) {
 		console.log(options);
-		this.setData({parmData:JSON.parse(options.obj)})
+		this.setData({ parmData: JSON.parse(options.obj) })
 		request_01.login(() => {
 			this.initData(options)
 		})
@@ -67,7 +67,7 @@ Page({
 		const goodsDetail = this.data.goodsDetail;//立即兑换商品信息
 		const cartDetail = this.data.cartDetail;//购物车商品信息
 		const type = this.data.type;
-		console.log("收获地址信息",currentAddressItem);
+		console.log("收获地址信息", currentAddressItem);
 		this.setData({
 			currentAddressItem,
 		})
@@ -76,7 +76,7 @@ Page({
 		if (!currentAddressItem.area) return;
 
 		//实物领取不需要获取门店
-		if (this.data.parmData.type==2&&this.data.is_yy==0) return;
+		if (this.data.parmData.type == 2 && this.data.is_yy == 0) return;
 
 		this.getLocation()
 	},
@@ -115,7 +115,7 @@ Page({
 		const type = options.type;
 		const userInfo = wx.getStorageSync('userInfo');
 		let parme = JSON.parse(options.obj);
-		if (parme.is_order>0&&parme.is_yy==0){// 回填  不获取默认地址
+		if (parme.is_order > 0 && parme.is_yy == 0) {// 回填  不获取默认地址
 			this.order_info();
 			console.log('回填  不获取默认地址');
 			return;
@@ -134,11 +134,9 @@ Page({
 		// this.setData({
 		// 	type,
 		// })
-
 		alert.loading({
 			str: '加载中'
 		})
-
 		Promise.all([
 			request_01.defaultAddress({
 				user_id: userInfo.user_id
@@ -150,11 +148,10 @@ Page({
 				const toString = {}.toString;
 				if (toString.call(data) == '[object Array]') {
 					//为空数组 就是没有默认地址
-
 				}
 				else {
 					//否则有默认地址
-					console.log("data",data);
+					console.log("data", data);
 					this.setData({
 						area: data.area,
 						address: data.address,
@@ -166,18 +163,14 @@ Page({
 					})
 					this.onShow()
 				}
-
 			})
 			.catch((reason) => {
 				//fail
-
 			})
 			.then(() => {
 				//complete
 				alert.loading_h()
 			})
-
-
 	},
 	//定位
 	getLocation() {
@@ -196,7 +189,6 @@ Page({
 		this.setData({//定位中关锁
 			positionKey: false,
 		})
-
 		method.getPosition()
 			.then((value) => {
 				//success
@@ -230,15 +222,15 @@ Page({
 						return item.name;
 					})
 					let falg = -1;
-					if (this.data.ht_code && this.data.ht_code!=''){
-						 falg = storeList.findIndex((item, index) => {
+					if (this.data.ht_code && this.data.ht_code != '') {
+						falg = storeList.findIndex((item, index) => {
 							return item.code == this.data.ht_code
 						})
 					}
 					this.setData({
 						storeList,
 						pickerStoreList,
-						storeIndex: falg==-1?0:falg,
+						storeIndex: falg == -1 ? 0 : falg,
 					})
 				}
 				else {//门店数据返回出错
@@ -252,9 +244,7 @@ Page({
 					alert.alert({
 						str: '门店：' + msg,
 					})
-
 				}
-
 			})
 			.catch((reason) => {
 				//fail
@@ -299,7 +289,6 @@ Page({
 	//选择获取门店提示
 	getStore() {
 		const currentAddressItem = this.data.currentAddressItem;//收货人信息
-
 		if (currentAddressItem.area) {//收货人信息必须填写
 			alert.alert({
 				str: '该区域没有找到相关门店，或门店相关信息出错'
@@ -311,8 +300,8 @@ Page({
 			})
 		}
 	},
-	//领取
 	settlement() {
+		//领取
 		const currentAddressItem = this.data.currentAddressItem;//收货人信息
 		const type = this.data.type;
 		const userInfo = wx.getStorageSync('userInfo');
@@ -325,31 +314,31 @@ Page({
 		if (!currentAddressItem.address_id) return alert.alert({
 			str: '请填写收货人信息'
 		});
-		if (this.data.parmData.is_yy==0||this.data.parmData.type!=2) {//立即支付跳转过来
+		if (this.data.parmData.is_yy == 0 || this.data.parmData.type != 2) {//立即支付跳转过来
 			if (!(this.data.parmData.type == 2) && !storeList.length) return alert.alert({
 				str: '请选择领取的门店'
 			});
 			let dealer_code = storeList[storeIndex].code;//门店id 为快递时门店id非必选
-			this.setData({ dealer_code: dealer_code})
+			this.setData({ dealer_code: dealer_code })
 		}
 		this.data.parmData.is_yy == 0 ? this.lq_receive() : this.yy_receive();
 	},
-	lq_receive(){
+	lq_receive() {
 		// 领取奖品 结算留资
 		this.isShowLoading();
 		let dat = {};
-		if(this.data.parmData.type==2){
-			 dat = {
+		if (this.data.parmData.type == 2) {
+			dat = {
 				activity_id: this.data.parmData.activity_id,
 				openid: wx.getStorageSync('userInfo').openid,
 				log_id: this.data.parmData.log_id,
-				name:this.data.useName,
-				mobile:this.data.mobile,
+				name: this.data.useName,
+				mobile: this.data.mobile,
 				area: this.data.area,
-				address:this.data.address
+				address: this.data.address
 			}
-		}else{
-			 dat = {
+		} else {
+			dat = {
 				activity_id: this.data.parmData.activity_id,
 				openid: wx.getStorageSync('userInfo').openid,
 				log_id: this.data.parmData.log_id,
@@ -362,24 +351,24 @@ Page({
 		}
 		// console.log(dat);
 		// return;
-		request_04.lq_receive(dat).then((res)=>{
+		request_04.lq_receive(dat).then((res) => {
 			console.log(res.data)
 			this.isShowLoading();
-			if(res.data.status==1){
-				this.addCard([res.data.data.card_info]);
-				this.setData({ order_goods_id: res.data.data.order_id})
-			}else{
+			if (res.data.status == 1) {
+				res.data.goods_type == 1 ? this.addCard([res.data.data.card_info]) : tool.jump_red(`/pages/order_detail/order_detail?order_id=${res.data.data.order_id}`);
+				this.setData({ order_goods_id: res.data.data.order_id })
+			} else {
 				tool.alert(res.data.msg);
 			}
-		}).catch((err)=>{
+		}).catch((err) => {
 			console.log(err)
 		})
 	},
-	yy_receive(){
-	// 预约留资
-	console.log("预约留资");
-	this.isShowLoading();
-	let dat = {
+	yy_receive() {
+		// 预约留资
+		console.log("预约留资");
+		this.isShowLoading();
+		let dat = {
 			address_id: this.data.currentAddressItem.address_id,
 			activity_id: this.data.parmData.activity_id,
 			openid: wx.getStorageSync('userInfo').openid,
@@ -389,16 +378,16 @@ Page({
 			address: this.data.address,
 			code: this.data.dealer_code,
 			goods_id: this.data.parmData.goods_id,
-			form_id:this.data.parmData.is_DY==0?'0':'-1'
+			form_id: this.data.parmData.is_DY == 0 ? '0' : '-1'
 		}
 		// console.log(dat);
 		// return;
-		request_04.yy_receive(dat).then((res)=>{
+		request_04.yy_receive(dat).then((res) => {
 			this.isShowLoading();
-			if(res.data.status==1){
+			if (res.data.status == 1) {
 				tool.jump_back();
 				tool.alert(res.data.msg);
-			}else{
+			} else {
 				tool.alert(res.data.msg);
 			}
 		})
@@ -428,7 +417,7 @@ Page({
 	},
 	addCard(cardList) {
 		// 添加卡券
-		console.log(11,cardList);
+		console.log(11, cardList);
 		tool2.addCard(cardList).then(res => {
 			tool.jump_red(`/pages/order_detail/order_detail?order_id=${this.data.order_goods_id}`)
 			if (res.errMsg == "addCard:ok") {
@@ -448,8 +437,8 @@ Page({
 			tool2.alert("卡券领取失败2")
 		})
 	},
-	
-	cardCheck(card_code){
+
+	cardCheck(card_code) {
 		// 上报
 		console.log("上报")
 		console.log(this.data.parmData)

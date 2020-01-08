@@ -286,28 +286,25 @@ Page({
 	kjbox(){
 		let that = this;
 		if (this.data.useNum < this.data.allNum) {
-		// if (wx.getStorageSync('dyinfo')!=1){//订阅消息暂时不用
-		// 	wx.requestSubscribeMessage({
-		// 		tmplIds: ['DhQWIgncCTFXk3Vi7Po1zN5cUCfwYCnMB4rw7ceeNt8'],
-		// 		success(res) {
-		// 			console.log("jieshou", res, res['DhQWIgncCTFXk3Vi7Po1zN5cUCfwYCnMB4rw7ceeNt8'], res.errMsg)
-		// 			if (res['DhQWIgncCTFXk3Vi7Po1zN5cUCfwYCnMB4rw7ceeNt8']=="accept"){
-		// 				wx.setStorageSync('dyinfo', 1)
+		if (wx.getStorageSync('dyinfo')!=1){//订阅消息暂时不用
+			wx.requestSubscribeMessage({
+				tmplIds: ['DhQWIgncCTFXk3Vi7Po1zN5cUCfwYCnMB4rw7ceeNt8'],
+				success(res) {
+					console.log("jieshou", res, res['DhQWIgncCTFXk3Vi7Po1zN5cUCfwYCnMB4rw7ceeNt8'], res.errMsg)
+					if (res['DhQWIgncCTFXk3Vi7Po1zN5cUCfwYCnMB4rw7ceeNt8']=="accept"){
+						wx.setStorageSync('dyinfo', 1)
 						that.setData({ dy_info: true,delMC: false, prize_img: "" });
 						that.runShave();
-					}else{
-						tool.alert("暂无刮奖次数!");
 					}
-		// 		},
-		// 		fail(err) {
-		// 			console.log("不接受",err)
-		// 		}
-		// 	})
-		// 	}else{
-		// 		this.setData({ delMC: false, prize_img:"" });
-		// 		that.runShave();
-		// 	}
-		// }
+				},
+				fail(err) {
+					console.log("不接受",err)
+				}
+			})
+			}
+		} else {
+			tool.alert("暂无刮奖次数!");
+		}
 	},
 	playXLZ(){
 		let flag = 0;
