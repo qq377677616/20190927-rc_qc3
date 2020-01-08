@@ -28,6 +28,7 @@ Page({
     isShare: false,
   },
   initData(options) {
+    tool.loading('加载中')
     console.log(options)
     let openid = wx.getStorageSync('userInfo').openid;;
     let activity_id = '';
@@ -61,6 +62,7 @@ Page({
         openid,
         activity_id
       }).then(res => {
+        tool.loading_h();
         console.log('shakeDetail', res)
         let headimgList = res.data.data.help_list.slice(0, res.data.data.max_help_num)
         this.setData({
@@ -136,6 +138,7 @@ Page({
             help_img: res.data.data.help_img,
             activity_id,
           })
+          tool.loading_h();
           if (res.data.data.can_help == 0) {
             this.setData({
               isHelpH: false,
@@ -169,6 +172,8 @@ Page({
           this.setData({
             helpSuc: true
           })
+        }else{
+          tool.alert(res.data.msg)
         }
       })
     } else {

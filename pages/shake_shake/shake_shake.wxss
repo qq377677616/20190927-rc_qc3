@@ -25,6 +25,9 @@ page {
 
 .shake_title{
   width: 80rpx;
+  position: absolute;
+  top: 0;
+  left: 5%;
 }
 
 .main .yao {

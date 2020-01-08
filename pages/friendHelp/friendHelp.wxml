@@ -80,7 +80,7 @@
             <view wx:for="{{helpList}}" class="friendItem" style="background-image:url({{item.headimg}})"></view>
             <view wx:for="{{10-helpList.length}}" class="friendItem" style="background-image:url({{IMGSERVICE}}/center/wenhao.png)"></view>
           </view> -->
-        <view class="firendNum">已有{{helpList.length}}位好友为您助力</view>
+        <view class="firendNum">已有{{help_num}}位好友为您助力</view>
       </view>
     </view>
     <view class="userImg1" style="background-image:url({{user_info.headimg}})"></view>
@@ -153,30 +153,8 @@
       </swiper-item>
     </swiper>
   </view>
-  <!-- 手滑 -->
-  <!-- <scroll-view scroll-y style="max-height:650rpx;">
-        <view class="help_item" wx:for="{{helpList}}">
-        <view class="leftBox">
-          <view class="l_item1 nowrap"><text>{{index+1}}</text></view>
-          <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
-          <view class="l_item3 nowrap"><text>{{item.nickname}}</text></view>
-        </view>
-        <view class="rightBox">
-          <text>{{item.create_time}}</text>
-        </view>
-       </view>
-    </scroll-view> -->
-  <!-- 原样式 -->
-  <!-- <view class="help_item" wx:for="{{helpList}}">
-			<view class="leftBox">
-				<view class="l_item1 nowrap"><text>{{index+1}}</text></view>
-				<view class="l_item2" style="background-image:url({{item.headimg}})"></view>
-				<view class="l_item3 nowrap"><text>{{item.nickname}}</text></view>
-			</view>
-			<view class="rightBox">
-				<text>{{item.create_time}}</text>
-			</view>
-		</view> -->
+
+  <!-- 助力成功 -->
   <view class="helpsuccBox" wx:if="{{helpSuc}}">
     <view class="succPop">
       <view class="succTxt">
