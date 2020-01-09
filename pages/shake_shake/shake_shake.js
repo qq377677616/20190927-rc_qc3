@@ -270,8 +270,20 @@ Page({
               })
             }
           }
-        }else{
-          tool.alert(res.data.msg)
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.msg,
+            showCancel: false,
+            success(res) {
+              if (res.confirm) {
+                console.log('1111111111')
+                router.jump_red({
+                  url: `/pages/index/index`
+                })
+              }
+            }
+          })
         }
       })
     }, 1000)

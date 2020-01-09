@@ -692,6 +692,13 @@
 					"pathName": "pages/vote_detail/vote_detail",
 					"query": "vote_id=1&user_id=60&activity_id=9",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "lj_partake",
+					"pathName": "pages/lj_partake/lj_partake",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

@@ -633,8 +633,6 @@ page {
   position: absolute;
   background-color: #ffe297;
   bottom: 16%;
-  left: 41%;
-  margin-left: -105rpx;
   font-size: 34rpx;
   font-family: Source Han Serif CN;
   font-weight: bold;
@@ -654,11 +652,11 @@ page {
 }
 
 .quanTxt_2 {
-  text-align: center;
   position: absolute;
   top: 55%;
-  left: 52%;
-  translate: -50%;
+  width: 100%;
+  text-align: center;
+  margin-left: 20rpx;
 }
 
 .quanTxt_2>text:nth-child(1) {
