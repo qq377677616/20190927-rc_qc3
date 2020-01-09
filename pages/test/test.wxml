@@ -1,4 +1,5 @@
 <view>
+
 	<view class="witem" style="background-image:url({{IMGSERVICE}}/models/T70bg_1.png)">
 		<view class="mum" style="background-image:url({{IMGSERVICE}}/models/mumlist.png)"></view>
 		<view class="T70logs" style="background-image:url({{IMGSERVICE}}/models/T70login.png)"></view>
@@ -8,6 +9,7 @@
 		</view>
 		<view class="sj_btn">预约试驾</view>
 	</view>
+
 	<view class="witem">
 		<view class="itemHand">
 			<view class="sj_btn2">预约试驾</view>
@@ -16,6 +18,70 @@
 		<view class="itembg" style="background-image:url({{IMGSERVICE}}/models/T70bg_2.png)">
 			<text class="txt4">流沙光影 用心创造生活点滴美好</text>
 			<text class="txt5">蓄流沙之势，取光影之美，</text>
+			<text class="txt5 txt6">精心演绎刚毅与品位的融合。</text>
+			<view class="ts_btn">探索更多</view>
 		</view>
 	</view>
+
+	<view class="witem witem2">
+		<view class="itemHand2" style="background-image:url({{IMGSERVICE}}/models/T70bg_3.png)"></view>
+		<view class="itembg2">
+			<text class="txt7">智联科技 灵犀相通贴心相伴</text>	
+			<text class="txt8 txt9">全新一代启辰移动互联体验，</text>
+			<text class="txt8">使爱的旅途更为便利与惬意。</text>
+			<view class="s_box">
+				<scroll-view  scroll-y="{{true}}" class="videoList">
+					<view class="setflex">
+						<view class="_items" wx:for="{{10}}">
+							<text class="lefttxt">全时在线导航</text>
+							<view class="rightbox">
+								<view class="playbtn">
+									<image mode="widthFix" src="{{IMGSERVICE}}/models/playbtn.png"></image>
+								</view>
+								<text class="txt10">观看视频</text>
+							</view>
+						</view>
+					</view>	
+				</scroll-view>
+			</view>
+		</view>
+	</view>
+
+	<view class="witem witem3" style="background-image:url({{IMGSERVICE}}/models/T70bg_4.png)">
+		<text class="txt11">科技巧思 无微不至前行自如</text>	
+		<text class="txt12">心思独具的智慧科技配置，</text>
+		<text class="txt13">操控更智慧省心，</text>	
+		<text class="txt14">出行当然欢乐自在。</text>	
+		<view class="ts_btn">探索更多</view>
+	</view>
+
+	<view class="witem witem4">
+		<view class="itemHand3" style="background-image:url({{IMGSERVICE}}/models/T70bg_5.png)"></view>	
+		<view class="itembg3">
+			<text class="txt15">平顺高效 铺就一路坦途</text>
+			<text class="txt16">铂金动力组合与专业底盘技术相得益彰，</text>
+			<text class="txt17">高效与平顺兼顾。</text>
+			<text class="txt18"> 一路前行，劲享轻松自如的驾乘乐趣。</text>
+			<view class="ts_btn3">探索更多</view>
+		</view>	
+	</view>
+
+	<view class="witem witem5">
+		<view class="itemHand4" style="background-image:url({{IMGSERVICE}}/models/T70bg_6.png)"></view>	
+		<view class="itembg4">
+			<text class="txt15">安心呵护 为爱护航</text>
+			<text class="txt16">多重保障提升安全等级，</text>
+			<text class="txt17">构筑周全防护，</text>
+			<text class="txt18"> 给您和家人每一趟安心旅程。</text>
+			<view class="ts_btn3">探索更多</view>
+		</view>	
+	</view>
+
+	<view class="witem witem5">
+		<view class="itemHand5" style="background-image:url({{IMGSERVICE}}/models/T70bg_7.png)"></view>	
+		<view class="itembg5">
+			
+		</view>	
+	</view>
+
 </view>
