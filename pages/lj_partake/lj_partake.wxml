@@ -2,32 +2,31 @@
 
 <view class="partake">
 
-    <view class="bg">
+  <view class="bg">
 
-      <view class="bg_content">
+    <view class="bg_content">
 
-        <view bindtap="uploadPic"  class="upload_pic">
-          <image wx:if="{{image == '' ? true:false}}" src="{{IMGSERVICEZ}}/activity/plus.png"></image>
-          <!-- <image class="upload-image" wx:if="{{image == '' ? false:true}}" src="{{image}}"></image> -->
-          <view class="upload-image" wx:if="{{image == '' ? false:true}}" style="background-image:url('{{image}}')"></view>
-        </view>
+      <view bindtap="uploadPic" class="upload_pic">
+        <image wx:if="{{image == '' ? true:false}}" src="{{IMGSERVICEZ}}/activity/plus.png"></image>
+        <!-- <image class="upload-image" wx:if="{{image == '' ? false:true}}" src="{{image}}"></image> -->
+        <view class="upload-image" wx:if="{{image == '' ? false:true}}" style="background-image:url('{{image}}')"></view>
+      </view>
 
-        <view class="point1">请上传图片</view>
-        <view class="point2">(不超过2M)</view>
+      <view class="point1">请上传图片</view>
+      <view class="point2">(不超过2M)</view>
 
-        <view class="describe">
-          <view class="ms">作品描述</view>
-            <textarea bindinput="bindinput" maxlength="20" placeholder-class="pla" placeholder="请添加与活动相关的描述:">
+      <view class="describe">
+        <view class="ms">作品描述</view>
+        <textarea bindinput="bindinput" maxlength="20" placeholder-class="pla" placeholder="请添加与活动相关的描述:">
           <view class="txt">{{cursor}}/20</view>
-          </textarea>
-        </view>
-
+        </textarea>
       </view>
 
     </view>
 
-    <form bindsubmit="formSubmit" bindreset="formReset" report-submit="true">
-      <button class="btn" form-type="submit" bindsubmit="bindsubmit">提交</button>
-    </form>
+  </view>
+
+  <button class="btn" bindtap="submitInfo">提交</button>
+
 
 </view>
