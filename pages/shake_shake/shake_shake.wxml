@@ -1,13 +1,13 @@
 <!--pages/shake_shake/shake_shake.wxml-->
 
 <!-- shake_shake_page -->
-<view class="shake_bg" style="background-image:url('https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/activity/shake_111.png')"></view>
+<view class="shake_bg" style="background-image:url('{{IMGSERVICE}}/activity/shake_111.png')"></view>
 <view class="shake_shake_page" style="background-image:url({{activity_info.banner}})" bindtap="isVehicleOwner">
 
   <!-- main -->
   <view class="main">
 
-    <image class="shake_title" src="{{IMGSERVICE}}/activity/shake_title.png" mode="widthFix"></image>
+    <image class="shake_title" src="https://weixinfslb.venucia.com/uploads/assets_3.0/activity/shake_title.png" mode="widthFix"></image>
 
     <view class="rule" catchtap="openRule">活动规则</view>
 
@@ -15,7 +15,7 @@
 
       <!-- <view class="btn" bindtap="joinShake" data-type="ok">摇一摇</view> -->
 
-      <view class="tips">参与机会({{shake_num}})</view>
+      <!-- <view class="tips">参与机会({{shake_num}})</view> -->
 
     </view>
 
