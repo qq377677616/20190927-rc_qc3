@@ -388,9 +388,9 @@ Page({
     let activity_id = this.data.activity_id;
     let shake_id = this.data.shake_id;
     let obj = {
-      title: '大侠请留步！帮我点个赞，赢京东500元购物卡！',
+      title: '摇一摇拿红包，至高4188元购车基金助您购车！',
       path: `/pages/friendHelp/friendHelp?shake_id=${shake_id}&openid=${openid}&activity_id=${activity_id}`,
-      imageUrl: this.data.IMGSERVICE + "/activity/share_shake.jpg"
+      imageUrl: this.data.IMGSERVICE + "/activity/share_shake.png"
     };
     return obj;
   },
