@@ -75,6 +75,7 @@ Page({
           help_num2: res.data.data.max_help_num,
           is_upgrade: res.data.data.shake_info.is_upgrade,
           max_help_num_upgrade: res.data.data.max_help_num_upgrade,
+          order_id: res.data.data.shake_info.order_id,
           headimgList,
           activity_id,
         })
@@ -172,7 +173,7 @@ Page({
           this.setData({
             helpSuc: true
           })
-        }else{
+        } else {
           tool.alert(res.data.msg)
         }
       })
@@ -191,6 +192,14 @@ Page({
       isTen: false,
       headimgList,
       help_num2
+    })
+  },
+
+  //查看订单
+  toOrder() {
+    let order_id = this.data.order_id
+    router.jump_red({
+      url: `/pages/order_detail/order_detail?order_id=${order_id}`
     })
   },
 
@@ -249,7 +258,7 @@ Page({
                     })
                   }
                 })
-              }else{
+              } else {
                 tool.alert(res.data.msg)
               }
             })
