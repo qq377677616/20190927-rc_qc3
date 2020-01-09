@@ -256,7 +256,7 @@ Page({
           this.setData({
             prize_info: res.data.data.prize_info,
           })
-          if (res.data.data.shake_num > 0) {
+          if (res.data.data.shake_num > 0){
             this.initData(options)
             this.setData({
               openAj: true,
@@ -271,7 +271,19 @@ Page({
             }
           }
         }else{
-          tool.alert(res.data.msg)
+			wx.showModal({
+				title: '提示',
+				content: res.data.msg,
+				showCancel: false,
+				success(res) {
+				 if (res.confirm) {
+					console.log('1111111111')
+					router.jump_red({
+						url: `/pages/index/index`
+					})
+				}
+			   }
+			})
         }
       })
     }, 1000)

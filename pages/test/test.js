@@ -19,9 +19,6 @@ Page({
    */
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
-    signInArr: ['一', '二', '三', '四', '五', '六', '七'],
-    currentIndex: 3,
-    signInIf: false,
   },
 
   /**
@@ -44,38 +41,6 @@ Page({
   onShow: function () {
 
   },
-
-
-  //这个是你们的那些按钮点击事件
-  isVehicleOwner2() {
-    if (wx.getStorageSync("userInfo").user_type == 0) return;
-
-
-
-    console.log("可以参加活动了")
-  },
-  //判断是否授权和是否是车主
-  isVehicleOwner(e) {
-    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (e && e.target.dataset.type != 'ok')) return
-    if (!wx.getStorageSync("userInfo").nickName) {
-      this.setData({ popType: 2 })
-    } else if (wx.getStorageSync("userInfo").user_type == 0) {
-      this.setData({ popType: 3 })
-    }
-    this.isVehicleOwnerHidePop()
-  },
-  //授完权后处理
-  getParme(e) {
-    this.isVehicleOwnerHidePop()
-    request_01.setUserInfo(e).then(res => {
-      this.isVehicleOwner()
-    })
-  },
-  //是否授权、绑定车主弹窗
-  isVehicleOwnerHidePop() {
-    this.setData({ isVehicleOwnerHidePop: !this.data.isVehicleOwnerHidePop })
-  },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -108,27 +73,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    wx.updateShareMenu({
-      withShareTicket: true,
-      isUpdatableMessage: true,
-      activityId: '47', // 活动 ID
-      templateInfo: {
-        parameterList: [{
-          name: 'member_count',
-          value: '1'
-        }, {
-          name: 'room_limit',
-          value: '3'
-        }]
-      }
-    })
-  },
-  //确定
-  sureBtn() {
-    const signInIf = this.data.signInIf;
 
-    this.setData({
-      signInIf: !signInIf,
-    })
-  },
+  }
+
+ 
 })

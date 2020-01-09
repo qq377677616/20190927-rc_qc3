@@ -24,7 +24,7 @@ page {
 }
 
 .shake_title{
-  width: 80rpx;
+  width: 150rpx;
   position: absolute;
   top: 0;
   left: 5%;
