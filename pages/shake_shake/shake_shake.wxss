@@ -5,11 +5,32 @@ page {
 }
 
 .shake_shake_page {
+  position: absolute;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center center;
+  background-size: 100% auto;
+  background-position: center;
   background-repeat: no-repeat;
+  z-index: 9;
+}
+
+.shake_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size:cover;
+  z-index: 1;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background: #fcf7ed;
 }
 
 /* main */
@@ -23,7 +44,7 @@ page {
   z-index: 999;
 }
 
-.shake_title{
+.shake_title {
   width: 150rpx;
   position: absolute;
   top: 0;

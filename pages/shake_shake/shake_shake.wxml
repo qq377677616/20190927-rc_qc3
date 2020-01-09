@@ -1,6 +1,7 @@
 <!--pages/shake_shake/shake_shake.wxml-->
 
 <!-- shake_shake_page -->
+<view class="shake_bg" style="background-image:url('https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/activity/shake_111.png')"></view>
 <view class="shake_shake_page" style="background-image:url({{activity_info.banner}})" bindtap="isVehicleOwner">
 
   <!-- main -->

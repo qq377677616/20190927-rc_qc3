@@ -38,6 +38,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+      tool.getSystemInfo().then(res => {
+        console.log("res", res)
+      })
         request_01.login(() => {
             this.initData(options);
         })
