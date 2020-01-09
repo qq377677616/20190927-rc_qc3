@@ -10,6 +10,7 @@ const WxParse = require('../../utils/wxParse/wxParse.js');
 const app = getApp();//获取应用实例
 
 import tool from '../../utils/tool/tool.js';
+
 import api from '../../utils/request/request_03.js'
 Page({
 

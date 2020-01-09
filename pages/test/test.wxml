@@ -1,13 +1,21 @@
-<!--pages/test/test.wxml-->
-
-<view class="test_page" bindtap="isVehicleOwner">
-    <view style="padding:40rpx 0;background:green;text-align:center;" data-type="ok" bindtap="isVehicleOwner2">
-        我要参加活动
-    </view>
-    <!-- 授权、去绑定车主弹窗 -->
-    <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
-        <qc-activePop popType="{{popType}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
-
-        </qc-activePop>
-    </view>
+<view>
+	<view class="witem" style="background-image:url({{IMGSERVICE}}/models/T70bg_1.png)">
+		<view class="mum" style="background-image:url({{IMGSERVICE}}/models/mumlist.png)"></view>
+		<view class="T70logs" style="background-image:url({{IMGSERVICE}}/models/T70login.png)"></view>
+		<text class="txt1">高品质智联SUV  品质来袭</text>
+		<view class="txt2">
+			官方指导价 <text class="txt3">8.98</text> 万元起
+		</view>
+		<view class="sj_btn">预约试驾</view>
+	</view>
+	<view class="witem">
+		<view class="itemHand">
+			<view class="sj_btn2">预约试驾</view>
+			<image mode="widthFix" src="{{IMGSERVICE}}/models/mum_2.png"></image>
+		</view>
+		<view class="itembg" style="background-image:url({{IMGSERVICE}}/models/T70bg_2.png)">
+			<text class="txt4">流沙光影 用心创造生活点滴美好</text>
+			<text class="txt5">蓄流沙之势，取光影之美，</text>
+		</view>
+	</view>
 </view>

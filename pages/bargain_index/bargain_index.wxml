@@ -271,7 +271,7 @@
 
   <view class="four_day" wx:if="{{time_value>=3||(!shopList.my_kj_goods.length>0&&!shopList.dq_prize.length>0)}}">
 
-    <view class="gift" style="background-image:url('{{IMGSERVICE}}/activity/gift_box.png')"></view>
+    <view class="gift" style="background-image:url('{{IMGSERVICE}}/activity/gift_boX.png?v_1')"></view>
     <view class="txt">更多好礼，敬请期待 ~</view>
   </view>
 
@@ -289,7 +289,7 @@
           <view class="zstiao"></view>
           <view style="font-weight:bold;">砍价记录</view>
         </view>
-        <view class="x closeX" style="background-image:url('{{IMGSERVICE}}/activity/X.png')"></view>
+        <view class="x closeX" style="background-image:url({{IMGSERVICE}}/activity/X.png?v_1)"></view>
         <view class="closePop2" bindtap="closePop"></view>
       </view>
 
@@ -352,7 +352,7 @@
           <view class="zstiao"></view>
           <view>已选择该商品</view>
         </view>
-        <view class="x" style="background-image:url('{{IMGSERVICE}}/activity/X.png')" bindtap="closePop"></view>
+        <view class="x" style="background-image:url('{{IMGSERVICE}}/activity/X.png?v_1')" bindtap="closePop"></view>
       </view>
 
       <view class="next_box">
