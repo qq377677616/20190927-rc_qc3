@@ -32,8 +32,8 @@
 			<view class="s_box">
 				<scroll-view  scroll-y="{{true}}" class="videoList">
 					<view class="setflex">
-						<view class="_items" wx:for="{{10}}">
-							<text class="lefttxt">全时在线导航</text>
+						<view class="_items1" wx:for="{{videoarr}}">
+							<text class="lefttxt">{{item}}</text>
 							<view class="rightbox">
 								<view class="playbtn">
 									<image mode="widthFix" src="{{IMGSERVICE}}/models/playbtn.png"></image>
@@ -78,10 +78,112 @@
 	</view>
 
 	<view class="witem witem5">
-		<view class="itemHand5" style="background-image:url({{IMGSERVICE}}/models/T70bg_7.png)"></view>	
+		<view class="itemHand5" style="background-image:url({{IMGSERVICE}}/models/T70bg_7.png)">
+			<view class="selectCol">
+				<scroll-view scroll-x="{{true}}" class="setcolbox">
+					<view class="setflex2">
+						<view class="colitem" wx:for="{{5}}">
+							<image mode="widthFix" src="{{IMGSERVICE}}/models/T70col{{index+1}}.png"></image>
+							<text class="{{index==1?'active':''}}">{{colarr[index]}}</text>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="carInfo">
+				<view>
+					<text class="txt19">行李厢容积</text>
+					<text class="txt20">534L</text>
+					<image mode="widthFix" src="{{IMGSERVICE}}/models/T70line.png" class="by_line"></image>
+				</view>
+				<view>
+					<text class="txt19">最小离地间隙</text>
+					<text class="txt20">534L</text>
+					<image mode="widthFix" src="{{IMGSERVICE}}/models/T70line.png" class="by_line"></image>
+				</view>
+				<view>
+					<text class="txt19">综合工况油耗</text>
+					<text class="txt20">7.1  L/100km</text>
+				</view>
+			</view>
+		</view>	
+
 		<view class="itembg5">
-			
+			<view class="carmodel">
+				<scroll-view scroll-x="{{true}}">
+					<view class="caritems">
+						<view class="_items" style="background-image:url({{IMGSERVICE}}/models/T70car_1.png)"></view>
+						<view class="_items" style="background-image:url({{IMGSERVICE}}/models/T70car_2.png)"></view>
+					</view>
+				</scroll-view>
+			</view>		
+			<view class="lookbtn">查看完整配置表</view>
+			<view class="lookbtn lookbtn2">购车助手</view>
 		</view>	
 	</view>
 
+	<view class="witem witem5 setbg">
+		<view class="itemHand6">
+			启辰T70活动
+		</view>	
+		<view class="itembg6">
+			<view class="_bg6" style="background-image:url({{IMGSERVICE}}/models/T70bg_8.png)"></view>
+			<text class="txt21">启辰T70 2020款为说走就走的旅行打Call</text>
+			<view class="ljcy_btn">即刻参与</view>
+			<text class="txt22">活动规则</text>
+		</view>	
+	</view>
+    
+	<view class="witem witem5">
+		<view class="itemHand6 setheg">
+			媒体声音
+		</view>	
+		<view class="itembg6">
+			<view class="swriBox">
+				<swiper class="setswri" next-margin="58rpx" bindchange="changedot">
+					 <block wx:for="{{2}}" wx:key="item">
+						<swiper-item>
+							<view class="swItem" style="background-image:url({{IMGSERVICE}}/models/T70video{{index+1}}.png)">
+								<text class="videotxt">外观小改/配置升级 试驾启辰T70 2020款</text>
+							</view>
+						</swiper-item>
+					</block>	
+				</swiper>			
+			</view>
+			<!-- 轮播点 -->
+			<view class="dots">
+				<view class="{{index==currdot?'dotAct':''}}" wx:for="{{2}}"></view>
+			</view>
+		</view>	
+	</view>
+	<!--  -->
+	<view class="witem witem5 setbg2">
+		<view class="itemHand7"></view>	
+		<view class="itembg7">
+			<view class="footbg1">
+				<swiper>
+					 <block wx:for="{{10}}" wx:key="item">
+						<swiper-item>
+							<view class="footItem" style="background-image:url({{IMGSERVICE}}/models/fT70bg_1.png)">
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/T70left.png"></image>
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/T70right.png"></image>
+							</view>
+						</swiper-item>
+					</block>	
+				</swiper>			
+			</view>
+			<view class="footbg2">
+				<text class="swNum">+7</text>
+				<swiper>
+					 <block wx:for="{{10}}" wx:key="item">
+						<swiper-item>
+							<view class="footItem2">
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/fT70bg_1.png"></image>
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/fT70bg_1.png"></image>
+							</view>
+						</swiper-item>
+					</block>	
+				</swiper>	
+			</view>
+		</view>	
+	</view>
 </view>

@@ -7,6 +7,7 @@
   <!-- main -->
   <view class="main">
 
+
     <image class="shake_title" src="{{IMGSERVICE}}/activity/shake_title.png?123" mode="widthFix"></image>
 
     <view class="rule" catchtap="openRule">活动规则</view>
