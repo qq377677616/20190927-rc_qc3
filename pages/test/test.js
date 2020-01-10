@@ -19,6 +19,8 @@ Page({
    */
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
+	colarr: ['旭日橙', '朝霞红', '珠光白', '翡丽灰','曜石黑'],
+	  videoarr: ['全时在线导航', '数字化车联&互联网信息娱乐', '车辆智能安防系统', '智慧贴心语音助手']
   },
 
   /**

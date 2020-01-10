@@ -178,7 +178,7 @@
 	display: flex;
 	flex-direction: column;
 }
-._items{
+._items1{
 	width: 100%;
 	height: 74rpx;
 	/* background-color: antiquewhite; */
@@ -314,4 +314,227 @@
 	height:687rpx;
 	width: 100%; 
 	background: center no-repeat/cover;
+	position: relative;
+}
+.selectCol{
+	width: 100%;
+	height: 85rpx;
+	/* background-color:red; */
+	position: absolute;
+	bottom: 56rpx;
+	left: 0; 
+}
+.setflex2{
+	display: flex;
+	height: 100%;
+	padding: 0 32rpx;
+	box-sizing: border-box;
+}
+.setcolbox{
+	width: 100%;
+	height: 100%;
+}
+.colitem{
+	width: 144rpx;
+	flex-shrink: 0;
+	height: 100%;
+	/* background-color: aqua; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.setflex2>.colitem:not(:first-child){
+	margin-left:29rpx; 
+}
+.colitem>image{
+	width: 100%;
+	height: 46rpx !important;
+}
+.colitem>text{
+	flex: 1;
+	font-size:20rpx;
+	font-family:MHeiPRC;
+	font-weight:500;
+	color:rgba(24,24,24,1);
+	margin-top: 8rpx;
+}
+.colitem>.active{
+	font-size:27rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+}
+.carInfo{
+	width: 100%;
+	height: 70rpx;
+	/* background-color: red; */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform:translateY(60%); 
+	display: flex;
+	justify-content: space-between;
+	padding: 0 60rpx;
+	box-sizing: border-box;
+}
+.carInfo>view{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+}
+.txt19{
+	font-size:20rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:rgba(77,77,77,1);
+}
+.txt20{
+	font-size:32rpx;
+	font-family:NissanBrand;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+}
+.by_line{
+	position: absolute;
+	right: -57rpx;
+	width: 42rpx;
+	height: auto;
+	top: -10rpx;
+}
+.itembg5{
+	width: 100%;
+	flex: 1;
+	/* background-color: red; */
+	padding-top:80rpx;
+	box-sizing: border-box; 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.carmodel{
+	width: 100%;
+	height: 188rpx;
+	/* background-color: red; */
+}
+.carmodel>scroll-view{
+	width: 100%;
+	height: 100%;
+}
+.caritems{
+	height: 100%;
+	display: flex;
+}
+._items{
+	width: 440rpx;
+	height: 100%;
+	background: center no-repeat/cover;
+	flex-shrink: 0;
+	margin-left: 120rpx;
+}
+.caritems>._items:last-child{
+	margin-left: 85rpx;
+}
+.lookbtn{
+	width:216rpx;
+	height:62rpx;
+	border:2rpx solid rgba(54,54,54,1);
+	border-radius:31rpx;
+	font-size:22rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:rgba(40,40,40,1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top:89rpx; 
+}
+.lookbtn2{
+	margin-top: 37rpx;
+}
+.setbg{
+	background-color: #E9EAEC;
+}
+.itemHand6{
+	width: 100%;
+	height: 262rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size:40rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+}
+.setheg{
+	height: 307rpx;
+}
+.itembg6{
+	width: 100%;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+._bg6{
+	width: 100%;
+	height: 475rpx;
+	background: center no-repeat/cover;
+}
+.txt21{
+	font-size:32rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+	margin-top: 43rpx;
+}
+.ljcy_btn{
+	width:190rpx;
+	height:59rpx;
+	border:2rpx solid #666;
+	border-radius:29rpx;
+	font-size:21rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:#666;
+	line-height:59rpx;
+	text-align: center;
+	margin-top: 38rpx;
+}
+.txt22{
+	font-size:21rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	text-decoration:underline;
+	color:#666;
+	line-height:44rpx;
+	margin-top: 20rpx;
+}
+.swriBox{
+	width: 100%;
+	height: 520rpx;
+	/* background-color: red; */
+	padding-left:51rpx;
+	box-sizing: border-box; 
+}
+.setswri{
+	width: 100%;
+	height: 100%;
+}
+.swItem{
+	width: 615rpx;
+	height: 420rpx;
+	background: center no-repeat/cover;
+	position: relative;
+	/* background-color: aqua; */
+}
+.videotxt{
+	font-size:32rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+	position: absolute;
+	left: 0;
+	bottom: -100rpx;
 }
