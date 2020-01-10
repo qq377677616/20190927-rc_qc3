@@ -139,7 +139,7 @@
 		</view>	
 		<view class="itembg6">
 			<view class="swriBox">
-				<swiper class="setswri" next-margin="58rpx">
+				<swiper class="setswri" next-margin="58rpx" bindchange="changedot">
 					 <block wx:for="{{2}}" wx:key="item">
 						<swiper-item>
 							<view class="swItem" style="background-image:url({{IMGSERVICE}}/models/T70video{{index+1}}.png)">
@@ -149,7 +149,41 @@
 					</block>	
 				</swiper>			
 			</view>
+			<!-- 轮播点 -->
+			<view class="dots">
+				<view class="{{index==currdot?'dotAct':''}}" wx:for="{{2}}"></view>
+			</view>
 		</view>	
 	</view>
-	
+	<!--  -->
+	<view class="witem witem5 setbg2">
+		<view class="itemHand7"></view>	
+		<view class="itembg7">
+			<view class="footbg1">
+				<swiper>
+					 <block wx:for="{{10}}" wx:key="item">
+						<swiper-item>
+							<view class="footItem" style="background-image:url({{IMGSERVICE}}/models/fT70bg_1.png)">
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/T70left.png"></image>
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/T70right.png"></image>
+							</view>
+						</swiper-item>
+					</block>	
+				</swiper>			
+			</view>
+			<view class="footbg2">
+				<text class="swNum">+7</text>
+				<swiper>
+					 <block wx:for="{{10}}" wx:key="item">
+						<swiper-item>
+							<view class="footItem2">
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/fT70bg_1.png"></image>
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/fT70bg_1.png"></image>
+							</view>
+						</swiper-item>
+					</block>	
+				</swiper>	
+			</view>
+		</view>	
+	</view>
 </view>

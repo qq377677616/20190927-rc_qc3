@@ -7,7 +7,8 @@
   <!-- main -->
   <view class="main">
 
-    <image class="shake_title" src="https://weixinfslb.venucia.com/uploads/assets_3.0/activity/shake_title.png?1" mode="widthFix"></image>
+
+    <image class="shake_title" src="{{IMGSERVICE}}/activity/shake_title.png?123" mode="widthFix"></image>
 
     <view class="rule" catchtap="openRule">活动规则</view>
 

@@ -538,3 +538,89 @@
 	left: 0;
 	bottom: -100rpx;
 }
+.dots{
+	width:100%;
+	height: 21rpx; 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* background-color: red; */
+	margin-top: 480rpx;
+}
+.dots>view:not(:first-child){
+	margin-left:15rpx; 
+}
+.dots>view{
+	width:21rpx;
+	height: 21rpx;
+	border-radius: 50%;
+	background:rgba(168,169,171,1);
+}
+.dots>.dotAct{
+	width: 77rpx;
+	border-radius: 11rpx;
+	transition: width 800ms ease-in-out,opacity 600ms ease-in-out;
+	background-color:#133B6F; 
+}
+.setbg2{
+	background-color: #000;
+}
+.itemHand7{
+	height: 364rpx;
+}
+.itembg7{
+	width: 100%;
+	flex: 1;
+	/* background-color: red; */
+}
+.footbg1{
+	width: 100%;
+	height: 577rpx;
+	/* background: center no-repeat/cover; */
+}
+.footbg1>swiper{
+	width: 100%;
+	height: 100%;
+}
+.footItem{
+	width: 100%;
+	height: 100%;
+	background: center no-repeat/cover;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 25rpx;
+	box-sizing: border-box;
+}
+.footItem>image{
+	width: 48rpx;
+	height: auto;
+}
+.footbg2{
+	width: 100%;
+	height: 277rpx;
+	position: relative;
+}
+.footbg2>swiper{
+	width: 100%;
+	height: 100%;
+}
+.footItem2{
+	width: 100%;
+	height: 100%;
+	/* background-color: red; */
+}
+.footItem2>image{
+	width: 50%;
+}
+.swNum{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	font-size:67rpx;
+	font-family:NissanBrand;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	z-index: 9;
+}
