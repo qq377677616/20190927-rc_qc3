@@ -109,7 +109,7 @@ Page({
         activity_id,
         openid
       }).then(res => {
-        let resource = res.data.data.activity_info.banner;
+        let resource = this.data.IMGSERVICE+'/activity/shake_share.png';
         this.setData({
           resource,
         })
