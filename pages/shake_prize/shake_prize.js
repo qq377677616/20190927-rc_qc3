@@ -390,7 +390,6 @@ Page({
     this.isShowLoading()
     console.log('11', cardList)
     tool2.addCard(cardList).then(res => {
-      tool.jump_red(`/pages/shake_shake/shake_shake?activity_id=${this.data.parmData.activity_id}`)
       console.log("卡券返回", res)
       if (res.errMsg == "addCard:ok") {
         console.log("卡券领取成功")
@@ -432,6 +431,7 @@ Page({
       if (res.statusCode == 200) {
         this.isShowLoading()
         tool2.alert("卡券领取成功，请到我的卡包查看卡券使用详情")
+        tool.jump_red(`/pages/shake_shake/shake_shake?activity_id=${this.data.parmData.activity_id}`)
         // let _orderDetail = this.data.orderDetail
         // _orderDetail.order_goods[this.data.curIndex].is_receive = 1
         // console.log("_orderDetail", _orderDetail)
