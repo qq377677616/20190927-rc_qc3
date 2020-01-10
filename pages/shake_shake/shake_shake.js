@@ -105,8 +105,21 @@ Page({
   },
 
   initData(options) {
+    console.log(options)
+    let activity_id = '';
+    if (options.scene) {
+      let scene = decodeURIComponent(options.scene);
+      console.log(scene)
+      scene.split('&').forEach((item) => {
+        console.log(item.split('='))
+        if (item.split('=')[0] == 'a') { //找到activity_id
+          activity_id = item.split('=')[1]
+        }
+      })
+    } else {
+      activity_id = options.activity_id;
+    }
     let openid = wx.getStorageSync('userInfo').openid;
-    let activity_id = options.activity_id;
     console.log('activity_id', activity_id)
     console.log(openid)
     request_05.shakeDetail({
