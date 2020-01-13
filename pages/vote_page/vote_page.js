@@ -49,7 +49,8 @@ Page({
       this.setData({
         options,
         indexData: res.data.data,
-        car_owner: res.data.data.car_owner
+        car_owner: res.data.data.car_owner,
+        activity_id
       })
     })
   },
@@ -149,6 +150,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      options,
+    })
     request_01.login(() => {
       this.initData(options)
       this.getrankList(options);
@@ -218,14 +222,11 @@ Page({
 
   },
   // 排行榜
-  getrankList(options) {
+  getrankList() {
     tool.loading('加载中')
     let arr = [];
     arr = this.data.voteList;
-    let activity_id = options.activity_id
-    this.setData({
-      activity_id,
-    })
+    let activity_id = this.data.options.activity_id
     let dat = {
       activity_id: activity_id,
       user_id: wx.getStorageSync('userInfo').user_id,

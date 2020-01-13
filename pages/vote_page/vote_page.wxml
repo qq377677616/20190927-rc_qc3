@@ -96,7 +96,7 @@
 
     <view wx:if="{{indexData.is_win==1 && indexData.prize_info.is_receive==0}}" bindtap="getPrize" class="btn">领取奖品</view>
     <view wx:if="{{indexData.is_win==1 && indexData.prize_info.is_receive==1}}" bindtap="getPrize" class="btn">查看订单</view>
-    <view wx:if="{{indexData.is_win==0}}" bindtap="getPrize" class="btn">您未获奖</view>
+    <view wx:if="{{indexData.is_win==0}}" bindtap="close_prize" class="btn">您未获奖</view>
 
   </view>
 
