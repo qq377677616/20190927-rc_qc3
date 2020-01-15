@@ -77,42 +77,50 @@ Page({
     obj.activity_id = this.data.activity_id;
     let order_goods_id = obj.order_goods_id
     let user_id = wx.getStorageSync('userInfo').user_id
-    // order_id   0表示未留资   
-    if (obj.order_id == 0) {
-      router.jump_red({
-        url: `/pages/vote_prize/vote_prize?obj=${JSON.stringify(obj)}`
-      })
-    } else {
-      // is_receive   留资  未领取
-      if (obj.is_receive == 0) {
-        request_05.getWechatCard({
-          user_id,
-          order_goods_id
-        }).then(res => {
-          let cardList = res.data.data[0]
-          wx.addCard({
-            cardList: [cardList],
-            success(res) {
-              console.log('cardList', res)
-              let card_code = res.cardList[0].code;
-              request_05.orderCardCode({
-                user_id,
-                order_goods_id,
-                card_code
-              }).then(res => {
-                console.log('update_card_code', res)
-                if (res.data.status == 1) {
-                  tool.alert('领取成功')
-                  setTimeout(() => {
-                    _this.initData(options)
-                  }, 500)
-                }
-              })
-            }
-          })
+    // 实物或微信卡券    1 卡券  2实物
+    if (obj.prize_type == 1) {
+      // order_id   0表示未留资   
+      if (obj.order_id == 0) {
+        router.jump_red({
+          url: `/pages/vote_prize/vote_prize?obj=${JSON.stringify(obj)}`
         })
       } else {
-        // 留资领取了
+        // is_receive   留资  未领取
+        if (obj.is_receive == 0) {
+          request_05.getWechatCard({
+            user_id,
+            order_goods_id
+          }).then(res => {
+            let cardList = res.data.data[0]
+            wx.addCard({
+              cardList: [cardList],
+              success(res) {
+                console.log('cardList', res)
+                let card_code = res.cardList[0].code;
+                request_05.orderCardCode({
+                  user_id,
+                  order_goods_id,
+                  card_code
+                }).then(res => {
+                  console.log('update_card_code', res)
+                  if (res.data.status == 1) {
+                    tool.alert('领取成功')
+                    setTimeout(() => {
+                      _this.initData(options)
+                    }, 500)
+                  }
+                })
+              }
+            })
+          })
+        }
+      }
+    } else {
+      if (obj.status == 0) {
+        router.jump_red({
+          url: `/pages/vote_prize/vote_prize?obj=${JSON.stringify(obj)}`
+        })
+      } else {
         router.jump_red({
           url: `/pages/order_detail/order_detail?order_id=${obj.order_id}`
         })
