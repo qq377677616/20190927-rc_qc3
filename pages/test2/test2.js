@@ -24,7 +24,7 @@ Page({
 		options: {},
 		carList: [],
 		infoLunbo: {
-			autoplay: true, //是否自动轮播
+			autoplay: false, //是否自动轮播
 			interval: 8000, //间隔时间
 			duration: 1000, //滑动时间
 			current: 0,
@@ -37,61 +37,72 @@ Page({
 			"lowprice": "6.98",
 			"highprice": "9.88",
 			"bgUrl": imageUrl + "/lookcar/img_d60.png",
-			"titleImg": imageUrl + "/lookcar/title_d60.png"
+			"titleImg": imageUrl + "/lookcar/title_d60.png",
+			cid: 1
 		}, {
 			"name": 'T60',
 			"info": ['高品质智趣SUV 星级品质 焕新登场'],
 			"lowprice": "8.68",
 			"highprice": "11.88",
 			"bgUrl": imageUrl + "/lookcar/img_t60.png",
-			"titleImg": imageUrl + "/lookcar/title_t60.png"
+			"titleImg": imageUrl + "/lookcar/title_t60.png",
+			cid: 1
 		}, {
 			"name": 'T70',
 			"info": ['高品质智联SUV 品质来袭'],
 			"lowprice": "8.98",
 			"highprice": "12.78",
 			"bgUrl": imageUrl + "/lookcar/img_t70.png",
-			"titleImg": imageUrl + "/lookcar/title_t70.png"
+			"titleImg": imageUrl + "/lookcar/title_t70.png",
+			cid: 1
 		}, {
 			"name": 'T60EV',
 			"info": ['智无忧 趣更远 智领合资纯电SUV'],
 			"lowprice": "13.88",
 			"highprice": "15.68",
 			"bgUrl": imageUrl + "/lookcar/img_t60ev.png",
-			"titleImg": imageUrl + "/lookcar/title_t60ev.png"
+			"titleImg": imageUrl + "/lookcar/title_t60ev.png",
+			cid: 1
 		}, {
 			"name": 'T90',
 			"info": ['高品质跨界SUV 跨有界 悦无限'],
 			"lowprice": "11.88",
 			"highprice": "15.48",
 			"bgUrl": imageUrl + "/lookcar/img_t90.png",
-			"titleImg": imageUrl + "/lookcar/title_t90.png"
+			"titleImg": imageUrl + "/lookcar/title_t90.png",
+			cid:9
 		}, {
 			"name": 'D60EV',
 			"info": ['高品质智联家轿 智联生活 即刻开启'],
 			"lowprice": "13.78",
 			"highprice": "15.38",
 			"bgUrl": imageUrl + "/lookcar/img_d60ev.png",
-			"titleImg": imageUrl + "/lookcar/title_d60ev.png"
+			"titleImg": imageUrl + "/lookcar/title_d60ev.png",
+			cid: 1
 		}, {
 			"name": '星',
 			"info": [''],
 			"lowprice": "",
 			"highprice": "",
 			"bgUrl": imageUrl + "/lookcar/img_xing.png",
-			"titleImg": imageUrl + "/lookcar/title_xing.png"
+			"titleImg": imageUrl + "/lookcar/title_xing.png",
+			cid:11
 		}, {
 			"name": 'e30',
 			"info": ['高品质智联家轿 智联生活 即刻开启'],
 			"lowprice": "6.18",
 			"highprice": "7.48",
 			"bgUrl": imageUrl + "/lookcar/img_e30.png",
-			"titleImg": imageUrl + "/lookcar/title_e30.png"
+			"titleImg": imageUrl + "/lookcar/title_e30.png",
+			cid: 1
 		}],
 		toView: 'info1',
 		currpage:6,
+		currid:0,
+		isX:false,//是否是iphoneX
 	},
 	onLoad: function (options) {
+		this.setData({ isX: wx.getStorageSync("isX") == 1?true:false});
 		this.data.lunImg.forEach((item, index) => {
 			item.name = 'info' + (parseInt(index) + 1)
 		})
@@ -201,10 +212,15 @@ Page({
 	},
 	//看车详情
 	jumpDetail(e) {
-		const index = e.currentTarget.dataset.index;
-		const carList = this.data.carList;
-		const id = carList[index].id;
+		// const index = e.currentTarget.dataset.index;
+		// const carList = this.data.carList;
+		const id = e.currentTarget.dataset.cid;
 		console.log(id)
+		this.setData({ currid:id})
+		this.jump_page();
+	},
+	jump_page(){
+		let id = this.data.currid;
 		if (id == 9) {
 			// 跳转T90页面
 			router.jump_nav({
@@ -223,9 +239,12 @@ Page({
 				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
 			})
 		}
-
 	},
 	dyjump(e){
-		this.setData({currpage: e.currentTarget.dataset.num})
+		const id = e.currentTarget.dataset.cid;
+		console.log(id)
+		this.setData({ currid: id })
+		this.setData({currpage: e.currentTarget.dataset.num});
+		this.jump_page();
 	}
 })

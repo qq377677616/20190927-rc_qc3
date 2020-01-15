@@ -1,7 +1,7 @@
 <!--index.wxml-->
 
 <!-- 轮播图-->
-<view class='swiper_cart_box'>
+<view class='swiper_cart_box {{isX?"addH":""}}'>
   <view class="cart_box">
     <swiper current="{{currpage}}" circular="{{infoLunbo.circular}}" indicator-dots="{{infoLunbo.indicatorDots}}" autoplay="{{infoLunbo.autoplay}}" interval="{{infoLunbo.interval}}" duration="{{infoLunbo.duration}}" indicator-color="{{infoLunbo.indicatorColor}}" indicator-active-color="{{infoLunbo.activeColor}}"
       class='lunbo_swipper' bindchange="bindchange">
@@ -13,20 +13,21 @@
                 <view wx:for="{{item.info}}" wx:for-item="infoItem">{{infoItem}}</view>
               </view>
               <view class="price_info" wx:if="{{item.lowprice && item.highprice}}">官方指导价<text>{{item.lowprice}}</text>万元-<text>{{item.highprice}}</text>万元</view>
-              <view class="search_btn" catchtap="toSearch">搜索更多</view>
+              <view class="search_btn" catchtap="jumpDetail" data-cid="{{item.cid}}">搜索更多</view>
           </view>
           <view style="background-image:url({{item.bgUrl}})"class="slide-image" mode="widthFix" bindload="imgload" data-id="{{index}}" ></view>
         </swiper-item>
       </block>
     </swiper>
 
-    <scroll-view scroll-into-view="xing" class="scroll-view_H" class='lunbo_title' scroll-x="true" style="width:100%" scroll-into-view="{{toview}}" scroll-with-animation="true" scroll-left="{{scrollLeft}}">
-      <view class="scroll-view-item_H" wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index" wx:key>
-        <view id="{{line==6?'xing':item.name}}" class='title' data-num="{{index}}" bindtap="dyjump">
+    <scroll-view scroll-into-view="line6" class="scroll-view_H lunbo_title"  scroll-x="true" style="width:100%"  scroll-with-animation="true" scroll-left="{{scrollLeft}}">
+      <view class="scroll-view-item_H" wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index" wx:key="item" id="line{{index}}" catchtap="jumpDetail" data-cid="{{index==4?9:index==6?11:1}}">
+        <view  class='title' data-num="{{index}}" bindtap="dyjump">
           <!-- <view >
             <text class="icon_title">error</text>
           </view> -->
-          <text class="{{line == index ? 'error' : ''}}">{{item.name}}</text>
+
+          <text class="{{line == index ? 'error' : 'noerror'}}">{{item.name}}</text>
         </view>
         <!-- <text class='icon_s_left'></text>
               <text class='icon_s_right'></text> -->
@@ -46,3 +47,4 @@
     </scroll-view>
   </view>
 </view>
+<qc-Tabbar></qc-Tabbar>

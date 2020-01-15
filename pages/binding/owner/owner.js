@@ -146,6 +146,7 @@ Page({
 		//点击立即抽奖
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		tool.jump_nav(`/pages/binding/scratch/Scratch?activity_id=${this.data.parms.activity_id}`)
+		this.isVehicleOwnerHidePop();
 	},
 	//判断是否授权和是否是车主
 	isVehicleOwner(e) {

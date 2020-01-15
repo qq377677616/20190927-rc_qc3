@@ -20,7 +20,7 @@
             <view wx:for="{{ listInfo.banner_list }}" wx:key="index" class="dot_item {{dotIndex == index ? 'active' : ''}}">
                 <view class="tiao"></view>
             </view>
-            <view class="dot_item"></view>
+            <!-- <view class="dot_item"></view> -->
         </view>
 
     </view><!-- swiper-area -->
@@ -34,7 +34,7 @@
 
                 <view class="nav_item {{ listInfo.icon_list.length == 3 ? 'flex1' : 'flex0' }}" wx:for="{{ listInfo.icon_list }}" wx:key="index" data-index="{{ index }}" bindtap="navJump">
                     <view class="image">
-                        <image src="{{ item.icon }}" mode="widthFix"></image>
+                        <image src="{{ item.icon }}?2" mode="widthFix"></image>
                     </view>
 
                     <view class="span nowrap">{{ item.name }}</view>
@@ -101,21 +101,29 @@
 
             <view class="list">
 
-                <view wx:for="{{ activityList }}" wx:key="index" class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn" style="background-image:url({{ item.thumb }});" data-index="{{ index }}" bindtap="activityJump">
+                <view wx:for="{{ activityList }}" wx:key="index" class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn"  data-index="{{ index }}" bindtap="activityJump">
 
-                    <view class="describe">
+                    <!-- <view class="describe">
                         
                         <view class="main">
                             <view class="span nowrap">
                                 {{ item.title }}
                             </view>
-                            <!-- <view class="time nowrap">
+                            <view class="time nowrap">
                                 {{ item.time }}
-                            </view> -->
+                            </view>
                         </view>
 
-                    </view>
-
+                    </view> -->
+					<!-- 改版 -->
+					<view class="topimg" style="background-image:url({{ item.thumb }});"></view>
+					<view class="botominfo">
+						<view class="leftinfo">
+							<text class="Aname">{{ item.title }}</text>
+							<text class="Atime">{{ item.time }}</text>
+						</view>	
+						<view class="rightbtn">立即参与</view>
+					</view>
                 </view>
 
             </view>

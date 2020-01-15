@@ -125,6 +125,5 @@ Page({
         url:`/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
       })
     }
-
   },
 })

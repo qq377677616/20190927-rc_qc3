@@ -27,7 +27,7 @@
         <!-- search_area -->
         <view class="search_area fadeIn">
 
-            <input type="text" placeholder="搜索" value="{{ searchValue }}" bindinput="searchInput" maxlength="50"/>
+            <input type="text" placeholder="搜索你喜欢的商品" placeholder-class="gbseaript" value="{{ searchValue }}" bindinput="searchInput" maxlength="50"/>
 
             <view class="icon" bindtap="searchBtn">
                 <image src="{{ IMGSERVICE }}/shop_mall/search.png" mode="widthFix" ></image>
@@ -41,7 +41,7 @@
     <!-- round_robin_area -->
     <view class="round_robin_area">
 
-        <image class="icon" src="{{ IMGSERVICE }}/shop_mall/ld.png" mode="widthFix"></image>
+        <image class="icon" src="{{ IMGSERVICE }}/shop_mall/ld.png?2" mode="widthFix"></image>
 
         <swiper class="round_robin" circular="true" autoplay="true" interval="2000" vertical="true">
             <swiper-item wx:for="{{ mallInfo.carousel }}" wx:key="index">
@@ -49,7 +49,7 @@
             </swiper-item>
         </swiper>
 
-        <view class="more_btn" bindtap="goTask">
+        <!-- <view class="more_btn" bindtap="goTask">
             <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
 
             <view class="span">
@@ -57,10 +57,10 @@
             </view>
 
             <view class="more iconfont icon_more"></view>
-        </view>
+        </view> -->
 
     </view><!-- round_robin_area -->
-
+	
     <!-- main_content -->
     <view class="main_content">
 
@@ -73,7 +73,17 @@
             </view>
 
         </view><!-- nav_area -->
-
+		<!--  -->
+		<view class="rowbox">
+			<text class="myvd">我的V豆 <text class="setcol">2860</text></text>
+			<view class="more_btn" bindtap="goTask">
+				<!-- <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image> -->
+				<view class="gbspan span">
+					 赚取更多
+				</view>
+				<view class="more iconfont icon_more"></view>
+			</view>
+		</view>
         <!-- goods_list -->
         <view class="goods_list">
 
@@ -87,8 +97,8 @@
                     
                     <view class="info">
                         <view class="v">
-                            <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
-                            <view class="span">{{ item.vcoin }}</view>
+                            <image class="v_mark" src="{{ IMGSERVICE }}/shop_mall/vdou_v1.png" mode="widthFix"></image>
+                            <view class="span gbspan2">{{ item.vcoin }}</view>
                         </view>
 
                         <view class="cart iconfont icon_gouwuche"></view>
@@ -97,7 +107,7 @@
             </view>
 
         </view><!-- goods_list -->
-
+		
         <!-- look_more_btn -->
         <view wx:if="{{ isMore }}" class="look_more_btn" bindtap="lookMore">
             查看更多
@@ -109,10 +119,14 @@
 
     <!-- float_btn -->
     <view class="float_btn">
+		<!-- iconfont icon_gouwuche -->
+        <view class="btn cart_btn " bindtap="shopCart">
+			<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_5.png"></image>
+		</view>
 
-        <view class="btn cart_btn iconfont icon_gouwuche" bindtap="shopCart"></view>
-
-        <button class="btn kf_btn iconfont icon_kefu" open-type="contact"></button>
+        <button class="btn kf_btn " open-type="contact">
+			<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_4.png"></image>
+		</button>
 
     </view><!-- float_btn -->
 
