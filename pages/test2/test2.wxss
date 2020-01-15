@@ -32,11 +32,20 @@ page {
   margin-top:0;
 }
 .search_btn {
-  padding:30rpx 135rpx;
+  /* padding:30rpx 135rpx; */
   border-radius: 30rpx;
   border:2rpx solid #000;
   margin-top:60rpx;
-  letter-spacing: 2rpx;
+  letter-spacing: 3rpx;
+  width:387rpx; 
+  height:84rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:28rpx; 
+  font-family:PingFang SC;
+  font-weight:500;
+   color:rgba(1,1,1,1);
 }
 
 .lunbo_title .scroll-view-item_H:nth-child(1) .error:before {
@@ -122,7 +131,25 @@ page {
   /* animation-delay: .5s; */
   /* filter: blur(-1px); */
 }
-
+.playimg{
+	position: absolute;
+	left: 0%;
+	transform:translateX(-50%); 
+	bottom:-50rpx;
+	width:255rpx;
+	height:  63rpx;
+	background: center no-repeat/100% 100%;
+	opacity: 0;
+}
+.tram{
+	transform: translateX(0);
+}
+.setopt{
+	opacity: 1;
+}
+.rote{
+	transform: translateX(-50%) rotateX(180deg) rotateZ(180deg);
+}
 @keyframes animat_show {
   0% {
     width: 0;
@@ -207,7 +234,7 @@ page {
 .lunbo_title {
   position: absolute;
   width: 100%;
-  bottom: 57rpx;
+  bottom: 73rpx;
   z-index: 99;
   padding: 0 30rpx;
   box-sizing: border-box;

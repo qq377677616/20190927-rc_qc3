@@ -108,7 +108,7 @@ page{
 .round_robin_area .round_robin{
     width: 0;
     flex:1;
-    height: 100rpx;
+    height: 40rpx;
 }
 .round_robin_area .round_robin swiper-item{
     display: flex;

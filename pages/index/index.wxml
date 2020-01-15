@@ -94,7 +94,7 @@
                 <view class="title">
                     <view class="title_item">
                         <view class="span">活动</view>
-                        <view class="border"></view>
+                        <!-- <view class="border"></view> -->
                     </view>
                 </view>
             </scroll-view>

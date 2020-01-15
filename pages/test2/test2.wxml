@@ -21,13 +21,15 @@
     </swiper>
 
     <scroll-view scroll-into-view="line6" class="scroll-view_H lunbo_title"  scroll-x="true" style="width:100%"  scroll-with-animation="true" scroll-left="{{scrollLeft}}">
-      <view class="scroll-view-item_H" wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index" wx:key="item" id="line{{index}}" catchtap="jumpDetail" data-cid="{{index==4?9:index==6?11:1}}">
-        <view  class='title' data-num="{{index}}" bindtap="dyjump">
+      <view class="scroll-view-item_H" wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index0" wx:key="item" id="line{{index0}}" catchtap="jumpDetail" data-cid="{{index==4?9:index==6?11:1}}">
+        <view  class='title' data-num="{{index0}}" bindtap="dyjump">
           <!-- <view >
             <text class="icon_title">error</text>
           </view> -->
-
-          <text class="{{line == index ? 'error' : 'noerror'}}">{{item.name}}</text>
+		  <!-- class="{{line == index ? 'error' : 'noerror'}}" -->
+          <text>{{item.name}}</text>
+		  <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{curr==(index+2)&&!isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view>
+		  <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{isright?'tram':''}} {{curr==(index+2)&&isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/right_'+(index+1)+'.png'}})"></view>
         </view>
         <!-- <text class='icon_s_left'></text>
               <text class='icon_s_right'></text> -->
@@ -48,3 +50,5 @@
   </view>
 </view>
 <qc-Tabbar></qc-Tabbar>
+<!-- 序列针 -->
+<view class="xlzImg {{curr==index?'setopt':''}}" wx:for="{{8}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view>

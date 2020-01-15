@@ -15,6 +15,7 @@ const alert = require('../../utils/tool/alert.js');
 let imageUrl = app.globalData.IMGSERVICE
 Page({
 	data: {
+		baseurl: imageUrl,
 		line: 6,
 		//全局变量--分类
 		classId: '',
@@ -24,7 +25,7 @@ Page({
 		options: {},
 		carList: [],
 		infoLunbo: {
-			autoplay: false, //是否自动轮播
+			autoplay: true, //是否自动轮播
 			interval: 8000, //间隔时间
 			duration: 1000, //滑动时间
 			current: 0,
@@ -100,6 +101,9 @@ Page({
 		currpage:6,
 		currid:0,
 		isX:false,//是否是iphoneX
+		curr:7,//序列当前 帧
+		isplay:true,//是否可以播放序列
+		isright: false,//判断轮播放向
 	},
 	onLoad: function (options) {
 		this.setData({ isX: wx.getStorageSync("isX") == 1?true:false});
@@ -118,16 +122,16 @@ Page({
 	},
 	clickLine(e) {
 		let num = e.currentTarget.dataset.num;
-		this.setData({
-			line: num
-		})
+		// this.setData({
+		// 	line: num
+		// })
 		let _infoLunbo = this.data.infoLunbo
 		let img_current = this.data.infoLunbo.current;
 		_infoLunbo.current = num;
 		console.log(_infoLunbo)
 		this.setData({
 			infoLunbo: _infoLunbo,
-			line: num,
+			// line: num,
 			toView: 'info' + (num + 1)
 		})
 		if (num > 3) {
@@ -143,12 +147,14 @@ Page({
 		let _infoLunbo = this.data.infoLunbo
 		let img_current = this.data.infoLunbo.current;
 		_infoLunbo.current = e.detail.current;
-		console.log(_infoLunbo)
 		this.setData({
+			isright: this.data.line > e.detail.current,
 			infoLunbo: _infoLunbo,
 			line: e.detail.current,
-			toView: 'info' + (e.detail.current + 1)
+			toView: 'info' + (e.detail.current + 1),
 		})
+		console.log(this.data.line)
+		this.playxlz();
 		if (e.detail.current > 3) {
 			this.setData({ scrollLeft: (e.detail.current - 3) * 60 })
 		}
@@ -241,10 +247,32 @@ Page({
 		}
 	},
 	dyjump(e){
+		// 点击文字跳转
 		const id = e.currentTarget.dataset.cid;
 		console.log(id)
 		this.setData({ currid: id })
 		this.setData({currpage: e.currentTarget.dataset.num});
 		this.jump_page();
+	},
+	playxlz() {
+		//播放序列
+		console.log(this.data.isright);
+		if(!this.data.isplay){
+			console.log("暂时不能播放")
+			return;
+		}
+		let time = null;
+		let flag = -1;
+		this.setData({isplay:false});
+		clearInterval(time);
+		time = setInterval(() => {
+			if (flag > 7) {
+				clearInterval(time);
+				this.setData({ isplay: true, curr: flag});
+				console.log('flag', flag)
+			}
+			this.setData({ curr: flag })
+			flag++;
+		}, 50)
 	}
 })

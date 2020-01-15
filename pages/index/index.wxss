@@ -11,7 +11,7 @@ page{
 
 /* swiper_area */
 .swiper_area{
-    height: 548rpx;
+    height: 360rpx;
     position:relative;
 }   
 .swiper_area swiper{
@@ -135,7 +135,7 @@ page{
     margin-right: 10rpx;
 }
 .list_area .title .title_item .span{
-    font-size:36rpx;
+    font-size:34rpx;
     color:#333;
     font-weight: bold;
     margin-bottom: 10rpx;
@@ -313,13 +313,14 @@ page{
 }
 .rightbtn{
 	width:197rpx;
-	height:60rpx;
-	border:1rpx solid rgba(0,59,115,1);
+	height:70rpx;
+	border:2rpx solid rgba(0,59,115,1);
 	border-radius:35rpx;
 	font-size:28rpx;
 	font-family:PingFang SC;
 	font-weight:bold;
 	color:rgba(0,59,115,1);
-	line-height: 60rpx;
+	line-height: 70rpx;
 	text-align: center;
+	letter-spacing: 3rpx;
 }
