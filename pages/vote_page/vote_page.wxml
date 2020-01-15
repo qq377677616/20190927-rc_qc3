@@ -6,9 +6,13 @@
       <view class="iconfont icon_more more"></view>
     </view>
   </view>
+  <view class="share share2" bindtap="toPartake" wx:if="{{indexData.is_join==0}}">
+    <image src="{{IMGSERVICEZ}}/activity/join.png" data-type="ok"></image>
+    <view class="toPartake" data-type="ok">立即参与</view>
+  </view>
   <view class="whole">
-    <view class="noRank" wx:if="{{!voteList.length>0}}">当前暂无相关作品~</view>
-    <view class="btn_can" bindtap="toPartake" data-type="ok" wx:if="{{!voteList.length>0 && indexData.is_join==0}}">立即参与</view>
+    <view class="noRank" wx:if="{{isShow}}">当前暂无相关作品~</view>
+    <!-- <view class="btn_can" bindtap="toPartake" data-type="ok" wx:if="{{isShow && indexData.is_join==0}}">立即参与</view> -->
     <view class="pro_list" data-id="{{item.vote_id}}" data-index="{{index}}" wx:for="{{voteList}}" wx:key="item" bindtap="goVotedel">
       <view class="dotImg" style="background-image:url({{item.resource}})"></view>
       <view class="user_box">
@@ -19,9 +23,9 @@
             <text class="userRank">第{{index+1}}名</text>
           </view>
         </view>
-        <view class="dotBtn" style="background-image:url({{IMGSERVICEZ}}/activity/vote_sel.png)" catchtap="goVote" hidden="{{item.is_favorite!=0}}" data-vote="{{item.vote_id}}">
-        </view>
         <view class="flex-end">
+          <view class="dotBtn" style="background-image:url({{IMGSERVICEZ}}/activity/vote_sel.png)" catchtap="goVote" hidden="{{item.is_favorite!=0}}" data-vote="{{item.vote_id}}">
+          </view>
           <view class="dotBtn dotBtn2" style="background-image:url({{IMGSERVICEZ}}/activity/vote_sel_heart.png)" catchtap="goVote" data-vote="{{item.vote_id}}" hidden="{{item.is_favorite==0}}">
           </view>
           <view class="vote_nums">

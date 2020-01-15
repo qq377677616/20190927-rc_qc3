@@ -455,4 +455,20 @@ page {
   color: #333;
 }
 
+.share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  color: #fff;
+  position: fixed;
+  right: 5%;
+  bottom: 12%;
+}
+
+.share image {
+  width: 65rpx;
+  height: 67rpx;
+}
+
 /* win_list */

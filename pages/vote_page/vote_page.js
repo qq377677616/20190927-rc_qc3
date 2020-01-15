@@ -14,6 +14,7 @@ Page({
     IMGSERVICEZ: app.globalData.IMGSERVICE,
     voteList: [],
     page: 1,
+    isShow:false,
     firstShow: false, //返回刷新开关
     rulspop: false, // 规则
     isPrize: false //中奖列表
@@ -244,6 +245,11 @@ Page({
       if (res.data.status == 1 && res.data.data.list.length > 0) {
         for (let i = 0; i < res.data.data.list.length; i++) {
           arr.push(res.data.data.list[i])
+        }
+        if (arr.length<=0){
+          this.setData({
+            isShow: true
+          })
         }
         this.setData({
           voteList: arr
