@@ -30,17 +30,22 @@
     line-height:1em;
 }
 .tabbar .tabbar_item .icon{
-    font-size: 40rpx;
+    font-size: 50rpx;
     color: #828183;
-    margin-bottom: 14rpx;
+    /* margin-bottom: 14rpx; */
 }
 .tabbar .tabbar_item.active .icon{
-    color:#1354BB;
+    color:#000;
 }
 .tabbar .tabbar_item text{
-    font-size:20rpx;
-    color:#828183;
+    font-size:22rpx;
+	font-family:PingFang SC;
+	font-weight:500;
+	color:rgba(68,68,68,1);
 }
 .tabbar .tabbar_item.active text{
-    color:#333;
+    font-size:22rpx;
+	font-family:PingFang SC;
+	font-weight:bold;
+	color:rgba(0,0,0,1);
 }

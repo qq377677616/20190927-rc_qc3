@@ -10,8 +10,8 @@ Component({
    */
   properties: {
     tabbarList:{
-      type:Array,
-      value:[{text:'首页', path:'/pages/index/index'},{text:'看车', path:'/pages/look_car/look_car'},{text:'商城', path:'/pages/shop_mall/shop_mall'},{text:'我的', path:'/pages/home/home'}]
+	  type: Array,//   pages/look_car/look_car
+		value: [{ text: '首页', path: '/pages/index/index' }, { text: '看车', path:'/pages/test2/test2'},{text:'商城', path:'/pages/shop_mall/shop_mall'},{text:'我的', path:'/pages/home/home'}]
     },
     oData:{
       type:Object,
@@ -57,12 +57,13 @@ Component({
           const model = value.model;
 
           if ( model.search('iPhone X') != -1 ){
+			  wx.setStorageSync("isX",1)
               this.setData({
                 isIponeX:true,
               })
 
           }else{
-
+			wx.setStorageSync("isX",2)
             this.setData({
               isIponeX:false,
             })

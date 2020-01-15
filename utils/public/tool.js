@@ -43,17 +43,6 @@ const showModal = (title = "确认", content = "您确认进行此操作？", co
     })
   })
 }
-//获取dom节点
-const getDom = ele => {
-  const query = wx.createSelectorQuery()
-  query.select(ele).boundingClientRect()
-  query.selectViewport().scrollOffset()
-  query.exec(function (res) {
-    return res
-    res[0].top       // #the-id节点的上边界坐标
-    res[1].scrollTop // 显示区域的竖直滚动位置
-  })
-}
 //播放视频
 const videoPlay = (ele, isFullScreen = true) => {
   let videoContext = wx.createVideoContext(ele)
@@ -210,6 +199,17 @@ const getPosition = () => {
       }
     })
   })
+}
+//获取dom节点
+const getDom = ele => {
+	return new Promise((resolve, reject) => {
+		const query = wx.createSelectorQuery()
+		query.select(ele).boundingClientRect()
+		query.selectViewport().scrollOffset()
+		query.exec(res => {
+			resolve(res)
+		})
+	})
 }
 module.exports = {
   alert,

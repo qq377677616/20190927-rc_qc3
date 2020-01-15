@@ -23,21 +23,21 @@
             <button wx:else class="name nowrap" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
                 点击登录
             </button>
-            <view class="v_coin" catchtap="vdouDetail">
+            <!-- <view class="v_coin" catchtap="vdouDetail">
                 <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
                 <view class="total">{{ personalInfo.vcoin }}</view>
                 <view class="more iconfont icon_more"></view>
-            </view>
+            </view> -->
         </view>
 
         <view class="btn binded_btn" wx:if="{{ personalInfo.user_type == 1 }}" data-type="binded" catchtap="bindCarUser">
-            <view class="icon iconfont icon_cz"></view>
+            <view class="icon cz_img"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_10.png"></image></view>
             车主
         </view>
 
-        <view class="btn bind_btn" wx:else data-type="bind" catchtap="bindCarUser">
+        <!-- <view class="btn bind_btn" wx:else data-type="bind" catchtap="bindCarUser">
             绑定车主
-        </view>
+        </view> -->
 
         
         <button class="refresh-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{ userInfo.avatarUrl }}">
@@ -53,23 +53,37 @@
     <!-- nav_area -->
     <view class="nav_area">
         <view class="nav_item" data-index="1" bindtap="signInIf">
-            <view class="icon iconfont icon_mrqd"></view>
+           <!-- iconfont icon_mrqd -->
+		    <view class="icon setqd"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_11.png?1"></image></view>
             <view class="span nowrap">来签到</view>
         </view>
         <view class="nav_item" data-index="2" bindtap="navJump">
-            <view class="icon iconfont icon_jfrw"></view>
+            <!-- iconfont icon_jfrw -->
+			<view class="icon setvd"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_12.png?1"></image></view>
             <view class="span nowrap">领V豆</view>
         </view>
         <view class="nav_item" data-index="3" bindtap="navJump">
-            <view class="icon iconfont icon_sc"></view>
+            <!-- iconfont icon_sc -->
+			<view class="icon setdj"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_13.png?1"></image></view>
             <view class="span nowrap">去兑奖</view>
         </view>
     </view>
     <!-- nav_area -->
+	<!--非车主显示绑定车主 -->
+	<view class="bindcz" style="background-image:url({{IMGSERVICE}}/gaiban/gaiban_20.png)" wx:if="{{ personalInfo.user_type != 1 }}">
+		<view class="bindcenter">
+			<view class="leftinfo">
+				<text class="bindtxt">绑定车主，参与更多活动</text>
+				<text class="gifts">好礼多多</text>
+			</view>
+			<view class="rightbtn" data-type="bind" catchtap="bindCarUser">立即绑定</view>	
+		</view>
+	</view>
     <!-- my_list -->
     <view class="my_list">
         <view class="list_item" data-index="1" bindtap="listJump">
-            <view class="icon iconfont icon_wdjp"></view>
+            <!-- iconfont icon_wdjp -->
+			<view class="icon "><image src="{{IMGSERVICE}}/gaiban/gaiban_14.png" mode="widthFix"></image></view>
             <view class="span">
                 <view class="text">
                     我的奖品
@@ -81,7 +95,8 @@
             <view class="more iconfont icon_more"></view>
         </view>
         <view class="list_item" data-index="2" bindtap="listJump">
-            <view class="icon iconfont icon_wddd"></view>
+            <!-- iconfont icon_wddd -->
+			<view class="icon"><image src="{{IMGSERVICE}}/gaiban/gaiban_15.png" mode="widthFix"></image></view>
             <view class="span">
                 <view class="text">
                     我的订单
@@ -93,7 +108,8 @@
             <view class="more iconfont icon_more"></view>
         </view>
         <view class="list_item" data-index="3" bindtap="listJump">
-            <view class="icon iconfont icon_wdkb"></view>
+			<!-- iconfont icon_wdkb -->
+            <view class="icon"><image src="{{IMGSERVICE}}/gaiban/gaiban_16.png" mode="widthFix"></image></view>
             <view class="span">
                 <view class="text">
                     我的卡包
@@ -105,7 +121,8 @@
             <view class="more iconfont icon_more"></view>
         </view>
         <view class="list_item" data-index="4" bindtap="listJump">
-            <view class="icon iconfont icon_wdhd"></view>
+			<!-- iconfont icon_wdhd -->
+            <view class="icon"><image src="{{IMGSERVICE}}/gaiban/gaiban_17.png" mode="widthFix"></image></view>
             <view class="span">
                 <view class="text">
                     我的活动
@@ -117,7 +134,8 @@
             <view class="more iconfont icon_more"></view>
         </view>
         <view class="list_item" data-index="5" bindtap="listJump">
-            <view class="icon iconfont icon_wdyyjs"></view>
+			<!-- iconfont icon_wdyyjs -->
+            <view class="icon"><image src="{{IMGSERVICE}}/gaiban/gaiban_18.png" mode="widthFix"></image></view>
             <view class="span">
                 <view class="text">
                     我的预约试驾
@@ -129,7 +147,8 @@
             <view class="more iconfont icon_more"></view>
         </view>
         <view class="list_item" data-index="6" bindtap="listJump">
-            <view class="icon iconfont icon_wdwd"></view>
+            <!-- iconfont icon_wdwd -->
+			<view class="icon"><image src="{{IMGSERVICE}}/gaiban/gaiban_19.png" mode="widthFix"></image></view>
             <view class="span">
                  
                 <view class="text">

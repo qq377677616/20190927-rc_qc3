@@ -17,7 +17,7 @@ Page({
     page404: false,
     options: {},
     firstShow: false,
-    personalInfo: {},
+	personalInfo: { user_type:1},
     signInIf: false,
     user_type: '',
   },

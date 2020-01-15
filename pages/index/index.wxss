@@ -39,7 +39,7 @@ page{
     height:8rpx;
     border-radius: 50%;
     background-color:#fff;
-    margin-left:5rpx;
+    margin-left:15rpx;
     margin-right:5rpx;
     position: relative;
 }
@@ -52,20 +52,31 @@ page{
     opacity:0;
     border-radius: 8rpx;
     background-color: #fff;
-    transition:width 500ms ease-in-out,opacity 500ms ease-in-out;
+    /* transition:width 500ms ease-in-out,opacity 500ms ease-in-out; */
 }
 .swiper_area .dots .dot_item.active .tiao{
-    width: 26rpx;
+    /* width: 26rpx; */
+	/* border: 1rpx solid red; */
     opacity:1;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	background-color: transparent;
+	width: 18rpx;
+	height: 18rpx;
+	border-radius: 50%;
+	border: 1rpx solid white;
+	/* background-color: red; */
 }/* swiper_area */
 
 
 
 .main_container{
-    transform:translatey(-30rpx);
+    /* transform:translatey(-30rpx); */
     background-color: #fff;
     overflow:hidden;
-    border-radius: 30rpx;
+    /* border-radius: 30rpx; */
 }
 .main_container scroll-view{
   
@@ -141,8 +152,11 @@ page{
 .list_area .list .list_item{
     background-size:cover;
     background-repeat:no-repeat;
-    height: 300rpx;
+    /* height: 300rpx; */
     position: relative;
+}
+.list_area .list .list_item:not(:first-child){
+	margin-top: 30rpx;
 }
 .list_area .list .list_item:not(:last-child){
     margin-bottom: 40rpx;
@@ -263,3 +277,49 @@ page{
     background-image: linear-gradient(270deg, #1450B0 0%, #185CC4 26%, #1F7BCD 52%, #1E96D7 80%, #209CD9 100%);
     color: #fff;
 }/* tips_mask */
+/* 改版 */
+.topimg{
+	width:100%;
+	height:256rpx;
+	background: center no-repeat/cover;
+	border-radius:20rpx 20rpx 0rpx 0rpx;
+}
+.botominfo{
+	box-shadow:0px 6px 54px 0px rgba(204, 204, 204, 0.35);
+	border-radius: 0rpx 0rpx 20rpx 20rpx;
+	height: 134rpx;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 26rpx;
+	box-sizing: border-box;
+	align-items: center;
+}
+.leftinfo{
+	display: flex;
+	flex-direction: column;
+}
+.Aname{
+	font-size:32rpx;
+	font-family:PingFang SC;
+	font-weight:bold;
+	color:rgba(0,0,0,1);
+}
+.Atime{
+	font-size:24rpx;
+	font-family:PingFang SC;
+	font-weight:500;
+	color:rgba(102,102,102,1);
+	margin-top: 22rpx;
+}
+.rightbtn{
+	width:197rpx;
+	height:60rpx;
+	border:1rpx solid rgba(0,59,115,1);
+	border-radius:35rpx;
+	font-size:28rpx;
+	font-family:PingFang SC;
+	font-weight:bold;
+	color:rgba(0,59,115,1);
+	line-height: 60rpx;
+	text-align: center;
+}

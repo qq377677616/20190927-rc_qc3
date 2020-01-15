@@ -1,7 +1,6 @@
 <view>
-
 	<view class="witem" style="background-image:url({{IMGSERVICE}}/models/T70bg_1.png)">
-		<view class="mum" style="background-image:url({{IMGSERVICE}}/models/mumlist.png)"></view>
+		<view class="mum" style="background-image:url({{IMGSERVICE}}/models/mumlist.png)" bindtap="showmun"></view>
 		<view class="T70logs" style="background-image:url({{IMGSERVICE}}/models/T70login.png)"></view>
 		<text class="txt1">高品质智联SUV  品质来袭</text>
 		<view class="txt2">
@@ -32,11 +31,11 @@
 			<view class="s_box">
 				<scroll-view  scroll-y="{{true}}" class="videoList">
 					<view class="setflex">
-						<view class="_items1" wx:for="{{videoarr}}">
+						<view class="_items1" wx:for="{{videoarr}}" bindtap="goAnimat" data-index="{{index}}">
 							<text class="lefttxt">{{item}}</text>
 							<view class="rightbox">
 								<view class="playbtn">
-									<image mode="widthFix" src="{{IMGSERVICE}}/models/playbtn.png"></image>
+									<image class="{{vidBtn==index?'animat':''}}" mode="widthFix" src="{{IMGSERVICE}}/models/playbtn.png"></image>
 								</view>
 								<text class="txt10">观看视频</text>
 							</view>
@@ -77,7 +76,7 @@
 		</view>	
 	</view>
 
-	<view class="witem witem5">
+	<view class="witem witem5 {{scrollTop + windowHeight >= scrollTopList[0] ? 'on' : ''}}" id="con-two">
 		<view class="itemHand5" style="background-image:url({{IMGSERVICE}}/models/T70bg_7.png)">
 			<view class="selectCol">
 				<scroll-view scroll-x="{{true}}" class="setcolbox">
@@ -92,17 +91,17 @@
 			<view class="carInfo">
 				<view>
 					<text class="txt19">行李厢容积</text>
-					<text class="txt20">534L</text>
+					<text class="txt20">{{num1}}L</text>
 					<image mode="widthFix" src="{{IMGSERVICE}}/models/T70line.png" class="by_line"></image>
 				</view>
 				<view>
 					<text class="txt19">最小离地间隙</text>
-					<text class="txt20">534L</text>
+					<text class="txt20">{{num1}}L</text>
 					<image mode="widthFix" src="{{IMGSERVICE}}/models/T70line.png" class="by_line"></image>
 				</view>
 				<view>
 					<text class="txt19">综合工况油耗</text>
-					<text class="txt20">7.1  L/100km</text>
+					<text class="txt20">{{num2}}  L/100km</text>
 				</view>
 			</view>
 		</view>	
@@ -139,7 +138,7 @@
 		</view>	
 		<view class="itembg6">
 			<view class="swriBox">
-				<swiper class="setswri" next-margin="58rpx" bindchange="changedot">
+				<swiper class="setswri" next-margin="58rpx" bindchange="changedot" data-type="1">
 					 <block wx:for="{{2}}" wx:key="item">
 						<swiper-item>
 							<view class="swItem" style="background-image:url({{IMGSERVICE}}/models/T70video{{index+1}}.png)">
@@ -160,12 +159,12 @@
 		<view class="itemHand7"></view>	
 		<view class="itembg7">
 			<view class="footbg1">
-				<swiper>
+				<swiper bindchange="changedot" data-type="2" current="{{swiper.currfoot}}">
 					 <block wx:for="{{10}}" wx:key="item">
 						<swiper-item>
 							<view class="footItem" style="background-image:url({{IMGSERVICE}}/models/fT70bg_1.png)">
-								<image mode="widthFix" src="{{IMGSERVICE}}/models/T70left.png"></image>
-								<image mode="widthFix" src="{{IMGSERVICE}}/models/T70right.png"></image>
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/T70left.png" bindtap="changeSwriper" data-type="1"></image>
+								<image mode="widthFix" src="{{IMGSERVICE}}/models/T70right.png" bindtap="changeSwriper" data-type="2"></image>
 							</view>
 						</swiper-item>
 					</block>	
@@ -173,7 +172,7 @@
 			</view>
 			<view class="footbg2">
 				<text class="swNum">+7</text>
-				<swiper>
+				<swiper bindchange="changedot" data-type="3" current="{{swiper.currfoot}}">
 					 <block wx:for="{{10}}" wx:key="item">
 						<swiper-item>
 							<view class="footItem2">
@@ -185,5 +184,18 @@
 				</swiper>	
 			</view>
 		</view>	
+	</view>
+</view>
+<!-- 第一个菜单 -->
+<!-- <view class="mumpop1">
+	<view></view>
+</view> -->
+<!-- 视频弹窗 -->
+<view class="videoPop {{isplay?'on':''}}" wx:if="{{isplay}}">
+	<view class="videobox">
+	<view class="closebtn" bindtap="closePop"></view>
+	<!-- 内容填充 -->
+
+	<!-- 内容填充 -->
 	</view>
 </view>
