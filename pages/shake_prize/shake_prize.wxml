@@ -4,29 +4,45 @@
     <view class="info-list border" bindtap="getInfo">
       <view class="left">
         <view class="icon iconfont icon-wodexianxing"></view>
-        <view class="txt" >
-			<block wx:if="{{ currentAddressItem.real_address }}">
-				<view class="nowrap">{{ currentAddressItem.name + ' ' + currentAddressItem.mobile }}</view>
-				<view class="nowrap" wx:if="{{parmData.prize_type==2}}">{{ currentAddressItem.real_address }}</view>
-			</block>
-			<block wx:else>
-				填写收货人信息
-			</block>
-		</view>
+        <view class="txt">
+          <block wx:if="{{ currentAddressItem.real_address }}">
+            <view class="nowrap">{{ currentAddressItem.name + ' ' + currentAddressItem.mobile }}</view>
+            <view class="nowrap" wx:if="{{parmData.prize_type==2}}">{{ currentAddressItem.real_address }}</view>
+          </block>
+          <block wx:else>
+            填写收货人信息
+          </block>
+        </view>
       </view>
       <view class="iconfont icon_more"></view>
     </view>
     <view class="info-list" wx:if="{{parmData.prize_type==1||parmData.prize_type==3}}">
       <view class="left">
         <view class="icon iconfont icon-shouyexianxing"></view>
-         <block wx:if="{{ pickerStoreList.length }}">
-			<picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}">
-				<view class="nowrap txt">{{ pickerStoreList[storeIndex] }}</view>
-			</picker>
-		</block>
-		<block wx:else>
-			<view class="span nowrap txt" bindtap="getStore">选择领取的门店</view>
-		</block>
+        <block wx:if="{{ pickerStoreList.length }}">
+          <picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}">
+            <view class="nowrap txt">{{ pickerStoreList[storeIndex] }}</view>
+          </picker>
+        </block>
+        <block wx:else>
+          <view class="span nowrap txt" bindtap="getStore">选择领取的门店</view>
+        </block>
+      </view>
+      <view class="iconfont icon_more"></view>
+    </view>
+    <view class="info-list border-top">
+      <view class="left">
+        <view class="icon iconfont icon-kanche_xianxing"></view>
+        <view class="txt">
+          <block>
+            <picker bindchange="bindPickerCar" value="{{index}}" range="{{selCarList}}">
+              <view class="picker">
+                <view wx:if="{{carIndex}}">意向车型：{{selCarList[carIndex]}}</view>
+                <view wx:else>请选择意向车型</view>
+              </view>
+            </picker>
+          </block>
+        </view>
       </view>
       <view class="iconfont icon_more"></view>
     </view>

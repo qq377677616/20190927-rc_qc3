@@ -415,6 +415,23 @@ const orderCardCode = (data) => {
   })
 } 
 
+//摇一摇意向车型列表
+const carList = (data) => {
+  let url = `${SERVICE}/api3/dealer/car_list`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+} 
+
 
 module.exports = {
   myVote,
@@ -438,7 +455,8 @@ module.exports = {
   upgradePrize,
   updateCardCode,
   getWechatCard,
-  orderCardCode
+  orderCardCode,
+  carList
 }
 
 

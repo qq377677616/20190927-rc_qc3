@@ -699,6 +699,13 @@
 					"pathName": "pages/lj_partake/lj_partake",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "摇一摇留资",
+					"pathName": "pages/shake_prize/shake_prize",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
