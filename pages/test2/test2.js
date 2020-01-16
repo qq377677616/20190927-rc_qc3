@@ -154,7 +154,7 @@ Page({
 			toView: 'info' + (e.detail.current + 1),
 		})
 		console.log(this.data.line)
-		this.playxlz();
+		// this.playxlz(); 播放滑动序列
 		if (e.detail.current > 3) {
 			this.setData({ scrollLeft: (e.detail.current - 3) * 60 })
 		}
@@ -223,7 +223,7 @@ Page({
 		const id = e.currentTarget.dataset.cid;
 		console.log(id)
 		this.setData({ currid:id})
-		this.jump_page();
+		// this.jump_page();
 	},
 	jump_page(){
 		let id = this.data.currid;
@@ -252,7 +252,7 @@ Page({
 		console.log(id)
 		this.setData({ currid: id })
 		this.setData({currpage: e.currentTarget.dataset.num});
-		this.jump_page();
+		// this.jump_page();
 	},
 	playxlz() {
 		//播放序列

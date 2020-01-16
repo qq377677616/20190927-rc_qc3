@@ -9,7 +9,7 @@ page{
 
 /* swiper_area */
 .swiper_area{
-    height: 405rpx;
+    height: 360rpx;
     position:relative;
 }   
 .swiper_area swiper{

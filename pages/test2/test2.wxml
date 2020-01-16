@@ -27,9 +27,9 @@
             <text class="icon_title">error</text>
           </view> -->
 		  <!-- class="{{line == index ? 'error' : 'noerror'}}" -->
-          <text>{{item.name}}</text>
-		  <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{curr==(index+2)&&!isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view>
-		  <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{isright?'tram':''}} {{curr==(index+2)&&isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/right_'+(index+1)+'.png'}})"></view>
+          <text class="{{line == index0 ? 'error' : 'noerror'}}">{{item.name}}</text>
+		  <!-- <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{curr==(index+2)&&!isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view>
+		  <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{isright?'tram':''}} {{curr==(index+2)&&isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/right_'+(index+1)+'.png'}})"></view> -->
         </view>
         <!-- <text class='icon_s_left'></text>
               <text class='icon_s_right'></text> -->
@@ -51,4 +51,4 @@
 </view>
 <qc-Tabbar></qc-Tabbar>
 <!-- 序列针 -->
-<view class="xlzImg {{curr==index?'setopt':''}}" wx:for="{{8}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view>
+<!-- <view class="xlzImg {{curr==index?'setopt':''}}" wx:for="{{8}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view> -->

@@ -121,11 +121,11 @@
     <view class="float_btn">
 		<!-- iconfont icon_gouwuche -->
         <view class="btn cart_btn " bindtap="shopCart">
-			<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_5.png"></image>
+			<image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/gaiban_5.png?1"></image>
 		</view>
 
         <button class="btn kf_btn " open-type="contact">
-			<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_4.png"></image>
+			<image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/gaiban_4.png?1"></image>
 		</button>
 
     </view><!-- float_btn -->
