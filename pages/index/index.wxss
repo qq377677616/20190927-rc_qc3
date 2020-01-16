@@ -11,7 +11,7 @@ page{
 
 /* swiper_area */
 .swiper_area{
-    height: 360rpx;
+    height: 519rpx;
     position:relative;
 }   
 .swiper_area swiper{
