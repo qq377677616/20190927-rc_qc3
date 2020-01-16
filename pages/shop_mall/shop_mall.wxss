@@ -398,12 +398,12 @@ page {
 }
 
 .cart_btn>image {
-  width: 42rpx;
+  width: 70rpx;
   height: auto;
 }
 
 .kf_btn>image {
-  width: 40rpx;
+  width: 70rpx;
   height: auto;
 }
 

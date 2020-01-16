@@ -15,7 +15,7 @@
               <view class="price_info" wx:if="{{item.lowprice && item.highprice}}">官方指导价<text>{{item.lowprice}}</text>万元-<text>{{item.highprice}}</text>万元</view>
               <view class="search_btn" catchtap="jumpDetail" data-cid="{{item.cid}}">搜索更多</view>
           </view>
-          <view style="background-image:url({{item.bgUrl}})"class="slide-image" mode="widthFix" bindload="imgload" data-id="{{index}}" ></view>
+          <view style="background-image:url({{isX==1?item.bgUrl[1]:item.bgUrl[0]}})"class="slide-image" mode="widthFix" bindload="imgload" data-id="{{index}}" ></view>
         </swiper-item>
       </block>
     </swiper>
