@@ -1,6 +1,9 @@
 const request_01 = require('../../utils/request/request_01.js');
 
 const request_04 = require('../../utils/request/request_04.js');
+
+const request_05 = require('../../utils/request/request_05.js');
+
 import api from '../../utils/request/request_03.js'
 
 const router = require('../../utils/tool/router.js');
@@ -101,11 +104,27 @@ Page({
 
   },
 
+  //车型列表
+  carList() {
+    request_05.carList().then(res => {
+      let carList = res.data.data
+      var selCarList = carList.map(function(item, index, array) {
+        return item.car_series_alias;
+      });
+      this.setData({
+        carList,
+        selCarList,
+      })
+    })
+  },
+
   /**
    * 用户点击右上角分享
    */
   //页面初始化
   initData(options) {
+    console.log(this.data.carIndex)
+    this.carList()
     const goodsDetail = app.globalData.goodsDetail;
     const cartDetail = app.globalData.cartDetail;
     const type = options.type;
@@ -156,8 +175,6 @@ Page({
       .then(() => {
         //complete
         alert.loading_h()
-
-
       })
 
 
@@ -307,6 +324,7 @@ Page({
       url: '/pages/o_address/o_address?pageType=back'
     })
   },
+
   //选择获取门店
   bindPickerChange(e) {
     const storeIndex = e.detail.value;
@@ -315,6 +333,16 @@ Page({
       storeIndex,
     })
   },
+
+  // 选择车型
+  bindPickerCar(e) {
+    const carIndex = e.detail.value;
+    console.log(carIndex);
+    this.setData({
+      carIndex,
+    })
+  },
+
   //选择获取门店提示
   getStore() {
     const currentAddressItem = this.data.currentAddressItem; //收货人信息
@@ -343,7 +371,6 @@ Page({
   },
   formSubmit(e) {
     //领取微信卡券
-    console.log(this.data.parmData)
     this.isShowLoading();
     let storeList = this.data.storeList; //门店列表
     let storeIndex = this.data.storeIndex;
@@ -351,6 +378,12 @@ Page({
     if (!this.data.currentAddressItem.address_id || this.data.currentAddressItem.address_id == '') {
       alert.alert({
         str: '请选择地址等信息'
+      });
+      return;
+    }
+    if (!this.data.carIndex || !this.data.carList[this.data.carIndex].car_series_alias || !this.data.carList[this.data.carIndex].id) {
+      alert.alert({
+        str: '请选择意向车型'
       });
       return;
     }
@@ -366,7 +399,9 @@ Page({
         prize_id: this.data.parmData.prize_id,
         openid: wx.getStorageSync("userInfo").openid,
         address_id: this.data.currentAddressItem.address_id,
-        dlr_code: storeList[storeIndex].code || ''
+        dlr_code: storeList[storeIndex].code || '',
+        car_id: this.data.carList[this.data.carIndex].id,
+        car_name: this.data.carList[this.data.carIndex].car_series_alias,
       }
     }
     request_04.getword(dat).then((res) => {

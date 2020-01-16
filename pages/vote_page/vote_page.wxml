@@ -7,8 +7,8 @@
     </view>
   </view>
   <view class="share share2" bindtap="toPartake" wx:if="{{indexData.is_join==0}}">
-    <image src="{{IMGSERVICEZ}}/activity/join.png" data-type="ok"></image>
-    <view class="toPartake" data-type="ok">立即参与</view>
+    <image src="{{IMGSERVICEZ}}/activity/join_blue.png" data-type="ok"></image>
+    <!-- <view class="toPartake" data-type="ok">立即参与</view> -->
   </view>
   <view class="whole">
     <view class="noRank" wx:if="{{isShow}}">当前暂无相关作品~</view>
