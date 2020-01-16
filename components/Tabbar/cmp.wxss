@@ -38,7 +38,7 @@
     color:#000;
 }
 .tabbar .tabbar_item text{
-    font-size:22rpx;
+    font-size:20rpx;
 	font-family:PingFang SC;
 	font-weight:500;
 	color:rgba(68,68,68,1);

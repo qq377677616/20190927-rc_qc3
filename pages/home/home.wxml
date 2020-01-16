@@ -54,17 +54,17 @@
     <view class="nav_area">
         <view class="nav_item" data-index="1" bindtap="signInIf">
            <!-- iconfont icon_mrqd -->
-		    <view class="icon setqd"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_11.png?1"></image></view>
+		    <view class="icon setqd"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_11.png?3"></image></view>
             <view class="span nowrap">来签到</view>
         </view>
         <view class="nav_item" data-index="2" bindtap="navJump">
             <!-- iconfont icon_jfrw -->
-			<view class="icon setvd"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_12.png?1"></image></view>
+			<view class="icon setvd"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_12.png?3"></image></view>
             <view class="span nowrap">领V豆</view>
         </view>
         <view class="nav_item" data-index="3" bindtap="navJump">
             <!-- iconfont icon_sc -->
-			<view class="icon setdj"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_13.png?1"></image></view>
+			<view class="icon setdj"><image mode="widthFix" src="{{IMGSERVICE}}/gaiban/gaiban_13.png?3"></image></view>
             <view class="span nowrap">去兑奖</view>
         </view>
     </view>

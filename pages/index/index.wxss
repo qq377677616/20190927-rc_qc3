@@ -115,6 +115,7 @@ page{
     text-align:center;
     color:#333;
     font-size: 26rpx;
+	font-family:PingFang SC;
 }/* nav_area */
 
 
@@ -323,4 +324,5 @@ page{
 	line-height: 70rpx;
 	text-align: center;
 	letter-spacing: 3rpx;
+	box-sizing: border-box;
 }
