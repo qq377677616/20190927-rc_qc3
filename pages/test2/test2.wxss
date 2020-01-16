@@ -113,7 +113,7 @@ page {
   /* background-size: 25rpx;
   background-repeat: no-repeat; */
    /* transition: width .5s linear !important; */
-  animation: animat_show .5s ease-in-out;
+  /* animation: animat_show .5s ease-in-out; */
   /* filter: blur(-1px); */
 }
 

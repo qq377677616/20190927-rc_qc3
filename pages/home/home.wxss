@@ -1,362 +1,441 @@
 /* pages/home/home.wxss */
 
 page {
-  height: 100%;
-  background-color: rgba(246, 247, 247, 1);
+    height: 100%;
+    background-color: rgba(246, 247, 247, 1);
 }
 
 .home_page {
-  padding: 0 28rpx 120rpx;
+    padding: 0 28rpx 120rpx;
 }
+
 
 /* header */
 
 .header {
-  min-height: 225rpx;
-  display: flex;
-  align-items: center;
-  position: relative;
+    min-height: 225rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 .header .image {
-  position: relative;
+    position: relative;
 }
 
 .header .image button {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
 }
 
 .header .my_photo {
-  flex: 0 0 auto;
-  width: 110rpx;
-  height: 110rpx;
-  border-radius: 50%;
-  margin-right: 34rpx;
+    flex: 0 0 auto;
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 50%;
+    margin-right: 34rpx;
 }
 
 .sethandimg {
-  width: 120rpx;
-  height: 120rpx;
-  left: 0;
-  top: 0;
-  z-index: 9;
+    width: 120rpx;
+    height: 120rpx;
+    left: 0;
+    top: 0;
+    z-index: 9;
 }
 
 .header .info_area {
-  width: 0;
-  flex: 1;
-  padding: 0 108rpx 0 0;
+    width: 0;
+    flex: 1;
+    padding: 0 108rpx 0 0;
 }
 
 .header .info_area .name {
-  font-size: 34rpx;
-  color: rgba(51, 51, 51, 1);
-  padding-bottom: 25rpx;
-  display: flex;
-  align-items: center;
-  padding-right: 50%;
-  font-weight: bold;
+    font-size: 34rpx;
+    color: rgba(51, 51, 51, 1);
+    padding-bottom: 25rpx;
+    display: flex;
+    align-items: center;
+    padding-right: 50%;
+    font-weight: bold;
 }
 
 .header .info_area .name .nick-name {
-  width: 0;
-  flex: 1;
-  font-size: 34rpx;
-  font-family: PingFang SC;
-  font-weight: bold;
-  color: rgba(51, 51, 51, 1);
+    width: 0;
+    flex: 1;
+    font-size: 34rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: rgba(51, 51, 51, 1);
 }
 
 .header .info_area .name .setsize {
-  flex: 0 0 auto;
-  font-size: 40rpx;
+    flex: 0 0 auto;
+    font-size: 40rpx;
 }
 
 .header .info_area .v_coin {
-  display: flex;
-  align-items: center;
-  line-height: 1em;
-  color: rgba(241, 64, 62, 1);
+    display: flex;
+    align-items: center;
+    line-height: 1em;
+    color: rgba(241, 64, 62, 1);
 }
 
 .header .info_area .v_coin .v_mark {
-  width: 30rpx;
+    width: 30rpx;
 }
 
 .header .info_area .v_coin .total {
-  font-size: 32rpx;
-  margin: 0 12rpx 0 22rpx;
+    font-size: 32rpx;
+    margin: 0 12rpx 0 22rpx;
 }
 
 .header .info_area .v_coin .more {
-  font-size: 30rpx;
+    font-size: 30rpx;
 }
 
 .header .btn {
-  padding: 0 25rpx;
-  height: 66rpx;
-  font-size: 26rpx;
-  color: #f8f9f8;
-  border-radius: 66rpx 0 0 66rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 69rpx;
-  right: -28rpx;
+    padding: 0 25rpx;
+    height: 66rpx;
+    font-size: 26rpx;
+    color: #f8f9f8;
+    border-radius: 66rpx 0 0 66rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 69rpx;
+    right: -28rpx;
 }
 
 .header .bind_btn {
-  background-color: #333;
-  box-shadow: -6rpx 6rpx 12rpx rgba(51, 51, 51, 0.4);
+    background-color: #333;
+    box-shadow: -6rpx 6rpx 12rpx rgba(51, 51, 51, 0.4);
 }
 
 .header .binded_btn {
-  width: 160rpx;
-  height: 60rpx;
-  background: rgba(0, 59, 115, 1);
-  border-radius: 30rpx;
-  margin-right: 27rpx;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 160rpx;
+    height: 60rpx;
+    background: rgba(0, 59, 115, 1);
+    border-radius: 30rpx;
+    margin-right: 27rpx;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header .binded_btn .icon {
-  margin-right: 14rpx;
-  font-size: 32rpx;
+    margin-right: 14rpx;
+    font-size: 32rpx;
 }
 
 .header .refresh-btn {
-  position: absolute;
-  top: 140rpx;
-  right: -28rpx;
-  display: flex;
-  align-items: center;
-  color: #666;
-  font-size: 26rpx;
-  padding: 20rpx 30rpx;
+    position: absolute;
+    top: 140rpx;
+    right: -28rpx;
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 26rpx;
+    padding: 20rpx 30rpx;
 }
 
 .header .refresh-btn image {
-  width: 26rpx;
-  margin-right: 12rpx;
+    width: 26rpx;
+    margin-right: 12rpx;
 }
 
-.header .refresh-btn image {
-}
+.header .refresh-btn image {}
+
 
 /* header */
+
 
 /* nav_area */
 
 .nav_area {
-  height: 176rpx;
-  display: flex;
-  align-items: center;
-  /* background-color: #fff; */
-  border-radius: 18rpx;
-  /* margin-bottom: 26rpx; */
+    height: 176rpx;
+    display: flex;
+    align-items: center;
+    /* background-color: #fff; */
+    border-radius: 18rpx;
+    /* margin-bottom: 26rpx; */
 }
 
 .nav_area .nav_item {
-  width: 33.3%;
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+    width: 33.3%;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
 .nav_area>.nav_item:not(:last-child)::after {
-  content: "";
-  width: 2rpx;
-  height: 62rpx;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #bfbfbf;
+    content: "";
+    width: 2rpx;
+    height: 62rpx;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #bfbfbf;
 }
 
 .nav_area .nav_item .icon {
-  font-size: 44rpx;
-  color: #1354bb;
-  margin-bottom: 17rpx;
+    font-size: 44rpx;
+    color: #1354bb;
+    margin-bottom: 17rpx;
 }
 
 .nav_area .nav_item .span {
-  line-height: 1em;
-  font-size: 30rpx;
-  font-family: PingFang SC;
-  color: rgba(51, 51, 51, 1);
-  font-weight: 500;
+    line-height: 1em;
+    font-size: 30rpx;
+    font-family: PingFang SC;
+    color: rgba(51, 51, 51, 1);
+    font-weight: 500;
 }
 
+
 /* nav_area */
+
 
 /* my_list */
 
 .my_list {
-  background-color: #fff;
-  border-radius: 18rpx;
+    background-color: #fff;
+    border-radius: 18rpx;
 }
 
 .my_list .list_item {
-  display: flex;
-  align-items: center;
-  padding: 0 28rpx;
-  height: 108rpx;
-  position: relative;
-  /* border-bottom: 1rpx solid rgba(238,238,238,1); */
+    display: flex;
+    align-items: center;
+    padding: 0 28rpx;
+    height: 108rpx;
+    position: relative;
+    /* border-bottom: 1rpx solid rgba(238,238,238,1); */
 }
 
 .my_list>.list_item:not(:last-child)::after {
-  content: '';
-  height: 2rpx;
-  width: 95%;
-  background-color: rgba(238, 238, 238, 1);
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
+    content: '';
+    height: 2rpx;
+    width: 95%;
+    background-color: rgba(238, 238, 238, 1);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
 }
 
 .my_list .list_item .icon {
-  flex: 0 0 auto;
-  color: #9a9a9a;
-  font-size: 34rpx;
-  margin-right: 21rpx;
+    flex: 0 0 auto;
+    color: #9a9a9a;
+    font-size: 34rpx;
+    margin-right: 21rpx;
 }
 
 .my_list .list_item .span {
-  width: 0;
-  flex: 1;
-  display: flex;
+    width: 0;
+    flex: 1;
+    display: flex;
 }
 
 .my_list .list_item .span .text {
-  font-size: 30rpx;
-  font-weight: 500;
-  font-family: PingFang SC;
-  color: rgba(102, 102, 102, 1);
-  position: relative;
+    font-size: 30rpx;
+    font-weight: 500;
+    font-family: PingFang SC;
+    color: rgba(102, 102, 102, 1);
+    position: relative;
 }
 
 .my_list .list_item .span .text .dot {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateX(100%) translateY(-50%);
-  color: #fff;
-  font-size: 20rpx;
-  height: 24rpx;
-  line-height: 24rpx;
-  background-color: #f23e3c;
-  border-radius: 14rpx;
-  border: 1rpx solid #fff4e9;
-  min-width: 30rpx;
-  display: flex;
-  justify-content: center;
-  padding-right: 5rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%) translateY(-50%);
+    color: #fff;
+    font-size: 20rpx;
+    height: 24rpx;
+    line-height: 24rpx;
+    background-color: #f23e3c;
+    border-radius: 14rpx;
+    border: 1rpx solid #fff4e9;
+    min-width: 30rpx;
+    display: flex;
+    justify-content: center;
+    padding-right: 5rpx;
 }
 
 .my_list .list_item .more {
-  flex: 0 0 auto;
-  color: #9a9a9a;
-  font-size: 30rpx;
+    flex: 0 0 auto;
+    color: #9a9a9a;
+    font-size: 30rpx;
 }
+
+
+/* my_list */
+
+.my_list {
+    background-color: #fff;
+    border-radius: 18rpx;
+}
+
+.my_list .list_item {
+    display: flex;
+    align-items: center;
+    padding: 0 28rpx;
+    height: 108rpx;
+    position: relative;
+    /* border-bottom: 1rpx solid rgba(238,238,238,1); */
+}
+
+.my_list>.list_item:not(:last-child)::after {
+    content: '';
+    height: 2rpx;
+    width: 95%;
+    background-color: rgba(238, 238, 238, 1);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.my_list .list_item .icon {
+    flex: 0 0 auto;
+    color: #9A9A9A;
+    font-size: 34rpx;
+    margin-right: 21rpx;
+}
+
+.my_list .list_item .span {
+    width: 0;
+    flex: 1;
+    display: flex;
+}
+
+.my_list .list_item .span .text {
+    font-size: 30rpx;
+    font-weight: 500;
+    font-family: PingFang SC;
+    color: rgba(51, 51, 51, 1);
+    position: relative;
+}
+
+.my_list .list_item .span .text .dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%) translateY(-50%);
+    color: #fff;
+    font-size: 20rpx;
+    height: 24rpx;
+    line-height: 24rpx;
+    background-color: #F23E3C;
+    border-radius: 14rpx;
+    border: 1rpx solid #fff4e9;
+    min-width: 30rpx;
+    display: flex;
+    justify-content: center;
+    padding-right: 5rpx;
+}
+
+.my_list .list_item .more {
+    flex: 0 0 auto;
+    color: #9A9A9A;
+    font-size: 30rpx;
+}
+
 
 /* my_list */
 
 .login {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* background-color: red; */
-  left: 0;
-  top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    left: 0;
+    top: 0;
 }
+
 
 /* 改版 */
 
 .cz_img>image {
-  width: 31rpx;
-  height: auto;
+    width: 31rpx;
+    height: auto;
 }
 
 .setqd>image {
-  width: 46rpx;
-  height: auto;
+    width: 46rpx;
+    height: auto;
 }
 
 .setvd>image {
-  width: 50rpx;
-  height: auto;
+    width: 50rpx;
+    height: auto;
 }
 
 .setdj>image {
-  width: 46rpx;
-  height: auto;
+    width: 46rpx;
+    height: auto;
 }
 
 .list_item>.icon>image {
-  width: 32rpx;
-  height: auto;
+    width: 32rpx;
+    height: auto;
 }
 
 .bindcz {
-  width: 694rpx;
-  height: 107rpx;
-  background: center no-repeat/cover;
-  margin-bottom: 30rpx;
-  padding: 0 26rpx 0 120rpx;
-  box-sizing: border-box;
+    width: 694rpx;
+    height: 107rpx;
+    background: center no-repeat/cover;
+    margin-bottom: 30rpx;
+    padding: 0 26rpx 0 120rpx;
+    box-sizing: border-box;
 }
 
 .bindcenter {
-  display: flex;
-  justify-content: space-between;
-  height: 100%;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
 }
 
 .leftinfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .bindtxt {
-  font-size: 30rpx;
-  font-family: PingFang SC;
-  font-weight: 500;
-  color: rgba(231, 231, 231, 1);
+    font-size: 30rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(231, 231, 231, 1);
 }
 
 .gifts {
-  font-size: 24rpx;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: rgba(231, 231, 231, 1);
-  margin-top: 14rpx;
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(231, 231, 231, 1);
+    margin-top: 14rpx;
 }
 
 .rightbtn {
-  width: 168rpx;
-  height: 52rpx;
-  background: rgba(231, 231, 231, 1);
-  border-radius: 26rpx;
-  font-size: 28rpx;
-  font-family: PingFang SC;
-  font-weight: bold;
-  color: rgba(44, 44, 44, 1);
-  text-align: center;
-  line-height: 52rpx;
+    width: 168rpx;
+    height: 52rpx;
+    background: rgba(231, 231, 231, 1);
+    border-radius: 26rpx;
+    font-size: 28rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: rgba(44, 44, 44, 1);
+    text-align: center;
+    line-height: 52rpx;
 }

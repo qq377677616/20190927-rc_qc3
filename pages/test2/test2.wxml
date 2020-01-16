@@ -15,7 +15,7 @@
               <view class="price_info" wx:if="{{item.lowprice && item.highprice}}">官方指导价<text>{{item.lowprice}}</text>万元-<text>{{item.highprice}}</text>万元</view>
               <view class="search_btn" catchtap="jumpDetail" data-cid="{{item.cid}}">搜索更多</view>
           </view>
-          <view style="background-image:url({{item.bgUrl}})"class="slide-image" mode="widthFix" bindload="imgload" data-id="{{index}}" ></view>
+          <view style="background-image:url({{isX==1?item.bgUrl[1]:item.bgUrl[0]}})"class="slide-image" mode="widthFix" bindload="imgload" data-id="{{index}}" ></view>
         </swiper-item>
       </block>
     </swiper>
@@ -27,9 +27,9 @@
             <text class="icon_title">error</text>
           </view> -->
 		  <!-- class="{{line == index ? 'error' : 'noerror'}}" -->
-          <text>{{item.name}}</text>
-		  <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{curr==(index+2)&&!isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view>
-		  <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{isright?'tram':''}} {{curr==(index+2)&&isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/right_'+(index+1)+'.png'}})"></view>
+          <text class="{{line == index0 ? 'error' : 'noerror'}}">{{item.name}}</text>
+		  <!-- <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{curr==(index+2)&&!isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view>
+		  <view wx:if="{{line == index0}}" wx:key="item" wx:for-index="index" class="playimg {{isright?'tram':''}} {{curr==(index+2)&&isright?'setopt':''}}"  wx:for="{{7}}" style="background-image:url({{baseurl+'/models/right_'+(index+1)+'.png'}})"></view> -->
         </view>
         <!-- <text class='icon_s_left'></text>
               <text class='icon_s_right'></text> -->
@@ -51,4 +51,4 @@
 </view>
 <qc-Tabbar></qc-Tabbar>
 <!-- 序列针 -->
-<view class="xlzImg {{curr==index?'setopt':''}}" wx:for="{{8}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view>
+<!-- <view class="xlzImg {{curr==index?'setopt':''}}" wx:for="{{8}}" style="background-image:url({{baseurl+'/models/left_'+(index+1)+'.png'}})"></view> -->

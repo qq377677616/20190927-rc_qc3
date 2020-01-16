@@ -34,7 +34,7 @@
 
                 <view class="nav_item {{ listInfo.icon_list.length == 3 ? 'flex1' : 'flex0' }}" wx:for="{{ listInfo.icon_list }}" wx:key="index" data-index="{{ index }}" bindtap="navJump">
                     <view class="image">
-                        <image src="{{ item.icon }}?2" mode="widthFix"></image>
+                        <image src="{{ item.icon }}?3" mode="widthFix"></image>
                     </view>
 
                     <view class="span nowrap">{{ item.name }}</view>

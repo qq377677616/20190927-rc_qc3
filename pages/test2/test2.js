@@ -37,7 +37,7 @@ Page({
 			"info": ['高品质智联家轿 智联生活 即刻开启'],
 			"lowprice": "6.98",
 			"highprice": "9.88",
-			"bgUrl": imageUrl + "/lookcar/img_d60.png",
+			"bgUrl": [imageUrl + "/lookcar/img_d60.png", imageUrl + "/lookcar/img_d60_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_d60.png",
 			cid: 1
 		}, {
@@ -45,7 +45,7 @@ Page({
 			"info": ['高品质智趣SUV 星级品质 焕新登场'],
 			"lowprice": "8.68",
 			"highprice": "11.88",
-			"bgUrl": imageUrl + "/lookcar/img_t60.png",
+			"bgUrl": [imageUrl + "/lookcar/img_t60.png", imageUrl + "/lookcar/img_t60_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_t60.png",
 			cid: 1
 		}, {
@@ -53,7 +53,7 @@ Page({
 			"info": ['高品质智联SUV 品质来袭'],
 			"lowprice": "8.98",
 			"highprice": "12.78",
-			"bgUrl": imageUrl + "/lookcar/img_t70.png",
+			"bgUrl": [imageUrl + "/lookcar/img_t70.png", imageUrl + "/lookcar/img_t70_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_t70.png",
 			cid: 1
 		}, {
@@ -61,7 +61,7 @@ Page({
 			"info": ['智无忧 趣更远 智领合资纯电SUV'],
 			"lowprice": "13.88",
 			"highprice": "15.68",
-			"bgUrl": imageUrl + "/lookcar/img_t60ev.png",
+			"bgUrl": [imageUrl + "/lookcar/img_t60ev.png", imageUrl + "/lookcar/img_t60ev_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_t60ev.png",
 			cid: 1
 		}, {
@@ -69,7 +69,7 @@ Page({
 			"info": ['高品质跨界SUV 跨有界 悦无限'],
 			"lowprice": "11.88",
 			"highprice": "15.48",
-			"bgUrl": imageUrl + "/lookcar/img_t90.png",
+			"bgUrl": [imageUrl + "/lookcar/img_t90.png", imageUrl + "/lookcar/img_t90_X.png"] ,
 			"titleImg": imageUrl + "/lookcar/title_t90.png",
 			cid:9
 		}, {
@@ -77,7 +77,7 @@ Page({
 			"info": ['高品质智联家轿 智联生活 即刻开启'],
 			"lowprice": "13.78",
 			"highprice": "15.38",
-			"bgUrl": imageUrl + "/lookcar/img_d60ev.png",
+			"bgUrl": [imageUrl + "/lookcar/img_d60ev.png", imageUrl + "/lookcar/img_d60ev_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_d60ev.png",
 			cid: 1
 		}, {
@@ -85,7 +85,7 @@ Page({
 			"info": [''],
 			"lowprice": "",
 			"highprice": "",
-			"bgUrl": imageUrl + "/lookcar/img_xing.png",
+			"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_xing.png",
 			cid:11
 		}, {
@@ -93,7 +93,7 @@ Page({
 			"info": ['高品质智联家轿 智联生活 即刻开启'],
 			"lowprice": "6.18",
 			"highprice": "7.48",
-			"bgUrl": imageUrl + "/lookcar/img_e30.png",
+			"bgUrl": [imageUrl + "/lookcar/img_e30.png", imageUrl + "/lookcar/img_e30_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_e30.png",
 			cid: 1
 		}],
@@ -154,7 +154,7 @@ Page({
 			toView: 'info' + (e.detail.current + 1),
 		})
 		console.log(this.data.line)
-		this.playxlz();
+		// this.playxlz(); 播放滑动序列
 		if (e.detail.current > 3) {
 			this.setData({ scrollLeft: (e.detail.current - 3) * 60 })
 		}
@@ -223,7 +223,7 @@ Page({
 		const id = e.currentTarget.dataset.cid;
 		console.log(id)
 		this.setData({ currid:id})
-		this.jump_page();
+		// this.jump_page();
 	},
 	jump_page(){
 		let id = this.data.currid;
@@ -252,7 +252,7 @@ Page({
 		console.log(id)
 		this.setData({ currid: id })
 		this.setData({currpage: e.currentTarget.dataset.num});
-		this.jump_page();
+		// this.jump_page();
 	},
 	playxlz() {
 		//播放序列
