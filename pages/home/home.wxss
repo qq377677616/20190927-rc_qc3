@@ -4,16 +4,14 @@ page {
     height: 100%;
     background-color: rgba(246, 247, 247, 1);
 }
-
-.home_page {
-    padding: 0 28rpx 120rpx;
+.home_page{
+    padding: 0 0 120rpx;
 }
 
 
 /* header */
-
-.header {
-    min-height: 225rpx;
+.header{
+    min-height:170rpx;
     display: flex;
     align-items: center;
     position: relative;
@@ -21,6 +19,9 @@ page {
 
 .header .image {
     position: relative;
+	width: 694rpx;
+	margin: 0 auto;
+	margin-top: 15rpx;
 }
 
 .header .image button {
@@ -156,9 +157,8 @@ page {
 
 
 /* nav_area */
-
-.nav_area {
-    height: 176rpx;
+.nav_area{
+    height: 127rpx;
     display: flex;
     align-items: center;
     /* background-color: #fff; */
@@ -194,21 +194,18 @@ page {
 
 .nav_area .nav_item .span {
     line-height: 1em;
-    font-size: 30rpx;
-    font-family: PingFang SC;
-    color: rgba(51, 51, 51, 1);
-    font-weight: 500;
-}
-
-
-/* nav_area */
-
+    font-size:26rpx;   
+    color:rgba(51,51,51,1);
+	font-weight: 500;
+}/* nav_area */
 
 /* my_list */
 
 .my_list {
     background-color: #fff;
-    border-radius: 18rpx;
+    border-radius:18rpx;
+	width: 694rpx;
+	margin: 0 auto;
 }
 
 .my_list .list_item {
@@ -216,96 +213,22 @@ page {
     align-items: center;
     padding: 0 28rpx;
     height: 108rpx;
-    position: relative;
-    /* border-bottom: 1rpx solid rgba(238,238,238,1); */
+	position: relative;
+	/* width: 694rpx; */
+	/* border-bottom: 1rpx solid rgba(238,238,238,1); */
 }
-
-.my_list>.list_item:not(:last-child)::after {
-    content: '';
-    height: 2rpx;
-    width: 95%;
-    background-color: rgba(238, 238, 238, 1);
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
+.my_list>.list_item:not(:last-child)::after{
+	content: '';
+	height: 2rpx;
+	width: 95%;
+	background-color: rgba(238,238,238,1);
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
 }
-
-.my_list .list_item .icon {
-    flex: 0 0 auto;
-    color: #9a9a9a;
-    font-size: 34rpx;
-    margin-right: 21rpx;
-}
-
-.my_list .list_item .span {
-    width: 0;
-    flex: 1;
-    display: flex;
-}
-
-.my_list .list_item .span .text {
-    font-size: 30rpx;
-    font-weight: 500;
-    font-family: PingFang SC;
-    color: rgba(102, 102, 102, 1);
-    position: relative;
-}
-
-.my_list .list_item .span .text .dot {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translateX(100%) translateY(-50%);
-    color: #fff;
-    font-size: 20rpx;
-    height: 24rpx;
-    line-height: 24rpx;
-    background-color: #f23e3c;
-    border-radius: 14rpx;
-    border: 1rpx solid #fff4e9;
-    min-width: 30rpx;
-    display: flex;
-    justify-content: center;
-    padding-right: 5rpx;
-}
-
-.my_list .list_item .more {
-    flex: 0 0 auto;
-    color: #9a9a9a;
-    font-size: 30rpx;
-}
-
-
-/* my_list */
-
-.my_list {
-    background-color: #fff;
-    border-radius: 18rpx;
-}
-
-.my_list .list_item {
-    display: flex;
-    align-items: center;
-    padding: 0 28rpx;
-    height: 108rpx;
-    position: relative;
-    /* border-bottom: 1rpx solid rgba(238,238,238,1); */
-}
-
-.my_list>.list_item:not(:last-child)::after {
-    content: '';
-    height: 2rpx;
-    width: 95%;
-    background-color: rgba(238, 238, 238, 1);
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-}
-
-.my_list .list_item .icon {
-    flex: 0 0 auto;
+.my_list .list_item .icon{
+    flex:0 0 auto;
     color: #9A9A9A;
     font-size: 34rpx;
     margin-right: 21rpx;
@@ -316,12 +239,11 @@ page {
     flex: 1;
     display: flex;
 }
-
-.my_list .list_item .span .text {
-    font-size: 30rpx;
-    font-weight: 500;
-    font-family: PingFang SC;
-    color: rgba(51, 51, 51, 1);
+.my_list .list_item .span .text{
+    font-size:26rpx;
+	font-weight:500;
+	font-family:PingFang SC;
+    color:rgba(51,51,51,1);
     position: relative;
 }
 
@@ -363,68 +285,72 @@ page {
 
 
 /* 改版 */
-
-.cz_img>image {
-    width: 31rpx;
-    height: auto;
+.cz_img>image{
+	width: 31rpx;
+	height: auto;
 }
-
-.setqd>image {
-    width: 46rpx;
-    height: auto;
+.setqd>image{
+	width: 46rpx;
+	height: auto;
 }
-
-.setvd>image {
-    width: 50rpx;
-    height: auto;
+.setvd>image{
+	width: 46rpx;
+	height: auto;
 }
-
-.setdj>image {
-    width: 46rpx;
-    height: auto;
+.setdj>image{
+	width:46rpx;
+	height: auto; 
 }
-
-.list_item>.icon>image {
-    width: 32rpx;
-    height: auto;
+.list_item>.icon>image{
+	width: 32rpx;
+	height: auto;
 }
-
-.bindcz {
-    width: 694rpx;
-    height: 107rpx;
-    background: center no-repeat/cover;
-    margin-bottom: 30rpx;
-    padding: 0 26rpx 0 120rpx;
-    box-sizing: border-box;
+.bindcz{
+	margin: 0 auto;
+	width: 694rpx;
+	height: 107rpx;
+	background: center no-repeat/cover;
+	margin-bottom: 30rpx;
+	padding: 0 26rpx 0 120rpx;
+	box-sizing: border-box;
+	margin-top: 30rpx;
 }
-
-.bindcenter {
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
-    align-items: center;
+.bindcenter{
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+	align-items: center;
 }
-
-.leftinfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+.leftinfo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
 }
-
-.bindtxt {
-    font-size: 30rpx;
-    font-family: PingFang SC;
-    font-weight: 500;
-    color: rgba(231, 231, 231, 1);
+.bindtxt{
+	font-size:30rpx;
+	font-family:PingFang SC;
+	font-weight:500;
+	color:rgba(231,231,231,1);
 }
-
-.gifts {
-    font-size: 24rpx;
-    font-family: PingFang SC;
-    font-weight: 400;
-    color: rgba(231, 231, 231, 1);
-    margin-top: 14rpx;
+.gifts{
+	font-size:24rpx;
+	font-family:PingFang SC;
+	font-weight:400;
+	color:rgba(231,231,231,1);	
+	margin-top:14rpx; 
+}
+.rightbtn{
+	width:168rpx;
+	height:52rpx;
+	background:rgba(231,231,231,1);
+	border-radius:26rpx;
+	font-size:28rpx;
+	font-family:PingFang SC;
+	font-weight:bold;
+	color:rgba(44,44,44,1);
+	text-align: center;
+	line-height: 52rpx;
 }
 
 .rightbtn {

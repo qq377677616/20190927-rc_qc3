@@ -4,6 +4,7 @@
 view, text, input, button, textarea {
     letter-spacing: 3rpx;
     line-height: 1.2em;
+	font-family:PingFang SC; 
 }
 
 button {
