@@ -26,7 +26,7 @@ Page({
 		carList: [],
 		infoLunbo: {
 			autoplay: true, //是否自动轮播
-			interval: 8000, //间隔时间
+			interval: 4000, //间隔时间
 			duration: 1000, //滑动时间
 			current: 0,
 			circular: true
@@ -38,7 +38,7 @@ Page({
 			"lowprice": "6.98",
 			"highprice": "9.88",
 			"bgUrl": [imageUrl + "/lookcar/img_d60.png", imageUrl + "/lookcar/img_d60_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_d60.png",
+			"titleImg": imageUrl + "/lookcar/title_d60.png?1",
 			cid: 1
 		}, {
 			"name": 'T60',
@@ -46,7 +46,7 @@ Page({
 			"lowprice": "8.68",
 			"highprice": "11.88",
 			"bgUrl": [imageUrl + "/lookcar/img_t60.png", imageUrl + "/lookcar/img_t60_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_t60.png",
+			"titleImg": imageUrl + "/lookcar/title_t60.png?1",
 			cid: 1
 		}, {
 			"name": 'T70',
@@ -54,7 +54,7 @@ Page({
 			"lowprice": "8.98",
 			"highprice": "12.78",
 			"bgUrl": [imageUrl + "/lookcar/img_t70.png", imageUrl + "/lookcar/img_t70_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_t70.png",
+			"titleImg": imageUrl + "/lookcar/title_t70.png?1",
 			cid: 1
 		}, {
 			"name": 'T60EV',
@@ -62,7 +62,7 @@ Page({
 			"lowprice": "13.88",
 			"highprice": "15.68",
 			"bgUrl": [imageUrl + "/lookcar/img_t60ev.png", imageUrl + "/lookcar/img_t60ev_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_t60ev.png",
+			"titleImg": imageUrl + "/lookcar/title_t60ev.png?1",
 			cid: 1
 		}, {
 			"name": 'T90',
@@ -70,7 +70,7 @@ Page({
 			"lowprice": "11.88",
 			"highprice": "15.48",
 			"bgUrl": [imageUrl + "/lookcar/img_t90.png", imageUrl + "/lookcar/img_t90_X.png"] ,
-			"titleImg": imageUrl + "/lookcar/title_t90.png",
+			"titleImg": imageUrl + "/lookcar/title_t90.png?1",
 			cid:9
 		}, {
 			"name": 'D60EV',
@@ -78,7 +78,7 @@ Page({
 			"lowprice": "13.78",
 			"highprice": "15.38",
 			"bgUrl": [imageUrl + "/lookcar/img_d60ev.png", imageUrl + "/lookcar/img_d60ev_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_d60ev.png",
+			"titleImg": imageUrl + "/lookcar/title_d60ev.png?1",
 			cid: 1
 		}, {
 			"name": '星',
@@ -86,7 +86,7 @@ Page({
 			"lowprice": "",
 			"highprice": "",
 			"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_xing.png",
+			"titleImg": imageUrl + "/lookcar/title_xing.png?1",
 			cid:11
 		}, {
 			"name": 'e30',
@@ -94,7 +94,7 @@ Page({
 			"lowprice": "6.18",
 			"highprice": "7.48",
 			"bgUrl": [imageUrl + "/lookcar/img_e30.png", imageUrl + "/lookcar/img_e30_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_e30.png",
+			"titleImg": imageUrl + "/lookcar/title_e30.png?1",
 			cid: 1
 		}],
 		toView: 'info1',

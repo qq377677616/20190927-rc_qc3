@@ -412,6 +412,22 @@ const order_info = (data) => {
 			})
 	})
 }
+// 判断接口999直接退出不能绑定车主 api3/member/is_upgrade_time
+const is_upgrade = (data) => {
+	let url = `${SERVICE}/api3/member/is_upgrade_time`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
 // 刮刮乐  图片加载处理
 module.exports = {
 	reply_list,
@@ -439,4 +455,5 @@ module.exports = {
 	lq_receive,
 	yy_receive,
 	order_info,
+	is_upgrade,
 }

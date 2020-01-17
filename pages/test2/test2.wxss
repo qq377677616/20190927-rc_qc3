@@ -344,9 +344,30 @@ page {
   font-family: "PingFang-SC-Bold";
   font-weight: bold;
 }
-page .title_img {
-  width: 100%;
-  max-width:250rpx;
+ .title_img0 {
+  width: 222rpx;
+}
+ .title_img1{
+  width: 211rpx;
+}
+ .title_img2{
+  width: 204rpx;
+}
+ .title_img3{
+  width: 275rpx;
+}
+ .title_img4{
+  width: 218rpx;
+}  
+
+ .title_img5{
+  width: 284rpx;
+}
+ .title_img6{
+  width: 459rpx;
+}
+ .title_img7{
+  width: 216rpx;
 }
 page .no_price {
   width: 100%;
