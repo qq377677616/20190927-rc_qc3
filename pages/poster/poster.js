@@ -184,7 +184,7 @@ Page({
             textY: 821
           },
           {
-            string: '#我为T90品质代言#',
+            string: '#春节话题征集#',
             color: 'red',
             fontSize: '20',
             fontFamily: 'Arial',

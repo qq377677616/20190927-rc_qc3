@@ -274,8 +274,13 @@ video {
   position: relative;
 }
 
-.share2{
-  margin-top: 44rpx
+.share2 image {
+  width: 74rpx !important;
+  height: 74rpx !important;
+}
+
+.share2 {
+  margin-top: 44rpx;
 }
 
 .join_txt {
@@ -843,7 +848,6 @@ video {
   top: 140rpx;
 }
 
-
 .rt_pos1 {
   position: absolute;
   top: 3%;
@@ -860,7 +864,7 @@ video {
   -webkit-transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
 }
 
-.rt_pos2{
+.rt_pos2 {
   position: absolute;
   top: 95%;
   left: 50%;
