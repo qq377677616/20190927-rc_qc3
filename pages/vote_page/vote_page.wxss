@@ -462,7 +462,7 @@ page {
   font-size: 30rpx;
   color: #fff;
   position: fixed;
-  right: 5%;
+  right: 8%;
   bottom: 12%;
 }
 
