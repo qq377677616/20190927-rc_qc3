@@ -471,4 +471,10 @@ page {
   height: 67rpx;
 }
 
+
+.share2 image {
+  width: 74rpx !important;
+  height: 74rpx !important;
+}
+
 /* win_list */
