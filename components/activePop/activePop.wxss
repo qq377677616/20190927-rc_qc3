@@ -1,85 +1,108 @@
 /* components/activePop/activePop.wxss */
-.whole{
-	width: 100vw;
-	height: 100vh;
-	background-color:rgba(0,0,0,.7);
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 999; 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
+.whole {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.Actpop{
-	width: 505rpx;
-	height: 379rpx;
-	background-color: white;
-	border-radius:30rpx;
-	padding-top: 52rpx;
-	box-sizing: border-box;
-	display: flex;
-	/* justify-content: center; */
-	align-items: center;
-	flex-direction: column; 
-	position: relative;
+
+.Actpop {
+  width: 505rpx;
+  height: 379rpx;
+  background-color: white;
+  border-radius: 30rpx;
+  padding-top: 52rpx;
+  box-sizing: border-box;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
-.txt1,.txt2{
-	color: #333;
-	font-size: 36rpx;
-	display: block;
-	font-weight:bold;
+
+.txt1, .txt2 {
+  color: #333;
+  font-size: 36rpx;
+  display: block;
+  font-weight: bold;
 }
-.txt2{
-	margin-top:25rpx; 
-  width:80%;
+
+.txt2 {
+  margin-top: 25rpx;
+  width: 80%;
   text-align: center;
-  height:132rpx;
+  height: 132rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
-.btn1{
-	width: 332rpx;
-	height: 70rpx;
-	background:linear-gradient(90deg,rgba(32,161,224,1),rgba(18,77,184,1));
-    border-radius:35rpx;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size:28rpx;
-	font-family:Source Han Sans CN;
-	font-weight:400;
-	color:rgba(255,255,255,1); 
-	margin-top: 35rpx;
-	position: relative;
+
+.btn1 {
+  width: 332rpx;
+  height: 70rpx;
+  background: linear-gradient(90deg, rgba(32, 161, 224, 1), rgba(18, 77, 184, 1));
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 35rpx;
+  position: relative;
 }
-.closeBtn{
-	width: 50rpx;
-	height: auto;
-	position: absolute;
-	bottom: -100rpx;
+
+.closeBtn {
+  width: 50rpx;
+  height: auto;
+  position: absolute;
+  bottom: -100rpx;
 }
+
 /* 未参与活动 */
-.Actpop2{
-	height: 452rpx;
-	padding-top: 96rpx;
+
+.Actpop2 {
+  height: 452rpx;
+  padding-top: 96rpx;
 }
-.txt3,.txt4{
-	font-size: 32rpx;
+
+.txt3, .txt4 {
+  font-size: 32rpx;
 }
-.btn2{
-	background: transparent;
-	color: #333;
-	font-size: 28rpx;
-	margin-top:20rpx; 
+
+.btn2 {
+  background: transparent;
+  color: #333;
+  font-size: 28rpx;
+  margin-top: 20rpx;
 }
-.shouquan{
-	position: absolute;
-	left: 0;
-	top: 0;
-	/* background-color:red; */
-	width: 100%;
-	height: 100%;
+
+.shouquan {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* background-color:red; */
+  width: 100%;
+  height: 100%;
+}
+
+.txt-5 {
+  margin-top: 25rpx;
+  width: 80%;
+  text-align: center;
+  height: 132rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 30rpx !important;
 }

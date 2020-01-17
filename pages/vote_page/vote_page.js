@@ -44,6 +44,12 @@ Page({
             text: "活动已结束"
           })
         }
+      } else if (res.data.data.status == 999) {
+        this.setData({
+          isVehicleOwnerHidePop: true,
+          popType: 5,
+          text: '恢复时间：1月30日9:00'
+        })
       } else if (res.data.data.show_rank_list == 1 && res.data.data.is_join == 1 || res.data.data.show_rank_list == 2 && res.data.data.is_join == 1) {
         this.close_prize()
       }
