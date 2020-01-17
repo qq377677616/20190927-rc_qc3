@@ -67,7 +67,7 @@ Page({
 
   start(e) { //序列动画开始
     console.log(this.data.activeStatus)
-    if (this.data.activeStatus == 4) {
+    if (this.data.activeStatus == 0) {
       tool.alert('活动已结束');
       return;
     }

@@ -14,7 +14,7 @@ Page({
     IMGSERVICEZ: app.globalData.IMGSERVICE,
     voteList: [],
     page: 1,
-    isShow:false,
+    isShow: false,
     firstShow: false, //返回刷新开关
     rulspop: false, // 规则
     isPrize: false //中奖列表
@@ -246,7 +246,7 @@ Page({
         for (let i = 0; i < res.data.data.list.length; i++) {
           arr.push(res.data.data.list[i])
         }
-        if (arr.length<=0){
+        if (arr.length <= 0) {
           this.setData({
             isShow: true
           })
@@ -288,11 +288,16 @@ Page({
         });
         console.log(this.data.voteList)
       } else {
-        alert.alert({
-          str: '您今天已为TA投过票~'
-        })
+        if (res.data.msg == '活动已结束') {
+          alert.alert({
+            str: res.data.msg
+          })
+        } else {
+          alert.alert({
+            str: '您今天以为TA投过票了~'
+          })
+        }
       }
-
     }).catch((reason) => {
       tool.alert(reason);
     })
