@@ -55,12 +55,14 @@ Component({
         .then((value)=>{
 		console.log("屏幕高度",value.screenHeight);
         const model = value.model;
-		value.screenHeight > 667?wx.setStorageSync("isX", 1) : wx.setStorageSync("isX", 2);
+			value.screenHeight > 667 ? wx.setStorageSync('isH', 1) : wx.setStorageSync('isH', 2);
 		if (model.search('iPhone X') != -1){
+			wx.setStorageSync("isX", 1)
 			this.setData({
 			isIponeX:true,
 			})
           }else{
+			  wx.setStorageSync("isX", 2)
             this.setData({
               isIponeX:false,
             })

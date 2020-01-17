@@ -104,9 +104,13 @@ Page({
 		curr:7,//序列当前 帧
 		isplay:true,//是否可以播放序列
 		isright: false,//判断轮播放向
+		isH:false,//默认不是长屏
 	},
 	onLoad: function (options) {
-		this.setData({ isX: wx.getStorageSync("isX") == 1?true:false});
+		this.setData({
+			isX: wx.getStorageSync("isX") == 1?true:false,
+			isH: wx.getStorageSync("isH") == 1?true:false
+		});
 		this.data.lunImg.forEach((item, index) => {
 			item.name = 'info' + (parseInt(index) + 1)
 		})
@@ -223,7 +227,7 @@ Page({
 		const id = e.currentTarget.dataset.cid;
 		console.log(id)
 		this.setData({ currid:id})
-		// this.jump_page();
+		this.jump_page();
 	},
 	jump_page(){
 		let id = this.data.currid;

@@ -143,18 +143,27 @@ page {
   color: rgba(51, 51, 51, 1);
 }
 
-.round_robin_area .more_btn, .rowbox .more_btn {
+.round_robin_area .more_btn{
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  padding: 0 15rpx 0 15rpx;
+  /* padding: 0 15rpx 0 15rpx; */
   width: 186rpx;
   height: 58rpx;
   background: rgba(0, 59, 115, 1);
   border-radius: 29rpx;
   justify-content: center;
 }
-
+.rowbox .more_btn{
+	border-radius:32rpx;
+	display: flex;
+	padding: 15rpx 23rpx;
+	background: rgba(0, 59, 115, 1);
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	padding-right: 10rpx;
+}
 .rowbox .more_btn .v_mark {
   margin-right: 4rpx;
   width: 30rpx;
@@ -167,7 +176,7 @@ page {
 }
 
 .rowbox .more_btn .gbspan {
-  font-size: 30rpx;
+  font-size: 26rpx;
   font-family: PingFang SC;
   font-weight: 500;
   color: rgba(255, 255, 255, 1);

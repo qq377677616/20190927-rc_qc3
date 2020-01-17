@@ -15,13 +15,13 @@
               <view class="price_info" wx:if="{{item.lowprice && item.highprice}}">官方指导价<text>{{item.lowprice}}</text>万元-<text>{{item.highprice}}</text>万元</view>
               <view class="search_btn" catchtap="jumpDetail" data-cid="{{item.cid}}">搜索更多</view>
           </view>
-          <view style="background-image:url({{isX==1?item.bgUrl[1]:item.bgUrl[0]}})"class="slide-image" mode="widthFix" bindload="imgload" data-id="{{index}}" ></view>
+          <view style="background-image:url({{isH==1?item.bgUrl[1]:item.bgUrl[0]}})" class="slide-image" mode="widthFix" bindload="imgload" data-id="{{index}}" ></view>
         </swiper-item>
       </block>
     </swiper>
 
     <scroll-view scroll-into-view="line6" class="scroll-view_H lunbo_title"  scroll-x="true" style="width:100%"  scroll-with-animation="true" scroll-left="{{scrollLeft}}">
-      <view class="scroll-view-item_H" wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index0" wx:key="item" id="line{{index0}}" catchtap="jumpDetail" data-cid="{{index==4?9:index==6?11:1}}">
+      <view class="scroll-view-item_H" wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index0" wx:key="item" id="line{{index0}}"  data-cid="{{index==4?9:index==6?11:1}}">
         <view  class='title' data-num="{{index0}}" bindtap="dyjump">
           <!-- <view >
             <text class="icon_title">error</text>
