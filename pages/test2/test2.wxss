@@ -127,7 +127,7 @@ page {
   box-sizing: border-box;
   background: #fff;
   height: 2px;
-  animation: animat_show_right 0.5s linear;
+  /* animation: animat_show_right 0.5s linear; */
   /* animation-delay: .5s; */
   /* filter: blur(-1px); */
 }

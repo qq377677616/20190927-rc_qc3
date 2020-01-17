@@ -15,11 +15,13 @@ page {
     display: flex;
     align-items: center;
     position: relative;
+	margin: 0 auto;
+	width: 694rpx;
 }
 
 .header .image {
     position: relative;
-	width: 694rpx;
+	/* width: 694rpx; */
 	margin: 0 auto;
 	margin-top: 15rpx;
 }
