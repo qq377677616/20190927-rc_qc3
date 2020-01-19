@@ -37,13 +37,15 @@ Page({
             tool.loading_h()
             return
           }
+          // console.log(request_01.SERVICE+'/')
           wx.uploadFile({
-            url: 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/upload/upload_image',
+            url: request_01.SERVICE + '/admin3/upload/upload',
             filePath: tempFilePaths[0],
             name: 'file',
             success(res) {
+              console.log(res)
               let data = JSON.parse(res.data);
-              let image = data.data.src;
+              let image = data.data;
               that.setData({
                 image,
               })
@@ -77,7 +79,7 @@ Page({
           if (res['I_lrsh0UX78QEn1RuXoT8KPwII01ZkB_i_X98CM6aDc'] == "accept") {
             wx.setStorageSync('voteInfo', 1)
             _this.submit()
-          }else{
+          } else {
             wx.setStorageSync('voteInfo', 0)
             _this.submit()
           }
