@@ -58,6 +58,9 @@ Component({
 		bindCarer() {
 			this.closePop()
 			route.jump_nav({ url: '/pages/o_love_car/o_love_car?pageType=back' });
+		},
+		backpage(){
+			route.jump_back();
 		}
 	}
 })

@@ -354,17 +354,17 @@ page {
   width: 204rpx;
 }
  .title_img3{
-  width: 275rpx;
+  width: 218rpx;
 }
  .title_img4{
-  width: 218rpx;
+  width: 230rpx;
 }  
 
  .title_img5{
-  width: 284rpx;
+  width: 275rpx;
 }
  .title_img6{
-  width: 459rpx;
+  width:284rpx;
 }
  .title_img7{
   width: 216rpx;

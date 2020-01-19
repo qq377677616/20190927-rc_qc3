@@ -20,7 +20,7 @@
       </block>
     </swiper>
 
-    <scroll-view scroll-into-view="line6" class="scroll-view_H lunbo_title"  scroll-x="true" style="width:100%"  scroll-with-animation="true" scroll-left="{{scrollLeft}}">
+    <scroll-view scroll-into-view="line4" class="scroll-view_H lunbo_title"  scroll-x="true" style="width:100%"  scroll-with-animation="true" scroll-left="{{scrollLeft}}">
       <view class="scroll-view-item_H" wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index0" wx:key="item" id="line{{index0}}"  data-cid="{{index==4?9:index==6?11:1}}">
         <view  class='title' data-num="{{index0}}" bindtap="dyjump">
           <!-- <view >
