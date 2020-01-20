@@ -25,7 +25,7 @@ Page({
 		options: {},
 		carList: [],
 		infoLunbo: {
-			autoplay: false, //是否自动轮播
+			autoplay: true, //是否自动轮播
 			interval: 4000, //间隔时间
 			duration: 1000, //滑动时间
 			current: 0,
