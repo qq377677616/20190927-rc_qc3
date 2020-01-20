@@ -74,9 +74,9 @@ Page({
     var _this = this
     if (wx.getStorageSync('voteInfo') != 1) { //订阅消息暂时不用
       wx.requestSubscribeMessage({
-        tmplIds: ['I_lrsh0UX78QEn1RuXoT8KPwII01ZkB_i_X98CM6aDc'],
+        tmplIds: ['DI3csyDIWu8nPtqK2K8xLlIyh0ocF_PZ6HYxC_-FNyg','rrmlgy9I2det-VAyoV0rzdphWYzoX9XPi7aL788gtxg'],
         success(res) {
-          if (res['I_lrsh0UX78QEn1RuXoT8KPwII01ZkB_i_X98CM6aDc'] == "accept") {
+          if (res['DI3csyDIWu8nPtqK2K8xLlIyh0ocF_PZ6HYxC_-FNyg', 'rrmlgy9I2det-VAyoV0rzdphWYzoX9XPi7aL788gtxg'] == "accept") {
             wx.setStorageSync('voteInfo', 1)
             _this.submit()
           } else {
