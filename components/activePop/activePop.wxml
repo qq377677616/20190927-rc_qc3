@@ -36,4 +36,9 @@
     <text class="txt2 txt-5">{{text}}</text>
     <view class="btn1" bindtap="otherAct">查看其它活动</view>
   </view>
+  <view class="Actpop" wx:if="{{popType==6}}">
+    <text class="txt1">抱歉，系统升级中！</text>
+    <text class="txt2 txt-5">{{text}}</text>
+    <view class="btn1" bindtap="backpage">确定</view>
+  </view>
 </view>

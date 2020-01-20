@@ -3,6 +3,8 @@ const mta = require('../../utils/public/mta_analysis.js')
 
 const request_01 = require('../../utils/request/request_01.js');
 
+const request_04 = require('../../utils/request/request_04.js');
+
 const method = require('../../utils/tool/method.js');
 
 const router = require('../../utils/tool/router.js');
@@ -31,12 +33,14 @@ Page({
     isChecked: true,
     userInfo:{},
 	bindPop:false,
+	isclose:false,//默认可以进 绑定页面
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	  this.isenter();
     request_01.login(() => {
       this.initData(options)
     })
@@ -350,4 +354,12 @@ Page({
       urls: [`${IMGSERVICE}/center/vincode.jpg`] // 需要预览的图片http链接列表  
     })
   },
+  isenter(){
+	  request_04.is_upgrade().then((res)=>{
+		//   console.log("222")
+		if(res.data.status=='999'){
+			this.setData({ isclose:true});
+		}
+	  })
+  }
 })
