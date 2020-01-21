@@ -23,11 +23,11 @@
             <button wx:else class="name nowrap" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
                 点击登录
             </button>
-            <!-- <view class="v_coin" catchtap="vdouDetail">
+            <view class="v_coin" catchtap="vdouDetail">
                 <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image>
                 <view class="total">{{ personalInfo.vcoin }}</view>
                 <view class="more iconfont icon_more"></view>
-            </view> -->
+            </view>
         </view>
 
         <view class="btn binded_btn" wx:if="{{ personalInfo.user_type == 1 }}" data-type="binded" catchtap="bindCarUser">

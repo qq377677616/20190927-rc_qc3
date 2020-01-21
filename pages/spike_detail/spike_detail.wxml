@@ -23,7 +23,7 @@
                     <view class="tag">仅剩{{ spikeGoodsDetail.number }}件</view>
                 </view>
 
-                <!-- <view class="origin">￥{{ spikeGoodsDetail.vcoin }}.00</view> -->
+                <view class="origin">￥{{ spikeGoodsDetail.vcoin }}.00</view>
             </view>
 
             <view class="right">
@@ -97,7 +97,7 @@
     <view class="section detail">
         <view class="h2">商品详情</view>
         <image wx:for="{{ spikeGoodsDetail.goods_detail }}" wx:key="item" class="img" mode="widthFix"
-            src="https://game.flyh5.cn/resources/game/admin_yyt/2019/dfqc/15691279765d86fe2895d79.png"></image>
+            src="{{item}}"></image>
     </view>
 
     <!-- qc-spike-result -->

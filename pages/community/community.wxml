@@ -29,18 +29,18 @@
 
         <view class="operation_area">
             <view class="operation_item" catchtap="giveLike" data-arid="{{item.article_id}}">
-                <veiw class="icon iconfont icon_dz {{item.is_favorite==0?'':'addcolor'}}"></veiw>
+                <veiw class="icon iconfont icon-zan {{item.is_favorite==0?'':'addcolor'}}"></veiw>
                 <view class="span">{{item.favorite_num}}</view>
             </view>
 
             <view class="operation_item" catchtap="remark" data-rid="{{item.article_id}}" data-type="bottom">
-                <veiw class="icon iconfont icon_pl"></veiw>
+                <veiw class="icon iconfont icon-touzirenpinglun"></veiw>
                 <view class="span">{{item.reply_num}}</view>
             </view>
 
             <view class="operation_item" catchtap="shareFriend">
 				<button class="shareBtn" open-type="share" data-rid="{{item.article_id}}" data-img="{{item.images}}" data-title="{{item.title}}"></button>
-                <veiw class="icon iconfont icon_fx"></veiw>
+                <veiw class="icon iconfont icon-fenxiang"></veiw>
                 <!-- <view class="span">分享</view> -->
             </view>
         </view>

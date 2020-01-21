@@ -120,7 +120,7 @@ Page({
     const IMGSERVICE = this.data.IMGSERVICE;
     return {
       title: '秒杀天天有，今天特别大！',
-      imageUrl: `${IMGSERVICE}/spike/spike_share.jpg`,
+      imageUrl: `${IMGSERVICE}/spike/spike_share_s1.jpg`,
       path: `/pages/spike_index/spike_index?activity_id=${options.activity_id}`,
     };
   },

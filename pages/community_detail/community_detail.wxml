@@ -90,7 +90,7 @@
 			<view class="setmar2">{{artDel.reply_num>999?'999+':artDel.reply_num}}</view>
 		</view>
 		
-		<view  class="icon iconfont icon_fx fen">
+		<view  class="icon iconfont icon-fenxiang fen">
 			<view class="coverbig"></view>
 			<button class="shareBtn" open-type="share" data-img="{{artDel.images}}"></button>
 		</view>

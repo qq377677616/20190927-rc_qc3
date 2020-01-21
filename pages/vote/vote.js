@@ -418,9 +418,9 @@ Page({
     let user_id = wx.getStorageSync('userInfo').user_id;
     let activity_id = this.data.activity_id;
     let obj = {
-      title: '大侠请留步！帮我点个赞，赢京东500元购物卡！',
+		title: '我正在参与话题征集，快来帮我投票，助我赢500元保养券！',
       path: `/pages/vote/vote?activity_id=${activity_id}&isShare=1&user_id=${user_id}&userIndex=${userIndex}`,
-      imageUrl: this.data.IMGSERVICE + "/activity/share_out.jpg"
+		imageUrl: 'https://weixinfslb.venucia.com/uploads/202001/21/15795964655e26bab153fd8.jpg'
     };
     return obj;
   }

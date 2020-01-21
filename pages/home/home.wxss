@@ -208,6 +208,7 @@ page {
     border-radius:18rpx;
 	width: 694rpx;
 	margin: 0 auto;
+	margin-top: 30rpx;
 }
 
 .my_list .list_item {

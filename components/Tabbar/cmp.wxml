@@ -25,19 +25,19 @@
 <view class="footer {{ isIponeX ? 'iPhone' : '' }}">
     <view class="tabbar {{ isIponeX ? 'iPhone' : '' }}">
         <view class="tabbar_item {{currentIndex == 0 ? 'active' : ''}}" data-index="0" bindtap="switchBtn">
-            <view class="icon iconfont {{currentIndex == 0 ? 'icon-shouye_kuaizhuang' : 'icon-shouye_xianxing'}}"></view>
+            <view class="icon iconfont {{currentIndex == 0 ? 'icon-shouyekuaizhuang' : 'icon-shouyexianxing1'}}"></view>
             <text>首页</text>
         </view>
         <view class="tabbar_item {{currentIndex == 1 ? 'active' : ''}}" data-index="1" bindtap="switchBtn">
-            <view class="icon iconfont {{currentIndex == 1 ? 'icon-kanche_kuaizhuang' : 'icon-kanche_xianxing'}}"></view>
+            <view class="icon iconfont {{currentIndex == 1 ? 'icon-kanchekuaizhuang-' : 'icon-kanchexianxing1'}}"></view>
             <text>看车</text>
         </view>
         <view class="tabbar_item {{currentIndex == 2 ? 'active' : ''}}" data-index="2" bindtap="switchBtn">
-            <view class="icon iconfont {{currentIndex == 2 ? 'icon-shangcheng_kuaizhuang' : 'icon-shangcheng_xianxing'}}"></view>
+            <view class="icon iconfont {{currentIndex == 2 ? 'icon-shangchengkuaizhuang' : 'icon-shangchengxianxing1'}}"></view>
             <text>商城</text>
         </view>
         <view class="tabbar_item {{currentIndex == 3 ? 'active' : ''}}" data-index="3" bindtap="switchBtn">
-            <view class="icon iconfont {{currentIndex == 3 ? 'icon-wode_kuaizhuang' : 'icon-wode_xianxing'}}"></view>
+            <view class="icon iconfont {{currentIndex == 3 ? 'icon-wodekuaizhuang' : 'icon-wodexianxing1'}}"></view>
             <text>我的</text>
         </view>
     </view>

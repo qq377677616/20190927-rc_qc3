@@ -75,7 +75,7 @@
         </view><!-- nav_area -->
 		<!--  -->
 		<view class="rowbox">
-			<text class="myvd">我的V豆 <text class="setcol">2860</text></text>
+			<text class="myvd">我的V豆 <text class="setcol">{{mallInfo.vcoin}}</text></text>
 			<view class="more_btn" bindtap="goTask">
 				<!-- <image class="v_mark" src="{{ IMGSERVICE }}/center/vdou.png" mode="widthFix"></image> -->
 				<view class="gbspan span">

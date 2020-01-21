@@ -49,3 +49,9 @@
 	font-weight:bold;
 	color:rgba(0,0,0,1);
 }
+.icon-wodekuaizhuang{
+	font-size: 49rpx !important;
+}
+.icon-kanchekuaizhuang-,.icon-kanchexianxing1{
+	font-size: 52rpx !important;
+}
