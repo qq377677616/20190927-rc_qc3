@@ -40,7 +40,7 @@
           </view>
           <view class="nickname">{{item.nickname}}</view>
         </view>
-        <view class="content">{{item.content}}刚刚给方法刚刚给方法刚刚给方法刚刚给方法刚刚给方法刚刚给方法刚刚给方法刚刚给方法刚刚给方法</view>
+        <view class="content">{{item.content}}</view>
       </view>
       <view class='rt_pos2' wx:if="{{userIndex<VideoBg.length-1}}"></view>
     </swiper-item>
