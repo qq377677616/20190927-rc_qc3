@@ -129,9 +129,9 @@ Page({
 	 */
 	onShareAppMessage: function () {
 		let obj = {
-			title: '砍到0元免费送，快来帮我砍一刀！',
+			title: '共战疫情！“辰”意好礼免费领',
 			path: '/pages/bargain_index/bargain_index?activity_id=' + this.data.activity_id + "&isshare=6",
-			imageUrl: this.data.IMGSERVICE + "/center/kanjiashare.jpg"
+			imageUrl: this.data.IMGSERVICE + "/center/kanjiashare.jpg?1"
 		};
 		return obj;
 	},
