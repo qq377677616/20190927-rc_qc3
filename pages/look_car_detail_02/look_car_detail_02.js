@@ -44,6 +44,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	console.log(options);
     mta.Page.init()//腾讯统计
     mta.Event.stat("look_car_other", {})
     this.data.id = options.id

@@ -433,4 +433,8 @@ Page({
       signInIf: false,
     })
   },
+//  跳转到疫情页面
+	goyqpage(){
+		router.jump_nav({ url:"/pages/yqpage/yqpage"})
+	}
 })
