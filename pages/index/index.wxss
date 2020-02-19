@@ -326,3 +326,10 @@ page{
 	letter-spacing: 3rpx;
 	box-sizing: border-box;
 }
+.yqbtn{
+	width: 65rpx;
+	height: auto;
+	position: fixed;
+	right: 30rpx;
+	bottom: 400rpx;
+}

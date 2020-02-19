@@ -74,7 +74,7 @@ Page({
 				"lowprice": "",
 				"highprice": "",
 				"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
-				"titleImg": imageUrl + "/lookcar/title_xing_1.png?3",
+				"titleImg": imageUrl + "/lookcar/title_xing_1.png?6",
 				 cid: 11,
 				pritxt: '官方指导价'
 			},{
@@ -286,5 +286,14 @@ Page({
 			this.setData({ curr: flag })
 			flag++;
 		}, 50)
+	},
+	onShareAppMessage: function () {
+		const IMGSERVICE = imageUrl;
+		console.log(`${IMGSERVICE}/lookcar/carshare.jpg`);
+		return {
+			title: '东风启辰线上展厅，在家选好车！',
+			imageUrl: `${IMGSERVICE}/lookcar/carshare.jpg`,
+			path: '/pages/index/index'
+		};
 	}
 })
