@@ -706,6 +706,13 @@
 					"pathName": "pages/shake_prize/shake_prize",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "T60详情",
+					"pathName": "pages/look_car_detail_02/look_car_detail_02",
+					"query": "id=6",
+					"scene": null
 				}
 			]
 		}

@@ -38,7 +38,7 @@ App({
   },
 	globalData: {//https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
 	userInfo: null,
-	IMGSERVICE:'https://weixinfslb.venucia.com/uploads/assets_3.0',//'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
+		IMGSERVICE:'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0',//'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
     currentAddressItem: {},
     goodsDetail: {},
     cartDetail: {},
