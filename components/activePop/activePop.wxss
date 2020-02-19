@@ -106,3 +106,37 @@
   overflow: hidden;
   font-size: 30rpx !important;
 }
+
+/* type7 */
+
+.txt-7 {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(102, 102, 102, 1);
+  line-height: 40px;
+  margin-top: 43rpx;
+  height: 28rpx;
+}
+
+.btn7 {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 35rpx;
+}
+
+.btnPay {
+  width: 332rpx;
+  height: 70rpx;
+  background: linear-gradient(90deg, rgba(239, 77, 74, 1), rgba(223, 51, 48, 1));
+  border-radius: 35rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  line-height: 70rpx;
+  text-align: center;
+   margin-top: 53rpx;
+}

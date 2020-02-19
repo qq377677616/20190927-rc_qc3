@@ -34,11 +34,12 @@ App({
       signUpWin:keyGroup.signUpWin == false ? false : true,//报名开关
       spikeKey:keyGroup.spikeKey == false ? false : true,//秒杀开关
       shakeKey:keyGroup.shakeKey == false ? false : true,//摇一摇开关
+      pinKey:keyGroup.pinKey == false ? false : true,//99元下定开关
     })
   },
 	globalData: {//https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
 	userInfo: null,
-		IMGSERVICE:'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0',//'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
+	IMGSERVICE:'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0',//'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
     currentAddressItem: {},
     goodsDetail: {},
     cartDetail: {},

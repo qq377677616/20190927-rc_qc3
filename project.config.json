@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 81,
+			"current": 94,
 			"list": [
 				{
 					"id": -1,
@@ -555,7 +555,7 @@
 				},
 				{
 					"id": 71,
-					"name": "look_car_detail_03",
+					"name": "启辰星",
 					"pathName": "pages/look_car_detail_03/look_car_detail",
 					"query": "id=11",
 					"scene": null
@@ -712,6 +712,13 @@
 					"name": "T60详情",
 					"pathName": "pages/look_car_detail_02/look_car_detail_02",
 					"query": "id=6",
+					"scene": null
+				},
+				{
+					"id": 94,
+					"name": "精品兑换",
+					"pathName": "pages/payment/pay_change/pay_change",
+					"query": "cate_id =19",
 					"scene": null
 				}
 			]

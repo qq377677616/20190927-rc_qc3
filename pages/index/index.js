@@ -157,6 +157,12 @@ Page({
       .then((value) => {
         const listInfo = value[0].data.data;
         const activityList = value[1].data.data.list;
+        // 判断看车类型
+        activityList.forEach((item, index) => {
+          if (item.activity_type == 16) {
+            wx.setStorageSync('activity_id', item.activity_id)
+          }
+        })
         const signInInfo = value[2].data.data;
         const personalInfo = value[3].data.data;
         // const tag = value[4].data.status;
@@ -423,6 +429,12 @@ Page({
         //15 刮刮乐
         router.jump_nav({
           url: `/pages/binding/owner/owner?activity_id=${activity_id}`,
+        })
+        break;
+      case 16:
+        //16 99元支付
+        router.jump_nav({
+          url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
         })
         break;
     }

@@ -1,0 +1,28 @@
+<!--pages/payment/pay_change/pay_change.wxml-->
+<view class="main">
+  <view class="banner">
+    <image src="{{goodsData.banner}}" mode="widthFix"></image>
+  </view>
+  <view class="list-bg" wx:for="{{goodsData.list}}">
+    <view class="bg">
+      <view class="list">
+        <view class="left">
+          <image src="{{item.thumb}}" mode="widthFix"></image>
+        </view>
+        <view class="right">
+            <view class="r-txt1 nowrap">{{item.title}}</view>
+            <view class="jindu">
+              <view class="jindutiao"></view>
+              <view class="j-txt">仅剩99件</view>
+            </view>
+            <view class="v-dou">
+              <image src="{{IMGSERVICE}}/pay/bi.png" mode="widthFix"></image>
+              <view class="v-txt">{{item.vcoin}}</view>
+            </view>
+            <view class="v-btn">立即兑换</view>
+            <!-- <view class="v-btn v-btn2">暂未开放</view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
