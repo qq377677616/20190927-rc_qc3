@@ -209,6 +209,7 @@ swiper-item {
   font-weight: bold;
   color: #e7120e;
   margin-top: 17rpx;
+  margin-left: 15rpx;
 }
 
 .prize-pic {
@@ -216,6 +217,7 @@ swiper-item {
   height: 152rpx;
   overflow: hidden;
   margin-top: 22rpx;
+  margin-left: 15rpx;
 }
 
 .prize-pic image {

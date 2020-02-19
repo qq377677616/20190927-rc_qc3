@@ -399,7 +399,7 @@ Page({
     let obj = {
       title: '摇一摇拿红包，至高4188元购车基金助您购车！',
       path: `/pages/friendHelp/friendHelp?shake_id=${shake_id}&openid=${openid}&activity_id=${activity_id}`,
-      imageUrl: this.data.IMGSERVICE + "/activity/share_shake.png"
+      imageUrl: this.data.IMGSERVICE + "/activity/share_shake.png?123"
     };
     return obj;
   },

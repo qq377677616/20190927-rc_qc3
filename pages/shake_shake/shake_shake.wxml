@@ -1,7 +1,7 @@
 <!--pages/shake_shake/shake_shake.wxml-->
 
 <!-- shake_shake_page -->
-<view class="shake_bg" style="background-image:url('{{IMGSERVICE}}/activity/shake_111.png')"></view>
+<view class="shake_bg" style="background-image:url('{{IMGSERVICE}}/activity/shake_111.png?123')"></view>
 <view class="shake_shake_page" style="background-image:url({{activity_info.banner}})" bindtap="isVehicleOwner">
 
   <!-- main -->

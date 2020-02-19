@@ -14,7 +14,7 @@
       <view class="icon iconfont icon-READMORE"></view>
     </view>
     <view class="top-title">我的现金红包</view>
-    <view class="top-cash">5999</view>
+    <view class="top-cash">{{acData.my_score}}</view>
     <view class="img">
       <view class="btn" bindtap="getPrize"></view>
       <image class="img_bg" src="{{IMGSERVICE}}/pay/index_bg.png" mode="widthFix"></image>
