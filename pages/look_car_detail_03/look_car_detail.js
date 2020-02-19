@@ -6,8 +6,11 @@ const request_05 = require('../../utils/request/request_05.js');
 const router = require('../../utils/tool/router.js');
 
 const alert = require('../../utils/tool/alert.js');
+const tool = require('../../utils/tool/tool.js');
 
 const app = getApp(); //获取应用实例
+
+let dingshi;
 
 let swiper1Timmer = null;
 let swiper2Timmer = null;
@@ -27,6 +30,7 @@ Page({
     isShowForm: false,
     formsType: 2,
     vehicle: {},
+    isHaveCard: false, // 是否有卡券信息
     domAnimatedList: [{
         local: 0,
         height: 0,
@@ -152,7 +156,7 @@ Page({
   initData(options) {
     this.getPayInfo()
 
-    alert.loading({
+    tool.loading({
       str: '加载中'
     })
 
@@ -245,6 +249,10 @@ Page({
         this.setData({
           payInfoData: res.data.data
         })
+        if (res.data.data.card_info.length > 0) {
+          console.log('有')
+          this.cardFun()
+        }
       } else {
         alert.alert(res.data.msg)
       }
@@ -253,7 +261,8 @@ Page({
 
   // 添加卡券核销
   cardFun() {
-    alert.loading({
+    clearInterval(dingshi)
+    tool.loading({
       str: '加载中'
     })
     let card_info = this.data.payInfoData.card_info;
@@ -265,7 +274,7 @@ Page({
         cardExt: card_info[0].cardExt
       }],
       success(res) {
-        alert.loading_h()
+        tool.loading_h()
         console.log(res.cardList) // 卡券添加结果 
         wx.showToast({
           title: '领取成功',
@@ -287,8 +296,8 @@ Page({
           }
         })
       },
-      fail(){
-        alert.loading_h()
+      fail() {
+        tool.loading_h()
       }
     })
   },
@@ -329,17 +338,14 @@ Page({
               paySign: res.data.data.paySign,
               success(res) {
                 _this.isShowForm()
-                setTimeout(() => {
-                  _this.getPayInfo();
-                }, 2500)
                 wx.showToast({
                   title: '支付成功',
                   icon: 'success',
-                  duration: 2500
+                  duration: 2000
                 })
                 setTimeout(() => {
-                  _this.cardFun();
-                }, 3000)
+                  _this.getPayInfo()
+                }, 2500)
               },
               fail(res) {
                 console.log('支付失败')
@@ -360,50 +366,6 @@ Page({
         })
         break;
     }
-    // if (order_sn != "") {
-    //   request_05.getPayParam({
-    //     openid,
-    //     activity_id
-    //   }).then(res => {
-    //     console.log(res, 'res')
-    //     if (res.data.status == 1) {
-    //       wx.requestPayment({
-    //         timeStamp: res.data.data.timeStamp,
-    //         nonceStr: res.data.data.nonceStr,
-    //         package: res.data.data.package,
-    //         signType: 'MD5',
-    //         paySign: res.data.data.paySign,
-    //         success(res) {
-    //           wx.showToast({
-    //             title: '支付成功',
-    //             icon: 'success',
-    //             duration: 1000
-    //           })
-    //           setTimeout(() => {
-    //             router.jump_nav({
-    //               url: `/pages/pay_index/pay_index?activity_id=${activity_id}`,
-    //             })
-    //           }, 1000)
-    //         },
-    //         fail(res) {
-    //           console.log('支付失败')
-    //         }
-    //       })
-    //     } else {
-
-    //     }
-    //   })
-    // } else {
-    //   const lookCarDetail = this.data.lookCarDetail;
-    //   this.setData({
-    //     vehicle: {
-    //       img: lookCarDetail.car_img,
-    //       title: lookCarDetail.car_name,
-    //       price: lookCarDetail.car_prize,
-    //     },
-    //     isShowForm: true,
-    //   })
-    // }
   },
   //留资弹窗打开、关闭
   isShowForm() {
@@ -447,17 +409,14 @@ Page({
                 paySign: res.data.data.paySign,
                 success(res) {
                   _this.isShowForm()
-                  setTimeout(() => {
-                    _this.getPayInfo();
-                  }, 2500)
                   wx.showToast({
                     title: '支付成功',
                     icon: 'success',
-                    duration: 2500
+                    duration: 2000
                   })
                   setTimeout(() => {
-                    _this.cardFun();
-                  }, 3000)
+                    _this.getPayInfo();
+                  }, 2500)
                 },
                 fail(res) {
                   console.log('支付失败')

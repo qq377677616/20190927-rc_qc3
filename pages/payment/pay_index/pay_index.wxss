@@ -34,6 +34,28 @@
   align-items: center;
 }
 
+.top-title {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333;
+  position: absolute;
+  top: 121rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top-cash {
+  font-size: 66rpx;
+  font-family: PingFang SC;
+  font-weight: 800;
+  color: #f63c46;
+  position: absolute;
+  top: 176rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .main .rule2 {
   min-width: 160rpx;
   height: 60rpx;

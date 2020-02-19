@@ -48,4 +48,11 @@
     <view class="btnPay" bindtap="toKan">立即下定</view>
     <view class="btn7" bindtap="otherAct">查看其它活动</view>
   </view>
+  <!-- wx:if="{{type==7}}" -->
+  <view class="Actpop" wx:if="{{popType==8}}">
+    <text class="txt1">您还未领取</text>
+    <text class="txt2 txt-7">{{text}}</text>
+    <view class="btnPay" bindtap="toKan">立即领取</view>
+    <view class="btn7" bindtap="otherAct">查看其它活动</view>
+  </view>
 </view>

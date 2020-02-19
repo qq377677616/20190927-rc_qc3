@@ -64,9 +64,21 @@ Page({
   //去兑换页
   toChange() {
     let cate_id = this.data.acData.activity_info.cate_id
-    console.log(cate_id,'cate_id')
+    console.log(cate_id, 'cate_id')
     router.jump_nav({
       url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}`
+    })
+  },
+
+  //立即领取
+  sucPrize() {
+    this.setData({
+      openPrize: false,
+    })
+    wx.showToast({
+      title: '领取成功',
+      icon: 'success',
+      duration: 1000
     })
   },
 
@@ -94,8 +106,8 @@ Page({
       case 4:
         this.setData({
           isVehicleOwnerHidePop: true,
-          popType: 7,
-          text: "即刻下订，领现金红包",
+          popType: 8,
+          text: "立即领取,领现金红包",
           acData: this.data.acData
         })
         break;

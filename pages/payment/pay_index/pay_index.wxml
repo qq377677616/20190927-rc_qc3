@@ -2,7 +2,7 @@
 <view class="pay_page" bindtap="isVehicleOwner">
   <view class="main">
     <view class="rule" catchtap="switchRule">
-      <view class="text">报名规则</view>
+      <view class="text">活动规则</view>
       <view class="icon iconfont icon_more"></view>
     </view>
     <view class="rule2">
@@ -13,6 +13,8 @@
       <view class="text">礼品兑换</view>
       <view class="icon iconfont icon-READMORE"></view>
     </view>
+    <view class="top-title">我的现金红包</view>
+    <view class="top-cash">5999</view>
     <view class="img">
       <view class="btn" bindtap="getPrize"></view>
       <image class="img_bg" src="{{IMGSERVICE}}/pay/index_bg.png" mode="widthFix"></image>
@@ -47,7 +49,7 @@
       <view class="prize-pic">
         <image src="{{prizeData.prize_img}}" mode="widthFix"></image>
       </view>
-      <view class="prize-btn"></view>
+      <view class="prize-btn" bindtap="sucPrize"></view>
     </view>
   </view>
 </view>
