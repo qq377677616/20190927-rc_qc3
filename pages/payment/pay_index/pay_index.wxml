@@ -1,0 +1,61 @@
+<!--pages/payment/pay_index/pay_index.wxml-->
+<view class="pay_page" bindtap="isVehicleOwner">
+  <view class="main">
+    <view class="rule" catchtap="switchRule">
+      <view class="text">报名规则</view>
+      <view class="icon iconfont icon_more"></view>
+    </view>
+    <view class="rule2">
+      <view class="text">我的奖品</view>
+      <view class="icon iconfont icon-READMORE"></view>
+    </view>
+    <view class="rule3" catchtap="toChange">
+      <view class="text">礼品兑换</view>
+      <view class="icon iconfont icon-READMORE"></view>
+    </view>
+    <view class="img">
+      <view class="btn" bindtap="getPrize"></view>
+      <image class="img_bg" src="{{IMGSERVICE}}/pay/index_bg.png" mode="widthFix"></image>
+    </view>
+    <!-- 中奖信息列表 -->
+    <view class="bottom">
+      <view class="title">
+        <image src="{{IMGSERVICE}}/pay/payList_title.png" mode="widthFix"></image>
+      </view>
+
+      <view class="prize-list">
+        <view class="p-header flex-cen">
+          <view>中奖用户</view>
+          <view class="text">奖品</view>
+          <view>中奖时间</view>
+        </view>
+        <swiper vertical="{{true}}" display-multiple-items="{{acData.win_list.length>6?6:acData.win_list.length}}" autoplay="{{acData.win_list.length>6}}" interval="1500" circular="{{acData.win_list.length>6}}" style="height:522rpx">
+          <swiper-item class="flex-cen" wx:for="{{acData.win_list}}" wx:key="item" style="align-items: start;height:auto !important;">
+            <view>{{item.nickname}}</view>
+            <view class="text">{{item.prize_name || ''}}</view>
+            <view>{{item.create_time || ''}}</view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <!-- 中奖弹窗 -->
+  <view class="prize-con" wx:if="{{openPrize}}">
+    <view class="prize-bg" style="background-image:url('{{ IMGSERVICE }}/pay/pay_prize_bg.png')">
+      <view class="txt1">恭喜您获得了</view>
+      <view class="prize-title">{{prizeData.prize_name}}</view>
+      <view class="prize-pic">
+        <image src="{{prizeData.prize_img}}" mode="widthFix"></image>
+      </view>
+      <view class="prize-btn"></view>
+    </view>
+  </view>
+</view>
+<!-- 规则 -->
+<view class="pof fadeShow" wx:if="{{rulspop}}">
+  <rule bindclose="switchRule" ruleImg="{{indexData.rule}}"></rule>
+</view>
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}" id="popType_index">
+  <activePop acData="{{acData}}" popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
+</view>

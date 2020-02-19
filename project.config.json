@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 81,
+			"current": 94,
 			"list": [
 				{
 					"id": -1,
@@ -555,7 +555,7 @@
 				},
 				{
 					"id": 71,
-					"name": "look_car_detail_03",
+					"name": "启辰星",
 					"pathName": "pages/look_car_detail_03/look_car_detail",
 					"query": "id=11",
 					"scene": null
@@ -705,6 +705,20 @@
 					"name": "摇一摇留资",
 					"pathName": "pages/shake_prize/shake_prize",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "99元下定",
+					"pathName": "pages/payment/pay_index/pay_index",
+					"query": "activity_id=18",
+					"scene": null
+				},
+				{
+					"id": 94,
+					"name": "精品兑换",
+					"pathName": "pages/payment/pay_change/pay_change",
+					"query": "cate_id =19",
 					"scene": null
 				}
 			]

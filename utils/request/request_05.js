@@ -432,6 +432,107 @@ const carList = (data) => {
   })
 } 
 
+//99元下定首页
+const ninepayInfo = (data) => {
+  let url = `${SERVICE}/api3/ninepay/activity_info`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+//99元下定留资
+const ninepaySetData = (data) => {
+  let url = `${SERVICE}/api3/ninepay/set_data`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+//99元下定拉取支付参数
+const getPayParam = (data) => {
+  let url = `${SERVICE}/api3/ninepay/pay_param`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+//99元下定核销码上报
+const payReceiveCard = (data) => {
+  let url = `${SERVICE}/api3/ninepay/receive_card`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+//99元下定活动    抽奖
+const payDraw = (data) => {
+  let url = `${SERVICE}/api3/ninepay/draw`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+//99元下定活动    兑换
+const goodsList = (data) => {
+  let url = `${SERVICE}/api3/shop/goods_list`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
 
 module.exports = {
   myVote,
@@ -456,7 +557,13 @@ module.exports = {
   updateCardCode,
   getWechatCard,
   orderCardCode,
-  carList
+  carList,
+  ninepayInfo,
+  ninepaySetData,
+  getPayParam,
+  payReceiveCard,
+  payDraw,
+  goodsList
 }
 
 

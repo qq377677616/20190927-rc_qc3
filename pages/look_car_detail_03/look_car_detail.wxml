@@ -194,15 +194,17 @@
         <image src="{{ IMGSERVICE }}/spike/page4_22.png" mode="widthFix" bindtap="giftBtn"></image>
     </button> -->
     <view class="gift-btn">
-        <image src="{{ IMGSERVICE }}/spike/page4_22.png" mode="widthFix" bindtap="downPayment"></image>
+        <!-- <image src="{{ IMGSERVICE }}/spike/page4_22.png" mode="widthFix" bindtap="downPayment"></image> -->
+        <!-- <image src="{{ IMGSERVICE }}/spike/page4_22.png" mode="widthFix" bindtap="downPayment"></image> -->
+        <image wx:if="{{payInfoData.show_page==2 || payInfoData.show_page==3}}" src="{{ IMGSERVICE }}/pay/pay_btn.png" mode="widthFix" bindtap="downPayment"></image>
+        <image wx:if="{{payInfoData.show_page==4}}" src="{{ IMGSERVICE }}/pay/pay_get_btn.png" bindtap="cardFun" mode="widthFix"></image>
     </view>
 
 
 
     <!-- float-btn -->
     <view class="float-btn">
-        <!-- <image bindtap="downPayment" src="{{ IMGSERVICE }}/spike/page4_23.png" mode="widthFix"></image> -->
-        <image bindtap="moreBtn" src="{{ IMGSERVICE }}/spike/page4_24.png" mode="widthFix"></image>
+        <image bindtap="downPayment" src="{{ IMGSERVICE }}/spike/page4_23.png" mode="widthFix"></image>
     </view>
 
 

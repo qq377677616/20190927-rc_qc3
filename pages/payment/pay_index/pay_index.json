@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "rule": "/components/rule/rule",
+    "activePop": "/components/activePop/activePop",
+    "forms": "/components/forms/form"
+  },
+  "navigationBarTitleText": "车主下定"
+}
