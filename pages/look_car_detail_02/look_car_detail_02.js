@@ -37,8 +37,18 @@ Page({
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_01.png', url: '/pages/bargain_index/bargain_index?activity_id=47' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_02.png', url: '/pages/assemble/pin/pin?activity_id=44' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' }
-    ]
+    ],
+	carcol:[
+		{img: 't60_col1.png', txt: '旭日橙/珠光白双色'},
+		{img: 't60_col2.png', txt: '烈焰红/曜石黑双色' },
+		{ img: 't60_col3.png', txt: '珠光白/曜石黑双色' },
+		{ img: 't60_col4.png', txt: '烈焰红' },
+		{ img: 't60_col5.png', txt: '曜石黑' },
+		{ img: 't60_col6.png', txt: '乌刚灰' },
+	]
   },
+
+	
 
   /** 
    * 生命周期函数--监听页面加载
@@ -103,7 +113,7 @@ Page({
   },
   //页面初始化
   initData(options) {
-    tool.loading("加载中")
+    // tool.loading("加载中")
     Promise.all([
       request_01.lookCarDetail({
         user_id: wx.getStorageSync('userInfo').user_id,
@@ -136,7 +146,7 @@ Page({
   },
   //详情图片加载完成
   bindload() {
-    tool.loading_h()
+    // tool.loading_h()
   },
   //导航列表
   navList(e) {

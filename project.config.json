@@ -709,9 +709,9 @@
 				},
 				{
 					"id": -1,
-					"name": "99元下定",
-					"pathName": "pages/payment/pay_index/pay_index",
-					"query": "activity_id=18",
+					"name": "T60详情",
+					"pathName": "pages/look_car_detail_02/look_car_detail_02",
+					"query": "id=6",
 					"scene": null
 				},
 				{

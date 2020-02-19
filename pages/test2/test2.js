@@ -25,7 +25,7 @@ Page({
 		options: {},
 		carList: [],
 		infoLunbo: {
-			autoplay: false, //是否自动轮播
+			autoplay: true, //是否自动轮播
 			interval: 4000, //间隔时间
 			duration: 1000, //滑动时间
 			current: 0,
@@ -165,7 +165,7 @@ Page({
 			line: e.detail.current,
 			toView: 'info' + (e.detail.current + 1),
 		})
-		console.log(this.data.line)
+		// console.log(this.data.line)
 		// this.playxlz(); 播放滑动序列
 		if (e.detail.current > 3) {
 			this.setData({ scrollLeft: (e.detail.current - 3) * 60 })
