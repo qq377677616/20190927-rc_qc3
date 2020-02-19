@@ -5,7 +5,7 @@
       <view class="text">活动规则</view>
       <view class="icon iconfont icon_more"></view>
     </view>
-    <view class="rule2">
+    <view class="rule2" catchtap="toPrize">
       <view class="text">我的奖品</view>
       <view class="icon iconfont icon-READMORE"></view>
     </view>

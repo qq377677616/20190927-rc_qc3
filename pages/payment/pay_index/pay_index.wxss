@@ -14,7 +14,7 @@
   height: 180rpx;
   border-radius: 50%;
   position: absolute;
-  top: 38%;
+  top: 460rpx;
   left: 50%;
   transform: translateX(-50%);
 }

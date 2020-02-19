@@ -41,7 +41,8 @@ Page({
         car_owner: res.data.data.activity_info.car_owner,
         activity_id: options.activity_id,
         order_sn: res.data.data.order_sn,
-        acData: res.data.data
+        acData: res.data.data,
+        options
       })
       let keyGroup = wx.getStorageSync('keyGroup')
       console.log(keyGroup, 'keyGroup')
@@ -67,6 +68,15 @@ Page({
     console.log(cate_id, 'cate_id')
     router.jump_nav({
       url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}`
+    })
+  },
+
+  //我的奖品
+  toPrize() {
+    let activity_id = this.data.activity_id
+    console.log(111111)
+    router.jump_nav({
+      url: `/pages/o_prize/o_prize?activity_id=${activity_id}`
     })
   },
 
@@ -236,9 +246,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (this.data.isOnShow) {
-      this.initData(options);
-    }
+    // let options = this.data.options
+    // if (this.data.isOnShow) {
+    //   this.initData(options);
+    // }
   },
 
   /**
