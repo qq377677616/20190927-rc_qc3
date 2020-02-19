@@ -81,7 +81,7 @@ Page({
         })
         console.log('help_num2', res.data.data.max_help_num)
         if (res.data.data.activity_info.status == 3) {
-          if (res.data.data.can_upgrade == 1) {
+          if (res.data.data.can_upgrade == 1 ) {
             this.setData({
               isShowMe: false,
               isShow: true,
@@ -96,7 +96,7 @@ Page({
             })
           }
         } else {
-          if (res.data.data.can_upgrade == 1) {
+          if (res.data.data.can_upgrade == 1 || res.data.data.shake_info.is_upgrade ==1) {
             if (res.data.data.shake_info.is_upgrade == 0) {
               let quanMoney = res.data.data.upgrade_prize.prize_name.split('元')[0]
               this.setData({

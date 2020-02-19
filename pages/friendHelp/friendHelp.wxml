@@ -30,7 +30,8 @@
     </view>
     <!-- 查看其他活动BOX -->
     <view class="helpBox helpBox2" wx:if="{{isTen}}">
-      <view class="readyTxt">已经有{{help_num}}位好友助力，快来领取奖品</view>
+      <view class="readyTxt" wx:if="{{is_upgrade==0}}">已经有{{help_num}}位好友助力，快来领取奖品</view>
+      <view class="readyTxt" wx:if="{{is_upgrade==1}}">已领取奖品!</view>
       <view class="quanBox" style="background-image:url({{IMGSERVICE}}/activity/lq_suc.png)" wx:if="{{is_upgrade==0}}">
         <view class="shoe-pre">
           <view class="shoe" style="background-image:url('{{upgrade_prize.prize_img}}')">
