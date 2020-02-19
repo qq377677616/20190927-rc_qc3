@@ -134,7 +134,7 @@ swiper {
 }
 
 swiper-item {
-  height: 96rpx;
+  height: 96rpx !important;
   color: #333;
   font-size: 24rpx;
   border-bottom: 1rpx dashed #f7efe6;

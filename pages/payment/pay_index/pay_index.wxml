@@ -30,7 +30,7 @@
           <view>中奖时间</view>
         </view>
         <swiper vertical="{{true}}" display-multiple-items="{{acData.win_list.length>6?6:acData.win_list.length}}" autoplay="{{acData.win_list.length>6}}" interval="1500" circular="{{acData.win_list.length>6}}" style="height:522rpx">
-          <swiper-item class="flex-cen" wx:for="{{acData.win_list}}" wx:key="item" style="align-items: start;height:auto !important;">
+          <swiper-item class="flex-cen" wx:for="{{acData.win_list}}" wx:key="item" style="align-items: start;">
             <view>{{item.nickname}}</view>
             <view class="text">{{item.prize_name || ''}}</view>
             <view>{{item.create_time || ''}}</view>
