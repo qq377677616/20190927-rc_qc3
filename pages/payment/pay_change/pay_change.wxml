@@ -19,7 +19,7 @@
               <image src="{{IMGSERVICE}}/pay/bi.png" mode="widthFix"></image>
               <view class="v-txt">{{item.vcoin}}</view>
             </view>
-            <view class="v-btn">立即兑换</view>
+            <view class="v-btn" bindtap="toDetail">立即兑换</view>
             <!-- <view class="v-btn v-btn2">暂未开放</view> -->
         </view>
       </view>

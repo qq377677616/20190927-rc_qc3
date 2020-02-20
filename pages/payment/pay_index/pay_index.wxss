@@ -19,6 +19,16 @@
   transform: translateX(-50%);
 }
 
+.getPhone {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 460rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .main .rule {
   min-width: 153rpx;
   height: 60rpx;

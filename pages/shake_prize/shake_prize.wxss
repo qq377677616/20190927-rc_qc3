@@ -1,4 +1,5 @@
 /* pages/shake_prize/shake_prize.wxss */
+@import "/assets/iconfont/iconfont.wxss";
 
 page {
   width: 100%;

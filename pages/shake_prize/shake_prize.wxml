@@ -32,7 +32,7 @@
     </view>
     <view class="info-list border-top">
       <view class="left">
-        <view class="icon iconfont icon-kanche_xianxing"></view>
+        <view class="icon iconfont icon-kanchexianxing1"></view>
         <view class="txt">
           <block>
             <picker bindchange="bindPickerCar" value="{{index}}" range="{{selCarList}}">
