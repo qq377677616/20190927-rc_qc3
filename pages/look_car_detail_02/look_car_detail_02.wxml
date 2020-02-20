@@ -123,7 +123,16 @@
 						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_11.png" class="num3"></image>
 					</view>
 				</view>
+				<view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_13.png)">
+					<text class="txt6">2640mm</text>
+					<text class="txt7">1679mm</text>
+				</view>
+				<view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_14.png)">
+					<text class="txt8">4412mm</text>
+					<text class="txt9">1820mm</text>
+				</view>
 
+				<view class="txt10">智悦版车型断面图和剖面</view>
 
 			</view>	
 

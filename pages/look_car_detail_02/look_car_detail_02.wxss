@@ -309,3 +309,66 @@ margin-bottom: 32rpx;
 	right: -39rpx;
 	top: 0;
 }
+.footcar1{
+	width: 457rpx;
+	height: 197rpx;
+	background: no-repeat center/cover;
+	margin: 0 auto;
+	margin-top: 80rpx;
+	position: relative;
+}
+.footcar2{
+	width: 408rpx;
+	height: 207rpx;
+	margin: 0 auto;
+	margin-top: 59rpx;
+	background: center no-repeat/cover;
+	position: relative;
+}
+.txt6{
+	font-size:19rpx;
+	font-family:NissanBrand;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+	position: absolute;
+	left: 168rpx;
+	bottom: 0;
+}
+.txt7{
+	transform: rotate(-90deg);
+	right:-32rpx;
+	top: 75rpx;
+	font-size:19rpx;
+	font-family:NissanBrand;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+	position: absolute;
+}
+.txt8{
+	font-size:19rpx;
+	font-family:NissanBrand;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+	position: absolute;
+	left: 141rpx;
+	bottom: 0;
+}
+.txt9{
+	transform: rotate(-90deg);
+	right:-32rpx;
+	top: 75rpx;
+	font-size:19rpx;
+	font-family:NissanBrand;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+	position: absolute;
+}
+.txt10{
+	width: 100%;
+	text-align: center;
+	margin-top: 42rpx;
+	font-size:19rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+}

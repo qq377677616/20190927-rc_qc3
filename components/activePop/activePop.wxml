@@ -43,9 +43,9 @@
   </view>
   <!-- wx:if="{{type==7}}" -->
   <view class="Actpop" wx:if="{{popType==7}}">
-    <text class="txt1">您还未下定</text>
+    <text class="txt1">您还未下订</text>
     <text class="txt2 txt-7">{{text}}</text>
-    <view class="btnPay" bindtap="toKan">立即下定</view>
+    <view class="btnPay" bindtap="toKan">立即下订</view>
     <view class="btn7" bindtap="otherAct">查看其它活动</view>
   </view>
   <!-- wx:if="{{type==7}}" -->
