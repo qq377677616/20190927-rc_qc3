@@ -534,6 +534,23 @@ const goodsList = (data) => {
   })
 }
 
+//99元下定活动    兑换
+const dePhone = (data) => {
+  let url = `${SERVICE}/api3/oauth/de_phone`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
 module.exports = {
   myVote,
   uploadVote,
@@ -563,7 +580,8 @@ module.exports = {
   getPayParam,
   payReceiveCard,
   payDraw,
-  goodsList
+  goodsList,
+  dePhone
 }
 
 
