@@ -94,6 +94,7 @@ Page({
 
   // 抽奖
   getPrize() {
+    let options = this.data.options
     if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").unionid || !wx.getStorageSync("userInfo").nickName) return;
     let show_page = this.data.show_page
     switch (show_page) {
@@ -125,17 +126,25 @@ Page({
         let activity_id = this.data.activity_id
         let openid = wx.getStorageSync('userInfo').openid
         if (this.data.openDraw) {
+          this.setData({
+            openDraw:false
+          })
           request_05.payDraw({
             openid,
             activity_id
           }).then(res => {
             console.log(res, 'res')
             if (res.data.status == 1) {
+              this.initData(options)
               this.setData({
                 openPrize: true,
+                openDraw:true,
                 prizeData: res.data.data.prize_info
               })
             } else {
+              this.setData({
+                openDraw:true
+              })
               tool.alert(res.data.msg)
             }
           })
