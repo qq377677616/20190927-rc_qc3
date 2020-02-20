@@ -34,7 +34,7 @@ page {
   border-bottom: 1rpx solid #eee;
 }
 
-.border-top{
+.border-top {
   border-top: 1rpx solid #eee;
 }
 
@@ -49,6 +49,10 @@ page {
 
 .icon-shouyexianxing {
   font-size: 40rpx;
+}
+
+.icon-kanchexianxing1 {
+  font-size: 42rpx;
 }
 
 .icon_more {
@@ -120,10 +124,10 @@ page {
   color: #fff;
 }
 
-.icon-kanche_xianxing{
+.icon-kanche_xianxing {
   font-size: 40rpx;
 }
 
-.picker{
+.picker {
   width: 400rpx;
 }

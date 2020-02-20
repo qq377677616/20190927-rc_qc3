@@ -156,6 +156,7 @@ Page({
 
   // 授权手机号
   getPhoneNumber(e) { 
+    console.log(111111111111)
     let options = this.data.options
     let user_id = wx.getStorageSync('userInfo').user_id
     let session_key = wx.getStorageSync('userInfo').session_key
@@ -169,6 +170,8 @@ Page({
     }).then(res => {
       if (res.data.status == 1) {
         this.initData(options)
+      }else{
+        tool.alert(res.data.msg)
       }
     })
   },
