@@ -259,6 +259,14 @@ Page({
     })
   },
 
+  // 去下定活动首页
+  toPayIndex() {
+    let activity_id = wx.getStorageSync('activity_id')
+    router.jump_red({
+      url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`
+    })
+  },
+
   // 添加卡券核销
   cardFun() {
     clearInterval(dingshi)

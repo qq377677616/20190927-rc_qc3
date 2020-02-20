@@ -198,7 +198,7 @@
         <!-- <image src="{{ IMGSERVICE }}/spike/page4_22.png" mode="widthFix" bindtap="downPayment"></image> -->
         <image wx:if="{{payInfoData.show_page==2 || payInfoData.show_page==3}}" src="{{ IMGSERVICE }}/pay/pay_btn.png" mode="widthFix" bindtap="downPayment"></image>
         <image wx:if="{{payInfoData.show_page==4}}" src="{{ IMGSERVICE }}/pay/pay_get_btn.png" bindtap="cardFun" mode="widthFix"></image>
-        <image wx:if="{{payInfoData.show_page==5}}" src="{{ IMGSERVICE }}/pay/toGetPrize.png" bindtap="cardFun" mode="widthFix"></image>
+        <image wx:if="{{payInfoData.show_page==5}}" src="{{ IMGSERVICE }}/pay/toGetPrize.png" bindtap="toPayIndex" mode="widthFix"></image>
     </view>
 
 
