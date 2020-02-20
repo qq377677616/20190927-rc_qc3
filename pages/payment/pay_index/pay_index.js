@@ -141,20 +141,27 @@ Page({
           })
         }
         break;
-
+      case 6:
+        tool.alert('您今天已领过红包啦，请明天再来哦~')
+        break;
     }
   },
 
 
   // 授权手机号
-  getPhoneNumber(e) {
+  getPhoneNumber(e) { 
     let options = this.data.options
     let user_id = wx.getStorageSync('userInfo').user_id
     let session_key = wx.getStorageSync('userInfo').session_key
     let iv = e.detail.iv
     let encrypted_data = e.detail.encryptedData
-    request_05.dePhone({ user_id, session_key, iv, encrypted_data}).then(res=>{
-      if(res.data.status==1){
+    request_05.dePhone({
+      user_id,
+      session_key,
+      iv,
+      encrypted_data
+    }).then(res => {
+      if (res.data.status == 1) {
         this.initData(options)
       }
     })
