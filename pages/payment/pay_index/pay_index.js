@@ -150,9 +150,6 @@ Page({
           })
         }
         break;
-      case 6:
-        tool.alert('您今天已领过红包啦，请明天再来哦~')
-        break;
     }
   },
 
