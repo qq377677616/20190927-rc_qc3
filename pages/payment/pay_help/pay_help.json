@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "activePop": "/components/activePop/activePop"
+  },
+  "navigationBarTitleText": "好友助力"
+}

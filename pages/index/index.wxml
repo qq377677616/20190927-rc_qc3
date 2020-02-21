@@ -2,45 +2,42 @@
 <!-- index_page -->
 <view class="index_page">
 
-    <!-- swiper-area -->
-    <view class="swiper_area">
+  <!-- swiper-area -->
+  <view class="swiper_area">
 
-        <swiper 
-            circular="true" 
-            autoplay="true" 
-            interval="2500" 
-            bindchange="dotchange">
+    <swiper circular="true" autoplay="true" interval="2500" bindchange="dotchange">
 
-            <swiper-item wx:for="{{ listInfo.banner_list }}" wx:key="index" style="background-image:url({{ item.image }});" data-index="{{ index }}" bindtap="bannerJump"></swiper-item>
-           
+      <swiper-item wx:for="{{ listInfo.banner_list }}" wx:key="index" style="background-image:url({{ item.image }});" data-index="{{ index }}" bindtap="bannerJump"></swiper-item>
 
-        </swiper>
 
-        <view class="dots">
-            <view wx:for="{{ listInfo.banner_list }}" wx:key="index" class="dot_item {{dotIndex == index ? 'active' : ''}}">
-                <view class="tiao"></view>
-            </view>
-            <!-- <view class="dot_item"></view> -->
+    </swiper>
+
+    <view class="dots">
+      <view wx:for="{{ listInfo.banner_list }}" wx:key="index" class="dot_item {{dotIndex == index ? 'active' : ''}}">
+        <view class="tiao"></view>
+      </view>
+      <!-- <view class="dot_item"></view> -->
+    </view>
+
+  </view>
+  <!-- swiper-area -->
+
+  <!-- main_container -->
+  <view class="main_container">
+
+    <!-- nav_area -->
+    <scroll-view scroll-x>
+      <view class="nav_area">
+
+        <view class="nav_item {{ listInfo.icon_list.length == 3 ? 'flex1' : 'flex0' }}" wx:for="{{ listInfo.icon_list }}" wx:key="index" data-index="{{ index }}" bindtap="navJump">
+          <view class="image">
+            <image src="{{ item.icon }}?3" mode="widthFix"></image>
+          </view>
+
+          <view class="span nowrap">{{ item.name }}</view>
         </view>
 
-    </view><!-- swiper-area -->
-
-    <!-- main_container -->
-    <view class="main_container">
-
-        <!-- nav_area -->
-        <scroll-view scroll-x>
-            <view class="nav_area">
-
-                <view class="nav_item {{ listInfo.icon_list.length == 3 ? 'flex1' : 'flex0' }}" wx:for="{{ listInfo.icon_list }}" wx:key="index" data-index="{{ index }}" bindtap="navJump">
-                    <view class="image">
-                        <image src="{{ item.icon }}?3" mode="widthFix"></image>
-                    </view>
-
-                    <view class="span nowrap">{{ item.name }}</view>
-                </view>
-
-                <!-- <view class="nav_item" data-id="{{ 1 }}" bindtap="navJump">
+        <!-- <view class="nav_item" data-id="{{ 1 }}" bindtap="navJump">
                     <view class="image">
                         <image src="{{ IMGSERVICE }}/index/ty.png" mode="widthFix"></image>
                     </view>
@@ -81,29 +78,30 @@
 
                     <view class="span nowrap">领V豆</view>
                 </view> -->
-                 
 
-            </view>
-            
-        </scroll-view><!-- nav_area -->
 
-        <!-- list_area -->
-        <view class="list_area">
-            
-            <scroll-view scroll-x>
-                <view class="title">
-                    <view class="title_item">
-                        <view class="span">活动</view>
-                        <!-- <view class="border"></view> -->
-                    </view>
-                </view>
-            </scroll-view>
+      </view>
 
-            <view class="list">
+    </scroll-view>
+    <!-- nav_area -->
 
-                <view wx:for="{{ activityList }}" wx:key="index" class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn"  data-index="{{ index }}" bindtap="activityJump">
+    <!-- list_area -->
+    <view class="list_area">
 
-                    <!-- <view class="describe">
+      <scroll-view scroll-x>
+        <view class="title">
+          <view class="title_item">
+            <view class="span">活动</view>
+            <!-- <view class="border"></view> -->
+          </view>
+        </view>
+      </scroll-view>
+
+      <view class="list">
+
+        <view wx:for="{{ activityList }}" wx:key="index" class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn" data-index="{{ index }}" bindtap="activityJump">
+
+          <!-- <view class="describe">
                         
                         <view class="main">
                             <view class="span nowrap">
@@ -115,77 +113,90 @@
                         </view>
 
                     </view> -->
-					<!-- 改版 -->
-					<view class="topimg" style="background-image:url({{ item.thumb }});"></view>
-					<view class="botominfo">
-						<view class="leftinfo">
-							<text class="Aname">{{ item.title }}</text>
-							<text class="Atime">{{ item.time }}</text>
-						</view>	
-						<view class="rightbtn">立即参与</view>
-					</view>
-                </view>
-
+          <!-- 改版 -->
+          <view class="topimg" style="background-image:url({{ item.thumb }});"></view>
+          <view class="botominfo">
+            <view class="leftinfo">
+              <text class="Aname">{{ item.title }}</text>
+              <text class="Atime">{{ item.time }}</text>
             </view>
-                
-        </view><!-- list_area -->
-
-    </view><!-- main_container -->
-
-    <!-- qc-More -->
-    <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More><!-- qc-More -->
-
-    <!-- qc-Tabbar -->
-    <qc-Tabbar></qc-Tabbar><!-- qc-Tabbar -->
-
-
-    <!-- qc-SignIn -->
-    <qc-SignIn 
-    bind:sureBtn="sureBtn"
-    wx:if="{{ signInIf }}"></qc-SignIn><!-- qc-SignIn -->
-
-    <!-- tips_mask -->
-    <view class="tips_mask fadeIn" wx:if="{{ bindcarIf }}" style="background-image:url({{ IMGSERVICE }}/center/bind_car.png);">
-
-        <view class="main">
-
-            <view class="title">绑定车主即可获得</view>
-
-            <view class="number">50V豆</view>
-
-            <view class="btn_group">
-                <view class="btn out" bindtap="unbind">暂不是车主</view>
-
-                <view class="btn go" bindtap="bind">立即绑定</view>
-            </view>
-
+            <view class="rightbtn">立即参与</view>
+          </view>
         </view>
 
-    </view><!-- tips_mask -->
+      </view>
 
-    <!-- tips_mask -->
-    <view class="tips_mask fadeIn" wx:if="{{ giftIf && keyGroup.giftKey }}" style="background-image:url({{ IMGSERVICE }}/index/jianmianli.png);">
+    </view>
+    <!-- list_area -->
 
-        <view class="main">
+  </view>
+  <!-- main_container -->
 
-            <view class="title">授权即可获得</view>
+  <!-- qc-More -->
+  <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More>
+  <!-- qc-More -->
 
-            <view class="number">30V豆</view>
+  <!-- qc-Tabbar -->
+  <qc-Tabbar></qc-Tabbar>
+  <!-- qc-Tabbar -->
 
-            <view class="btn_group">
-                <view class="btn out" bindtap="jumpGift">直接跳过</view>
 
-                <button open-type="getUserInfo" class="btn go" bindgetuserinfo="authBtn">立即授权</button>
-            </view>
+  <!-- qc-SignIn -->
+  <qc-SignIn bind:sureBtn="sureBtn" wx:if="{{ signInIf }}"></qc-SignIn>
+  <!-- qc-SignIn -->
 
-        </view>
+  <!-- tips_mask -->
+  <view class="tips_mask fadeIn" wx:if="{{ bindcarIf }}" style="background-image:url({{ IMGSERVICE }}/center/bind_car.png);">
 
-    </view><!-- tips_mask -->
+    <view class="main">
 
-    <!-- qc-page404 -->
-    <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
-    <!-- 疫情按钮 -->
-	<image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/yq_icon.png" class="yqbtn" bindtap="goyqpage"></image>
+      <view class="title">绑定车主即可获得</view>
+
+      <view class="number">50V豆</view>
+
+      <view class="btn_group">
+        <view class="btn out" bindtap="unbind">暂不是车主</view>
+
+        <view class="btn go" bindtap="bind">立即绑定</view>
+      </view>
+
+    </view>
+
+  </view>
+  <!-- tips_mask -->
+
+  <!-- tips_mask -->
+  <view class="tips_mask fadeIn" wx:if="{{ giftIf && keyGroup.giftKey }}" style="background-image:url({{ IMGSERVICE }}/index/jianmianli.png);">
+
+    <view class="main">
+
+      <view class="title">授权即可获得</view>
+
+      <view class="number">30V豆</view>
+
+      <view class="btn_group">
+        <view class="btn out" bindtap="jumpGift">直接跳过</view>
+
+        <button open-type="getUserInfo" class="btn go" bindgetuserinfo="authBtn">立即授权</button>
+      </view>
+
+    </view>
+
+  </view>
+  <!-- tips_mask -->
+
+  <!-- qc-page404 -->
+  <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404>
+  <!-- qc-page404 -->
+  <!-- 疫情按钮 -->
+  <image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/yq_icon.png" class="yqbtn" bindtap="goyqpage"></image>
+  <!-- 99元下定弹窗 -->
+  <view class="pay_pop" wx:if="{{isPay}}">
+    <view class="pay_bg" style="background-image:url('{{ IMGSERVICE }}/pay/pay_index_bg.png')">
+      <image class="pay_txt" src="{{ IMGSERVICE }}/pay/pay_index_txt.png" mode="widthFix"></image>
+      <view class="pay_txt2">每天都有红包拆，赶快来领！</view>
+      <view class="pay_btn" bindtap="toPay"></view>
+    </view>
+  </view>
 </view>
 <!-- index_page -->
-

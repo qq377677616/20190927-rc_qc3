@@ -90,7 +90,8 @@
         "pages/vote_prize/vote_prize",
         "pages/yqpage/yqpage",
         "pages/payment/pay_change/pay_change",
-        "pages/payment/pay_index/pay_index"
+        "pages/payment/pay_index/pay_index",
+		"pages/payment/pay_help/pay_help"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -112,5 +113,5 @@
         "scope.userLocation": {
             "desc": "你的位置信息将用于小程序位置接口的效果展示"
         }
-    }
+	}
 }

@@ -32,6 +32,7 @@ Page({
     str: '',
     isMore: false,
     tag: true,
+    isPay:false,  //支付弹窗
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -439,14 +440,34 @@ Page({
         break;
     }
   },
+
+  openPay(){
+    this.setData({
+      isPay:true
+    })
+  },
+
+  toPay() {
+    this.setData({
+      isPay:false
+    })
+    let activity_id = wx.getStorageSync('activity_id')
+    router.jump_nav({
+      url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
+    })
+  },
+
   //签到
   sureBtn() {
     this.setData({
       signInIf: false,
+      isPay:true,
     })
   },
-//  跳转到疫情页面
-	goyqpage(){
-		router.jump_nav({ url:"/pages/yqpage/yqpage"})
-	}
+  //  跳转到疫情页面
+  goyqpage() {
+    router.jump_nav({
+      url: "/pages/yqpage/yqpage"
+    })
+  }
 })
