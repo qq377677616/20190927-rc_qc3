@@ -67,6 +67,7 @@
         "pages/uploadPhotos/uploadPhotos",
         "pages/look_car_detail/look_car_detail",
         "pages/look_car_detail_02/look_car_detail_02",
+		"pages/look_car_detail_04/look_car_detail_04",
         "pages/cut_product_details/cut_product_details",
         "pages/cut_cart/cut_cart",
         "pages/baoming_lz/baoming_lz",

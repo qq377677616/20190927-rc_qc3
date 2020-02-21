@@ -1,0 +1,198 @@
+<!--pages/look_car_detail_02/look_car_detail_02.wxml-->
+
+<!-- look_car_detail_page -->
+<view class="look_car_detail_page">
+
+    <!-- nav_area -->
+    <view class="nav_area">
+        <view class="bg" style="left:{{navIndex * 50}}%"></view>
+        <view class="nav_item {{ navIndex == 0 ? 'active' : '' }}" data-index="0" bindtap="navList">车型介绍</view>
+        <view class="nav_item {{ navIndex == 1 ? 'active' : '' }}" data-index="1" bindtap="navList">参数配置</view>
+    </view>
+    <!-- nav_area -->
+
+    <!-- main -->
+    <scroll-view scroll-y class="main" scroll-top="{{scrollTop}}">
+        <view hidden="{{ navIndex == 0 }}">
+            <view class="group" wx:for="{{ car_details }}" wx:key="item">
+
+                <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
+                    <view class="label">{{item.value}}</view>
+                </view>
+                <view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
+                    <view class="lable">{{item.name}}</view>
+                    <view class="span">{{isSwitchIng ? '--' : item.value}}</view>
+                </view>
+            </view>
+            <view class="group">
+          <view class="li config_area flex-bet remarks">
+              <view class="lable">备注：</view>
+              <view class="span">
+                <view wx:for="{{lookCarDetail.remarks}}" wx:key="key{{index}}">{{item}}</view>
+              </view>
+          </view>
+        </view>
+        </view>
+        <view hidden="{{navIndex == 1}}">
+            <view class="image_item">
+                <!-- <image src="{{ lookCarDetail.car_details_img }}" mode="widthFix" bindload="bindload"></image> -->
+			<!-- T60 -->
+			<view>
+				<view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60.png)"></view>
+				<view class="txtbox1">
+					<text class="txt1">合资品质</text>
+					<text class="txt2">合资级品质  日产动力组合  五星标准安全防护</text>
+				</view>
+				<view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_2.png)"></view>
+				<view class="txtbox2">日产HR16发动机</view>
+				<!--轮播实例-->
+				<view class="threebg">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
+						 <block wx:for="{{5}}" wx:key="item">
+							<swiper-item>
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw{{index+1}}.png)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
+						 <block wx:for="{{5}}" wx:key="item">
+							<swiper-item>
+								<view class="item1 {{swiper1!=index-1&&!(swiper1==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw{{index+1}}.png)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<!--轮播实例-->
+
+				<view class="setwhite"></view>
+				<view class="txtbox1 setbg">
+					<text class="txt1">舒享座舱</text>
+					<text class="txt2">星航设计  舒适驾乘</text>
+				</view>
+				<view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_4.png)"></view>
+				<view class="txtbox2 txtbox3">“星航” 投射式LED前大灯</view>
+				
+				<!--轮播实例-->
+				<view class="threebg">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
+						 <block wx:for="{{5}}" wx:key="item">
+							<swiper-item>
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_{{index+1}}.png)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
+						 <block wx:for="{{5}}" wx:key="item">
+							<swiper-item>
+								<view class="item1 {{swiper2!=index-1&&!(swiper2==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw2_{{index+1}}.png)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<!--轮播实例-->
+
+				<view class="setwhite"></view>
+				
+				<view class="txtbox1 setbg">
+					<text class="txt1">智趣科技</text>
+					<text class="txt2">智能安全  智能控制  智能交互</text>
+				</view>
+
+				<view class="nt60_6" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_6.png)"></view>
+				<view class="txtbox2 txtbox3">BSW变道盲区预警系统</view>
+				<view class="threebg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_7.png)"></view>
+				
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1">
+						 <block wx:for="{{5}}" wx:key="item">
+							<swiper-item>
+								<view class="item1" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_3.png)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+
+				<view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png)">
+					<text class="txt3">启辰T60基本参数</text>
+					<text class="txt4">（官网画面仅供参考，购买时以实车为准）</text>
+					<view class="selectcol">
+						<scroll-view scroll-x="{{true}}">
+							<view class="setflex">
+								<view class="f_items" wx:for="{{carcol}}">
+									<view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
+									<text class="txt5">{{item.txt}}</text>
+								</view>
+							</view>
+						</scroll-view>
+					</view>
+				</view>
+				<view class="carnum">
+					<view class="numitem">
+						<text>百公里油耗</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_9.png" class="num1"></image>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_12.png" class="lines"></image>
+					</view>
+					<view class="numitem">
+						<text>智能双屏交互</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_10.png" class="num2"></image>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_12.png" class="lines"></image>
+					</view>
+					<view class="numitem">
+						<text>超长轴距</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_11.png" class="num3"></image>
+					</view>
+				</view>
+				<view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_13.png)">
+					<text class="txt6">2640mm</text>
+					<text class="txt7">1679mm</text>
+				</view>
+				<view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_14.png)">
+					<text class="txt8">4412mm</text>
+					<text class="txt9">1820mm</text>
+				</view>
+
+				<view class="txt10">智悦版车型断面图和剖面</view>
+
+			</view>	
+
+            </view>
+        </view>
+
+    </scroll-view>
+    <!-- main -->
+
+    <!-- footer -->
+    <view class="footer" bindtap="downPayment">
+        预约试驾
+    </view><!-- footer -->
+
+    <!-- 留资弹窗-->
+    <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
+        <forms bindsubmit="submit" bindclose="isShowForm" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
+    </view>
+    <!-- 两个icon -->
+    <!-- <view class="icon-box {{isIconShow ? 'right-left' : ''}}" wx:key="key{{index}}" wx:if="{{ navIndex == 0 }}">
+      <view class="li flex-cen" wx:for="{{iconList}}" wx:if="{{isShowIcon['btn' + (index + 1)] == 1}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
+        <image class="{{(index != 2 && isAnimate) ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
+      </view>
+    </view> -->
+	<!-- 新加icon -->
+	
+    <!-- 选择车款-->
+    <view class="select_car flex-cen" wx:if="{{ navIndex == 1 }}">
+      <view class="text"><view>级别</view><view>选择</view></view>
+      <!-- <picker class="picker" mode="selector" bindchange="bindRegionChange" range="{{type_list}}" value="0">
+      </picker> -->
+      <picker class="picker" bindchange="bindRegionChange" value="{{index}}" range="{{car_type_list}}">
+        <view class="picker"></view>
+      </picker>
+    </view>
+</view>
+<!-- look_car_detail_page -->
+<view class="float-btn">
+	<image bindtap="moreBtn" src="{{ IMGSERVICE }}/spike/page4_24.png" mode="widthFix"></image>
+</view>

@@ -22,6 +22,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+	IMGSERVICE: app.globalData.IMGSERVICE,
     options: {},
     navIndex: 0,
     lookCarDetail: {},
@@ -36,13 +37,26 @@ Page({
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_01.png', url: '/pages/bargain_index/bargain_index?activity_id=47' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_02.png', url: '/pages/assemble/pin/pin?activity_id=44' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' }
-    ]
+    ],
+	carcol:[
+		{img: 't60_col1.png', txt: '旭日橙/珠光白双色'},
+		{img: 't60_col2.png', txt: '烈焰红/曜石黑双色' },
+		{ img: 't60_col3.png', txt: '珠光白/曜石黑双色' },
+		{ img: 't60_col4.png', txt: '烈焰红' },
+		{ img: 't60_col5.png', txt: '曜石黑' },
+		{ img: 't60_col6.png', txt: '乌刚灰' },
+	],
+	swiper1:0,//控制第一个swiper
+	swiper2:0,//控制第二个swiper
   },
+
+	
 
   /** 
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	console.log(options);
     mta.Page.init()//腾讯统计
     mta.Event.stat("look_car_other", {})
     this.data.id = options.id
@@ -101,7 +115,7 @@ Page({
   },
   //页面初始化
   initData(options) {
-    tool.loading("加载中")
+    // tool.loading("加载中")
     Promise.all([
       request_01.lookCarDetail({
         user_id: wx.getStorageSync('userInfo').user_id,
@@ -134,7 +148,7 @@ Page({
   },
   //详情图片加载完成
   bindload() {
-    tool.loading_h()
+    // tool.loading_h()
   },
   //导航列表
   navList(e) {
@@ -224,5 +238,17 @@ Page({
       title: `赶快来预约 ${this.data.lookCarDetail.car_name} 吧~`,
       path: `/pages/look_car_detail_02/look_car_detail_02?id=${this.data.id}`
     }
-  }
+  },
+	moreBtn() {
+		tool.jump_red("/pages/index/index")
+	},
+	swiperchange(e){
+		console.log(e);
+		let type = e.currentTarget.dataset.type;
+		this.setData({
+			swiper1:type==1?e.detail.current:this.data.swiper1,
+			swiper2: type == 2 ? e.detail.current : this.data.swiper2
+			})
+		console.log(this.data.swiper2);
+	}
 })

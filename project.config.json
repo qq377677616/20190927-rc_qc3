@@ -741,6 +741,13 @@
 					"pathName": "pages/payment/pay_index/pay_index",
 					"query": "activity_id=18",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "改版T6",
+					"pathName": "pages/look_car_detail_04/look_car_detail_04",
+					"query": "id=6",
+					"scene": null
 				}
 			]
 		}
