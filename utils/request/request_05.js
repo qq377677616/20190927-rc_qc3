@@ -551,6 +551,58 @@ const dePhone = (data) => {
   })
 }
 
+//99元下定活动    助力首页
+const helpIndex = (data) => {
+  let url = `${SERVICE}/api3/ninepay/help_index`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+//99元下定活动    升级奖品
+const payPrize = (data) => {
+  let url = `${SERVICE}/api3/ninepay/upgrade_prize`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+//99元下定活动    助力操作
+const doHelp = (data) => {
+  let url = `${SERVICE}/api3/ninepay/do_help`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+
 module.exports = {
   myVote,
   uploadVote,
@@ -581,7 +633,10 @@ module.exports = {
   payReceiveCard,
   payDraw,
   goodsList,
-  dePhone
+  dePhone,
+  helpIndex,
+  payPrize,
+  doHelp
 }
 
 

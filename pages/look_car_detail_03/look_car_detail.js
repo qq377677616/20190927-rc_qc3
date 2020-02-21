@@ -359,6 +359,8 @@ Page({
                 console.log('支付失败')
               }
             })
+          }else{
+            tool.alert(res.data.msg)
           }
         })
         break;

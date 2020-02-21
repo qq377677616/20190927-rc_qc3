@@ -19,6 +19,7 @@ Page({
     openPrize: false, //中奖弹窗,
     openDraw: true, //抽奖开关
     isOnShow: false, //抽奖开关
+    isHelp:false,    //去助力页开关
   },
 
   onMyEvent(e) {
@@ -35,7 +36,6 @@ Page({
       openid
     }).then(res => {
       this.setRule()
-      this.getPrize()
       this.setData({
         show_page: res.data.data.show_page,
         car_owner: res.data.data.activity_info.car_owner,
@@ -44,6 +44,11 @@ Page({
         acData: res.data.data,
         options
       })
+      if (res.data.data.show_page == 6 || res.data.data.show_page == 7) {
+        router.jump_red({
+          url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
+        })
+      }
       let keyGroup = wx.getStorageSync('keyGroup')
       console.log(keyGroup, 'keyGroup')
       let payKey = wx.getStorageSync('keyGroup').pinKey
@@ -90,6 +95,9 @@ Page({
       icon: 'success',
       duration: 1000
     })
+    router.jump_red({
+      url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
+    })
   },
 
   // 抽奖
@@ -127,7 +135,7 @@ Page({
         let openid = wx.getStorageSync('userInfo').openid
         if (this.data.openDraw) {
           this.setData({
-            openDraw:false
+            openDraw: false
           })
           request_05.payDraw({
             openid,
@@ -135,15 +143,15 @@ Page({
           }).then(res => {
             console.log(res, 'res')
             if (res.data.status == 1) {
-              this.initData(options)
               this.setData({
                 openPrize: true,
-                openDraw:true,
+                openDraw: true,
+                isHelp:true,
                 prizeData: res.data.data.prize_info
               })
             } else {
               this.setData({
-                openDraw:true
+                openDraw: true
               })
               tool.alert(res.data.msg)
             }
@@ -155,7 +163,7 @@ Page({
 
 
   // 授权手机号
-  getPhoneNumber(e) { 
+  getPhoneNumber(e) {
     console.log(111111111111)
     let options = this.data.options
     let user_id = wx.getStorageSync('userInfo').user_id
@@ -170,7 +178,7 @@ Page({
     }).then(res => {
       if (res.data.status == 1) {
         this.initData(options)
-      }else{
+      } else {
         tool.alert(res.data.msg)
       }
     })

@@ -54,7 +54,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 98,
 			"list": [
 				{
 					"id": -1,
@@ -740,6 +740,13 @@
 					"name": "99元下定",
 					"pathName": "pages/payment/pay_index/pay_index",
 					"query": "activity_id=18",
+					"scene": null
+				},
+				{
+					"id": 98,
+					"name": "99元好友助力",
+					"pathName": "pages/payment/pay_help/pay_help",
+					"query": "openid= oORV85YNWKTSZM2t66WFc-M06cKk&user_id=68&activity_id=18",
 					"scene": null
 				}
 			]

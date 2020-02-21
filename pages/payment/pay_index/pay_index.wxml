@@ -6,11 +6,11 @@
       <view class="icon iconfont icon_more"></view>
     </view>
     <view class="rule2" catchtap="toPrize">
-      <view class="text">我的奖品</view>
+      <view class="text">我的兑换</view>
       <view class="icon iconfont icon-READMORE"></view>
     </view>
     <view class="rule3" catchtap="toChange">
-      <view class="text">礼品兑换</view>
+      <view class="text">兑换专区</view>
       <view class="icon iconfont icon-READMORE"></view>
     </view>
     <view class="top-title">我的现金红包</view>
@@ -56,7 +56,7 @@
 </view>
 <!-- 规则 -->
 <view class="pof fadeShow" wx:if="{{rulspop}}">
-  <rule bindclose="switchRule" ruleImg="{{indexData.rule}}"></rule>
+  <rule bindclose="switchRule" ruleImg="{{acData.activity_info.rule}}"></rule>
 </view>
 <!-- 授权、去绑定车主弹窗 -->
 <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}" id="popType_index">
