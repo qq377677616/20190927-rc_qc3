@@ -1,5 +1,5 @@
 <!--pages/payment/pay_change/pay_change.wxml-->
-<view class="main">
+<view class="main" bindtap="isVehicleOwner">
   <view class="banner">
     <image src="{{goodsData.banner}}" mode="widthFix"></image>
   </view>
@@ -19,7 +19,7 @@
               <image src="{{IMGSERVICE}}/pay/bi.png" mode="widthFix"></image>
               <view class="v-txt">{{item.vcoin}}</view>
             </view>
-            <view class="v-btn" bindtap="toDetail">立即兑换</view>
+            <view class="v-btn" bindtap="toDetail" data-id="{{item.goods_id}}">立即兑换</view>
             <!-- <view class="v-btn v-btn2">暂未开放</view> -->
         </view>
       </view>

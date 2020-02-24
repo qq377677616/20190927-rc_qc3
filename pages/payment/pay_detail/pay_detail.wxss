@@ -1,0 +1,97 @@
+/* pages/payment/pay_detail/pay_detail.wxss */
+
+.pay_detail{
+  padding-bottom: 100rpx;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 750rpx;
+  height: 750rpx;
+  overflow: hidden;
+}
+
+.banner image {
+  width: 100%;
+}
+
+.pro_name {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 27rpx;
+  margin-left: 26rpx;
+}
+
+.pro_score {
+  display: flex;
+  align-items: center;
+  margin: 25rpx 0 29rpx 26rpx;
+}
+
+.score_txt1 {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+}
+
+.score_txt2 {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #ff3735;
+}
+
+.pro_explain {
+  border-top: 18rpx solid #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
+
+.explain_txt1 {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  margin-left: 26rpx;
+  margin-top: 34rpx;
+}
+
+.explain_title {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(102, 102, 102, 1);
+  margin-left: 26rpx;
+  margin-top: 35rpx;
+}
+
+.explain_detail {
+  width: 695rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height:36rpx;
+  margin-left: 26rpx;
+  margin-top: 21rpx;
+}
+
+.btn {
+  width: 100%;
+  height: 99rpx;
+  background: linear-gradient(90deg, rgba(239, 77, 74, 1), rgba(223, 51, 48, 1));
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  line-height: 99rpx;
+  text-align: center;
+}

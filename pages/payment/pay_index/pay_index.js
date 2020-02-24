@@ -19,7 +19,8 @@ Page({
     openPrize: false, //中奖弹窗,
     openDraw: true, //抽奖开关
     isOnShow: false, //抽奖开关
-    isHelp:false,    //去助力页开关
+    isHelp: false, //去助力页开关
+    isGou: true, //是否默认选√
   },
 
   onMyEvent(e) {
@@ -42,6 +43,7 @@ Page({
         activity_id: options.activity_id,
         order_sn: res.data.data.order_sn,
         acData: res.data.data,
+        my_score: res.data.data.my_score,
         options
       })
       if (res.data.data.show_page == 6 || res.data.data.show_page == 7) {
@@ -67,12 +69,27 @@ Page({
     })
   },
 
+  // 金额刷新
+  updateCash() {
+    let activity_id = this.data.options.activity_id;
+    let openid = wx.getStorageSync('userInfo').openid
+    request_05.ninepayInfo({
+      activity_id,
+      openid
+    }).then(res => {
+      this.setData({
+        my_score: res.data.data.my_score
+      })
+    })
+  },
+
   //去兑换页
   toChange() {
     let cate_id = this.data.acData.activity_info.cate_id
+    let car_owner = this.data.car_owner
     console.log(cate_id, 'cate_id')
     router.jump_nav({
-      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}`
+      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}`
     })
   },
 
@@ -88,6 +105,7 @@ Page({
   //立即领取
   sucPrize() {
     let options = this.data.options
+    let activity_id = options.activity_id
     this.setData({
       openPrize: false,
     })
@@ -96,7 +114,13 @@ Page({
       icon: 'success',
       duration: 1000
     })
-    this.initData(options)
+    if (this.data.isGou) {
+      setTimeout(() => {
+        router.jump_red({
+          url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
+        })
+      }, 1000)
+    }
   },
 
   // 抽奖
@@ -142,10 +166,11 @@ Page({
           }).then(res => {
             console.log(res, 'res')
             if (res.data.status == 1) {
+              this.updateCash()
               this.setData({
                 openPrize: true,
                 openDraw: true,
-                isHelp:true,
+                isHelp: true,
                 prizeData: res.data.data.prize_info
               })
             } else {
@@ -230,6 +255,13 @@ Page({
         return;
       }
     }
+  },
+
+  // 中奖默认勾选切换
+  gouSel() {
+    this.setData({
+      isGou: !this.data.isGou
+    })
   },
 
   //判断是否授权和是否是车主

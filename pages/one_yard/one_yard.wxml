@@ -1,0 +1,6 @@
+<!--pages/one_yard/one_yard.wxml-->
+<view class="one_yard">
+  <view class="banner">
+    <image src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1906469856,4113625838&fm=26&gp=0.jpg"></image>
+  </view>
+</view>

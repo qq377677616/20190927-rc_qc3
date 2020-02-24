@@ -210,7 +210,7 @@ swiper-item {
   font-family: PingFang SC;
   font-weight: 500;
   color: rgba(51, 51, 51, 1);
-  margin-top: 257rpx;
+  margin-top: 320rpx;
 }
 
 .prize-title {
@@ -230,6 +230,22 @@ swiper-item {
   margin-left: 15rpx;
 }
 
+.gouBox {
+  width: 328rpx;
+  height: 22rpx;
+  /* background: #000; */
+  position: absolute;
+  bottom: 54rpx;
+  left: 177rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.pay_gou {
+  width: 12rpx;
+}
+
 .prize-pic image {
   width: 100%;
 }
@@ -240,6 +256,6 @@ swiper-item {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 11%;
+  bottom: 13%;
   border-radius: 35rpx;
 }

@@ -1,0 +1,20 @@
+<!--pages/payment/pay_detail/pay_detail.wxml-->
+<import src="../../../utils/wxParse/wxParse.wxml" />
+<view class="pay_detail">
+  <view class="banner">
+    <image src="{{proData.thumb}}" mode="widthFix"></image>
+  </view>
+  <view class="pro_name">{{proData.title}}</view>
+  <view class="pro_score">
+    <view class="score_txt1">积分：</view>
+    <view class="score_txt2">{{proData.vcoin}}</view>
+  </view>
+  <view class="pro_explain">
+    <view class="explain_txt1">产品说明</view>
+    <view class="explain_title">{{proData.title}}</view>
+    <view class="explain_detail">
+      <template is="wxParse" data="{{ wxParseData:product_explain.nodes }}" />
+    </view>
+  </view>
+  <view class="btn" bindtap="toPay">立即兑换</view>
+</view>

@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "rule": "/components/rule/rule",
+    "activePop": "/components/activePop/activePop",
+    "forms": "/components/forms/form"
+  },
   "navigationBarTitleText": "精品兑换"
 }
