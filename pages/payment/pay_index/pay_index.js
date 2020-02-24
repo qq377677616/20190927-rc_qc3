@@ -87,6 +87,7 @@ Page({
 
   //立即领取
   sucPrize() {
+    let options = this.data.options
     this.setData({
       openPrize: false,
     })
@@ -95,9 +96,7 @@ Page({
       icon: 'success',
       duration: 1000
     })
-    router.jump_red({
-      url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
-    })
+    this.initData(options)
   },
 
   // 抽奖
