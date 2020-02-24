@@ -87,6 +87,7 @@ Page({
 
   //立即领取
   sucPrize() {
+    let activity_id = this.data.activity_id
     this.setData({
       openPrize: false,
     })
