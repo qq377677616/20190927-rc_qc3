@@ -33,20 +33,20 @@
     <view class="helpBox helpBox2" wx:if="{{isTen}}">
       <view class="readyTxt" wx:if="{{prizeInfo.is_upgrade==0}}">已经有{{help_num}}位好友助力，快来领取奖品</view>
       <view class="readyTxt" wx:if="{{prizeInfo.is_upgrade==1}}">已领取奖品!</view>
-      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/activity/lq_suc.png)" wx:if="{{prizeInfo.is_upgrade==0}}">
-        <view class="shoe-pre">
+      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/activity/lq_suc.png?1)" wx:if="{{prizeInfo.is_upgrade==0}}">
+        <!-- <view class="shoe-pre">
           <view class="shoe" style="background-image:url('{{prizeInfo.prize_img}}')">
           </view>
-        </view>
+        </view> -->
         <view class="quan2 nowrap">{{prizeInfo.prize_name}}
         </view>
         <view class="quan3" wx:if="{{prizeInfo.is_upgrade==0}}" bindtap="lqPrize">领取</view>
       </view>
-      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/activity/lq_fal.png)" wx:if="{{prizeInfo.is_upgrade==1}}">
-        <view class="shoe-pre">
+      <view class="quanBox" style="background-image:url({{IMGSERVICE}}/activity/lq_fal.png?1)" wx:if="{{prizeInfo.is_upgrade==1}}">
+        <!-- <view class="shoe-pre">
           <view class="shoe" style="background-image:url('{{prizeInfo.prize_img}}')">
           </view>
-        </view>
+        </view> -->
         <view class="quan2 q2 nowrap">{{prizeInfo.prize_name}}
         </view>
         <view class="quan3 hasQuan" wx:if="{{prizeInfo.is_upgrade==1}}" bindtap="toCard_bag_page">已领取</view>

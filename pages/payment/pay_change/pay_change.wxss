@@ -88,6 +88,10 @@ page {
   left: 0;
 }
 
+.jindutiao2 {
+  background: rgba(130, 130, 131, 1);
+}
+
 .j-txt {
   font-size: 18rpx;
   font-family: PingFang SC;
@@ -136,5 +140,5 @@ page {
 
 .v-btn2 {
   background: linear-gradient(90deg, rgba(129, 128, 130, 1), rgba(172, 171, 173, 1));
-  color: #F9F9F9;
+  color: #f9f9f9;
 }

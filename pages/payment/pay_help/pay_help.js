@@ -27,6 +27,7 @@ Page({
     mTop: 29,
     isHelpH: true, //是否可以助力
     isShare: false,
+    isOpen: true, //升级按钮开关
   },
   initData(options) {
     // tool.loading('加载中')
@@ -194,20 +195,28 @@ Page({
 
   // 领取奖品
   lqPrize() {
-    let openid = wx.getStorageSync('userInfo').openid
-    let activity_id = this.data.activity_id
-    let options = this.data.options
-    request_05.payPrize({
-      activity_id,
-      openid
-    }).then(res => {
-      if (res.data.status == 1) {
-        tool.alert(res.data.msg)
-        this.initData(options)
-      } else {
-        tool.alert(res.data.msg)
-      }
-    })
+    if (this.data.isOpen) {
+      this.setData({
+        isOpen:false
+      })
+      let openid = wx.getStorageSync('userInfo').openid
+      let activity_id = this.data.activity_id
+      let options = this.data.options
+      request_05.payPrize({
+        activity_id,
+        openid
+      }).then(res => {
+        if (res.data.status == 1) {
+          this.setData({
+            isOpen: true
+          })
+          tool.alert(res.data.msg)
+          this.initData(options)
+        } else {
+          tool.alert(res.data.msg)
+        }
+      })
+    }
   },
   //   let help_num = this.data.help_num;
   //   let help_num2 = this.data.help_num2;

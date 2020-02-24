@@ -354,7 +354,7 @@ page {
     border: 1px solid #199ddf;
     border-radius: 10rpx;
     background: transparent;
-    margin-top: 29rpx;
+    margin-top: 60rpx;
 }
 
 .myEnter>text {
@@ -519,10 +519,11 @@ page {
     background: center no-repeat;
     background-size: cover;
     margin: 0 auto;
-    margin-top: 48rpx;
+    margin-top: 70rpx;
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .quanBox2 {
@@ -548,7 +549,6 @@ page {
 }
 
 .quan2 {
-    width: 224rpx;
     font-size: 30rpx;
     font-family: Source Han Sans CN;
     margin-left: 30rpx;
@@ -576,6 +576,7 @@ page {
     font-size: 30rpx;
     text-align: center;
     line-height: 52rpx;
+    margin-left: 50rpx;
 }
 
 .hasQuan {
@@ -584,6 +585,7 @@ page {
     border: 1px solid rgba(125, 125, 125, 1);
     border-radius: 26px;
     background-color: #f1f1f1;
+    margin-left: 50rpx;
 }
 
 
