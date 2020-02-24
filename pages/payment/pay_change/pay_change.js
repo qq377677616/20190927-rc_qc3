@@ -19,6 +19,7 @@ Page({
 
   //初始化数据
   initData(options) {
+    console.log(options.car_owner,'111111111111')
     let cate_id = options.cate_id
     let page = this.data.page
     let is_activity = 1
@@ -30,7 +31,8 @@ Page({
       console.log(res, 'res')
       if (res.data.status == 1) {
         this.setData({
-          goodsData: res.data.data
+          goodsData: res.data.data,
+          car_owner: options.car_owner == 1,
         })
       } else {
         console.log('报错')
@@ -40,8 +42,13 @@ Page({
 
   // 商品详情页
   toDetail(e) {
-    console.log(11111111)
     let goods_id = e.currentTarget.dataset.id
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
+    if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.owner == 1) {
+      this.setData({ popType: 4 });
+      this.isVehicleOwnerHidePop();
+      return;
+    }
     router.jump_nav({
       url: `/pages/payment/pay_detail/pay_detail?goods_id=${goods_id}`
     })
@@ -49,26 +56,25 @@ Page({
 
   //判断是否授权和是否是车主
   isVehicleOwner(e) {
-    if ((wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
+    console.log('e', e)
+    if ((wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1 && wx.getStorageSync("userInfo").unionid) || (e && e.target.dataset.type != 'ok') || (wx.getStorageSync("userInfo").nickName && !this.data.car_owner && wx.getStorageSync("userInfo").unionid)) return
     if (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) {
       this.setData({
         popType: 2
       })
-    } else if (wx.getStorageSync("userInfo").user_type == 0) {
+    } else if (wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) {
       this.setData({
         popType: 3
       })
     }
-
     this.isVehicleOwnerHidePop()
   },
   //授完权后处理
   getParme(e) {
     this.isVehicleOwnerHidePop()
-    request_01.setUserInfo(e)
-      .then(res => {
-        this.isVehicleOwner()
-      })
+    request_01.setUserInfo(e).then(res => {
+      this.isVehicleOwner()
+    })
   },
   //是否授权、绑定车主弹窗
   isVehicleOwnerHidePop() {

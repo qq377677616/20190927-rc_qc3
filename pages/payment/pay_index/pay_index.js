@@ -47,9 +47,9 @@ Page({
         options
       })
       if (res.data.data.show_page == 6 || res.data.data.show_page == 7) {
-        router.jump_red({
-          url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
-        })
+        // router.jump_red({
+        //   url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
+        // })
       }
       let keyGroup = wx.getStorageSync('keyGroup')
       console.log(keyGroup, 'keyGroup')
