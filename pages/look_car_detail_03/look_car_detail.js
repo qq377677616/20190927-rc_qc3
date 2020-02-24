@@ -359,7 +359,7 @@ Page({
                 console.log('支付失败')
               }
             })
-          }else{
+          } else {
             tool.alert(res.data.msg)
           }
         })
@@ -383,6 +383,14 @@ Page({
       isShowForm: false,
     })
   },
+
+  // 去首页
+  toIndex() {
+    router.jump_red({
+      url: `/pages/index/index`,
+    })
+  },
+
   //提交
   submit(e) {
     var _this = this
