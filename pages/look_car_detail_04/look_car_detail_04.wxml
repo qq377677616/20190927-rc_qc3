@@ -38,7 +38,7 @@
                 <!-- <image src="{{ lookCarDetail.car_details_img }}" mode="widthFix" bindload="bindload"></image> -->
 			<!-- T60 -->
 			<view>
-				<view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60.png)"></view>
+				<view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60.png?1)"></view>
 				<view class="txtbox1">
 					<text class="txt1">合资品质</text>
 					<text class="txt2">合资级品质  日产动力组合  五星标准安全防护</text>
