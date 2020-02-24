@@ -48,6 +48,7 @@ Page({
 	],
 	swiper1:0,//控制第一个swiper
 	swiper2:0,//控制第二个swiper
+	swiper3:0,//控制第三个swiper
   },
 
 	
@@ -247,7 +248,8 @@ Page({
 		let type = e.currentTarget.dataset.type;
 		this.setData({
 			swiper1:type==1?e.detail.current:this.data.swiper1,
-			swiper2: type == 2 ? e.detail.current : this.data.swiper2
+			swiper2: type == 2 ? e.detail.current : this.data.swiper2,
+			swiper3: type == 3 ? e.detail.current : this.data.swiper3
 			})
 		console.log(this.data.swiper2);
 	}

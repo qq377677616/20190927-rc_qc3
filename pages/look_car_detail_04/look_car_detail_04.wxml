@@ -45,8 +45,8 @@
 				</view>
 				<view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_2.png)"></view>
 				<view class="txtbox2">日产HR16发动机</view>
-				<!--轮播实例-->
-				<view class="threebg">
+				<!--轮播实例1-->
+				<view class="threebg anit{{swiper1}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
 						 <block wx:for="{{5}}" wx:key="item">
 							<swiper-item>
@@ -74,8 +74,8 @@
 				<view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_4.png)"></view>
 				<view class="txtbox2 txtbox3">“星航” 投射式LED前大灯</view>
 				
-				<!--轮播实例-->
-				<view class="threebg">
+				<!--轮播实例2-->
+				<view class="threebg anit{{swiper2}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
 						 <block wx:for="{{5}}" wx:key="item">
 							<swiper-item>
@@ -104,17 +104,27 @@
 
 				<view class="nt60_6" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_6.png)"></view>
 				<view class="txtbox2 txtbox3">BSW变道盲区预警系统</view>
-				<view class="threebg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_7.png)"></view>
-				
-				<view class="swiper1">
-					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1">
+
+				<!--轮播实例3-->
+				<view class="threebg anit{{swiper3}}">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
 						 <block wx:for="{{5}}" wx:key="item">
 							<swiper-item>
-								<view class="item1" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_3.png)"></view>
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw3_{{index+1}}.png)"></view>
 							</swiper-item>
 						</block>
 					</swiper>
 				</view>
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
+						 <block wx:for="{{5}}" wx:key="item">
+							<swiper-item>
+								<view class="item1 {{swiper3!=index-1&&!(swiper3==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw3_{{index+1}}.png)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<!--轮播实例-->
 
 				<view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png)">
 					<text class="txt3">启辰T60基本参数</text>

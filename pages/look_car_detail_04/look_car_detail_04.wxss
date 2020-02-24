@@ -170,11 +170,41 @@ margin-bottom: 32rpx;
 	width: 100%;
 	height: 543rpx;
 	background: center no-repeat/cover;
+	position: relative;
+}
+.threebg::after{
+	content: '';
+	width: 20%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+.anit0::after{
+	width: 20%;
+	transition:all .3s linear; 
+}
+.anit1::after{
+	width: 40%;
+	transition:all .3s linear; 
+}
+.anit2::after{
+	width: 60%;
+	transition:all .3s linear; 
+}
+.anit3::after{
+	width: 80%;
+	transition:all .3s linear; 
+}
+.anit4::after{
+	width: 100%;
+	transition:all .3s linear; 
 }
 .swiper1{
 	width: 100%;
 	height:135rpx; 
-	margin-top: 10rpx;
+	margin-top: 16rpx;
 }
 .item1{
 	width:186rpx;
