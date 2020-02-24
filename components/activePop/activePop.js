@@ -38,7 +38,7 @@ Component({
     toKan:function() {
       let activity_id = this.data.acData.activity_info.activity_id
       let order_sn = this.data.acData.order_sn
-      route.jump_nav({
+      route.jump_red({
         url: `/pages/look_car_detail_03/look_car_detail?id=${11}&activity_id=${activity_id}&order_sn=${order_sn}`,
       })
     },
