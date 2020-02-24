@@ -21,9 +21,11 @@ Page({
   initData(options) {
     let cate_id = options.cate_id
     let page = this.data.page
+    let is_activity = 1
     request_05.goodsList({
       cate_id,
-      page
+      page,
+      is_activity
     }).then(res => {
       console.log(res, 'res')
       if (res.data.status == 1) {

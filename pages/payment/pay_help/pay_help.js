@@ -302,7 +302,7 @@ Page({
     let activity_id = this.data.activity_id;
     console.log(activity_id)
     router.jump_red({
-      url: `/pages/shake_shake/shake_shake?activity_id=${activity_id}`,
+      url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
     })
   },
 

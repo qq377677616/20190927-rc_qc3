@@ -80,7 +80,6 @@ page {
 }
 
 .jindutiao {
-  width: 40%;
   height: 24rpx;
   background: rgba(241, 64, 62, 1);
   border-radius: 12rpx;
