@@ -602,6 +602,22 @@ const doHelp = (data) => {
   })
 }
 
+//99元下定活动    兑换详情
+const goodsDetail = (data) => {
+  let url = `${SERVICE}/api3/shop/goods_detail`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
 
 module.exports = {
   myVote,
@@ -636,7 +652,8 @@ module.exports = {
   dePhone,
   helpIndex,
   payPrize,
-  doHelp
+  doHelp,
+  goodsDetail
 }
 
 

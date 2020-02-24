@@ -14,7 +14,7 @@
       <view class="icon iconfont icon-READMORE"></view>
     </view>
     <view class="top-title">我的现金红包</view>
-    <view class="top-cash">{{acData.my_score}}</view>
+    <view class="top-cash">{{my_score}}</view>
     <view class="img">
       <view class="btn" bindtap="getPrize"></view>
       <image class="img_bg" src="{{IMGSERVICE}}/pay/index_bg.png" mode="widthFix"></image>
@@ -44,13 +44,16 @@
   </view>
   <!-- 中奖弹窗 -->
   <view class="prize-con" wx:if="{{openPrize}}">
-    <view class="prize-bg" style="background-image:url('{{ IMGSERVICE }}/pay/pay_prize_bg.png')">
+    <view class="prize-bg" style="background-image:url('{{ IMGSERVICE }}/pay/pay_prize_bg.png?1')">
       <view class="txt1">恭喜您获得了</view>
       <view class="prize-title">{{prizeData.prize_name}}</view>
-      <view class="prize-pic">
+      <!-- <view class="prize-pic">
         <image src="{{prizeData.prize_img}}" mode="widthFix"></image>
-      </view>
+      </view> -->
       <view class="prize-btn" bindtap="sucPrize"></view>
+      <view class="gouBox" bindtap="gouSel">
+        <image wx:if="{{isGou}}" class="pay_gou" src="{{ IMGSERVICE }}/pay/pay_gou.png" mode="widthFix"></image>
+      </view>
     </view>
   </view>
 </view>

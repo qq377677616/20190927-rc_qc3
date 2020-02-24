@@ -748,6 +748,27 @@
 					"pathName": "pages/look_car_detail_04/look_car_detail_04",
 					"query": "id=6",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "一展一码",
+					"pathName": "pages/one_yard/one_yard",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 100,
+					"name": "好友助力",
+					"pathName": "pages/payment/pay_help/pay_help",
+					"query": "activity_id=18&openid=oORV85YNWKTSZM2t66WFc-M06cKk&user_id=68",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/payment/pay_detail/pay_detail",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

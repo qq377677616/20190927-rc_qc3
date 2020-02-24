@@ -1,0 +1,10 @@
+/* pages/one_yard/one_yard.wxss */
+
+.banner {
+  width: 750rpx;
+  height: 320rpx;
+}
+
+.banner image{
+  width: 100%;
+}

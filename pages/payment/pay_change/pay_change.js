@@ -14,27 +14,65 @@ Page({
    */
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
-    page:1,
+    page: 1,
   },
-  
+
   //初始化数据
-  initData(options){
+  initData(options) {
     let cate_id = options.cate_id
     let page = this.data.page
-    request_05.goodsList({ cate_id, page}).then(res=>{
-      console.log(res,'res')
-      if(res.data.status==1){
+    request_05.goodsList({
+      cate_id,
+      page
+    }).then(res => {
+      console.log(res, 'res')
+      if (res.data.status == 1) {
         this.setData({
-          goodsData:res.data.data
+          goodsData: res.data.data
         })
-      }else{
+      } else {
         console.log('报错')
       }
     })
   },
 
-  toDetail(){
-    tool.alert('暂未开放')
+  // 商品详情页
+  toDetail(e) {
+    console.log(11111111)
+    let goods_id = e.currentTarget.dataset.id
+    router.jump_nav({
+      url: `/pages/payment/pay_detail/pay_detail?goods_id=${goods_id}`
+    })
+  },
+
+  //判断是否授权和是否是车主
+  isVehicleOwner(e) {
+    if ((wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !this.data.car_owner)) return;
+    if (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) {
+      this.setData({
+        popType: 2
+      })
+    } else if (wx.getStorageSync("userInfo").user_type == 0) {
+      this.setData({
+        popType: 3
+      })
+    }
+
+    this.isVehicleOwnerHidePop()
+  },
+  //授完权后处理
+  getParme(e) {
+    this.isVehicleOwnerHidePop()
+    request_01.setUserInfo(e)
+      .then(res => {
+        this.isVehicleOwner()
+      })
+  },
+  //是否授权、绑定车主弹窗
+  isVehicleOwnerHidePop() {
+    this.setData({
+      isVehicleOwnerHidePop: !this.data.isVehicleOwnerHidePop
+    })
   },
 
   /**

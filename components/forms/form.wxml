@@ -98,7 +98,7 @@
             <view class="checked {{isChecked ? 'on' : ''}}" style="visibility:hidden;"></view>
             东风启辰在此承诺：您在智趣启辰小程序上提供的个人信息不会出售给任何第三方。您的信息可能被东风启辰以及其代理商或经销商用作分析研究，提供您所需要的服务，向您发出产品和服务的信息，以便改善我们的服务。请填写您的真实信息，方便我们尽快与您联系 。
         </view>
-        <view class="submit" bindtap="submit">{{ btnText || (type == 2 ? '提交信息' : type == 3 ? '提交' : type == 4 ? '确认预约' : '领取') }}</view>
+        <view class="submit" bindtap="submit">{{ btnText || (type == 2 ? '确认支付' : type == 3 ? '提交' : type == 4 ? '确认预约' : '领取') }}</view>
 
     </view><!-- form_area -->
 

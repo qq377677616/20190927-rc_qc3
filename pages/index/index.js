@@ -461,7 +461,7 @@ Page({
   sureBtn() {
     this.setData({
       signInIf: false,
-      isPay:true,
+      // isPay:true,
     })
   },
   //  跳转到疫情页面

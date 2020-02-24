@@ -29,7 +29,7 @@ Page({
     isShare: false,
   },
   initData(options) {
-    tool.loading('加载中')
+    // tool.loading('加载中')
     console.log(options)
     let openid = wx.getStorageSync('userInfo').openid;;
     let activity_id = '';
@@ -63,15 +63,16 @@ Page({
         openid,
         activity_id
       }).then(res => {
-        tool.loading_h();
+        // tool.loading_h();
         console.log('shakeDetail', res)
         this.setData({
           activity_id,
           prizeInfo: res.data.data.help_info.prize_info,
-          help_num:res.data.data.help_info.help_num,
-          helpList: res.data.data.help_info.help_list
+          help_num: res.data.data.help_info.help_num,
+          helpList: res.data.data.help_info.help_list,
+          options
         })
-        if (res.data.data.show_page == 7){
+        if (res.data.data.show_page == 7) {
           console.log('领奖')
           this.setData({
             isShowMe: false,
@@ -106,8 +107,9 @@ Page({
             is_help: res.data.data.is_help,
             prize_info: res.data.data.prize_info,
             activity_id,
+            options
           })
-          tool.loading_h();
+          // tool.loading_h();
           if (res.data.data.can_help == 0) {
             this.setData({
               isHelpH: false,
@@ -191,7 +193,22 @@ Page({
   },
 
   // 领取奖品
-  // lqPrize() {
+  lqPrize() {
+    let openid = wx.getStorageSync('userInfo').openid
+    let activity_id = this.data.activity_id
+    let options = this.data.options
+    request_05.payPrize({
+      activity_id,
+      openid
+    }).then(res => {
+      if (res.data.status == 1) {
+        tool.alert(res.data.msg)
+        this.initData(options)
+      } else {
+        tool.alert(res.data.msg)
+      }
+    })
+  },
   //   let help_num = this.data.help_num;
   //   let help_num2 = this.data.help_num2;
   //   var _this = this;
@@ -306,7 +323,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
     this.setData({
       options,
@@ -319,56 +336,55 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     let openid = wx.getStorageSync('userInfo').openid;
-    console.log(openid)
     let activity_id = this.data.activity_id;
-    let user_id = this.data.user_id;
+    let user_id = wx.getStorageSync('userInfo').user_id;
     let obj = {
-      title: '摇一摇拿红包，至高4188元购车基金助您购车！',
-      path: `/pages/friendHelp/friendHelp?user_id=${user_id}&openid=${openid}&activity_id=${activity_id}`,
+      title: '下订',
+      path: `/pages/payment/pay_help/pay_help?user_id=${user_id}&openid=${openid}&activity_id=${activity_id}`,
       imageUrl: this.data.IMGSERVICE + "/activity/share_shake.png?123"
     };
     return obj;
