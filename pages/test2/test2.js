@@ -254,7 +254,7 @@ Page({
 		else {
 			// 跳转通用看车页
 			router.jump_nav({
-				url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
+				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
 			})
 		}
 	},
