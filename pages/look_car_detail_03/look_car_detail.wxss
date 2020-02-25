@@ -183,6 +183,11 @@ page{
     right:18rpx;
     bottom:180rpx;
 }
+
+.float-btn2{
+  bottom:285rpx;
+}
+
 .float-btn image{
     display: block;
     width: 84rpx;

@@ -30,6 +30,7 @@ Page({
     isShowForm: false,
     formsType: 2,
     vehicle: {},
+    rulspop:false,
     isHaveCard: false, // 是否有卡券信息
     domAnimatedList: [{
         local: 0,
@@ -76,6 +77,13 @@ Page({
       })
 
       this.initData(options)
+    })
+  },
+
+  // 规则
+  openRule(){
+    this.setData({
+      rulspop: !this.data.rulspop
     })
   },
 
