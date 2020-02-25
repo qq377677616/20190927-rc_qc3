@@ -49,6 +49,7 @@ Page({
 	swiper1:0,//控制第一个swiper
 	swiper2:0,//控制第二个swiper
 	swiper3:0,//控制第三个swiper
+	rogincol:0,
   },
 
 	
@@ -252,5 +253,10 @@ Page({
 			swiper3: type == 3 ? e.detail.current : this.data.swiper3
 			})
 		console.log(this.data.swiper2);
+	},
+	changecol(e){
+		let index = e.currentTarget.dataset.index;
+		this.setData({rogincol:index})
+		console.log(index)
 	}
 })

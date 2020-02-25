@@ -136,10 +136,19 @@ margin-bottom: 32rpx;
 	background-color: #F1EFF2;
 }
 .txt1{
-	font-size:40rpx;
-	font-family:MHeiPRC;
-	font-weight:normal;
-	color:rgba(24,24,24,1);
+	width:157rpx;
+	height: 38rpx;
+	background: center no-repeat/cover;
+}
+.m_txt{
+	width:157rpx;
+	height: 37rpx;
+	background: center no-repeat/cover;
+}
+.m_txt2{
+	width:155rpx;
+	height: 37rpx;
+	background: center no-repeat/cover;
 }
 .txt2{
 	font-size:24rpx;
@@ -245,6 +254,7 @@ margin-bottom: 32rpx;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: relative;
 }
 .txt3{
 	font-size:34rpx;
@@ -413,4 +423,16 @@ margin-bottom: 32rpx;
 }
 .sethui{
 	opacity: 0.4;
+}
+.carself{
+	width: 626rpx;
+	height: 244rpx;
+	background: center no-repeat/cover;
+	position: absolute;
+	left: 50rpx;
+	top: 135rpx;
+	opacity: 0;
+}
+.setopt{
+	opacity: 1;
 }

@@ -40,7 +40,8 @@
 			<view>
 				<view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60.png?1)"></view>
 				<view class="txtbox1">
-					<text class="txt1">合资品质</text>
+					<view class="txt1" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt1.png)"></view>
+					<!-- <text class="txt1">合资品质</text> -->
 					<text class="txt2">合资级品质  日产动力组合  五星标准安全防护</text>
 				</view>
 				<view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_2.png)"></view>
@@ -68,7 +69,7 @@
 
 				<view class="setwhite"></view>
 				<view class="txtbox1 setbg">
-					<text class="txt1">舒享座舱</text>
+					<view class="m_txt" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt2.png)"></view>
 					<text class="txt2">星航设计  舒适驾乘</text>
 				</view>
 				<view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_4.png)"></view>
@@ -98,7 +99,7 @@
 				<view class="setwhite"></view>
 				
 				<view class="txtbox1 setbg">
-					<text class="txt1">智趣科技</text>
+					<view class="m_txt2" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt3.png)"></view>
 					<text class="txt2">智能安全  智能控制  智能交互</text>
 				</view>
 
@@ -126,13 +127,14 @@
 				</view>
 				<!--轮播实例-->
 
-				<view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png)">
+				<view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png?1)">
+					<view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?1)" wx:for="{{carcol}}"></view>
 					<text class="txt3">启辰T60基本参数</text>
 					<text class="txt4">（官网画面仅供参考，购买时以实车为准）</text>
 					<view class="selectcol">
 						<scroll-view scroll-x="{{true}}">
 							<view class="setflex">
-								<view class="f_items" wx:for="{{carcol}}">
+								<view class="f_items" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}">
 									<view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
 									<text class="txt5">{{item.txt}}</text>
 								</view>
