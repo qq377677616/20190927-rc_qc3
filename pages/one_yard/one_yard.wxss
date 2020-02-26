@@ -109,10 +109,24 @@
   transform: translateY(-50%);
 }
 
+.getPhone{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 40rpx 0 0;
+}
+
 .wechat {
   display: flex;
   align-items: center;
-  margin: 40rpx auto 0;
+}
+
+.btnPhone{
+  width: 265rpx;
+  height: 44rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .wechat image {

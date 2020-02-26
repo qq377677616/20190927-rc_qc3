@@ -44,12 +44,13 @@ Page({
         order_sn: res.data.data.order_sn,
         acData: res.data.data,
         my_score: res.data.data.my_score,
+        is_upgrade: res.data.data.help_info.prize_info.is_upgrade,
         options
       })
-      if (res.data.data.show_page == 6 || res.data.data.show_page == 7) {
-        // router.jump_red({
-        //   url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
-        // })
+      if (res.data.data.show_page == 6 && res.data.data.help_info.prize_info.is_upgrade == 0 || res.data.data.show_page == 7 && res.data.data.help_info.prize_info.is_upgrade == 0) {
+        router.jump_red({
+          url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
+        })
       }
       let keyGroup = wx.getStorageSync('keyGroup')
       console.log(keyGroup, 'keyGroup')
