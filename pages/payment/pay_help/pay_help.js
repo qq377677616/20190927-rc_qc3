@@ -197,7 +197,7 @@ Page({
   lqPrize() {
     if (this.data.isOpen) {
       this.setData({
-        isOpen:false
+        isOpen: false
       })
       let openid = wx.getStorageSync('userInfo').openid
       let activity_id = this.data.activity_id
@@ -211,6 +211,11 @@ Page({
             isOpen: true
           })
           tool.alert(res.data.msg)
+          setTimeout(() => {
+            router.jump_red({
+              url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`
+            })
+          }, 500)
           this.initData(options)
         } else {
           tool.alert(res.data.msg)

@@ -62,6 +62,13 @@ Page({
     })
   },
 
+  // 手机号授权
+  getPhoneNumber(e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+  },
+
   // 初始化数据
   initData(){
     this.carList()

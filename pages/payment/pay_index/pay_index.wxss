@@ -19,6 +19,10 @@
   transform: translateX(-50%);
 }
 
+.btn image{
+  width: 100%;
+}
+
 .getPhone {
   width: 180rpx;
   height: 180rpx;
@@ -113,7 +117,7 @@
   background: #fff;
   margin: 0 auto;
   padding-top: 47rpx;
-  margin-top: -300rpx;
+  margin-top: -230rpx;
   margin-bottom: 35rpx;
 }
 

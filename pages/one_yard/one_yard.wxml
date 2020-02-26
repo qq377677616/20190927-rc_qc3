@@ -37,9 +37,12 @@
         </picker>
       </block>
     </view>
-    <view class="wechat">
-      <image src="{{IMGSERVICE}}/pay/one_wechat.png" mode="widthFix"></image>
-      <view class="w-txt">使用微信登录</view>
+    <view class="getPhone">
+      <button class="btnPhone" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
+      <view class="wechat">
+        <image src="{{IMGSERVICE}}/pay/one_wechat.png" mode="widthFix"></image>
+        <view class="w-txt">使用微信登录</view>
+      </view>
     </view>
     <view class="one-btn">提交</view>
   </view>
