@@ -183,7 +183,7 @@
     </view><!-- footer -->
 
     <!-- 留资弹窗-->
-    <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
+    <view class="forms-box" wx:if="{{ true }}">
         <forms bindsubmit="submit" bindclose="isShowForm" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
     </view>
     <!-- 两个icon -->

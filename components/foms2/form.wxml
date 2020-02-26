@@ -1,0 +1,52 @@
+<!--pages/test/test.wxml-->
+
+<!-- yuyueshijia_form_page -->
+<view class="yuyueshijia_form_page">
+ 
+
+    
+    <!-- form_area -->
+    <view class="form_area">
+        <view class="group">
+            <text class="label" space="nbsp">电话</text>
+            <!-- <input type="text" value="{{phone}}" disabled="{{isGetPhone}}" placeholder="请输入您的电话号码" bindinput="inputPhone"/> -->
+            <input type="text" value="{{phone}}" placeholder="请输入您的电话号码" bindinput="inputPhone" maxlength="11"
+                type="number" />
+        </view>
+
+        <view class="group">
+            <text class="label" space="nbsp">姓名</text>
+
+            <input type="text" placeholder="请输入您的姓名" bindinput="inputName" />
+        </view>
+
+        <view class="group" wx:if="{{type != 3}}">
+            <text class="label" space="nbsp">当前城市</text>
+            <view class="location">
+                <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{region}}"
+                    custom-item="{{customItem}}">
+                    <text>{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+                </picker>
+                <view class="icon iconfont icon_wdwd" bindtap="openSetting"></view>
+            </view>
+        </view>
+
+        <view class="group" wx:if="{{type != 1 && type != 3}}">
+            <text class="label" space="nbsp">专营店</text>
+            <view class="location">
+                <picker class="picker" bindchange="bindStoreChange" value="{{storeList_index}}" range="{{storeList}}"
+                    range-key="{{'name'}}"><text class="picker">{{storeList[storeList_index].name}}</text>
+                </picker>
+                <view class="triangle"></view>
+            </view>
+        </view>
+
+        <view class="group" wx:if="{{type == 1}}">
+            <text class="label" space="nbsp">详细地址</text>
+            <input type="text" value="{{address}}" placeholder="请输入您的详细收货地址" bindinput="inputAddress" />
+        </view>
+        <view class="submit" bindtap="submit">{{ btnText || (type == 2 ? '确认支付' : type == 3 ? '提交' : type == 4 ? '确认预约' : '领取') }}</view>
+
+    </view><!-- form_area -->
+
+</view><!-- yuyueshijia_form_page -->
