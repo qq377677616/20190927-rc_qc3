@@ -20,10 +20,14 @@
               <image src="{{IMGSERVICE}}/pay/bi.png" mode="widthFix"></image>
               <view class="v-txt">{{item.vcoin}}</view>
             </view>
-            <view wx:if="{{item.status==1}}" class="v-btn" bindtap="toDetail" data-id="{{item.goods_id}}">立即兑换</view>
+            <view wx:if="{{item.status==1}}" class="v-btn" bindtap="toDetail" data-owner="{{item.car_owner}}" data-id="{{item.goods_id}}" data-type="ok">立即兑换</view>
             <view wx:if="{{item.status==0}}" class="v-btn v-btn2">暂未开放</view>
         </view>
       </view>
     </view>
   </view>
+</view>
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+  <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
 </view>

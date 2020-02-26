@@ -181,32 +181,138 @@ margin-bottom: 32rpx;
 	background: center no-repeat/cover;
 	position: relative;
 }
-.threebg::after{
+.threebg1::after{
 	content: '';
-	width: 20%;
+	width: 11%;
 	height: 7rpx;
 	background-color: #2A558D;
 	position: absolute;
 	bottom: -6rpx;
 	left: 0;
 }
-.anit0::after{
+.threebg2::after{
+	content: '';
+	width: 12.5%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+.threebg3::after{
+	content: '';
+	width: 10%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+.anit1_0::after{
+	width: 11%;
+	transition:all .3s linear; 
+}
+.anit1_1::after{
+	width: 22%;
+	transition:all .3s linear; 
+}
+.anit1_2::after{
+	width: 33%;
+	transition:all .3s linear; 
+}
+.anit1_3::after{
+	width: 33%;
+	transition:all .3s linear; 
+}
+.anit1_4::after{
+	width: 44%;
+	transition:all .3s linear; 
+}
+.anit1_5::after{
+	width: 55%;
+	transition:all .3s linear; 
+}
+.anit1_6::after{
+	width: 66%;
+	transition:all .3s linear; 
+}
+.anit1_7::after{
+	width: 77%;
+	transition:all .3s linear; 
+}
+.anit1_8::after{
+	width: 100%;
+	transition:all .3s linear; 
+}
+.anit2_0::after{
+	width: 12.5%;
+	transition:all .3s linear; 
+}
+.anit2_1::after{
+	width: 25%;
+	transition:all .3s linear; 
+}
+.anit2_2::after{
+	width: 37.5%;
+	transition:all .3s linear; 
+}
+.anit2_3::after{
+	width: 50%;
+	transition:all .3s linear; 
+}
+.anit2_4::after{
+	width: 62.5%;
+	transition:all .3s linear; 
+}
+.anit2_5::after{
+	width: 75%;
+	transition:all .3s linear; 
+}
+.anit2_6::after{
+	width: 87.5%;
+	transition:all .3s linear; 
+}
+.anit2_7::after{
+	width: 100%;
+	transition:all .3s linear; 
+}
+.anit3_0::after{
+	width: 10%;
+	transition:all .3s linear; 
+}
+.anit3_1::after{
 	width: 20%;
 	transition:all .3s linear; 
 }
-.anit1::after{
+.anit3_2::after{
+	width: 30%;
+	transition:all .3s linear; 
+}
+.anit3_3::after{
 	width: 40%;
 	transition:all .3s linear; 
 }
-.anit2::after{
+.anit3_4::after{
+	width: 50%;
+	transition:all .3s linear; 
+}
+.anit3_5::after{
 	width: 60%;
 	transition:all .3s linear; 
 }
-.anit3::after{
+.anit3_6::after{
+	width: 70%;
+	transition:all .3s linear; 
+}
+.anit3_7::after{
 	width: 80%;
 	transition:all .3s linear; 
 }
-.anit4::after{
+.anit3_8::after{
+	width: 90%;
+	transition:all .3s linear; 
+}
+.anit3_9::after{
 	width: 100%;
 	transition:all .3s linear; 
 }

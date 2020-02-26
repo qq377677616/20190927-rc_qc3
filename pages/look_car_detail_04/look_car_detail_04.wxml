@@ -45,11 +45,11 @@
 					<text class="txt2">合资级品质  日产动力组合  五星标准安全防护</text>
 				</view>
 				<view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_2.png)"></view>
-				<view class="txtbox2">日产HR16发动机</view>
+				<view class="txtbox2">{{swiper1_txt[swiper1]}}</view>
 				<!--轮播实例1-->
-				<view class="threebg anit{{swiper1}}">
+				<view class="threebg threebg1 anit1_{{swiper1}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
-						 <block wx:for="{{5}}" wx:key="item">
+						 <block wx:for="{{9}}" wx:key="item">
 							<swiper-item>
 								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw{{index+1}}.png)"></view>
 							</swiper-item>
@@ -58,9 +58,9 @@
 				</view>
 				<view class="swiper1">
 					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
-						 <block wx:for="{{5}}" wx:key="item">
+						 <block wx:for="{{9}}" wx:key="item">
 							<swiper-item>
-								<view class="item1 {{swiper1!=index-1&&!(swiper1==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw{{index+1}}.png)"></view>
+								<view class="item1 {{swiper1!=index-1&&!(swiper1==8&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw{{index+1}}.png)"></view>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -73,23 +73,23 @@
 					<text class="txt2">星航设计  舒适驾乘</text>
 				</view>
 				<view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_4.png)"></view>
-				<view class="txtbox2 txtbox3">“星航” 投射式LED前大灯</view>
+				<view class="txtbox2 txtbox3">{{swiper2_txt[swiper2]}}</view>
 				
 				<!--轮播实例2-->
-				<view class="threebg anit{{swiper2}}">
+				<view class="threebg threebg2 anit2_{{swiper2}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
-						 <block wx:for="{{5}}" wx:key="item">
+						 <block wx:for="{{8}}" wx:key="item">
 							<swiper-item>
-								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_{{index+1}}.png)"></view>
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_{{index+1}}.png?1)"></view>
 							</swiper-item>
 						</block>
 					</swiper>
 				</view>
 				<view class="swiper1">
 					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
-						 <block wx:for="{{5}}" wx:key="item">
+						 <block wx:for="{{8}}" wx:key="item">
 							<swiper-item>
-								<view class="item1 {{swiper2!=index-1&&!(swiper2==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw2_{{index+1}}.png)"></view>
+								<view class="item1 {{swiper2!=index-1&&!(swiper2==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw2_{{index+1}}.png?1)"></view>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -104,23 +104,23 @@
 				</view>
 
 				<view class="nt60_6" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_6.png)"></view>
-				<view class="txtbox2 txtbox3">BSW变道盲区预警系统</view>
+				<view class="txtbox2 txtbox3">{{swiper3_txt[swiper3]}}</view>
 
 				<!--轮播实例3-->
-				<view class="threebg anit{{swiper3}}">
+				<view class="threebg threebg3 anit3_{{swiper3}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
-						 <block wx:for="{{5}}" wx:key="item">
+						 <block wx:for="{{10}}" wx:key="item">
 							<swiper-item>
-								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw3_{{index+1}}.png)"></view>
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw3_{{index+1}}.png?1)"></view>
 							</swiper-item>
 						</block>
 					</swiper>
 				</view>
 				<view class="swiper1">
 					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
-						 <block wx:for="{{5}}" wx:key="item">
+						 <block wx:for="{{10}}" wx:key="item">
 							<swiper-item>
-								<view class="item1 {{swiper3!=index-1&&!(swiper3==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw3_{{index+1}}.png)"></view>
+								<view class="item1 {{swiper3!=index-1&&!(swiper3==9&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw3_{{index+1}}.png?1)"></view>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -128,13 +128,13 @@
 				<!--轮播实例-->
 
 				<view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png?1)">
-					<view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?1)" wx:for="{{carcol}}"></view>
+					<view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?1)" wx:for="{{carcol}}" wx:key="item"></view>
 					<text class="txt3">启辰T60基本参数</text>
 					<text class="txt4">（官网画面仅供参考，购买时以实车为准）</text>
 					<view class="selectcol">
 						<scroll-view scroll-x="{{true}}">
 							<view class="setflex">
-								<view class="f_items" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}">
+								<view class="f_items" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
 									<view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
 									<text class="txt5">{{item.txt}}</text>
 								</view>

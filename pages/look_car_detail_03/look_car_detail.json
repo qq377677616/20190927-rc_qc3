@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "forms": "/components/forms/form"
+    "forms": "/components/forms/form",
+    "rule": "/components/rule/rule"
   }
 }

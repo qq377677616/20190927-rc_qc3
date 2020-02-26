@@ -25,7 +25,7 @@ Page({
 		options: {},
 		carList: [],
 		infoLunbo: {
-			autoplay: true, //是否自动轮播
+			autoplay: false, //是否自动轮播
 			interval: 4000, //间隔时间
 			duration: 1000, //滑动时间
 			current: 0,
@@ -38,7 +38,7 @@ Page({
 			"lowprice": "6.98",
 			"highprice": "9.88",
 			"bgUrl": [imageUrl + "/lookcar/img_d60.png", imageUrl + "/lookcar/img_d60_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_d60.png?1",
+			"titleImg": imageUrl + "/lookcar/title_d60.png?2",
 			 cid: 3,
 			pritxt:'官方指导价'
 		}, {
@@ -47,7 +47,7 @@ Page({
 			"lowprice": "8.68",
 			"highprice": "11.88",
 			"bgUrl": [imageUrl + "/lookcar/img_t60.png", imageUrl + "/lookcar/img_t60_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_t60.png?1",
+			"titleImg": imageUrl + "/lookcar/title_t60.png?4",
 			cid: 6,
 			pritxt: '官方指导价'
 		}, {
@@ -56,7 +56,7 @@ Page({
 			"lowprice": "8.98",
 			"highprice": "12.78",
 			"bgUrl": [imageUrl + "/lookcar/img_t70.png", imageUrl + "/lookcar/img_t70_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_t70.png?1",
+			"titleImg": imageUrl + "/lookcar/title_t70.png?2",
 			cid: 7,
 			pritxt: '官方指导价'
 			}, {
@@ -65,7 +65,7 @@ Page({
 				"lowprice": "11.88",
 				"highprice": "15.48",
 				"bgUrl": [imageUrl + "/lookcar/img_t90.png", imageUrl + "/lookcar/img_t90_X.png"],
-				"titleImg": imageUrl + "/lookcar/title_t90.png?1",
+				"titleImg": imageUrl + "/lookcar/title_t90.png?2",
 				cid: 9,
 				pritxt: '官方指导价'
 			}, {
@@ -74,7 +74,7 @@ Page({
 				"lowprice": "",
 				"highprice": "",
 				"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
-				"titleImg": imageUrl + "/lookcar/title_xing_1.png?6",
+				"titleImg": imageUrl + "/lookcar/title_xing_1.png?2",
 				 cid: 11,
 				pritxt: '官方指导价'
 			},{
@@ -83,7 +83,7 @@ Page({
 			"lowprice": "13.88",
 			"highprice": "15.68",
 			"bgUrl": [imageUrl + "/lookcar/img_t60ev.png", imageUrl + "/lookcar/img_t60ev_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_t60ev.png?1",
+			"titleImg": imageUrl + "/lookcar/title_t60ev.png?4",
 			cid: 13,
 			pritxt: '补贴后官方指导价'
 		},  {
@@ -92,7 +92,7 @@ Page({
 			"lowprice": "13.78",
 			"highprice": "15.38",
 			"bgUrl": [imageUrl + "/lookcar/img_d60ev.png", imageUrl + "/lookcar/img_d60ev_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_d60ev.png?1",
+			"titleImg": imageUrl + "/lookcar/title_d60ev.png?2",
 			cid: 5,
 			pritxt: '补贴后官方指导价'
 		},  {
@@ -101,7 +101,7 @@ Page({
 			"lowprice": "6.18",
 			"highprice": "7.48",
 			"bgUrl": [imageUrl + "/lookcar/img_e30.png", imageUrl + "/lookcar/img_e30_X.png"],
-			"titleImg": imageUrl + "/lookcar/title_e30.png?1",
+			"titleImg": imageUrl + "/lookcar/title_e30.png?2",
 			cid: 10,
 			pritxt: '补贴后官方指导价'
 		}],

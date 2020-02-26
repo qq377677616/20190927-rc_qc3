@@ -373,3 +373,8 @@ page .no_price {
   width: 100%;
   max-width:500rpx;
 }
+.t60img{
+	width: 168rpx;
+	height: 30rpx;
+	background: center no-repeat/cover;
+}

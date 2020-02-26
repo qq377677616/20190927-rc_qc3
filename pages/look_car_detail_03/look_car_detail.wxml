@@ -28,9 +28,9 @@
     <image src="{{ IMGSERVICE }}/spike/banner.png" mode="widthFix" data-index="0" onload="imgLoad" onerror="imgLoad"></image>
   </view>
 
-  <view class="rule">
+  <!-- <view class="rule">
     <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/pay_rule.png" onload="imgLoad" onerror="imgLoad"></image>
-  </view>
+  </view> -->
   <!-- h2 -->
   <view class="h2">
 
@@ -191,7 +191,10 @@
   </view>
 
 
-
+  <!-- float-btn -->
+  <view class="float-btn float-btn2">
+    <image bindtap="openRule" src="{{ IMGSERVICE }}/pay/rule_icon.png" mode="widthFix"></image>
+  </view>
   <!-- float-btn -->
   <view class="float-btn">
     <image bindtap="toIndex" src="{{ IMGSERVICE }}/spike/page4_24.png" mode="widthFix"></image>
@@ -201,7 +204,10 @@
 </view>
 
 
-
+<!-- 规则 -->
+<view class="pof fadeShow" wx:if="{{rulspop}}" catchtap="java">
+  <rule bindclose="openRule" ruleImg="{{ IMGSERVICE }}/pay/pay_rule.jpg"></rule>
+</view>
 
 
 <!-- 留资弹窗-->
