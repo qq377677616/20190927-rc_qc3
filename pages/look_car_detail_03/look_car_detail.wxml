@@ -192,10 +192,12 @@
 
 
   <!-- float-btn -->
+  <view class="float-btn float-btn3">
+    <image bindtap="downPayment" data-open="true" src="{{ IMGSERVICE }}/pay/yuyue.png" mode="widthFix"></image>
+  </view>
   <view class="float-btn float-btn2">
     <image bindtap="openRule" src="{{ IMGSERVICE }}/pay/rule_icon.png" mode="widthFix"></image>
   </view>
-  <!-- float-btn -->
   <view class="float-btn">
     <image bindtap="toIndex" src="{{ IMGSERVICE }}/spike/page4_24.png" mode="widthFix"></image>
   </view>

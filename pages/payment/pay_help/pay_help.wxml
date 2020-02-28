@@ -8,10 +8,10 @@
         <view class="userImg" style="background-image:url({{user_info.headimg}})"></view>
         <view class="userInfo">
           <text class="userNick">{{user_info.nickname}}</text>
-          <text class="userTxt">我正在获得现金红包，快来帮我助力!</text>
+          <text class="userTxt">我正在获得现金红包,快来帮我助力!</text>
         </view>
       </view>
-      <view class="prizeImg" style="background-image:url({{prize_info.prize_img}})">
+      <view class="prizeImg" style="background-image:url({{IMGSERVICE}}/pay/pay_gift.png)">
       </view>
       <view data-type="ok" class="helpBtn mt2" bindtap="helpH" wx:if="{{is_help==0}}">
         <text>助TA一臂之力</text>
