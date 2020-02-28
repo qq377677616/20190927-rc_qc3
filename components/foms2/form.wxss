@@ -6,15 +6,16 @@
     background-color: #F0F0F0;
 } */
 .yuyueshijia_form_page{
-    padding: 28rpx;
-    position: absolute;
+    /* padding: 28rpx; */
+    position: fixed;
     width:100%;
-    /* height:50rpx; */
+    height:130rpx;
     left:0;
     bottom:0;
     /* z-index: 999; */
     background: #fff;
     box-sizing: border-box;
+	overflow: hidden;
 }
 
 /* bind_btn */
@@ -44,7 +45,7 @@
 
 /* form_area */
 .form_area{
-    padding: 40rpx 30rpx;
+    padding: 40rpx 20rpx;
     background-color: #fff;
     border-radius:14rpx;
 }
@@ -55,17 +56,17 @@
 }
 .form_area .group .label{
     flex:0 0 auto;
-    font-size: 30rpx;
+    font-size: 26rpx;
     color: #333;
-    width: 120rpx;
-    margin-right: 32rpx;
-    text-align-last:justify;
-	text-align:justify;
-    text-justify:distribute-all-lines; 
-    letter-spacing: 0;
+    /* width: 120rpx; */
+    margin-right: 17rpx;
+    /* text-align-last:justify;
+	text-align:justify; */
+    /* text-justify:distribute-all-lines;  */
+    /* letter-spacing: 2rpx; */
 }
 .form_area .group input{
-    flex:1;
+    /* flex:1; */
     height: 60rpx;
     padding: 0 20rpx;
     background-color: #F5F5F5;
@@ -91,8 +92,8 @@
 }
 .form_area .group .code_btn.gray{background: #ccc;}
 .form_area .group .location{
-    width: 0;
-    flex:1;
+    width: 540rpx;
+    /* flex:1; */
     padding: 0 26rpx;
     height: 60rpx;
     display: flex;
@@ -304,3 +305,25 @@ picker text{font-size: 30rpx;color:#666;white-space: nowrap;overflow: hidden;tex
     justify-content: center;
 }
 .form_area .agree .checked.on::after{content:"";width:10rpx;height:10rpx;display: block;background:#20A1E0; border-radius:50%;}
+.form_area .group .staript{
+	width: 224rpx;
+}
+.setwid{
+	display: flex;
+	justify-content: space-between;
+}
+.label2{
+	width: 92rpx;
+}
+.addH{
+	height: auto;
+	transition: all .8s linear;
+}
+.f_box{
+	width: 100%;
+	height: 150rpx;
+	/* background-color: red; */
+}
+.addH2{
+	height: 460rpx;
+}

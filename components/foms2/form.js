@@ -38,20 +38,11 @@ Component({
     address: '',
     isChecked: true,
     isGetCode: 0,
-    countDown: 60
+    countDown: 60,
+	isright:false
   },
   ready() {
-    // this.getPosition()
-    if (!wx.getStorageSync('userInfo').mobile) {
-      this.myLogin()
-    } else {
-      this.setData({ wxPhone: wx.getStorageSync('userInfo').mobile })
-      if (this.data.type != 3) this.getPosition()
-    }
-    // gets.isSetting("scope.userLocation").then(res => {
-    //   this.data.isSettingLocation = res
-    //   if (!res) tool.showModal("设置授权", "检测到您未打开位置授权开关，请点击[当前城市]右侧定位图标进行设置", "确定,#1351BA", false)
-    // })
+    
   },
   /**
    * 组件的方法列表
@@ -66,19 +57,15 @@ Component({
       } else if (!_reg.test(this.data.phone)) {
         tool.alert("手机号格式有误")
         return
-      } else if (!this.data.isGetPhone && !this.data.code) {
-        tool.alert("请输入短信验证码")
-        return
-      } if (!this.data.name) {
+      } 
+	  if (!this.data.name) {
         tool.alert("请输入您的真实姓名")
         return
       } if (this.data.type == 1 && !this.data.address) {
         tool.alert("请输入您的详细收货地址")
         return
-      } if (this.data.type == 2 && !this.data.isChecked) {
-        tool.alert("请先同意相关协议")
-        return
       }
+	 
       let _data = {
         phone: this.data.phone,
         name: this.data.name,
@@ -87,6 +74,9 @@ Component({
         address: this.data.address,
         code: this.data.code
       }
+		console.log(_data);
+		// return;
+	  this.setData({ isright: false,name:'',phone:'' })
       this.triggerEvent("submit", _data)
     },
     //登录获取session_key，解密手机号用
@@ -208,12 +198,18 @@ Component({
     },
     //手机号输入
     inputPhone(e) {
+	  let _reg = /^1[3456789]\d{9}$/;
       this.setData({ phone: e.detail.value })
       if (this.data.wxPhone && this.data.wxPhone == e.detail.value) {
         this.setData({ isGetPhone: true })
       } else {
         this.setData({ isGetPhone: false })
       }
+	  if (_reg.test(this.data.phone)){
+		  this.setData({ isright:true})
+		  console.log('输入正确！')
+		  this.getpot();
+	  }
     },
     //获取验证码
     getCode() {
@@ -260,7 +256,13 @@ Component({
     },
     //姓名输入
     inputName(e) {
+	  let _reg = /^1[3456789]\d{9}$/;
       this.setData({ name: e.detail.value })
+	 if (_reg.test(this.data.phone)) {
+		this.setData({ isright: true })
+		console.log('输入正确！')
+		this.getpot();
+	}
     },
     //详细地址输入
     inputAddress(e) {
@@ -295,6 +297,14 @@ Component({
           console.log("您没有勾选设置")
         }
       })
-    }
+    },
+	getpot(){
+		if (!wx.getStorageSync('userInfo').mobile) {
+			this.myLogin()
+		} else {
+			this.setData({ wxPhone: wx.getStorageSync('userInfo').mobile })
+			if (this.data.type != 3) this.getPosition()
+		}
+	}
   }
 })

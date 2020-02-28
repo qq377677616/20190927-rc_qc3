@@ -287,6 +287,7 @@ Page({
 		let that = this;
 		if (this.data.useNum < this.data.allNum) {
 		if (wx.getStorageSync('dyinfo')!=1){//订阅消息暂时不用
+			console.log(wx.getStorageSync('dyinfo'));
 			wx.requestSubscribeMessage({
 				tmplIds: ['DhQWIgncCTFXk3Vi7Po1zN5cUCfwYCnMB4rw7ceeNt8'],
 				success(res) {
@@ -301,6 +302,9 @@ Page({
 					console.log("不接受",err)
 				}
 			})
+			}else{
+				that.setData({ dy_info: true, delMC: false, prize_img: "" });
+				that.runShave();
 			}
 		} else {
 			tool.alert("暂无刮奖次数!");

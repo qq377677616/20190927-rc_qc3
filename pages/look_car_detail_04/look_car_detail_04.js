@@ -38,7 +38,7 @@ Page({
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_02.png', url: '/pages/assemble/pin/pin?activity_id=44' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' }
     ],
-	carcol:[
+	carcol:[//t60颜色图
 		{img: 't60_col1.png', txt: '旭日橙/珠光白双色'},
 		{img: 't60_col2.png', txt: '烈焰红/曜石黑双色' },
 		{ img: 't60_col3.png', txt: '珠光白/曜石黑双色' },
@@ -49,13 +49,45 @@ Page({
 		{ img: 't60_col8.png', txt: '晴空蓝' },
 		{ img: 't60_col9.png', txt: '珠光白' }
 	],
+	  t70carcol: [//t70颜色图
+		  { img: 't70bg6.png', txt: '旭日橙' },
+		  { img: 't70bg7.png', txt: '朝霞红' },
+		  { img: 't70bg8.png', txt: '珠光白' },
+		  { img: 't70bg9.png', txt: '翡丽灰' },
+		  { img: 't70bg10.png', txt: '曜石黑' }
+	  ],
+	  d60carcol: [//t70颜色图
+		  { img: 'd60col1.png', txt: '晴空蓝' },
+		  { img: 'd60col2.png', txt: '映日棕' },
+		  { img: 'd60col3.png', txt: '辰辉银' },
+		  { img: 'd60col4.png', txt: '赤兔红' },
+		  { img: 'd60col5.png', txt: '珠光白' },
+		  { img: 'd60col6.png', txt: '曜石黑' }
+	  ],
 	swiper1:0,//控制第一个swiper
 	swiper2:0,//控制第二个swiper
 	swiper3:0,//控制第三个swiper
+	swiper4: 0,//控制t70第1个swiper
+	swiper5: 0,//控制t70第2个swiper
+	swiper6: 0,//控制t70第3个swiper
+	swiper7: 0,//控制t70第4个swiper
+	swiper8: 0,//控制t70第5个swiper
+	swiper9: 0,//控制d60第1个swiper
+	swiper10: 0,//控制d60第2个swiper
+	swiper11: 0,//控制d60第3个swiper
 	rogincol:0,//初始选择的颜色
+	carid:'',
 	swiper1_txt: ['共享全球供应商体系', '日产HR16发动机', '日产XTRONIC CVT无极变速器', 'Zone Body区域组合+1200Mpa高强刚车身','加强版6安全气囊防护系统','ASCD定速巡航','HSA上坡起步辅助系统','博世9.1版ESP车身电子稳定系统','日产同平台开发生产'],//部件名称
 	swiper2_txt: ['“星耀式” LED光导属灯', '“星航” 投射式LED前大灯', '18英寸切削组合金轮辋', '悬浮式车顶', '全景天窗', '科技范高质感内饰', 'Multi-Layer人体工学座椅','“星空点阵式” 启辰家族前格栅'],//部件名称
 	swiper3_txt: ['AEB自主紧急制动系统', 'BSW变道盲区预警系统', 'LDW车道偏离预警系统', '3D AVM全景式监控影像系统', '多场景远程控制', '远程控制车辆', '智能语音助手', '10+8英寸大尺寸智能双屏交互', '智能全时导航', 'DVR智能行车记录仪'],//部件名称
+	t70_swiper1_txt: ['LED光扩散粒子后尾灯', '18英寸铝合金双色切割工艺轮辋','砖石绗缝皮质座椅','丰富的收纳空间','10.1英寸高清多点触控屏','炮筒式高清晰组合仪表盘','多功能D型真皮方向盘(带控制键)','投射式鹰眼前大灯'],//部件名称
+	t70_swiper2_txt: ['数字化车联&互联网信息娱乐', '车辆智能安防体系', '智慧语音助手', '手机远程控制', '异常诊断手机提醒', '全时在线导航'],//部件名称
+	t70_swiper3_txt: ['流媒体后视镜', '3D全景式监控影像系统', '后视镜自动折叠', 'TPMS胎压监测系统', '智能电动尾门'],//部件名称
+	t70_swiper4_txt: ['先进的XTRONIC CVT无极变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统','日产全球引擎MR20发动机'],//部件名称
+    t70_swiper5_txt: ['专业制造工艺', 'ABS+EBD+BA三位一体智能刹车辅助系统', 'ESS紧急制动提醒系统', 'ESS紧急制动提醒系统', '雷诺-日产-三菱联盟品质标准'],//部件名称
+	d60_swiper1_txt: ['宽敞大尺寸天窗', '宽敞大尺寸天窗' , '663mm后排膝部空间', 'Multi-Layer人体工学座椅'],//部件名称
+	d60_swiper2_txt: ['锐利的鹰眼LED前大灯', '星空点阵式前格栅', '红镰式光导LED组合尾灯','驾驶员导向飞航式驾驶舱设计','人体工学D型多功能方向盘','高品质透气性菱格皮质座椅','4756mm优越车身长度'],//部件名称
+	d60_swiper3_txt: ['XTRONIC CVT无极变速器', '5.6L/100km低油耗', '带横向稳定杆的扭力梁式悬挂系统','Zone Body高性能区域车身结构','ABS+EBD+BA三位一体智能刹车辅助系统','博世9.1版ESP车身电子稳定系统','TPMS智能胎压监测系统','EPKB电子驻车系统','HR16发动机'],//部件名称
   },
 
 	
@@ -65,6 +97,7 @@ Page({
    */
   onLoad: function (options) {
 	console.log(options);
+	this.setData({carid:options.id})
     mta.Page.init()//腾讯统计
     mta.Event.stat("look_car_other", {})
     this.data.id = options.id
@@ -220,7 +253,7 @@ Page({
           })
         } else {
           alert.alert({
-            str: '预约失败，请稍后再试~',
+            str: value.data.msg,
           })
         }
       })
@@ -251,14 +284,23 @@ Page({
 		tool.jump_red("/pages/index/index")
 	},
 	swiperchange(e){
-		console.log(e);
+		// console.log(e);
 		let type = e.currentTarget.dataset.type;
 		this.setData({
 			swiper1:type==1?e.detail.current:this.data.swiper1,
 			swiper2: type == 2 ? e.detail.current : this.data.swiper2,
-			swiper3: type == 3 ? e.detail.current : this.data.swiper3
+			swiper3: type == 3 ? e.detail.current : this.data.swiper3,
+			swiper4: type == 4 ? e.detail.current : this.data.swiper4,
+			swiper5: type == 5 ? e.detail.current : this.data.swiper5,
+			swiper6: type == 6 ? e.detail.current : this.data.swiper6,
+			swiper7: type == 7 ? e.detail.current : this.data.swiper7,
+			swiper8: type == 8 ? e.detail.current : this.data.swiper8,
+			swiper9: type == 9 ? e.detail.current : this.data.swiper9,
+			swiper10: type == 10 ? e.detail.current : this.data.swiper10,
+			swiper11: type == 11 ? e.detail.current : this.data.swiper11,
 			})
-		console.log(this.data.swiper2);
+			console.log(type);
+		// console.log(this.data.swiper2);
 	},
 	changecol(e){
 		let index = e.currentTarget.dataset.index;

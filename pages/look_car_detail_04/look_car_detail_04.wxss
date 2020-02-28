@@ -83,12 +83,12 @@ page {
 }
 
 .forms-box {
-    position: absolute;
+    /* position: fixed; */
     width: 100%;
-    height: 100%;
-    left: 0;
-    bottom: 0;
-    z-index: 999;
+    /* height: 100%; */
+    /* left: 0; */
+    /* bottom: 0; */
+    /* z-index: 999; */
 }
 .group .li{border-top:1rpx solid #e6e6e6;padding:6rpx 40rpx;color:#333;background: #f5f5f5;min-height: 68rpx;position: relative;}
 .group .li.gray::after{content:"";display: block;border-right:1rpx solid #e6e6e6;position: absolute;left:50%;top:0;height:100%;width:1rpx;}
@@ -114,12 +114,14 @@ page {
 	position: fixed;
 	right: 18rpx;
 	bottom: 180rpx;
+	z-index: 99;
 }
 .float-btn image {
 display: block;
 width: 84rpx;
 margin-bottom: 32rpx;
 }
+
 /* 2020 2 18 改版 */
 .firbg{
 	width: 100%;
@@ -161,6 +163,9 @@ margin-bottom: 32rpx;
 	width:750rpx;
 	height:738rpx;
 	background: center no-repeat/cover;
+}
+.twobg2{
+	height: 748rpx;
 }
 .txtbox2{
 	width: 100%;
@@ -316,6 +321,93 @@ margin-bottom: 32rpx;
 	width: 100%;
 	transition:all .3s linear; 
 }
+.threebg4::after{
+	content: '';
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+	width: 16.5%;
+}
+.threebg6::after{
+	content: '';
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+	width: 20%;
+}
+.threebg7::after{
+	content: '';
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+	width: 25%;
+}
+.anit5_0::after{
+	width: 16.5%;
+	transition:all .3s linear;
+}
+.anit5_1::after{
+	width: 33%;
+	transition:all .3s linear;
+}
+.anit5_2::after{
+	width: 49.5%;
+	transition:all .3s linear;
+}
+.anit5_3::after{
+	width: 66%;
+	transition:all .3s linear;
+}
+.anit5_4::after{
+	width: 82.5%;
+	transition:all .3s linear;
+}
+.anit5_5::after{
+	width: 100%;
+	transition:all .3s linear;
+}
+.anit6_0::after{
+	width: 20%;
+	transition:all .3s linear;
+}
+.anit6_1::after{
+	width: 40%;
+	transition:all .3s linear;
+}
+.anit6_2::after{
+	width: 60%;
+	transition:all .3s linear;
+}
+.anit6_3::after{
+	width: 80%;
+	transition:all .3s linear;
+}
+.anit6_4::after{
+	width: 100%;
+	transition:all .3s linear;
+}
+.anit7_0::after{
+	width: 25%;
+	transition:all .3s linear;
+}
+.anit7_1::after{
+	width: 50%;
+	transition:all .3s linear;
+}
+.anit7_2::after{
+	width: 75%;
+	transition:all .3s linear;
+}
+.anit7_3::after{
+	width: 100%;
+	transition:all .3s linear;
+}
 .swiper1{
 	width: 100%;
 	height:135rpx; 
@@ -379,6 +471,9 @@ margin-bottom: 32rpx;
 	width: 100%;
 	margin-top: 35rpx;
 	/* background-color: antiquewhite; */
+}
+.t70selectcol{
+	margin-top: 516rpx;
 }
 .selectcol>scroll-view{
 	width: 100%;
@@ -531,14 +626,193 @@ margin-bottom: 32rpx;
 	opacity: 0.4;
 }
 .carself{
-	width: 626rpx;
-	height: 244rpx;
+	width: 689rpx;
+	height: 257rpx;
 	background: center no-repeat/cover;
 	position: absolute;
 	left: 50rpx;
 	top: 135rpx;
 	opacity: 0;
 }
+.t70carself{
+	top: 240rpx;
+}
 .setopt{
 	opacity: 1;
+}
+/* t70改 */
+.t70_txt1{
+	width: 569rpx;
+	height: 37rpx;
+	background: center no-repeat/cover;
+}
+.t70txt1{
+	height: 280rpx;
+}
+.t70txt2{
+	margin-top: 24rpx;
+}
+.t70m_txt{
+	width: 488rpx;
+	height: 36rpx;
+}
+.t70_4{
+	height: 1030rpx;
+	/* background-color: #F0F0F0; */
+}
+.t70m_txt2{
+	width: 487rpx;
+	height: 37rpx;
+	background: center no-repeat/cover;
+}
+.t70setbg{
+	height: 280rpx;
+}
+.t70txt2{
+	margin-top: 20rpx;
+}
+.t70_6{
+	height: 639rpx;
+}
+.t70_8{
+	height: 712rpx;
+	margin-top: 102rpx;
+}
+.t70m_txt3{
+	width: 409rpx;
+	height: 37rpx;
+}
+.t70setbg2{
+	margin-top: 100rpx;
+	height: 280rpx;
+}
+.t70bg_8{
+	width: 100%;
+	height: 569rpx;
+	background: center no-repeat/cover;
+}
+.t70m_txt5{
+	width: 329rpx;
+	height: 38rpx;
+	background: center no-repeat/cover;
+}
+.T70footcar1{
+	width: 451rpx;
+	height: 191rpx;
+}
+.T70footcar2{
+	width: 455rpx;
+	height: 188rpx;
+}
+.t70txt7{
+	transform: rotate(-90deg);
+	/* right:-32rpx; */
+	top: 62rpx;
+	left: -32rpx;
+	font-size:19rpx;
+	font-family:NissanBrand;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+	position: absolute;
+}
+.t70txt6{
+	left: 204rpx;
+}
+.t70txt8{
+	bottom: 20rpx;
+	left: 206rpx;
+}
+.t70txt9{
+	transform: rotate(-90deg);
+	left:-35rpx;
+	top: 75rpx;
+	font-size:19rpx;
+	font-family:NissanBrand;
+	font-weight:bold;
+	color:rgba(24,24,24,1);
+	position: absolute;
+}
+.t70num1{
+	width: 96rpx !important;
+}
+.t70num2{
+	width: 153rpx !important;
+}
+.t70num3{
+	width: 269rpx !important;
+}
+/* d60 */
+.d60_txt1{
+	width: 236rpx;
+	height: 37rpx;
+	background: center no-repeat/cover;
+}
+.d60twobg{
+	width: 100%;
+	height: 583rpx;
+	background: center no-repeat/cover;
+}
+.d60_txt{
+	width: 195rpx;
+	height: 37rpx;
+	background: center no-repeat/cover;
+}
+.d60txt1{
+	height: 225rpx;
+}
+.d60bg1{
+	width: 100%;
+	height:578rpx;
+	background: center no-repeat/cover; 
+}
+.d60_txt2{
+	width: 235rpx;
+	height: 37rpx;
+	background: center no-repeat/cover;
+}
+.d60bg4{
+	width: 100%;
+	height: 750rpx;
+	background: center no-repeat/cover;
+}
+.d60_txt3{
+	width: 237rpx;
+	height: 38rpx;
+	background: center no-repeat/cover;
+}
+.d60setbg2{
+	height: 228rpx;
+}
+.d60bg_5{
+	width: 100%;
+	height: 569rpx;
+	background: center no-repeat/cover;
+}
+.d60_8{
+	margin-top: 99rpx;
+	width: 100%;
+	height: 546rpx;
+	background: center no-repeat/cover;
+}
+.d60carself{
+	width: 712rpx;
+	height: 225rpx;
+	background: center no-repeat/cover;
+}
+.d60num1{
+	width: 71rpx;
+	height: auto;
+}
+.d60num1{
+	width: 159rpx;
+	height: auto;
+}
+.d60num1{
+	width: 161rpx;
+	height: auto;
+}
+.d60footcar1{
+	width: 563rpx;
+	height: 600rpx;
+	background: center no-repeat/cover;
 }

@@ -83,7 +83,7 @@ Page({
 	  return {
 		  title: "立即认证启辰车主，即可赢好礼！",
 		  path: `/pages/binding/owner/owner?activity_id=${this.data.activity_id}`,
-		  imageUrl: `${this.data.IMGSERVICE}/guaguale/gglshare.jpg`,
+		  imageUrl: `${this.data.IMGSERVICE}/guaguale/gglshare.jpg?1`,
 		  success() {
 			  console.log("通过按钮分享上报")
 		  }
@@ -99,9 +99,9 @@ Page({
 		//   if(res.data.status=='1'){
 			  this.setData({ 
 				  activeData: res.data.data.activity_info,
-				  activeStatus:res.data.status,
-				  praTime: res.data.data.start_date,
-				  ruleimg: res.data.data.rule,
+				  activeStatus: res.data.data.activity_info.status,
+				  praTime: res.data.data.activity_info.start_date,
+				  ruleimg: res.data.data.activity_info.rule,
 				  iscarActive: res.data.data.activity_info.car_owner==1?true:false,
 			  })
 			this.setRule();
@@ -128,13 +128,16 @@ Page({
 	},
 	isActivityOpen() {
 		// 判断活动状态
-		 if(this.data.activeStatus == "-2") {
+		console.log("活动状态", this.data.activeStatus)
+		 if(this.data.activeStatus == 2) {
+			 	console.log("未开始")
 				this.setData({
 					isVehicleOwnerHidePop: true,
 					popType: 1,
 					poptxt: "活动预计" + this.data.praTime + "号开启 敬请期待"
 				})
-			} else if (this.data.activeStatus == "-3") {
+			} else if (this.data.activeStatus == "3") {
+			    console.log("已结束")
 				this.setData({
 					isVehicleOwnerHidePop: true,
 					popType: 1,
@@ -146,7 +149,7 @@ Page({
 		//点击立即抽奖
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		tool.jump_nav(`/pages/binding/scratch/Scratch?activity_id=${this.data.parms.activity_id}`)
-		this.isVehicleOwnerHidePop();
+		// this.isVehicleOwnerHidePop();
 	},
 	//判断是否授权和是否是车主
 	isVehicleOwner(e) {

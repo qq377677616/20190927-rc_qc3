@@ -101,7 +101,7 @@ Page({
   },
   //页面初始化
   initData(options) {
-    tool.loading("加载中")
+    // tool.loading("加载中")
     Promise.all([
       request_01.lookCarDetail({
         user_id: wx.getStorageSync('userInfo').user_id,
@@ -134,7 +134,7 @@ Page({
   },
   //详情图片加载完成
   bindload() {
-    tool.loading_h()
+    // tool.loading_h()
   },
   //导航列表
   navList(e) {

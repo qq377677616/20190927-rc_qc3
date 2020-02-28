@@ -25,7 +25,7 @@ Page({
 		options: {},
 		carList: [],
 		infoLunbo: {
-			autoplay: false, //是否自动轮播
+			autoplay: true, //是否自动轮播
 			interval: 4000, //间隔时间
 			duration: 1000, //滑动时间
 			current: 0,
@@ -46,7 +46,7 @@ Page({
 			"info": ['高品质智趣SUV 星级品质 焕新登场'],
 			"lowprice": "8.68",
 			"highprice": "11.88",
-			"bgUrl": [imageUrl + "/lookcar/img_t60.png", imageUrl + "/lookcar/img_t60_X.png"],
+			"bgUrl": [imageUrl + "/lookcar/img_t60.png?1", imageUrl + "/lookcar/img_t60_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_t60.png?4",
 			cid: 6,
 			pritxt: '官方指导价'
@@ -251,10 +251,14 @@ Page({
 				url: `/pages/look_car_detail_03/look_car_detail?id=${11}`,
 			})
 		}
-		else {
+		else if (id == 6 || id == 7 || id == 3){
 			// 跳转通用看车页
 			router.jump_nav({
 				url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
+			})
+		}else{
+			router.jump_nav({
+				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
 			})
 		}
 	},

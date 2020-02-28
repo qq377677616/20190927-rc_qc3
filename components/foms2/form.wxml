@@ -1,27 +1,25 @@
 <!--pages/test/test.wxml-->
 
 <!-- yuyueshijia_form_page -->
-<view class="yuyueshijia_form_page">
+<view class="yuyueshijia_form_page {{isright?'addH':''}}">
  
 
     
     <!-- form_area -->
     <view class="form_area">
-        <view class="group">
-            <text class="label" space="nbsp">电话</text>
-            <!-- <input type="text" value="{{phone}}" disabled="{{isGetPhone}}" placeholder="请输入您的电话号码" bindinput="inputPhone"/> -->
-            <input type="text" value="{{phone}}" placeholder="请输入您的电话号码" bindinput="inputPhone" maxlength="11"
-                type="number" />
+	   <view class="setwid">
+			<view class="group">
+				<text class="label">姓 名</text>
+				<input type="text" class="staript" placeholder="姓名" bindinput="inputName" value="{{name}}"/>
+			</view>
+
+			<view class="group">
+				<text class="label">电 话</text>
+				<input type="text" class="staript" value="{{phone}}" placeholder="电话" bindinput="inputPhone" maxlength="11" type="number" />
+			</view>
         </view>
-
-        <view class="group">
-            <text class="label" space="nbsp">姓名</text>
-
-            <input type="text" placeholder="请输入您的姓名" bindinput="inputName" />
-        </view>
-
         <view class="group" wx:if="{{type != 3}}">
-            <text class="label" space="nbsp">当前城市</text>
+            <text class="label label2" space="nbsp">地 址</text>
             <view class="location">
                 <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{region}}"
                     custom-item="{{customItem}}">
@@ -32,7 +30,7 @@
         </view>
 
         <view class="group" wx:if="{{type != 1 && type != 3}}">
-            <text class="label" space="nbsp">专营店</text>
+            <text class="label label2" space="nbsp">专营店</text>
             <view class="location">
                 <picker class="picker" bindchange="bindStoreChange" value="{{storeList_index}}" range="{{storeList}}"
                     range-key="{{'name'}}"><text class="picker">{{storeList[storeList_index].name}}</text>
@@ -50,3 +48,4 @@
     </view><!-- form_area -->
 
 </view><!-- yuyueshijia_form_page -->
+<view class="f_box {{isright?'addH2':''}}"></view>

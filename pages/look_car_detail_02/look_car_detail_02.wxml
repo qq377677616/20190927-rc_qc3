@@ -47,7 +47,7 @@
         </view>
         <view hidden="{{navIndex == 1}}">
             <view class="image_item">
-                <image src="{{ lookCarDetail.car_details_img }}" mode="widthFix" bindload="bindload"></image>
+                <image src="{{ lookCarDetail.car_details_img }}" mode="widthFix" ></image>
             </view>
         </view>
 
