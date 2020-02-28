@@ -771,6 +771,13 @@
 					"pathName": "pages/payment/pay_detail/pay_detail",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 102,
+					"name": "pages/binding/scratch/Scratch",
+					"pathName": "pages/binding/scratch/Scratch",
+					"query": "activity_id=21",
+					"scene": null
 				}
 			]
 		}

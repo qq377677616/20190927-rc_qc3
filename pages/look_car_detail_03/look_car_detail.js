@@ -30,7 +30,7 @@ Page({
     isShowForm: false,
     formsType: 2,
     vehicle: {},
-    rulspop:false,
+    rulspop: false,
     isHaveCard: false, // 是否有卡券信息
     domAnimatedList: [{
         local: 0,
@@ -81,7 +81,7 @@ Page({
   },
 
   // 规则
-  openRule(){
+  openRule() {
     this.setData({
       rulspop: !this.data.rulspop
     })
@@ -331,7 +331,8 @@ Page({
     })
   },
   //立即下定
-  downPayment() {
+  downPayment(e) {
+    let onlyOne = e.currentTarget.dataset.open
     var _this = this
     // order_sn判断订单号是否为空字符串  不为空则为以留资
     let openid = wx.getStorageSync('userInfo').openid
@@ -340,40 +341,55 @@ Page({
     console.log(show_page, 'show_page')
     switch (show_page) {
       case 3:
-        request_05.getPayParam({
-          openid,
-          activity_id
-        }).then(res => {
-          console.log(res, 'res')
-          if (res.data.status == 1) {
-            wx.requestPayment({
-              timeStamp: res.data.data.timeStamp,
-              nonceStr: res.data.data.nonceStr,
-              package: res.data.data.package,
-              signType: 'MD5',
-              paySign: res.data.data.paySign,
-              success(res) {
-                _this.isShowForm()
-                wx.showToast({
-                  title: '支付成功',
-                  icon: 'success',
-                  duration: 2000
-                })
-                setTimeout(() => {
-                  _this.getPayInfo()
-                }, 2500)
-              },
-              fail(res) {
-                console.log('支付失败')
-              }
-            })
-          } else {
-            tool.alert(res.data.msg)
-          }
-        })
-        break;
+        if (onlyOne) {
+          tool.alert('您已经留过资了哦~')
+          return
+        } else {
+          request_05.getPayParam({
+            openid,
+            activity_id
+          }).then(res => {
+            console.log(res, 'res')
+            if (res.data.status == 1) {
+              wx.requestPayment({
+                timeStamp: res.data.data.timeStamp,
+                nonceStr: res.data.data.nonceStr,
+                package: res.data.data.package,
+                signType: 'MD5',
+                paySign: res.data.data.paySign,
+                success(res) {
+                  _this.isShowForm()
+                  wx.showToast({
+                    title: '支付成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                  setTimeout(() => {
+                    _this.getPayInfo()
+                  }, 2500)
+                },
+                fail(res) {
+                  console.log('支付失败')
+                }
+              })
+            } else {
+              tool.alert(res.data.msg)
+            }
+          })
+          break;
+        }
       case 2:
         const lookCarDetail = this.data.lookCarDetail;
+        // 判断是留资icon按钮点击  还是下订点击
+        if (onlyOne) {
+          this.setData({
+            onlyOne,
+          })
+        } else {
+          this.setData({
+            onlyOne: false,
+          })
+        }
         this.setData({
           vehicle: {
             img: lookCarDetail.car_img,
@@ -401,6 +417,8 @@ Page({
 
   //提交
   submit(e) {
+    let openPay = this.data.onlyOne
+    let options = this.data.options
     var _this = this
     const activity_id = wx.getStorageSync('activity_id')
     const openid = wx.getStorageSync('userInfo').openid
@@ -421,37 +439,45 @@ Page({
         //success
         console.log(res.data.status, '留资状态')
         if (res.data.status == 1) {
-          console.log('调取支付')
-          request_05.getPayParam({
-            activity_id,
-            openid
-          }).then(res => {
-            if (res.data.status == 1) {
-              wx.requestPayment({
-                timeStamp: res.data.data.timeStamp,
-                nonceStr: res.data.data.nonceStr,
-                package: res.data.data.package,
-                signType: 'MD5',
-                paySign: res.data.data.paySign,
-                success(res) {
-                  _this.isShowForm()
-                  wx.showToast({
-                    title: '支付成功',
-                    icon: 'success',
-                    duration: 2000
-                  })
-                  setTimeout(() => {
-                    _this.getPayInfo();
-                  }, 2500)
-                },
-                fail(res) {
-                  console.log('支付失败')
-                }
-              })
-            } else {
-              alert.alert(res.data.msg)
-            }
-          })
+          if (!openPay) {
+            console.log('调取支付')
+            request_05.getPayParam({
+              activity_id,
+              openid
+            }).then(res => {
+              if (res.data.status == 1) {
+                wx.requestPayment({
+                  timeStamp: res.data.data.timeStamp,
+                  nonceStr: res.data.data.nonceStr,
+                  package: res.data.data.package,
+                  signType: 'MD5',
+                  paySign: res.data.data.paySign,
+                  success(res) {
+                    _this.isShowForm()
+                    wx.showToast({
+                      title: '支付成功',
+                      icon: 'success',
+                      duration: 2000
+                    })
+                    setTimeout(() => {
+                      _this.getPayInfo();
+                    }, 2500)
+                  },
+                  fail(res) {
+                    console.log('支付失败')
+                  }
+                })
+              } else {
+                alert.alert(res.data.msg)
+              }
+            })
+          } else {
+            _this.isShowForm()
+            tool.alert('留资成功')
+            setTimeout(() => {
+              _this.initData(options)
+            }, 500)
+          }
         }
 
         // const status = value.data.status;

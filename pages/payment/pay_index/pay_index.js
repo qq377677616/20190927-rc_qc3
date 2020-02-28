@@ -94,6 +94,11 @@ Page({
     })
   },
 
+  //提示信息
+  promptInfo(){
+    tool.alert('您今天已领过红包啦，请明天再来哦~')
+  },
+
   //我的奖品
   toPrize() {
     let activity_id = this.data.activity_id

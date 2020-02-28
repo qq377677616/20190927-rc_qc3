@@ -188,6 +188,10 @@ page{
   bottom:285rpx;
 }
 
+.float-btn3{
+  bottom:395rpx;
+}
+
 .float-btn image{
     display: block;
     width: 84rpx;

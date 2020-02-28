@@ -16,7 +16,7 @@
     <view class="top-title">我的现金红包</view>
     <view class="top-cash">{{my_score}}</view>
     <view class="img">
-      <view class="btn" wx:if="{{is_upgrade==1}}">
+      <view class="btn" bindtap="promptInfo" wx:if="{{is_upgrade==1}}">
         <image src="{{IMGSERVICE}}/pay/pay_close.png" mode="widthFix"></image>
       </view>
       <view class="btn" bindtap="getPrize" wx:else>
