@@ -38,7 +38,7 @@
           <view class="shoe" style="background-image:url('{{prizeInfo.prize_img}}')">
           </view>
         </view> -->
-        <view class="quan2 nowrap">{{prizeInfo.prize_name}}
+        <view class="quan2 nowrap">{{prizeInfo.upgrade_score}}
         </view>
         <view class="quan3" wx:if="{{prizeInfo.is_upgrade==0}}" bindtap="lqPrize">领取</view>
       </view>
