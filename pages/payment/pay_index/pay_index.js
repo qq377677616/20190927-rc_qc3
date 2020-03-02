@@ -36,37 +36,51 @@ Page({
       activity_id,
       openid
     }).then(res => {
-      this.setRule()
-      this.setData({
-        show_page: res.data.data.show_page,
-        car_owner: res.data.data.activity_info.car_owner,
-        activity_id: options.activity_id,
-        order_sn: res.data.data.order_sn,
-        acData: res.data.data,
-        my_score: res.data.data.my_score,
-        is_upgrade: res.data.data.help_info.prize_info.is_upgrade,
-        options
-      })
-      if (res.data.data.show_page == 6 && res.data.data.help_info.prize_info.is_upgrade == 0 || res.data.data.show_page == 7 && res.data.data.help_info.prize_info.is_upgrade == 0) {
-        router.jump_red({
-          url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
+      if (res.data.status == 1) {
+        this.setRule()
+        this.setData({
+          show_page: res.data.data.show_page,
+          car_owner: res.data.data.activity_info.car_owner,
+          activity_id: options.activity_id,
+          order_sn: res.data.data.order_sn,
+          acData: res.data.data,
+          my_score: res.data.data.my_score,
+          is_upgrade: res.data.data.help_info.prize_info.is_upgrade,
+          options
+        })
+        if (res.data.data.show_page == 6 && res.data.data.help_info.prize_info.is_upgrade == 0 || res.data.data.show_page == 7 && res.data.data.help_info.prize_info.is_upgrade == 0) {
+          router.jump_red({
+            url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
+          })
+        }
+        let keyGroup = wx.getStorageSync('keyGroup')
+        console.log(keyGroup, 'keyGroup')
+        let payKey = wx.getStorageSync('keyGroup').pinKey
+        console.log(payKey, 'payKey')
+        if (!payKey) {
+          if (!this.beforeCheck()) {
+            console.log('没有授权')
+            return;
+          } else {
+            console.log('授权了')
+          }
+        }
+        this.setData({
+          keyGroup,
+        })
+      } else if (res.data.status == 2) {
+        this.setData({
+            isVehicleOwnerHidePop: true,
+            popType: 1,
+            text: "活动预计" + res.data.data.activity_info.start_date + "号开启 敬请期待"
+        })
+      } else if (res.data.status == 3) {
+        this.setData({
+          isVehicleOwnerHidePop: true,
+          popType: 1,
+          text: "活动已结束"
         })
       }
-      let keyGroup = wx.getStorageSync('keyGroup')
-      console.log(keyGroup, 'keyGroup')
-      let payKey = wx.getStorageSync('keyGroup').pinKey
-      console.log(payKey, 'payKey')
-      if (!payKey) {
-        if (!this.beforeCheck()) {
-          console.log('没有授权')
-          return;
-        } else {
-          console.log('授权了')
-        }
-      }
-      this.setData({
-        keyGroup,
-      })
     })
   },
 
@@ -95,7 +109,7 @@ Page({
   },
 
   //提示信息
-  promptInfo(){
+  promptInfo() {
     tool.alert('您今天已领过红包啦，请明天再来哦~')
   },
 
