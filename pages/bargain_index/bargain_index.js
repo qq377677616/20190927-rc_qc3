@@ -61,14 +61,19 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		console.log('参数', options);
+		// console.log('参数', options);
 		//   alert.alert({ str:options.isshare})
+		if (options.scene) {
+			let scene = decodeURIComponent(options.scene);
+			let aid = scene.split("&")[1].split("=")[1]
+			this.setData({ activity_id: aid})
+		}else{
+			wx.setStorageSync("activity_id", options.activity_id || wx.getStorageSync('activity_id'))
+			this.setData({
+				activity_id: options.activity_id || wx.getStorageSync('activity_id')
+			});
+		}
 		this.setData({ isshare: options.isshare == "6" })
-		wx.setStorageSync("activity_id", options.activity_id || wx.getStorageSync('activity_id'))
-		this.setData({
-			activity_id: options.activity_id || wx.getStorageSync('activity_id')
-
-		});
 		this.allWeek();
 		request_01.login(() => {
 			this.setData({
