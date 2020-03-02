@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "activePop": "/components/activePop/activePop"
+  },
   "navigationBarTitleText": "广州五一车"
 }
