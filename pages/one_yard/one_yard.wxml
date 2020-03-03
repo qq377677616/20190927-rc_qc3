@@ -19,7 +19,7 @@
     <view class="inp">
       <view class="sanjiao"></view>
       <block>
-        <picker bindchange="bindStoreChange" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
+        <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
           <view class="picker">
             <view>{{storeList[storeList_index].name}}</view>
           </view>

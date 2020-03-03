@@ -20,7 +20,7 @@
               <image src="{{IMGSERVICE}}/pay/bi.png" mode="widthFix"></image>
               <view class="v-txt">{{item.vcoin}}</view>
             </view>
-            <view wx:if="{{item.status==1}}" class="v-btn" bindtap="toDetail" data-owner="{{item.car_owner}}" data-id="{{item.goods_id}}" data-type="ok">立即兑换</view>
+            <view wx:if="{{item.status==1}}" class="v-btn" bindtap="toDetail" data-owner="{{item.car_owner}}" data-id="{{item.goods_id}}" data-stype="{{item.type}}" data-type="ok">立即兑换</view>
             <view wx:if="{{item.status==0}}" class="v-btn v-btn2">暂未开放</view>
         </view>
       </view>

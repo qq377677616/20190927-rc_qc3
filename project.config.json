@@ -750,10 +750,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 99,
 					"name": "一展一码",
 					"pathName": "pages/one_yard/one_yard",
-					"query": "",
+					"query": "s_i=26",
 					"scene": null
 				},
 				{

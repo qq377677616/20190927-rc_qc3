@@ -19,7 +19,7 @@ Page({
 
   //初始化数据
   initData(options) {
-    console.log(options.car_owner,'111111111111')
+    console.log(options.car_owner, '111111111111')
     let cate_id = options.cate_id
     let page = this.data.page
     let is_activity = 1
@@ -33,6 +33,7 @@ Page({
         this.setData({
           goodsData: res.data.data,
           car_owner: options.car_owner == 1,
+          goods2_buy: options.goods2_buy
         })
       } else {
         console.log('报错')
@@ -43,15 +44,22 @@ Page({
   // 商品详情页
   toDetail(e) {
     let goods_id = e.currentTarget.dataset.id
-    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
-    if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.owner == 1) {
-      this.setData({ popType: 4 });
-      this.isVehicleOwnerHidePop();
-      return;
+    let stype = e.currentTarget.dataset.stype
+    if (stype == 2 && this.data.goods2_buy == 0) {
+      tool.alert('暂无权限')
+    } else {
+      if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
+      if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.owner == 1) {
+        this.setData({
+          popType: 4
+        });
+        this.isVehicleOwnerHidePop();
+        return;
+      }
+      router.jump_nav({
+        url: `/pages/payment/pay_detail/pay_detail?goods_id=${goods_id}`
+      })
     }
-    router.jump_nav({
-      url: `/pages/payment/pay_detail/pay_detail?goods_id=${goods_id}`
-    })
   },
 
   //判断是否授权和是否是车主

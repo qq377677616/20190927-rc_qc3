@@ -2,7 +2,7 @@
 
 .banner {
   width: 750rpx;
-  height: 320rpx;
+  /* height: 320rpx; */
   overflow: hidden;
 }
 

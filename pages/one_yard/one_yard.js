@@ -83,7 +83,7 @@ Page({
         }
       })
     } else {
-      small_activity_id = options.small_activity_id;
+      small_activity_id = options.s_i;
     }
     request_05.autoshowIndex({
       small_activity_id,
@@ -251,7 +251,7 @@ Page({
   // 选择专营店
   bindPickerStore(e) {
     const storeList_index = e.detail.value;
-    console.log(storeIndex);
+    console.log(storeList_index);
     this.setData({
       storeList_index,
     })
