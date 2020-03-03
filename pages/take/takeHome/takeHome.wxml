@@ -1,0 +1,72 @@
+<view class="whole">
+	<view class="hander">
+		<!-- 头部 -->
+		<view class="row1">
+			<view class="useinfo">
+				<view class="useimg" style="background-image:url({{BASEURL}}/icon.png)"></view>
+				<view class="riginfo">
+					<view class="l_name">
+						<text class="txt1">陈小东</text>
+						<view class="txt2">市场经理</view>
+					</view>
+					<view class="cg_btn">
+						<image mode="widthFix" src="{{BASEURL}}/tk_change.png" class="change"></image>
+						<text class="txt3">切换</text>
+					</view>
+				</view>			
+			</view>
+		</view>
+		<!-- 门店信息 -->
+		<view class="row2">
+			<view class="storinfo">
+
+				<view class="s_row1">
+					<view class="label">
+						<text class="txt4">广州花都区绿日专营店</text>
+						<image mode="widthFix" src="{{BASEURL}}/tk_more.png" class="moreicon"></image>
+					</view>
+					<view class="brow">60人浏览</view>
+				</view>
+
+				<view class="s_row2">
+					<text class="txt5">手机：18229829006</text>
+					<view class="rigicon">
+						<image mode="widthFix" src="{{BASEURL}}/tk_phone.png" class="bigicon"></image>
+						<text class="txt6">拨打</text>
+					</view>
+				</view>
+
+				<view class="s_row2">
+					<text class="txt5">座机：18229829006</text>
+					<view class="rigicon">
+						<image mode="widthFix" src="{{BASEURL}}/tk_phone.png" class="bigicon"></image>
+						<text class="txt6">拨打</text>
+					</view>
+				</view>
+				
+				<view class="s_row2">
+					<text class="txt5">地址：广东华天滨元街道花都广场1F1025号 门面</text>
+					<view class="rigicon rigicon2">
+						<image mode="widthFix" src="{{BASEURL}}/tk_locat.png" class="bigicon2"></image>
+						<text class="txt6">导航</text>
+					</view>
+				</view>
+
+				<view class="s_row3">
+					<view class="topbtn1">介绍给朋友</view>
+					<view class="topbtn1">聊一聊</view>
+					<view class="topbtn1">加微信</view>
+				</view>
+
+			</view>
+		</view>
+	</view>
+	<view class="carlabel">所有车系</view>
+	<!-- 车系列表 -->
+	<view class="carlist">
+		<view class="caritem" wx:for="{{9}}">
+			<view class="carimg" style="background-image:url({{BASEURL}}/icon.png)"></view>
+			<text class="cartxt nowrap">启辰T70</text>
+		</view>
+	</view>
+</view>

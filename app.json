@@ -94,7 +94,11 @@
     "pages/payment/pay_help/pay_help",
     "pages/one_yard/one_yard",
     "pages/payment/pay_detail/pay_detail",
-    "pages/payment/pay_cart/pay_cart"
+    "pages/payment/pay_cart/pay_cart",
+	"pages/take/dealers/dealers",
+	"pages/take/index/index",
+	"pages/take/takeDel/takeDel",
+	"pages/take/takeHome/takeHome"
   ],
   "window": {
     "backgroundTextStyle": "light",

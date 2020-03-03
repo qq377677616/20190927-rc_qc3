@@ -136,7 +136,7 @@ Page({
 		let obj = {
 			title: '共战疫情！“辰”意好礼免费领',
 			path: '/pages/bargain_index/bargain_index?activity_id=' + this.data.activity_id + "&isshare=6",
-			imageUrl: this.data.IMGSERVICE + "/center/kanjiashare.jpg?1"
+			imageUrl: this.data.IMGSERVICE + "/center/kanjiashare.jpg?6"
 		};
 		return obj;
 	},

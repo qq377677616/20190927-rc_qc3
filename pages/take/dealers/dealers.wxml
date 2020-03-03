@@ -1,0 +1,28 @@
+<view class="whole">
+	<view class="hander">
+		<view class="txt1">当前位置：广东省花都区风神大道</view>
+		<view class="relocation">
+			<image mode="widthFix" src="{{BASEURL}}/relocation.png" class="relocat"></image>
+			<text class="txt2">重新定位</text>
+		</view>
+	</view>
+	<view class="tackitem">
+		<view class="deList" wx:for="{{6}}" wx:key="item">
+			<view class="leftimg" style="background-image:url({{BASEURL}}/icon.png)"></view>
+			<view class="rightinfo">
+				<view class="row1">
+					<text class="txt3">广州花都</text>
+					<view class="yy_btn">营业中</view>
+				</view>
+				<view class="row2">
+					<text class="txt4">电话：13222455566</text>
+					<text class="txt4">100米</text>
+				</view>
+				<view class="row3">
+					<text class="txt5">地址：广东华天滨元街道花都广场1F1025号门面</text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+</view>
