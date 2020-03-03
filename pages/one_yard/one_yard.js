@@ -119,6 +119,9 @@ Page({
 
   // 提交
   submit() {
+    wx.showLoading({
+      title: '提交中',
+    })
     let _reg = /^1[3456789]\d{9}$/
     if (!this.data.phone) {
       tool.alert("手机号不能为空")
@@ -152,6 +155,7 @@ Page({
     }).then(res => {
       console.log(res, 'res')
       if (res.data.status == 1) {
+        wx.hideLoading()
         tool.alert(res.data.msg)
         setTimeout(() => {
           router.jump_red({
