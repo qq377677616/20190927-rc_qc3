@@ -619,6 +619,40 @@ const goodsDetail = (data) => {
   })
 }
 
+//一展一码   首页数据
+const autoshowIndex = (data) => {
+  let url = `${SERVICE}/api3/autoshow/index`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
+//一展一码   留资
+const autoshowData = (data) => {
+  let url = `${SERVICE}/api3/autoshow/set_data`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
 module.exports = {
   myVote,
   uploadVote,
@@ -653,7 +687,9 @@ module.exports = {
   helpIndex,
   payPrize,
   doHelp,
-  goodsDetail
+  goodsDetail,
+  autoshowIndex,
+  autoshowData
 }
 
 
