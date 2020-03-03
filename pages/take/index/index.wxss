@@ -1,0 +1,59 @@
+page{
+	background-color: rgba(246,247,247,1);
+	padding-bottom: 20rpx;
+}
+.items{
+	width:750rpx;
+	height:130rpx;
+	background:rgba(255,255,255,1);
+	display: flex;
+	padding-left:29rpx;
+	box-sizing: border-box; 
+	align-items: center;
+}
+.leftimg{
+	width:76rpx;
+	height:76rpx;
+	border-radius:10rpx;
+	background: center no-repeat/cover;
+}
+.rightinfo{
+	flex: 1;
+	margin-left: 28rpx;
+	padding-right: 26rpx;
+	box-sizing: border-box;
+	border-bottom: 1rpx solid rgba(238,238,238,1);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+}
+.usename{
+	font-size:30rpx;
+	font-family:PingFang SC;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:40rpx;
+	max-width:400rpx; 
+}
+.useinfo{
+	font-size:26rpx;
+	font-family:PingFang SC;
+	font-weight:500;
+	color:rgba(102,102,102,1);
+	line-height:40rpx;
+}
+.asstime{
+	position: absolute;
+	right: 26rpx;
+	top: 30rpx;
+	font-size:24rpx;
+	font-family:PingFang SC;
+	font-weight:500;
+	color:rgba(153,153,153,1);
+	line-height:40rpx;
+}
+.list>.items:last-child>.rightinfo{
+	border-bottom: 0;
+}

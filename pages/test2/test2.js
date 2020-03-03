@@ -251,16 +251,21 @@ Page({
 				url: `/pages/look_car_detail_03/look_car_detail?id=${11}`,
 			})
 		}
-		else if (id == 6 || id == 7 || id == 3){
-			// 跳转通用看车页
-			router.jump_nav({
-				url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
-			})
-		}else{
+		else {
 			router.jump_nav({
 				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
 			})
 		}
+		// if (id == 6 || id == 7 || id == 3){
+		// 	// 跳转通用看车页
+		// 	router.jump_nav({
+		// 		url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
+		// 	})
+		// }else{
+		// 	router.jump_nav({
+		// 		url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
+		// 	})
+		// }
 	},
 	dyjump(e){
 		// 点击文字跳转

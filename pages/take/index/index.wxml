@@ -1,0 +1,10 @@
+  <view class="list">
+    <view class="items" wx:for="{{1}}" wx:key="l">
+	  <view class="leftimg" style="background-image:url({{BASEURL}}/test.png)"></view>
+	  <view class="rightinfo">
+	  	<text class="usename nowrap">草莓果酱草莓果酱草莓果酱草莓果酱草莓果酱草莓果酱草莓果酱草莓果酱</text>
+		<text class="useinfo nowrap">[图片]</text>
+		<text class="asstime">下午5:02</text>
+	  </view>
+	</view>
+  </view>

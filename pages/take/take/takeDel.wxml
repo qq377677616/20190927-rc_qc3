@@ -1,0 +1,31 @@
+<!-- 聊天信息 -->
+<view wx:for="{{1}}">
+	<view class="times">2020-01-02</view>
+	<view class="leftinfo">
+		<view class="l_img" style="background-image:url({{BASEURL}}/test.png)"></view>
+		<view class="r_info">
+			<image src="{{BASEURL}}/test.png" mode="aspectFit" class="setwidth"></image>
+		</view>
+	</view>
+	<view class="rightinfo">
+		<view class="l_info">亲，我是您的导购人员，有什么问题都可以问我哦。</view>
+		<view class="r_img" style="background-image:url({{BASEURL}}/test.png)"></view>	
+	</view>
+</view>
+<!-- 无法发送消息通知 -->
+<view class="noway">
+	<view class="l_line"></view>
+	<view class="c_txt">距离用户回复超过48小时，无法发送消息</view>
+	<view class="r_line"></view>
+</view>
+<!-- 底部发送消息 -->
+<view class="footbox">
+	<view class="l_em">
+		<image src="{{BASEURL}}/icon.png" class="iconimg" mode="widthFix"></image>
+	</view>
+	<view class="c_ipt">
+		<input class="infoipt"></input>
+	</view>
+	<view class="r_send">发送</view>
+</view>
+
