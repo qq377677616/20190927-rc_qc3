@@ -1,11 +1,13 @@
 // pages/spike_index/spike_index.js
 const request_01 = require('../../utils/request/request_01.js');
 
+const request_05 = require('../../utils/request/request_05.js');
+
 const alert = require('../../utils/tool/alert.js');
 
 const router = require('../../utils/tool/router.js');
 
-const app = getApp();//获取应用实例
+const app = getApp(); //获取应用实例
 
 import tool from '../../utils/tool/tool.js';
 import api from '../../utils/request/request_03.js'
@@ -50,14 +52,14 @@ Page({
     code: '',
     isShowLoading: false,
     loadingText: '卡券领取中',
-	is_DY:0,//是否接受订阅消息
+    is_DY: 0, //是否接受订阅消息
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-	console.log(options);
+  onLoad: function(options) {
+    console.log(options);
     request_01.login(() => {
       this.initData(options)
     })
@@ -66,7 +68,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     this.setData({
       ready: true,
     })
@@ -75,7 +77,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     const ready = this.data.ready;
     const options = this.data.options;
 
@@ -87,35 +89,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     const options = this.data.options;
     const IMGSERVICE = this.data.IMGSERVICE;
     return {
@@ -141,16 +143,28 @@ Page({
   initData(options) {
 
     alert.loading({
-      str:'加载中'
+      str: '加载中'
     })
     const userInfo = wx.getStorageSync('userInfo');
     Promise.all([
-      request_01.spikeIndex({
-        openid: userInfo.openid,
-        activity_id: options.activity_id,
-      })
-    ])
+        request_01.spikeIndex({
+          openid: userInfo.openid,
+          activity_id: options.activity_id,
+        })
+      ])
       .then((value) => {
+        if (value[0].data.data.mobile == "") {
+          this.setData({
+            isGetPhone: true
+          })
+        }else{
+          this.setData({
+            isGetPhone: false
+          })
+        }
+        this.setData({
+          goods2_buy: value[0].data.data.goods2_buy
+        })
         const spikeIndex = value[0].data.data;
         let autoDate = this.data.autoDate;
         let dateIndex;
@@ -165,13 +179,11 @@ Page({
             if (val.date_id == `${fullYear}-${month}-${ri}`) {
               dateIndex = index;
               return true;
-            }
-            else {
+            } else {
               return false;
             }
           }) ? '' : dateIndex = 0;
-        }
-        else {
+        } else {
           dateIndex = this.data.dateIndex;
         }
 
@@ -208,13 +220,11 @@ Page({
             if (val.status == 1) {
               timeIndex = index;
               return true;
-            }
-            else {
+            } else {
               return false;
             }
           }) ? '' : timeIndex = 0;
-        }
-        else {
+        } else {
           timeIndex = this.data.timeIndex;
         }
 
@@ -222,7 +232,7 @@ Page({
 
         const time_id = time_list_item.time_id;
         const getTime = new Date().getTime();
-        const timeStamp = time_list_item.countdown ? (time_list_item.countdown * 1000 + getTime) : time_list_item.countdown == 0 ? 'over' : 'notStarted';//保存对应时间段给的时间戳到全局
+        const timeStamp = time_list_item.countdown ? (time_list_item.countdown * 1000 + getTime) : time_list_item.countdown == 0 ? 'over' : 'notStarted'; //保存对应时间段给的时间戳到全局
 
 
 
@@ -238,9 +248,9 @@ Page({
         //请求商品列表
         return request_01.spikeGoodsList({
           openid: userInfo.openid,
-          time_id,//时间段ID
+          time_id, //时间段ID
           activity_id: options.activity_id,
-          date: date_list_item.date_id,//日期id
+          date: date_list_item.date_id, //日期id
         })
       })
       .then((value) => {
@@ -263,7 +273,7 @@ Page({
           options,
         })
       })
-      .then(()=>{
+      .then(() => {
         alert.loading_h()
       })
   },
@@ -328,8 +338,8 @@ Page({
     const options = this.data.options;
     //初始化时间
     this.setData({
-      countDown: ['00', '00', '00', '00'],//初始化时间
-      timeStamp: 'over',//倒计时结束
+      countDown: ['00', '00', '00', '00'], //初始化时间
+      timeStamp: 'over', //倒计时结束
     })
     //init
     this.initData(options)
@@ -462,10 +472,10 @@ Page({
   },
   //操作按钮
   opBtn(e) {
-	// console.log(66)
-	// return;
+    if (!wx.getStorageSync('userInfo').mobile) {
+      return
+    }
     const ctDataset = e.currentTarget.dataset;
-
     const len = Object.keys(ctDataset).length;
     let btnType, spikeIndex, spikeGoodsList, index, item;
     if (len) {
@@ -474,8 +484,7 @@ Page({
       spikeGoodsList = this.data.spikeGoodsList;
       index = ctDataset.index;
       item = spikeGoodsList[index];
-    }
-    else {
+    } else {
       const tDataset = e.detail.target.dataset;
       btnType = tDataset.btntype;
       spikeIndex = this.data.spikeIndex;
@@ -489,28 +498,32 @@ Page({
         //用户不是车主，活动是车主活动。
         //用户未授权。
         if (
-          (wx.getStorageSync("userInfo").user_type == 0 && spikeIndex.activity_info.car_owner)
-          || !wx.getStorageSync("userInfo").unionid
-          || !wx.getStorageSync("userInfo").nickName
+          (wx.getStorageSync("userInfo").user_type == 0 && spikeIndex.activity_info.car_owner) ||
+          !wx.getStorageSync("userInfo").unionid ||
+          !wx.getStorageSync("userInfo").nickName
         ) return;
-
+        if (this.data.goods2_buy == 0) {
+          tool.alert('暂无权限')
+          return
+        }
         tool.requestSubscribeMessage()
           .then((value) => {
             item.formId = value == 'reject' ? 0 : 1;
-			  this.setData({ is_DY: item.formId, is_order: item.is_order});
+            this.setData({
+              is_DY: item.formId,
+              is_order: item.is_order
+            });
             //order_status--预约状态 0-未预约过不可发起秒杀 1-预约过车主商品，只能砍车主商品 2-预约过普通商品，只能秒杀普通商品 3-预约过车主商品和普通商品 所有商品可以砍价
             if (item.car_owner == 0) {
               //预约 非车主商品、已留资过、没留资过
               spikeIndex.order_status == 2 || spikeIndex.order_status == 3 ? this.VipAppoBtn(item) : this.appoBtn(item)
-            }
-            else if (spikeIndex.user_type == 1 && item.car_owner == 1) {
+            } else if (spikeIndex.user_type == 1 && item.car_owner == 1) {
               //车主 预约 车主商品
               this.VipAppoBtn(item)
-            }
-            else if (spikeIndex.user_type == 0 && item.car_owner == 1) {
+            } else if (spikeIndex.user_type == 0 && item.car_owner == 1) {
               //非车主 预约 车主商品
               const vehicle = {
-                goods_id: item.goods_id,//商品ID
+                goods_id: item.goods_id, //商品ID
                 formId: item.formId,
               }
               this.setData({
@@ -550,19 +563,19 @@ Page({
   },
   //立即预约(用户 预约 非车主商品)
   appoBtn(data) {
-	console.log(data);
-	  let obj = {};
-	  obj.thumb = data.thumb;//商品图片
-	  obj.title = data.title;//商品名字
-	  obj.type = data.type;//商品类型
-	  obj.goods_id = data.goods_id;//商品id
-	  obj.is_order = data.is_order;// 是否预约
-	  obj.real_vcoin = data.real_vcoin;//需要v豆数
-	  obj.is_yy = 1;//是否是预约 0是领取 1预约
-	  obj.log_id = '';//秒杀记录id
-	  obj.activity_id = this.data.options.activity_id;//活动id
-	  obj.is_DY = this.data.is_DY;//是否接受订阅消息 0拒绝 1接受
-	  tool.jump_nav(`/pages/spike_ receive/spike_ receive?obj=${JSON.stringify(obj)}`);
+    console.log(data);
+    let obj = {};
+    obj.thumb = data.thumb; //商品图片
+    obj.title = data.title; //商品名字
+    obj.type = data.type; //商品类型
+    obj.goods_id = data.goods_id; //商品id
+    obj.is_order = data.is_order; // 是否预约
+    obj.real_vcoin = data.real_vcoin; //需要v豆数
+    obj.is_yy = 1; //是否是预约 0是领取 1预约
+    obj.log_id = ''; //秒杀记录id
+    obj.activity_id = this.data.options.activity_id; //活动id
+    obj.is_DY = this.data.is_DY; //是否接受订阅消息 0拒绝 1接受
+    tool.jump_nav(`/pages/spike_ receive/spike_ receive?obj=${JSON.stringify(obj)}`);
     // const vehicle = {
     //   img: data.thumb,
     //   title: data.title,
@@ -589,19 +602,19 @@ Page({
 
     request_01.spikeAppo({
 
-      activity_id: options.activity_id,//活动ID
-      openid: userInfo.openid,//用户openid
-      goods_id: data.goods_id,//商品ID
-      form_id: data.formId,
+        activity_id: options.activity_id, //活动ID
+        openid: userInfo.openid, //用户openid
+        goods_id: data.goods_id, //商品ID
+        form_id: data.formId,
 
-    })
+      })
       .then((value) => {
         const data = value.data.data;
         const status = value.data.status;
         const msg = value.data.msg;
         alert.loading_h()
 
-        if (status == 1) {//预约成功
+        if (status == 1) { //预约成功
 
           //init
           this.initData(options)
@@ -611,8 +624,7 @@ Page({
             spikeResultVisible: 'successAppo',
           })
 
-        }
-        else {
+        } else {
           alert.alert({
             str: msg,
           })
@@ -641,41 +653,40 @@ Page({
     })
     request_01.spikeAppo({
 
-      activity_id: options.activity_id,//活动ID
-      openid: userInfo.openid,//用户openid
-      goods_id: vehicle.goods_id,//商品ID
-      form_id: vehicle.formId,
-      mobile: detail.phone,//手机号码
-      v_code: detail.code,//验证码 微信手机号无需传参
-      name: detail.name,//姓名
-      area: detail.region.join(' '),//定位地区
-      code: detail.storeCode,//专营店编码
+        activity_id: options.activity_id, //活动ID
+        openid: userInfo.openid, //用户openid
+        goods_id: vehicle.goods_id, //商品ID
+        form_id: vehicle.formId,
+        mobile: detail.phone, //手机号码
+        v_code: detail.code, //验证码 微信手机号无需传参
+        name: detail.name, //姓名
+        area: detail.region.join(' '), //定位地区
+        code: detail.storeCode, //专营店编码
 
-    }).then((value) => {
-      //success
-      const status = value.data.status;
-      const msg = value.data.msg;
-      alert.loading_h()
+      }).then((value) => {
+        //success
+        const status = value.data.status;
+        const msg = value.data.msg;
+        alert.loading_h()
 
-      if (status == 1) {//预约成功
+        if (status == 1) { //预约成功
 
-        //init
-        this.initData(options)
+          //init
+          this.initData(options)
 
-        //提示框
-        this.setData({
-          spikeResultVisible: 'successAppo',
-        })
-        //表单关闭
-        this.appoFormsVisible()
-      }
-      else {
-        alert.alert({
-          str: msg,
-        })
-      }
+          //提示框
+          this.setData({
+            spikeResultVisible: 'successAppo',
+          })
+          //表单关闭
+          this.appoFormsVisible()
+        } else {
+          alert.alert({
+            str: msg,
+          })
+        }
 
-    })
+      })
       .catch((reason) => {
         //fail
         alert.loading_h()
@@ -689,46 +700,45 @@ Page({
   spikeBtn(data) {
     const options = this.data.options;
     router.jump_nav({
-		url: `/pages/spike_detail/spike_detail?activity_id=${options.activity_id}&skill_id=${data.skill_id}&is_order=${this.data.is_order}`
+      url: `/pages/spike_detail/spike_detail?activity_id=${options.activity_id}&skill_id=${data.skill_id}&is_order=${this.data.is_order}`
     })
   },
   //立即领取
   receiveBtn(data) {
-    if (data.order_id > 0 && data.is_receive == 1) {//已领取
+    if (data.order_id > 0 && data.is_receive == 1) { //已领取
       router.jump_nav({
         url: `/pages/order_detail/order_detail?order_id=${data.order_id}`,
       })
 
-    }
-    else {//未领取
-	let obj = {};
-		obj.thumb = data.thumb;//商品图片
-		obj.title = data.title;//商品名字
-		obj.type = data.type;//商品类型
-		obj.goods_id = data.goods_id;//商品id
-		obj.is_order = data.is_order;// 是否预约
-		obj.real_vcoin = data.real_vcoin;//需要v豆数
-		obj.is_yy = 0;//是否是预约 0是领取
-		obj.log_id = data.log_id;//秒杀记录id
-		obj.activity_id = this.data.options.activity_id;//活动id
-		// obj.
-		tool.jump_nav(`/pages/spike_ receive/spike_ receive?obj=${JSON.stringify(obj)}`);
-		return;
-    //   const vehicle = {
-    //     img: data.thumb,
-    //     title: data.title,
-    //     price: data.vcoin,
-    //     total_num: data.goods_num,//总数
-    //     surplus_num: data.number,//剩余数
-    //     log_id: data.log_id,
-    //   }
-    //   this.setData({
-    //     vehicle,
-    //   })
+    } else { //未领取
+      let obj = {};
+      obj.thumb = data.thumb; //商品图片
+      obj.title = data.title; //商品名字
+      obj.type = data.type; //商品类型
+      obj.goods_id = data.goods_id; //商品id
+      obj.is_order = data.is_order; // 是否预约
+      obj.real_vcoin = data.real_vcoin; //需要v豆数
+      obj.is_yy = 0; //是否是预约 0是领取
+      obj.log_id = data.log_id; //秒杀记录id
+      obj.activity_id = this.data.options.activity_id; //活动id
+      // obj.
+      tool.jump_nav(`/pages/spike_ receive/spike_ receive?obj=${JSON.stringify(obj)}`);
+      return;
+      //   const vehicle = {
+      //     img: data.thumb,
+      //     title: data.title,
+      //     price: data.vcoin,
+      //     total_num: data.goods_num,//总数
+      //     surplus_num: data.number,//剩余数
+      //     log_id: data.log_id,
+      //   }
+      //   this.setData({
+      //     vehicle,
+      //   })
 
 
       //车主商品需要留资、非车主商品需要请求回填接口回填
-    //   data.car_owner == 1 ? this.spikeCapital(data) : this.spikeBackfill(data)
+      //   data.car_owner == 1 ? this.spikeCapital(data) : this.spikeBackfill(data)
 
     }
 
@@ -766,9 +776,9 @@ Page({
       str: '领取中'
     })
     request_01.spikeBackfill({
-      openid: userInfo.openid,//用户openid
-      activity_id: options.activity_id,//活动ID
-    })
+        openid: userInfo.openid, //用户openid
+        activity_id: options.activity_id, //活动ID
+      })
       .then((value) => {
         const info = value.data.data;
         const msg = value.data.msg;
@@ -776,7 +786,7 @@ Page({
         const vehicle = this.data.vehicle;
         alert.loading_h()
 
-        if (status == 1) {//有留资信息
+        if (status == 1) { //有留资信息
 
           Object.assign(vehicle, info, {
             backfill: true
@@ -796,8 +806,7 @@ Page({
               this.backfillKJFormsVisible()
               break;
           }
-        }
-        else {//无留资信息
+        } else { //无留资信息
 
           alert.alert({
             str: msg
@@ -901,16 +910,16 @@ Page({
       str: '领取中'
     })
     request_01.spikeReceive({
-      activity_id: options.activity_id,//活动ID
-      openid: userInfo.openid,//用户OPENID
-      log_id: vehicle.log_id,//秒杀记录ID
-      name: detail.name,//留资姓名
-      mobile: detail.phone,//留资电话
-      v_code: detail.code,//验证码 如果不是微信才传
-      area: detail.region.join(' '),//定位地址 省市区
-      address: detail.address || '',//快递详细地址 type=2传
-      code: detail.storeCode || '',//专营店编码 type=1传和上面的直传一个就可以
-    })
+        activity_id: options.activity_id, //活动ID
+        openid: userInfo.openid, //用户OPENID
+        log_id: vehicle.log_id, //秒杀记录ID
+        name: detail.name, //留资姓名
+        mobile: detail.phone, //留资电话
+        v_code: detail.code, //验证码 如果不是微信才传
+        area: detail.region.join(' '), //定位地址 省市区
+        address: detail.address || '', //快递详细地址 type=2传
+        code: detail.storeCode || '', //专营店编码 type=1传和上面的直传一个就可以
+      })
       .then((value) => {
         const data = value.data.data;
         const msg = value.data.msg;
@@ -973,8 +982,7 @@ Page({
     if (spikeIndex.activity_info.status == 2 || spikeIndex.activity_info.status == 3) {
       //活动已结束、未开始
       this.lookOtherActivity()
-    }
-    else {
+    } else {
       this.setData({
         spikeResultVisible: false,
       })
@@ -995,13 +1003,13 @@ Page({
     })
     request_01.spikeTips({
 
-      activity_id: options.activity_id,//活动ID
-      openid: userInfo.openid,//用户OPEN_ID
-      form_id: data.formId,//form_id
-      date: spikeIndex.date_list[dateIndex].date_id,//当前选择的日期 格式：xxxx-xx-xx
-      time: timeList[timeIndex].time,//当前选中的时间段 格式：xx:xx
-      skill_id: data.skill_id,
-    })
+        activity_id: options.activity_id, //活动ID
+        openid: userInfo.openid, //用户OPEN_ID
+        form_id: data.formId, //form_id
+        date: spikeIndex.date_list[dateIndex].date_id, //当前选择的日期 格式：xxxx-xx-xx
+        time: timeList[timeIndex].time, //当前选中的时间段 格式：xx:xx
+        skill_id: data.skill_id,
+      })
       .then((value) => {
         const msg = value.data.msg;
         alert.loading_h()
@@ -1021,6 +1029,34 @@ Page({
         })
       })
   },
+
+  // 授权手机号
+  getPhoneNumber(e) {
+    console.log(e, 'eeee')
+    let options = this.data.options
+    let user_id = wx.getStorageSync('userInfo').user_id
+    let session_key = wx.getStorageSync('userInfo').session_key
+    let iv = e.detail.iv
+    let encrypted_data = e.detail.encryptedData
+    if (e.detail.errMsg == "getPhoneNumber:ok") {
+      request_05.dePhone({
+        user_id,
+        session_key,
+        iv,
+        encrypted_data
+      }).then(res => {
+        if (res.data.status == 1) {
+          let _userInfo = wx.getStorageSync("userInfo")
+          _userInfo.mobile = res.data.data.mobile
+          wx.setStorageSync("userInfo", _userInfo)
+          this.initData(options)
+        } else {
+          tool.alert(res.data.msg)
+        }
+      })
+    }
+  },
+
   //跳转详情页
   jumpDetail(data) {
     const options = this.data.options;
@@ -1045,7 +1081,9 @@ Page({
   goBindCar() {
     const vehicle = this.data.vehicle;
     this.spikeResultVisible()
-    router.jump_nav({ url: `/pages/o_love_car/o_love_car?pageType=spike&goods_id=${vehicle.goods_id}&formId=${vehicle.formId}` });
+    router.jump_nav({
+      url: `/pages/o_love_car/o_love_car?pageType=spike&goods_id=${vehicle.goods_id}&formId=${vehicle.formId}`
+    });
   },
   //关闭虚拟兑换窗口
   closeCode() {
@@ -1124,20 +1162,22 @@ Page({
     //用户已授权，用户是车主。
     //用户已授权，活动不是车主活动，商品不是车主商品。
     if (
-      (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1)
-      || (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !spikeIndex.activity_info.car_owner)
+      (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && wx.getStorageSync("userInfo").user_type == 1) ||
+      (wx.getStorageSync("userInfo").unionid && wx.getStorageSync("userInfo").nickName && !spikeIndex.activity_info.car_owner)
     ) return;
 
     //用户未授权
-    if (
-      !wx.getStorageSync("userInfo").unionid
-      || !wx.getStorageSync("userInfo").nickName
+    if (!wx.getStorageSync("userInfo").unionid ||
+      !wx.getStorageSync("userInfo").nickName
     ) {
-      this.setData({ popType: 2 })
-    }
-    else if (wx.getStorageSync("userInfo").user_type == 0) {//用户不是车主
+      this.setData({
+        popType: 2
+      })
+    } else if (wx.getStorageSync("userInfo").user_type == 0) { //用户不是车主
       //该活动仅限于车主
-      this.setData({ popType: 3 })
+      this.setData({
+        popType: 3
+      })
     }
     this.isVehicleOwnerHidePop()
   },

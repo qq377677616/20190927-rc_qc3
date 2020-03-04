@@ -1,6 +1,8 @@
 // pages/payment/pay_cart/pay_cart.js
 const request_01 = require('../../../utils/request/request_01.js');
 
+const request_05 = require('../../../utils/request/request_05.js');
+
 const router = require('../../../utils/tool/router.js');
 
 const alert = require('../../../utils/tool/alert.js');
@@ -29,6 +31,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options.activity_id)
     request_01.login(() => {
       this.initData(options)
     })
@@ -100,6 +103,7 @@ Page({
     if (type == 'pay') { //立即支付跳转过来
       this.setData({
         goodsDetail,
+        options
       })
     } else { //购物车跳转过来
       this.setData({
@@ -295,14 +299,14 @@ Page({
 
       url = '/pages/shop_cart_submitted/shop_cart_submitted?type=' + goodsDetail.type;
 
-      promise = request_01.goodsSettlement({
-        user_id: userInfo.user_id, //用户ID
+      promise = request_05.buyGoods({
+        openid: userInfo.openid, //openid
+        activity_id: this.data.options.activity_id, //openid
         goods_id: goodsDetail.__goods_id, //产品ID
-        number: goodsDetail.__number, //购买数量
+        number: 1, //购买数量
         address_id: currentAddressItem.address_id, //收货人信息 id
         dealer_code: goodsDetail.type == 2 ? '' : storeList[storeIndex].code, //门店id 为快递时门店id非必选
         remark: '', //备注
-        goods_attr_id: goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].goods_attr_id : 0, //商品规格ID
         goods_id
       })
 

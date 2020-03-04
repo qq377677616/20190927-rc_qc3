@@ -36,7 +36,7 @@ Page({
     let _data = {
       user_id: wx.getStorageSync("userInfo").user_id,
       encrypted_data: e.detail.encryptedData,
-      session_key: this.data.session_key,
+      session_key: wx.getStorageSync("userInfo").session_key,
       iv: e.detail.iv
     }
     api.getPhoneNumber(_data).then(res => {
@@ -91,6 +91,9 @@ Page({
     }).then(res => {
       console.log(res, 'res')
       if (res.data.status == 1) {
+        wx.setNavigationBarTitle({
+          title: res.data.data.title,
+        })
         this.setData({
           selCarList: res.data.data.car_list,
           storeList: res.data.data.dlr_code,
@@ -119,9 +122,6 @@ Page({
 
   // 提交
   submit() {
-    wx.showLoading({
-      title: '提交中',
-    })
     let _reg = /^1[3456789]\d{9}$/
     if (!this.data.phone) {
       tool.alert("手机号不能为空")
@@ -155,7 +155,6 @@ Page({
     }).then(res => {
       console.log(res, 'res')
       if (res.data.status == 1) {
-        wx.hideLoading()
         tool.alert(res.data.msg)
         setTimeout(() => {
           router.jump_red({

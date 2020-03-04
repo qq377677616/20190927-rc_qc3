@@ -13,7 +13,7 @@
       </view>
       <view class="prizeImg" style="background-image:url({{IMGSERVICE}}/pay/pay_gift.png)">
       </view>
-      <view data-type="ok" class="helpBtn mt2" bindtap="helpH" wx:if="{{is_help==0}}">
+      <view data-type="ok" class="helpBtn mt2 red" bindtap="helpH" wx:if="{{is_help==0}}">
         <text>助TA一臂之力</text>
       </view>
       <view class="helpBtn mt2 gray" wx:if="{{is_help==1}}">
@@ -23,10 +23,10 @@
         助TA一臂之力
       </view> -->
       <view class="myEnter" bindtap="toShake" wx:if="{{is_help==0}}">
-        <text>我也要获得现金红包</text>
+        <text>我也要领现金红包</text>
       </view>
       <view class="myEnter red" bindtap="toShake" wx:if="{{is_help==1}}">
-        <text>我也要获得现金红包</text>
+        <text>我也要领现金红包</text>
       </view>
     </view>
     <!-- 查看其他活动BOX -->
@@ -90,7 +90,7 @@
       <button open-type="share">寻找好友帮忙</button>
     </view>
     <view class="myEnter" bindtap="toActivityList" style="margin-top:{{mTop}}rpx">
-      <text>查看其他活动</text>
+      <text>回到首页</text>
     </view>
   </view>
   <!-- share-mask -->
@@ -165,7 +165,7 @@
       <view class="succTxt succTxt2">
         <text>你已经为好友助力!</text>
       </view>
-      <view class="succBtn" bindtap="toShake">我也要获得现金红包</view>
+      <view class="succBtn" bindtap="toShake">我也要领现金红包</view>
       <image bindtap="closeSuc" mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn"></image>
     </view>
   </view>

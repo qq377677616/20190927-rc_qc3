@@ -652,7 +652,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 85,
 					"name": "spike_index",
 					"pathName": "pages/spike_index/spike_index",
 					"query": "activity_id=3",
@@ -753,7 +753,7 @@
 					"id": 99,
 					"name": "一展一码",
 					"pathName": "pages/one_yard/one_yard",
-					"query": "s_i=26",
+					"query": "s_i=32",
 					"scene": null
 				},
 				{

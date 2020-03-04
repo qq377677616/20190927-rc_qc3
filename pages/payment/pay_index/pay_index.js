@@ -49,7 +49,7 @@ Page({
           options
         })
         if (res.data.data.show_page == 6 && res.data.data.help_info.prize_info.is_upgrade == 0 || res.data.data.show_page == 7 && res.data.data.help_info.prize_info.is_upgrade == 0) {
-          router.jump_red({
+          router.jump_nav({
             url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
           })
         }
@@ -100,12 +100,13 @@ Page({
 
   //去兑换页
   toChange() {
+    let activity_id = this.data.activity_id
     let cate_id = this.data.acData.activity_info.cate_id
     let goods2_buy = this.data.acData.goods2_buy
     let car_owner = this.data.car_owner
     console.log(cate_id, 'cate_id')
     router.jump_nav({
-      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}`
+      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}&activity_id=${activity_id}`
     })
   },
 
@@ -137,7 +138,7 @@ Page({
     })
     if (this.data.isGou) {
       setTimeout(() => {
-        router.jump_red({
+        router.jump_nav({
           url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
         })
       }, 1000)
@@ -209,24 +210,29 @@ Page({
 
   // 授权手机号
   getPhoneNumber(e) {
-    console.log(111111111111)
+    console.log(e, 'eeee')
     let options = this.data.options
     let user_id = wx.getStorageSync('userInfo').user_id
     let session_key = wx.getStorageSync('userInfo').session_key
     let iv = e.detail.iv
     let encrypted_data = e.detail.encryptedData
-    request_05.dePhone({
-      user_id,
-      session_key,
-      iv,
-      encrypted_data
-    }).then(res => {
-      if (res.data.status == 1) {
-        this.initData(options)
-      } else {
-        tool.alert(res.data.msg)
-      }
-    })
+    if (e.detail.errMsg == "getPhoneNumber:ok") {
+      request_05.dePhone({
+        user_id,
+        session_key,
+        iv,
+        encrypted_data
+      }).then(res => {
+        if (res.data.status == 1) {
+          let _userInfo = wx.getStorageSync("userInfo")
+          _userInfo.mobile = res.data.data.mobile
+          wx.setStorageSync("userInfo", _userInfo)
+          this.initData(options)
+        } else {
+          tool.alert(res.data.msg)
+        }
+      })
+    }
   },
 
   // 授权
