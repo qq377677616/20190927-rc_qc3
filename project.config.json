@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -775,6 +775,20 @@
 					"name": "pages/binding/scratch/Scratch",
 					"pathName": "pages/binding/scratch/Scratch",
 					"query": "activity_id=21",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "takeHome",
+					"pathName": "pages/take/takeHome/takeHome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "dealers",
+					"pathName": "pages/take/dealers/dealers",
+					"query": "",
 					"scene": null
 				}
 			]
