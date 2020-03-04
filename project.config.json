@@ -790,6 +790,13 @@
 					"pathName": "pages/take/dealers/dealers",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "takeDel",
+					"pathName": "pages/take/takeDel/takeDel",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

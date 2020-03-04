@@ -6,8 +6,10 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		BASEURL: app.globalData.ASSETSURL,
-		msg:'',
+		BASEURL: app.globalData.ASSETSURL,//资源基本路径
+		msg:'',//发送的信息
+		socketOpen:false,//是否连接
+		socketMsgQueue:[],//
 	},
 
 	/**
@@ -66,29 +68,24 @@ Page({
 
 	// }
 	creatSocket(){
-		let socketOpen = false
-		let socketMsgQueue = []
+		let socketOpen = false;
+		let socketMsgQueue = [];
+		let self = this;
 		wx.connectSocket({
 			url: 'ws://192.168.1.193:8282'
 		})
 
 		wx.onSocketOpen(function (res) {
 			socketOpen = true
-			for (let i = 0; i < socketMsgQueue.length; i++) {
-				sendSocketMessage(socketMsgQueue[i])
-			}
-			socketMsgQueue = []
+			console.log('连接成功！');
+			self.setData({socketOpen:true})
+			// console.log(res);
+			// for (let i = 0; i < socketMsgQueue.length; i++) {
+			// 	sendSocketMessage(socketMsgQueue[i])
+			// }
+			// socketMsgQueue = []
+			// self.setData({socketMsgQueue:[]})
 		})
-
-		function sendSocketMessage(msg) {
-			if (socketOpen) {
-				wx.sendSocketMessage({
-					data: msg
-				})
-			} else {
-				socketMsgQueue.push(msg)
-			}
-		}
 	},
 	getval(e){//保存消息
 	  this.setData({msg:e.detail.value});
@@ -99,7 +96,16 @@ Page({
 		if(msg==''){
 			console.log("输入不能为空")
 		}else{
-			console.log(msg)
+			let content = JSON.stringify({ "type": "send", "to_uid": "50A", "data": { "msg_type": "1", "content": `${msg}` }}); 
+			if (this.data.socketOpen) {
+				console.log(1)
+				wx.sendSocketMessage({
+					data: content
+				})
+			} else {
+				console.log(2)
+				socketMsgQueue.push(content)
+			}
 		}
 	}
 })

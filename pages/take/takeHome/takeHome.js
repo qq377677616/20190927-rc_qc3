@@ -151,8 +151,8 @@ Page({
 	addwx(){
 		this.setData({iscope:true});
 	},
-	takeMan(){
-		tool.jump_nav(`/pages/take/takeDel`);
+	takeMan(){//聊一聊
+		tool.jump_nav(`/pages/take/takeDel/takeDel`);
 	},
 	// 跳转到专营店列表
 	storlist(){
