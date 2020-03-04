@@ -162,6 +162,9 @@ Page({
             isGetPhone: false
           })
         }
+        this.setData({
+          goods2_buy: value[0].data.data.goods2_buy
+        })
         const spikeIndex = value[0].data.data;
         let autoDate = this.data.autoDate;
         let dateIndex;
@@ -469,13 +472,10 @@ Page({
   },
   //操作按钮
   opBtn(e) {
-    // console.log(66)
-    // return;
     if (!wx.getStorageSync('userInfo').mobile) {
       return
     }
     const ctDataset = e.currentTarget.dataset;
-
     const len = Object.keys(ctDataset).length;
     let btnType, spikeIndex, spikeGoodsList, index, item;
     if (len) {
@@ -502,7 +502,10 @@ Page({
           !wx.getStorageSync("userInfo").unionid ||
           !wx.getStorageSync("userInfo").nickName
         ) return;
-
+        if (this.data.goods2_buy == 0) {
+          tool.alert('暂无权限')
+          return
+        }
         tool.requestSubscribeMessage()
           .then((value) => {
             item.formId = value == 'reject' ? 0 : 1;
