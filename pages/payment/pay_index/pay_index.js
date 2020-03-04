@@ -120,7 +120,7 @@ Page({
     let activity_id = this.data.activity_id
     console.log(111111)
     router.jump_nav({
-      url: `/pages/o_prize/o_prize?activity_id=${activity_id}`
+      url: `/pages/o_duihuan/o_duihuan?from_activity_id=${activity_id}`
     })
   },
 
