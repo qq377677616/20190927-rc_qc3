@@ -100,12 +100,13 @@ Page({
 
   //去兑换页
   toChange() {
+    let activity_id = this.data.activity_id
     let cate_id = this.data.acData.activity_info.cate_id
     let goods2_buy = this.data.acData.goods2_buy
     let car_owner = this.data.car_owner
     console.log(cate_id, 'cate_id')
     router.jump_nav({
-      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}`
+      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}&activity_id=${activity_id}`
     })
   },
 

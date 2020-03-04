@@ -36,7 +36,8 @@ Page({
       this.setData({
         proData: res.data.data,
         goodsDetail,
-        goods_id
+        goods_id,
+        options
       })
     })
   },
@@ -45,12 +46,13 @@ Page({
   toPay() {
     const goodsDetail = this.data.goodsDetail;
     goodsDetail.goods_id = this.data.goods_id
+    let activity_id = this.options.activity_id
     let attr = this.data.attr;
     Object.assign(goodsDetail, attr)
     app.globalData.goodsDetail = goodsDetail; //将该商品信息存于全局
 
     router.jump_nav({
-      url: '/pages/payment/pay_cart/pay_cart?type=pay'
+      url: `/pages/payment/pay_cart/pay_cart?type=pay&activity_id=${activity_id}`
     })
   },
 

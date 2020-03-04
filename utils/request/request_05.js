@@ -619,6 +619,23 @@ const goodsDetail = (data) => {
   })
 }
 
+//99元下定活动    兑换
+const buyGoods = (data) => {
+  let url = `${SERVICE}/api3/ninepay/buy_goods`
+  return new Promise((resolve, reject) => {
+    _request.request({
+      url,
+      data
+    })
+      .then(res => {
+        resolve(res)
+      })
+      .catch((reason) => {
+        reject(reason)
+      })
+  })
+}
+
 //一展一码   首页数据
 const autoshowIndex = (data) => {
   let url = `${SERVICE}/api3/autoshow/index`
@@ -689,7 +706,8 @@ module.exports = {
   doHelp,
   goodsDetail,
   autoshowIndex,
-  autoshowData
+  autoshowData,
+  buyGoods
 }
 
 

@@ -33,7 +33,8 @@ Page({
         this.setData({
           goodsData: res.data.data,
           car_owner: options.car_owner == 1,
-          goods2_buy: options.goods2_buy
+          goods2_buy: options.goods2_buy,
+          options
         })
       } else {
         console.log('报错')
@@ -43,6 +44,7 @@ Page({
 
   // 商品详情页
   toDetail(e) {
+    let activity_id = this.data.options.activity_id
     let goods_id = e.currentTarget.dataset.id
     let stype = e.currentTarget.dataset.stype
     if (stype == 2 && this.data.goods2_buy == 0) {
@@ -57,7 +59,7 @@ Page({
         return;
       }
       router.jump_nav({
-        url: `/pages/payment/pay_detail/pay_detail?goods_id=${goods_id}`
+        url: `/pages/payment/pay_detail/pay_detail?goods_id=${goods_id}&activity_id=${activity_id}`
       })
     }
   },
