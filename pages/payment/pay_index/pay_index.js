@@ -21,6 +21,7 @@ Page({
     isOnShow: false, //抽奖开关
     isHelp: false, //去助力页开关
     isGou: true, //是否默认选√
+    isOnShowOpen: true,
   },
 
   onMyEvent(e) {
@@ -48,10 +49,12 @@ Page({
           is_upgrade: res.data.data.help_info.prize_info.is_upgrade,
           options
         })
-        if (res.data.data.show_page == 6 && res.data.data.help_info.prize_info.is_upgrade == 0 || res.data.data.show_page == 7 && res.data.data.help_info.prize_info.is_upgrade == 0) {
-          router.jump_nav({
-            url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
-          })
+        if (this.data.isOnShowOpen) {
+          if (res.data.data.show_page == 6 && res.data.data.help_info.prize_info.is_upgrade == 0 || res.data.data.show_page == 7 && res.data.data.help_info.prize_info.is_upgrade == 0) {
+            router.jump_nav({
+              url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
+            })
+          }
         }
         let keyGroup = wx.getStorageSync('keyGroup')
         console.log(keyGroup, 'keyGroup')
@@ -70,9 +73,9 @@ Page({
         })
       } else if (res.data.status == 2) {
         this.setData({
-            isVehicleOwnerHidePop: true,
-            popType: 1,
-            text: "活动预计" + res.data.data.activity_info.start_date + "号开启 敬请期待"
+          isVehicleOwnerHidePop: true,
+          popType: 1,
+          text: "活动预计" + res.data.data.activity_info.start_date + "号开启 敬请期待"
         })
       } else if (res.data.status == 3) {
         this.setData({
@@ -203,6 +206,12 @@ Page({
             }
           })
         }
+        break;
+      case 6:
+        tool.alert('您已经领取过红包了哦')
+        break;
+      case 7:
+        tool.alert('您已经领取过红包了哦')
         break;
     }
   },
@@ -343,10 +352,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    // let options = this.data.options
-    // if (this.data.isOnShow) {
-    //   this.initData(options);
-    // }
+    let options = this.data.options
+    if (this.data.isOnShow) {
+      this.setData({
+        isOnShowOpen: false
+      })
+      this.initData(options);
+    }
   },
 
   /**
