@@ -92,46 +92,90 @@ Page({
       isMore: true,
     })
 
-    request_01.exchangeList({
-        user_id: userInfo.user_id,
-        status,
-        page: page + 1,
-      })
-      .then((value) => {
-        //success
-        const newOrderList = value.data.data.list;
-        const orderList = this.data.orderList;
-        let scrollPrivateKey, isMore;
-
-        if (newOrderList.length) { //有数据返回
-          scrollPrivateKey = true;
-          isMore = false;
-        } else { //无数据返回
-          scrollPrivateKey = false;
-          isMore = true;
-        }
-
-        this.setData({
-          orderList: [...orderList, ...newOrderList],
-          scrollPrivateKey,
+    if (this.data.options.from_activity_id) {
+      request_01.exchangeList({
+          openid: userInfo.openid,
+          from_activity_id: this.data.options.from_activity_id,
+          status,
           page: page + 1,
-          isMore,
-          str: '- 我是有底线的 -',
         })
-      })
-      .catch((reason) => {
-        //fail
-        this.setData({
-          str: '- 我是有底线的 -',
-          isMore: false,
+        .then((value) => {
+          //success
+          const newOrderList = value.data.data.list;
+          const orderList = this.data.orderList;
+          let scrollPrivateKey, isMore;
+
+          if (newOrderList.length) { //有数据返回
+            scrollPrivateKey = true;
+            isMore = false;
+          } else { //无数据返回
+            scrollPrivateKey = false;
+            isMore = true;
+          }
+
+          this.setData({
+            orderList: [...orderList, ...newOrderList],
+            scrollPrivateKey,
+            page: page + 1,
+            isMore,
+            str: '- 我是有底线的 -',
+          })
         })
-      })
-      .then(() => {
-        //complete
-        this.setData({
-          scrollKey: true,
+        .catch((reason) => {
+          //fail
+          this.setData({
+            str: '- 我是有底线的 -',
+            isMore: false,
+          })
         })
-      })
+        .then(() => {
+          //complete
+          this.setData({
+            scrollKey: true,
+          })
+        })
+    } else {
+      request_01.exchangeList({
+          user_id: userInfo.user_id,
+          status,
+          page: page + 1,
+        })
+        .then((value) => {
+          //success
+          const newOrderList = value.data.data.list;
+          const orderList = this.data.orderList;
+          let scrollPrivateKey, isMore;
+
+          if (newOrderList.length) { //有数据返回
+            scrollPrivateKey = true;
+            isMore = false;
+          } else { //无数据返回
+            scrollPrivateKey = false;
+            isMore = true;
+          }
+
+          this.setData({
+            orderList: [...orderList, ...newOrderList],
+            scrollPrivateKey,
+            page: page + 1,
+            isMore,
+            str: '- 我是有底线的 -',
+          })
+        })
+        .catch((reason) => {
+          //fail
+          this.setData({
+            str: '- 我是有底线的 -',
+            isMore: false,
+          })
+        })
+        .then(() => {
+          //complete
+          this.setData({
+            scrollKey: true,
+          })
+        })
+    }
   },
 
   /**
@@ -253,7 +297,7 @@ Page({
           openid: userInfo.openid,
           from_activity_id: this.data.options.from_activity_id,
           status,
-          page:1,
+          page: 1,
         })
         .then((value) => {
           //success
