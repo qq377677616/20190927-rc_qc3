@@ -37,10 +37,14 @@ App({
       pinKey:keyGroup.pinKey == false ? false : true,//99元下定开关
     })
   },
-	globalData: {//https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
+	globalData: {
 	userInfo: null,
-	IMGSERVICE:'https://weixinfslb.venucia.com/uploads/assets_3.0',//'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
-    currentAddressItem: {},
+	//https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
+	//'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
+	IMGSERVICE:'https://weixinfslb.venucia.com/uploads/assets_3.0',
+	ASSETSURL:'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/ca',//ca 资源地址
+	REQUESTURL: 'http://bubx7u.natappfree.cc/index.php',//ca接口请求路径
+	currentAddressItem: {},
     goodsDetail: {},
     cartDetail: {},
   	Barid:'',
