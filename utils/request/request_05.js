@@ -534,7 +534,7 @@ const goodsList = (data) => {
   })
 }
 
-//99元下定活动    兑换
+//99元下定活动   上传手机号信息
 const dePhone = (data) => {
   let url = `${SERVICE}/api3/oauth/de_phone`
   return new Promise((resolve, reject) => {

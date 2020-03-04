@@ -49,7 +49,7 @@ Page({
           options
         })
         if (res.data.data.show_page == 6 && res.data.data.help_info.prize_info.is_upgrade == 0 || res.data.data.show_page == 7 && res.data.data.help_info.prize_info.is_upgrade == 0) {
-          router.jump_red({
+          router.jump_nav({
             url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
           })
         }
@@ -137,7 +137,7 @@ Page({
     })
     if (this.data.isGou) {
       setTimeout(() => {
-        router.jump_red({
+        router.jump_nav({
           url: `/pages/payment/pay_help/pay_help?activity_id=${activity_id}`
         })
       }, 1000)
@@ -209,24 +209,29 @@ Page({
 
   // 授权手机号
   getPhoneNumber(e) {
-    console.log(111111111111)
+    console.log(e, 'eeee')
     let options = this.data.options
     let user_id = wx.getStorageSync('userInfo').user_id
     let session_key = wx.getStorageSync('userInfo').session_key
     let iv = e.detail.iv
     let encrypted_data = e.detail.encryptedData
-    request_05.dePhone({
-      user_id,
-      session_key,
-      iv,
-      encrypted_data
-    }).then(res => {
-      if (res.data.status == 1) {
-        this.initData(options)
-      } else {
-        tool.alert(res.data.msg)
-      }
-    })
+    if (e.detail.errMsg == "getPhoneNumber:ok") {
+      request_05.dePhone({
+        user_id,
+        session_key,
+        iv,
+        encrypted_data
+      }).then(res => {
+        if (res.data.status == 1) {
+          let _userInfo = wx.getStorageSync("userInfo")
+          _userInfo.mobile = res.data.data.mobile
+          wx.setStorageSync("userInfo", _userInfo)
+          this.initData(options)
+        } else {
+          tool.alert(res.data.msg)
+        }
+      })
+    }
   },
 
   // 授权

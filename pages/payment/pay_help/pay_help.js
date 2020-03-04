@@ -307,7 +307,7 @@ Page({
   // 查看其他活动
   toActivityList() {
     router.jump_red({
-      url: `/pages/activity_list/activity_list`,
+      url: `/pages/index/index`,
     })
   },
 

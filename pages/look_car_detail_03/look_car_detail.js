@@ -304,11 +304,9 @@ Page({
           card_code
         }).then(res => {
           if (res.data.status == 1) {
-            setTimeout(() => {
-              router.jump_red({
-                url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`
-              })
-            }, 1000)
+            router.jump_red({
+              url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`
+            })
           }
         })
       },
