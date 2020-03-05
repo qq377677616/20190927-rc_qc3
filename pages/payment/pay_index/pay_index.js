@@ -402,7 +402,7 @@ Page({
   onShareAppMessage: function() {
     let activity_id = this.data.activity_id;
     let obj = {
-      title: '启辰星送您尊享大红包，每天可领，快来参加',
+      title: '启辰星送您尊享大红包，每天可领，快来参加!',
       path: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
       imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
     };

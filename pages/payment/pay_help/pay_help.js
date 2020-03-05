@@ -397,7 +397,7 @@ Page({
     let activity_id = this.data.activity_id;
     let user_id = wx.getStorageSync('userInfo').user_id;
     let obj = {
-      title: '启辰星送您尊享大红包，每天可领，快来参加',
+      title: '启辰星送您尊享大红包，每天可领，快来参加!',
       path: `/pages/payment/pay_help/pay_help?user_id=${user_id}&openid=${openid}&activity_id=${activity_id}`,
       imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
     };
