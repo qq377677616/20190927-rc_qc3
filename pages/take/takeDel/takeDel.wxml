@@ -2,7 +2,9 @@
 <view wx:for="{{2}}" wx:key="{{l}}">
 	<view class="times">2020-01-02</view>
 	<view class="leftinfo">
-		<view class="l_img" style="background-image:url({{BASEURL}}/test.png)"></view>
+		<view class="l_img" style="background-image:url({{BASEURL}}/test.png)">
+				
+		</view>
 		<view class="r_info">
 			<image src="{{BASEURL}}/test.png" mode="aspectFit" class="setwidth"></image>
 		</view>

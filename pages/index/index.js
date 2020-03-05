@@ -469,5 +469,10 @@ Page({
     router.jump_nav({
       url: "/pages/yqpage/yqpage"
     })
-  }
+  },
+	caDel(){//跳转ca详情
+		router.jump_nav({
+			url:"/pages/take/takeHome/takeHome"
+		})
+	}
 })

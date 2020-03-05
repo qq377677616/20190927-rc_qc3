@@ -48,9 +48,10 @@
 				<!--轮播实例1-->
 				<view class="threebg threebg1 anit1_{{swiper1}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
-						 <block wx:for="{{9}}" wx:key="item">
+						 <block wx:for="{{swp1_img}}" wx:key="item">
 							<swiper-item>
-								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw{{index+1}}.png)"></view>
+								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
+								<video class="v_bigitem" autoplay='{{true}}' wx:if="{{item.type==2&&swiper1==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -108,9 +109,10 @@
 				<!--轮播实例3-->
 				<view class="threebg threebg3 anit3_{{swiper3}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
-						 <block wx:for="{{10}}" wx:key="item">
+						 <block wx:for="{{swp3_img}}" wx:key="item">
 							<swiper-item>
-								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw3_{{index+1}}.png?1)"></view>
+								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
+								<video class="v_bigitem" autoplay='{{false}}' wx:if="{{item.type==2&&swiper3==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -211,14 +213,15 @@
 					<text class="txt2 t70txt2">使爱的旅途更为便利与惬意。</text>
 				</view> -->
 				<view class="nt60_4 t70_4" style="background-image:url({{IMGSERVICE}}/gaiban/t70bg4.png)"></view>
-				<view class="txtbox2 txtbox3">{{swiper2_txt[swiper2]}}</view>
+				<view class="txtbox2 txtbox3">{{t70_swiper2_txt[swiper5]}}</view>
 				
 				<!--轮播实例2-->
 				<view class="threebg threebg4 anit5_{{swiper5}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="5" current="{{swiper5}}">
-						 <block wx:for="{{6}}" wx:key="item">
+						 <block wx:for="{{t70_swiper2_img}}" wx:key="item">
 							<swiper-item>
-								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/tb70_2_{{index+1}}.png?1)"></view>
+								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
+								<video class="v_bigitem" autoplay='{{false}}' wx:if="{{item.type==2&&swiper5==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
 							</swiper-item>
 						</block>
 					</swiper>

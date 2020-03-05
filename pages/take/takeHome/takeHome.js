@@ -211,7 +211,7 @@ Page({
 				wx.openLocation({
 					latitude,
 					longitude,
-					scale: 2
+					scale: 16
 				})
 			}
 		})

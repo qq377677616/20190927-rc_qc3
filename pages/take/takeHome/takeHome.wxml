@@ -39,8 +39,8 @@
 				</view>
 
 				<view class="s_row2">
-					<text class="txt5">座机：{{item.telephone?item.telephone:'暂无'}}</text>
-					<view class="rigicon" bindtap="callPhone" data-phone="{{useData.telephone}}">
+					<text class="txt5">座机：{{useData.service_tel?useData.service_tel:'暂无'}}</text>
+					<view class="rigicon" bindtap="callPhone" data-phone="{{useData.service_tel}}">
 						<image mode="widthFix" src="{{BASEURL}}/tk_phone.png" class="bigicon"></image>
 						<text class="txt6">拨打</text>
 					</view>
@@ -64,7 +64,7 @@
 					</view>
 					<view class="topbtn1">
 						加微信
-						<cell styleType="2" class="cell"  bind:startmessage='startmessage' bind:completemessage="completemessage" plugid='b36ffd92a408e5fa6c47a224079815ae' />
+						<cell styleType="2" class="cell"  bind:startmessage='startmessage' bind:completemessage="completemessage" plugid='{{useData.plugid}}' />
 					</view>
 				</view>
 
