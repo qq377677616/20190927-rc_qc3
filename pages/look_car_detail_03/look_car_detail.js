@@ -82,11 +82,21 @@ Page({
   },
 
   swiperchange(e) {
-    console.log(e);
     let type = e.currentTarget.dataset.type;
     this.setData({
 
       swiper4: type == 4 ? e.detail.current : this.data.swiper4,
+      // swiper5: type == 5 ? e.detail.current : this.data.swiper5
+
+    })
+    // console.log(this.data.swiper2);
+  },
+
+  swiperchange2(e) {
+    let type = e.currentTarget.dataset.type;
+    this.setData({
+
+      // swiper4: type == 4 ? e.detail.current : this.data.swiper4,
       swiper5: type == 5 ? e.detail.current : this.data.swiper5
 
     })
@@ -171,7 +181,7 @@ Page({
     let activity_id = this.data.activity_id;
     let id = this.data.id
     let obj = {
-      title: '启辰星送您尊享大红包，每天可领，快来参加',
+      title: '启辰星预售即将开启，提前下订领尊享权益！',
       path: `/pages/look_car_detail_03/look_car_detail?activity_id=${activity_id}&id=${id}`,
       imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
     };
@@ -271,13 +281,11 @@ Page({
       activity_id
     }).then(res => {
       if (res.data.status == 1) {
-        console.log(res.data.data, 'data')
         this.setData({
           payInfoData: res.data.data,
           activity_id
         })
         if (res.data.data.card_info.length > 0) {
-          console.log('有')
           this.cardFun()
         }
       } else {
@@ -540,7 +548,6 @@ Page({
     let swiper4 = this.data.swiper4
     let swiper5 = this.data.swiper5
     const btn = e.currentTarget.dataset.btn;
-    console.log(btn, 'btn')
     if (btn == 'prev1') {
       if (swiper4 > 0) {
         swiper4--
@@ -586,7 +593,6 @@ Page({
         })
       }
     }
-    console.log(swiper4, 'swiper4')
   },
   //授权
   getUserInfo(e) {
