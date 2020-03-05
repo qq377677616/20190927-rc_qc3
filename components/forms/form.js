@@ -156,6 +156,7 @@ Component({
       })
     },
 
+<<<<<<< HEAD
     // 协议书
     toProtocol(){
       console.log(11111)
@@ -164,6 +165,8 @@ Component({
       })
     },
 
+=======
+>>>>>>> 7654d199901ad3b07a2d71293cfae8edf0bfc94a
     //查询门店列表
     getStoreList() {
       api.getStoreList({

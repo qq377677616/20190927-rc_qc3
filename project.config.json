@@ -56,7 +56,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 98,
+			"current": 106,
 			"list": [
 				{
 					"id": -1,
@@ -798,6 +798,13 @@
 					"name": "takeDel",
 					"pathName": "pages/take/takeDel/takeDel",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 106,
+					"name": "pages/look_car_detail_03/look_car_detail",
+					"pathName": "pages/look_car_detail_03/look_car_detail",
+					"query": "id=11",
 					"scene": null
 				}
 			]
