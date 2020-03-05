@@ -1,4 +1,5 @@
 <!--pages/protocol/protocol.wxml-->
 <view class="pic">
+  <view class="btn" bindtap="toBack"></view>
   <image src="{{IMGSERVICE }}/pay/xieyishu.png" mode="widthFix"></image>
 </view>
