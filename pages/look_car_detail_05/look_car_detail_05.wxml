@@ -15,11 +15,11 @@
 			<view>
 				<view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_1.png?1)"></view>
 				<view class="txtbox1">
-					<view class="txt1" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt1.png)"></view>
+					<view class="txt1" style="background-image:url({{IMGSERVICE}}/gaiban/t90txt_1.png)"></view>
 					<!-- <text class="txt1">合资品质</text> -->
 					<text class="txt2">结合风雕美学设计理念，创造独特的惊艳外观。</text>
 				</view>
-				<view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_2.png)"></view>
+				<view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_2.png)"></view>
 				<view class="txtbox2">{{swiper1_txt[swiper1]}}</view>
 				<!--轮播实例1-->
 				<view class="threebg threebg1 anit1_{{swiper1}}">

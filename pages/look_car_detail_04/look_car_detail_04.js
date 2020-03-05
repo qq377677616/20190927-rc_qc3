@@ -320,7 +320,7 @@ Page({
 		// console.log(e);
 		let type = e.currentTarget.dataset.type;
 		this.setData({
-			swiper1:type==1?e.detail.current:this.data.swiper1,
+			swiper1: type==1? e.detail.current:this.data.swiper1,
 			swiper2: type == 2 ? e.detail.current : this.data.swiper2,
 			swiper3: type == 3 ? e.detail.current : this.data.swiper3,
 			swiper4: type == 4 ? e.detail.current : this.data.swiper4,
@@ -333,7 +333,7 @@ Page({
 			swiper11: type == 11 ? e.detail.current : this.data.swiper11,
 			})
 			console.log(type);
-		// console.log(this.data.swiper2);
+		console.log(this.data.swiper1,this.data.swiper2);
 	},
 	changecol(e){
 		let index = e.currentTarget.dataset.index;
