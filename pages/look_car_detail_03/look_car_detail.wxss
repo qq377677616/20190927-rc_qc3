@@ -110,16 +110,17 @@ page{
     display: block;
     width: 100%;
 }
-.swiper_area .arrow{
+.arrow{
     width: 26rpx;
     position: absolute;
     top: 160rpx;
+    z-index: 1;
 }
-.swiper_area .arrow.l-btn{
+.arrow.l-btn{
     left: 24rpx;
     padding-right: 20rpx;
 }
-.swiper_area .arrow.r-btn{
+.arrow.r-btn{
     right: 24rpx;
     padding-left: 20rpx;
 }
@@ -308,3 +309,124 @@ page{
 .oFadeIn{
     animation:fadeIn 4.5s forwards;
 }
+
+
+
+/* ******************** */
+.threebg{
+	width: 100%;
+	height: 543rpx;
+	background: center no-repeat/cover;
+	position: relative;
+}
+.threebg1::after{
+	content: '';
+	width: 11%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+.threebg2::after{
+	content: '';
+	width: 12.5%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+.threebg3::after{
+	content: '';
+	width: 10%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+
+.swiper1{
+	width: 100%;
+	height:135rpx; 
+	margin-top: 16rpx;
+}
+.bigitem{
+	width: 100%;
+	height: 100%;
+	background: center no-repeat/cover;
+}
+.item1{
+	width:174rpx;
+	height: 122rpx;
+	background: center no-repeat/cover;
+}
+.threebg {
+height: 420rpx;
+background: center no-repeat/cover;
+position: relative;
+}
+.threebg1::after{
+	content: '';
+	width: 11%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+.bigper{
+	width: 100%;
+	height: 100%;
+}
+.anit2_0::after{
+	width: 14%;
+	transition:all .3s linear; 
+}
+.anit2_1::after{
+	width: 28%;
+	transition:all .3s linear; 
+}
+.anit2_2::after{
+	width: 42%;
+	transition:all .3s linear; 
+}
+.anit2_3::after{
+	width: 56%;
+	transition:all .3s linear; 
+}
+.anit2_4::after{
+	width: 70%;
+	transition:all .3s linear; 
+}
+.anit2_5::after{
+	width: 84%;
+	transition:all .3s linear; 
+}
+.anit2_6::after{
+	width: 100%;
+	transition:all .3s linear; 
+}
+
+.anit3_0::after{
+	width: 20%;
+	transition:all .3s linear; 
+}
+.anit3_1::after{
+	width: 40%;
+	transition:all .3s linear; 
+}
+.anit3_2::after{
+	width: 60%;
+	transition:all .3s linear; 
+}
+.anit3_3::after{
+	width: 80%;
+	transition:all .3s linear; 
+}
+.anit3_4::after{
+	width: 100%;
+	transition:all .3s linear; 
+}
+

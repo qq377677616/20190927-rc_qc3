@@ -2,7 +2,10 @@
 import tool from '../../utils/tool/tool.js'
 import gets from '../../utils/tool/authorization.js'
 import api from '../../utils/request/request_03.js'
+import router from '../../utils/tool/router.js'
 import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js'
+const app = getApp(); //获取应用实例
+
 Component({
   /**
    * 组件的属性列表
@@ -10,7 +13,7 @@ Component({
   properties: {
     type: {
       type: String,
-      value: '0'//0为门店弹窗、1为详细地址弹窗、2为看车弹窗、3为报名留资弹窗
+      value: '0' //0为门店弹窗、1为详细地址弹窗、2为看车弹窗、3为报名留资弹窗
     },
     vehicle: {
       type: Object,
@@ -38,14 +41,18 @@ Component({
     address: '',
     isChecked: true,
     isGetCode: 0,
-    countDown: 60
+    countDown: 60,
+    isGou: false,
+    IMGSERVICE: app.globalData.IMGSERVICE,
   },
   ready() {
     // this.getPosition()
     if (!wx.getStorageSync('userInfo').mobile) {
       this.myLogin()
     } else {
-      this.setData({ wxPhone: wx.getStorageSync('userInfo').mobile })
+      this.setData({
+        wxPhone: wx.getStorageSync('userInfo').mobile
+      })
       if (this.data.type != 3) this.getPosition()
     }
     // gets.isSetting("scope.userLocation").then(res => {
@@ -69,13 +76,20 @@ Component({
       } else if (!this.data.isGetPhone && !this.data.code) {
         tool.alert("请输入短信验证码")
         return
-      } if (!this.data.name) {
+      }
+      if (!this.data.name) {
         tool.alert("请输入您的真实姓名")
         return
-      } if (this.data.type == 1 && !this.data.address) {
+      }
+      if (!this.data.isGou) {
+        tool.alert("请先同意相关协议")
+        return
+      }
+      if (this.data.type == 1 && !this.data.address) {
         tool.alert("请输入您的详细收货地址")
         return
-      } if (this.data.type == 2 && !this.data.isChecked) {
+      }
+      if (this.data.type == 2 && !this.data.isChecked) {
         tool.alert("请先同意相关协议")
         return
       }
@@ -124,27 +138,53 @@ Component({
       api.getPhoneNumber(_data).then(res => {
         console.log("res", res)
         if (res.data.status == 1) {
-          this.setData({ phone: res.data.data.mobile, wxPhone: res.data.data.mobile, isGetPhone: true })
+          this.setData({
+            phone: res.data.data.mobile,
+            wxPhone: res.data.data.mobile,
+            isGetPhone: true
+          })
           let _userInfo = wx.getStorageSync("userInfo")
           _userInfo.mobile = res.data.data.mobile
           wx.setStorageSync("userInfo", _userInfo)
         }
       })
     },
+
+    // 勾选
+    gouSel() {
+      this.setData({
+        isGou: !this.data.isGou
+      })
+    },
+
+    // 协议书
+    toProtocol() {
+      console.log(11111)
+      router.jump_nav({
+        url: `/pages/protocol/protocol`
+      })
+    },
+
     //查询门店列表
     getStoreList() {
       api.getStoreList({
         city: this.data.region[1],
-        lat: this.data.lat||'',
-        lon: this.data.lon||'',
+        lat: this.data.lat || '',
+        lon: this.data.lon || '',
       }).then(res => {
         console.log("门店列表", res)
         tool.loading_h()
         if (res.data.data.length == 0) {
-          this.setData({ storeList: [{ name: '请重新选择所在城市' }] })
+          this.setData({
+            storeList: [{
+              name: '请重新选择所在城市'
+            }]
+          })
           tool.alert("该地区暂无专营店，请重新选择")
         } else {
-          this.setData({ storeList: res.data.data })
+          this.setData({
+            storeList: res.data.data
+          })
         }
       })
     },
@@ -157,12 +197,14 @@ Component({
       })
       console.log("this.qqmapsdk", this.qqmapsdk)
       this.qqmapsdk.reverseGeocoder({
-        success: res => {//成功后的回调
+        success: res => { //成功后的回调
           console.log("定位后返回", res)
           this.data.isSettingLocation = true
           let _address_component = res.result.address_component
           let _city = _address_component.province + _address_component.city
-          this.setData({ region: [_address_component.province, _address_component.city, _address_component.district] })
+          this.setData({
+            region: [_address_component.province, _address_component.city, _address_component.district]
+          })
 
           let _data = {
             // lon: res.result.location.lng,
@@ -194,7 +236,7 @@ Component({
       })
     },
     //所在城市的picker
-    bindRegionChange: function (e) {
+    bindRegionChange: function(e) {
       this.setData({
         region: e.detail.value
       })
@@ -208,11 +250,17 @@ Component({
     },
     //手机号输入
     inputPhone(e) {
-      this.setData({ phone: e.detail.value })
+      this.setData({
+        phone: e.detail.value
+      })
       if (this.data.wxPhone && this.data.wxPhone == e.detail.value) {
-        this.setData({ isGetPhone: true })
+        this.setData({
+          isGetPhone: true
+        })
       } else {
-        this.setData({ isGetPhone: false })
+        this.setData({
+          isGetPhone: false
+        })
       }
     },
     //获取验证码
@@ -229,20 +277,33 @@ Component({
         tool.alert("手机号格式有误")
         return
       }
-      this.setData({ isGetCode: 2 })
-      api.getVerificationCode({ user_id: wx.getStorageSync("userInfo").user_id, phone: this.data.phone }).then(res => {
+      this.setData({
+        isGetCode: 2
+      })
+      api.getVerificationCode({
+        user_id: wx.getStorageSync("userInfo").user_id,
+        phone: this.data.phone
+      }).then(res => {
         console.log("res", res)
         if (res.data.status == 1) {
           tool.alert("短信发送成功")
-          this.setData({ isGetCode: 1, countDowns: this.data.countDown })
+          this.setData({
+            isGetCode: 1,
+            countDowns: this.data.countDown
+          })
           let _auto = setInterval(() => {
             if (this.data.countDown <= 0) {
               clearInterval(_auto)
-              this.setData({ isGetCode: false, countDown: this.data.countDowns })
+              this.setData({
+                isGetCode: false,
+                countDown: this.data.countDowns
+              })
             } else {
               let _countDown = this.data.countDown
               _countDown--
-              this.setData({ countDown: _countDown })
+              this.setData({
+                countDown: _countDown
+              })
             }
           }, 1000)
         } else {
@@ -251,33 +312,49 @@ Component({
       }).catch(err => {
         console.log("err", err)
         tool.alert("验证码获取失败，请稍后再试~")
-        this.setData({ isGetCode: 0 })
+        this.setData({
+          isGetCode: 0
+        })
       })
     },
     //验证码输入
     inputCode(e) {
-      this.setData({ code: e.detail.value })
+      this.setData({
+        code: e.detail.value
+      })
     },
     //姓名输入
     inputName(e) {
-      this.setData({ name: e.detail.value })
+      this.setData({
+        name: e.detail.value
+      })
     },
     //详细地址输入
     inputAddress(e) {
-      this.setData({ address: e.detail.value })
+      this.setData({
+        address: e.detail.value
+      })
     },
     //使用微信手机号
     wxPhone() {
       if (!wx.getStorageSync('userInfo').mobile) return
-      this.setData({ isGetPhone: true, phone: this.data.wxPhone })
+      this.setData({
+        isGetPhone: true,
+        phone: this.data.wxPhone
+      })
     },
     //使用其它手机号
     other() {
-      this.setData({ isGetPhone: false, phone: '' })
+      this.setData({
+        isGetPhone: false,
+        phone: ''
+      })
     },
     //我同意
     isChecked() {
-      this.setData({ isChecked: !this.data.isChecked })
+      this.setData({
+        isChecked: !this.data.isChecked
+      })
     },
     //关闭当前
     close() {

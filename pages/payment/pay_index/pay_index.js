@@ -22,6 +22,7 @@ Page({
     isHelp: false, //去助力页开关
     isGou: true, //是否默认选√
     isOnShowOpen: true,
+    isDetail: false, //开关下订弹窗
   },
 
   onMyEvent(e) {
@@ -103,13 +104,29 @@ Page({
 
   //去兑换页
   toChange() {
+    tool.alert('暂未开放,敬请期待!')
+    // let activity_id = this.data.activity_id
+    // let cate_id = this.data.acData.activity_info.cate_id
+    // let goods2_buy = this.data.acData.goods2_buy
+    // let car_owner = this.data.car_owner
+    // console.log(cate_id, 'cate_id')
+    // router.jump_nav({
+    //   url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}&activity_id=${activity_id}`
+    // })
+  },
+
+  // 开关下订弹窗
+  openDetail() {
+    this.setData({
+      isDetail: !this.data.isDetail
+    })
+  },
+
+  btn_detail() {
     let activity_id = this.data.activity_id
-    let cate_id = this.data.acData.activity_info.cate_id
-    let goods2_buy = this.data.acData.goods2_buy
-    let car_owner = this.data.car_owner
-    console.log(cate_id, 'cate_id')
-    router.jump_nav({
-      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}&activity_id=${activity_id}`
+    let order_sn = this.data.order_sn
+    router.jump_red({
+      url: `/pages/look_car_detail_03/look_car_detail?id=${11}&activity_id=${activity_id}&order_sn=${order_sn}`
     })
   },
 
@@ -155,20 +172,10 @@ Page({
     let show_page = this.data.show_page
     switch (show_page) {
       case 2:
-        this.setData({
-          isVehicleOwnerHidePop: true,
-          popType: 7,
-          text: "即刻下订，领现金红包",
-          acData: this.data.acData
-        })
+        this.openDetail()
         break;
       case 3:
-        this.setData({
-          isVehicleOwnerHidePop: true,
-          popType: 7,
-          text: "即刻下订，领现金红包",
-          acData: this.data.acData
-        })
+        this.openDetail()
         break;
       case 4:
         this.setData({
@@ -393,6 +400,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    let activity_id = this.data.activity_id;
+    let obj = {
+      title: '启辰星送您尊享大红包，每天可领，快来参加',
+      path: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
+      imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
+    };
+    return obj;
   }
 })
