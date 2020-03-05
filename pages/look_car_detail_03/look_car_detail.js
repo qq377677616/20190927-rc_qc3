@@ -86,17 +86,6 @@ Page({
     this.setData({
 
       swiper4: type == 4 ? e.detail.current : this.data.swiper4,
-      // swiper5: type == 5 ? e.detail.current : this.data.swiper5
-
-    })
-    // console.log(this.data.swiper2);
-  },
-
-  swiperchange2(e) {
-    let type = e.currentTarget.dataset.type;
-    this.setData({
-
-      // swiper4: type == 4 ? e.detail.current : this.data.swiper4,
       swiper5: type == 5 ? e.detail.current : this.data.swiper5
 
     })
