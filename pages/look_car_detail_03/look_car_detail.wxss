@@ -110,16 +110,17 @@ page{
     display: block;
     width: 100%;
 }
-.swiper_area .arrow{
+.arrow{
     width: 26rpx;
     position: absolute;
     top: 160rpx;
+    z-index: 1;
 }
-.swiper_area .arrow.l-btn{
+.arrow.l-btn{
     left: 24rpx;
     padding-right: 20rpx;
 }
-.swiper_area .arrow.r-btn{
+.arrow.r-btn{
     right: 24rpx;
     padding-left: 20rpx;
 }

@@ -104,14 +104,15 @@ Page({
 
   //去兑换页
   toChange() {
-    let activity_id = this.data.activity_id
-    let cate_id = this.data.acData.activity_info.cate_id
-    let goods2_buy = this.data.acData.goods2_buy
-    let car_owner = this.data.car_owner
-    console.log(cate_id, 'cate_id')
-    router.jump_nav({
-      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}&activity_id=${activity_id}`
-    })
+    tool.alert('暂未开放,敬请期待!')
+    // let activity_id = this.data.activity_id
+    // let cate_id = this.data.acData.activity_info.cate_id
+    // let goods2_buy = this.data.acData.goods2_buy
+    // let car_owner = this.data.car_owner
+    // console.log(cate_id, 'cate_id')
+    // router.jump_nav({
+    //   url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}&activity_id=${activity_id}`
+    // })
   },
 
   // 开关下订弹窗
@@ -124,7 +125,7 @@ Page({
   btn_detail() {
     let activity_id = this.data.activity_id
     let order_sn = this.data.order_sn
-    route.jump_red({
+    router.jump_red({
       url: `/pages/look_car_detail_03/look_car_detail?id=${11}&activity_id=${activity_id}&order_sn=${order_sn}`
     })
   },
@@ -399,6 +400,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    let activity_id = this.data.activity_id;
+    let obj = {
+      title: '启辰星送您尊享大红包，每天可领，快来参加',
+      path: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
+      imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
+    };
+    return obj;
   }
 })

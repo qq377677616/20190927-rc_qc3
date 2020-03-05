@@ -14,6 +14,8 @@ let dingshi;
 
 let swiper1Timmer = null;
 let swiper2Timmer = null;
+
+let scrollTimmer = null;
 Page({
 
   /**
@@ -27,8 +29,8 @@ Page({
     dotIndex2: '0',
     swiper1: true,
     swiper2: true,
-    swiper4: 0,//控制第1个swiper
-    swiper5: 0,//控制第2个swiper
+    swiper4: 0, //控制第1个swiper
+    swiper5: 0, //控制第2个swiper
     isShowForm: false,
     formsType: 2,
     vehicle: {},
@@ -49,18 +51,8 @@ Page({
         height: 0,
         amt: true,
       },
-      {
-        local: 0,
-        height: 0,
-        amt: false,
-      },
-      {
-        local: 0,
-        height: 0,
-        amt: false,
-      },
     ],
-    imgList: [false],
+    imgList: [false, false],
   },
 
   /**
@@ -93,10 +85,10 @@ Page({
     console.log(e);
     let type = e.currentTarget.dataset.type;
     this.setData({
-    
+
       swiper4: type == 4 ? e.detail.current : this.data.swiper4,
       swiper5: type == 5 ? e.detail.current : this.data.swiper5
-     
+
     })
     // console.log(this.data.swiper2);
   },
@@ -146,33 +138,44 @@ Page({
    * 页面滚动事件
    */
   onPageScroll: function(options) {
-    const scrollTop = options.scrollTop;
-    const domAnimatedList = this.data.domAnimatedList;
-    const windowHeight = wx.getSystemInfoSync().windowHeight;
+    clearTimeout(scrollTimmer)
 
-    domAnimatedList.forEach((val, key) => {
-      const local = val.local;
-      const height = val.height;
+         scrollTimmer  =  setTimeout(()  =>  {      
+      const  scrollTop  =  options.scrollTop;      
+      const  domAnimatedList  =  this.data.domAnimatedList;      
+      const  windowHeight  =  wx.getSystemInfoSync().windowHeight;
 
-      val.amt = (scrollTop + windowHeight) >= local && scrollTop <= (local + height);
+            
+      domAnimatedList.forEach((val,  key)  =>  {        
+        const  local  =  val.local;        
+        const  height  =  val.height;        
+        /**
+         * 从下往上出现，从上往下出现
+         */
+                
+        val.amt  =   (scrollTop  +  windowHeight)  >=  local  &&  scrollTop  <=  (local  +  height);        
+        this.setData({          
+          domAnimatedList,
+                  
+        })      
+      })
 
-    })
-    this.setData({
-      domAnimatedList,
-    })
+
+          
+    },  1000 / 30)
   },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-    const lookCarDetail = this.data.lookCarDetail;
-    const IMGSERVICE = this.data.IMGSERVICE;
-    const options = this.data.options;
-    return {
-      title: `启辰星亮相发布，快来预约关注！`,
-      imageUrl: `${IMGSERVICE}/spike/t80_share.jpg`,
-      path: `/pages/look_car_detail_03/look_car_detail?id=${options.id}`
-    }
+    let activity_id = this.data.activity_id;
+    let id = this.data.id
+    let obj = {
+      title: '启辰星送您尊享大红包，每天可领，快来参加',
+      path: `/pages/look_car_detail_03/look_car_detail?activity_id=${activity_id}&id=${id}`,
+      imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
+    };
+    return obj;
   },
   //页面初始化
   initData(options) {
@@ -197,6 +200,7 @@ Page({
         this.setData({
           lookCarDetail,
           userInfo: wx.getStorageSync('userInfo'),
+          id: options.id
         })
 
         wx.setNavigationBarTitle({
@@ -269,7 +273,8 @@ Page({
       if (res.data.status == 1) {
         console.log(res.data.data, 'data')
         this.setData({
-          payInfoData: res.data.data
+          payInfoData: res.data.data,
+          activity_id
         })
         if (res.data.data.card_info.length > 0) {
           console.log('有')
@@ -532,39 +537,56 @@ Page({
   },
   //轮播图上下切换
   switchBtn(e) {
+    let swiper4 = this.data.swiper4
+    let swiper5 = this.data.swiper5
     const btn = e.currentTarget.dataset.btn;
-    const indexType = e.currentTarget.dataset.indextype;
-    let dotIndex = this.data[indexType];
-    const swiperType = e.currentTarget.dataset.swipertype;
-    let num;
-
-    num = swiperType == 'swiper1' ? 3 : 4;
-
-    // clearTimeout(swiper1Timmer)
-    // clearTimeout(swiper2Timmer)
-
-    // swiperType == 'swiper1' ? swiper1Timmer = setTimeout(()=>{
-    //   this.setData({
-    //     swiper1:true,
-    //   })
-    //   clearTimeout(swiper1Timmer)
-    // }, 1000) : '';
-
-    // swiperType == 'swiper2' ? swiper2Timmer = setTimeout(()=>{
-    //   this.setData({
-    //     swiper2:true,
-    //   })
-    //   clearTimeout(swiper2Timmer)
-    // }, 1000) : '';
-
-
-    btn == 'next' ? dotIndex = Math.abs(++dotIndex % num) : '';
-    btn == 'prev' ? dotIndex = Math.abs(--dotIndex % num) : '';
-
-    this.setData({
-      [indexType]: String(dotIndex),
-      // [swiperType]:false,
-    })
+    console.log(btn, 'btn')
+    if (btn == 'prev1') {
+      if (swiper4 > 0) {
+        swiper4--
+        this.setData({
+          swiper4
+        })
+      } else {
+        this.setData({
+          swiper4: 6
+        })
+      }
+    } else if (btn == 'next1') {
+      if (swiper4 < 6) {
+        ++swiper4
+        this.setData({
+          swiper4
+        })
+      } else {
+        this.setData({
+          swiper4: 0
+        })
+      }
+    } else if (btn == 'prev2') {
+      if (swiper5 > 0) {
+        swiper5--
+        this.setData({
+          swiper5
+        })
+      } else {
+        this.setData({
+          swiper5: 4
+        })
+      }
+    } else if (btn == 'next2') {
+      if (swiper5 < 4) {
+        ++swiper5
+        this.setData({
+          swiper5
+        })
+      } else {
+        this.setData({
+          swiper5: 0
+        })
+      }
+    }
+    console.log(swiper4, 'swiper4')
   },
   //授权
   getUserInfo(e) {
