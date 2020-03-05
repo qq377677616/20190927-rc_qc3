@@ -151,7 +151,48 @@ Page({
 	  carid: '',
 	  swiper1_txt: ['流水式LED转向灯', '贯穿式光导LED组合尾灯', '矩阵式全LED前大灯', '19英寸星射线铝合金轮辋', '全新家族V-Galaxy星空格栅设计'],//部件名称
 	  swiper2_txt: ['宽适乘坐空间', '360 大视野全景天窗', '丰富储物空间', '人性化车内储物空间', '科技简约内饰'],//部件名称
-	  swiper3_txt: ['全新日产XTRONIC CVT智能无极变速器', '专业舒适化底盘调校', 'Multi-Layer人体工学座椅 (带座椅通风/加热)', '出众的NVH品质', '新一代日产明星缸内直喷发动机MR20', '远程控制车辆', '智能语音助手', '10+8英寸大尺寸智能双屏交互', '智能全时导航', 'DVR智能行车记录仪'],//部件名称
+	  swiper3_txt: ['全新日产XTRONIC CVT智能无极变速器', '专业舒适化底盘调校', 'Multi-Layer人体工学座椅 (带座椅通风/加热)', '出众的NVH品质', '新一代日产明星缸内直喷发动机MR20'],//部件名称
+	  swiper4_txt: ['全时在线导航', '全新升级智能语音交互', '手机远程控制', '智能安防系统', '全场景账号服务系统','高品质娱乐体验','智能车联服务','EPB电子手刹+Auto Hold自动驻车','12.3+10.25英寸沉浸式科技联屏','15W高效无线充电','智能交互电动尾门','3D AVM无盲区高清全景监控影像系统','FEB预碰撞智能刹车辅助系统','LDW 车道偏离预警系统','EAMP 油门误踩智能纠正系统','BSW 变道盲区预警系统','车家互联'],//部件名称
+	  t90swp1:[
+		  { img: 'tb90_1_1.png', type: 1 },
+		  { img: 'tb90_1_2.png', type: 1 },
+		  { img: 'tb90_1_3.png', type: 1 },
+		  { img: 'tb90_1_4.png', type: 1 },
+		  { img: 'tb90_1_5.png', type: 1 }
+	  ],
+	  t90swp2: [
+		  { img: 'tb90_2_1.png', type: 1 },
+		  { img: 'tb90_2_2.png', type: 1 },
+		  { img: 'tb90_2_3.png', type: 1 },
+		  { img: 'tb90_2_4.png', type: 1 },
+		  { img: 'tb90_2_5.png', type: 1 }
+	  ],
+	  t90swp3:[
+		  {img:'tb90_3_1.png',type:1},
+		  { img: 'tb90_3_2.png', type: 1 },
+		  { img: 'tb90_3_3.png', type: 1 },
+		  { img: 'tb90_3_4.mp4', type: 2 },
+		  { img: 'tb90_3_5.png', type: 1 }
+	  ],	 
+	  t90swp4: [
+		  { img: 'tb90_4_1.mp4', type: 2 },
+		  { img: 'tb90_4_2.mp4', type: 2 },
+		  { img: 'tb90_4_3.mp4', type: 2 },
+		  { img: 'tb90_4_4.mp4', type: 2 },
+		  { img: 'tb90_4_5.mp4', type: 2 },
+		  { img: 'tb90_4_6.mp4', type: 2 },
+		  { img: 'tb90_4_7.mp4', type: 2 },
+		  { img: 'tb90_4_8.png', type: 1 },
+		  { img: 'tb90_4_9.png', type: 1 },
+		  { img: 'tb90_4_10.png', type: 1 },
+		  { img: 'tb90_4_11.mp4', type: 2 },
+		  { img: 'tb90_4_12.mp4', type: 2 },
+		  { img: 'tb90_4_13.mp4', type: 2 },
+		  { img: 'tb90_4_14.mp4', type: 2 },
+		  { img: 'tb90_4_15.mp4', type: 2 },
+		  { img: 'tb90_4_16.mp4', type: 2 },
+		  { img: 'tb90_4_17.mp4', type: 2 }
+	  ],
 	  swp1_img: [ //t60第一个swiper资源
 		  { img: 'Tb60_sw1.png', type: 1 },
 		  { img: 'Tb60_sw2.mp4', type: 2 },

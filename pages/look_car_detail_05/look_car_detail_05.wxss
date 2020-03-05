@@ -915,7 +915,7 @@
 }
 .txtbox1{
 	width: 100%;
-	height: 220rpx;
+	height: 280rpx;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -928,12 +928,7 @@
 	background: center no-repeat/cover;
 }
 .m_txt{
-	width:157rpx;
-	height: 37rpx;
-	background: center no-repeat/cover;
-}
-.m_txt2{
-	width:155rpx;
+	width:461rpx;
 	height: 37rpx;
 	background: center no-repeat/cover;
 }
@@ -943,6 +938,9 @@
 	font-weight:500;
 	color:rgba(24,24,24,1);
 	margin-top: 40rpx;
+}
+.lowtxt{
+	margin-top: 15rpx;
 }
 .twobg{
 	width:750rpx;
@@ -970,7 +968,7 @@
 }
 .threebg1::after{
 	content: '';
-	width: 11%;
+	width: 20%;
 	height: 7rpx;
 	background-color: #2A558D;
 	position: absolute;
@@ -996,38 +994,22 @@
 	left: 0;
 }
 .anit1_0::after{
-	width: 11%;
+	width: 20%;
 	transition:all .3s linear; 
 }
 .anit1_1::after{
-	width: 22%;
+	width: 40%;
 	transition:all .3s linear; 
 }
 .anit1_2::after{
-	width: 33%;
+	width: 60%;
 	transition:all .3s linear; 
 }
 .anit1_3::after{
-	width: 33%;
+	width: 80%;
 	transition:all .3s linear; 
 }
 .anit1_4::after{
-	width: 44%;
-	transition:all .3s linear; 
-}
-.anit1_5::after{
-	width: 55%;
-	transition:all .3s linear; 
-}
-.anit1_6::after{
-	width: 66%;
-	transition:all .3s linear; 
-}
-.anit1_7::after{
-	width: 77%;
-	transition:all .3s linear; 
-}
-.anit1_8::after{
 	width: 100%;
 	transition:all .3s linear; 
 }
@@ -1214,7 +1196,7 @@
 }
 .nt60_4{
 	width:100%;
-	height: 544rpx;
+	height: 751rpx;
 	background: center no-repeat/cover;
 }
 .txtbox3{
@@ -1222,7 +1204,7 @@
 }
 .nt60_6{
 	width: 100%;
-	height: 750rpx;
+	height: 640rpx;
 	background: center no-repeat/cover;
 }
 .nt60_8{
@@ -1425,6 +1407,10 @@
 }
 .setopt{
 	opacity: 1;
+}
+.m_txt3{
+	width: 459rpx;
+	height: 37rpx;
 }
 
 
