@@ -114,7 +114,7 @@
   <view class="threebg threebg1 anit2_{{swiper4}}">
     <image class="arrow l-btn" src="{{ IMGSERVICE }}/spike/page6_25.png" mode="widthFix" data-btn="prev1" bindtap="switchBtn"></image>
     <image class="arrow r-btn" src="{{ IMGSERVICE }}/spike/page6_24.png" mode="widthFix" data-btn="next1" bindtap="switchBtn"></image>
-    <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="4" current="{{swiper4}}" autoplay="true" interval="2000">
+    <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
 
       <block wx:for="{{7}}" wx:key="item">
         <swiper-item>
@@ -155,7 +155,7 @@
   <view class="threebg threebg1 anit3_{{swiper5}}">
     <image class="arrow l-btn" src="{{ IMGSERVICE }}/spike/page6_25.png" mode="widthFix" data-btn="prev2" bindtap="switchBtn"></image>
     <image class="arrow r-btn" src="{{ IMGSERVICE }}/spike/page6_24.png" mode="widthFix" data-btn="next2" bindtap="switchBtn"></image>
-    <swiper interval="2000" circular="{{true}}" class="bigper" bindchange="swiperchange2" data-type="5" current="{{swiper5}}" autoplay="true">
+    <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="5" current="{{swiper5}}" >
       <block wx:for="{{5}}" wx:key="item">
         <swiper-item>
           <view class="bigitem" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index+1}}.png?1)"></view>
