@@ -134,6 +134,8 @@
   </view>
   <!--轮播实例-->
 
+  <view class="fenge"></view>
+
   <!--轮播实例2-->
   <!-- section -->
   <view class="section">

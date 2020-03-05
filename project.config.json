@@ -804,6 +804,13 @@
 					"pathName": "pages/look_car_detail_03/look_car_detail",
 					"query": "id=11",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "99协议书",
+					"pathName": "pages/protocol/protocol",
+					"query": "id=11",
+					"scene": null
 				}
 			]
 		}
