@@ -503,7 +503,7 @@ Page({
           !wx.getStorageSync("userInfo").nickName
         ) return;
         if (this.data.goods2_buy == 0) {
-          tool.alert('暂无权限')
+          tool.alert('您未参与启辰官网1元下订活动，暂无秒杀资格!')
           return
         }
         tool.requestSubscribeMessage()
