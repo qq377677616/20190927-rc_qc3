@@ -27,6 +27,8 @@ Page({
     dotIndex2: '0',
     swiper1: true,
     swiper2: true,
+    swiper4: 0,//控制第1个swiper
+    swiper5: 0,//控制第2个swiper
     isShowForm: false,
     formsType: 2,
     vehicle: {},
@@ -85,6 +87,18 @@ Page({
     this.setData({
       rulspop: !this.data.rulspop
     })
+  },
+
+  swiperchange(e) {
+    console.log(e);
+    let type = e.currentTarget.dataset.type;
+    this.setData({
+    
+      swiper4: type == 4 ? e.detail.current : this.data.swiper4,
+      swiper5: type == 5 ? e.detail.current : this.data.swiper5
+     
+    })
+    // console.log(this.data.swiper2);
   },
 
   /**

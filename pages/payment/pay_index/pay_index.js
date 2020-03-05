@@ -22,6 +22,7 @@ Page({
     isHelp: false, //去助力页开关
     isGou: true, //是否默认选√
     isOnShowOpen: true,
+    isDetail: false, //开关下订弹窗
   },
 
   onMyEvent(e) {
@@ -113,6 +114,21 @@ Page({
     })
   },
 
+  // 开关下订弹窗
+  openDetail() {
+    this.setData({
+      isDetail: !this.data.isDetail
+    })
+  },
+
+  btn_detail() {
+    let activity_id = this.data.activity_id
+    let order_sn = this.data.order_sn
+    route.jump_red({
+      url: `/pages/look_car_detail_03/look_car_detail?id=${11}&activity_id=${activity_id}&order_sn=${order_sn}`
+    })
+  },
+
   //提示信息
   promptInfo() {
     tool.alert('您今天已领过红包啦，请明天再来哦~')
@@ -155,20 +171,10 @@ Page({
     let show_page = this.data.show_page
     switch (show_page) {
       case 2:
-        this.setData({
-          isVehicleOwnerHidePop: true,
-          popType: 7,
-          text: "即刻下订，领现金红包",
-          acData: this.data.acData
-        })
+        this.openDetail()
         break;
       case 3:
-        this.setData({
-          isVehicleOwnerHidePop: true,
-          popType: 7,
-          text: "即刻下订，领现金红包",
-          acData: this.data.acData
-        })
+        this.openDetail()
         break;
       case 4:
         this.setData({

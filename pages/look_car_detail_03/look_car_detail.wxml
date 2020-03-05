@@ -28,9 +28,9 @@
     <image src="{{ IMGSERVICE }}/spike/banner.png" mode="widthFix" data-index="0" onload="imgLoad" onerror="imgLoad"></image>
   </view>
 
-  <!-- <view class="rule">
-    <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/pay_rule.png" onload="imgLoad" onerror="imgLoad"></image>
-  </view> -->
+  <view class="rule">
+    <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/shuomingshu.jpg" onload="imgLoad" onerror="imgLoad"></image>
+  </view>
   <!-- h2 -->
   <view class="h2">
 
@@ -43,7 +43,7 @@
 
   </view>
 
-  <!-- section -->
+  <!-- section
   <view class="section">
     <!-- <view class="image">
             <image src="{{ IMGSERVICE }}/spike/big_01.jpg" mode="widthFix" data-index="1" onload="imgLoad" onerror="imgLoad"></image>
@@ -53,15 +53,15 @@
             </view>
         </view> -->
 
-    <view class="p dom-local initLocalUp {{ domAnimatedList[1].amt ? 'fadeInUp' : '' }}">
+  <!-- <view class="p dom-local initLocalUp {{ domAnimatedList[1].amt ? 'fadeInUp' : '' }}">
       <text wx:if="{{ dotIndex1 == 0 }}" class="oFadeIn">V-Galaxy星空家族前脸</text>
       <text wx:elif="{{ dotIndex1 == 1 }}" class="oFadeIn">双子星LED大灯</text>
       <text wx:elif="{{ dotIndex1 == 2 }}" class="oFadeIn">星级车标</text>
     </view>
-  </view>
+  </view> -->
 
   <!-- swiper_area -->
-  <view class="swiper_area">
+  <!-- <view class="swiper_area">
 
     <swiper current="{{ dotIndex1 }}" circular="true" autoplay="{{ false }}" interval="2500" bindchange="dotchange1">
 
@@ -91,65 +91,83 @@
       </view>
     </view>
 
-  </view>
+  </view> -->
 
+
+  <!--轮播实例1-->
   <!-- section -->
   <view class="section">
-    <!-- <view class="image">
-            <image src="{{ IMGSERVICE }}/spike/big_02.jpg" mode="widthFix" data-index="2" onload="imgLoad" onerror="imgLoad"></image>
-            <view class="arrow">
-                <text class="left"></text>
-                <text class="right"></text>
-            </view>
-        </view> -->
-
-    <view class="p dom-local initLocalUp {{ domAnimatedList[2].amt ? 'fadeInUp' : '' }}">
-      <text wx:if="{{ dotIndex2 == 0 }}" class="oFadeIn">饱满张力型面</text>
-      <text wx:elif="{{ dotIndex2 == 1 }}" class="oFadeIn">19英寸双色大轮毂</text>
-      <text wx:elif="{{ dotIndex2 == 2 }}" class="oFadeIn">V-Motif高位刹车灯</text>
-      <text wx:elif="{{ dotIndex2 == 3 }}" class="oFadeIn">贯穿式尾灯</text>
+    <view class="p dom-local initLocalUp {{ domAnimatedList[1].amt ? 'fadeInUp' : '' }}">
+      <text wx:if="{{ swiper4 == 0 }}" class="oFadeIn">V-Galaxy星空家族前脸</text>
+      <text wx:elif="{{ swiper4 == 1 }}" class="oFadeIn">星级车标
+</text>
+      <text wx:elif="{{ swiper4 == 2 }}" class="oFadeIn">双子星LED大灯</text>
+      <text wx:elif="{{ swiper4 == 3 }}" class="oFadeIn">贯穿式尾灯
+</text>
+      <text wx:elif="{{ swiper4 == 4 }}" class="oFadeIn">V-Motif高位刹车灯
+</text>
+      <text wx:elif="{{ swiper4 == 5 }}" class="oFadeIn">饱满张力型面
+</text>
+      <text wx:elif="{{ swiper4 == 6 }}" class="oFadeIn">19英寸双色大轮毂</text>
     </view>
-
   </view>
-
-  <!-- swiper_area -->
-  <view class="swiper_area">
-
-    <swiper current="{{ dotIndex2 }}" circular="true" autoplay="{{ false }}" interval="2500" bindchange="dotchange2">
-
-      <swiper-item>
-        <image src="{{ IMGSERVICE }}/spike/swiper_02/side.jpg" mode="widthFix"></image>
-      </swiper-item>
-
-      <swiper-item>
-        <image src="{{ IMGSERVICE }}/spike/swiper_02/19.jpg" mode="widthFix"></image>
-      </swiper-item>
-
-      <swiper-item>
-        <image src="{{ IMGSERVICE }}/spike/swiper_02/V.jpg" mode="widthFix"></image>
-      </swiper-item>
-
-      <swiper-item>
-        <image src="{{ IMGSERVICE }}/spike/swiper_02/wei.jpg" mode="widthFix"></image>
-      </swiper-item>
-
+  <view class="threebg threebg1 anit2_{{swiper4}}">
+    <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
+      <block wx:for="{{7}}" wx:key="item">
+        <swiper-item>
+          <view class="bigitem" style="background-image:url({{IMGSERVICE}}/pay/swipe/index{{index+1}}.png?1)"></view>
+        </swiper-item>
+      </block>
     </swiper>
-
-    <image class="arrow l-btn" src="{{ IMGSERVICE }}/spike/page6_25.png" mode="widthFix" data-swiperType="swiper2" data-indexType="dotIndex2" data-btn="prev" bindtap="switchBtn"></image>
-    <image class="arrow r-btn" src="{{ IMGSERVICE }}/spike/page6_24.png" mode="widthFix" data-swiperType="swiper2" data-indexType="dotIndex2" data-btn="next" bindtap="switchBtn"></image>
-
-    <view class="dots">
-      <view class="doc {{ dotIndex2 == 0 ? 'active' : '' }}">
-      </view>
-      <view class="doc {{ dotIndex2== 1 ? 'active' : '' }}">
-      </view>
-      <view class="doc {{ dotIndex2 == 2 ? 'active' : '' }}">
-      </view>
-      <view class="doc {{ dotIndex2 == 3 ? 'active' : '' }}">
-      </view>
-    </view>
-
   </view>
+  <!-- <view class="swiper1">
+    <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
+      <block wx:for="{{7}}" wx:key="item">
+        <swiper-item>
+          <view class="item1 {{swiper4!=index-1&&!(swiper4==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/pay/swipe/index{{index == 0 ? index+7:index}}.png?1)"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view> -->
+  <!--轮播实例-->
+
+  <!--轮播实例2-->
+  <!-- section -->
+  <view class="section">
+    <view class="p dom-local initLocalUp {{ domAnimatedList[1].amt ? 'fadeInUp' : '' }}">
+      <text wx:if="{{ swiper5 == 0 }}" class="oFadeIn">智能触控真皮方向盘
+</text>
+      <text wx:elif="{{ swiper5 == 1 }}" class="oFadeIn">悬浮式中控台
+</text>
+      <text wx:elif="{{ swiper5 == 2 }}" class="oFadeIn">钻石绗缝真皮包覆</text>
+      <text wx:elif="{{ swiper5 == 3 }}" class="oFadeIn">女王副驾座椅
+
+</text>
+      <text wx:elif="{{ swiper5 == 4 }}" class="oFadeIn">15.6英寸全面屏智能中控
+</text>
+    </view>
+  </view>
+  <view class="threebg threebg1 anit3_{{swiper5}}">
+    <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="5" current="{{swiper5}}">
+      <block wx:for="{{5}}" wx:key="item">
+        <swiper-item>
+          <view class="bigitem" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index+1}}.png?1)"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- <view class="swiper1">
+    <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="5" current="{{swiper5}}">
+      <block wx:for="{{5}}" wx:key="item">
+        <swiper-item>
+          <view class="item1 {{swiper4!=index-1&&!(swiper4==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index == 0 ? index+5:index}}.png?1)"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view> -->
+  <!--轮播实例-->
+
+   
 
   <!-- title -->
   <!-- <view class="title dom-local initLocalUp {{ domAnimatedList[3].amt ? 'fadeInUp' : '' }}">头等舱的设计概念</view> -->
@@ -201,7 +219,6 @@
   <view class="float-btn">
     <image bindtap="toIndex" src="{{ IMGSERVICE }}/spike/page4_24.png" mode="widthFix"></image>
   </view>
-
 
 </view>
 

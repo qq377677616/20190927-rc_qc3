@@ -1,0 +1,9 @@
+/* pages/protocol/protocol.wxss */
+
+.pic{
+  width: 100%;
+}
+
+.pic image{
+  width: 100%;
+}

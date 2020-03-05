@@ -1,0 +1,4 @@
+<!--pages/protocol/protocol.wxml-->
+<view class="pic">
+  <image src="{{IMGSERVICE }}/pay/xieyishu.png" mode="widthFix"></image>
+</view>

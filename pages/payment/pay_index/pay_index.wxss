@@ -189,7 +189,7 @@ swiper-item {
   width: 100%;
   height: 100vh;
   position: fixed;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   left: 0;
   top: 0;
 }
@@ -263,3 +263,30 @@ swiper-item {
   bottom: 13%;
   border-radius: 35rpx;
 }
+
+
+/* 介绍弹窗 */
+.btn_close{
+  width: 42rpx;
+  position: absolute;
+  right: 67rpx;
+  top: 30rpx;
+}
+
+.cen{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content{
+  width: 530rpx;
+}
+
+.btn_detail{
+  width:332rpx;
+  margin-top: 48rpx;
+}
+
+
