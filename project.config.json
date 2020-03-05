@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -743,10 +743,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "改版T6",
+					"id": 98,
+					"name": "改版T70",
 					"pathName": "pages/look_car_detail_04/look_car_detail_04",
-					"query": "id=6",
+					"query": "id=7",
 					"scene": null
 				},
 				{
@@ -799,10 +799,17 @@
 					"scene": null
 				},
 				{
-					"id": 106,
-					"name": "pages/look_car_detail_03/look_car_detail",
-					"pathName": "pages/look_car_detail_03/look_car_detail",
-					"query": "id=11",
+					"id": -1,
+					"name": "look_car_detail",
+					"pathName": "pages/look_car_detail/look_car_detail",
+					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": 107,
+					"name": "改版t90",
+					"pathName": "pages/look_car_detail_05/look_car_detail_05",
+					"query": "id=9",
 					"scene": null
 				},
 				{

@@ -88,6 +88,39 @@ Page({
 	d60_swiper1_txt: ['宽敞大尺寸天窗', '宽敞大尺寸天窗' , '663mm后排膝部空间', 'Multi-Layer人体工学座椅'],//部件名称
 	d60_swiper2_txt: ['锐利的鹰眼LED前大灯', '星空点阵式前格栅', '红镰式光导LED组合尾灯','驾驶员导向飞航式驾驶舱设计','人体工学D型多功能方向盘','高品质透气性菱格皮质座椅','4756mm优越车身长度'],//部件名称
 	d60_swiper3_txt: ['XTRONIC CVT无极变速器', '5.6L/100km低油耗', '带横向稳定杆的扭力梁式悬挂系统','Zone Body高性能区域车身结构','ABS+EBD+BA三位一体智能刹车辅助系统','博世9.1版ESP车身电子稳定系统','TPMS智能胎压监测系统','EPKB电子驻车系统','HR16发动机'],//部件名称
+	swp1_img:[ //t60第一个swiper资源
+		{img:  'Tb60_sw1.png', type: 1},
+		{ img: 'Tb60_sw2.mp4', type: 2},
+		{ img: 'Tb60_sw3.mp4', type: 2},
+		{ img: 'Tb60_sw4.png', type: 1},
+		{ img: 'Tb60_sw5.mp4', type: 2},
+		{ img: 'Tb60_sw6.png', type: 1},
+		{ img: 'Tb60_sw7.mp4', type: 2},
+		{ img: 'Tb60_sw8.mp4', type: 2},
+		{ img: 'Tb60_sw9.png', type: 1}
+		],
+	  swp3_img: [//t60第三个swiper资源
+		{ img: 'Tb60_sw3_1.mp4', type: 2 },
+		{ img: 'Tb60_sw3_2.mp4', type: 2 },
+		{ img: 'Tb60_sw3_3.mp4', type: 2 },
+		{ img: 'Tb60_sw3_4.mp4', type: 2 },
+		{ img: 'Tb60_sw3_5.mp4', type: 2 },
+		{ img: 'Tb60_sw3_6.mp4', type: 2 },
+		{ img: 'Tb60_sw3_7.mp4', type: 2 },
+		{ img: 'Tb60_sw3_8.mp4', type: 2 },
+		{ img: 'Tb60_sw3_9.mp4', type: 2 },
+		{ img: 'Tb60_sw3_10.mp4', type: 2 }
+	],
+	  t70_swiper2_img:[// t70第二个swiper
+		  { img: 'tb70_2_1.mp4', type: 2 },
+		  { img: 'tb70_2_2.mp4', type: 2 },
+		  { img: 'tb70_2_3.mp4', type: 2 },
+		  { img: 'tb70_2_4.mp4', type: 2 },
+		  { img: 'tb70_2_5.mp4', type: 2 },
+		  { img: 'tb70_2_6.mp4', type: 2 }
+	  ]
+	
+	
   },
 
 	

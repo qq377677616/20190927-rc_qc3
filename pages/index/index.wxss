@@ -429,3 +429,17 @@ page {
   position: absolute;
   top: 548rpx;
 }
+.cabtn{
+	width: 65rpx;
+	height: 65rpx;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24rpx;
+	color: white;
+	position: fixed;
+	right: 30rpx;
+	bottom: 320rpx;
+}
