@@ -923,8 +923,8 @@
 	background-color: #F1EFF2;
 }
 .txt1{
-	width:157rpx;
-	height: 38rpx;
+	width:455rpx;
+	height: 37rpx;
 	background: center no-repeat/cover;
 }
 .m_txt{
@@ -946,11 +946,8 @@
 }
 .twobg{
 	width:750rpx;
-	height:738rpx;
+	height:750rpx;
 	background: center no-repeat/cover;
-}
-.twobg2{
-	height: 748rpx;
 }
 .txtbox2{
 	width: 100%;
