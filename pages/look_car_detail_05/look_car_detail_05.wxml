@@ -105,44 +105,87 @@
 					</swiper>
 				</view>
 				<!--轮播实例-->
+				 
+				 <view class="setwhite"></view>
+				
+				<view class="txtbox1 setbg">
+					<view class="m_txt m_txt4" style="background-image:url({{IMGSERVICE}}/gaiban/t90txt_4.png)"></view>
+					<text class="txt2">集成更人性化的智能科技配置，</text>
+					<text class="txt2 lowtxt">为驾驶添一份乐趣。</text>
+				</view>
+				<view class="nt60_7" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_5.png)"></view>
+				
+				<view class="txtbox2 txtbox3">{{swiper4_txt[swiper4]}}</view>
 
-				<view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png?1)">
-					<view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?1)" wx:for="{{carcol}}" wx:key="item"></view>
-					<text class="txt3">启辰T60基本参数</text>
+				<!--轮播实例4-->
+				<view class="threebg threebg4 anit4_{{swiper4}}">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
+						 <block wx:for="{{t90swp4}}" wx:key="item">
+							<swiper-item>
+								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
+								<video class="v_bigitem" autoplay='{{false}}' wx:if="{{item.type==2&&swiper4==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
+						 <block wx:for="{{t90swp4}}" wx:key="item">
+							<swiper-item>
+								<view class="item1 {{swiper4!=index-1&&!(swiper4==(t90swp4.length-1)&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t90_4_{{index+1}}.png?1)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<!--轮播实例-->
+				<view class="setwhite"></view>
+				
+				<view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_6.png?1)">
+					<view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)" wx:for="{{carcol}}" wx:key="item"></view>
+					<text class="txt3">启辰T90基本参数</text>
 					<text class="txt4">（官网画面仅供参考，购买时以实车为准）</text>
 					<view class="selectcol">
 						<scroll-view scroll-x="{{true}}">
 							<view class="setflex">
 								<view class="f_items" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
-									<view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
+									<view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img2}}?1)"></view>
 									<text class="txt5">{{item.txt}}</text>
 								</view>
 							</view>
 						</scroll-view>
 					</view>
 				</view>
+				<!-- 车系数据 -->
 				<view class="carnum">
 					<view class="numitem">
-						<text>百公里油耗</text>
-						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_9.png" class="num1"></image>
+						<text>轴距</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num1.png" class="num1"></image>
 						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_12.png" class="lines"></image>
 					</view>
 					<view class="numitem">
-						<text>智能双屏交互</text>
-						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_10.png" class="num2"></image>
+						<text>车宽</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num2.png" class="num2"></image>
+					</view>
+				</view>
+				<view class="carnum">
+					<view class="numitem">
+						<text>后备箱</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num3.png" class="num3"></image>
 						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_12.png" class="lines"></image>
 					</view>
 					<view class="numitem">
-						<text>超长轴距</text>
-						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_11.png" class="num3"></image>
+						<text>综合工况油耗</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num4.png" class="num4"></image>
 					</view>
 				</view>
-				<view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_13.png)">
-					<text class="txt6">2640mm</text>
-					<text class="txt7">1679mm</text>
+				<view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/t90_m1.png)">
+					<text class="txt6">2765mm</text>
+					<text class="txt7">1591mm</text>
+					<text class="txt11">4805mm</text>
 				</view>
-				<view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_14.png)">
-					<text class="txt8">4412mm</text>
+				<!-- 车系数据 -->
+				<view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/t90_m2.png)">
+					<!-- <text class="txt8">4412mm</text> -->
 					<text class="txt9">1820mm</text>
 				</view>
 
@@ -186,10 +229,7 @@
               <image src="{{IMGSERVICE}}/activity/{{item}}" mode="widthFix"></image>
             </view> 
         </view>
-    <!-- 留资弹窗-->
-    <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
-        <forms bindsubmit="submit" bindclose="isShowForm" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
-    </view>
+   
     <!-- 选择车款-->
     <view class="select_car flex-cen" wx:if="{{ navIndex == 1 }}">
       <view class="text"><view>级别</view><view>选择</view></view>
@@ -211,4 +251,9 @@
     </view>
     <!-- title4 -->
     <!-- science -->
+	 <!-- 留资弹窗-->
+    
+</view>
+<view class="forms-box" wx:if="{{ true }}">
+	<forms bindsubmit="submit" bindclose="isShowForm" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
 </view>

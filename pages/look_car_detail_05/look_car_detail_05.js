@@ -111,30 +111,12 @@ Page({
     sss: true,
 	// 复制t60
 	  carcol: [//t60颜色图
-		  { img: 't60_col1.png', txt: '旭日橙/珠光白双色' },
-		  { img: 't60_col2.png', txt: '烈焰红/曜石黑双色' },
-		  { img: 't60_col3.png', txt: '珠光白/曜石黑双色' },
-		  { img: 't60_col4.png', txt: '烈焰红' },
-		  { img: 't60_col5.png', txt: '曜石黑' },
-		  { img: 't60_col6.png', txt: '乌刚灰' },
-		  { img: 't60_col7.png', txt: '旭日橙' },
-		  { img: 't60_col8.png', txt: '晴空蓝' },
-		  { img: 't60_col9.png', txt: '珠光白' }
-	  ],
-	  t70carcol: [//t70颜色图
-		  { img: 't70bg6.png', txt: '旭日橙' },
-		  { img: 't70bg7.png', txt: '朝霞红' },
-		  { img: 't70bg8.png', txt: '珠光白' },
-		  { img: 't70bg9.png', txt: '翡丽灰' },
-		  { img: 't70bg10.png', txt: '曜石黑' }
-	  ],
-	  d60carcol: [//t70颜色图
-		  { img: 'd60col1.png', txt: '晴空蓝' },
-		  { img: 'd60col2.png', txt: '映日棕' },
-		  { img: 'd60col3.png', txt: '辰辉银' },
-		  { img: 'd60col4.png', txt: '赤兔红' },
-		  { img: 'd60col5.png', txt: '珠光白' },
-		  { img: 'd60col6.png', txt: '曜石黑' }
+		  { img: 't90col1.png', img2:'t90c1.png', txt: '星云红' },
+		  { img: 't90col2.png', img2: 't90c2.png',txt: '极光蓝' },
+		  { img: 't90col3.png', img2: 't90c3.png', txt: '赤兔红' },
+		  { img: 't90col4.png', img2: 't90c4.png',txt: '珠光白' },
+		  { img: 't90col5.png', img2: 't90c5.png',txt: '曜石黑' },
+		  { img: 't90col6.png', img2: 't90c6.png',txt: '琥珀金' }
 	  ],
 	  swiper1: 0,//控制第一个swiper
 	  swiper2: 0,//控制第二个swiper
@@ -349,55 +331,51 @@ Page({
     })
   },
   //提交
-  submit(e) {
-    console.log("e.detail", e.detail)
-    const detail = e.detail;
-    const userInfo = wx.getStorageSync('userInfo');
-    const lookCarDetail = this.data.lookCarDetail;
+	submit(e) {
+		const detail = e.detail;
+		const userInfo = wx.getStorageSync('userInfo');
+		const lookCarDetail = this.data.lookCarDetail;
 
-    alert.loading({
-      str: '提交中'
-    })
-    request_01.lookCarSubmit({
-      user_id: userInfo.user_id,//用户ID
-      look_car_id: lookCarDetail.look_car_id,//看车ID
-      name: detail.name,//留资姓名
-      mobile: detail.phone,//留资电话
-      v_code: detail.code || '',//短信验证码
-      dl_code: detail.storeCode,//专营店编码
-      car_type: '',//车型 可不填
-    })
-      .then((value) => {
-        //success
-        const msg = value.data.msg;
-        const status = value.data.status;
-        if (status == 1) {
-          alert.loading_h()
-          // mta.Event.stat("booking_car_t90", { name: detail.name, phone: detail.phone, city: detail.region.join('--')})
-          mta.Event.stat("booking_car_t90", { userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}`})
-          if (this.data.gdt_vid) this.dataReport()
-          alert.confirm({ title: "预约成功", content: `您已成功预约「${this.data.vehicle.title}」的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
-          this.setData({
-            isShowForm: false,
-          })
-        })
-        } else {
-          alert.alert({
-            str: '预约失败，请稍后再试~',
-          })
-        }
+		alert.loading({
+			str: '提交中'
+		})
+		request_01.lookCarSubmit({
+			user_id: userInfo.user_id,//用户ID
+			look_car_id: lookCarDetail.look_car_id,//看车ID
+			name: detail.name,//留资姓名
+			mobile: detail.phone,//留资电话
+			v_code: detail.code || '',//短信验证码
+			dl_code: detail.storeCode,//专营店编码
+			car_type: '',//车型 可不填
+		}).then((value) => {
+			//success
+			const status = value.data.status;
+			if (status == 1) {
+				alert.loading_h()
+				// mta.Event.stat("booking_car_other", { name: detail.name, phone: detail.phone, city: detail.region.join('--') })
+				
+				{ userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}` }
+				alert.confirm({ title: "预约成功", content: `您已成功预约「${this.data.vehicle.title}」的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
+					this.setData({
+						isShowForm: false,
+					})
+				})
+			} else {
+				alert.alert({
+					str: value.data.msg,
+				})
+			}
+		})
+			.catch(() => {
+				//fail
+				alert.loading_h()
 
-      })
-      .catch(() => {
-        //fail
-        alert.loading_h()
+			})
+			.then(() => {
+				//complete
 
-      })
-      .then(() => {
-        //complete
-
-      })
-  },
+			})
+	},
 
   /**
    * 用户点击右上角分享
@@ -578,5 +556,10 @@ Page({
 		})
 		console.log(type);
 		// console.log(this.data.swiper2);
+	},
+	changecol(e) {// 切换车色
+		let index = e.currentTarget.dataset.index;
+		this.setData({ rogincol: index })
+		console.log(index)
 	}
 })

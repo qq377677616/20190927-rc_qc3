@@ -213,6 +213,25 @@ margin-bottom: 32rpx;
 	bottom: -6rpx;
 	left: 0;
 }
+.threebg8::after{
+	content: '';
+	width: 33%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+.threebg9::after{
+	content: '';
+	width: 14%;
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+}
+
 .anit1_0::after{
 	width: 11%;
 	transition:all .3s linear; 
@@ -281,6 +300,7 @@ margin-bottom: 32rpx;
 	width: 100%;
 	transition:all .3s linear; 
 }
+
 .anit3_0::after{
 	width: 10%;
 	transition:all .3s linear; 
@@ -405,6 +425,46 @@ margin-bottom: 32rpx;
 	transition:all .3s linear;
 }
 .anit7_3::after{
+	width: 100%;
+	transition:all .3s linear;
+}
+.anit8_0::after{
+	width: 33%;
+	transition:all .3s linear;
+}
+.anit8_1::after{
+	width: 66%;
+	transition:all .3s linear;
+}
+.anit8_2::after{
+	width: 100%;
+	transition:all .3s linear;
+}
+.anit9_0::after{
+	width: 14%;
+	transition:all .3s linear;
+}
+.anit9_1::after{
+	width: 28%;
+	transition:all .3s linear;
+}
+.anit9_2::after{
+	width: 42%;
+	transition:all .3s linear;
+}
+.anit9_3::after{
+	width: 56%;
+	transition:all .3s linear;
+}
+.anit9_4::after{
+	width: 70%;
+	transition:all .3s linear;
+}
+.anit9_5::after{
+	width: 84%;
+	transition:all .3s linear;
+}
+.anit9_6::after{
 	width: 100%;
 	transition:all .3s linear;
 }
@@ -822,4 +882,79 @@ margin-bottom: 32rpx;
 	width: 563rpx;
 	height: 600rpx;
 	background: center no-repeat/cover;
+}
+.fgbox{
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	position: absolute;
+	/* background-color: red; */
+	z-index: 99;
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+}
+.playbtn{
+	width: 90rpx;
+	height: 90rpx;
+	/* background-color: aqua; */
+	position: relative;
+	display: flex;
+	justify-content: center;
+	/* align-items: center; */
+	border-radius: 50%;
+}
+.isant{
+	animation: playanit .5s ease-in-out;
+	animation-iteration-count: 2;
+}
+.playbox{
+	width: 90rpx;
+	height: 46rpx;
+	background: center no-repeat/cover;
+}
+.playcen{
+	width: 26rpx;
+	height: 34rpx;
+	background: center no-repeat/cover;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 98;
+}
+.nopt{
+	opacity: 0;
+}
+.opt{
+	opacity: 1;
+}
+.leftbtn{
+	width: 72rpx;
+	height: 17rpx;
+	background: center no-repeat/cover;
+	z-index: 200;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.rightbtn{
+	width: 72rpx;
+	height: 17rpx;
+	background: center no-repeat/cover;
+	z-index: 200;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+@keyframes playanit{
+	0%{
+		transform: rotate(0deg)
+	}
+	100%{
+		transform: rotate(360deg)
+	}
 }
