@@ -3,48 +3,52 @@
   <view class="banner">
     <image src="{{banner}}" mode="widthFix"></image>
   </view>
-  <view class="title" style="background-image:url('{{IMGSERVICE}}/pay/one_icon.png')">预约到店</view>
-  <view class="form">
-    <view class="t-txt">您的姓名</view>
-    <input class="inp" type="text" placeholder="请填写您的姓名" placeholder-class="all-inp" bindinput="inputName"></input>
-    <view class="t-txt mt1">您的手机号码</view>
-    <view class="code">
-      <input class="inp inp2 {{isGetPhone ? 'inp3' : ''}}" bindinput="inputPhone" type="number" maxlength="11" placeholder="请输入您的手机号码" placeholder-class="all-inp" value="{{phone}}"></input>
-      <view class="code_btn {{isGetCode == 2 ? 'gray': ''}}" bindtap="getCode" wx:if="{{!isGetPhone}}">
-        {{isGetCode == 1 ? countDown + 's' : (isGetCode == 0 ? '获取验证码' : '验证码获取中')}}
+  <view class="one-bg" style="background-image:url('{{IMGSERVICE}}/pay/one_bg.png')">
+    <view class="white-bg">
+      <!-- <view class="title" style="background-image:url('{{IMGSERVICE}}/pay/one_icon.png')">预约到店</view> -->
+      <view class="form">
+        <view class="t-txt">您的姓名</view>
+        <input class="inp" type="text" placeholder="请填写您的姓名" placeholder-class="all-inp" bindinput="inputName"></input>
+        <view class="t-txt mt1">您的手机号码</view>
+        <view class="code">
+          <input class="inp inp2 {{isGetPhone ? 'inp3' : ''}}" bindinput="inputPhone" type="number" maxlength="11" placeholder="请输入您的手机号码" placeholder-class="all-inp" value="{{phone}}"></input>
+          <view class="code_btn {{isGetCode == 2 ? 'gray': ''}}" bindtap="getCode" wx:if="{{!isGetPhone}}">
+            {{isGetCode == 1 ? countDown + 's' : (isGetCode == 0 ? '获取验证码' : '验证码获取中')}}
+          </view>
+        </view>
+        <input wx:if="{{!isGetPhone}}" bindinput="inputCode" maxlength="6" type="number" class="inp" type="text" placeholder="请输入验证码" placeholder-class="all-inp"></input>
+        <view class="t-txt mt2">请选择为您服务的专营店</view>
+        <view class="inp">
+          <view class="sanjiao"></view>
+          <block>
+            <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
+              <view class="picker">
+                <view>{{storeList[storeList_index].name}}</view>
+              </view>
+            </picker>
+          </block>
+        </view>
+        <!-- <view class="t-txt mt2">请选择车型</view>
+        <view class="inp">
+          <view class="sanjiao"></view>
+          <block>
+            <picker bindchange="bindPickerCar" value="{{car_index}}" range="{{selCarList}}" range-key="{{'name'}}">
+              <view class="picker">
+                <view>{{selCarList[car_index].name}}</view>
+              </view>
+            </picker>
+          </block>
+        </view> -->
+        <view class="getPhone" bindtap="wxPhone">
+          <button class="btnPhone" wx:if="{{!isGetPhone && !wxPhone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
+          <view class="wechat">
+            <image src="{{IMGSERVICE}}/pay/one_wechat.png" mode="widthFix"></image>
+            <view class="w-txt">使用微信登录</view>
+          </view>
+        </view>
+        <view class="one-btn" bindtap="submit">提交</view>
       </view>
     </view>
-    <input wx:if="{{!isGetPhone}}" bindinput="inputCode" maxlength="6" type="number" class="inp" type="text" placeholder="请输入验证码" placeholder-class="all-inp"></input>
-    <view class="t-txt mt2">请选择为您服务的专营店</view>
-    <view class="inp">
-      <view class="sanjiao"></view>
-      <block>
-        <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
-          <view class="picker">
-            <view>{{storeList[storeList_index].name}}</view>
-          </view>
-        </picker>
-      </block>
-    </view>
-    <view class="t-txt mt2">请选择车型</view>
-    <view class="inp">
-      <view class="sanjiao"></view>
-      <block>
-        <picker bindchange="bindPickerCar" value="{{car_index}}" range="{{selCarList}}" range-key="{{'name'}}">
-          <view class="picker">
-            <view>{{selCarList[car_index].name}}</view>
-          </view>
-        </picker>
-      </block>
-    </view>
-    <view class="getPhone" bindtap="wxPhone">
-      <button class="btnPhone" wx:if="{{!isGetPhone && !wxPhone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
-      <view class="wechat">
-        <image src="{{IMGSERVICE}}/pay/one_wechat.png" mode="widthFix"></image>
-        <view class="w-txt">使用微信登录</view>
-      </view>
-    </view>
-    <view class="one-btn" bindtap="submit">提交</view>
   </view>
 </view>
 

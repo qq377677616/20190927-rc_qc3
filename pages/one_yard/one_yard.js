@@ -91,9 +91,7 @@ Page({
     }).then(res => {
       console.log(res, 'res')
       if (res.data.status == 1) {
-        wx.setNavigationBarTitle({
-          title: res.data.data.title,
-        })
+        
         this.setData({
           selCarList: res.data.data.car_list,
           storeList: res.data.data.dlr_code,
