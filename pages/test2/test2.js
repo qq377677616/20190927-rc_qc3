@@ -39,6 +39,7 @@ Page({
 			"highprice": "9.88",
 			"bgUrl": [imageUrl + "/lookcar/img_d60.png", imageUrl + "/lookcar/img_d60_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_d60.png?2",
+			icon:'icon-D',
 			 cid: 3,
 			pritxt:'官方指导价'
 		}, {
@@ -48,6 +49,7 @@ Page({
 			"highprice": "11.88",
 			"bgUrl": [imageUrl + "/lookcar/img_t60.png?1", imageUrl + "/lookcar/img_t60_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_t60.png?4",
+			icon:'icon-T',
 			cid: 6,
 			pritxt: '官方指导价'
 		}, {
@@ -57,6 +59,7 @@ Page({
 			"highprice": "12.78",
 			"bgUrl": [imageUrl + "/lookcar/img_t70.png", imageUrl + "/lookcar/img_t70_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_t70.png?2",
+			icon:'icon-T1',
 			cid: 7,
 			pritxt: '官方指导价'
 			}, {
@@ -66,19 +69,21 @@ Page({
 				"highprice": "15.48",
 				"bgUrl": [imageUrl + "/lookcar/img_t90.png", imageUrl + "/lookcar/img_t90_X.png"],
 				"titleImg": imageUrl + "/lookcar/title_t90.png?2",
+				icon:'icon-T2',
 				cid: 9,
 				pritxt: '官方指导价'
 			},
-			//  {
-			// 	"name": '星',
-			// 	"info": [''],
-			// 	"lowprice": "",
-			// 	"highprice": "",
-			// 	"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
-			// 	"titleImg": imageUrl + "/lookcar/title_xing_1.png?2",
-			// 	 cid: 11,
-			// 	pritxt: '官方指导价'
-			// },
+			 {
+				"name": '星',
+				"info": [''],
+				"lowprice": "",
+				"highprice": "",
+				"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
+				"titleImg": imageUrl + "/lookcar/title_xing_1.png?2",
+				 icon:'icon-qichenxing',
+				 cid: 11,
+				pritxt: '官方指导价'
+			},
 			{
 			"name": 'T60EV',
 			"info": ['智无忧 趣更远 智领合资纯电SUV'],
@@ -86,6 +91,7 @@ Page({
 			"highprice": "15.68",
 			"bgUrl": [imageUrl + "/lookcar/img_t60ev.png", imageUrl + "/lookcar/img_t60ev_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_t60ev.png?4",
+			icon:'icon-TEV',
 			cid: 13,
 			pritxt: '补贴后官方指导价'
 		},  {
@@ -95,6 +101,7 @@ Page({
 			"highprice": "15.38",
 			"bgUrl": [imageUrl + "/lookcar/img_d60ev.png", imageUrl + "/lookcar/img_d60ev_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_d60ev.png?2",
+			icon:'icon-DEV',
 			cid: 5,
 			pritxt: '补贴后官方指导价'
 		},  {
@@ -104,6 +111,7 @@ Page({
 			"highprice": "7.48",
 			"bgUrl": [imageUrl + "/lookcar/img_e30.png", imageUrl + "/lookcar/img_e30_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_e30.png?2",
+			icon:'icon-e',
 			cid: 10,
 			pritxt: '补贴后官方指导价'
 		}],
@@ -245,8 +253,8 @@ Page({
 			// 跳转T90页面
 			router.jump_nav({
 				// `/pages/look_car_detail/look_car_detail?id=${9}`,
-				url: `/pages/look_car_detail/look_car_detail?id=${9}`
-				// url: `/pages/look_car_detail_05/look_car_detail_05?id=${9}`,
+				// url: `/pages/look_car_detail/look_car_detail?id=${9}`
+				url: `/pages/look_car_detail_05/look_car_detail_05?id=${9}`,
 			})
 		}
 		else if (id == 11) {
@@ -255,22 +263,23 @@ Page({
 				url: `/pages/look_car_detail_03/look_car_detail?id=${11}`,
 			})
 		}
-		else{
-			router.jump_nav({
-				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
-			})
-		} 
-		
-		// if (id == 6 || id == 7 || id == 3){
-		// 	// 跳转通用看车页
-		// 	router.jump_nav({
-		// 		url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
-		// 	})
-		// }else{
+		else
+		// {
 		// 	router.jump_nav({
 		// 		url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
 		// 	})
-		// }
+		// } 
+		
+		if (id == 6 || id == 7 || id == 3){
+			// 跳转通用看车页
+			router.jump_nav({
+				url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
+			})
+		}else{
+			router.jump_nav({
+				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
+			})
+		}
 	},
 	dyjump(e){
 		// 点击文字跳转

@@ -1,3 +1,5 @@
+@import "/assets/iconfont/iconfont.wxss";
+
 page {
   font-family: "PingFang-SC-Medium"
 }
@@ -377,4 +379,11 @@ page .no_price {
 	width: 168rpx;
 	height: 30rpx;
 	background: center no-repeat/cover;
+}
+.icon-TEV{
+	font-size: 30rpx;
+}
+.icon-qichenxing{
+	font-size: 94rpx;
+	color: #002870;
 }

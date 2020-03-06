@@ -43,6 +43,7 @@
             <text class="label" space="nbsp">详细地址</text>
             <input type="text" value="{{address}}" placeholder="请输入您的详细收货地址" bindinput="inputAddress" />
         </view>
+		<!-- <view class="xybox"> 我仔细阅读并接受所附的《用户协议与隐私政策》</view> -->
         <view class="submit" bindtap="submit">提交</view>
 
     </view><!-- form_area -->

@@ -1,5 +1,5 @@
 <!-- pages/look_car_detail/look_car_detail.wxml -->
-<view class="car-detail-content">
+<view class="car-detail-content" bindtap="closelz">
     <!-- nav_area -->
     <view class="nav_area">
         <view class="bg" style="left:{{navIndex * 33.3}}%"></view>
@@ -26,6 +26,12 @@
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
 						 <block wx:for="{{t90swp1}}" wx:key="item">
 							<swiper-item>
+
+								<!-- 自定义播放按钮 -->
+								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="1" data-length="{{t90swp1.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
+								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="1" data-length="{{t90swp1.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
+								<!-- 自定义播放按钮 -->
+
 								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
 								<video class="v_bigitem" autoplay='{{true}}' wx:if="{{item.type==2&&swiper1==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
 							</swiper-item>
@@ -57,6 +63,12 @@
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
 						 <block wx:for="{{t90swp2}}" wx:key="item">
 							<swiper-item>
+
+								<!-- 自定义播放按钮 -->
+								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="2" data-length="{{t90swp2.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
+								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="2" data-length="{{t90swp2.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
+								<!-- 自定义播放按钮 -->	
+
 								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
 							</swiper-item>
 						</block>
@@ -86,11 +98,25 @@
 
 				<!--轮播实例3-->
 				<view class="threebg threebg3 anit3_{{swiper3}}">
-					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="3" current="{{swiper3}}">
 						 <block wx:for="{{t90swp3}}" wx:key="item">
 							<swiper-item>
+
+								<!-- 自定义播放按钮 -->
+								<view  class="nopt {{item.type==2&&swiper3==index&&vbtn?'opt':''}}">
+									<view class="fgbox">
+										<view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video1">
+											<view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
+										</view>
+									</view>
+									<view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
+								</view>
+								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="3" data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
+								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="3"data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
+								<!-- 自定义播放按钮 -->
+
 								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
-								<video class="v_bigitem" autoplay='{{false}}' wx:if="{{item.type==2&&swiper3==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
+								<video class="v_bigitem" object-fit="cover" id="video1" show-center-play-btn="{{false}}"  controls="{{false}}" autoplay='{{false}}' wx:if="{{item.type==2&&swiper3==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -119,11 +145,25 @@
 
 				<!--轮播实例4-->
 				<view class="threebg threebg4 anit4_{{swiper4}}">
-					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="4" current="{{swiper4}}">
 						 <block wx:for="{{t90swp4}}" wx:key="item">
 							<swiper-item>
+
+								<!-- 自定义播放按钮 -->
+								<view  class="nopt {{item.type==2&&swiper4==index&&vbtn?'opt':''}}">
+									<view class="fgbox">
+										<view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video2">
+											<view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
+										</view>
+									</view>
+									<view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
+								</view>
+								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="4" data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
+								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="4"data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
+								<!-- 自定义播放按钮 -->
+
 								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
-								<video class="v_bigitem" autoplay='{{false}}' wx:if="{{item.type==2&&swiper4==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
+								<video class="v_bigitem" object-fit="cover" id="video2" show-center-play-btn="{{false}}"  controls="{{false}}" autoplay='{{false}}' wx:if="{{item.type==2&&swiper4==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -255,5 +295,5 @@
     
 </view>
 <view class="forms-box" wx:if="{{ true }}">
-	<forms bindsubmit="submit" bindclose="isShowForm" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
+	<forms bindsubmit="submit" bindclose="isShowForm" popstu="{{popstu}}" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
 </view>
