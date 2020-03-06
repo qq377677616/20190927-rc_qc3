@@ -4,9 +4,13 @@
     <image src="{{banner}}" mode="widthFix"></image>
   </view>
   <view class="one-bg" style="background-image:url('{{IMGSERVICE}}/pay/one_bg.png')">
+    <image class="ong-title" src="{{IMGSERVICE}}/pay/one_title.png" mode="widthFix"></image>
     <view class="white-bg">
       <!-- <view class="title" style="background-image:url('{{IMGSERVICE}}/pay/one_icon.png')">预约到店</view> -->
       <view class="form">
+        <image class="one_box" src="{{IMGSERVICE}}/pay/one_box.png" mode="widthFix"></image>
+        <image class="one_left" src="{{IMGSERVICE}}/pay/one_left.png" mode="widthFix"></image>
+        <image class="one_right" src="{{IMGSERVICE}}/pay/one_right.png" mode="widthFix"></image>
         <view class="t-txt">您的姓名</view>
         <input class="inp" type="text" placeholder="请填写您的姓名" placeholder-class="all-inp" bindinput="inputName"></input>
         <view class="t-txt mt1">您的手机号码</view>
@@ -16,7 +20,13 @@
             {{isGetCode == 1 ? countDown + 's' : (isGetCode == 0 ? '获取验证码' : '验证码获取中')}}
           </view>
         </view>
-        <input wx:if="{{!isGetPhone}}" bindinput="inputCode" maxlength="6" type="number" class="inp" type="text" placeholder="请输入验证码" placeholder-class="all-inp"></input>
+        <view class="code-form" wx:if="{{!isGetPhone}}">
+          <input bindinput="inputCode" maxlength="6" type="number" class="inp inp-code" type="text" placeholder="请输入验证码" placeholder-class="all-inp"></input>
+          <view class="getPhone" bindtap="wxPhone">
+            <button class="btnPhone" wx:if="{{!isGetPhone && !wxPhone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
+            <view class="code-btn">使用微信登录</view>
+          </view>
+        </view>
         <view class="t-txt mt2">请选择为您服务的专营店</view>
         <view class="inp">
           <view class="sanjiao"></view>
@@ -39,14 +49,14 @@
             </picker>
           </block>
         </view> -->
-        <view class="getPhone" bindtap="wxPhone">
+        <!-- <view class="getPhone" bindtap="wxPhone">
           <button class="btnPhone" wx:if="{{!isGetPhone && !wxPhone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
           <view class="wechat">
             <image src="{{IMGSERVICE}}/pay/one_wechat.png" mode="widthFix"></image>
             <view class="w-txt">使用微信登录</view>
           </view>
-        </view>
-        <view class="one-btn" bindtap="submit">提交</view>
+        </view> -->
+        <view class="one-btn" bindtap="submit">提交信息</view>
       </view>
     </view>
   </view>

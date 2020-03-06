@@ -141,14 +141,14 @@ Page({
     let mobile = this.data.phone
     let v_code = this.data.code
     let code = this.data.storeList[this.data.storeList_index].code
-    let car_id = this.data.selCarList[this.data.car_index].car_id
+    // let car_id = this.data.selCarList[this.data.car_index].car_id
     request_05.autoshowData({
       openid,
       small_activity_id,
       name,
       mobile,
       code,
-      car_id,
+      // car_id,
       v_code
     }).then(res => {
       console.log(res, 'res')

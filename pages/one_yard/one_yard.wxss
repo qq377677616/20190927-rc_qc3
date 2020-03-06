@@ -7,24 +7,32 @@
 }
 
 .banner image {
-  width: 100%;
+  width: 750rpx;
 }
 
 .one-bg {
-  width: 100%;
-  height: 100%;
+  width: 750rpx;
+  height: 1020rpx;
   background-size: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -20rpx;
 }
 
 .white-bg {
   width: 670rpx;
   height: 780rpx;
-  background: #FFF;
+  background: #fff;
   border-radius: 10px;
+  margin-top: 106rpx;
+}
+
+.ong-title {
+  width: 474rpx;
+  margin: 42rpx auto 0;
 }
 
 .title {
@@ -43,9 +51,10 @@
 }
 
 .form {
-  padding: 23rpx 29rpx 0rpx;
   display: flex;
   flex-direction: column;
+  padding: 40rpx 0;
+  position: relative;
 }
 
 .t-txt {
@@ -53,6 +62,7 @@
   font-family: PingFang SC;
   font-weight: 500;
   color: rgba(102, 102, 102, 1);
+  margin-left: 30rpx;
 }
 
 .inp {
@@ -60,8 +70,8 @@
   height: 76rpx;
   background: #f5f5f5;
   border-radius: 6rpx;
-  margin: 25rpx auto 0;
-  padding: 0rpx 15rpx;
+  margin: 25rpx 0 0 30rpx;
+  padding: 0rpx 0rpx 0rpx 15rpx;
   display: flex;
   align-items: center;
   position: relative;
@@ -84,26 +94,30 @@
 }
 
 .inp2 {
-  width: 477rpx;
+  width: 392rpx;
 }
 
 .inp3 {
-  width: 692rpx;
+  width: 601rpx;
+}
+
+.inp-code {
+  width: 329rpx;
 }
 
 .code_btn {
   width: 196rpx;
   height: 76rpx;
-  border: 1rpx solid rgba(210, 210, 210, 1);
+  border: 1rpx solid #002870;
   border-radius: 10rpx;
   line-height: 76rpx;
   text-align: center;
   font-size: 30rpx;
   font-family: PingFang SC;
   font-weight: 500;
-  color: rgba(51, 51, 51, 1);
+  color: #003087;
   margin-top: 25rpx;
-  margin-left: 20rpx;
+  margin-left: 17rpx;
 }
 
 .mt2 {
@@ -136,7 +150,8 @@
   display: flex;
   justify-content: center;
   position: relative;
-  margin: 40rpx 0 0;
+  margin-left: 18rpx;
+  margin-top: 25rpx;
 }
 
 .wechat {
@@ -145,8 +160,9 @@
 }
 
 .btnPhone {
-  width: 265rpx;
-  height: 44rpx;
+  width: 256rpx;
+  height: 76rpx;
+  border-radius: 10rpx;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -165,21 +181,60 @@
 }
 
 .one-btn {
-  width: 100%;
-  height: 90rpx;
-  border-radius: 15rpx;
-  background: linear-gradient(90deg, rgba(32, 161, 224, 1), rgba(18, 77, 184, 1));
-  line-height: 90rpx;
+  width: 534rpx;
+  height: 84rpx;
+  border-radius: 10rpx;
+  background: #003087;
+  line-height: 84rpx;
   text-align: center;
-  font-size: 36rpx;
+  font-size: 32rpx;
   font-family: PingFang SC;
-  font-weight: 500;
+  font-weight: bold;
   color: #fff;
-  margin: 48rpx 0;
+  margin: 50rpx auto 0;
 }
 
 picker {
   width: 100%;
   position: absolute;
   z-index: 1;
+}
+
+.code-form {
+  display: flex;
+  align-items: center;
+}
+
+.code-btn {
+  width: 256rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  border: 1px solid #7d7d7d;
+  border-radius: 10rpx;
+  color: #333;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+}
+
+.one_box {
+  width: 112rpx;
+  position: absolute;
+  left: 50rpx;
+  top: -80rpx;
+}
+
+.one_left {
+  width: 32rpx;
+  position: absolute;
+  top: 423rpx;
+  left: -20rpx;
+}
+
+.one_right {
+  width: 36rpx;
+  position: absolute;
+  top: 642rpx;
+  right: -20rpx;
 }
