@@ -122,7 +122,7 @@ Page({
     const IMGSERVICE = this.data.IMGSERVICE;
     return {
       title: 'iphone11、小米家电……好礼等你来抢！',
-      imageUrl: `${IMGSERVICE}/spike/spike_share_s1.jpg?1`,
+      imageUrl: `${IMGSERVICE}/spike/spike_share_s1.jpg?100`,
       path: `/pages/spike_index/spike_index?activity_id=${options.activity_id}`,
     };
   },

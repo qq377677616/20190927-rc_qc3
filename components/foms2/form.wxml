@@ -1,7 +1,7 @@
 <!--pages/test/test.wxml-->
 
 <!-- yuyueshijia_form_page -->
-<view class="yuyueshijia_form_page {{isright?'addH':''}}">
+<view class="yuyueshijia_form_page {{isright&&popstu==1?'addH':''}}">
  
 
     
@@ -43,9 +43,9 @@
             <text class="label" space="nbsp">详细地址</text>
             <input type="text" value="{{address}}" placeholder="请输入您的详细收货地址" bindinput="inputAddress" />
         </view>
-        <view class="submit" bindtap="submit">{{ btnText || (type == 2 ? '确认支付' : type == 3 ? '提交' : type == 4 ? '确认预约' : '领取') }}</view>
+        <view class="submit" bindtap="submit">提交</view>
 
     </view><!-- form_area -->
 
 </view><!-- yuyueshijia_form_page -->
-<view class="f_box {{isright?'addH2':''}}"></view>
+<view class="f_box {{isright&&popstu==1?'addH2':''}}"></view>

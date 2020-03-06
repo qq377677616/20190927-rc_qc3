@@ -20,6 +20,10 @@ Component({
       type: String,
       value: ''
     },
+	popstu:{
+		type: String,
+		value:1
+	}
   },
 
   /**
@@ -206,7 +210,7 @@ Component({
         this.setData({ isGetPhone: false })
       }
 	  if (_reg.test(this.data.phone)){
-		  this.setData({ isright:true})
+		  this.setData({ isright: true, popstu:1})
 		  console.log('输入正确！')
 		  this.getpot();
 	  }
@@ -258,11 +262,11 @@ Component({
     inputName(e) {
 	  let _reg = /^1[3456789]\d{9}$/;
       this.setData({ name: e.detail.value })
-	 if (_reg.test(this.data.phone)) {
-		this.setData({ isright: true })
-		console.log('输入正确！')
-		this.getpot();
-	}
+	//  if (_reg.test(this.data.phone)) {
+	// 	this.setData({ isright: true })
+	// 	console.log('输入正确！')
+	// 	this.getpot();
+	// }
     },
     //详细地址输入
     inputAddress(e) {

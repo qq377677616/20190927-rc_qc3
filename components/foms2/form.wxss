@@ -46,7 +46,7 @@
 /* form_area */
 .form_area{
     padding: 40rpx 20rpx;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius:14rpx;
 }
 .form_area .group{
@@ -57,7 +57,7 @@
 .form_area .group .label{
     flex:0 0 auto;
     font-size: 26rpx;
-    color: #333;
+    color: #fff;
     /* width: 120rpx; */
     margin-right: 17rpx;
     /* text-align-last:justify;
