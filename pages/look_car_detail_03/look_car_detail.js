@@ -178,8 +178,22 @@ Page({
   },
   //页面初始化
   initData(options) {
-    this.getPayInfo()
+    console.log(options)
+    let id = '';
+    if (options.scene) {
+      let scene = decodeURIComponent(options.scene);
+      console.log(scene)
+      scene.split('&').forEach((item) => {
+        if (item.split('=')[0] == 'id') { //找到id
+          id = item.split('=')[1]
+        }
+      })
+    } else {
+      id = options.id;
+    }
+    console.log(id, 'id')
 
+    this.getPayInfo(options)
     tool.loading({
       str: '加载中'
     })
@@ -187,7 +201,7 @@ Page({
     Promise.all([
         request_01.lookCarDetail({
           user_id: wx.getStorageSync('userInfo').user_id,
-          id: options.id,
+          id: id,
         })
       ])
       .then((value) => {
@@ -262,9 +276,20 @@ Page({
   },
 
   //获取99元下定首页数据的
-  getPayInfo() {
+  getPayInfo(options) {
+    let activity_id = '';
+    if (options.scene) {
+      let scene = decodeURIComponent(options.scene);
+      console.log(scene)
+      scene.split('&').forEach((item) => {
+        if (item.split('=')[0] == 'a') { //找到activity_id
+          activity_id = item.split('=')[1]
+        }
+      })
+    } else {
+      activity_id = wx.getStorageSync('activity_id');
+    }
     let openid = wx.getStorageSync('userInfo').openid
-    let activity_id = wx.getStorageSync('activity_id')
     request_05.ninepayInfo({
       openid,
       activity_id
