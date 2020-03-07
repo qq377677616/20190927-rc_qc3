@@ -1051,6 +1051,7 @@ Page({
           wx.setStorageSync("userInfo", _userInfo)
           this.initData(options)
         } else {
+          console.log(11111111)
           tool.alert(res.data.msg)
         }
       })

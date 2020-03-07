@@ -68,7 +68,7 @@
     "pages/look_car_detail/look_car_detail",
     "pages/look_car_detail_02/look_car_detail_02",
     "pages/look_car_detail_04/look_car_detail_04",
-	"pages/look_car_detail_05/look_car_detail_05",
+    "pages/look_car_detail_05/look_car_detail_05",
     "pages/cut_product_details/cut_product_details",
     "pages/cut_cart/cut_cart",
     "pages/baoming_lz/baoming_lz",
@@ -99,7 +99,10 @@
     "pages/take/dealers/dealers",
     "pages/take/takeDel/takeDel",
     "pages/take/takeHome/takeHome",
-    "pages/protocol/protocol"
+    "pages/protocol/protocol",
+    "pages/ev/ev_index/ev_index",
+    "pages/ev/ev_form/ev_form",
+    "pages/ev/ev_help/ev_help"
   ],
   "window": {
     "backgroundTextStyle": "light",

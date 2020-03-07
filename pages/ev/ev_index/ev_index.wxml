@@ -1,0 +1,13 @@
+<!--pages/ev/ev_index/ev_index.wxml-->
+<view class="content">
+  <view class="all-con">
+    <view class="rule">活动规则</view>
+    <image class="ev_index_icon" src="{{IMGSERVICE}}/ev/ev_index_icon.png" mode="widthFix"></image>
+    <image class="ev_index_bg" src="{{IMGSERVICE}}/ev/ev_index_bg.png" mode="widthFix"></image>
+    <image class="btn" src="{{IMGSERVICE}}/ev/ev_yuyue_btn.png" mode="widthFix"></image>
+    <image class="btn" wx:if="{{false}}" src="{{IMGSERVICE}}/ev/ev_share_btn.png" mode="widthFix"></image>
+    <image class="btn" wx:if="{{false}}" src="{{IMGSERVICE}}/ev/ev_get_btn.png" mode="widthFix"></image>
+    <view class="more-btn">查看更多</view>
+    <image class="ev_index_logo" src="{{IMGSERVICE}}/ev/ev_index_logo.png" mode="widthFix"></image>
+  </view>
+</view>
