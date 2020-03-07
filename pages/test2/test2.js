@@ -73,17 +73,17 @@ Page({
 				cid: 9,
 				pritxt: '官方指导价'
 			},
-			//  {
-			// 	"name": '星',
-			// 	"info": [''],
-			// 	"lowprice": "",
-			// 	"highprice": "",
-			// 	"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
-			// 	"titleImg": imageUrl + "/lookcar/title_xing_1.png?2",
-			// 	 icon:'icon-qichenxing',
-			// 	 cid: 11,
-			// 	pritxt: '官方指导价'
-			// },
+			 {
+				"name": '星',
+				"info": [''],
+				"lowprice": "",
+				"highprice": "",
+				"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
+				"titleImg": imageUrl + "/lookcar/title_xing_1.png?2",
+				 icon:'icon-qichenxing',
+				 cid: 11,
+				pritxt: '官方指导价'
+			},
 			{
 			"name": 'T60EV',
 			"info": ['智无忧 趣更远 智领合资纯电SUV'],

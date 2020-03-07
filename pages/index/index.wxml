@@ -191,7 +191,7 @@
   <!-- 疫情按钮 -->
   <image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/yq_icon.png" class="yqbtn" bindtap="goyqpage"></image>
   <!-- ca入口 -->
-  <view class="cabtn" bindtap="caDel">ca</view>
+  <!-- <view class="cabtn" bindtap="caDel">ca</view> -->
   <!-- 99元下定弹窗 -->
   <view class="pay_pop" wx:if="{{isPay}}">
     <view class="pay_bg" style="background-image:url('{{ IMGSERVICE }}/pay/pay_index_bg.png')">
