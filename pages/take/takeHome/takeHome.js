@@ -6,6 +6,10 @@ import tool from '../../../utils/public/tool.js';
 
 import auth from '../../../utils/public/authorization.js'
 
+const request_01 = require('../../../utils/request/request_01.js');
+
+const alert = require('../../../utils/tool/alert.js');
+
 Page({
 
 	/**
@@ -35,6 +39,7 @@ Page({
 			color_confirm: '#A3271F'
 		},
 		isShowLoading: false,// 是否显示loading
+		userInfo:null
 	},
 
 	/**
@@ -46,8 +51,14 @@ Page({
 			this.setData({ useData: obj })
 		}else{
 			this.getInfo();
+			console.log(1111)
 		}
-		
+		request_01.login(() => {
+			this.setData({
+				userInfo: wx.getStorageSync("userInfo") || {}
+			})
+			this.authBtn();
+		})
 	},
 
 	/**
@@ -105,18 +116,32 @@ Page({
 		})
 	},
 	//授权
-	authBtn(e){
-		console.log(e)
-		let useobj = e.detail.userInfo;
+	authBtn(){
 		let dat = {
 			app_id:'wx1d585c8c2fffe589',
-			openid: 'oORV85Qy9_-ER065XkxiWzF3Z7ao',
-			nickname: useobj.nickName,
-			avatar: useobj.avatarUrl
+			openid: this.data.userInfo.openid,
+			nickname: this.data.userInfo.nickName,
+			avatar: this.data.userInfo.headimg
 		}
 		https.clientLogin(dat).then((res)=>{
 			console.log(res);
 		})
+	},
+	getUserInfo(e) { // 授权
+		request_01.setUserInfo(e)
+			.then((res) => {
+				console.log("授权、上传头像昵称成功")
+				this.setData({
+					userInfo: wx.getStorageSync("userInfo")
+				})
+				this.authBtn();			
+			})
+			.catch((err) => {
+				console.log(typeof err);
+				err && alert.alert({
+					str: JSON.stringify(err)
+				})
+			})
 	},
 	getInfo(){//获取专营店信息
 		tool.loading("自动定位中")
@@ -138,7 +163,7 @@ Page({
 				}
 			})
 		}).catch(err => {
-			// console.log("定位失败", err)
+			console.log("定位失败", err)
 			tool.alert("定位失败")
 			tool.loading_h()
 			this.showHideModal()
@@ -151,8 +176,10 @@ Page({
 	addwx(){
 		this.setData({iscope:true});
 	},
-	takeMan(){//聊一聊
-		tool.jump_nav(`/pages/take/takeDel/takeDel`);
+	takeMan() {//聊一聊userInfo.nickName || !userInfo.unionid
+		if (this.data.userInfo.nickName && this.data.userInfo.unionid){
+			tool.jump_nav(`/pages/take/takeDel/takeDel`);
+		}
 	},
 	// 跳转到专营店列表
 	storlist(){
@@ -182,6 +209,7 @@ Page({
 		let _showModalOption = this.data.showModalOption
 		_showModalOption.isShow = !_showModalOption.isShow
 		this.setData({ showModalOption: _showModalOption })
+		console.log(this.data.showModalOption)
 	},
 	//邀请成功 回调
 	completemessage(){
