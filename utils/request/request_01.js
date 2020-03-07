@@ -6,9 +6,9 @@ const alert = require('../tool/alert.js');
 
 const tool = require('../tool/tool.js');
 
-const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
+// const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
 // const SERVICE = "http://dfldata-test.dongfeng-nissan.com.cn/fslb/public/index.php";
-// const SERVICE = "https://weixinfslb.venucia.com";
+const SERVICE = "https://weixinfslb.venucia.com";
 
 // ca 请求地址
 // const SERVICE2 = 'https://t4jmh3.natappfree.cc/index.php'

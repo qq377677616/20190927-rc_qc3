@@ -73,17 +73,17 @@ Page({
 				cid: 9,
 				pritxt: '官方指导价'
 			},
-			 {
-				"name": '星',
-				"info": [''],
-				"lowprice": "",
-				"highprice": "",
-				"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
-				"titleImg": imageUrl + "/lookcar/title_xing_1.png?2",
-				 icon:'icon-qichenxing',
-				 cid: 11,
-				pritxt: '官方指导价'
-			},
+			//  {
+			// 	"name": '星',
+			// 	"info": [''],
+			// 	"lowprice": "",
+			// 	"highprice": "",
+			// 	"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
+			// 	"titleImg": imageUrl + "/lookcar/title_xing_1.png?2",
+			// 	 icon:'icon-qichenxing',
+			// 	 cid: 11,
+			// 	pritxt: '官方指导价'
+			// },
 			{
 			"name": 'T60EV',
 			"info": ['智无忧 趣更远 智领合资纯电SUV'],
@@ -253,8 +253,8 @@ Page({
 			// 跳转T90页面
 			router.jump_nav({
 				// `/pages/look_car_detail/look_car_detail?id=${9}`,
-				// url: `/pages/look_car_detail/look_car_detail?id=${9}`
-				url: `/pages/look_car_detail_05/look_car_detail_05?id=${9}`,
+				url: `/pages/look_car_detail/look_car_detail?id=${9}`
+				// url: `/pages/look_car_detail_05/look_car_detail_05?id=${9}`,
 			})
 		}
 		else if (id == 11) {
@@ -264,22 +264,22 @@ Page({
 			})
 		}
 		else
-		// {
-		// 	router.jump_nav({
-		// 		url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
-		// 	})
-		// } 
-		
-		if (id == 6 || id == 7 || id == 3){
-			// 跳转通用看车页
-			router.jump_nav({
-				url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
-			})
-		}else{
+		{
 			router.jump_nav({
 				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
 			})
-		}
+		} 
+		
+		// if (id == 6 || id == 7 || id == 3){
+		// 	// 跳转通用看车页
+		// 	router.jump_nav({
+		// 		url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
+		// 	})
+		// }else{
+		// 	router.jump_nav({
+		// 		url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
+		// 	})
+		// }
 	},
 	dyjump(e){
 		// 点击文字跳转
