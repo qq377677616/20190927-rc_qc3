@@ -319,7 +319,7 @@ Page({
 			if (!storeList.length) return alert.alert({
 				str: '请选择领取的门店'
 			});
-			 dealer_code = storeList[storeIndex].code;//门店id 为快递时门店id非必选
+			dealer_code = storeList[storeIndex].code;//门店id 为快递时门店id非必选
 			this.setData({ dealer_code: dealer_code })
 		// }
 		this.data.parmData.is_yy == 0 ? this.lq_receive() : this.yy_receive();
