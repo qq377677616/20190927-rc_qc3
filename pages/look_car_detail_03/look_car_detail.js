@@ -297,7 +297,8 @@ Page({
       if (res.data.status == 1) {
         this.setData({
           payInfoData: res.data.data,
-          activity_id
+          activity_id,
+          options,
         })
         if (res.data.data.card_info.length > 0) {
           this.cardFun()
@@ -371,6 +372,7 @@ Page({
   },
   //立即下定
   downPayment(e) {
+    let options = this.data.options
     let onlyOne = e.currentTarget.dataset.open
     var _this = this
     // order_sn判断订单号是否为空字符串  不为空则为以留资
@@ -404,10 +406,11 @@ Page({
                     duration: 2000
                   })
                   setTimeout(() => {
-                    _this.getPayInfo()
+                    _this.getPayInfo(options)
                   }, 2500)
                 },
                 fail(res) {
+                  _this.getPayInfo(options);
                   console.log('支付失败')
                 }
               })
@@ -499,15 +502,16 @@ Page({
                       duration: 2000
                     })
                     setTimeout(() => {
-                      _this.getPayInfo();
+                      _this.getPayInfo(options);
                     }, 2500)
                   },
                   fail(res) {
+                    _this.getPayInfo(options);
                     console.log('支付失败')
                   }
                 })
               } else {
-                alert.alert(res.data.msg)
+                tool .alert(res.data.msg)
               }
             })
           } else {
@@ -517,6 +521,8 @@ Page({
               _this.initData(options)
             }, 500)
           }
+        }else{
+          tool.alert(res.data.msg)
         }
 
         // const status = value.data.status;
