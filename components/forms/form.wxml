@@ -109,6 +109,7 @@
 
     </view>
     <!-- form_area -->
-
+	<!-- 强制定位 -->
+	 <showModal showModalOption="{{showModalOption}}" bindoperation="operation"></showModal>
 </view>
 <!-- yuyueshijia_form_page -->

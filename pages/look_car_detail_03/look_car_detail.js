@@ -391,7 +391,7 @@ Page({
             activity_id
           }).then(res => {
             console.log(res, 'res')
-            if (res.data.status == 1) {
+            if (res.data.status == 1){
               wx.requestPayment({
                 timeStamp: res.data.data.timeStamp,
                 nonceStr: res.data.data.nonceStr,
