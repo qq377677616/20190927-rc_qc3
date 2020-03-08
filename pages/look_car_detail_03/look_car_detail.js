@@ -410,6 +410,7 @@ Page({
                   }, 2500)
                 },
                 fail(res) {
+                  _this.getPayInfo(options);
                   console.log('支付失败')
                 }
               })
