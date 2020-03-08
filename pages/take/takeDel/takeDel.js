@@ -10,6 +10,7 @@ Page({
 		msg:'',//发送的信息
 		socketOpen:false,//是否连接
 		socketMsgQueue:[],//
+		popshow:false,
 	},
 
 	/**
@@ -121,5 +122,12 @@ Page({
 				socketMsgQueue.push(content)
 			}
 		}
+	},
+	amplt(){
+		// console.log(11)
+		this.setData({ popshow:true});
+	},
+	hidepop(){
+		this.setData({popshow:false})
 	}
 })

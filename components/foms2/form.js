@@ -3,6 +3,8 @@ import tool from '../../utils/tool/tool.js'
 import gets from '../../utils/tool/authorization.js'
 import api from '../../utils/request/request_03.js'
 import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js'
+const app = getApp(); //获取应用实例
+
 Component({
   /**
    * 组件的属性列表
@@ -20,6 +22,10 @@ Component({
       type: String,
       value: ''
     },
+	popstu:{
+		type: String,
+		value:1
+	}
   },
 
   /**
@@ -39,7 +45,9 @@ Component({
     isChecked: true,
     isGetCode: 0,
     countDown: 60,
-	isright:false
+	isright:false,
+	isGou: false,
+	IMGSERVICE: app.globalData.IMGSERVICE,
   },
   ready() {
     
@@ -58,6 +66,10 @@ Component({
         tool.alert("手机号格式有误")
         return
       } 
+	  if (!this.data.isGou) {
+			tool.alert("请先同意相关协议")
+			return
+		}
 	  if (!this.data.name) {
         tool.alert("请输入您的真实姓名")
         return
@@ -102,6 +114,11 @@ Component({
         }
       })
     },
+	  gouSel() {
+		  this.setData({
+			  isGou: !this.data.isGou
+		  })
+	  },
     //获取手机号
     getPhoneNumber(e) {
       if (!e.detail.encryptedData) return
@@ -206,7 +223,7 @@ Component({
         this.setData({ isGetPhone: false })
       }
 	  if (_reg.test(this.data.phone)){
-		  this.setData({ isright:true})
+		  this.setData({ isright: true, popstu:1})
 		  console.log('输入正确！')
 		  this.getpot();
 	  }
@@ -258,11 +275,11 @@ Component({
     inputName(e) {
 	  let _reg = /^1[3456789]\d{9}$/;
       this.setData({ name: e.detail.value })
-	 if (_reg.test(this.data.phone)) {
-		this.setData({ isright: true })
-		console.log('输入正确！')
-		this.getpot();
-	}
+	//  if (_reg.test(this.data.phone)) {
+	// 	this.setData({ isright: true })
+	// 	console.log('输入正确！')
+	// 	this.getpot();
+	// }
     },
     //详细地址输入
     inputAddress(e) {
@@ -285,6 +302,10 @@ Component({
     close() {
       this.triggerEvent("close")
     },
+	toProtocol() {
+		  console.log(11111)
+		  tool.jump_nav(`/pages/protocol/protocol`)
+	  },
     //打开系统设置页
     openSetting() {
       if (this.data.isSettingLocation) return

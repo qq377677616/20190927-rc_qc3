@@ -1,5 +1,7 @@
 /* pages/look_car_detail/look_car_detail.wxss */
-
+page{
+	background-color: white !important;
+}
 .nav_area {
   flex: 0 0 auto;
   display: flex;
@@ -773,12 +775,9 @@
 }
 
 .forms-box {
-  position: fixed;
+ 
   width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 999;
+ 
 }
 
 .doms image {
@@ -1209,7 +1208,7 @@
 }
 .nt60_8{
 	width: 100%;
-	height: 582rpx;
+	height: 546rpx;
 	background: center no-repeat/cover;
 	padding-top: 47rpx;
 	box-sizing: border-box;
@@ -1222,7 +1221,7 @@
 	font-size:34rpx;
 	font-family:MHeiPRC;
 	font-weight:500;
-	color:rgba(24,24,24,1);
+	color:rgba(255,255,255,1);	
 }
 .txt4{
 	margin-top: 330rpx;
@@ -1271,7 +1270,7 @@
 	display: flex;
 	width: 100%;
 	height: 130rpx;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	background-color: #fff;
 }
@@ -1286,17 +1285,22 @@
 	flex-shrink: 0;
 }
 .num1{
-	width: 78rpx !important;
+	width: 175rpx !important;
 	height: auto;
 	margin-top: 20rpx;
 }
 .num2{
-	width: 167rpx !important;
+	width: 172rpx !important;
 	height: auto;
 	margin-top: 20rpx;
 }
 .num3{
-	width: 182rpx !important;
+	width: 245rpx !important;
+	height: auto;
+	margin-top: 20rpx;
+}
+.num4{
+	width: 267rpx !important;
 	height: auto;
 	margin-top: 20rpx;
 }
@@ -1316,37 +1320,46 @@
 }
 .footcar1{
 	width: 457rpx;
-	height: 197rpx;
+	height: 185rpx;
 	background: no-repeat center/cover;
 	margin: 0 auto;
 	margin-top: 80rpx;
 	position: relative;
 }
 .footcar2{
-	width: 408rpx;
-	height: 207rpx;
+	width: 458rpx;
+	height: 198rpx;
 	margin: 0 auto;
 	margin-top: 59rpx;
 	background: center no-repeat/cover;
 	position: relative;
 }
 .txt6{
-	font-size:19rpx;
-	font-family:NissanBrand;
-	font-weight:bold;
-	color:rgba(24,24,24,1);
+	font-size: 19rpx;
+	font-family: NissanBrand;
+	font-weight: bold;
+	color: rgba(24,24,24,1);
 	position: absolute;
-	left: 168rpx;
-	bottom: 0;
+	left: 198rpx;
+	bottom: 13rpx;
+}
+.txt11{
+	font-size: 19rpx;
+	font-family: NissanBrand;
+	font-weight: bold;
+	color: rgba(24,24,24,1);
+	position: absolute;
+	left: 198rpx;
+	bottom: -6rpx;
 }
 .txt7{
 	transform: rotate(-90deg);
-	right:-32rpx;
-	top: 75rpx;
-	font-size:19rpx;
-	font-family:NissanBrand;
-	font-weight:bold;
-	color:rgba(24,24,24,1);
+	left: -40rpx;
+	top: 66rpx;
+	font-size: 19rpx;
+	font-family: NissanBrand;
+	font-weight: bold;
+	color: rgba(24,24,24,1);
 	position: absolute;
 }
 .txt8{
@@ -1360,12 +1373,12 @@
 }
 .txt9{
 	transform: rotate(-90deg);
-	right:-32rpx;
-	top: 75rpx;
-	font-size:19rpx;
-	font-family:NissanBrand;
-	font-weight:bold;
-	color:rgba(24,24,24,1);
+	left: -16px;
+	top: 93rpx;
+	font-size: 19rpx;
+	font-family: NissanBrand;
+	font-weight: bold;
+	color: rgba(24,24,24,1);
 	position: absolute;
 }
 .txt10{
@@ -1394,12 +1407,12 @@
 	opacity: 0.4;
 }
 .carself{
-	width: 689rpx;
-	height: 257rpx;
+	width: 657rpx;
+	height: 229rpx;
 	background: center no-repeat/cover;
 	position: absolute;
 	left: 50rpx;
-	top: 135rpx;
+	top: 131rpx;
 	opacity: 0;
 }
 .t70carself{
@@ -1411,6 +1424,92 @@
 .m_txt3{
 	width: 459rpx;
 	height: 37rpx;
+}
+.m_txt4{
+	width: 461rpx;
+	height: 37rpx;
+}
+.nt60_7{
+	width: 100%;
+	height: 569rpx;
+	background: center no-repeat/cover;
+}
+
+/* 加视频播放效果 */
+.fgbox{
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	position: absolute;
+	/* background-color: red; */
+	z-index: 99;
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+}
+.playbtn{
+	width: 90rpx;
+	height: 90rpx;
+	/* background-color: aqua; */
+	position: relative;
+	display: flex;
+	justify-content: center;
+	/* align-items: center; */
+	border-radius: 50%;
+}
+.isant{
+	animation: playanit .5s ease-in-out;
+	animation-iteration-count: 2;
+}
+.playbox{
+	width: 90rpx;
+	height: 46rpx;
+	background: center no-repeat/cover;
+}
+.playcen{
+	width: 26rpx;
+	height: 34rpx;
+	background: center no-repeat/cover;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 98;
+}
+.nopt{
+	opacity: 0;
+}
+.opt{
+	opacity: 1;
+}
+.leftbtn{
+	width: 72rpx;
+	height: 17rpx;
+	background: center no-repeat/cover;
+	z-index: 200;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.rightbtn{
+	width: 72rpx;
+	height: 17rpx;
+	background: center no-repeat/cover;
+	z-index: 200;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+@keyframes playanit{
+	0%{
+		transform: rotate(0deg)
+	}
+	100%{
+		transform: rotate(360deg)
+	}
 }
 
 

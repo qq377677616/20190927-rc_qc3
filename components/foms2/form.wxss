@@ -13,7 +13,7 @@
     left:0;
     bottom:0;
     /* z-index: 999; */
-    background: #fff;
+    background: transparent;
     box-sizing: border-box;
 	overflow: hidden;
 }
@@ -46,7 +46,7 @@
 /* form_area */
 .form_area{
     padding: 40rpx 20rpx;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius:14rpx;
 }
 .form_area .group{
@@ -57,7 +57,7 @@
 .form_area .group .label{
     flex:0 0 auto;
     font-size: 26rpx;
-    color: #333;
+    color: #fff;
     /* width: 120rpx; */
     margin-right: 17rpx;
     /* text-align-last:justify;
@@ -287,11 +287,13 @@ picker text{font-size: 30rpx;color:#666;white-space: nowrap;overflow: hidden;tex
 
 
 /*  */
-.form_area .agree{
-    font-size: 24rpx;
-    color: #CCCCCC;
-    overflow: hidden;
-    margin-bottom: 30rpx;
+.form_area .agree {
+  font-size: 24rpx;
+  color: #ccc;
+  overflow: hidden;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
 }
 .form_area .agree .checked{
     float:left;
@@ -326,4 +328,23 @@ picker text{font-size: 30rpx;color:#666;white-space: nowrap;overflow: hidden;tex
 }
 .addH2{
 	height: 460rpx;
+}
+.gouBox {
+  width: 30rpx;
+  height: 30rpx;
+  border: 2rpx solid #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gouBox-txt {
+  font-size: 22rpx;
+  margin-left: 10rpx;
+}
+.pay_gou {
+  width: 24rpx;
+}
+
+.prize-pic image {
+  width: 100%;
 }

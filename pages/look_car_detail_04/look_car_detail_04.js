@@ -75,6 +75,7 @@ Page({
 	swiper9: 0,//控制d60第1个swiper
 	swiper10: 0,//控制d60第2个swiper
 	swiper11: 0,//控制d60第3个swiper
+	swiper12: 0,
 	rogincol:0,//初始选择的颜色
 	carid:'',
 	swiper1_txt: ['共享全球供应商体系', '日产HR16发动机', '日产XTRONIC CVT无极变速器', 'Zone Body区域组合+1200Mpa高强刚车身','加强版6安全气囊防护系统','ASCD定速巡航','HSA上坡起步辅助系统','博世9.1版ESP车身电子稳定系统','日产同平台开发生产'],//部件名称
@@ -85,9 +86,10 @@ Page({
 	t70_swiper3_txt: ['流媒体后视镜', '3D全景式监控影像系统', '后视镜自动折叠', 'TPMS胎压监测系统', '智能电动尾门'],//部件名称
 	t70_swiper4_txt: ['先进的XTRONIC CVT无极变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统','日产全球引擎MR20发动机'],//部件名称
     t70_swiper5_txt: ['专业制造工艺', 'ABS+EBD+BA三位一体智能刹车辅助系统', 'ESS紧急制动提醒系统', 'ESS紧急制动提醒系统', '雷诺-日产-三菱联盟品质标准'],//部件名称
-	d60_swiper1_txt: ['宽敞大尺寸天窗', '宽敞大尺寸天窗' , '663mm后排膝部空间', 'Multi-Layer人体工学座椅'],//部件名称
-	d60_swiper2_txt: ['锐利的鹰眼LED前大灯', '星空点阵式前格栅', '红镰式光导LED组合尾灯','驾驶员导向飞航式驾驶舱设计','人体工学D型多功能方向盘','高品质透气性菱格皮质座椅','4756mm优越车身长度'],//部件名称
-	d60_swiper3_txt: ['XTRONIC CVT无极变速器', '5.6L/100km低油耗', '带横向稳定杆的扭力梁式悬挂系统','Zone Body高性能区域车身结构','ABS+EBD+BA三位一体智能刹车辅助系统','博世9.1版ESP车身电子稳定系统','TPMS智能胎压监测系统','EPKB电子驻车系统','HR16发动机'],//部件名称
+	d60_swiper1_txt: ['车辆智能安防系统', '在线娱乐系统', '智能人机语音交互', '手机远程控制', '车载Wifi热点', '人性化贴心全时导航'],//部件名称
+	d60_swiper2_txt: ['宽敞大尺寸天窗', 'Multi-Layer人体工学座椅', '663mm后排膝部空间', '宽敞大尺寸天窗', 'Multi-Layer人体工学座椅', '663mm后排膝部空间'],//部件名称
+	d60_swiper3_txt: ['锐利的鹰眼LED前大灯', '星空点阵式前格栅', '红镰式光导LED组合尾灯', '驾驶员导向飞航式驾驶舱设计', '人体工学D型多功能方向盘', '高品质透气性菱格皮质座椅', '4756mm优越车身长度'],//部件名称
+	d60_swiper4_txt: ['XTRONIC CVT无极变速器', '5.6L/100km低油耗', '带横向稳定杆的扭力梁式悬挂系统','Zone Body高性能区域车身结构','ABS+EBD+BA三位一体智能刹车辅助系统','博世9.1版ESP车身电子稳定系统','TPMS智能胎压监测系统','EPKB电子驻车系统','HR16发动机'],//部件名称
 	swp1_img:[ //t60第一个swiper资源
 		{img:  'Tb60_sw1.png', type: 1},
 		{ img: 'Tb60_sw2.mp4', type: 2},
@@ -118,9 +120,11 @@ Page({
 		  { img: 'tb70_2_4.mp4', type: 2 },
 		  { img: 'tb70_2_5.mp4', type: 2 },
 		  { img: 'tb70_2_6.mp4', type: 2 }
-	  ]
-	
-	
+	  ],
+	isplay:false,// 是否在播放视频
+	vbtn:true,// 是否显示 播放按钮
+	popstu:1,// 留资弹窗状态
+	curvio:null, // 当前创建的video
   },
 
 	
@@ -320,6 +324,8 @@ Page({
 		// console.log(e);
 		let type = e.currentTarget.dataset.type;
 		this.setData({
+			isplay:false,
+			vbtn:true,
 			swiper1: type==1? e.detail.current:this.data.swiper1,
 			swiper2: type == 2 ? e.detail.current : this.data.swiper2,
 			swiper3: type == 3 ? e.detail.current : this.data.swiper3,
@@ -335,9 +341,71 @@ Page({
 			console.log(type);
 		console.log(this.data.swiper1,this.data.swiper2);
 	},
-	changecol(e){
+	changecol(e){// 选择车子颜色
 		let index = e.currentTarget.dataset.index;
 		this.setData({rogincol:index})
 		console.log(index)
+	},
+	setplay(e){ //控制视频播放暂停
+		console.log("是否播放",this.data.isplay);
+		let video = e.currentTarget.dataset.vid;
+		let vio = wx.createVideoContext(video);
+		this.setData({ curvio: vio});
+		console.log(video);
+		this.data.isplay ? this.videoPause() : this.videoPlay();
+		
+		this.setData({ 
+			isplay:!this.data.isplay,
+			});
+
+		if (this.data.isplay) {
+			console.log("点击播放的时候")
+			setTimeout(() => {
+				this.setData({ vbtn: false })
+			}, 1000)
+		}
+	},
+	//播放
+	videoPlay() {
+		console.log('开始播放')
+		// var videoplay = wx.createVideoContext()
+		this.data.curvio.play()
+	},
+	// 暂停播放
+	videoPause() {
+		console.log('暂停播放')
+		// var videoplay = wx.createVideoContext()
+		this.data.curvio.pause()
+	},
+	// 显示播放按钮
+	showplay(){
+		if(this.data.vbtn)return;
+		this.setData({ vbtn: true})
+		setTimeout(() => {
+			this.setData({ vbtn: false })
+		}, 3000)
+	},
+	changetab(e){// 点击左右切换轮播
+		let id = e.currentTarget.dataset.id;
+		let type = e.currentTarget.dataset.type;
+		let len = e.currentTarget.dataset.length;
+		console.log(id,type);
+		this.setData({
+			swiper1: id == 1 && type == 1 ? this.data.swiper1 == 0 ? len : --this.data.swiper1 : id == 1 && type == 2 ? this.data.swiper1==len?0:++this.data.swiper1:this.data.swiper1,
+			swiper2: id == 2 && type == 1 ? this.data.swiper2 == 0 ? len : --this.data.swiper2 : id == 2 && type == 2 ? this.data.swiper2 == len ? 0 : ++this.data.swiper2 : this.data.swiper2,
+			swiper3: id == 3 && type == 1 ? this.data.swiper3 == 0 ? len : --this.data.swiper3 : id == 3 && type == 2 ? this.data.swiper3 == len ? 0 : ++this.data.swiper3 : this.data.swiper3,
+			swiper4: id == 4 && type == 1 ? this.data.swiper4 == 0 ? len : --this.data.swiper4 : id == 4 && type == 2 ? this.data.swiper4 == len ? 0 : ++this.data.swiper4 : this.data.swiper4,
+			swiper5: id == 5 && type == 1 ? this.data.swiper5 == 0 ? len : --this.data.swiper5 : id == 5 && type == 2 ? this.data.swiper5 == len ? 0 : ++this.data.swiper5 : this.data.swiper5,
+			swiper6: id == 6 && type == 1 ? this.data.swiper6 == 0 ? len : --this.data.swiper6 : id == 6 && type == 2 ? this.data.swiper6 == len ? 0 : ++this.data.swiper6 : this.data.swiper6,
+			swiper7: id == 7 && type == 1 ? this.data.swiper7 == 0 ? len : --this.data.swiper7 : id == 7 && type == 2 ? this.data.swiper7 == len ? 0 : ++this.data.swiper7 : this.data.swiper7,
+			swiper8: id == 8 && type == 1 ? this.data.swiper8 == 0 ? len : --this.data.swiper8 : id == 8 && type == 2 ? this.data.swiper8 == len ? 0 : ++this.data.swiper8 : this.data.swiper8,
+			swiper9: id == 9 && type == 1 ? this.data.swiper9 == 0 ? len : --this.data.swiper9 : id == 9 && type == 2 ? this.data.swiper9 == len ? 0 : ++this.data.swiper9 : this.data.swiper9,
+			swiper10: id == 10 && type == 1 ? this.data.swiper10 == 0 ? len : --this.data.swiper10 : id == 10 && type == 2 ? this.data.swiper10 == len ? 0 : ++this.data.swiper10 : this.data.swiper10,
+			swiper11: id == 11 && type == 1 ? this.data.swiper11 == 0 ? len : --this.data.swiper11 : id == 11 && type == 2 ? this.data.swiper11 == len ? 0 : ++this.data.swiper11 : this.data.swiper11,
+			swiper12: id == 12 && type == 1 ? this.data.swiper12 == 0 ? len : --this.data.swiper12 : id == 12 && type == 2 ? this.data.swiper12 == len ? 0 : ++this.data.swiper12 : this.data.swiper12,
+		})
+	},
+	closelz(){
+		this.setData({popstu:2})
 	}
 })

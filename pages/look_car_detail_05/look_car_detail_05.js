@@ -111,30 +111,12 @@ Page({
     sss: true,
 	// 复制t60
 	  carcol: [//t60颜色图
-		  { img: 't60_col1.png', txt: '旭日橙/珠光白双色' },
-		  { img: 't60_col2.png', txt: '烈焰红/曜石黑双色' },
-		  { img: 't60_col3.png', txt: '珠光白/曜石黑双色' },
-		  { img: 't60_col4.png', txt: '烈焰红' },
-		  { img: 't60_col5.png', txt: '曜石黑' },
-		  { img: 't60_col6.png', txt: '乌刚灰' },
-		  { img: 't60_col7.png', txt: '旭日橙' },
-		  { img: 't60_col8.png', txt: '晴空蓝' },
-		  { img: 't60_col9.png', txt: '珠光白' }
-	  ],
-	  t70carcol: [//t70颜色图
-		  { img: 't70bg6.png', txt: '旭日橙' },
-		  { img: 't70bg7.png', txt: '朝霞红' },
-		  { img: 't70bg8.png', txt: '珠光白' },
-		  { img: 't70bg9.png', txt: '翡丽灰' },
-		  { img: 't70bg10.png', txt: '曜石黑' }
-	  ],
-	  d60carcol: [//t70颜色图
-		  { img: 'd60col1.png', txt: '晴空蓝' },
-		  { img: 'd60col2.png', txt: '映日棕' },
-		  { img: 'd60col3.png', txt: '辰辉银' },
-		  { img: 'd60col4.png', txt: '赤兔红' },
-		  { img: 'd60col5.png', txt: '珠光白' },
-		  { img: 'd60col6.png', txt: '曜石黑' }
+		  { img: 't90col1.png', img2:'t90c1.png', txt: '星云红' },
+		  { img: 't90col2.png', img2: 't90c2.png',txt: '极光蓝' },
+		  { img: 't90col3.png', img2: 't90c3.png', txt: '赤兔红' },
+		  { img: 't90col4.png', img2: 't90c4.png',txt: '珠光白' },
+		  { img: 't90col5.png', img2: 't90c5.png',txt: '曜石黑' },
+		  { img: 't90col6.png', img2: 't90c6.png',txt: '琥珀金' }
 	  ],
 	  swiper1: 0,//控制第一个swiper
 	  swiper2: 0,//控制第二个swiper
@@ -223,7 +205,11 @@ Page({
 		  { img: 'tb70_2_4.mp4', type: 2 },
 		  { img: 'tb70_2_5.mp4', type: 2 },
 		  { img: 'tb70_2_6.mp4', type: 2 }
-	  ]
+	  ],
+	  isplay: false,// 是否在播放视频
+	  vbtn: true,// 是否显示 播放按钮
+	  popstu: 1,// 留资弹窗状态
+	  curvio: null, // 当前创建的video
 
   },
 
@@ -349,55 +335,51 @@ Page({
     })
   },
   //提交
-  submit(e) {
-    console.log("e.detail", e.detail)
-    const detail = e.detail;
-    const userInfo = wx.getStorageSync('userInfo');
-    const lookCarDetail = this.data.lookCarDetail;
+	submit(e) {
+		const detail = e.detail;
+		const userInfo = wx.getStorageSync('userInfo');
+		const lookCarDetail = this.data.lookCarDetail;
 
-    alert.loading({
-      str: '提交中'
-    })
-    request_01.lookCarSubmit({
-      user_id: userInfo.user_id,//用户ID
-      look_car_id: lookCarDetail.look_car_id,//看车ID
-      name: detail.name,//留资姓名
-      mobile: detail.phone,//留资电话
-      v_code: detail.code || '',//短信验证码
-      dl_code: detail.storeCode,//专营店编码
-      car_type: '',//车型 可不填
-    })
-      .then((value) => {
-        //success
-        const msg = value.data.msg;
-        const status = value.data.status;
-        if (status == 1) {
-          alert.loading_h()
-          // mta.Event.stat("booking_car_t90", { name: detail.name, phone: detail.phone, city: detail.region.join('--')})
-          mta.Event.stat("booking_car_t90", { userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}`})
-          if (this.data.gdt_vid) this.dataReport()
-          alert.confirm({ title: "预约成功", content: `您已成功预约「${this.data.vehicle.title}」的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
-          this.setData({
-            isShowForm: false,
-          })
-        })
-        } else {
-          alert.alert({
-            str: '预约失败，请稍后再试~',
-          })
-        }
+		alert.loading({
+			str: '提交中'
+		})
+		request_01.lookCarSubmit({
+			user_id: userInfo.user_id,//用户ID
+			look_car_id: lookCarDetail.look_car_id,//看车ID
+			name: detail.name,//留资姓名
+			mobile: detail.phone,//留资电话
+			v_code: detail.code || '',//短信验证码
+			dl_code: detail.storeCode,//专营店编码
+			car_type: '',//车型 可不填
+		}).then((value) => {
+			//success
+			const status = value.data.status;
+			if (status == 1) {
+				alert.loading_h()
+				// mta.Event.stat("booking_car_other", { name: detail.name, phone: detail.phone, city: detail.region.join('--') })
+				
+				{ userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}` }
+				alert.confirm({ title: "预约成功", content: `您已成功预约「${this.data.vehicle.title}」的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
+					this.setData({
+						isShowForm: false,
+					})
+				})
+			} else {
+				alert.alert({
+					str: value.data.msg,
+				})
+			}
+		})
+			.catch(() => {
+				//fail
+				alert.loading_h()
 
-      })
-      .catch(() => {
-        //fail
-        alert.loading_h()
+			})
+			.then(() => {
+				//complete
 
-      })
-      .then(() => {
-        //complete
-
-      })
-  },
+			})
+	},
 
   /**
    * 用户点击右上角分享
@@ -560,10 +542,13 @@ Page({
 	moreBtn(){
 		tool.jump_red("/pages/index/index")
 	},
+
 	swiperchange(e) { //控制swiper 切换
 		// console.log(e);
 		let type = e.currentTarget.dataset.type;
 		this.setData({
+			isplay: false,
+			vbtn: true,
 			swiper1: type == 1 ? e.detail.current : this.data.swiper1,
 			swiper2: type == 2 ? e.detail.current : this.data.swiper2,
 			swiper3: type == 3 ? e.detail.current : this.data.swiper3,
@@ -578,5 +563,73 @@ Page({
 		})
 		console.log(type);
 		// console.log(this.data.swiper2);
+	},
+	changecol(e) {// 切换车色
+		let index = e.currentTarget.dataset.index;
+		this.setData({ rogincol: index })
+		console.log(index)
+	},
+
+	setplay(e) { //控制视频播放暂停
+		console.log("是否播放", this.data.isplay);
+		let video = e.currentTarget.dataset.vid;
+		let vio = wx.createVideoContext(video);
+		this.setData({ curvio: vio });
+		console.log(video);
+		this.data.isplay ? this.videoPause() : this.videoPlay();
+
+		this.setData({
+			isplay: !this.data.isplay,
+		});
+
+		if (this.data.isplay) {
+			console.log("点击播放的时候")
+			setTimeout(() => {
+				this.setData({ vbtn: false })
+			}, 1000)
+		}
+	},
+	//播放
+	videoPlay() {
+		console.log('开始播放')
+		// var videoplay = wx.createVideoContext()
+		this.data.curvio.play()
+	},
+	// 暂停播放
+	videoPause() {
+		console.log('暂停播放')
+		// var videoplay = wx.createVideoContext()
+		this.data.curvio.pause()
+	},
+	// 显示播放按钮
+	showplay() {
+		if (this.data.vbtn) return;
+		this.setData({ vbtn: true })
+		setTimeout(() => {
+			this.setData({ vbtn: false })
+		}, 3000)
+	},
+	changetab(e) {// 点击左右切换轮播
+		let id = e.currentTarget.dataset.id;
+		let type = e.currentTarget.dataset.type;
+		let len = e.currentTarget.dataset.length;
+		console.log(id, type);
+		this.setData({
+			swiper1: id == 1 && type == 1 ? this.data.swiper1 == 0 ? len : --this.data.swiper1 : id == 1 && type == 2 ? this.data.swiper1 == len ? 0 : ++this.data.swiper1 : this.data.swiper1,
+			swiper2: id == 2 && type == 1 ? this.data.swiper2 == 0 ? len : --this.data.swiper2 : id == 2 && type == 2 ? this.data.swiper2 == len ? 0 : ++this.data.swiper2 : this.data.swiper2,
+			swiper3: id == 3 && type == 1 ? this.data.swiper3 == 0 ? len : --this.data.swiper3 : id == 3 && type == 2 ? this.data.swiper3 == len ? 0 : ++this.data.swiper3 : this.data.swiper3,
+			swiper4: id == 4 && type == 1 ? this.data.swiper4 == 0 ? len : --this.data.swiper4 : id == 4 && type == 2 ? this.data.swiper4 == len ? 0 : ++this.data.swiper4 : this.data.swiper4,
+			swiper5: id == 5 && type == 1 ? this.data.swiper5 == 0 ? len : --this.data.swiper5 : id == 5 && type == 2 ? this.data.swiper5 == len ? 0 : ++this.data.swiper5 : this.data.swiper5,
+			swiper6: id == 6 && type == 1 ? this.data.swiper6 == 0 ? len : --this.data.swiper6 : id == 6 && type == 2 ? this.data.swiper6 == len ? 0 : ++this.data.swiper6 : this.data.swiper6,
+			swiper7: id == 7 && type == 1 ? this.data.swiper7 == 0 ? len : --this.data.swiper7 : id == 7 && type == 2 ? this.data.swiper7 == len ? 0 : ++this.data.swiper7 : this.data.swiper7,
+			swiper8: id == 8 && type == 1 ? this.data.swiper8 == 0 ? len : --this.data.swiper8 : id == 8 && type == 2 ? this.data.swiper8 == len ? 0 : ++this.data.swiper8 : this.data.swiper8,
+			swiper9: id == 9 && type == 1 ? this.data.swiper9 == 0 ? len : --this.data.swiper9 : id == 9 && type == 2 ? this.data.swiper9 == len ? 0 : ++this.data.swiper9 : this.data.swiper9,
+			swiper10: id == 10 && type == 1 ? this.data.swiper10 == 0 ? len : --this.data.swiper10 : id == 10 && type == 2 ? this.data.swiper10 == len ? 0 : ++this.data.swiper10 : this.data.swiper10,
+			swiper11: id == 11 && type == 1 ? this.data.swiper11 == 0 ? len : --this.data.swiper11 : id == 11 && type == 2 ? this.data.swiper11 == len ? 0 : ++this.data.swiper11 : this.data.swiper11,
+			swiper12: id == 12 && type == 1 ? this.data.swiper12 == 0 ? len : --this.data.swiper12 : id == 12 && type == 2 ? this.data.swiper12 == len ? 0 : ++this.data.swiper12 : this.data.swiper12,
+		})
+	},
+	closelz() {
+		this.setData({ popstu: 2 })
 	}
 })

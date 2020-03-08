@@ -35,7 +35,8 @@ page{
 	flex: 1;
 }
 .setwidth{
-	max-width: 600rpx;
+	width: 600rpx;
+	height: auto;
 }
 .l_info{
 	width:484rpx;
@@ -128,4 +129,13 @@ page{
 	height:63rpx;
 	background:rgba(246,247,247,1);
 	border-radius:6rpx;
+}
+.imgpop{
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9;
 }

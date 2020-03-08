@@ -1,0 +1,82 @@
+<!--pages/ev/ev_help/ev_help.wxml-->
+<view class="all">
+  <view class="top">
+    <image class="ev_help_bg" src="{{IMGSERVICE}}/ev/ev_help_bg.png" mode="widthFix"></image>
+  </view>
+  <view class="oneself">
+    <!-- 自己部分 -->
+    <view class="oneself-top" wx:if="{{true}}">
+      <view class="peo-num">
+        邀请
+        <text class="num-txt">10</text>位好友助力
+      </view>
+      <view class="prize-txt">可获得1天免费用车券</view>
+      <view class="p-gift">
+        <image class="ev_prize_pic" src="{{IMGSERVICE}}/ev/ev_prize_pic.png" mode="widthFix"></image>
+      </view>
+      <view class="me-btn">立即领取</view>
+      <button class="share-btn" open-type="share">邀请好友助力</button>
+    </view>
+    <!-- 自己部分 -->
+    <!-- 好友部分 -->
+    <view class="friend-help" wx:if="{{false}}">
+      <view class="me-info">
+        <view class="me-headimg">
+          <image src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1906469856,4113625838&fm=26&gp=0.jpg" mode="widthFix"></image>
+        </view>
+        <view class="me-right">
+          <view class="me-nickname">320</view>
+          <view class="me-txt">我正在参加启辰-北京新能源指标用户到店拿 500元活动,10位好友助力成功可获得D60EV /T60EV一天免费试用券”,快帮我助力一下!</view>
+        </view>
+      </view>
+      <view class="p-gift f-top1">
+        <image class="ev_prize_pic" src="{{IMGSERVICE}}/ev/ev_prize_pic.png" mode="widthFix"></image>
+      </view>
+      <view class="me-btn f-top2">立即领取</view>
+      <view class="share-btn f-top3">我也要参与</view>
+    </view>
+    <!-- 好友部分 -->
+    <!-- 助力列表 -->
+    <view class="help_list" wx:if="{{true}}">
+      <view class="list-pic">
+        <image src="{{IMGSERVICE}}/ev/list-pic.png" mode="widthFix"></image>
+      </view>
+      <!-- 自动 -->
+      <swiper vertical="true" display-multiple-items="2" interval="1500" autoplay="{{helpList.length>2}}" circular="true" style="height:232rpx">
+        <swiper-item class="flex-cen" wx:for="{{helpList}}" wx:for-item="item" wx:key="index">
+          <view class="help_item">
+            <view class="leftBox">
+              <view class="l_item1 nowrap">
+                <text>{{index+1}}</text>
+              </view>
+              <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
+              <view class="l_item3 nowrap">
+                <text>{{item.nickname}}</text>
+              </view>
+            </view>
+            <view class="rightBox">
+              <text>{{item.create_time}}</text>
+            </view>
+          </view>
+        </swiper-item>
+        <swiper-item class="flex-cen" wx:for="{{2-helpList.length}}" wx:if="{{helpList.length<2}}" wx:key="index">
+          <view class="help_item f3">
+            <view class="leftBox">
+              <view class="l_item1 nowrap">
+                <text></text>
+              </view>
+              <view class="l_item2" style="background-image:url({{item.headimg}})"></view>
+              <view class="l_item3 nowrap">
+                <text></text>
+              </view>
+            </view>
+            <view class="rightBox">
+              <text></text>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+    <!-- 助力列表 -->
+  </view>
+</view>

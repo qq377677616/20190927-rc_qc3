@@ -1,0 +1,69 @@
+<!--pages/ev/ev_form/ev_form.wxml-->
+<view class="from-con">
+  <view class="title">
+    <image class="ev_form_title" src="{{IMGSERVICE}}/ev/ev_form_title.png" mode="widthFix"></image>
+  </view>
+
+  <!-- 表单 -->
+  <view class="form">
+    <view class="f-tit">您的姓名</view>
+    <input class="input" type="text" placeholder="请填写您的姓名" placeholder-class="placeholder"></input>
+    <view class="f-tit">您的手机号码</view>
+    <view class="phone">
+      <input class="input wh1" type="phone" maxlength="11" placeholder="请输入您的手机号码" placeholder-class="placeholder"></input>
+      <view class="code-btn">获取验证码</view>
+    </view>
+    <input class="input" type="text" placeholder="请输入验证码" placeholder-class="placeholder"></input>
+    <view class="f-tit">请选择为您服务的专营店</view>
+    <view class="input">
+      <view class="sanjiao"></view>
+      <block>
+        <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
+          <view class="picker">
+            <view>{{storeList[storeList_index].name}}</view>
+          </view>
+        </picker>
+      </block>
+    </view>
+    <view class="f-tit">您的新能源指标</view>
+    <input class="input" type="text" placeholder="请填写北京新能源指标号码" placeholder-class="placeholder"></input>
+    <view class="two">
+      <!-- 预约试驾时间 -->
+      <view class="time">
+        <view class="f-tit">预约试驾时间</view>
+        <view class="input wh-time">
+          <view class="sanjiao"></view>
+          <block>
+            <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
+              <view class="picker">
+                <view>{{storeList[storeList_index].name}}</view>
+              </view>
+            </picker>
+          </block>
+        </view>
+      </view>
+      <!-- 预约试驾时间 -->
+      <!-- 试驾车辆 -->
+      <view class="time">
+        <view class="f-tit">试驾车辆</view>
+        <view class="input wh-time">
+          <view class="sanjiao"></view>
+          <block>
+            <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
+              <view class="picker">
+                <view>{{storeList[storeList_index].name}}</view>
+              </view>
+            </picker>
+          </block>
+        </view>
+      </view>
+      <!-- 试驾车辆 -->
+    </view>
+    <view class="submit">提交信息</view>
+  </view>
+  <!-- 表单 -->
+  <view class="bottom">
+    <image class="ev_index-bom" src="{{IMGSERVICE}}/ev/ev_index-bom.png" mode="widthFix"></image>
+  </view>
+
+</view>

@@ -1,0 +1,256 @@
+/* pages/ev/ev_help/ev_help.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  background: #acc5ef;
+}
+
+.all {
+  width: 100%;
+}
+
+.top {
+  width: 750rpx;
+  height: 295rpx;
+  position: relative;
+}
+
+.ev_help_bg {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.oneself {
+  width: 692rpx;
+  height: auto;
+  background: #fff;
+  margin: -40rpx auto 0;
+  border-radius: 16rpx;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30rpx;
+}
+
+.peo-num {
+  width: 405rpx;
+  height: 68rpx;
+  background: #ffebdc;
+  border-radius: 10rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -35rpx;
+  line-height: 68rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333;
+}
+
+.num-txt {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Heavy;
+  font-weight: 500;
+  color: #f1403e;
+}
+
+.oneself-top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.friend-help {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.me-headimg {
+  width: 86rpx;
+  height: 86rpx;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.me-headimg image {
+  width: 86rpx;
+}
+
+.me-right {
+  margin-left: 17rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.me-info {
+  width: 623rpx;
+  margin-top: 27rpx;
+  display: flex;
+}
+
+.me-nickname {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #999;
+  margin-top: 16rpx;
+}
+
+.me-txt {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333;
+  margin-top: 20rpx;
+  word-break: break-all;
+  line-height: 36rpx;
+}
+
+.f-top1 {
+  margin-top: 31rpx !important;
+}
+
+.f-top2 {
+  margin-top: 41rpx !important;
+}
+
+.f-top3 {
+  margin-top: 34rpx !important;
+}
+
+.prize-txt {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  margin-top: 60rpx;
+}
+
+.p-gift {
+  width: 580rpx;
+  height: auto;
+  margin-top: 36rpx;
+}
+
+.ev_prize_pic {
+  width: 100%;
+}
+
+.me-btn {
+  width: 534rpx;
+  height: 84rpx;
+  background: #002870;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #fff;
+  line-height: 84rpx;
+  text-align: center;
+  margin-top: 56rpx;
+}
+
+.share-btn {
+  width: 534rpx;
+  height: 84rpx;
+  border: 1rpx solid #313131;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333;
+  margin-top: 34rpx;
+  margin-bottom: 56rpx;
+  line-height: 84rpx;
+  text-align: center;
+}
+
+.allList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.list-pic {
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.list-pic image {
+  width: 269rpx;
+}
+
+.list {
+  width: 638px;
+  height: 116rpx;
+  display: flex;
+}
+
+/* 列表 */
+
+.help_list {
+  width: 693rpx;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 16rpx;
+  /* height: 1310rpx;   */
+  padding: 0 33rpx;
+  box-sizing: border-box;
+}
+
+.help_item {
+  width: 100%;
+  height: 116rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+}
+
+.leftBox {
+  width: 350rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.l_item1 {
+  width: 60rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+
+.l_item2 {
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 50%;
+  background: center no-repeat;
+  background-size: cover;
+}
+
+.l_item3 {
+  width: 150rpx;
+  margin-left: 33rpx;
+  color: #666;
+  font-size: 30rpx;
+}
+
+.rightBox {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #999;
+  font-size: 24rpx;
+}

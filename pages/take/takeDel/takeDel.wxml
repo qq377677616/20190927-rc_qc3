@@ -6,7 +6,7 @@
 				
 		</view>
 		<view class="r_info">
-			<image src="{{BASEURL}}/test.png" mode="aspectFit" class="setwidth"></image>
+			<image src="{{BASEURL}}/test.png" mode="widthFix" class="setwidth" bindtap="amplt"></image>
 		</view>
 	</view>
 	<view class="rightinfo">
@@ -31,5 +31,8 @@
 		<input class="infoipt" bindinput="getval" value="{{msg}}"></input>
 	</view>
 	<view class="r_send" bindtap="sendMsg">发送</view>
+</view>
+<view class="imgpop fadeShow" wx:if="{{popshow}}" bindtap="hidepop">
+	
 </view>
 
