@@ -24,25 +24,6 @@ App({
             //腾讯统计
         auth.statistics(500695944)
 
-<<<<<<< HEAD
-    //锁
-    const keyGroup = wx.getStorageSync('keyGroup');
-    wx.setStorageSync('keyGroup', {
-      giftKey:true,//见面礼开关
-      pinKey:keyGroup.pinKey == false ? false : true,//拼团开关
-      signUpKey:keyGroup.signUpKey == false ? false : true,//报名开关
-      signUpWin:keyGroup.signUpWin == false ? false : true,//报名开关
-      spikeKey:keyGroup.spikeKey == false ? false : true,//秒杀开关
-      shakeKey:keyGroup.shakeKey == false ? false : true,//摇一摇开关
-      pinKey:keyGroup.pinKey == false ? false : true,//99元下定开关
-    })
-  },
-	globalData: {
-	userInfo: null,
-	//https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
-	//'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
-    IMGSERVICE:'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0',//日产小程序的 图片路径
-=======
         //锁
         const keyGroup = wx.getStorageSync('keyGroup');
         wx.setStorageSync('keyGroup', {
@@ -59,8 +40,7 @@ App({
         userInfo: null,
         //https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
         //'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
-      IMGSERVICE: 'https://weixinfslb.venucia.com/uploads/assets_3.0', //日产小程序图片路径
->>>>>>> 04e948da42159cc3eaee2bf0ded1baa5ea52ce90
+        IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0', //日产小程序的 图片路径
 
         ASSETSURL: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/ca', //ca 资源地址
         REQUESTURL: 'https://vrupup.com/shuihu/ca/public', //ca接口请求路径

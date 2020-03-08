@@ -1,851 +1,844 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"enhance": true,
-		"coverView": true,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.10.2",
-	"appid": "wx1d585c8c2fffe589",
-	"projectname": "new_rc_qc_3.0",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 109,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/home/home",
-					"pathName": "pages/home/home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/community/community",
-					"pathName": "pages/community/community",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/publish_article/publish_article",
-					"pathName": "pages/publish_article/publish_article",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "game_list",
-					"pathName": "pages/game_list/game_list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "nearby_store",
-					"pathName": "pages/nearby_store/nearby_store",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_love_car",
-					"pathName": "pages/o_love_car/o_love_car",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_love_car_next",
-					"pathName": "pages/o_love_car_next/o_love_car_next",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "order_detail",
-					"pathName": "pages/order_detail/order_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_activity",
-					"pathName": "pages/o_activity/o_activity",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_card_bag",
-					"pathName": "pages/o_card_bag/o_card_bag",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_card_bag_rule",
-					"pathName": "pages/o_card_bag_rule/o_card_bag_rule",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_yuyueshijia",
-					"pathName": "pages/o_yuyueshijia/o_yuyueshijia",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_dot",
-					"pathName": "pages/o_dot/o_dot",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_info",
-					"pathName": "pages/o_info/o_info",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_pin",
-					"pathName": "pages/o_pin/o_pin",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_pin_status",
-					"pathName": "pages/o_pin_status/o_pin_status",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_address",
-					"pathName": "pages/o_address/o_address",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_address_add",
-					"pathName": "pages/o_address_add/o_address_add",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_prize",
-					"pathName": "pages/o_prize/o_prize",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_duihuan",
-					"pathName": "pages/o_duihuan/o_duihuan",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_duihuan_detail",
-					"pathName": "pages/o_duihuan_detail/o_duihuan_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_duihuan_status",
-					"pathName": "pages/o_duihuan_status/o_duihuan_status",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "order_detail_02",
-					"pathName": "pages/order_detail_02/order_detail_02",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "order_detail_02",
-					"pathName": "pages/order_detail_02/order_detail_02",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_love_car_show",
-					"pathName": "pages/o_love_car_show/o_love_car_show",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "task",
-					"pathName": "pages/task/task",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_vdou",
-					"pathName": "pages/o_vdou/o_vdou",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "test",
-					"pathName": "pages/test/test",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 28,
-					"name": "shop_mall",
-					"pathName": "pages/shop_mall/shop_mall",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "shop_cart",
-					"pathName": "pages/shop_cart/shop_cart",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "shop_mall_type",
-					"pathName": "pages/shop_mall_type/shop_mall_type",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "shop_mall_plate",
-					"pathName": "pages/shop_mall_plate/shop_mall_plate",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 32,
-					"name": "product_detail",
-					"pathName": "pages/product_detail/product_detail",
-					"query": "goods_id=13",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "shop_cart_next",
-					"pathName": "pages/shop_cart_next/shop_cart_next",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "shop_cart_submitted",
-					"pathName": "pages/shop_cart_submitted/shop_cart_submitted",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 35,
-					"name": "community",
-					"pathName": "pages/community/community",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "yuyueshijia_form",
-					"pathName": "pages/yuyueshijia_form/yuyueshijia_form",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "activity_list",
-					"pathName": "pages/activity_list/activity_list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 38,
-					"name": "sign_up",
-					"pathName": "pages/sign_up/sign_up",
-					"query": "activity_id=45",
-					"scene": null
-				},
-				{
-					"id": 39,
-					"name": "投票首页",
-					"pathName": "pages/vote_page/vote_page",
-					"query": "acticity=4",
-					"scene": null
-				},
-				{
-					"id": 41,
-					"name": "community",
-					"pathName": "pages/community/community",
-					"query": "rid=121",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "audit_page",
-					"pathName": "pages/audit_page/audit_page",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "bargain_index",
-					"pathName": "pages/bargain_index/bargain_index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "bargain_state",
-					"pathName": "pages/bargain_state/bargain_state",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "jizan",
-					"pathName": "pages/jizan/jizan",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "look_car",
-					"pathName": "pages/look_car/look_car",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "selfHelp",
-					"pathName": "pages/selfHelp/selfHelp",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "up_succ",
-					"pathName": "pages/up_succ/up_succ",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "uploadPhotos",
-					"pathName": "pages/uploadPhotos/uploadPhotos",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "look_car_detail",
-					"pathName": "pages/look_car_detail/look_car_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "nearby_store",
-					"pathName": "pages/nearby_store/nearby_store",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "bargain_index",
-					"pathName": "pages/bargain_index/bargain_index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 54,
-					"name": "bargain_index666",
-					"pathName": "pages/home/home?activity_id=47",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/bargain_index/bargain_index",
-					"pathName": "pages/bargain_index/bargain_index？activity_id=47",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 56,
-					"name": "pages/bargain_index/bargain_index",
-					"pathName": "pages/bargain_index/bargain_index",
-					"query": "activity_id=47",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_card_bag",
-					"pathName": "pages/o_card_bag/o_card_bag",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "o_dot",
-					"pathName": "pages/o_dot/o_dot",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/assemble/pin/pin",
-					"pathName": "pages/assemble/o_pin/o_pin",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "selfHelp",
-					"pathName": "pages/selfHelp/selfHelp",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "poster",
-					"pathName": "pages/poster/poster",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 60,
-					"name": "vote",
-					"pathName": "pages/vote/vote",
-					"query": "activity_id=4",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "ad",
-					"pathName": "pages/ad/ad",
-					"query": "activity_id=43",
-					"scene": null
-				},
-				{
-					"id": 62,
-					"name": "摇一摇首页",
-					"pathName": "pages/shake_shake/shake_shake",
-					"query": "activity_id=1",
-					"scene": null
-				},
-				{
-					"id": 63,
-					"name": "friendHelp",
-					"pathName": "pages/friendHelp/friendHelp",
-					"query": "shake_id=48&activity_id=49&openid=oORV85cER_ban1Crg8T_dhDRkArk",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "qicheng_h5",
-					"pathName": "pages/qicheng_h5/qicheng_h5",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 65,
-					"name": "o_prize_detail_page",
-					"pathName": "pages/o_prize_detail/o_prize_detail",
-					"query": "prize_id=532",
-					"scene": null
-				},
-				{
-					"id": 66,
-					"name": "order_wuliu",
-					"pathName": "pages/order_wuliu/order_wuliu",
-					"query": "pageType=o_prize_detail&prize_id=22",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/prize/prize",
-					"pathName": "pages/prize/prize",
-					"query": "activity_id=36",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "看车详情T90",
-					"pathName": "pages/look_car_detail/look_car_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "look_car_detail_ route",
-					"pathName": "pages/look_car_detail_route/look_car_detail_route",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pin_detail",
-					"pathName": "pages/assemble/pin_detail/pin_detail",
-					"query": "prize_id=79",
-					"scene": null
-				},
-				{
-					"id": 71,
-					"name": "启辰星",
-					"pathName": "pages/look_car_detail_03/look_car_detail",
-					"query": "id=11",
-					"scene": null
-				},
-				{
-					"id": 72,
-					"name": "spike_index",
-					"pathName": "pages/spike_index/spike_index",
-					"query": "activity_id=53",
-					"scene": null
-				},
-				{
-					"id": 73,
-					"name": "spike_detail",
-					"pathName": "pages/spike_detail/spike_detail",
-					"query": "activity_id=53&skill_id=3",
-					"scene": null
-				},
-				{
-					"id": 74,
-					"name": "pages/assemble/pin/pin",
-					"pathName": "pages/assemble/pin/pin",
-					"query": "activity_id=43",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "spike_log",
-					"pathName": "pages/spike_log/spike_log",
-					"query": "activity_id=53&skill_id=4",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/addRemark/addRemark",
-					"pathName": "pages/addRemark/addRemark",
-					"query": "rid=208",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "addRemark",
-					"pathName": "pages/addRemark/addRemark",
-					"query": "rid=208",
-					"scene": null
-				},
-				{
-					"id": 78,
-					"name": "绑定车主首页",
-					"pathName": "pages/binding/owner/owner",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "车主绑定留资",
-					"pathName": "pages/binding/receive/receive",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 80,
-					"name": "刮刮乐",
-					"pathName": "pages/binding/scratch/Scratch",
-					"query": "activity_id=57",
-					"scene": null
-				},
-				{
-					"id": 81,
-					"name": "刮刮乐首页",
-					"pathName": "pages/binding/owner/owner",
-					"query": "activity_id=57",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "刮刮乐留资",
-					"pathName": "pages/binding/receive/receive",
-					"query": "activity_id=57",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "test2",
-					"pathName": "pages/test2/test2",
-					"query": "activity_id=57",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "spike_ receive",
-					"pathName": "pages/spike_ receive/spike_ receive",
-					"query": "activity_id=57",
-					"scene": null
-				},
-				{
-					"id": 85,
-					"name": "spike_index",
-					"pathName": "pages/spike_index/spike_index",
-					"query": "activity_id=3",
-					"scene": null
-				},
-				{
-					"id": 86,
-					"name": "spike_detail",
-					"pathName": "pages/spike_detail/spike_detail",
-					"query": "activity_id=3&skill_id=11&is_order=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "spike_log",
-					"pathName": "pages/spike_log/spike_log",
-					"query": "activity_id=3",
-					"scene": null
-				},
-				{
-					"id": 85,
-					"name": "投票首页",
-					"pathName": "pages/vote_page/vote_page",
-					"query": "activity_id=9",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "投票轮播页",
-					"pathName": "pages/vote/vote",
-					"query": "activity_id=9",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "投票详情",
-					"pathName": "pages/vote_detail/vote_detail",
-					"query": "vote_id=1&user_id=60&activity_id=9",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "lj_partake",
-					"pathName": "pages/lj_partake/lj_partake",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "摇一摇留资",
-					"pathName": "pages/shake_prize/shake_prize",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "T60详情",
-					"pathName": "pages/look_car_detail_02/look_car_detail_02",
-					"query": "id=6",
-					"scene": null
-				},
-				{
-					"id": 94,
-					"name": "精品兑换",
-					"pathName": "pages/payment/pay_change/pay_change",
-					"query": "cate_id =19",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "启辰星",
-					"pathName": "pages/look_car_detail_03/look_car_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/look_car_detail_03/look_car_detail",
-					"pathName": "pages/look_car_detail_03/look_car_detail",
-					"query": "id=11",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "99元下定",
-					"pathName": "pages/payment/pay_index/pay_index",
-					"query": "activity_id=18",
-					"scene": null
-				},
-				{
-					"id": 98,
-					"name": "改版T70",
-					"pathName": "pages/look_car_detail_04/look_car_detail_04",
-					"query": "id=3",
-					"scene": null
-				},
-				{
-					"id": 99,
-					"name": "一展一码",
-					"pathName": "pages/one_yard/one_yard",
-					"query": "s_i=32",
-					"scene": null
-				},
-				{
-					"id": 100,
-					"name": "好友助力",
-					"pathName": "pages/payment/pay_help/pay_help",
-					"query": "activity_id=18&openid=oORV85YNWKTSZM2t66WFc-M06cKk&user_id=68",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "商品详情",
-					"pathName": "pages/payment/pay_detail/pay_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 102,
-					"name": "pages/binding/scratch/Scratch",
-					"pathName": "pages/binding/scratch/Scratch",
-					"query": "activity_id=21",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "takeHome",
-					"pathName": "pages/take/takeHome/takeHome",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "dealers",
-					"pathName": "pages/take/dealers/dealers",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "takeDel",
-					"pathName": "pages/take/takeDel/takeDel",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "look_car_detail",
-					"pathName": "pages/look_car_detail/look_car_detail",
-					"query": "id=3",
-					"scene": null
-				},
-				{
-					"id": 107,
-					"name": "改版t90",
-					"pathName": "pages/look_car_detail_05/look_car_detail_05",
-					"query": "id=9",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "99协议书",
-					"pathName": "pages/protocol/protocol",
-					"query": "id=11",
-					"scene": null
-				},
-				{
-					"id": -1,
-<<<<<<< HEAD
-					"name": "pages/protocol/protocol",
-					"pathName": "pages/protocol/protocol",
-					"query": "id=3",
-=======
-					"name": "EV首页",
-					"pathName": "pages/ev/ev_index/ev_index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "EV留资",
-					"pathName": "pages/ev/ev_form/ev_form",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "EV助力",
-					"pathName": "pages/ev/ev_help/ev_help",
->>>>>>> 04e948da42159cc3eaee2bf0ded1baa5ea52ce90
-					"scene": null
-				}
-			]
-		}
-	}
+    "description": "项目配置文件",
+    "packOptions": {
+        "ignore": []
+    },
+    "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true,
+        "nodeModules": true,
+        "autoAudits": false,
+        "enhance": true,
+        "coverView": true,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        }
+    },
+    "compileType": "miniprogram",
+    "libVersion": "2.10.2",
+    "appid": "wx1d585c8c2fffe589",
+    "projectname": "new_rc_qc_3.0",
+    "debugOptions": {
+        "hidedInDevtools": []
+    },
+    "isGameTourist": false,
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
+    "condition": {
+        "search": {
+            "current": -1,
+            "list": []
+        },
+        "conversation": {
+            "current": -1,
+            "list": []
+        },
+        "plugin": {
+            "current": -1,
+            "list": []
+        },
+        "game": {
+            "currentL": -1,
+            "list": []
+        },
+        "gamePlugin": {
+            "current": -1,
+            "list": []
+        },
+        "miniprogram": {
+            "current": 109,
+            "list": [{
+                    "id": -1,
+                    "name": "pages/home/home",
+                    "pathName": "pages/home/home",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/community/community",
+                    "pathName": "pages/community/community",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/publish_article/publish_article",
+                    "pathName": "pages/publish_article/publish_article",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "game_list",
+                    "pathName": "pages/game_list/game_list",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "nearby_store",
+                    "pathName": "pages/nearby_store/nearby_store",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_love_car",
+                    "pathName": "pages/o_love_car/o_love_car",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_love_car_next",
+                    "pathName": "pages/o_love_car_next/o_love_car_next",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "order_detail",
+                    "pathName": "pages/order_detail/order_detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_activity",
+                    "pathName": "pages/o_activity/o_activity",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_card_bag",
+                    "pathName": "pages/o_card_bag/o_card_bag",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_card_bag_rule",
+                    "pathName": "pages/o_card_bag_rule/o_card_bag_rule",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_yuyueshijia",
+                    "pathName": "pages/o_yuyueshijia/o_yuyueshijia",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_dot",
+                    "pathName": "pages/o_dot/o_dot",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_info",
+                    "pathName": "pages/o_info/o_info",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_pin",
+                    "pathName": "pages/o_pin/o_pin",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_pin_status",
+                    "pathName": "pages/o_pin_status/o_pin_status",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_address",
+                    "pathName": "pages/o_address/o_address",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_address_add",
+                    "pathName": "pages/o_address_add/o_address_add",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_prize",
+                    "pathName": "pages/o_prize/o_prize",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_duihuan",
+                    "pathName": "pages/o_duihuan/o_duihuan",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_duihuan_detail",
+                    "pathName": "pages/o_duihuan_detail/o_duihuan_detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_duihuan_status",
+                    "pathName": "pages/o_duihuan_status/o_duihuan_status",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "order_detail_02",
+                    "pathName": "pages/order_detail_02/order_detail_02",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "order_detail_02",
+                    "pathName": "pages/order_detail_02/order_detail_02",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_love_car_show",
+                    "pathName": "pages/o_love_car_show/o_love_car_show",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "task",
+                    "pathName": "pages/task/task",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_vdou",
+                    "pathName": "pages/o_vdou/o_vdou",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "test",
+                    "pathName": "pages/test/test",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 28,
+                    "name": "shop_mall",
+                    "pathName": "pages/shop_mall/shop_mall",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "shop_cart",
+                    "pathName": "pages/shop_cart/shop_cart",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "shop_mall_type",
+                    "pathName": "pages/shop_mall_type/shop_mall_type",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "shop_mall_plate",
+                    "pathName": "pages/shop_mall_plate/shop_mall_plate",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 32,
+                    "name": "product_detail",
+                    "pathName": "pages/product_detail/product_detail",
+                    "query": "goods_id=13",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "shop_cart_next",
+                    "pathName": "pages/shop_cart_next/shop_cart_next",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "shop_cart_submitted",
+                    "pathName": "pages/shop_cart_submitted/shop_cart_submitted",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 35,
+                    "name": "community",
+                    "pathName": "pages/community/community",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "yuyueshijia_form",
+                    "pathName": "pages/yuyueshijia_form/yuyueshijia_form",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "activity_list",
+                    "pathName": "pages/activity_list/activity_list",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 38,
+                    "name": "sign_up",
+                    "pathName": "pages/sign_up/sign_up",
+                    "query": "activity_id=45",
+                    "scene": null
+                },
+                {
+                    "id": 39,
+                    "name": "投票首页",
+                    "pathName": "pages/vote_page/vote_page",
+                    "query": "acticity=4",
+                    "scene": null
+                },
+                {
+                    "id": 41,
+                    "name": "community",
+                    "pathName": "pages/community/community",
+                    "query": "rid=121",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "audit_page",
+                    "pathName": "pages/audit_page/audit_page",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "bargain_index",
+                    "pathName": "pages/bargain_index/bargain_index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "bargain_state",
+                    "pathName": "pages/bargain_state/bargain_state",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "jizan",
+                    "pathName": "pages/jizan/jizan",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "look_car",
+                    "pathName": "pages/look_car/look_car",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "selfHelp",
+                    "pathName": "pages/selfHelp/selfHelp",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "up_succ",
+                    "pathName": "pages/up_succ/up_succ",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "uploadPhotos",
+                    "pathName": "pages/uploadPhotos/uploadPhotos",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "look_car_detail",
+                    "pathName": "pages/look_car_detail/look_car_detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "nearby_store",
+                    "pathName": "pages/nearby_store/nearby_store",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "bargain_index",
+                    "pathName": "pages/bargain_index/bargain_index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 54,
+                    "name": "bargain_index666",
+                    "pathName": "pages/home/home?activity_id=47",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/bargain_index/bargain_index",
+                    "pathName": "pages/bargain_index/bargain_index？activity_id=47",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 56,
+                    "name": "pages/bargain_index/bargain_index",
+                    "pathName": "pages/bargain_index/bargain_index",
+                    "query": "activity_id=47",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_card_bag",
+                    "pathName": "pages/o_card_bag/o_card_bag",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "o_dot",
+                    "pathName": "pages/o_dot/o_dot",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/assemble/pin/pin",
+                    "pathName": "pages/assemble/o_pin/o_pin",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "selfHelp",
+                    "pathName": "pages/selfHelp/selfHelp",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "poster",
+                    "pathName": "pages/poster/poster",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 60,
+                    "name": "vote",
+                    "pathName": "pages/vote/vote",
+                    "query": "activity_id=4",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "ad",
+                    "pathName": "pages/ad/ad",
+                    "query": "activity_id=43",
+                    "scene": null
+                },
+                {
+                    "id": 62,
+                    "name": "摇一摇首页",
+                    "pathName": "pages/shake_shake/shake_shake",
+                    "query": "activity_id=1",
+                    "scene": null
+                },
+                {
+                    "id": 63,
+                    "name": "friendHelp",
+                    "pathName": "pages/friendHelp/friendHelp",
+                    "query": "shake_id=48&activity_id=49&openid=oORV85cER_ban1Crg8T_dhDRkArk",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "qicheng_h5",
+                    "pathName": "pages/qicheng_h5/qicheng_h5",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 65,
+                    "name": "o_prize_detail_page",
+                    "pathName": "pages/o_prize_detail/o_prize_detail",
+                    "query": "prize_id=532",
+                    "scene": null
+                },
+                {
+                    "id": 66,
+                    "name": "order_wuliu",
+                    "pathName": "pages/order_wuliu/order_wuliu",
+                    "query": "pageType=o_prize_detail&prize_id=22",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/prize/prize",
+                    "pathName": "pages/prize/prize",
+                    "query": "activity_id=36",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "看车详情T90",
+                    "pathName": "pages/look_car_detail/look_car_detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "look_car_detail_ route",
+                    "pathName": "pages/look_car_detail_route/look_car_detail_route",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pin_detail",
+                    "pathName": "pages/assemble/pin_detail/pin_detail",
+                    "query": "prize_id=79",
+                    "scene": null
+                },
+                {
+                    "id": 71,
+                    "name": "启辰星",
+                    "pathName": "pages/look_car_detail_03/look_car_detail",
+                    "query": "id=11",
+                    "scene": null
+                },
+                {
+                    "id": 72,
+                    "name": "spike_index",
+                    "pathName": "pages/spike_index/spike_index",
+                    "query": "activity_id=53",
+                    "scene": null
+                },
+                {
+                    "id": 73,
+                    "name": "spike_detail",
+                    "pathName": "pages/spike_detail/spike_detail",
+                    "query": "activity_id=53&skill_id=3",
+                    "scene": null
+                },
+                {
+                    "id": 74,
+                    "name": "pages/assemble/pin/pin",
+                    "pathName": "pages/assemble/pin/pin",
+                    "query": "activity_id=43",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "spike_log",
+                    "pathName": "pages/spike_log/spike_log",
+                    "query": "activity_id=53&skill_id=4",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/addRemark/addRemark",
+                    "pathName": "pages/addRemark/addRemark",
+                    "query": "rid=208",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "addRemark",
+                    "pathName": "pages/addRemark/addRemark",
+                    "query": "rid=208",
+                    "scene": null
+                },
+                {
+                    "id": 78,
+                    "name": "绑定车主首页",
+                    "pathName": "pages/binding/owner/owner",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "车主绑定留资",
+                    "pathName": "pages/binding/receive/receive",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 80,
+                    "name": "刮刮乐",
+                    "pathName": "pages/binding/scratch/Scratch",
+                    "query": "activity_id=57",
+                    "scene": null
+                },
+                {
+                    "id": 81,
+                    "name": "刮刮乐首页",
+                    "pathName": "pages/binding/owner/owner",
+                    "query": "activity_id=57",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "刮刮乐留资",
+                    "pathName": "pages/binding/receive/receive",
+                    "query": "activity_id=57",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "test2",
+                    "pathName": "pages/test2/test2",
+                    "query": "activity_id=57",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "spike_ receive",
+                    "pathName": "pages/spike_ receive/spike_ receive",
+                    "query": "activity_id=57",
+                    "scene": null
+                },
+                {
+                    "id": 85,
+                    "name": "spike_index",
+                    "pathName": "pages/spike_index/spike_index",
+                    "query": "activity_id=3",
+                    "scene": null
+                },
+                {
+                    "id": 86,
+                    "name": "spike_detail",
+                    "pathName": "pages/spike_detail/spike_detail",
+                    "query": "activity_id=3&skill_id=11&is_order=1",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "spike_log",
+                    "pathName": "pages/spike_log/spike_log",
+                    "query": "activity_id=3",
+                    "scene": null
+                },
+                {
+                    "id": 85,
+                    "name": "投票首页",
+                    "pathName": "pages/vote_page/vote_page",
+                    "query": "activity_id=9",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "投票轮播页",
+                    "pathName": "pages/vote/vote",
+                    "query": "activity_id=9",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "投票详情",
+                    "pathName": "pages/vote_detail/vote_detail",
+                    "query": "vote_id=1&user_id=60&activity_id=9",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "lj_partake",
+                    "pathName": "pages/lj_partake/lj_partake",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "摇一摇留资",
+                    "pathName": "pages/shake_prize/shake_prize",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "T60详情",
+                    "pathName": "pages/look_car_detail_02/look_car_detail_02",
+                    "query": "id=6",
+                    "scene": null
+                },
+                {
+                    "id": 94,
+                    "name": "精品兑换",
+                    "pathName": "pages/payment/pay_change/pay_change",
+                    "query": "cate_id =19",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "启辰星",
+                    "pathName": "pages/look_car_detail_03/look_car_detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "pages/look_car_detail_03/look_car_detail",
+                    "pathName": "pages/look_car_detail_03/look_car_detail",
+                    "query": "id=11",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "99元下定",
+                    "pathName": "pages/payment/pay_index/pay_index",
+                    "query": "activity_id=18",
+                    "scene": null
+                },
+                {
+                    "id": 98,
+                    "name": "改版T70",
+                    "pathName": "pages/look_car_detail_04/look_car_detail_04",
+                    "query": "id=3",
+                    "scene": null
+                },
+                {
+                    "id": 99,
+                    "name": "一展一码",
+                    "pathName": "pages/one_yard/one_yard",
+                    "query": "s_i=32",
+                    "scene": null
+                },
+                {
+                    "id": 100,
+                    "name": "好友助力",
+                    "pathName": "pages/payment/pay_help/pay_help",
+                    "query": "activity_id=18&openid=oORV85YNWKTSZM2t66WFc-M06cKk&user_id=68",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "商品详情",
+                    "pathName": "pages/payment/pay_detail/pay_detail",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": 102,
+                    "name": "pages/binding/scratch/Scratch",
+                    "pathName": "pages/binding/scratch/Scratch",
+                    "query": "activity_id=21",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "takeHome",
+                    "pathName": "pages/take/takeHome/takeHome",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "dealers",
+                    "pathName": "pages/take/dealers/dealers",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "takeDel",
+                    "pathName": "pages/take/takeDel/takeDel",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "look_car_detail",
+                    "pathName": "pages/look_car_detail/look_car_detail",
+                    "query": "id=3",
+                    "scene": null
+                },
+                {
+                    "id": 107,
+                    "name": "改版t90",
+                    "pathName": "pages/look_car_detail_05/look_car_detail_05",
+                    "query": "id=9",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "99协议书",
+                    "pathName": "pages/protocol/protocol",
+                    "query": "id=11",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "EV首页",
+                    "pathName": "pages/ev/ev_index/ev_index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "EV留资",
+                    "pathName": "pages/ev/ev_form/ev_form",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "id": -1,
+                    "name": "EV助力",
+                    "pathName": "pages/ev/ev_help/ev_help",
+                    "scene": null
+                }
+            ]
+        }
+    }
 }
