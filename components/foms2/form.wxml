@@ -10,15 +10,15 @@
 	   <view class="setwid">
 			<view class="group">
 				<text class="label">姓 名</text>
-				<input type="text" class="staript" placeholder="姓名" bindinput="inputName" value="{{name}}"/>
+				<input type="text" class="staript" placeholder="姓名" bindinput="inputName" value="{{name}}" bindfocus="showheg"/>
 			</view>
 
 			<view class="group">
 				<text class="label">电 话</text>
-				<input type="text" class="staript" value="{{phone}}" placeholder="电话" bindinput="inputPhone" maxlength="11" type="number" />
+				<input type="text" class="staript" value="{{phone}}" placeholder="电话" bindinput="inputPhone" bindfocus="showheg" maxlength="11" type="number" />
 			</view>
         </view>
-        <view class="group" wx:if="{{type != 3}}">
+        <view class="group" wx:if="{{isright&&popstu==1}}">
             <text class="label label2" space="nbsp">地 址</text>
             <view class="location">
                 <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{region}}"
@@ -29,7 +29,7 @@
             </view>
         </view>
 
-        <view class="group" wx:if="{{type != 1 && type != 3}}">
+        <view class="group" wx:if="{{isright&&popstu==1}}">
             <text class="label label2" space="nbsp">专营店</text>
             <view class="location">
                 <picker class="picker" bindchange="bindStoreChange" value="{{storeList_index}}" range="{{storeList}}"
@@ -40,7 +40,7 @@
 			
         </view>
 
-		<view class="agree" wx:if="{{type == 2}}">
+		<view class="agree" wx:if="{{isright&&popstu==1}}">
             <view class="checked {{isChecked ? 'on' : ''}}" style="visibility:hidden;"></view>
             <!-- 东风启辰在此承诺：您在智趣启辰小程序上提供的个人信息不会出售给任何第三方。您的信息可能被东风启辰以及其代理商或经销商用作分析研究，提供您所需要的服务，向您发出产品和服务的信息，以便改善我们的服务。请填写您的真实信息，方便我们尽快与您联系 。 -->
             <view class="gouBox" bindtap="gouSel">
@@ -55,3 +55,4 @@
 
 </view><!-- yuyueshijia_form_page -->
 <view class="f_box {{isright&&popstu==1?'addH2':''}}"></view>
+<showModal showModalOption="{{showModalOption}}" bindoperation="operation"></showModal>

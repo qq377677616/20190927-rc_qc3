@@ -3,6 +3,8 @@ import tool from '../../utils/tool/tool.js'
 import gets from '../../utils/tool/authorization.js'
 import api from '../../utils/request/request_03.js'
 import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js'
+import https from '../../utils/api/my-requests.js';
+import auth from '../../utils/public/authorization.js'
 const app = getApp(); //获取应用实例
 
 Component({
@@ -46,8 +48,17 @@ Component({
     isGetCode: 0,
     countDown: 60,
 	isright:false,
-	isGou: false,
+	isGou: true,
 	IMGSERVICE: app.globalData.IMGSERVICE,
+	  showModalOption: {//定位 弹窗
+		  isShow: false,
+		  type: 0,
+		  title: "获取位置信息",
+		  test: "小程序将访问您的手机定位，自动定位到您当前所在城市信息。",
+		  cancelText: "取消",
+		  confirmText: "授权",
+		  color_confirm: '#A3271F'
+	  },
   },
   ready() {
     
@@ -119,6 +130,67 @@ Component({
 			  isGou: !this.data.isGou
 		  })
 	  },
+	  //loading框
+	  isShowLoading() {
+		  this.setData({
+			  isShowLoading: !this.data.isShowLoading
+		  })
+	  },
+
+	  getInfo() {//定位
+		  tool.loading("自动定位中")
+		  https.getPosition().then((res) => {// 获取地理位置
+			  // console.log(res.result.ad_info.location);
+			  let locat = res.result.ad_info.location;
+			  tool.loading_h();
+			  this.getPosition();
+			  // let dat = {
+			  // 	lon: locat.lng,
+			  // 	lat: locat.lat,
+			  // 	page:0,
+			  // 	limit:1
+			  // }
+			  // https.getInfo(dat).then((res) => {
+			  // 	// console.log(res);
+			  // 	if(res.data.code==1){
+			  // 		tool.loading_h();
+			  // 		// console.log(res);
+			  // 		this.setData({useData:res.data.data[0]})
+			  // 	}
+			  // })
+		  }).catch(err => {
+			  console.log("定位失败", err)
+			  //   tool.alert("定位失败")
+			  tool.loading_h()
+			  this.showHideModal()
+		  })
+
+	  },
+	  //点击自定义Modal弹框上的按钮
+	  operation(e) {
+		  if (e.detail.confirm) {
+			  auth.openSetting(res => {//用户自行从设置勾选授权后
+				  if (res.authSetting["scope.userLocation"]) {
+					  this.getInfo()
+				  }
+			  })
+			  this.showHideModal()
+		  } else {
+			  tool.loading("")
+			  this.showHideModal()
+			  setTimeout(() => {
+				  tool.loading_h()
+				  this.showHideModal()
+			  }, 600)
+		  }
+	  },
+	  // 自定义弹窗
+	  showHideModal() {
+		  let _showModalOption = this.data.showModalOption
+		  _showModalOption.isShow = !_showModalOption.isShow
+		  this.setData({ showModalOption: _showModalOption })
+		  console.log(this.data.showModalOption)
+	  },
     //获取手机号
     getPhoneNumber(e) {
       if (!e.detail.encryptedData) return
@@ -189,7 +261,7 @@ Component({
           console.error("定位失败", error)
           gets.isSetting("scope.userLocation").then(res => {
             this.data.isSettingLocation = res
-            if (!res) tool.showModal("设置授权", "检测到您未打开位置授权开关，请点击[当前城市]右侧定位图标进行设置", "确定,#1351BA", false)
+			  if (!res) this.getInfo();//tool.showModal("设置授权", "检测到您未打开位置授权开关，请点击[当前城市]右侧定位图标进行设置", "确定,#1351BA", false)
           })
           tool.alert("定位失败")
           tool.loading_h()
@@ -223,7 +295,6 @@ Component({
         this.setData({ isGetPhone: false })
       }
 	  if (_reg.test(this.data.phone)){
-		  this.setData({ isright: true, popstu:1})
 		  console.log('输入正确！')
 		  this.getpot();
 	  }
@@ -326,6 +397,9 @@ Component({
 			this.setData({ wxPhone: wx.getStorageSync('userInfo').mobile })
 			if (this.data.type != 3) this.getPosition()
 		}
-	}
+	},
+	  showheg(){// 抬起留资
+		  this.setData({ isright: true, popstu: 1 });
+	  }
   }
 })

@@ -169,7 +169,7 @@ margin-bottom: 32rpx;
 }
 .txtbox2{
 	width: 100%;
-	height: 100rpx;
+	height: 154rpx;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -486,6 +486,9 @@ margin-bottom: 32rpx;
 	height: 77rpx;
 	background-color: white;
 }
+.setwhite2{
+	background-color: #F0F0F0;
+}
 .setbg{
 	background:#F0F0F0;
 	/* margin-top: 77rpx; */
@@ -494,6 +497,7 @@ margin-bottom: 32rpx;
 	width:100%;
 	height: 544rpx;
 	background: center no-repeat/cover;
+	background-color: #F0F0F0;
 }
 .txtbox3{
 	background-color: #FFFFFF;
@@ -729,7 +733,7 @@ margin-bottom: 32rpx;
 }
 .t70_4{
 	height: 1030rpx;
-	/* background-color: #F0F0F0; */
+	background-color: #F0F0F0;
 }
 .t70m_txt2{
 	width: 487rpx;
@@ -954,6 +958,22 @@ margin-bottom: 32rpx;
 	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
+}
+.addimg1{
+	width: 100%;
+	height: 569rpx;
+	background: center no-repeat/cover;
+}
+.setfont{
+	width: 100%;
+	margin-top: 20rpx;
+	padding-bottom: 69rpx;
+	font-size:28rpx;
+	font-family:MHeiPRC;
+	font-weight:bold;
+	color:rgba(0,0,0,1);
+	text-align: center;
+	box-sizing: border-box;
 }
 @keyframes playanit{
 	0%{
