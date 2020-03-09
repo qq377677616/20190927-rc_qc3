@@ -729,8 +729,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/look_car_detail_03/look_car_detail",
+					"id": 96,
+					"name": "启辰星",
 					"pathName": "pages/look_car_detail_03/look_car_detail",
 					"query": "id=11",
 					"scene": null
