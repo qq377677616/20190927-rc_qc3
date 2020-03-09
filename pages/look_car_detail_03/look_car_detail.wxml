@@ -232,7 +232,7 @@
 
 <!-- 规则 -->
 <view class="pof fadeShow" wx:if="{{rulspop}}" catchtap="java">
-  <rule bindclose="openRule" ruleImg="{{ IMGSERVICE }}/pay/pay_rule.png?2"></rule>
+  <rule bindclose="openRule" ruleImg="{{ IMGSERVICE }}/pay/pay_rule.png?33"></rule>
 </view>
 
 

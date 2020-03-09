@@ -36,6 +36,8 @@ Page({
     navIndex: 0,
     nowSiIdx: 0,
     formsType: 2,
+    isPlayVedio:false,
+    videoUrl:'',
     colorList: [{
       title: '星云红',
       color: '#901d29'
@@ -153,58 +155,27 @@ Page({
 		  {img:'tb90_3_1.png',type:1},
 		  { img: 'tb90_3_2.png', type: 1 },
 		  { img: 'tb90_3_3.png', type: 1 },
-		  { img: 'tb90_3_4.mp4', type: 2 },
+		  { img: 'tb90_3_4.png', type: 2,vUrl:'tb90_3_4.mp4'},
 		  { img: 'tb90_3_5.png', type: 1 }
 	  ],	 
 	  t90swp4: [
-		  { img: 'tb90_4_1.mp4', type: 2 },
-		  { img: 'tb90_4_2.mp4', type: 2 },
-		  { img: 'tb90_4_3.mp4', type: 2 },
-		  { img: 'tb90_4_4.mp4', type: 2 },
-		  { img: 'tb90_4_5.mp4', type: 2 },
-		  { img: 'tb90_4_6.mp4', type: 2 },
-		  { img: 'tb90_4_7.mp4', type: 2 },
+		  { img: 'tb90_4_1.png', type: 2 ,vUrl:'tb90_4_1.mp4'},
+		  { img: 'tb90_4_2.png', type: 2 ,vUrl:'tb90_4_2.mp4'},
+		  { img: 'tb90_4_3.png', type: 2 ,vUrl:'tb90_4_3.mp4'},
+		  { img: 'tb90_4_4.png', type: 2 ,vUrl:'tb90_4_4.mp4'},
+		  { img: 'tb90_4_5.png', type: 2 ,vUrl:'tb90_4_5.mp4'},
+		  { img: 'tb90_4_6.png', type: 2 ,vUrl:'tb90_4_6.mp4'},
+		  { img: 'tb90_4_7.png', type: 2 ,vUrl:'tb90_4_7.mp4'},
 		  { img: 'tb90_4_8.png', type: 1 },
 		  { img: 'tb90_4_9.png', type: 1 },
 		  { img: 'tb90_4_10.png', type: 1 },
-		  { img: 'tb90_4_11.mp4', type: 2 },
-		  { img: 'tb90_4_12.mp4', type: 2 },
-		  { img: 'tb90_4_13.mp4', type: 2 },
-		  { img: 'tb90_4_14.mp4', type: 2 },
-		  { img: 'tb90_4_15.mp4', type: 2 },
-		  { img: 'tb90_4_16.mp4', type: 2 },
-		  { img: 'tb90_4_17.mp4', type: 2 }
-	  ],
-	  swp1_img: [ //t60第一个swiper资源
-		  { img: 'Tb60_sw1.png', type: 1 },
-		  { img: 'Tb60_sw2.mp4', type: 2 },
-		  { img: 'Tb60_sw3.mp4', type: 2 },
-		  { img: 'Tb60_sw4.png', type: 1 },
-		  { img: 'Tb60_sw5.mp4', type: 2 },
-		  { img: 'Tb60_sw6.png', type: 1 },
-		  { img: 'Tb60_sw7.mp4', type: 2 },
-		  { img: 'Tb60_sw8.mp4', type: 2 },
-		  { img: 'Tb60_sw9.png', type: 1 }
-	  ],
-	  swp3_img: [//t60第三个swiper资源
-		  { img: 'Tb60_sw3_1.mp4', type: 2 },
-		  { img: 'Tb60_sw3_2.mp4', type: 2 },
-		  { img: 'Tb60_sw3_3.mp4', type: 2 },
-		  { img: 'Tb60_sw3_4.mp4', type: 2 },
-		  { img: 'Tb60_sw3_5.mp4', type: 2 },
-		  { img: 'Tb60_sw3_6.mp4', type: 2 },
-		  { img: 'Tb60_sw3_7.mp4', type: 2 },
-		  { img: 'Tb60_sw3_8.mp4', type: 2 },
-		  { img: 'Tb60_sw3_9.mp4', type: 2 },
-		  { img: 'Tb60_sw3_10.mp4', type: 2 }
-	  ],
-	  t70_swiper2_img: [// t70第二个swiper
-		  { img: 'tb70_2_1.mp4', type: 2 },
-		  { img: 'tb70_2_2.mp4', type: 2 },
-		  { img: 'tb70_2_3.mp4', type: 2 },
-		  { img: 'tb70_2_4.mp4', type: 2 },
-		  { img: 'tb70_2_5.mp4', type: 2 },
-		  { img: 'tb70_2_6.mp4', type: 2 }
+		  { img: 'tb90_4_11.png', type: 2 ,vUrl:'tb90_4_11.mp4'},
+		  { img: 'tb90_4_12.png', type: 2 ,vUrl:'tb90_4_12.mp4'},
+		  { img: 'tb90_4_13.png', type: 2 ,vUrl:'tb90_4_13.mp4'},
+		  { img: 'tb90_4_14.png', type: 2 ,vUrl:'tb90_4_14.mp4'},
+		  { img: 'tb90_4_15.png', type: 2 ,vUrl:'tb90_4_15.mp4'},
+		  { img: 'tb90_4_16.png', type: 2 ,vUrl:'tb90_4_16.mp4'},
+		  { img: 'tb90_4_17.png', type: 2 ,vUrl:'tb90_4_17.mp4'}
 	  ],
 	  isplay: false,// 是否在播放视频
 	  vbtn: true,// 是否显示 播放按钮
@@ -570,25 +541,28 @@ Page({
 		console.log(index)
 	},
 
-	setplay(e) { //控制视频播放暂停
-		console.log("是否播放", this.data.isplay);
-		let video = e.currentTarget.dataset.vid;
-		let vio = wx.createVideoContext(video);
-		this.setData({ curvio: vio });
-		console.log(video);
-		this.data.isplay ? this.videoPause() : this.videoPlay();
-
-		this.setData({
-			isplay: !this.data.isplay,
-		});
-
-		if (this.data.isplay) {
-			console.log("点击播放的时候")
-			setTimeout(() => {
-				this.setData({ vbtn: false })
-			}, 1000)
-		}
-	},
+	// 播放视频
+	setplay(e){ 
+    console.log('1',this.data.isplay);
+    console.log(e.currentTarget.dataset.vurl)
+      this.setData({ 
+        isplay:true,
+        });
+    setTimeout(() => {
+      this.setData({
+        videoUrl:e.currentTarget.dataset.vurl
+      })
+      this.isOpenVideo()
+    }, 1000);
+    console.log('2',this.data.isplay);
+  },
+  // 视频播放弹窗开关
+  isOpenVideo(){
+    this.setData({
+      isPlayVedio:!this.data.isPlayVedio,
+      isplay:false,
+    })
+  },
 	//播放
 	videoPlay() {
 		console.log('开始播放')

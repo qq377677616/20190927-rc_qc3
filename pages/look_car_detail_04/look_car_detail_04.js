@@ -33,6 +33,8 @@ Page({
     car_details: [],
     scrollTop: 0,
     isSwitchIng: false,
+    isPlayVedio:false,
+    videoUrl:'',
     iconList: [
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_01.png', url: '/pages/bargain_index/bargain_index?activity_id=47' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_02.png', url: '/pages/assemble/pin/pin?activity_id=44' },
@@ -92,34 +94,34 @@ Page({
 	d60_swiper4_txt: ['XTRONIC CVT无极变速器', '5.6L/100km低油耗', '带横向稳定杆的扭力梁式悬挂系统','Zone Body高性能区域车身结构','ABS+EBD+BA三位一体智能刹车辅助系统','博世9.1版ESP车身电子稳定系统','TPMS智能胎压监测系统','EPKB电子驻车系统','HR16发动机'],//部件名称
 	swp1_img:[ //t60第一个swiper资源
 		{img:  'Tb60_sw1.png', type: 1},
-		{ img: 'Tb60_sw2.mp4', type: 2},
-		{ img: 'Tb60_sw3.mp4', type: 2},
+		{ img: 'Tb60_sw2.png', type: 2,vUrl:"Tb60_sw2.mp4"},
+		{ img: 'Tb60_sw3.png', type: 2,vUrl:"Tb60_sw3.mp4"},
 		{ img: 'Tb60_sw4.png', type: 1},
-		{ img: 'Tb60_sw5.mp4', type: 2},
+		{ img: 'Tb60_sw5.png', type: 2,vUrl:"Tb60_sw5.mp4"},
 		{ img: 'Tb60_sw6.png', type: 1},
-		{ img: 'Tb60_sw7.mp4', type: 2},
-		{ img: 'Tb60_sw8.mp4', type: 2},
+		{ img: 'Tb60_sw7.png', type: 2,vUrl:"Tb60_sw7.mp4"},
+		{ img: 'Tb60_sw8.png', type: 2,vUrl:"Tb60_sw8.mp4"},
 		{ img: 'Tb60_sw9.png', type: 1}
 		],
 	  swp3_img: [//t60第三个swiper资源
-		{ img: 'Tb60_sw3_1.mp4', type: 2 },
-		{ img: 'Tb60_sw3_2.mp4', type: 2 },
-		{ img: 'Tb60_sw3_3.mp4', type: 2 },
-		{ img: 'Tb60_sw3_4.mp4', type: 2 },
-		{ img: 'Tb60_sw3_5.mp4', type: 2 },
-		{ img: 'Tb60_sw3_6.mp4', type: 2 },
-		{ img: 'Tb60_sw3_7.mp4', type: 2 },
-		{ img: 'Tb60_sw3_8.mp4', type: 2 },
-		{ img: 'Tb60_sw3_9.mp4', type: 2 },
-		{ img: 'Tb60_sw3_10.mp4', type: 2 }
+		{ img: 'Tb60_sw3_1.png', type: 2 ,vUrl:"Tb60_sw3_1.mp4" },
+		{ img: 'Tb60_sw3_2.png', type: 2 ,vUrl:"Tb60_sw3_2.mp4"},
+		{ img: 'Tb60_sw3_3.png', type: 2 ,vUrl:"Tb60_sw3_3.mp4"},
+		{ img: 'Tb60_sw3_4.png', type: 2 ,vUrl:"Tb60_sw3_4.mp4"},
+		{ img: 'Tb60_sw3_5.png', type: 2 ,vUrl:"Tb60_sw3_5.mp4"},
+		{ img: 'Tb60_sw3_6.png', type: 2 ,vUrl:"Tb60_sw3_6.mp4"},
+		{ img: 'Tb60_sw3_7.png', type: 2 ,vUrl:"Tb60_sw3_7.mp4"},
+		{ img: 'Tb60_sw3_8.png', type: 2 ,vUrl:"Tb60_sw3_8.mp4"},
+		{ img: 'Tb60_sw3_9.png', type: 2 ,vUrl:"Tb60_sw3_9.mp4"},
+		{ img: 'Tb60_sw3_10.png', type: 2 ,vUrl:"Tb60_sw3_10.mp4"}
 	],
-	  t70_swiper2_img:[// t70第二个swiper
-		  { img: 'tb70_2_1.mp4', type: 2 },
-		  { img: 'tb70_2_2.mp4', type: 2 },
-		  { img: 'tb70_2_3.mp4', type: 2 },
-		  { img: 'tb70_2_4.mp4', type: 2 },
-		  { img: 'tb70_2_5.mp4', type: 2 },
-		  { img: 'tb70_2_6.mp4', type: 2 }
+    t70_swiper2_img:[// t70第二个swiper
+		  { img: 'tb70_2_1.png', type: 2,vUrl:"tb70_2_1.mp4" },
+		  { img: 'tb70_2_2.png', type: 2,vUrl:"tb70_2_2.mp4" },
+		  { img: 'tb70_2_3.png', type: 2,vUrl:"tb70_2_3.mp4" },
+		  { img: 'tb70_2_4.png', type: 2,vUrl:"tb70_2_4.mp4" },
+		  { img: 'tb70_2_5.png', type: 2,vUrl:"tb70_2_5.mp4" },
+		  { img: 'tb70_2_6.png', type: 2,vUrl:"tb70_2_6.mp4" }
 	  ],
 	isplay:false,// 是否在播放视频
 	vbtn:true,// 是否显示 播放按钮
@@ -324,7 +326,6 @@ Page({
 		// console.log(e);
 		let type = e.currentTarget.dataset.type;
 		this.setData({
-			isplay:false,
 			vbtn:true,
 			swiper1: type==1? e.detail.current:this.data.swiper1,
 			swiper2: type == 2 ? e.detail.current : this.data.swiper2,
@@ -345,26 +346,29 @@ Page({
 		let index = e.currentTarget.dataset.index;
 		this.setData({rogincol:index})
 		console.log(index)
-	},
-	setplay(e){ //控制视频播放暂停
-		console.log("是否播放",this.data.isplay);
-		let video = e.currentTarget.dataset.vid;
-		let vio = wx.createVideoContext(video);
-		this.setData({ curvio: vio});
-		console.log(video);
-		this.data.isplay ? this.videoPause() : this.videoPlay();
-		
-		this.setData({ 
-			isplay:!this.data.isplay,
-			});
-
-		if (this.data.isplay) {
-			console.log("点击播放的时候")
-			setTimeout(() => {
-				this.setData({ vbtn: false })
-			}, 1000)
-		}
-	},
+  },
+  // 播放视频
+	setplay(e){ 
+    console.log('1',this.data.isplay);
+    console.log(e.currentTarget.dataset.vurl)
+      this.setData({ 
+        isplay:true,
+        });
+    setTimeout(() => {
+      this.setData({
+        videoUrl:e.currentTarget.dataset.vurl
+      })
+      this.isOpenVideo()
+    }, 1000);
+    console.log('2',this.data.isplay);
+  },
+  // 视频播放弹窗开关
+  isOpenVideo(){
+    this.setData({
+      isPlayVedio:!this.data.isPlayVedio,
+      isplay:false,
+    })
+  },
 	//播放
 	videoPlay() {
 		console.log('开始播放')

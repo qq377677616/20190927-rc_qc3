@@ -1,5 +1,11 @@
 /* pages/one_yard/one_yard.wxss */
 
+page {
+  width: 100%;
+  height: 100%;
+  background: #CCDDFA;
+}
+
 .banner {
   width: 750rpx;
   /* height: 320rpx; */

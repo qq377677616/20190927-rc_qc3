@@ -105,7 +105,7 @@
 								<!-- 自定义播放按钮 -->
 								<view  class="nopt {{item.type==2&&swiper3==index&&vbtn?'opt':''}}">
 									<view class="fgbox">
-										<view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video1">
+										<view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video1" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}">
 											<view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
 										</view>
 									</view>
@@ -115,8 +115,7 @@
 								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="3"data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
 								<!-- 自定义播放按钮 -->
 
-								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
-								<video class="v_bigitem" object-fit="cover" id="video1" show-center-play-btn="{{false}}"  controls="{{false}}" autoplay='{{false}}' wx:if="{{item.type==2&&swiper3==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -152,7 +151,7 @@
 								<!-- 自定义播放按钮 -->
 								<view  class="nopt {{item.type==2&&swiper4==index&&vbtn?'opt':''}}">
 									<view class="fgbox">
-										<view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video2">
+										<view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video2" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}">
 											<view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
 										</view>
 									</view>
@@ -162,8 +161,7 @@
 								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="4"data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
 								<!-- 自定义播放按钮 -->
 
-								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
-								<video class="v_bigitem" object-fit="cover" id="video2" show-center-play-btn="{{false}}"  controls="{{false}}" autoplay='{{false}}' wx:if="{{item.type==2&&swiper4==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -297,3 +295,10 @@
 <view class="forms-box" wx:if="{{ true }}">
 	<forms bindsubmit="submit" bindclose="isShowForm" popstu="{{popstu}}" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
 </view>
+
+<!-- 视频播放 -->
+<view class="playVedio fadeIn" wx:if="{{isPlayVedio}}">
+	<image class="close_video_btn" catchtap="isOpenVideo" src="{{IMGSERVICE}}/gaiban/close_video_btn.png" mode="widthFix"></image>
+	<video class="v_bigitem" object-fit="cover" loop="{{true}}" show-center-play-btn="{{false}}"  controls="{{false}}" autoplay='{{true}}' src="{{videoUrl}}"></video>
+</view>
+<!-- 视频播放 -->
