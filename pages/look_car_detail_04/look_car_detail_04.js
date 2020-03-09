@@ -337,6 +337,7 @@ Page({
 			swiper9: type == 9 ? e.detail.current : this.data.swiper9,
 			swiper10: type == 10 ? e.detail.current : this.data.swiper10,
 			swiper11: type == 11 ? e.detail.current : this.data.swiper11,
+			swiper12: type == 12 ? e.detail.current : this.data.swiper12,
 			})
 			console.log(type);
 		console.log(this.data.swiper1,this.data.swiper2);

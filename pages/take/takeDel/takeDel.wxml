@@ -33,6 +33,6 @@
 	<view class="r_send" bindtap="sendMsg">发送</view>
 </view>
 <view class="imgpop fadeShow" wx:if="{{popshow}}" bindtap="hidepop">
-	
+	<image src="{{BASEURL}}/test.png" class="bigimg"></image>
 </view>
 

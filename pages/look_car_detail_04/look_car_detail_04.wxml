@@ -263,6 +263,7 @@
 				<!--轮播实例-->
 
 				<view class="setwhite"></view>
+				<view class="setwhite setwhite2"></view>
 				<view class="nt60_4 t70_4" style="background-image:url({{IMGSERVICE}}/gaiban/t70bg4.png)"></view>
 				<view class="txtbox2 txtbox3">{{t70_swiper2_txt[swiper5]}}</view>
 				
@@ -286,7 +287,7 @@
 								<!-- 自定义播放按钮 -->
 
 								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
-								<video class="v_bigitem" object-fit="cover" id="video5" show-center-play-btn="{{false}}"  controls="{{false}}" autoplay='{{false}}' wx:if="{{item.type==2&&swiper5==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
+								<video class="v_bigitem" object-fit="cover" id="video5" show-center-play-btn="{{false}}"  controls="{{false}}" autoplay='{{false}}' wx:if="{{item.type==2&&swiper5==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}" poster="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/gaiban/tb70_2_{{index+1}}.png"></video>
 							</swiper-item>
 						</block>
 					</swiper>
@@ -384,8 +385,10 @@
 					<text class="txt2 t70txt2">给您和家人每一趟安心旅程。</text>
 				</view>
 
+				<view class="addimg1" style="background-image:url({{IMGSERVICE}}/gaiban/t70addbg.png)"></view>
 
 				<view class="txtbox2 txtbox3">{{t70_swiper5_txt[swiper8]}}</view>
+				<view wx:if="{{swiper8==0}}" class="setfont">严格遵循品质管理标准，实现专业品质</view>
 				<!--轮播实例6-->
 				<view class="threebg threebg6 anit6_{{swiper8}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="8" current="{{swiper8}}">
@@ -488,7 +491,7 @@
 					</swiper>
 				</view>
 				<view class="swiper1">
-					<swiper circular="{{true}}"  previous-margin="80rpx"  display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="9" current="{{swiper9}}">
+					<swiper circular="{{true}}"  previous-margin="80rpx" next-margin="80rpx"  display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="9" current="{{swiper9}}">
 						 <block wx:for="{{6}}" wx:key="item">
 							<swiper-item>
 								<view class="item1 {{swiper9!=index-1&&!(swiper9==5&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_1_{{index+1}}.jpg?4)"></view>
