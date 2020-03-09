@@ -9,7 +9,7 @@
     /* padding: 28rpx; */
     position: fixed;
     width:100%;
-    height:262rpx;
+    height:254rpx;
     left:0;
     bottom:0;
     /* z-index: 999; */
@@ -323,7 +323,7 @@ picker text{font-size: 30rpx;color:#666;white-space: nowrap;overflow: hidden;tex
 }
 .f_box{
 	width: 100%;
-	height: 150rpx;
+	height: 280rpx;
 	/* background-color: red; */
 }
 .addH2{
@@ -345,7 +345,6 @@ picker text{font-size: 30rpx;color:#666;white-space: nowrap;overflow: hidden;tex
 .pay_gou {
   width: 24rpx;
 }
-
 .prize-pic image {
   width: 100%;
 }
