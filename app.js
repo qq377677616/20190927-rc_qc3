@@ -43,7 +43,7 @@ App({
 		IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0', //日产小程序的 图片路径
 
         ASSETSURL: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/ca', //ca 资源地址
-        REQUESTURL: 'https://vrupup.com/shuihu/ca/public', //ca接口请求路径
+		REQUESTURL: 'http://uavx3q.natappfree.cc/index.php/', //ca接口请求路径
         currentAddressItem: {},
         goodsDetail: {},
         cartDetail: {},
