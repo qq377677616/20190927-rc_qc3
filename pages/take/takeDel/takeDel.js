@@ -10,7 +10,8 @@ Page({
 		msg:'',//发送的信息
 		socketOpen:false,//是否连接
 		socketMsgQueue:[],//
-		popshow:false,
+		popshow:false,//
+		sendload:[]
 	},
 
 	/**
@@ -80,14 +81,10 @@ Page({
 			socketOpen = true
 			console.log('连接成功！');
 			self.setData({socketOpen:true})
-			self.bindUse();
-			// console.log(res);
-			// for (let i = 0; i < socketMsgQueue.length; i++) {
-			// 	sendSocketMessage(socketMsgQueue[i])
-			// }
-			// socketMsgQueue = []
-			// self.setData({socketMsgQueue:[]})
+			self.bindUse(); // 绑定用户
 		})
+
+		this.acceptmag();// 接收socekt
 	},
 	getval(e){//保存消息
 	  this.setData({msg:e.detail.value});
@@ -113,7 +110,6 @@ Page({
 		}else{
 			let content = `{"type":"send","to_uid":"50A","data":{"msg_type":"1","content":"${msg}"}}`; 
 			if (this.data.socketOpen) {
-				console.log(1)
 				wx.sendSocketMessage({
 					data: content
 				})
@@ -122,6 +118,24 @@ Page({
 				socketMsgQueue.push(content)
 			}
 		}
+	},
+	acceptmag(){//接收信息 use: 1 自己 2 别人  type为接收的信息类型
+		let self = this;
+		let arr = [];
+		wx.onSocketMessage(function (msg) {
+			let data = JSON.parse(msg.data);
+			let code =  data.code;
+			let type = data.type;
+			if(code!=1)return;
+			switch (type){
+				case 'send':{ //接收发送的信息
+					console.log(data.type)
+					arr.push({content:self.data.msg,type:1,use:1})
+					self.setData({ sendload:arr,msg:''})
+					break;
+				}
+			}
+		})
 	},
 	amplt(){
 		// console.log(11)

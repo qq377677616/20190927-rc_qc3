@@ -1,15 +1,16 @@
 <!-- 聊天信息 -->
-<view wx:for="{{2}}" wx:key="{{l}}">
+<view wx:for="{{sendload}}" wx:key="{{l}}">
 	<view class="times">2020-01-02</view>
-	<view class="leftinfo">
+	
+	<view class="leftinfo" wx:if="{{item.use==2}}">
 		<view class="l_img" style="background-image:url({{BASEURL}}/test.png)">
-				
 		</view>
 		<view class="r_info">
 			<image src="{{BASEURL}}/test.png" mode="widthFix" class="setwidth" bindtap="amplt"></image>
 		</view>
 	</view>
-	<view class="rightinfo">
+
+	<view class="rightinfo" wx:if="{{item.use==1}}">
 		<view class="l_info">亲，我是您的导购人员，有什么问题都可以问我哦。</view>
 		<view class="r_img" style="background-image:url({{BASEURL}}/test.png)"></view>	
 	</view>

@@ -148,20 +148,20 @@ Page({
 		https.getPosition().then((res)=>{// 获取地理位置
 			// console.log(res.result.ad_info.location);
 			let locat = res.result.ad_info.location;
-			// let dat = {
-			// 	lon: locat.lng,
-			// 	lat: locat.lat,
-			// 	page:0,
-			// 	limit:1
-			// }
-			// https.getInfo(dat).then((res) => {
-			// 	// console.log(res);
-			// 	if(res.data.code==1){
-			// 		tool.loading_h();
-			// 		// console.log(res);
-			// 		this.setData({useData:res.data.data[0]})
-			// 	}
-			// })
+			let dat = {
+				lon: locat.lng,
+				lat: locat.lat,
+				page:0,
+				limit:1
+			}
+			https.getInfo(dat).then((res) => {
+				// console.log(res);
+				if(res.data.code==1){
+					tool.loading_h();
+					// console.log(res);
+					this.setData({useData:res.data.data[0]})
+				}
+			})
 		}).catch(err => {
 			console.log("定位失败", err)
 			tool.alert("定位失败")
