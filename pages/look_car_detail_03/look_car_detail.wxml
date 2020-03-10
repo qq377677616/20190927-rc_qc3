@@ -29,7 +29,7 @@
   </view>
 
   <view class="rule">
-    <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/shuomingshu.jpg?1" data-index="1" onload="imgLoad" onerror="imgLoad"></image>
+    <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/shuomingshu.jpg?2" data-index="1" onload="imgLoad" onerror="imgLoad"></image>
   </view>
   <!-- h2 -->
   <view class="h2">
@@ -232,7 +232,7 @@
 
 <!-- 规则 -->
 <view class="pof fadeShow" wx:if="{{rulspop}}" catchtap="java">
-  <rule bindclose="openRule" ruleImg="{{ IMGSERVICE }}/pay/pay_rule.png?33"></rule>
+  <rule bindclose="openRule" ruleImg="{{ IMGSERVICE }}/pay/pay_rule.png?1"></rule>
 </view>
 
 
