@@ -9,17 +9,17 @@
     <view class="form_area">
 	   <view class="setwid">
 			<view class="group">
-				<text class="label">姓 名</text>
+				<!-- <text class="label">姓 名</text> -->
 				<input type="text" class="staript" placeholder="姓名" bindinput="inputName" value="{{name}}" bindfocus="showheg"/>
 			</view>
 
 			<view class="group">
-				<text class="label">电 话</text>
+				<!-- <text class="label">电 话</text> -->
 				<input type="text" class="staript" value="{{phone}}" placeholder="电话" bindinput="inputPhone" bindfocus="showheg" maxlength="11" type="number" />
 			</view>
         </view>
         <view class="group" wx:if="{{isright&&popstu==1}}">
-            <text class="label label2" space="nbsp">地 址</text>
+            <!-- <text class="label label2" space="nbsp">地 址</text> -->
             <view class="location">
                 <picker class="picker" mode="region" bindchange="bindRegionChange" value="{{region}}"
                     custom-item="{{customItem}}">
@@ -30,11 +30,13 @@
         </view>
 
         <view class="group" wx:if="{{isright&&popstu==1}}">
-            <text class="label label2" space="nbsp">专营店</text>
+            <!-- <text class="label label2" space="nbsp">专营店</text> -->
             <view class="location">
-                <picker class="picker" bindchange="bindStoreChange" value="{{storeList_index}}" range="{{storeList}}"
-                    range-key="{{'name'}}"><text class="picker">{{storeList[storeList_index].name}}</text>
+                <picker wx:if="{{storeList.length>0}}" class="picker" bindchange="bindStoreChange" value="{{storeList_index}}" range="{{storeList}}"
+                    range-key="{{'name'}}">
+                    <text class="picker">{{storeList[storeList_index].name}}</text>
                 </picker>
+                <text wx:else class="phone-pla">请填写手机号</text>
                 <view class="triangle"></view>
             </view>
 			
