@@ -1,13 +1,31 @@
 <!--pages/ev/ev_index/ev_index.wxml-->
-<view class="content">
-  <view class="all-con">
-    <view class="rule">活动规则</view>
-    <image class="ev_index_icon" src="{{IMGSERVICE}}/ev/ev_index_icon.png" mode="widthFix"></image>
-    <image class="ev_index_bg" src="{{IMGSERVICE}}/ev/ev_index_bg.png" mode="widthFix"></image>
-    <image class="btn" src="{{IMGSERVICE}}/ev/ev_yuyue_btn.png" mode="widthFix"></image>
-    <image class="btn" wx:if="{{false}}" src="{{IMGSERVICE}}/ev/ev_share_btn.png" mode="widthFix"></image>
-    <image class="btn" wx:if="{{false}}" src="{{IMGSERVICE}}/ev/ev_get_btn.png" mode="widthFix"></image>
-    <view class="more-btn">查看更多</view>
-    <image class="ev_index_logo" src="{{IMGSERVICE}}/ev/ev_index_logo.png" mode="widthFix"></image>
-  </view>
+<view class="content" bindtap="isVehicleOwner">
+    <view class="all-con">
+        <view class="rule" catchtap="switchRule">活动规则</view>
+        <image class="ev_index_icon" src="{{IMGSERVICE}}/ev/ev_index_icon.png" mode="widthFix"></image>
+        <image class="ev_index_bg" src="{{IMGSERVICE}}/ev/ev_index_bg.png" mode="widthFix"></image>
+        <image class="btn" bindtap="toForm" wx:if="{{take_status==1}}" src="{{IMGSERVICE}}/ev/ev_yuyue_btn.png" mode="widthFix" data-type="ok"></image>
+        <image class="btn" bindtap="toHelp" wx:if="{{help_info.take_status!=2 && take_status==2}}" src="{{IMGSERVICE}}/ev/ev_share_btn.png" mode="widthFix"></image>
+        <image class="btn" bindtap="getCard" wx:if="{{take_status==3}}" src="{{IMGSERVICE}}/ev/ev_get_btn.png" mode="widthFix"></image>
+        <image class="btn" bindtap="toActivityList" wx:if="{{help_info.take_status==2}}" src="{{IMGSERVICE}}/ev/chakan.png" mode="widthFix"></image>
+        <view class="more-btn" bindtap="switchPolicy">查看更多</view>
+        <image class="ev_index_logo" src="{{IMGSERVICE}}/ev/ev_index_logo.png" mode="widthFix"></image>
+    </view>
+
+    <!-- 规则 -->
+    <view class="pof fadeShow" wx:if="{{rulspop}}">
+        <rule bindclose="switchRule" ruleImg="{{rule}}"></rule>
+    </view>
+
+    <!-- 置换政策 -->
+    <view class="pof fadeShow" wx:if="{{policypop}}">
+        <rule bindclose="switchPolicy" ruleImg="{{IMGSERVICE}}/ev/policy.png"></rule>
+    </view>
+
+    <!-- 授权、去绑定车主弹窗 -->
+    <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+        <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
+    </view>
+
+    <!-- win_list -->
 </view>

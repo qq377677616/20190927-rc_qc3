@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "EV试驾赢好礼"
+    "usingComponents": {
+        "rule": "/components/rule/rule",
+        "activePop": "/components/activePop/activePop"
+    },
+    "navigationBarTitleText": "EV试驾赢好礼"
 }

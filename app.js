@@ -40,7 +40,7 @@ App({
         userInfo: null,
         //https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
         //'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
-		IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0', //日产小程序的 图片路径
+        IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0', //日产小程序的 图片路径
 
         ASSETSURL: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/ca', //ca 资源地址
         REQUESTURL: 'https://vrupup.com/shuihu/ca/public', //ca接口请求路径
