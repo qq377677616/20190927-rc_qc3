@@ -151,9 +151,6 @@ Page({
 			if(code!=1)return;
 			switch (type){
 				case 'send':{ //接收发送的信息
-					if (self.data.code == 0){
-						break;
-					}
 					console.log(self.data.msg_type);
 					arr.push({ content: self.data.msg, type: 1, is_ob: 1, msg_type:self.data.msg_type});
 					self.setData({ sendload: [...self.data.sendload, ...arr],msg:''});
