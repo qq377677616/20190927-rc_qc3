@@ -39,7 +39,9 @@ Page({
 			color_confirm: '#A3271F'
 		},
 		isShowLoading: false,// 是否显示loading
-		userInfo:null
+		userInfo:null,
+		uid:null,// 自己id
+		to_uid:null,// 给别人的id
 	},
 
 	/**
@@ -124,7 +126,8 @@ Page({
 			avatar: this.data.userInfo.headimg
 		}
 		https.clientLogin(dat).then((res)=>{
-			console.log(res);
+			// console.log(res);
+			if(res.data.code==1)this.setData({uid:res.data.data,to_uid:this.data.useData.id});
 		})
 	},
 	getUserInfo(e) { // 授权
@@ -146,23 +149,28 @@ Page({
 	getInfo(){//获取专营店信息
 		tool.loading("自动定位中")
 		https.getPosition().then((res)=>{// 获取地理位置
-			// console.log(res.result.ad_info.location);
-			let locat = res.result.ad_info.location;
-			// let dat = {
-			// 	lon: locat.lng,
-			// 	lat: locat.lat,
-			// 	page:0,
-			// 	limit:1
-			// }
-			// https.getInfo(dat).then((res) => {
-			// 	// console.log(res);
-			// 	if(res.data.code==1){
-			// 		tool.loading_h();
-			// 		// console.log(res);
-			// 		this.setData({useData:res.data.data[0]})
-			// 	}
-			// })
-		}).catch(err => {
+		
+				let locat = res.result.ad_info.location;
+				let dat = {
+					lon: locat.lng,
+					lat: locat.lat,
+					page: 0,
+					limit: 1
+				}
+				https.getInfo(dat).then((res) => {
+					console.log(res);
+					if (res.data.code == 1) {
+						tool.loading_h();
+						// console.log(res);
+						this.setData({ useData: res.data.data[0] })
+					} else {
+						tool.alert(res.data.msg)
+					}
+				})
+			
+			
+		})
+		.catch(err => {
 			console.log("定位失败", err)
 			tool.alert("定位失败")
 			tool.loading_h()
@@ -178,7 +186,7 @@ Page({
 	},
 	takeMan() {//聊一聊userInfo.nickName || !userInfo.unionid
 		if (this.data.userInfo.nickName && this.data.userInfo.unionid){
-			tool.jump_nav(`/pages/take/takeDel/takeDel`);
+			tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}`);
 		}
 	},
 	// 跳转到专营店列表

@@ -34,12 +34,16 @@ page{
 .r_info{
 	flex: 1;
 }
+.r_info2{
+	display: flex;
+	justify-content: flex-end;
+}
 .setwidth{
 	width: 600rpx;
 	height: auto;
 }
 .l_info{
-	width:484rpx;
+	max-width:484rpx;
 	background:rgba(0,59,115,1);
 	opacity:0.8;
 	border-radius:40rpx 0rpx 40rpx 40rpx;
@@ -51,6 +55,10 @@ page{
 	padding: 27rpx 35rpx;
 	box-sizing: border-box;
 	margin-right: 25rpx;
+	word-break: break-all;
+}
+.l_info2{
+	border-radius:0rpx 40rpx 40rpx 40rpx;
 }
 .r_img{
 	width:76rpx;
@@ -142,4 +150,7 @@ page{
 .bigimg{
 	width: 100%;
 	height: auto;
+}
+.infobox{
+	padding-top: 37rpx;
 }

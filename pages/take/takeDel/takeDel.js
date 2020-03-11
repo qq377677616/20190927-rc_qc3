@@ -1,4 +1,6 @@
 // pages/take/takeDel.js
+import tool from "../../../utils/public/tool.js"
+import https from "../../../utils/api/my-requests.js"
 let app = new getApp();
 Page({
 
@@ -10,14 +12,17 @@ Page({
 		msg:'',//发送的信息
 		socketOpen:false,//是否连接
 		socketMsgQueue:[],//
-		popshow:false,
+		popshow:false,//
+		sendload:[]
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		this.setData({uid:options.uid,to_uid:options.to_uid})
 		this.creatSocket();
+		this.msgLog();
 	},
 
 	/**
@@ -52,7 +57,10 @@ Page({
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
 	onPullDownRefresh: function () {
-
+		console.log("用户下拉");
+		setTimeout(()=>{
+			wx.stopPullDownRefresh();
+		},2000)
 	},
 
 	/**
@@ -61,7 +69,6 @@ Page({
 	onReachBottom: function () {
 
 	},
-
 	/**
 	 * 用户点击右上角分享
 	 */
@@ -75,19 +82,14 @@ Page({
 		wx.connectSocket({
 			url: 'ws://192.168.1.193:8282'
 		})
-
 		wx.onSocketOpen(function (res) {
 			socketOpen = true
 			console.log('连接成功！');
 			self.setData({socketOpen:true})
-			self.bindUse();
-			// console.log(res);
-			// for (let i = 0; i < socketMsgQueue.length; i++) {
-			// 	sendSocketMessage(socketMsgQueue[i])
-			// }
-			// socketMsgQueue = []
-			// self.setData({socketMsgQueue:[]})
+			self.bindUse(); // 绑定用户
 		})
+
+		this.acceptmag();// 接收socekt
 	},
 	getval(e){//保存消息
 	  this.setData({msg:e.detail.value});
@@ -113,7 +115,6 @@ Page({
 		}else{
 			let content = `{"type":"send","to_uid":"50A","data":{"msg_type":"1","content":"${msg}"}}`; 
 			if (this.data.socketOpen) {
-				console.log(1)
 				wx.sendSocketMessage({
 					data: content
 				})
@@ -123,11 +124,56 @@ Page({
 			}
 		}
 	},
-	amplt(){
-		// console.log(11)
-		this.setData({ popshow:true});
+	acceptmag() {//接收信息 use: 1 自己 2 别人  type为接收的信息类型 c_type:1 为文字 2为图片
+		let self = this;
+		let arr = [];
+		wx.onSocketMessage(function (msg) {
+			let data = JSON.parse(msg.data);
+			let code =  data.code;
+			let type = data.type;
+			if(code!=1)return;
+			switch (type){
+				case 'send':{ //接收发送的信息
+					console.log(data.type)
+					arr.push({content:self.data.msg,type:1,use:1,c_type:1})
+					self.setData({ sendload:arr,msg:''})
+					break;
+				}
+			}
+		})
 	},
-	hidepop(){
-		this.setData({popshow:false})
+	msgLog(){//查询消息记录
+		let dat = {
+			page:0,
+			uid:this.data.uid,
+			to_uid: `${this.data.to_uid}A`,
+			limit:10
+		}
+		https.msgLog(dat).then((res)=>{
+			console.log(res.data)
+		}).catch((err)=>{
+			console.log(err)
+		})
+	},
+	upimg(){
+		wx.chooseImage({
+			success(res) {
+				const tempFilePaths = res.tempFilePaths
+				wx.uploadFile({
+					url: 'http://uavx3q.natappfree.cc/index.php/index/index/upload', //仅为示例，非真实的接口地址
+					filePath: tempFilePaths[0],
+					name: 'file',
+					formData: {
+						
+					},
+					success(res) {
+						const data = res.data
+						//do something
+						console.log(data);
+					}
+				})
+			}
+		})
+
 	}
 })

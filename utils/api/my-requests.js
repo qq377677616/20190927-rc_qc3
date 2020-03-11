@@ -37,11 +37,14 @@ const getPosition = () => {
 			},
 			fail: function (err) {
 				reject(err)
-				console.log("定位失败")
+				console.log("定位失败333")
 			}
 		})
 	})
 }
+// 获取专营店信息 
+const msgLog = (data, url = '/index/index/msgLog') => { return myRequest(data, url) }
+
 
 module.exports = {
   myRequest,
@@ -53,4 +56,5 @@ module.exports = {
   clientLogin,
   getInfo,
   getPosition,
+	msgLog,
 }
