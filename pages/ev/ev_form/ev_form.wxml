@@ -7,13 +7,15 @@
   <!-- 表单 -->
   <view class="form">
     <view class="f-tit">您的姓名</view>
-    <input class="input" type="text" placeholder="请填写您的姓名" placeholder-class="placeholder"></input>
+    <input class="input" bindinput='inputName' type="text" placeholder="请填写您的姓名" placeholder-class="placeholder"></input>
     <view class="f-tit">您的手机号码</view>
     <view class="phone">
-      <input class="input wh1" type="phone" maxlength="11" placeholder="请输入您的手机号码" placeholder-class="placeholder"></input>
-      <view class="code-btn">获取验证码</view>
+      <input class="input wh1" bindinput="inputPhone" type="phone" maxlength="11" placeholder="请输入您的手机号码" placeholder-class="placeholder"></input>
+      <view class="code-btn" bindtap="getCode">
+        {{isGetCode == 1 ? countDown + 's' : (isGetCode == 0 ? '获取验证码' : '获取中')}}
+      </view>
     </view>
-    <input class="input" type="text" placeholder="请输入验证码" placeholder-class="placeholder"></input>
+    <input class="input" type="phone" maxlength="6" bindinput='inputCode' placeholder="请输入验证码" placeholder-class="placeholder"></input>
     <view class="f-tit">请选择为您服务的专营店</view>
     <view class="input">
       <view class="sanjiao"></view>
@@ -26,7 +28,7 @@
       </block>
     </view>
     <view class="f-tit">您的新能源指标</view>
-    <input class="input" type="text" placeholder="请填写北京新能源指标号码" placeholder-class="placeholder"></input>
+    <input class="input" bindinput="number" type="phone" maxlength="11" placeholder="请填写北京新能源指标号码" placeholder-class="placeholder"></input>
     <view class="two">
       <!-- 预约试驾时间 -->
       <view class="time">
@@ -34,9 +36,9 @@
         <view class="input wh-time">
           <view class="sanjiao"></view>
           <block>
-            <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
+            <picker bindchange="bindPickerTime" value="{{time_index}}" range="{{time_arr}}">
               <view class="picker">
-                <view>{{storeList[storeList_index].name}}</view>
+                <view>{{time_arr[time_index]}}</view>
               </view>
             </picker>
           </block>
@@ -49,9 +51,9 @@
         <view class="input wh-time">
           <view class="sanjiao"></view>
           <block>
-            <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
+            <picker bindchange="bindPickerCar" value="{{car_index}}" range="{{car_list}}" range-key="{{'name'}}">
               <view class="picker">
-                <view>{{storeList[storeList_index].name}}</view>
+                <view>{{car_list[car_index].name}}</view>
               </view>
             </picker>
           </block>
@@ -59,7 +61,7 @@
       </view>
       <!-- 试驾车辆 -->
     </view>
-    <view class="submit">提交信息</view>
+    <view class="submit" bindtap="submit">提交信息</view>
   </view>
   <!-- 表单 -->
   <view class="bottom">

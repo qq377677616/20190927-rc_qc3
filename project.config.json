@@ -820,24 +820,31 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 109,
 					"name": "EV首页",
 					"pathName": "pages/ev/ev_index/ev_index",
-					"query": "",
+					"query": "activity_id=30",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 110,
 					"name": "EV留资",
 					"pathName": "pages/ev/ev_form/ev_form",
-					"query": "",
+					"query": "activity_id=30",
+					"scene": null
+				},
+				{
+					"id": 111,
+					"name": "EV助力",
+					"pathName": "pages/ev/ev_help/ev_help",
+					"query": "activity_id=30&openid=oORV85Qy9_-ER065XkxiWzF3Z7ao&user_id=60",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "EV助力",
+					"name": "EV自己助力",
 					"pathName": "pages/ev/ev_help/ev_help",
-					"query": "",
+					"query": "activity_id=30",
 					"scene": null
 				}
 			]

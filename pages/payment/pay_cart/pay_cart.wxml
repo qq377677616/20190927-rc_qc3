@@ -60,7 +60,7 @@
 
                     <view class="v_num">
                         <view class="v">
-                            <view class="span price">￥</view>
+                            <view class="span price">现金红包</view>
                             <view class="span price">{{ goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin }}</view>
                         </view>
                         <view class="num">x{{ goodsDetail.__number }}</view>
@@ -83,7 +83,7 @@
 
             <view class="span total">共计{{ goodsDetail.__number }}件产品</view>
 
-            <view class="span price">合计 {{ goodsDetail.__number * (goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin) }}￥</view>
+            <view class="span price">合计 {{ goodsDetail.__number * (goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin) }}现金红包</view>
 
         </view><!-- total_area -->
 
@@ -91,7 +91,7 @@
         <view class="footer">
 
             <view class="total nowrap">
-                总计: {{ goodsDetail.__number * (goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin) }} ￥
+                总计: {{ goodsDetail.__number * (goodsDetail.goods_attr.length ? goodsDetail.attr_info[goodsDetail.__index].vcoin : goodsDetail.vcoin) }} 现金红包
             </view>
 
             <view class="btn" bindtap="settlement">结 算</view>

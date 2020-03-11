@@ -78,10 +78,15 @@ page {
   height: 86rpx;
   overflow: hidden;
   flex-shrink: 0;
+  border-radius: 50%;
 }
 
 .me-headimg image {
   width: 86rpx;
+}
+
+.gray{
+  background: #666 !important;
 }
 
 .me-right {
@@ -253,4 +258,60 @@ page {
   align-items: center;
   color: #999;
   font-size: 24rpx;
+}
+
+.helpsuccBox {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.succPop {
+  width: 560rpx;
+  height: 465rpx;
+  background-color: white;
+  border-radius: 40rpx;
+  padding-top: 107rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.succTxt {
+  width: 100%;
+  text-align: center;
+  color: #333;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.succTxt2 {
+  margin-top: 20rpx;
+}
+
+.succBtn {
+  width: 332rpx;
+  height: 70rpx;
+  background: linear-gradient(90deg, rgba(239, 77, 74, 1), rgba(223, 51, 51, 1)) !important;
+  text-align: center;
+  line-height: 70rpx;
+  color: white;
+  font-size: 28rpx;
+  margin: 0 auto;
+  border-radius: 35rpx;
+  margin-top: 106rpx;
+}
+
+.closeBtn {
+  width: 50rpx;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -100rpx;
 }

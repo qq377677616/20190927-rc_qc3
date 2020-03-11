@@ -299,7 +299,19 @@ Page({
 		router.jump_nav({
 			url: `/pages/binding/owner/owner?activity_id=${activity_id}`,
 		})
-		break;
+    break;
+    case 16:
+     //16 99元支付
+            router.jump_nav({
+                 url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
+              })
+                break;
+          case 19:
+              //19 ev
+              router.jump_nav({
+                  url: `/pages/ev/ev_index/ev_index?activity_id=${activity_id}`,
+              })
+                break;
     }
   },
 })
