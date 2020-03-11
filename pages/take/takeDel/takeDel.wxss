@@ -39,7 +39,7 @@ page{
 	justify-content: flex-end;
 }
 .setwidth{
-	width: 600rpx;
+	width: 400rpx;
 	height: auto;
 }
 .l_info{
