@@ -16,6 +16,8 @@ Page({
 		msg_type:1,// 发送消息类型
 		page:0,// 当前页
 		havpage:true,//是否还有下一页
+		uid:null,// 自己的id
+		to_uid:null, // 客服id
 	},
 
 	/**
@@ -105,7 +107,7 @@ Page({
 	bindUse(){// 绑定 
 		let time = null;
 		wx.sendSocketMessage({
-			data: '{"type":"bind","uid":"1"}'
+			data: '{"type":"bind","uid":"'+this.data.uid+'"}'
 		})
 
 		clearInterval(time);
@@ -123,8 +125,8 @@ Page({
 		if(msg==''){
 			console.log("输入不能为空");
 			tool.alert("输入不能为空");
-		}else{
-			let content = `{"type":"send","to_uid":"50A","data":{"msg_type":"${this.data.msg_type}","content":"${msg}"}}`; 
+		} else {//${this.data.to_uid}
+			let content = `{"type":"send","to_uid":"YangLiSongA","data":{"msg_type":"${this.data.msg_type}","content":"${msg}"}}`; 
 			if (this.data.socketOpen) {
 				this.setData({msg_type:1})
 				wx.sendSocketMessage({
