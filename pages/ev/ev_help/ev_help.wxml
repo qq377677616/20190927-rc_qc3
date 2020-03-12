@@ -89,7 +89,7 @@
       <view class="succTxt succTxt2">
         <text>你已经为好友助力!</text>
       </view>
-      <view class="succBtn" bindtap="toEvIndex">和好友一起摇红包吧!</view>
+      <view class="succBtn" bindtap="toEvIndex">我也要参与!</view>
       <image bindtap="closeSuc" mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn"></image>
     </view>
   </view>
