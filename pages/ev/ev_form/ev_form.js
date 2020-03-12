@@ -110,15 +110,17 @@ Page({
               wx.addCard({
                 cardList: [res.data.data[0]],
                 success(res){
+                  tool.loading('领取中')
                   console.log(res.cardList[0].code,'card_code')
                   let card_code = res.cardList[0].code
                   request_05.orderCardCode({
-                    activity_id,  
-                    openid,
+                    order_goods_id,  
+                    user_id,
                     card_code
                   }).then(res => {
                     console.log('update_card_code', res)
                     if (res.data.status == 1) {
+                      tool.loading_h()
                       tool.alert('领取成功')
                       setTimeout(() => {
                         router.jump_back()
