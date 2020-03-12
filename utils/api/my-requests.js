@@ -44,8 +44,30 @@ const getPosition = () => {
 }
 // 获取专营店信息 
 const msgLog = (data, url = '/index/index/msgLog') => { return myRequest(data, url) }
-
-
+// 图片上传
+const uploadFiles = (data) => {
+	let url = `${REQUESTURL}/index/index/upload`;
+	return new Promise((resolve, reject) => {
+		wx.chooseImage({
+			success(res) {
+				const tempFilePaths = res.tempFilePaths
+				wx.uploadFile({
+					url: url,
+					filePath: tempFilePaths[0],
+					name: 'file',
+					formData: {},
+					success(res) {
+						const data = res.data
+						resolve(JSON.parse(data))
+					}
+				})
+			},
+			fail(err) {
+				reject(err)
+			}
+		})
+	})
+}
 module.exports = {
   myRequest,
   getOpenid,
@@ -57,4 +79,5 @@ module.exports = {
   getInfo,
   getPosition,
 	msgLog,
+	uploadFiles,
 }

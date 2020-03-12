@@ -50,10 +50,9 @@ Page({
 	onLoad: function (options) {
 		if (options.obj){
 			let obj = JSON.parse(options.obj);
-			this.setData({ useData: obj })
+			this.setData({ useData: obj });
 		}else{
 			this.getInfo();
-			console.log(1111)
 		}
 		request_01.login(() => {
 			this.setData({
@@ -185,8 +184,10 @@ Page({
 		this.setData({iscope:true});
 	},
 	takeMan() {//聊一聊userInfo.nickName || !userInfo.unionid
-		if (this.data.userInfo.nickName && this.data.userInfo.unionid){
+		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.id){
 			tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}`);
+		}else{
+			tool.alert("加载中请稍后！");
 		}
 	},
 	// 跳转到专营店列表

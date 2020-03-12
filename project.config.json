@@ -792,10 +792,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 105,
 					"name": "takeDel",
 					"pathName": "pages/take/takeDel/takeDel",
-					"query": "",
+					"query": "uid=1&to_uid=50",
 					"scene": null
 				},
 				{
