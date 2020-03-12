@@ -386,7 +386,7 @@
                     <view class="addimg1" style="background-image:url({{IMGSERVICE}}/gaiban/t70addbg.png)"></view>
 
                     <view class="txtbox2 txtbox3">{{t70_swiper5_txt[swiper8]}}</view>
-                    <view wx:if="{{swiper8==0}}" class="setfont">严格遵循品质管理标准，实现专业品质</view>
+                    <!-- <view wx:if="{{swiper8==0}}" class="setfont">严格遵循品质管理标准，实现专业品质</view> -->
                     <!--轮播实例6-->
                     <view class="threebg threebg6 anit6_{{swiper8}}">
                         <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="8" current="{{swiper8}}">
@@ -545,7 +545,7 @@
 
                     <view class="d60bg4" style="background-image:url({{IMGSERVICE}}/gaiban/d60bg4.png)"></view>
 
-                    <view class="txtbox2 txtbox3">{{d60_swiper3_txt[swiper10]}}</view>
+                    <view class="txtbox2 txtbox3">{{d60_swiper3_txt[swiper12]}}</view>
                     <!--轮播实例3-->
                     <view class="threebg threebg9 anit9_{{swiper12}}">
                         <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="12" current="{{swiper12}}">

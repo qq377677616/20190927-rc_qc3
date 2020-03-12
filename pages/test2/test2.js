@@ -253,8 +253,8 @@ Page({
 			// 跳转T90页面
 			router.jump_nav({
 				// `/pages/look_car_detail/look_car_detail?id=${9}`,
-				url: `/pages/look_car_detail/look_car_detail?id=${9}`
-				// url: `/pages/look_car_detail_05/look_car_detail_05?id=${9}`,
+				// url: `/pages/look_car_detail/look_car_detail?id=${9}`
+				url: `/pages/look_car_detail_05/look_car_detail_05?id=${9}`,
 			})
 		}
 		else if (id == 11) {
@@ -264,22 +264,22 @@ Page({
 			})
 		}
 		else
-		{
-			router.jump_nav({
-				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
-			})
-		} 
-		
-		// if (id == 6 || id == 7 || id == 3){
-		// 	// 跳转通用看车页
-		// 	router.jump_nav({
-		// 		url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
-		// 	})
-		// }else{
+		// {
 		// 	router.jump_nav({
 		// 		url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
 		// 	})
-		// }
+		// } 
+		
+		if (id == 6 || id == 7 || id == 3){
+			// 跳转通用看车页
+			router.jump_nav({
+				url: `/pages/look_car_detail_04/look_car_detail_04?id=${id}`,
+			})
+		}else{
+			router.jump_nav({
+				url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
+			})
+		}
 	},
 	dyjump(e){
 		// 点击文字跳转

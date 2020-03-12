@@ -81,7 +81,7 @@ Page({
         rogincol: 0, //初始选择的颜色
         carid: '',
         swiper1_txt: ['共享全球供应商体系', '日产HR16发动机', '日产XTRONIC CVT无极变速器', 'Zone Body区域组合+1200Mpa高强刚车身', '加强版6安全气囊防护系统', 'ASCD定速巡航', 'HSA上坡起步辅助系统', '博世9.1版ESP车身电子稳定系统', '日产同平台开发生产'], //部件名称
-        swiper2_txt: ['“星耀式” LED光导属灯', '“星航” 投射式LED前大灯', '18英寸切削组合金轮辋', '悬浮式车顶', '全景天窗', '科技范高质感内饰', 'Multi-Layer人体工学座椅', '“星空点阵式” 启辰家族前格栅'], //部件名称
+		swiper2_txt: ['“星耀式” LED光导属灯', '“星航” 投射式LED前大灯', '18英寸切削铝合金轮辋', '悬浮式车顶', '全景天窗', '科技范高质感内饰', 'Multi-Layer人体工学座椅', '“星空点阵式” 启辰家族前格栅'], //部件名称
         swiper3_txt: ['AEB自主紧急制动系统', 'BSW变道盲区预警系统', 'LDW车道偏离预警系统', '3D AVM全景式监控影像系统', '多场景远程控制', '远程控制车辆', '智能语音助手', '10+8英寸大尺寸智能双屏交互', '智能全时导航', 'DVR智能行车记录仪'], //部件名称
         t70_swiper1_txt: ['LED光扩散粒子后尾灯', '18英寸铝合金双色切割工艺轮辋', '砖石绗缝皮质座椅', '丰富的收纳空间', '10.1英寸高清多点触控屏', '炮筒式高清晰组合仪表盘', '多功能D型真皮方向盘(带控制键)', '投射式鹰眼前大灯'], //部件名称
         t70_swiper2_txt: ['数字化车联&互联网信息娱乐', '车辆智能安防体系', '智慧语音助手', '手机远程控制', '异常诊断手机提醒', '全时在线导航'], //部件名称
@@ -96,8 +96,8 @@ Page({
             { img: 'Tb60_sw1.png', type: 1 },
             { img: 'Tb60_sw2.png', type: 2, vUrl: "Tb60_sw2.mp4" },
             { img: 'Tb60_sw3.png', type: 2, vUrl: "Tb60_sw3.mp4" },
-            { img: 'Tb60_sw4.png', type: 1 },
-            { img: 'Tb60_sw5.png', type: 2, vUrl: "Tb60_sw5.mp4" },
+			{ img: 'Tb60_sw4.png', type: 2, vUrl: "Tb60_sw5.mp4"},
+            { img: 'Tb60_sw5.png', type: 1},
             { img: 'Tb60_sw6.png', type: 1 },
             { img: 'Tb60_sw7.png', type: 2, vUrl: "Tb60_sw7.mp4" },
             { img: 'Tb60_sw8.png', type: 2, vUrl: "Tb60_sw8.mp4" },
@@ -350,8 +350,8 @@ Page({
     },
     // 播放视频
     setplay(e) {
-        console.log('1', this.data.isplay);
-        console.log(e.currentTarget.dataset.vurl)
+		console.log(e.currentTarget.dataset.vurl)
+		if (e.currentTarget.dataset.vurl.indexOf("mp4")==-1)return;
         this.setData({
             isplay: true,
         });
