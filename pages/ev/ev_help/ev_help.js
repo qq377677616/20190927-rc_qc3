@@ -16,6 +16,7 @@ Page({
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
     mine:'',
+    isVehicleOwnerHidePop: false,
     helpList: [],
     helpSuc:false,
     take_status:''
@@ -122,6 +123,7 @@ Page({
 
   // 助力
   helpH() {
+    console.log(1111111111)
     if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || (!wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid)) return;
       let options = this.data.options
       let help_user_id = this.data.help_user_id

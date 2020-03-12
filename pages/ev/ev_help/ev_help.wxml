@@ -34,7 +34,7 @@
         <image class="ev_prize_pic" src="{{prize_info.prize_img}}" mode="widthFix"></image>
       </view>
       <view class="me-btn f-top2" data-type="ok" bindtap="helpH" wx:if="{{is_help==0}}">助TA一臂之力</view>
-      <view class="me-btn f-top2 gray" wx:else>已助力</view>
+      <view class="me-btn f-top2 gray" wx:if="{{is_help==1}}">已助力</view>
       <view class="share-btn f-top3" bindtap="toEvIndex">我也要参与</view>
     </view>
     <!-- 好友部分 -->
@@ -94,4 +94,8 @@
     </view>
   </view>
   </view>
+</view>
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+  <activePop popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
 </view>
