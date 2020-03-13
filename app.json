@@ -102,7 +102,8 @@
     "pages/protocol/protocol",
     "pages/ev/ev_index/ev_index",
     "pages/ev/ev_form/ev_form",
-    "pages/ev/ev_help/ev_help"
+    "pages/ev/ev_help/ev_help",
+    "pages/webview3/webview3"
   ],
   "window": {
     "backgroundTextStyle": "light",

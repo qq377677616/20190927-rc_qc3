@@ -846,6 +846,27 @@
 					"pathName": "pages/ev/ev_help/ev_help",
 					"query": "activity_id=30",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "云赏车",
+					"pathName": "pages/webview3/webview3",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/webview_2/webview_2",
+					"pathName": "pages/webview_2/webview_2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/webview/webview",
+					"pathName": "pages/webview/webview",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

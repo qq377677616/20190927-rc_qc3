@@ -1,0 +1,4 @@
+<!--pages/webview3/webview3.wxml-->
+<view class="webview page">
+  <web-view src="{{h5Url}}"></web-view>
+</view>
