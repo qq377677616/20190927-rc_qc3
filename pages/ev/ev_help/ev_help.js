@@ -251,7 +251,7 @@ Page({
     let user_id = wx.getStorageSync('userInfo').user_id
     let activity_id = this.data.activity_id
     let obj = {
-      title: 'EV助力领好礼!',
+      title: '快来帮我助力领免费试用券！',
       path: `/pages/ev/ev_help/ev_help?user_id=${user_id}&openid=${openid}&activity_id=${activity_id}`,
       // imageUrl: this.data.IMGSERVICE + "/activity/share_shake.png?123"
     };

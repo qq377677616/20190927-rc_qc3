@@ -27,7 +27,7 @@
         </view>
         <view class="me-right">
           <view class="me-nickname">{{user_info.nickname}}</view>
-          <view class="me-txt">我正在参加启辰-北京新能源指标用户到店拿 500元活动,10位好友助力成功可获得D60EV /T60EV一天免费试用券”,快帮我助力一下!</view>
+          <view class="me-txt">快帮我助力一下！10位好友助力成功即可获得一天免费使用券，感激不尽~</view>
         </view>
       </view>
       <view class="p-gift f-top1">
@@ -89,7 +89,7 @@
       <view class="succTxt succTxt2">
         <text>你已经为好友助力!</text>
       </view>
-      <view class="succBtn" bindtap="toEvIndex">我也要参与!</view>
+      <view class="succBtn" bindtap="toEvIndex">我也要参与</view>
       <image bindtap="closeSuc" mode="widthFix" src="{{IMGSERVICE}}/center/icon_close.png" class="closeBtn"></image>
     </view>
   </view>

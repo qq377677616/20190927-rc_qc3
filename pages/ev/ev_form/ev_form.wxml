@@ -9,36 +9,36 @@
     <view class="f-tit">您的姓名</view>
     <input class="input" bindinput='inputName' type="text" placeholder="请填写您的姓名" placeholder-class="placeholder"></input>
     <view class="f-tit">您的手机号码</view>
+    <input class="input" bindinput="inputPhone" type="phone" maxlength="11" placeholder="请输入您的手机号码" placeholder-class="placeholder"></input>
     <view class="phone">
-      <input class="input wh1" bindinput="inputPhone" type="phone" maxlength="11" placeholder="请输入您的手机号码" placeholder-class="placeholder"></input>
+      <input class="input wh1" type="phone" maxlength="6" bindinput='inputCode' placeholder="请输入验证码" placeholder-class="placeholder"></input>
       <view class="code-btn" bindtap="getCode">
         {{isGetCode == 1 ? countDown + 's' : (isGetCode == 0 ? '获取验证码' : '获取中')}}
       </view>
     </view>
-    <input class="input" type="phone" maxlength="6" bindinput='inputCode' placeholder="请输入验证码" placeholder-class="placeholder"></input>
     <view class="f-tit">请选择为您服务的专营店</view>
     <view class="input">
       <view class="sanjiao"></view>
       <block>
         <picker bindchange="bindPickerStore" value="{{storeList_index}}" range="{{storeList}}" range-key="{{'name'}}">
           <view class="picker">
-            <view>{{storeList[storeList_index].name}}</view>
+            <view class="placeholder">{{storeList[storeList_index].name}}</view>
           </view>
         </picker>
       </block>
     </view>
-    <view class="f-tit">您的新能源指标</view>
-    <input class="input" bindinput="number" type="phone" maxlength="11" placeholder="请填写北京新能源指标号码" placeholder-class="placeholder"></input>
+    <view class="f-tit">您的北京新能源指标号</view>
+    <input class="input" bindinput="number" type="phone" maxlength="13" placeholder="请填写13位指标号" placeholder-class="placeholder"></input>
     <view class="two">
       <!-- 预约试驾时间 -->
       <view class="time">
-        <view class="f-tit">预约试驾时间</view>
+        <view class="f-tit">试驾时间</view>
         <view class="input wh-time">
           <view class="sanjiao"></view>
           <block>
             <picker bindchange="bindPickerTime" value="{{time_index}}" range="{{time_arr}}">
               <view class="picker">
-                <view>{{time_arr[time_index]}}</view>
+                <view class="placeholder">{{time_arr[time_index]}}</view>
               </view>
             </picker>
           </block>
@@ -53,7 +53,7 @@
           <block>
             <picker bindchange="bindPickerCar" value="{{car_index}}" range="{{car_list}}" range-key="{{'name'}}">
               <view class="picker">
-                <view>{{car_list[car_index].name}}</view>
+                <view class="placeholder">{{car_list[car_index].name}}</view>
               </view>
             </picker>
           </block>

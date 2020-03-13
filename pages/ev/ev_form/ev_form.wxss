@@ -51,7 +51,6 @@
 .placeholder {
   font-size: 30rpx;
   font-family: PingFang SC;
-  font-weight: 500;
   color: #333;
 }
 
