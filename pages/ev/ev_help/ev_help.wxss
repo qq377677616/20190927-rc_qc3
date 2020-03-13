@@ -72,6 +72,7 @@ page {
   flex-direction: column;
   align-items: center;
   border-bottom: 1rpx solid #eee;
+  padding-bottom: 56rpx;
 }
 
 .me-headimg {
