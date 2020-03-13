@@ -37,10 +37,12 @@ page{
 .r_info2{
 	display: flex;
 	justify-content: flex-end;
+	margin-right: 25rpx;
 }
 .setwidth{
 	width: 400rpx;
 	height: auto;
+	border-radius:10px;
 }
 .l_info{
 	max-width:484rpx;
@@ -59,6 +61,9 @@ page{
 }
 .l_info2{
 	border-radius:0rpx 40rpx 40rpx 40rpx;
+}
+.l_info3{
+	margin-left: 25rpx;
 }
 .r_img{
 	width:76rpx;

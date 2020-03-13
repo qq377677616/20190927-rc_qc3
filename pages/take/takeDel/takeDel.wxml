@@ -4,28 +4,28 @@
 	<!-- <view class="times">2020-01-02</view> -->
 		<!-- 左边图片 -->
 		<view class="leftinfo" wx:if="{{item.is_ob==0&&item.msg_type==2}}">
-			<view class="l_img" style="background-image:url({{BASEURL}}/test.png)">
+			<view class="l_img" style="background-image:url({{handimg?handimg:BASEURL+'/test.png'}})">
 			</view>
-			<view class="r_info">
+			<view class="r_info l_info2 l_info3">
 				<image src="{{item.content}}" mode="widthFix" class="setwidth" bindtap="preview" data-src="{{item.content}}"></image>
 			</view>
 		</view>
 		<!-- 左边文字 -->
 		<view class="leftinfo" wx:if="{{item.is_ob==0&&item.msg_type==1}}">
-			<view class="r_img" style="background-image:url({{BASEURL}}/test.png)"></view>	
-			<view class="l_info l_info2">{{item.content}}</view>
+			<view class="r_img" style="background-image:url({{handimg?handimg:BASEURL+'/test.png'}})"></view>	
+			<view class="l_info l_info2 l_info3">{{item.content}}</view>
 		</view>
 		<!-- 右边文字 -->
 		<view class="rightinfo" wx:if="{{item.is_ob==1&&item.msg_type==1}}">
 			<view class="l_info">{{item.content}}</view>
-			<view class="r_img" style="background-image:url({{BASEURL}}/test.png)"></view>	
+			<view class="r_img" style="background-image:url({{userInfo.headimg}})"></view>	
 		</view>
 		<!-- 右边图片 -->
 	    <view class="rightinfo" wx:if="{{item.is_ob==1&&item.msg_type==2}}">
 			<view class="r_info r_info2">
 				<image src="{{item.content}}" mode="widthFix" class="setwidth" bindtap="preview" data-src="{{item.content}}"></image>
 			</view>
-			<view class="l_img" style="background-image:url({{BASEURL}}/test.png)"></view>
+			<view class="l_img" style="background-image:url({{userInfo.headimg}})"></view>
 		</view>
 
 	</view>

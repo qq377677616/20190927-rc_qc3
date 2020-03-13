@@ -185,14 +185,13 @@ Page({
 	},
 	takeMan() {//聊一聊userInfo.nickName || !userInfo.unionid
 		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.id){
-			tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}`);
+			tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}&handimg=${this.data.useData.avatar}`);
 		}else{
 			tool.alert("加载中请稍后！");
 		}
 	},
 	// 跳转到专营店列表
 	storlist(){
-		console.log(11);
 		tool.jump_nav(`/pages/take/dealers/dealers`);
 	},
 	//点击自定义Modal弹框上的按钮
