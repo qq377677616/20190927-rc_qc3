@@ -10,12 +10,12 @@
 	   <view class="setwid">
 			<view class="group">
 				<!-- <text class="label">姓 名</text> -->
-				<input type="text" class="staript" placeholder="姓名" bindinput="inputName" value="{{name}}" bindfocus="showheg"/>
+				<input type="text" class="staript" placeholder="姓名" focus="{{focus}}" bindinput="inputName" value="{{name}}" bindfocus="showheg"/>
 			</view>
 
 			<view class="group">
 				<!-- <text class="label">电 话</text> -->
-				<input type="text" class="staript" value="{{phone}}" placeholder="电话" bindinput="inputPhone" bindfocus="showheg" maxlength="11" type="number" />
+				<input type="text" class="staript" value="{{phone}}" focus="{{focus}}" placeholder="电话" bindinput="inputPhone" bindfocus="showheg" maxlength="11" type="number" />
 			</view>
         </view>
         <view class="group" wx:if="{{isright&&popstu==1}}">

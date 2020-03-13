@@ -49,6 +49,7 @@ Component({
     countDown: 60,
 	isright:false,
 	isGou: true,
+	focus:false,
 	IMGSERVICE: app.globalData.IMGSERVICE,
 	  showModalOption: {//定位 弹窗
 		  isShow: false,
@@ -399,7 +400,10 @@ Component({
 		}
 	},
 	  showheg(){// 抬起留资
-		  this.setData({ isright: true, popstu: 1 });
+		//   this.setData({ focus: false})
+		//   setTimeout(()=>{
+			  this.setData({ isright: true, popstu: 1 });
+		//   },1000)
 	  }
   }
 })

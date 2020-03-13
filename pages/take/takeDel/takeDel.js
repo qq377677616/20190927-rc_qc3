@@ -18,6 +18,7 @@ Page({
 		havpage:true,//是否还有下一页
 		uid:null,// 自己的id
 		to_uid:null, // 客服id
+		img:null, // 发送的类型
 	},
 
 	/**
@@ -120,15 +121,14 @@ Page({
 	sendMsg(){// 发送消息
 		let msg = this.data.msg;
 		msg = msg.replace(/^\s+|\s+$/g, '');
-		console.log(msg,this.data.msg_type);
+		// console.log(msg,this.data.msg_type);
 		// return;
-		if(msg==''){
+		if(msg==''&&!this.data.img){
 			console.log("输入不能为空");
 			tool.alert("输入不能为空");
 		} else {//${this.data.to_uid}
-			let content = `{"type":"send","to_uid":"YangLiSongA","data":{"msg_type":"${this.data.msg_type}","content":"${msg}"}}`; 
+			let content = `{"type":"send","to_uid":"YangLiSongA","data":{"msg_type":"${this.data.msg_type}","content":"${this.data.img ? this.data.img:msg}"}}`; 
 			if (this.data.socketOpen) {
-				this.setData({msg_type:1})
 				wx.sendSocketMessage({
 					data: content,
 					success:(res)=>{
@@ -154,8 +154,8 @@ Page({
 			switch (type){
 				case 'send':{ //接收发送的信息
 					console.log(self.data.msg_type);
-					arr.push({ content: self.data.msg, type: 1, is_ob: 1, msg_type:self.data.msg_type});
-					self.setData({ sendload: [...self.data.sendload, ...arr],msg:''});
+					arr.push({ content: self.data.img ? self.data.img:self.data.msg, type: 1, is_ob: 1, msg_type:self.data.msg_type});
+					self.setData({ sendload: [...self.data.sendload, ...arr],msg:'',img:null});
 					console.log(self.data.sendload);
 					self.conutHeg();
 					break;
@@ -186,8 +186,8 @@ Page({
 		https.uploadFiles().then((res)=>{
 			console.log(res.data);
 			if(res.code==1){
-				this.setData({ msg: res.data, msg_type:2});
-				this.sendMsg(2)	
+				this.setData({ msg_type: 2, img: res.data});
+				this.sendMsg()	
 			}
 		})
 	},
