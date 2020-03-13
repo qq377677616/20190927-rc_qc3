@@ -15,8 +15,8 @@
       </view>
       <view class="me-btn" bindtap="getCard" wx:if="{{take_status!=2 && is_upgrade==1}}">立即领取</view>
       <!-- <view class="me-btn gray" wx:if="{{take_status== '' && is_upgrade==0}}">立即领取</view> -->
-      <view class="me-btn gray" wx:if="{{take_status==2}}">已领取</view>
-      <button class="share-btn" open-type="share">邀请好友助力</button>
+      <view class="me-btn" bindtap="oCard" wx:if="{{take_status==2}}">领券成功，点击查看</view>
+      <button class="share-btn" open-type="share" wx:else>邀请好友助力</button>
     </view>
     <!-- 自己部分 -->
     <!-- 好友助力部分 -->

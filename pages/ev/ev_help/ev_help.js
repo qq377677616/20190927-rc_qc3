@@ -38,6 +38,7 @@ Page({
               prize_info:res.data.data.prize_info,
               is_upgrade:res.data.data.help_info.is_upgrade,
               take_status:res.data.data.help_info.take_status,
+              card_id:res.data.data.order_goods_info.card_id,
               activity_id,
               options
             })
@@ -97,7 +98,7 @@ Page({
                     console.log('update_card_code', res)
                     if (res.data.status == 1) {
                       tool.loading_h()
-                      tool.alert('领取成功')
+                      tool.alert('已领取成功，请至微信-我的卡包中查看卡券')
                       setTimeout(() => {
                           _this.initData(options)
                       }, 500);
@@ -144,6 +145,14 @@ Page({
           tool.alert(res.data.msg)
         }
       })
+  },
+
+  // 我的卡券
+  oCard(){
+    let card_id = this.data.card_id
+    router.jump_nav({
+      url:`/pages/o_card_bag_rule/o_card_bag_rule?card_id=${card_id}`
+    })
   },
 
   // 去首页
@@ -253,9 +262,8 @@ Page({
     let obj = {
       title: '快来帮我助力领免费试用券！',
       path: `/pages/ev/ev_help/ev_help?user_id=${user_id}&openid=${openid}&activity_id=${activity_id}`,
-      // imageUrl: this.data.IMGSERVICE + "/activity/share_shake.png?123"
+      imageUrl: this.data.IMGSERVICE + "/ev/ev_index_share.jpg"
     };
     return obj;
-    
   }
 })

@@ -64,6 +64,7 @@ page {
   flex-direction: column;
   align-items: center;
   border-bottom: 1rpx solid #eee;
+  padding-bottom: 56rpx;
 }
 
 .friend-help {
@@ -174,7 +175,6 @@ page {
   font-weight: 500;
   color: #333;
   margin-top: 34rpx;
-  margin-bottom: 56rpx;
   line-height: 84rpx;
   text-align: center;
 }

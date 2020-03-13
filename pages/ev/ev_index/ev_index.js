@@ -253,6 +253,12 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
-
+        let activity_id = this.data.activity_id
+        let obj = {
+        title: '北京新能源指标用户到店拿500元红包！速来参与！',
+            path: `/pages/ev/ev_index/ev_index?activity_id=${activity_id}`,
+            imageUrl: this.data.IMGSERVICE + "/ev/ev_index_share.jpg"
+            };
+        return obj;
     }
 })

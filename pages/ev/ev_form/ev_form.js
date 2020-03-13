@@ -47,17 +47,17 @@ Page({
   },
 
   initData(options){
-      this.getPosition()
+      // this.getPosition()
       let activity_id = options.activity_id
       let openid = wx.getStorageSync('userInfo').openid
       request_05.evIndex({ activity_id, openid }).then(res => {
         console.log(res, 'res')
         if (res.data.status == 1) {
-            this.getStoreList()
             this.setData({
               activity_info: res.data.data.activity_info,
               time_arr:res.data.data.activity_info.time_arr,
               car_list:res.data.data.car_list,
+              storeList:res.data.data.dealer_info,
               activity_id
             })
         } else {
