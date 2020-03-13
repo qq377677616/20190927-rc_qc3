@@ -13,7 +13,7 @@
       <view class="p-gift">
         <image class="ev_prize_pic" src="{{prize_info.prize_img}}" mode="widthFix"></image>
       </view>
-      <view class="me-btn" bindtap="getCard" wx:if="{{is_upgrade==1}}">立即领取</view>
+      <view class="me-btn" bindtap="getCard" wx:if="{{take_status!=2 && is_upgrade==1}}">立即领取</view>
       <!-- <view class="me-btn gray" wx:if="{{take_status== '' && is_upgrade==0}}">立即领取</view> -->
       <view class="me-btn gray" wx:if="{{take_status==2}}">已领取</view>
       <button class="share-btn" open-type="share">邀请好友助力</button>
