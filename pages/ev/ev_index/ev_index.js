@@ -132,9 +132,10 @@ Page({
         })
     },
 
-    toActivityList(){
+    // 我的卡包
+    toCardBag(){
         router.jump_nav({
-            url: `/pages/activity_list/activity_list`
+            url: `/pages/o_card_bag/o_card_bag`
         })
     },
 
