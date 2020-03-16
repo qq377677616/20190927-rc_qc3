@@ -67,7 +67,6 @@ Page({
   },
 
   submit() {
-    console.log(car_id,'car_id')
     let _reg = /^1[3456789]\d{9}$/
     if (!this.data.name) {
       tool.alert("请输入您的真实姓名")
@@ -97,7 +96,6 @@ Page({
       let drive_time = this.data.time_arr[this.data.time_index]
       let car_id = this.data.car_list[this.data.car_index].car_id
       let verify_code = this.data.verify_code
-    
     request_05.submitData({openid,activity_id,name,mobile,code,number,drive_time,car_id,verify_code}).then(res=>{
       console.log(res,'res')
       if(res.data.status==1){
@@ -143,7 +141,69 @@ Page({
         tool.alert(res.data.msg)
       }
     })
+    // let data = {
+    //   openid : wx.getStorageSync('userInfo').openid,
+    //   user_id : wx.getStorageSync('userInfo').user_id,
+    //   activity_id : this.data.activity_id,
+    //   name : this.data.name,
+    //   mobile : this.data.mobile,
+    //   code : this.data.storeList[this.data.storeList_index].code,
+    //   number : this.data.number,
+    //   drive_time : this.data.time_arr[this.data.time_index],
+    //   car_id : this.data.car_list[this.data.car_index].car_id,
+    //   verify_code : this.data.verify_code,
+    // }
+    // this.demoFun(data).then(res=>{
+    //   console.log(res)
+    // })
   },
+
+  // async demoFun(data){
+  //   let order_goods_id = await this.submitData(data)
+  //   console.log(order_goods_id,'order_goods_id')
+  //   let cardList = await this.getWechatCard(order_goods_id,data[user_id])
+  //   wx.addCard({
+  //     cardList: [cardList],
+  //     success(res){
+  //       let card_code = res.cardList[0].code
+  //       let result = this.orderCardCode(order_goods_id,data.user_id,card_code)
+  //       console.log(result,'result')
+  //     }
+  //   })
+  // },
+
+  // // 留资
+  // submitData(data){
+  //   return new Promise((resolve,reject)=>{
+  //     request_05.submitData(data).then(res=>{
+  //       resolve(res.data.data.order_goods_id)
+  //     }).catch(err=>{
+  //       reject(err)
+  //     })
+  //   })
+  // },
+
+  // // 查卡券
+  // getWechatCard(order_goods_id,user_id){
+  //   return new Promise((resolve,reject)=>{
+  //     request_05.getWechatCard(order_goods_id,user_id).then(res=>{
+  //       resolve(res.data.data[0])
+  //     }).catch(err=>{
+  //       reject(err)
+  //     })
+  //   })
+  // },
+
+  // // 卡券上报
+  // orderCardCode(order_goods_id,user_id,card_code){
+  //   return new Promise((resolve,reject)=>{
+  //     request_05.orderCardCode(order_goods_id,user_id,card_code).then(res=>{
+  //       resolve(res)
+  //     }).catch(err=>{
+  //       reject(err)
+  //     })
+  //   })
+  // },
 
     getInfo() {//定位
 		  tool.loading("自动定位中")

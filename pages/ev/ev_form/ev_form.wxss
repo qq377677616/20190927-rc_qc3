@@ -2,31 +2,47 @@
 
 .title {
   width: 100%;
-  margin-top: 42rpx;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .ev_form_title {
-  width: 392rpx;
+  width: 100%;
 }
 
-.bottom{
+.bottom {
   width: 100%;
   position: relative;
   margin-top: -120rpx;
 }
 
-.ev_index-bom{
-  width: 100%; 
+.ev_index-bom {
+  width: 100%;
   position: absolute;
   top: 0;
   bottom: 0;
 }
 
+.ev_title {
+  width: 392rpx;
+  display: block;
+  margin: 39rpx auto 0;
+}
+
 .form {
   width: 692rpx;
+  border-radius: 16rpx;
+  background: #FFF;
   margin: 0 auto;
+  position: absolute;
+  top: 355rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 42rpx;
 }
 
 .f-tit {
@@ -37,15 +53,23 @@
   margin-top: 34rpx;
 }
 
+.f-tit2 {
+  width: 638rpx;
+}
+
 .input {
-  width: 100%;
+  width: 638rpx;
   height: 76rpx;
   line-height: 76rpx;
   padding: 0 20rpx;
-  margin-top: 25rpx;
+  margin-top: 22rpx;
   box-sizing: border-box;
   background: #f5f5f5;
   position: relative;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333;
 }
 
 .placeholder {
@@ -55,10 +79,11 @@
 }
 
 .wh1 {
-  width: 477rpx;
+  width: 428rpx;
 }
 
 .phone {
+  width: 638rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -101,6 +126,7 @@
 }
 
 .two {
+  width: 637rpx;
   display: flex;
   justify-content: space-between;
 }
@@ -109,6 +135,7 @@
   display: flex;
   flex-direction: column;
   width: 300rpx;
+
 }
 
 .wh-time {
@@ -126,7 +153,7 @@
   font-family: PingFang SC;
   font-weight: bold;
   color: #FFF;
-  margin: 56rpx auto 0rpx;
+  margin: 50rpx auto 0rpx;
   position: relative;
   z-index: 9;
 }

@@ -1,14 +1,15 @@
 <!--pages/ev/ev_form/ev_form.wxml-->
 <view class="from-con">
   <view class="title">
-    <image class="ev_form_title" src="{{IMGSERVICE}}/ev/ev_form_title.png" mode="widthFix"></image>
+    <image class="ev_form_title" src="{{IMGSERVICE}}/ev/ev_help_bg.png" mode="widthFix"></image>
   </view>
 
   <!-- 表单 -->
   <view class="form">
-    <view class="f-tit">您的姓名</view>
+    <image class="ev_title" src="{{IMGSERVICE}}/ev/ev_form_title.png" mode="widthFix"></image>
+    <view class="f-tit f-tit2">您的姓名</view>
     <input class="input" bindinput='inputName' type="text" placeholder="请填写您的姓名" placeholder-class="placeholder"></input>
-    <view class="f-tit">您的手机号码</view>
+    <view class="f-tit f-tit2">您的手机号码</view>
     <input class="input" bindinput="inputPhone" type="phone" maxlength="11" placeholder="请输入您的手机号码" placeholder-class="placeholder"></input>
     <view class="phone">
       <input class="input wh1" type="phone" maxlength="6" bindinput='inputCode' placeholder="请输入验证码" placeholder-class="placeholder"></input>
@@ -16,7 +17,7 @@
         {{isGetCode == 1 ? countDown + 's' : (isGetCode == 0 ? '获取验证码' : '获取中')}}
       </view>
     </view>
-    <view class="f-tit">请选择为您服务的专营店</view>
+    <view class="f-tit f-tit2">请选择为您服务的专营店</view>
     <view class="input">
       <view class="sanjiao"></view>
       <block>
@@ -27,7 +28,7 @@
         </picker>
       </block>
     </view>
-    <view class="f-tit">您的北京新能源指标号</view>
+    <view class="f-tit f-tit2">您的北京新能源指标号</view>
     <input class="input" bindinput="number" type="phone" maxlength="13" placeholder="请填写13位指标号" placeholder-class="placeholder"></input>
     <view class="two">
       <!-- 预约试驾时间 -->
@@ -64,8 +65,8 @@
     <view class="submit" bindtap="submit">提交信息</view>
   </view>
   <!-- 表单 -->
-  <view class="bottom">
+  <!-- <view class="bottom">
     <image class="ev_index-bom" src="{{IMGSERVICE}}/ev/ev_index-bom.png" mode="widthFix"></image>
-  </view>
+  </view> -->
 
 </view>
