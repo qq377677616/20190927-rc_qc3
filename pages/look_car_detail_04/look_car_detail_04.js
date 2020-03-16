@@ -285,7 +285,7 @@ Page({
                     alert.loading_h()
                         // mta.Event.stat("booking_car_other", { name: detail.name, phone: detail.phone, city: detail.region.join('--') })
                         { userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}` }
-                    alert.confirm({ title: "预约成功", content: `您已成功预约「${this.data.vehicle.title}」的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
+                    alert.confirm({ title: "预约成功", content: `您已成功预约的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
                         this.setData({
                             isShowForm: false,
                         })

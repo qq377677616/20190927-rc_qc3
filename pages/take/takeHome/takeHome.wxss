@@ -35,6 +35,7 @@ page{
 	height: 90rpx;
 	background: center no-repeat/cover;
 	position: relative;
+	border-radius: 50%;
 }
 .riginfo{
 	flex: 1;

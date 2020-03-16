@@ -19,14 +19,15 @@ Page({
 		uid:null,// 自己的id
 		to_uid:null, // 客服id
 		img:null, // 发送的类型
+		handimg:null,//客服头像
+		isenter: 1,//是不是第一次进来
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		console.log(options)
-		this.setData({uid:options.uid,to_uid:options.to_uid})
+		this.setData({ uid: options.uid, to_uid: options.to_uid, userInfo: wx.getStorageSync("userInfo"), handimg: options.avatar})
 		this.creatSocket();
 		this.msgLog();
 	},
@@ -42,7 +43,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		this.setData({ isenter:1})
 	},
 
 	/**
@@ -121,13 +122,13 @@ Page({
 	sendMsg(){// 发送消息
 		let msg = this.data.msg;
 		msg = msg.replace(/^\s+|\s+$/g, '');
-		// console.log(msg,this.data.msg_type);
+		let msg_type = this.data.img ? 2 : 1;
+		console.log(this.data.img,msg_type);
 		// return;
 		if(msg==''&&!this.data.img){
-			console.log("输入不能为空");
 			tool.alert("输入不能为空");
 		} else {//${this.data.to_uid}
-			let content = `{"type":"send","to_uid":"YangLiSongA","data":{"msg_type":"${this.data.msg_type}","content":"${this.data.img ? this.data.img:msg}"}}`; 
+			let content = `{"type":"send","to_uid":"YangLiSongA","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img:msg}"}}`; 
 			if (this.data.socketOpen) {
 				wx.sendSocketMessage({
 					data: content,
@@ -150,18 +151,22 @@ Page({
 			let data = JSON.parse(msg.data);
 			let code =  data.code;
 			let type = data.type;
+			let msg_type = self.data.img ? 2 : 1;
 			if(code!=1)return;
 			switch (type){
 				case 'send':{ //接收发送的信息
-					console.log(self.data.msg_type);
-					arr.push({ content: self.data.img ? self.data.img:self.data.msg, type: 1, is_ob: 1, msg_type:self.data.msg_type});
+					arr.push({ content: self.data.img ? self.data.img : self.data.msg, type: 1, is_ob: 1, msg_type: msg_type});
 					self.setData({ sendload: [...self.data.sendload, ...arr],msg:'',img:null});
 					console.log(self.data.sendload);
 					self.conutHeg();
+					arr = [];
 					break;
 				}
-				case 'recieve':{
+				case 'receive':{
+					arr.push({ client_avatar: self.data.handimg, content: data.data.content, type: 1, is_ob: 0, msg_type: data.data.msg_type });
+					self.setData({ sendload: [...self.data.sendload, ...arr], msg: '', img: null });
 					self.conutHeg();
+					arr = [];
 					break;
 				}
 			}
@@ -171,12 +176,16 @@ Page({
 		let dat = {
 			page:this.data.page,
 			uid:this.data.uid,
-			to_uid: `${this.data.to_uid}A`,
+			to_uid: 'YangLiSongA',//`${this.data.to_uid}A`,
 			limit:10
 		}
 		https.msgLog(dat).then((res)=>{
 			if (res.data.code == 1){
 				this.setData({ sendload: [...res.data.data, ...this.data.sendload], havpage: res.data.data.length >= 10 });
+				if (this.data.isenter == 1) {
+					this.setscret();
+					this.setData({ isenter: ++this.data.isenter })
+				}
 			}
 		}).catch((err)=>{
 			console.log(err)

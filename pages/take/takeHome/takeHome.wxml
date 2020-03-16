@@ -2,10 +2,8 @@
 	<view class="hander">
 		<!-- 头部 -->
 		<view class="row1">
-			<view class="useinfo">
-				<view class="useimg" style="background-image:url({{useData.avatar}})">
-					
-				</view>
+			<view class="useinfo"> 
+				<view class="useimg" style="background-image:url({{useData.avatar?useData.avatar:BASEURL+'/test.png'}})"></view>
 				<view class="riginfo">
 					<view class="l_name">
 						<text class="txt1">{{useData.name}}</text>
