@@ -1,8 +1,11 @@
 <!--pages/ev/ev_help/ev_help.wxml-->
 <view class="all" bindtap="isVehicleOwner">
   <view class="top">
-    <image class="ev_help_bg" src="{{IMGSERVICE}}/ev/ev_help_bg.png" mode="widthFix"></image>
+    <image class="ev_help_bg" src="{{IMGSERVICE}}/ev/ev_test_bg.png" mode="widthFix"></image>
+    <!-- <image class="ev_index_logo" src="{{IMGSERVICE}}/ev/ev_index_logo.png" mode="widthFix"></image> -->
   </view>
+  <view>
+  <view class="pos">
   <view class="oneself">
     <!-- 自己部分 -->
     <view class="oneself-top" wx:if="{{mine}}">
@@ -79,6 +82,9 @@
         </swiper-item>
       </swiper>
     </view>
+  </view>
+  <image class="ev_test_zqkj" src="{{IMGSERVICE}}/ev/ev_test_zqkj.png" mode="widthFix"></image>
+  <image class="ev_index_logo" src="{{IMGSERVICE}}/ev/ev_index_logo.png" mode="widthFix"></image>
     <!-- 助力列表 -->
     <!-- 助力成功 -->
   <view class="helpsuccBox" wx:if="{{helpSuc}}">
@@ -94,6 +100,7 @@
     </view>
   </view>
   </view>
+</view>
 </view>
 <!-- 授权、去绑定车主弹窗 -->
 <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">

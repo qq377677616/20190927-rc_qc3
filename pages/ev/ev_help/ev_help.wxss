@@ -3,7 +3,6 @@
 page {
   width: 100%;
   height: 100%;
-  background: #acc5ef;
 }
 
 .all {
@@ -12,7 +11,6 @@ page {
 
 .top {
   width: 750rpx;
-  height: 295rpx;
   position: relative;
 }
 
@@ -23,15 +21,31 @@ page {
   bottom: 0;
 }
 
+.ev_index_logo{
+  width: 197rpx;
+  position: relative;
+  margin: 29rpx 0 0 29rpx;
+}
+
+.ev_test_zqkj{
+  width: 698rpx;
+  display: block;
+  margin: 41rpx auto 0;
+}
+
+.pos{
+  top: 405rpx;
+  position: relative;
+  z-index: 1;
+}
+
 .oneself {
   width: 692rpx;
   height: auto;
   background: #fff;
-  margin: -40rpx auto 0;
   border-radius: 16rpx;
-  position: relative;
-  z-index: 1;
   margin-bottom: 30rpx;
+  margin: 0 auto;
 }
 
 .peo-num {

@@ -58,7 +58,7 @@
   font-weight: 500;
   color: #002870;
   position: absolute;
-  top: 1252rpx;
+  top: 1317rpx;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -66,6 +66,6 @@
 .ev_index_logo{
   width: 197rpx;
   position: absolute;
-  top:  1369rpx;
+  top:  1417rpx;
   left: 38rpx;
 }

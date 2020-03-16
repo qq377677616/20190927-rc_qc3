@@ -3,7 +3,7 @@
     <view class="all-con">
         <view class="rule" catchtap="switchRule">活动规则</view>
         <image class="ev_index_icon" src="{{IMGSERVICE}}/ev/ev_index_icon.png" mode="widthFix"></image>
-        <image class="ev_index_bg" src="{{IMGSERVICE}}/ev/ev_index_bg.png" mode="widthFix"></image>
+        <image class="ev_index_bg" src="{{IMGSERVICE}}/ev/ev_index_bg.png?1" mode="widthFix"></image>
         <image class="btn" bindtap="toForm" wx:if="{{take_status==1}}" src="{{IMGSERVICE}}/ev/ev_yuyue_btn.png" mode="widthFix" data-type="ok"></image>
         <image class="btn" bindtap="toHelp" wx:if="{{help_info.take_status!=2 && take_status==2}}" src="{{IMGSERVICE}}/ev/ev_share_btn.png" mode="widthFix" data-type="ok"></image>
         <image class="btn" bindtap="getCard" wx:if="{{take_status==3}}" src="{{IMGSERVICE}}/ev/ev_get_btn.png" mode="widthFix"></image>

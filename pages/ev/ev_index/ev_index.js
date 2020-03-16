@@ -44,7 +44,7 @@ Page({
                     rule: res.data.data.activity_info.rule, //规则
                     take_status: res.data.data.activity_info.take_status, //预约状态   
                     car_owner: res.data.data.activity_info.car_owner,
-                    order_goods_id:res.data.data.order_goods_id,
+                    order_goods_info:res.data.data.order_goods_info,
                     help_info:res.data.data.help_info,
                     activity_id,
                     options
@@ -74,7 +74,7 @@ Page({
     // 领取卡券
     getCard(){
         var _this = this
-        let order_goods_id = this.data.order_goods_id
+        let order_goods_id = this.data.order_goods_info.order_goods_id
         let activity_id = this.data.activity_id
         let options = this.data.options
         let user_id = wx.getStorageSync('userInfo').user_id

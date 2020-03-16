@@ -6,7 +6,7 @@
   </view>
   <view class="pro_name">{{proData.title}}</view>
   <view class="pro_score">
-    <view class="score_txt1">积分：</view>
+    <view class="score_txt1">现金红包:</view>
     <view class="score_txt2">{{proData.vcoin}}</view>
   </view>
   <view class="pro_explain">
