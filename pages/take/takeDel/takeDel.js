@@ -92,14 +92,22 @@ Page({
 		let socketMsgQueue = [];
 		let self = this;
 		wx.connectSocket({
-			url: 'ws://192.168.1.193:8282'
+			url: 'wss://192.168.1.193:8282',
+			success(res){
+				// console.log('连接成功' + res)
+				// console.log(JSON.stringify(res))
+				wx.onSocketOpen((res) => {
+					socketOpen = true
+					console.log('连接成功！');
+					self.setData({ socketOpen: true })
+					self.bindUse(); // 绑定用户
+				})
+			},
+			fail(res) {
+				console.log('连接失败' + res);
+			}
 		})
-		wx.onSocketOpen(function (res) {
-			socketOpen = true
-			console.log('连接成功！');
-			self.setData({socketOpen:true})
-			self.bindUse(); // 绑定用户
-		})
+		
 
 		this.acceptmag();// 接收socekt
 	},
@@ -111,7 +119,6 @@ Page({
 		wx.sendSocketMessage({
 			data: '{"type":"bind","uid":"'+this.data.uid+'"}'
 		})
-
 		clearInterval(time);
 		time = setInterval(()=>{ // 发送心跳
 			wx.sendSocketMessage({

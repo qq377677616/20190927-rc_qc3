@@ -167,51 +167,51 @@ Page({
       isShowForm: false,
     })
   },
-  //提交
-  submit(e) {
-    const detail = e.detail;
-    const userInfo = wx.getStorageSync('userInfo');
-    const lookCarDetail = this.data.lookCarDetail;
+	//提交
+	submit(e) {
+		const detail = e.detail;
+		const userInfo = wx.getStorageSync('userInfo');
+		const lookCarDetail = this.data.lookCarDetail;
 
-    alert.loading({
-      str: '提交中'
-    })
-    request_01.lookCarSubmit({
-      user_id: userInfo.user_id,//用户ID
-      look_car_id: lookCarDetail.look_car_id,//看车ID
-      name: detail.name,//留资姓名
-      mobile: detail.phone,//留资电话
-      v_code: detail.code || '',//短信验证码
-      dl_code: detail.storeCode,//专营店编码
-      car_type: '',//车型 可不填
-    }).then((value) => {
-        //success
-        const status = value.data.status;
-        if (status == 1) {
-          alert.loading_h()
-          // mta.Event.stat("booking_car_other", { name: detail.name, phone: detail.phone, city: detail.region.join('--') })
-          { userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}` }
-          alert.confirm({ title: "预约成功", content: `您已成功预约「${this.data.vehicle.title}」的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
-            this.setData({
-              isShowForm: false,
-            })
-          })
-        } else {
-          alert.alert({
-            str: '预约失败，请稍后再试~',
-          })
-        }
-      })
-      .catch(() => {
-        //fail
-        alert.loading_h()
+		alert.loading({
+			str: '提交中'
+		})
+		request_01.lookCarSubmit({
+			user_id: userInfo.user_id,//用户ID
+			look_car_id: lookCarDetail.look_car_id,//看车ID
+			name: detail.name,//留资姓名
+			mobile: detail.phone,//留资电话
+			v_code: detail.code || '',//短信验证码
+			dl_code: detail.storeCode,//专营店编码
+			car_type: '',//车型 可不填
+		}).then((value) => {
+			//success
+			const status = value.data.status;
+			if (status == 1) {
+				alert.loading_h()
+				// mta.Event.stat("booking_car_other", { name: detail.name, phone: detail.phone, city: detail.region.join('--') })
+				{ userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}` }
+				alert.confirm({ title: "预约成功", content: `您已成功预约的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
+					this.setData({
+						isShowForm: false,
+					})
+				})
+			} else {
+				alert.alert({
+					str: value.data.msg,
+				})
+			}
+		})
+			.catch(() => {
+				//fail
+				alert.loading_h()
 
-      })
-      .then(() => {
-        //complete
-        
-      })
-  },
+			})
+			.then(() => {
+				//complete
+
+			})
+	},
   //页面跳转
   jump(e) {
     tool.jump_nav(e.currentTarget.dataset.url)
@@ -224,5 +224,8 @@ Page({
       title: `赶快来预约 ${this.data.lookCarDetail.car_name} 吧~`,
       path: `/pages/look_car_detail_02/look_car_detail_02?id=${this.data.id}`
     }
-  }
+	},
+	closelz() {
+		this.setData({ popstu: 2 })
+	}
 })

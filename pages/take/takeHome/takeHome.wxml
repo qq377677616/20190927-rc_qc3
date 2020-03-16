@@ -9,10 +9,10 @@
 						<text class="txt1">{{useData.name}}</text>
 						<view class="txt2">{{useData.position}}</view>
 					</view>
-					<view class="cg_btn">
+					<!-- <view class="cg_btn">
 						<image mode="widthFix" src="{{BASEURL}}/tk_change.png" class="change"></image>
 						<text class="txt3">切换</text>
-					</view>
+					</view> -->
 				</view>			
 			</view>
 		</view>

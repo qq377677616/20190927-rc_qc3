@@ -23,7 +23,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.2",
+	"libVersion": "2.10.3",
 	"appid": "wx1d585c8c2fffe589",
 	"projectname": "new_rc_qc_3.0",
 	"debugOptions": {
@@ -746,7 +746,7 @@
 					"id": 98,
 					"name": "改版T70",
 					"pathName": "pages/look_car_detail_04/look_car_detail_04",
-					"query": "id=6",
+					"query": "id=3",
 					"scene": null
 				},
 				{
@@ -866,6 +866,13 @@
 					"name": "pages/webview/webview",
 					"pathName": "pages/webview/webview",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 116,
+					"name": "EV页面",
+					"pathName": "pages/look_car_detail_02/look_car_detail_02",
+					"query": "id=13",
 					"scene": null
 				}
 			]
