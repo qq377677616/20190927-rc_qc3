@@ -1,7 +1,7 @@
 <!--pages/look_car_detail_02/look_car_detail_02.wxml-->
 
 <!-- look_car_detail_page -->
-<view class="look_car_detail_page">
+<view class="look_car_detail_page" bindtap="closelz">
 
     <!-- nav_area -->
     <view class="nav_area">
@@ -53,16 +53,7 @@
 
     </scroll-view>
     <!-- main -->
-
-    <!-- footer -->
-    <view class="footer" bindtap="downPayment">
-        预约试驾
-    </view><!-- footer -->
-
-    <!-- 留资弹窗-->
-    <view class="forms-box bottom-top" wx:if="{{ isShowForm }}">
-        <forms bindsubmit="submit" bindclose="isShowForm" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
-    </view>
+    
     <!-- 两个icon -->
     <view class="icon-box {{isIconShow ? 'right-left' : ''}}" wx:key="key{{index}}" wx:if="{{ navIndex == 0 }}">
       <view class="li flex-cen" wx:for="{{iconList}}" wx:if="{{isShowIcon['btn' + (index + 1)] == 1}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
@@ -80,4 +71,8 @@
     </view>
 </view>
 <!-- look_car_detail_page -->
+<!-- 留资弹窗-->
+    <view class="forms-box" wx:if="{{ true }}">
+		<forms bindsubmit="submit" bindclose="isShowForm" popstu="{{popstu}}" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
+	</view>
 
