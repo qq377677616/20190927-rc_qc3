@@ -3,9 +3,9 @@ import tool from '../../utils/tool/tool.js'
 import gets from '../../utils/tool/authorization.js'
 import api from '../../utils/request/request_03.js'
 import router from '../../utils/tool/router.js'
-import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js'
+import QQMapWX from '../../utils/other/qqmap-wx-jssdk.min.js'
 import https from '../../utils/api/my-requests.js';
-import auth from '../../utils/public/authorization.js'
+// import auth from '../../utils/public/authorization.js'
 const app = getApp(); //获取应用实例
 
 Component({
@@ -176,7 +176,7 @@ Component({
 	  //点击自定义Modal弹框上的按钮
 	  operation(e) {
 		  if (e.detail.confirm) {
-			  auth.openSetting(res => {//用户自行从设置勾选授权后
+			  gets.openSetting(res => {//用户自行从设置勾选授权后
 				  if (res.authSetting["scope.userLocation"]) {
 					  this.getInfo()
 				  }

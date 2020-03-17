@@ -21,6 +21,7 @@ Page({
 		img:null, // 发送的类型
 		handimg:null,//客服头像
 		isenter: 1,//是不是第一次进来
+		linkNum:1,// 连接次数
 	},
 
 	/**
@@ -28,8 +29,10 @@ Page({
 	 */
 	onLoad: function (options) {
 		this.setData({ uid: options.uid, to_uid: options.to_uid, userInfo: wx.getStorageSync("userInfo"), handimg: options.avatar})
-		this.creatSocket();
+		// this.creatSocket();
 		this.msgLog();
+		// this.scoketInit();
+		this.creatSocket();
 	},
 
 	/**
@@ -50,7 +53,8 @@ Page({
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
-
+		// app.globalData.socketOpen = false;
+		// this.closesck();
 	},
 
 	/**
@@ -87,29 +91,87 @@ Page({
 	// onShareAppMessage: function () {
 
 	// }
-	creatSocket(){
-		let socketOpen = false;
-		let socketMsgQueue = [];
+	creatSocket(){ // 创建socket
 		let self = this;
-		wx.connectSocket({
-			url: 'wss://192.168.1.193:8282',
-			success(res){
-				// console.log('连接成功' + res)
-				// console.log(JSON.stringify(res))
-				wx.onSocketOpen((res) => {
-					socketOpen = true
-					console.log('连接成功！');
-					self.setData({ socketOpen: true })
-					self.bindUse(); // 绑定用户
-				})
-			},
-			fail(res) {
-				console.log('连接失败' + res);
-			}
-		})
-		
-
+		// this.setData({ linkNum: ++this.data.linkNum });
+		// wx.connectSocket({
+		// 	url: app.globalData.SOCKETURL,
+		// 	timeout: 10000,
+		// 	success(res) {
+		// 		console.log('=====连接成功=====');
+		// 		tool.loading_h();
+				// self.listlenskt();
+				// wx.onSocketOpen((res) => {
+					app.globalData.socketOpen = true;
+					// self.setData({ linkNum: 1 });
+					// console.log('=====socket打开成功！=====');
+					// self.bindUse(); // 绑定用户
+					// self.scoketClose();
+					// self.scoketErr();
+				// })
+			// },
+			// fail(res) {
+			// 	tool.loading_h();
+			// 	self.scoketInit();
+			// 	console.log('=====连接失败====' + res);
+			// }
+		// })
 		this.acceptmag();// 接收socekt
+	},
+	listlenskt() {// 监听socket
+		let self = this;
+		console.log('7777')
+		wx.onSocketOpen((res) => {
+			app.globalData.socketOpen = true;
+			self.setData({ linkNum: 1 });
+			console.log('=====socket打开成功！=====');
+			self.bindUse(); // 绑定用户
+			self.scoketClose();
+			self.scoketErr();
+		})
+	},
+	scoketClose() {// 监听socket 关闭事件 重连
+		let self = this;
+		wx.onSocketClose((res) => {
+			console.log("=====socket关闭原因=====", res);
+			app.globalData.socketOpen = false;
+			self.scoketInit();
+		})
+	},
+	scoketErr() {// 监听socket 错误时 重连
+		let self = this;
+		wx.onSocketError((res) => {
+			console.log("=====socket错误=====", res);
+			app.globalData.socketOpen = false;
+			self.scoketInit();
+		})
+	},
+	scoketInit() { // 初始化socket
+		tool.loading();
+		let time = null;
+		clearInterval(time);
+		if (!app.globalData.socketOpen && this.data.linkNum == 1) { // 第一次直接连接
+			console.log("第一次连接")
+			this.creatSocket();
+		} else { //  重连 10秒一次
+			time = setInterval(() => {
+				if (!app.globalData.socketOpen) {
+					this.creatSocket();
+					tool.alert(`网络第${this.data.linkNum}次重连！`);
+				} else {
+					clearInterval(time);
+				}
+				if (this.data.link >= 10) {
+					clearInterval(time);
+					tool.alert("网络链接失败！")
+				}
+			}, 10000)
+
+		}
+	},
+	closesck() {// 关闭socket
+		if (app.globalData.socketOpen) wx.closeSocket()
+		console.log(app.globalData.socketOpen, '关闭socket!');
 	},
 	getval(e){//保存消息
 	  this.setData({msg:e.detail.value});
@@ -136,7 +198,8 @@ Page({
 			tool.alert("输入不能为空");
 		} else {//${this.data.to_uid}
 			let content = `{"type":"send","to_uid":"YangLiSongA","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img:msg}"}}`; 
-			if (this.data.socketOpen) {
+			console.log(app.globalData.socketOpen,'777');
+			if (app.globalData.socketOpen){
 				wx.sendSocketMessage({
 					data: content,
 					success:(res)=>{
@@ -146,12 +209,12 @@ Page({
 						console.log('失败',err);
 					}
 				})
-			} else {
-				socketMsgQueue.push(content)
+			} else{
+				console.log("发送失败！");
 			}
 		}
 	},
-	acceptmag() {//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
+	acceptmag(){//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
 		let self = this;
 		let arr = [];
 		wx.onSocketMessage(function (msg) {
@@ -162,7 +225,7 @@ Page({
 			if(code!=1)return;
 			switch (type){
 				case 'send':{ //接收发送的信息
-					arr.push({ content: self.data.img ? self.data.img : self.data.msg, type: 1, is_ob: 1, msg_type: msg_type});
+					arr.push({ content: data.data.content, type: 1, is_ob: 1, msg_type: data.data.msg_type});
 					self.setData({ sendload: [...self.data.sendload, ...arr],msg:'',img:null});
 					console.log(self.data.sendload);
 					self.conutHeg();

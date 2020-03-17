@@ -9,7 +9,7 @@ const tool = require('../../utils/tool/tool.js');
 
 import api from '../../utils/request/request_03.js'
 
-import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js'
+import QQMapWX from '../../utils/other/qqmap-wx-jssdk.min.js'
 const app = getApp()
 Page({
 
