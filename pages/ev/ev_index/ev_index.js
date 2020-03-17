@@ -38,7 +38,6 @@ Page({
             activity_id = options.activity_id;
         }
         request_05.evIndex({ activity_id, openid }).then(res => {
-            console.log(res, 'res')
             this.setRule()
             if (res.data.status == 1) {
                 this.setData({

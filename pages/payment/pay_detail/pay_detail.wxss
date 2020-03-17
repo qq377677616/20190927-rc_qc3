@@ -95,3 +95,47 @@
   line-height: 99rpx;
   text-align: center;
 }
+
+/* product_explain */
+.product_explain,
+.pruduct_image{
+    padding: 39rpx;
+    background-color: #fff;
+    margin-bottom: 10rpx;
+    border-top: 18rpx solid #f5f5f5;
+    margin-top: 30rpx;
+}
+.product_explain .title,
+.pruduct_image .title{
+    font-size: 32rpx;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 32rpx;
+}
+.product_explain .section{
+    font-size: 24rpx;
+}
+.product_explain .section .h2{
+    color: #666;
+    margin-bottom: 20rpx;
+}
+.product_explain .section .p{
+    color: #999;
+    margin-bottom: 20rpx;
+    line-height: 1.6em;
+}/* product_explain */
+
+/* pruduct_image */
+.pruduct_image{
+
+}
+.pruduct_image .title{
+    
+}
+.pruduct_image .image_list{
+    
+}
+.pruduct_image .image_list image{
+    display: block;
+    width: 100%;
+}/* pruduct_image */
