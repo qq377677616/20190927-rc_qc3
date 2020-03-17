@@ -24,6 +24,7 @@ Page({
     initData(options) {
         let activity_id = '';
         let openid = wx.getStorageSync('userInfo').openid
+         console.log()
         if (options.scene) {
             let scene = decodeURIComponent(options.scene);
             console.log(scene)
