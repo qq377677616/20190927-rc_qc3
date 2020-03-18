@@ -120,9 +120,13 @@ Page({
 
   //去兑换页
   toChange() {
+      let cate_id = this.data.acData.activity_info.cate_id
+      if(cate_id==0){
+        tool.alert('暂未开放')
+        return
+      }
       let open_buy = this.data.open_buy
       let activity_id = this.data.activity_id
-      let cate_id = this.data.acData.activity_info.cate_id
       let goods2_buy = this.data.acData.goods2_buy
       let car_owner = this.data.car_owner
       console.log(cate_id, 'cate_id')

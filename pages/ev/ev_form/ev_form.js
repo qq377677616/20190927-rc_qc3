@@ -134,6 +134,9 @@ Page({
               })
             }else{
               tool.alert(res.data.msg)
+              setTimeout(() => {
+                router.jump_back()
+              }, 500);
             }
           })
         }, 500);
