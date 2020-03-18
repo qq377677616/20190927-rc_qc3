@@ -42,6 +42,7 @@ Page({
 		userInfo:null,
 		uid:null,// 自己id
 		to_uid:null,// 给别人的id
+		linkNum:1, // socket 连接次数
 	},
 
 	/**
@@ -60,6 +61,7 @@ Page({
 			})
 			this.authBtn();
 		})
+		
 	},
 
 	/**
@@ -73,14 +75,15 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
-
+		app.globalData.socketOpen = false;
+		// this.closesck();
 	},
 
 	/**
@@ -127,6 +130,7 @@ Page({
 		https.clientLogin(dat).then((res)=>{
 			// console.log(res);
 			if(res.data.code==1)this.setData({uid:res.data.data,to_uid:this.data.useData.id});
+			this.scoketInit(); // 初始化scoket
 		})
 	},
 	getUserInfo(e) { // 授权
@@ -265,5 +269,102 @@ Page({
 		else {
 			tool.jump_nav(`/pages/look_car_detail_02/look_car_detail_02?id=${id}`)
 		}
+	},
+	creatSocket() {
+		let self = this;
+		this.setData({ linkNum:++this.data.linkNum});
+		wx.connectSocket({
+			url: app.globalData.SOCKETURL,
+			timeout: 10000,
+			success(res) {
+				console.log('=====连接成功=====');
+				tool.loading_h(); 
+				self.listlenskt();
+				
+			},
+			fail(res) {
+				tool.loading_h(); 
+				self.scoketInit();
+				console.log('=====连接失败====' + res);
+			}
+		})
+		// this.acceptmag();// 接收socekt
+	},
+	listlenskt(){// 监听socket
+		let self = this;
+		wx.onSocketOpen((res) => {
+			app.globalData.socketOpen = true;
+			console.log('=====socket打开成功！=====');
+			self.setData({ linkNum: 1 });
+			self.bindUse(); // 绑定用户
+			self.scoketClose();
+		})
+	},
+	scoketClose(){// 监听socket 关闭事件 重连
+		let self = this; 
+		app.globalData.socketOpen = false;
+		// self.setData({linkNum:1}) 
+		wx.onSocketClose((res)=>{
+			console.log("=====socket关闭原因=====",res);
+			self.scoketInit();
+		})
+	},
+	scoketErr(){// 监听socket 错误时 重连
+		let self = this;
+		app.globalData.socketOpen = false;
+		// self.setData({ linkNum: 1 });
+		wx.onSocketError((res)=>{
+			console.log("=====socket错误=====", res);
+			self.scoketInit();
+		})
+	},
+	scoketInit(){ // 初始化socket
+		tool.loading(); 
+		let time = null;
+		clearInterval(time);
+		if (!app.globalData.socketOpen && this.data.linkNum==1){ // 第一次直接连接
+			console.log("第一次连接")
+			this.creatSocket();
+		}else{ //  重连 10秒一次
+			time = setInterval(() => {
+				if (!app.globalData.socketOpen) {
+					this.creatSocket();
+					tool.alert(`网络第${this.data.linkNum}次重连！`);
+				} else {
+					clearInterval(time);
+				}
+				if (this.data.link >= 10) {
+					clearInterval(time);
+					tool.alert("网络链接失败！")
+				}
+			}, 10000)
+
+		}
+	},
+	bindUse() {// 绑定 
+		let time = null;
+		wx.sendSocketMessage({
+			data: '{"type":"bind","uid":"' + this.data.uid + '"}'
+		})
+		clearInterval(time);
+		time = setInterval(() => { // 发送心跳
+			wx.sendSocketMessage({
+				data: '{"type":"ping"}'
+			})
+		}, 50000)
+	},
+	closesck(){// 关闭socket
+		if (app.globalData.socketOpen){
+			wx.closeSocket({
+				success(res){
+					console.log(res);
+				}, fail(err){
+					console.log(err);
+				},complete(dat){
+					console.log(dat);
+				}
+			})
+		} 
+		console.log(app.globalData.socketOpen,'关闭socket!');
 	}
 })

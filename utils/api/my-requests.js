@@ -1,5 +1,5 @@
 import $ from './request.js'
-const QQMapWX = require('../qqmap-wx-jssdk.min.js');
+const QQMapWX = require('../../utils/other/qqmap-wx-jssdk.min.js');
 const REQUESTURL = getApp().globalData.REQUESTURL
 const myRequest = (data, url, type = 'post', isUrl = false) => {
   !isUrl && (url = `${REQUESTURL}${url}`)

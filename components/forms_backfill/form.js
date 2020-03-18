@@ -2,7 +2,7 @@
 import tool from '../../utils/tool/tool.js'
 import gets from '../../utils/tool/authorization.js'
 import api from '../../utils/request/request_03.js'
-import QQMapWX from '../../utils/qqmap-wx-jssdk.min.js'
+import QQMapWX from '../../utils/other/qqmap-wx-jssdk.min.js'
 Component({
   /**
    * 组件的属性列表

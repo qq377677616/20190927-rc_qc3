@@ -10,7 +10,7 @@ import gets from '../../../utils/tool/authorization.js'
 
 import https from '../../../utils/api/my-requests.js';
 
-import QQMapWX from '../../../utils/qqmap-wx-jssdk.min.js'
+import QQMapWX from '../../../utils/other/qqmap-wx-jssdk.min.js'
 
 const router = require('../../../utils/tool/router.js');
 
