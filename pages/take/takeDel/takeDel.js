@@ -93,83 +93,9 @@ Page({
 	// }
 	creatSocket(){ // 创建socket
 		let self = this;
-		// this.setData({ linkNum: ++this.data.linkNum });
-		// wx.connectSocket({
-		// 	url: app.globalData.SOCKETURL,
-		// 	timeout: 10000,
-		// 	success(res) {
-		// 		console.log('=====连接成功=====');
-		// 		tool.loading_h();
-				// self.listlenskt();
-				// wx.onSocketOpen((res) => {
-					app.globalData.socketOpen = true;
-					// self.setData({ linkNum: 1 });
-					// console.log('=====socket打开成功！=====');
-					// self.bindUse(); // 绑定用户
-					// self.scoketClose();
-					// self.scoketErr();
-				// })
-			// },
-			// fail(res) {
-			// 	tool.loading_h();
-			// 	self.scoketInit();
-			// 	console.log('=====连接失败====' + res);
-			// }
-		// })
 		this.acceptmag();// 接收socekt
 	},
-	listlenskt() {// 监听socket
-		let self = this;
-		console.log('7777')
-		wx.onSocketOpen((res) => {
-			app.globalData.socketOpen = true;
-			self.setData({ linkNum: 1 });
-			console.log('=====socket打开成功！=====');
-			self.bindUse(); // 绑定用户
-			self.scoketClose();
-			self.scoketErr();
-		})
-	},
-	scoketClose() {// 监听socket 关闭事件 重连
-		let self = this;
-		wx.onSocketClose((res) => {
-			console.log("=====socket关闭原因=====", res);
-			app.globalData.socketOpen = false;
-			self.scoketInit();
-		})
-	},
-	scoketErr() {// 监听socket 错误时 重连
-		let self = this;
-		wx.onSocketError((res) => {
-			console.log("=====socket错误=====", res);
-			app.globalData.socketOpen = false;
-			self.scoketInit();
-		})
-	},
-	scoketInit() { // 初始化socket
-		tool.loading();
-		let time = null;
-		clearInterval(time);
-		if (!app.globalData.socketOpen && this.data.linkNum == 1) { // 第一次直接连接
-			console.log("第一次连接")
-			this.creatSocket();
-		} else { //  重连 10秒一次
-			time = setInterval(() => {
-				if (!app.globalData.socketOpen) {
-					this.creatSocket();
-					tool.alert(`网络第${this.data.linkNum}次重连！`);
-				} else {
-					clearInterval(time);
-				}
-				if (this.data.link >= 10) {
-					clearInterval(time);
-					tool.alert("网络链接失败！")
-				}
-			}, 10000)
-
-		}
-	},
-	closesck() {// 关闭socket
+	closesck(){// 关闭socket
 		if (app.globalData.socketOpen) wx.closeSocket()
 		console.log(app.globalData.socketOpen, '关闭socket!');
 	},
@@ -189,6 +115,9 @@ Page({
 		},50000)
 	},
 	sendMsg(){// 发送消息
+		if(!app.globalData.socketOpen){
+			tool.alert("网络链接失败！");
+		}
 		let msg = this.data.msg;
 		msg = msg.replace(/^\s+|\s+$/g, '');
 		let msg_type = this.data.img ? 2 : 1;
@@ -270,7 +199,7 @@ Page({
 			}
 		})
 	},
-	setscret(){
+	setscret(){ // 抬起聊天
 		this.conutHeg();
 	},
 	preview(e){ // 图片预览
@@ -300,4 +229,5 @@ Page({
 			})
 		},500)
 	}
+	
 })

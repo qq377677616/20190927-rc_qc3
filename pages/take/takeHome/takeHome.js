@@ -70,7 +70,6 @@ Page({
 	onReady: function () {
 
 	},
-
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
@@ -82,7 +81,7 @@ Page({
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
-		app.globalData.socketOpen = false;
+		// app.globalData.socketOpen = false;
 		// this.closesck();
 	},
 
@@ -181,13 +180,13 @@ Page({
 		})
 		
 	},
-	copeTxt(){
+	copeTxt(){ 
 		this.setData({iscope:false});
 	},
 	addwx(){
 		this.setData({iscope:true});
 	},
-	takeMan() {//聊一聊userInfo.nickName || !userInfo.unionid
+	takeMan() { //聊一聊userInfo.nickName || !userInfo.unionid
 		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.id){
 			tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}&handimg=${this.data.useData.avatar}`);
 		}else{
@@ -225,8 +224,6 @@ Page({
 	},
 	//邀请成功 回调
 	completemessage(){
-		// console.log('邀请成功');
-		// tool.alert("已发送");
 		tool.showModal("确认",`已经发送服务通知请注意查收`);
 	},
 	// 点击打电话
@@ -272,54 +269,55 @@ Page({
 	},
 	creatSocket() {
 		let self = this;
-		this.setData({ linkNum:++this.data.linkNum});
 		wx.connectSocket({
 			url: app.globalData.SOCKETURL,
 			timeout: 10000,
 			success(res) {
-				console.log('=====连接成功=====');
-				tool.loading_h(); 
 				self.listlenskt();
-				
 			},
 			fail(res) {
 				tool.loading_h(); 
-				self.scoketInit();
 				console.log('=====连接失败====' + res);
+			},
+			complete(dat){
+				console.log('+++', app.globalData.socketOpen);
+				tool.loading_h(); 
+				self.setData({ linkNum:++self.data.linkNum });
+				if (!app.globalData.socketOpen){
+					self.scoketInit();
+				}
 			}
 		})
-		// this.acceptmag();// 接收socekt
+		
 	},
-	listlenskt(){// 监听socket
+	listlenskt(){ // 监听socket
 		let self = this;
 		wx.onSocketOpen((res) => {
 			app.globalData.socketOpen = true;
 			console.log('=====socket打开成功！=====');
 			self.setData({ linkNum: 1 });
 			self.bindUse(); // 绑定用户
-			self.scoketClose();
+			self.scoketClose();// 监听socket关闭
+			// self.acceptmag();// 接收socekt
 		})
 	},
 	scoketClose(){// 监听socket 关闭事件 重连
 		let self = this; 
-		app.globalData.socketOpen = false;
-		// self.setData({linkNum:1}) 
 		wx.onSocketClose((res)=>{
+			app.globalData.socketOpen = false;
 			console.log("=====socket关闭原因=====",res);
 			self.scoketInit();
 		})
 	},
 	scoketErr(){// 监听socket 错误时 重连
 		let self = this;
-		app.globalData.socketOpen = false;
-		// self.setData({ linkNum: 1 });
 		wx.onSocketError((res)=>{
+			app.globalData.socketOpen = false;
 			console.log("=====socket错误=====", res);
 			self.scoketInit();
 		})
 	},
 	scoketInit(){ // 初始化socket
-		tool.loading(); 
 		let time = null;
 		clearInterval(time);
 		if (!app.globalData.socketOpen && this.data.linkNum==1){ // 第一次直接连接
@@ -327,17 +325,16 @@ Page({
 			this.creatSocket();
 		}else{ //  重连 10秒一次
 			time = setInterval(() => {
-				if (!app.globalData.socketOpen) {
+				if (!app.globalData.socketOpen && this.data.linkNum <= 11) {
+					clearInterval(time);
 					this.creatSocket();
-					tool.alert(`网络第${this.data.linkNum}次重连！`);
+					tool.loading(`第${this.data.linkNum-2}次重连！`); 
 				} else {
+					if (!app.globalData.socketOpen)
+					tool.alert('服务器开小差了！');
 					clearInterval(time);
 				}
-				if (this.data.link >= 10) {
-					clearInterval(time);
-					tool.alert("网络链接失败！")
-				}
-			}, 10000)
+			}, 5000)
 
 		}
 	},

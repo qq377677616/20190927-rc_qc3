@@ -72,7 +72,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
                             <block wx:for="{{9}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper1!=index-1&&!(swiper1==8&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw{{index+1}}.png)"></view>
+                                    <view class="item1 {{swiper1!=index-1&&!(swiper1==8&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw{{index+1}}.png)" data-type="1" data-tab="{{index-1}}" data-len="{{9}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -115,7 +115,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
                             <block wx:for="{{8}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper2!=index-1&&!(swiper2==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw2_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper2!=index-1&&!(swiper2==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw2_{{index+1}}.png?1)" data-type="2" data-tab="{{index-1}}" data-len="{{8}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -160,7 +160,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
                             <block wx:for="{{10}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper3!=index-1&&!(swiper3==9&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw3_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper3!=index-1&&!(swiper3==9&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw3_{{index+1}}.png?1)" data-type="3" data-tab="{{index-1}}" data-len="{{10}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -176,7 +176,7 @@
                         <view class="selectcol">
                             <scroll-view scroll-x="{{true}}">
                                 <view class="setflex">
-                                    <view class="f_items" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
+                                    <view class="f_items {{rogincol==index?'range':''}}" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
                                         <view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
                                         <text class="txt5">{{item.txt}}</text>
                                     </view>
@@ -253,7 +253,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
                             <block wx:for="{{8}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper4!=index-1&&!(swiper4==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_1_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper4!=index-1&&!(swiper4==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_1_{{index+1}}.png?1)" data-type="4" data-tab="{{index-1}}" data-len="{{8}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -294,7 +294,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="5" current="{{swiper5}}">
                             <block wx:for="{{6}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper5!=index-1&&!(swiper5==5&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_2_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper5!=index-1&&!(swiper5==5&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_2_{{index+1}}.png?1)" data-type="5" data-tab="{{index-1}}" data-len="{{6}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -332,7 +332,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="6" current="{{swiper6}}">
                             <block wx:for="{{5}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper6!=index-1&&!(swiper6==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_3_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper6!=index-1&&!(swiper6==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_3_{{index+1}}.png?1)" data-type="6" data-tab="{{index-1}}" data-len="{{5}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -350,9 +350,9 @@
 
                     <view class="txtbox2 txtbox3">{{t70_swiper4_txt[swiper7]}}</view>
                     <!--轮播实例5-->
-                    <view class="threebg threebg7 anit7_{{swiper7}}">
+                    <view class="threebg threebg7 anit2_{{swiper7}}">
                         <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="7" current="{{swiper7}}">
-                            <block wx:for="{{4}}" wx:key="item">
+                            <block wx:for="{{8}}" wx:key="item">
                                 <swiper-item>
 
                                     <!-- 自定义播放按钮 -->
@@ -367,9 +367,9 @@
                     </view>
                     <view class="swiper1">
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="7" current="{{swiper7}}">
-                            <block wx:for="{{4}}" wx:key="item">
+                            <block wx:for="{{8}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper7!=index-1&&!(swiper7==3&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_4_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper7!=index-1&&!(swiper7==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_4_{{index+1}}.png?1)" data-type="7" data-tab="{{index-1}}" data-len="{{8}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -407,7 +407,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="8" current="{{swiper8}}">
                             <block wx:for="{{5}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper8!=index-1&&!(swiper8==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_5_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper8!=index-1&&!(swiper8==4&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t70_5_{{index+1}}.png?1)" data-type="8" data-tab="{{index-1}}" data-len="{{5}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -421,7 +421,7 @@
                         <view class="selectcol t70selectcol ">
                             <scroll-view scroll-x="{{true}}">
                                 <view class="setflex">
-                                    <view class="f_items" wx:for="{{t70carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
+                                    <view class="f_items {{rogincol==index?'range':''}}" wx:for="{{t70carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
                                         <view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
                                         <text class="txt5">{{item.txt}}</text>
                                     </view>
@@ -492,7 +492,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="9" current="{{swiper9}}">
                             <block wx:for="{{6}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper9!=index-1&&!(swiper9==5&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_1_{{index+1}}.jpg?4)"></view>
+                                    <view class="item1 {{swiper9!=index-1&&!(swiper9==5&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_1_{{index+1}}.jpg?4)" data-type="9" data-tab="{{index-1}}" data-len="{{6}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -529,7 +529,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="10" current="{{swiper10}}">
                             <block wx:for="{{6}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper10!=index-1&&!(swiper10==5&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_4_{{index+1}}.jpg?1)"></view>
+                                    <view class="item1 {{swiper10!=index-1&&!(swiper10==5&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_4_{{index+1}}.jpg?1)" data-type="10" data-tab="{{index-1}}" data-len="{{6}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -566,7 +566,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="12" current="{{swiper12}}">
                             <block wx:for="{{7}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper12!=index-1&&!(swiper12==6&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_2_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper12!=index-1&&!(swiper12==6&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_2_{{index+1}}.png?1)" data-type="12" data-tab="{{index-1}}" data-len="{{7}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -617,7 +617,7 @@
                         <view class="selectcol d60selectcol ">
                             <scroll-view scroll-x="{{true}}">
                                 <view class="setflex">
-                                    <view class="f_items" wx:for="{{d60carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
+                                    <view class="f_items {{rogincol==index?'range':''}}" wx:for="{{d60carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
                                         <view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
                                         <text class="txt5">{{item.txt}}</text>
                                     </view>

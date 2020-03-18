@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "看车",
-  "usingComponents": {
-    "qc-Tabbar":"/components/Tabbar/cmp"
-  }
-}
