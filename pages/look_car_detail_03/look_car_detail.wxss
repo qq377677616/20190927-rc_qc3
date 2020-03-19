@@ -466,26 +466,41 @@ page {
 }
 
 .anit3_0::after {
-  width: 20%;
+  width: 12.5%;
   transition: all 0.3s linear;
 }
 
 .anit3_1::after {
-  width: 40%;
+  width: 25%;
   transition: all 0.3s linear;
 }
 
 .anit3_2::after {
-  width: 60%;
+  width: 37.5%;
   transition: all 0.3s linear;
 }
 
 .anit3_3::after {
-  width: 80%;
+  width: 50%;
   transition: all 0.3s linear;
 }
 
 .anit3_4::after {
+  width: 62.5%;
+  transition: all 0.3s linear;
+}
+
+.anit3_5::after {
+  width: 75%;
+  transition: all 0.3s linear;
+}
+
+.anit3_6::after {
+  width: 87.5%;
+  transition: all 0.3s linear;
+}
+
+.anit3_7::after {
   width: 100%;
   transition: all 0.3s linear;
 }

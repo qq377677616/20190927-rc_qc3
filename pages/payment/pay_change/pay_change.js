@@ -53,7 +53,7 @@ Page({
       return
     }
     if (stype == 2 && this.data.goods2_buy == 0) {
-      tool.alert('暂无权限')
+      tool.alert('线下提车后次日即可兑换实物礼品')
     } else {
       if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
       if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.owner == 1) {

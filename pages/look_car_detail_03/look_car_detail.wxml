@@ -145,10 +145,17 @@
       <text wx:elif="{{ swiper5 == 1 }}" class="oFadeIn">悬浮式中控台
 </text>
       <text wx:elif="{{ swiper5 == 2 }}" class="oFadeIn">钻石绗缝真皮包覆</text>
-      <text wx:elif="{{ swiper5 == 3 }}" class="oFadeIn">女王副驾座椅
+      <!-- <text wx:elif="{{ swiper5 == 3 }}" class="oFadeIn">女王副驾座椅
 
+</text> -->
+      <text wx:elif="{{ swiper5 == 3 }}" class="oFadeIn">15.6英寸全面屏智能中控
 </text>
-      <text wx:elif="{{ swiper5 == 4 }}" class="oFadeIn">15.6英寸全面屏智能中控
+<text wx:if="{{ swiper5 == 4 }}" class="oFadeIn">智能触控真皮方向盘
+</text>
+<text wx:elif="{{ swiper5 == 5 }}" class="oFadeIn">悬浮式中控台
+</text>
+<text wx:elif="{{ swiper5 == 6 }}" class="oFadeIn">钻石绗缝真皮包覆</text>
+<text wx:elif="{{ swiper5 == 7 }}" class="oFadeIn">15.6英寸全面屏智能中控
 </text>
     </view>
   </view>
@@ -156,7 +163,7 @@
     <image class="arrow l-btn" src="{{ IMGSERVICE }}/spike/page6_25.png" mode="widthFix" data-btn="prev2" bindtap="switchBtn"></image>
     <image class="arrow r-btn" src="{{ IMGSERVICE }}/spike/page6_24.png" mode="widthFix" data-btn="next2" bindtap="switchBtn"></image>
     <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="5" current="{{swiper5}}" >
-      <block wx:for="{{5}}" wx:key="item">
+      <block wx:for="{{8}}" wx:key="item">
         <swiper-item>
           <view class="bigitem" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index+1}}.png?1)"></view>
         </swiper-item>
@@ -165,9 +172,9 @@
   </view>
   <view class="swiper1">
     <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="5" current="{{swiper5}}">
-      <block wx:for="{{5}}" wx:key="item">
+      <block wx:for="{{8}}" wx:key="item">
         <swiper-item>
-          <view class="item1 {{swiper5!=index-1&&!(swiper5==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index == 0 ? index+5:index}}.png?1)"></view>
+          <view class="item1 {{swiper5!=index-1&&!(swiper5==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index == 0 ? index+8:index}}.png?1)"></view>
         </swiper-item>
       </block>
     </swiper>

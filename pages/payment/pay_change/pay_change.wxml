@@ -4,13 +4,13 @@
     <image src="{{goodsData.banner[0].image}}" mode="widthFix"></image>
   </view>
   <view class="list-bg" wx:for="{{goodsData.list}}">
-    <view class="bg">
+    <view class="bg" bindtap="toDetail" data-owner="{{item.car_owner}}" data-id="{{item.goods_id}}" data-stype="{{item.type}}" data-type="ok">
       <view class="list">
         <view class="left">
-          <image src="{{item.thumb}}" mode="widthFix"></image>
+          <image src="{{item.thumb}}" mode="widthFix"  data-type="ok"></image>
         </view>
         <view class="right">
-            <view class="r-txt1 nowrap">{{item.title}}</view>
+            <view class="r-txt1 nowrap" data-type="ok">{{item.title}}</view>
             <view class="jindu">
               <view wx:if="{{item.status==1}}" class="jindutiao" style="width:{{((item.all_number-item.number)/item.all_number)*100}}%"></view>
               <view wx:if="{{item.status==0}}" class="jindutiao jindutiao2" style="width:{{((item.all_number-item.number)/item.all_number)*100}}%"></view>
@@ -20,7 +20,7 @@
               <image src="{{IMGSERVICE}}/pay/bi.png" mode="widthFix"></image>
               <view class="v-txt">{{item.vcoin}}</view>
             </view>
-            <view wx:if="{{item.status==1}}" class="v-btn" bindtap="toDetail" data-owner="{{item.car_owner}}" data-id="{{item.goods_id}}" data-stype="{{item.type}}" data-type="ok">立即兑换</view>
+            <view wx:if="{{item.status==1}}" class="v-btn"  data-type="ok">立即兑换</view>
             <view wx:if="{{item.status==0}}" class="v-btn v-btn2">暂未开放</view>
         </view>
       </view>
