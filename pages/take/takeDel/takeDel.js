@@ -22,12 +22,15 @@ Page({
 		handimg:null,//客服头像
 		isenter: 1,//是不是第一次进来
 		linkNum:1,// 连接次数
+		isIponeX:null,// 是不是iphonex
+		iscurr: true,// 是不是在当前页面
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		this.getPhoneinfo();
 		this.setData({ uid: options.uid, to_uid: options.to_uid, userInfo: wx.getStorageSync("userInfo"), handimg: options.avatar})
 		// this.creatSocket();
 		this.msgLog();
@@ -46,13 +49,14 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-		this.setData({ isenter:1})
+		this.setData({ isenter: 1, iscurr:true})
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
+		this.setData({iscurr:false})
 		// app.globalData.socketOpen = false;
 		// this.closesck();
 	},
@@ -126,7 +130,7 @@ Page({
 		if(msg==''&&!this.data.img){
 			tool.alert("输入不能为空");
 		} else {//${this.data.to_uid}
-			let content = `{"type":"send","to_uid":"YangLiSongA","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img:msg}"}}`; 
+			let content = `{"type":"send","to_uid":"chenshidongA","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img:msg}"}}`; 
 			console.log(app.globalData.socketOpen,'777');
 			if (app.globalData.socketOpen){
 				wx.sendSocketMessage({
@@ -175,7 +179,7 @@ Page({
 		let dat = {
 			page:this.data.page,
 			uid:this.data.uid,
-			to_uid: 'YangLiSongA',//`${this.data.to_uid}A`,
+			to_uid: 'chenshidongA',//`${this.data.to_uid}A`,
 			limit:10
 		}
 		https.msgLog(dat).then((res)=>{
@@ -217,7 +221,7 @@ Page({
 		})	
 	},
 	conutHeg(){// 计算滚动高度
-	    console.log(8888)
+		if (!this.data.iscurr) return;
 		setTimeout(()=>{
 			tool.getDom('.infobox').then((res) => {
 				if (res[0].height > wx.getSystemInfoSync().windowHeight) {
@@ -228,6 +232,22 @@ Page({
 				}
 			})
 		},500)
+	},
+	getPhoneinfo() {//获取手机信息
+		tool.getSystem()
+			.then((value) => {
+				console.log("屏幕高度", value.screenHeight);
+				const model = value.model;
+				if (model.search('iPhone X') != -1) {
+					this.setData({
+						isIponeX: true,
+					})
+				} else {
+					this.setData({
+						isIponeX: false,
+					})
+				}
+			})
 	}
 	
 })
