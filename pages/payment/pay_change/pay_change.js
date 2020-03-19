@@ -34,7 +34,7 @@ Page({
           goodsData: res.data.data,
           car_owner: options.car_owner == 1,
           goods2_buy: options.goods2_buy,
-          options
+          options,
         })
       } else {
         console.log('报错')
@@ -153,6 +153,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    let cate_id = this.data.options.cate_id;
+    let obj = {
+      title: '启辰星预售开启，快来兑换精美礼品！',
+      path: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}`,
+      imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
+    };
+    return obj;
   }
 })
