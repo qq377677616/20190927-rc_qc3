@@ -231,7 +231,33 @@ margin-bottom: 32rpx;
 	bottom: -6rpx;
 	left: 0;
 }
-
+.threebg4::after{
+	content: '';
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+	width: 16.5%;
+}
+.threebg6::after{
+	content: '';
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+	width: 20%;
+}
+.threebg7::after{
+	content: '';
+	height: 7rpx;
+	background-color: #2A558D;
+	position: absolute;
+	bottom: -6rpx;
+	left: 0;
+	width: 25%;
+}
 .anit1_0::after{
 	width: 11%;
 	transition:all .3s linear; 
@@ -341,33 +367,7 @@ margin-bottom: 32rpx;
 	width: 100%;
 	transition:all .3s linear; 
 }
-.threebg4::after{
-	content: '';
-	height: 7rpx;
-	background-color: #2A558D;
-	position: absolute;
-	bottom: -6rpx;
-	left: 0;
-	width: 16.5%;
-}
-.threebg6::after{
-	content: '';
-	height: 7rpx;
-	background-color: #2A558D;
-	position: absolute;
-	bottom: -6rpx;
-	left: 0;
-	width: 20%;
-}
-.threebg7::after{
-	content: '';
-	height: 7rpx;
-	background-color: #2A558D;
-	position: absolute;
-	bottom: -6rpx;
-	left: 0;
-	width: 25%;
-}
+
 .anit5_0::after{
 	width: 16.5%;
 	transition:all .3s linear;
@@ -586,17 +586,17 @@ margin-bottom: 32rpx;
 	flex-shrink: 0;
 }
 .num1{
-	width: 78rpx !important;
+	width: 60rpx !important;
 	height: auto;
 	margin-top: 20rpx;
 }
 .num2{
-	width: 167rpx !important;
+	width: 143rpx !important;
 	height: auto;
 	margin-top: 20rpx;
 }
 .num3{
-	width: 182rpx !important;
+	width: 161rpx !important;
 	height: auto;
 	margin-top: 20rpx;
 }
@@ -808,13 +808,13 @@ margin-bottom: 32rpx;
 	position: absolute;
 }
 .t70num1{
-	width: 96rpx !important;
+	width: 78rpx !important;
 }
 .t70num2{
-	width: 153rpx !important;
+	width: 136rpx !important;
 }
 .t70num3{
-	width: 269rpx !important;
+	width: 222rpx !important;
 }
 /* d60 */
 .d60_txt1{
@@ -875,15 +875,15 @@ margin-bottom: 32rpx;
 	background: center no-repeat/cover;
 }
 .d60num1{
-	width: 71rpx;
+	width: 71rpx !important;
 	height: auto;
 }
-.d60num1{
-	width: 159rpx;
+.d60num2{
+	width: 159rpx !important;
 	height: auto;
 }
-.d60num1{
-	width: 161rpx;
+.d60num3{
+	width: 161rpx !important;
 	height: auto;
 }
 .d60footcar1{
@@ -1000,4 +1000,11 @@ margin-bottom: 32rpx;
 	position: absolute;
 	right: 50rpx;
 	top: 50rpx;
+}
+.range{
+	/* transform: translateY(-2rpx); */
+}
+.range>text{
+	font-size: 22rpx;
+	font-weight: bold;
 }

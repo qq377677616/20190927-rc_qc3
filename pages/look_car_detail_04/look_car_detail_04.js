@@ -86,7 +86,7 @@ Page({
         t70_swiper1_txt: ['LED光扩散粒子后尾灯', '18英寸铝合金双色切割工艺轮辋', '砖石绗缝皮质座椅', '丰富的收纳空间', '10.1英寸高清多点触控屏', '炮筒式高清晰组合仪表盘', '多功能D型真皮方向盘(带控制键)', '投射式鹰眼前大灯'], //部件名称
         t70_swiper2_txt: ['数字化车联&互联网信息娱乐', '车辆智能安防体系', '智慧语音助手', '手机远程控制', '异常诊断手机提醒', '全时在线导航'], //部件名称
         t70_swiper3_txt: ['流媒体后视镜', '3D全景式监控影像系统', '后视镜自动折叠', 'TPMS胎压监测系统', '智能电动尾门'], //部件名称
-        t70_swiper4_txt: ['先进的XTRONIC CVT无极变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统', '日产全球引擎MR20发动机'], //部件名称
+		t70_swiper4_txt: ['先进的XTRONIC CVT无极变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统', '日产全球引擎MR20发动机', '先进的XTRONIC CVT无极变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统', '日产全球引擎MR20发动机'], //部件名称
         t70_swiper5_txt: ['专业制造工艺', 'ABS+EBD+BA三位一体智能刹车辅助系统', 'ESS紧急制动提醒系统', 'ESS紧急制动提醒系统', '雷诺-日产-三菱联盟品质标准'], //部件名称
         d60_swiper1_txt: ['车辆智能安防系统', '在线娱乐系统', '智能人机语音交互', '手机远程控制', '车载Wifi热点', '人性化贴心全时导航'], //部件名称
         d60_swiper2_txt: ['宽敞大尺寸天窗', 'Multi-Layer人体工学座椅', '663mm后排膝部空间', '宽敞大尺寸天窗', 'Multi-Layer人体工学座椅', '663mm后排膝部空间'], //部件名称
@@ -314,15 +314,43 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
-        return {
-            title: `赶快来预约 ${this.data.lookCarDetail.car_name} 吧~`,
+		let id = this.data.id;
+		let txt = '';
+		switch (id) {
+			case '11':
+				txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
+				break;
+			case '6':
+				txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
+				break;
+			case '3':
+				txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
+				break;
+			case '9':
+				txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
+				break;
+			case '7':
+				txt = '启辰T70，高品质智联SUV，品质来袭！';
+				break;
+			case '5':
+				txt = '启辰T70，高品质智联SUV，品质来袭！';
+				break;
+			case '10':
+				txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
+				break;
+			case '13':
+				txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
+				break;
+		}
+		return {
+            title: `${txt}`,
             path: `/pages/look_car_detail_02/look_car_detail_02?id=${this.data.id}`
         }
     },
     moreBtn() {
         tool.jump_red("/pages/index/index")
     },
-    swiperchange(e) {
+    swiperchange(e) { // 滑动切换 swiper
         // console.log(e);
         let type = e.currentTarget.dataset.type;
         this.setData({
@@ -340,7 +368,7 @@ Page({
             swiper11: type == 11 ? e.detail.current : this.data.swiper11,
             swiper12: type == 12 ? e.detail.current : this.data.swiper12,
         })
-        console.log(type);
+		console.log(this.data.swiper7);
         console.log(this.data.swiper1, this.data.swiper2);
     },
     changecol(e) { // 选择车子颜色
@@ -410,7 +438,29 @@ Page({
             swiper12: id == 12 && type == 1 ? this.data.swiper12 == 0 ? len : --this.data.swiper12 : id == 12 && type == 2 ? this.data.swiper12 == len ? 0 : ++this.data.swiper12 : this.data.swiper12,
         })
     },
-    closelz() {
+    closelz() {// 关闭填写
         this.setData({ popstu: 2 })
-    }
+    },
+	tabSwiper(e){
+		let type = e.currentTarget.dataset.type;
+		let tab = e.currentTarget.dataset.tab;
+		let len = e.currentTarget.dataset.len-1;
+		console.log(type,tab,len);
+		this.setData({
+			swiper1: type == 1 ? (tab == -1 ? len : tab) : this.data.swiper1,
+			swiper2: type == 2 ? (tab == -1 ? len : tab) : this.data.swiper2,
+			swiper3: type == 3 ? (tab == -1 ? len : tab) : this.data.swiper3,
+			swiper4: type == 4 ? (tab == -1 ? len : tab) : this.data.swiper4,
+			swiper5: type == 5 ? (tab == -1 ? len : tab) : this.data.swiper5,
+			swiper6: type == 6 ? (tab == -1 ? len : tab) : this.data.swiper6,
+			swiper7: type == 7 ? (tab == -1 ? len : tab) : this.data.swiper7,
+			swiper8: type == 8 ? (tab == -1 ? len : tab) : this.data.swiper8,
+			swiper9: type == 9 ? (tab == -1 ? len : tab) : this.data.swiper9,
+			swiper10: type == 10 ? (tab == -1 ? len : tab) : this.data.swiper10,
+			swiper11: type == 11 ? (tab == -1 ? len : tab) : this.data.swiper11,
+			swiper12: type == 12 ? (tab == -1 ? len : tab) : this.data.swiper12,
+		})
+		
+		
+	}
 })

@@ -144,16 +144,12 @@ Page({
 	},
 	clickLine(e) {
 		let num = e.currentTarget.dataset.num;
-		// this.setData({
-		// 	line: num
-		// })
-		let _infoLunbo = this.data.infoLunbo
+		let _infoLunbo = this.data.infoLunbo;
 		let img_current = this.data.infoLunbo.current;
 		_infoLunbo.current = num;
 		console.log(_infoLunbo)
 		this.setData({
 			infoLunbo: _infoLunbo,
-			// line: num,
 			toView: 'info' + (num + 1)
 		})
 		if (num > 3) {
@@ -175,8 +171,6 @@ Page({
 			line: e.detail.current,
 			toView: 'info' + (e.detail.current + 1),
 		})
-		// console.log(this.data.line)
-		// this.playxlz(); 播放滑动序列
 		if (e.detail.current > 3) {
 			this.setData({ scrollLeft: (e.detail.current - 3) * 60 })
 		}
@@ -225,17 +219,7 @@ Page({
 
 			})
 			.then(() => {
-				//complete
-				// this.setData({
-					
-					
-					
-				// 	\
-					
-					
-					
-				// 	 ,
-				// })
+				
 			})
 	},
 	//看车详情
