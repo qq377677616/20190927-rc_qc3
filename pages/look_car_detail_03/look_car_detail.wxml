@@ -165,7 +165,7 @@
     <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="5" current="{{swiper5}}" >
       <block wx:for="{{8}}" wx:key="item">
         <swiper-item>
-          <view class="bigitem" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index+1}}.png?1)"></view>
+          <view class="bigitem" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index+1}}.png?)"></view>
         </swiper-item>
       </block>
     </swiper>
@@ -174,7 +174,7 @@
     <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="5" current="{{swiper5}}">
       <block wx:for="{{8}}" wx:key="item">
         <swiper-item>
-          <view class="item1 {{swiper5!=index-1&&!(swiper5==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index == 0 ? index+8:index}}.png?1)"></view>
+          <view class="item1 {{swiper5!=index-1&&!(swiper5==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/pay/swipe/index2_{{index == 0 ? index+8:index}}.png)"></view>
         </swiper-item>
       </block>
     </swiper>
