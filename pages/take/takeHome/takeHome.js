@@ -20,14 +20,14 @@ Page({
 		useData:{},// 用户数据
 		iscope:false,//复制弹窗控制
 		carlist: [// 车型图 和 名字
+			{ txt: '星', img: '/ca_xing.png', id: 11 },
 			{ txt: 'D60', img:'/ca_d60.png',id:3},
 			{ txt: 'D60EV', img:'/ca_d60ev.png',id:5},
 			{ txt: 'E30', img: '/ca_e30.png',id:10},
 			{ txt: 'T60', img: '/ca_t60.png',id:6},
 			{ txt: 'T60EV', img: '/ca_t60ev.png',id:13},
 			{ txt: 'T70', img: '/ca_t70.png',id:7},
-			{ txt: 'T90', img: '/ca_t90.png',id:9},
-			{ txt: '星', img: '/ca_xing.png',id:11}
+			{ txt: 'T90', img: '/ca_t90.png',id:9}
 			],
 		showModalOption: {//定位 弹窗
 			isShow: false,
@@ -334,7 +334,7 @@ Page({
 					tool.alert('服务器开小差了！');
 					clearInterval(time);
 				}
-			}, 5000)
+			}, 50000)
 
 		}
 	},
@@ -362,6 +362,19 @@ Page({
 				}
 			})
 		} 
-		console.log(app.globalData.socketOpen,'关闭socket!');
+	},
+	acceptmag() {//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
+		wx.onSocketMessage(function (msg) {
+			let data = JSON.parse(msg.data);
+			let code = data.code;
+			let type = data.type;
+			if (code != 1) return;
+			switch (type) {
+				case 'receive': {
+					self.msgList();
+					break;
+				}
+			}
+		})
 	}
 })

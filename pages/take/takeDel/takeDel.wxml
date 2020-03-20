@@ -40,7 +40,7 @@
 <!--占位view -->
 <view class="zhanwei"></view>
 <!-- 底部发送消息 -->
-<view class="footbox">
+<view class="footbox {{isIponeX?'setbom':''}}">
 	<view class="l_em">
 		<image src="{{BASEURL}}/icon.png" class="iconimg" mode="widthFix" bindtap="upimg"></image>
 	</view>
@@ -49,6 +49,10 @@
 	</view>
 	<view class="r_send" bindtap="sendMsg">发送</view>
 </view>
+
+<!-- iphoneX处理 -->
+<view class="{{isIponeX?'ipxbox':''}}"></view>
+
 <view class="imgpop fadeShow" wx:if="{{popshow}}" bindtap="hidepop">
 	<image src="{{BASEURL}}/test.png" class="bigimg"></image>
 </view>

@@ -34,7 +34,7 @@ page{
   /* background: linear-gradient(to left, rgba(18, 77, 184, 1), rgba(32, 161, 224, 1)); */
 }
 
-.nav_area .bg {
+.nav_area .bg{
   content: '';
   position: absolute;
   bottom: 0;

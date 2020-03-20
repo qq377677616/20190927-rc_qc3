@@ -231,18 +231,18 @@ Page({
     this.isVehicleOwnerHidePop()
   },
   //授完权后处理
-  getParme(e) {
+  getParme(e){
     this.isVehicleOwnerHidePop()
     request_01.setUserInfo(e).then(res => {
       this.isVehicleOwner()
     })
   },
   //是否授权、绑定车主弹窗
-  isVehicleOwnerHidePop() {
+  isVehicleOwnerHidePop(){
     this.setData({ isVehicleOwnerHidePop: !this.data.isVehicleOwnerHidePop })
   },
   //拼团商品详情
-  jumpDetail(e) {
+  jumpDetail(e){
     const index = e.currentTarget.dataset.index;
     const pinInfo = this.data.pinInfo;
     const prize_id = pinInfo.other_group_buy[index].prize_id;
@@ -363,10 +363,7 @@ Page({
           const xuni_code = data.xuni_code;
           const card_info = data.card_info;
           const order_goods_id = data.order_goods_id;
-
-
           alert.loading_h()
-
           if (status == 1) {
 
             switch (goods_type) {
