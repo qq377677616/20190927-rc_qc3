@@ -97,7 +97,7 @@
 				<view class="txtbox2 txtbox3">{{swiper3_txt[swiper3]}}</view>
 
 				<!--轮播实例3-->
-				<view class="threebg threebg3 anit3_{{swiper3}}">
+				<view class="threebg threebg1 anit1_{{swiper3}}">
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="3" current="{{swiper3}}">
 						 <block wx:for="{{t90swp3}}" wx:key="ite m">
 							<swiper-item>
@@ -170,7 +170,7 @@
 					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
 						 <block wx:for="{{t90swp4}}" wx:key="item">
 							<swiper-item>
-								<view class="item1 {{swiper4!=index-1&&!(swiper4==(t90swp4.length-1)&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t90_4_{{index+1}}.png?1)"></view>
+								<view class="item1 {{swiper4!=index-1&&!(swiper4==(t90swp4.length-1)&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t90_4_{{index+1}}.png?1)" data-type="4" data-tab="{{index-1}}" data-len="{{t90swp4.length}}" bindtap="tabSwiper"></view>
 							</swiper-item>
 						</block>
 					</swiper>

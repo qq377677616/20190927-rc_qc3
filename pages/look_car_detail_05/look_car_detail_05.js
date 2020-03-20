@@ -630,6 +630,26 @@ Page({
 			swiper12: id == 12 && type == 1 ? this.data.swiper12 == 0 ? len : --this.data.swiper12 : id == 12 && type == 2 ? this.data.swiper12 == len ? 0 : ++this.data.swiper12 : this.data.swiper12,
 		})
 	},
+	tabSwiper(e) {// 点击精准切换
+		let type = e.currentTarget.dataset.type;
+		let tab = e.currentTarget.dataset.tab;
+		let len = e.currentTarget.dataset.len - 1;
+		console.log(type, tab, len);
+		this.setData({
+			swiper1: type == 1 ? (tab == -1 ? len : tab) : this.data.swiper1,
+			swiper2: type == 2 ? (tab == -1 ? len : tab) : this.data.swiper2,
+			swiper3: type == 3 ? (tab == -1 ? len : tab) : this.data.swiper3,
+			swiper4: type == 4 ? (tab == -1 ? len : tab) : this.data.swiper4,
+			swiper5: type == 5 ? (tab == -1 ? len : tab) : this.data.swiper5,
+			swiper6: type == 6 ? (tab == -1 ? len : tab) : this.data.swiper6,
+			swiper7: type == 7 ? (tab == -1 ? len : tab) : this.data.swiper7,
+			swiper8: type == 8 ? (tab == -1 ? len : tab) : this.data.swiper8,
+			swiper9: type == 9 ? (tab == -1 ? len : tab) : this.data.swiper9,
+			swiper10: type == 10 ? (tab == -1 ? len : tab) : this.data.swiper10,
+			swiper11: type == 11 ? (tab == -1 ? len : tab) : this.data.swiper11,
+			swiper12: type == 12 ? (tab == -1 ? len : tab) : this.data.swiper12,
+		})
+	},
 	closelz() {
 		this.setData({ popstu: 2 })
 	}
