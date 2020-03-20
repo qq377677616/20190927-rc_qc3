@@ -44,6 +44,7 @@ Page({
 
   // 商品详情页
   toDetail(e) {
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
     let activity_id = this.data.options.activity_id
     let goods_id = e.currentTarget.dataset.id
     let stype = e.currentTarget.dataset.stype
@@ -55,7 +56,6 @@ Page({
     if (stype == 2 && this.data.goods2_buy == 0) {
       tool.alert('线下提车后次日即可兑换实物礼品')
     } else {
-      if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
       if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.owner == 1) {
         this.setData({
           popType: 4

@@ -122,7 +122,7 @@ Page({
   toChange() {
       let cate_id = this.data.acData.activity_info.cate_id
       if(cate_id==0){
-        tool.alert('暂未开放')
+        tool.alert('暂未开放,敬请期待!')
         return
       }
       let open_buy = this.data.open_buy
