@@ -460,7 +460,5 @@ Page({
 			swiper11: type == 11 ? (tab == -1 ? len : tab) : this.data.swiper11,
 			swiper12: type == 12 ? (tab == -1 ? len : tab) : this.data.swiper12,
 		})
-		
-		
 	}
 })

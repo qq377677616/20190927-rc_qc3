@@ -5,11 +5,12 @@ const SERVICE = request_01.SERVICE
 const OPENID = wx.getStorageSync('userInfo').openid; 
 // console.log("SERVICE", SERVICE)
 const myRequest = (data, url, type = 'post', isUrl = false, openid) => {
+  console.log(openid,'=================卡券添加和上报===============',OPENID);
   openid ? data.openid = openid : ''; 
   let _url = `${SERVICE}${url}`
   if (isUrl) _url = `${url}`
-  return new Promise((resolve, reject) => {
-    $[`${type}P`](_url, data).then(res => {
+  return new Promise((resolve, reject) =>{
+    $[`${type}P`](_url, data).then(res =>{
       resolve(res)
     }).catch(err => {
       reject(err)
@@ -34,7 +35,7 @@ const pushForm = (data, url = '/api3/prize/perfect_data') => { return myRequest(
 //我的奖品卡券核销
 const cardCheck = (data, url = '/api3/prize/update_card_code') => { return myRequest(data, url) }
 //我的订单卡券
-const couponPushForm = (data, url = '/api3/order/get_wechat_card') => { return myRequest(data, url) }
+const couponPushForm = (data, url = '/api3/order/get_wechat_card') => { return myRequest(data, url, 'post',false, OPENID) }
 //我的订单卡券核销
 const orderCheck = (data, url = '/api3/order/update_card_code') => { return myRequest(data, url,'post',false,OPENID) }
 //我的奖品列表

@@ -221,36 +221,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-	  let id = this.data.id;
-	  let txt = '';
-	  switch (id) {
-		  case '11':
-			  txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
-			  break;
-		  case '6':
-			  txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
-			  break;
-		  case '3':
-			  txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
-			  break;
-		  case '9':
-			  txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
-			  break;
-		  case '7':
-			  txt = '启辰T70，高品质智联SUV，品质来袭！';
-			  break;
-		  case '5':
-			  txt = '启辰T70，高品质智联SUV，品质来袭！';
-			  break;
-		  case '10':
-			  txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
-			  break;
-		  case '13':
-			  txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
-			  break;
-	  }
     return {
-      title: `${txt}`,
+      title: `赶快来预约 ${this.data.lookCarDetail.car_name} 吧~`,
       path: `/pages/look_car_detail_02/look_car_detail_02?id=${this.data.id}`
     }
   },

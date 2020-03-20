@@ -14,7 +14,7 @@ const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/publ
 // const SERVICE2 = 'https://t4jmh3.natappfree.cc/index.php'
 
 //版本控制
-const tag = (data) => {
+const tag = (data) =>{
     let url = 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/oauth/version'
     return new Promise((resolve, reject) => {
         _request.request({
