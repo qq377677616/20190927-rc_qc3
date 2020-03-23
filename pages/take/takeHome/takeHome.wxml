@@ -89,3 +89,7 @@
 	<!-- 强制定位 -->
 	 <showModal showModalOption="{{showModalOption}}" bindoperation="operation"></showModal>
 </view>
+<!-- 跳转启程星小程序 -->
+<view class="xingIcon">
+	<image src="{{BASEURL}}/xing_icon.png" mode="widthFix"></image>
+</view>

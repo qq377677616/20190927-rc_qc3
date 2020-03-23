@@ -77,7 +77,10 @@ Component({
       } else if (!_reg.test(this.data.phone)) {
         tool.alert("手机号格式有误")
         return
-      } 
+	  } else if (!this.data.isGetPhone && !this.data.code) {
+		  tool.alert("请输入短信验证码")
+		  return
+	  }
 	  if (!this.data.isGou) {
 			tool.alert("请先同意相关协议")
 			return

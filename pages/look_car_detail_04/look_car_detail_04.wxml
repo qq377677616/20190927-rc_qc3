@@ -602,7 +602,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="11" current="{{swiper11}}">
                             <block wx:for="{{9}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper11!=index-1&&!(swiper11==8&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_3_{{index+1}}.png?1)"></view>
+                                    <view class="item1 {{swiper11!=index-1&&!(swiper11==8&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/d60_3_{{index+1}}.png?1)" data-type="11" data-tab="{{index-1}}" data-len="{{9}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -702,3 +702,4 @@
     <video class="v_bigitem" object-fit="cover" loop="{{true}}" show-center-play-btn="{{false}}" controls="{{false}}" autoplay='{{true}}' src="{{videoUrl}}"></video>
 </view>
 <!-- 视频播放 -->
+

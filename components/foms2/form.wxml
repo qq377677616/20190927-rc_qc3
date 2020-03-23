@@ -18,6 +18,13 @@
 				<input type="text" class="staript" value="{{phone}}" focus="{{focus}}" placeholder="电话" bindinput="inputPhone" bindfocus="showheg" maxlength="11" type="number" />
 			</view>
         </view>
+
+		<view class="group group2" wx:if="{{isright&&popstu==1}}">
+            <input type="text" bindinput="inputCode" placeholder="请输入验证码" maxlength="6" type="number" />
+            <view class="code_btn {{isGetCode == 2 ? 'gray': ''}}" bindtap="getCode">
+                {{isGetCode == 1 ? countDown + 's' : (isGetCode == 0 ? '获取验证码' : '验证码获取中')}}</view>
+        </view>
+
         <view class="group" wx:if="{{isright&&popstu==1}}">
             <!-- <text class="label label2" space="nbsp">地 址</text> -->
             <view class="location">
@@ -36,11 +43,13 @@
                     range-key="{{'name'}}">
                     <text class="picker">{{storeList[storeList_index].name}}</text>
                 </picker>
-                <text wx:else class="phone-pla">请填写手机号</text>
+                <text wx:else class="phone-pla">专营店</text>
                 <view class="triangle"></view>
             </view>
 			
         </view>
+
+		
 
 		<view class="agree" wx:if="{{isright&&popstu==1}}">
             <view class="checked {{isChecked ? 'on' : ''}}" style="visibility:hidden;"></view>
@@ -48,10 +57,16 @@
             <view class="gouBox" bindtap="gouSel">
                 <image wx:if="{{isGou}}" class="pay_gou" src="{{ IMGSERVICE }}/gaiban/cardelgou.png" mode="widthFix"></image>
             </view>
+
             <view bindtap="toProtocol" class="gouBox-txt">我仔细阅读并接受所附的《用户协议与隐私政策》</view>
         </view>
 
-        <view class="submit" bindtap="submit">预约试驾</view>
+		
+
+        <view class="submit" bindtap="submit" style="background-image:url({{ IMGSERVICE }}/gaiban/yuyuebtn.png)">
+
+		<!-- 预约试驾 -->
+		</view>
 
     </view><!-- form_area -->
 

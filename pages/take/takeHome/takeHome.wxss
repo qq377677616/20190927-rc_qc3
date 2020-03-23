@@ -284,3 +284,10 @@ page{
 	z-index: 9;
 	/* width: 100%; */
 }
+.xingIcon>image{
+	width: 134rpx;
+	height:auto;
+	position: fixed;
+	top: 729rpx;
+	right: 28rpx;
+}

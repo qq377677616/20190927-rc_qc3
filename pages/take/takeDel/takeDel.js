@@ -3,7 +3,6 @@ import tool from "../../../utils/public/tool.js"
 import https from "../../../utils/api/my-requests.js"
 let app = new getApp();
 Page({
-
 	/**
 	 * 页面的初始数据
 	 */
@@ -119,33 +118,35 @@ Page({
 		},50000)
 	},
 	sendMsg(){// 发送消息
-		if(!app.globalData.socketOpen){
-			tool.alert("网络链接失败！");
-		}
-		let msg = this.data.msg;
-		msg = msg.replace(/^\s+|\s+$/g, '');
-		let msg_type = this.data.img ? 2 : 1;
-		console.log(this.data.img,msg_type);
-		// return;
-		if(msg==''&&!this.data.img){
-			tool.alert("输入不能为空");
-		} else {//${this.data.to_uid}
-			let content = `{"type":"send","to_uid":"chenshidongA","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img:msg}"}}`; 
-			console.log(app.globalData.socketOpen,'777');
-			if (app.globalData.socketOpen){
-				wx.sendSocketMessage({
-					data: content,
-					success:(res)=>{
-						console.log("成功",res);
-					},
-					fail(err){
-						console.log('失败',err);
-					}
-				})
-			} else{
-				console.log("发送失败！");
+		this.subMsg().then((rel)=>{
+			if (!app.globalData.socketOpen) {
+				tool.alert("网络链接失败！");
 			}
-		}
+			let msg = this.data.msg;
+			msg = msg.replace(/^\s+|\s+$/g, '');
+			let msg_type = this.data.img ? 2 : 1;
+			console.log(this.data.img, msg_type);
+			// return;
+			if (msg == '' && !this.data.img) {
+				tool.alert("输入不能为空");
+			} else {//${this.data.to_uid}
+				let content = `{"type":"send","to_uid":"ylsA","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img : msg}"}}`;
+				console.log(app.globalData.socketOpen, '777');
+				if (app.globalData.socketOpen) {
+					wx.sendSocketMessage({
+						data: content,
+						success: (res) => {
+							console.log("成功", res);
+						},
+						fail(err) {
+							console.log('失败', err);
+						}
+					})
+				} else {
+					console.log("发送失败！");
+				}
+			}
+		});
 	},
 	acceptmag(){//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
 		let self = this;
@@ -179,7 +180,7 @@ Page({
 		let dat = {
 			page:this.data.page,
 			uid:this.data.uid,
-			to_uid: 'chenshidongA',//`${this.data.to_uid}A`,
+			to_uid: 'ylsA',//`${this.data.to_uid}A`,
 			limit:10
 		}
 		https.msgLog(dat).then((res)=>{
@@ -221,24 +222,25 @@ Page({
 		})	
 	},
 	conutHeg(){// 计算滚动高度
+		let baseheg = this.data.isIponeX?70:50; 
 		if (!this.data.iscurr) return;
 		setTimeout(()=>{
 			tool.getDom('.infobox').then((res) => {
 				if (res[0].height > wx.getSystemInfoSync().windowHeight) {
 					wx.pageScrollTo({
-						scrollTop: (res[0].height - wx.getSystemInfoSync().windowHeight + 50),
+						scrollTop: (res[0].height - wx.getSystemInfoSync().windowHeight + baseheg),
 						duration: 100
 					})
 				}
 			})
 		},500)
 	},
-	getPhoneinfo() {//获取手机信息
+	getPhoneinfo(){//获取手机信息
 		tool.getSystem()
 			.then((value) => {
 				console.log("屏幕高度", value.screenHeight);
 				const model = value.model;
-				if (model.search('iPhone X') != -1) {
+				if (model.search('iPhone X') != -1){
 					this.setData({
 						isIponeX: true,
 					})
@@ -248,6 +250,15 @@ Page({
 					})
 				}
 			})
+	},
+	subMsg(){ // 发送订阅消息
+		return new Promise((resolve,reject)=>{
+			wx.requestSubscribeMessage({
+				tmplIds: ['adOBVu25IYMu8usw2VbaO1US8B9yB95xbTzlBzEYai0'],
+				success(res) {
+					resolve(res);
+				}
+			})
+		})
 	}
-	
 })

@@ -43,10 +43,10 @@ App({
 		IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0', //日产小程序的 图片路径
 
         ASSETSURL: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/ca', //ca 资源地址
-		REQUESTURL: 'http://shut4e.natappfree.cc/index.php', //ca接口请求路径
+		REQUESTURL: 'http://qqjzwx.natappfree.cc/index.php', //ca接口请求路径
 		SOCKETURL:'wss://wss.vrupup.com/ca:443',// ca socket地址
 		socketOpen:false,// 是否连接socket
-        currentAddressItem: {},
+        currentAddressItem:{},
         goodsDetail: {},
         cartDetail: {},
         Barid: '',
