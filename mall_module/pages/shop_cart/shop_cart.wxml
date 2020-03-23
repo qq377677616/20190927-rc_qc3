@@ -1,6 +1,6 @@
 <!-- pages/shop_cart/shop_cart.wxml -->
 
-<wxs src="../../utils/wxs/filter_01.wxs" module="filter"></wxs>
+<wxs src="../../../utils/wxs/filter_01.wxs" module="filter"></wxs>
 
 <!-- shop_cart_page -->
 <view class="shop_cart_page">

@@ -1,13 +1,14 @@
-// pages/product_detail/product_detail.js
-const request_01 = require('../../utils/request/request_01.js');
 
-const router = require('../../utils/tool/router.js');
+const request_01 = require('../../../utils/request/request_01.js');
 
-const alert = require('../../utils/tool/alert.js');
+const router = require('../../../utils/tool/router.js');
 
-const WxParse = require('../../utils/wxParse/wxParse.js');
+const alert = require('../../../utils/tool/alert.js');
+
+const WxParse = require('../../../utils/wxParse/wxParse.js');
 
 const app = getApp();//获取应用实例
+
 Page({
 
   /**

@@ -26,7 +26,6 @@
     "pages/look_car/look_car",
     "pages/prize/prize",
     "pages/receive_card/receive_card",
-    "pages/shop_mall/shop_mall",
     "pages/home/home",
     "pages/community/community",
     "pages/publish_article/publish_article",
@@ -49,11 +48,6 @@
     "pages/task/task",
     "pages/o_vdou/o_vdou",
     "pages/test/test",
-    "pages/shop_cart/shop_cart",
-    "pages/shop_mall_type/shop_mall_type",
-    "pages/shop_mall_plate/shop_mall_plate",
-    "pages/shop_cart_next/shop_cart_next",
-    "pages/shop_cart_submitted/shop_cart_submitted",
     "pages/community_detail/community_detail",
     "pages/yuyueshijia_form/yuyueshijia_form",
     "pages/shake_shake/shake_shake",
@@ -98,7 +92,21 @@
     "pages/take/dealers/dealers",
     "pages/take/takeDel/takeDel",
     "pages/take/takeHome/takeHome",
-    "pages/protocol/protocol"
+    "pages/protocol/protocol",
+    "pages/dealer_module/index/index"
+  ],
+  "subpackages": [
+    {
+      "root": "mall_module",
+      "pages": [
+        "pages/shop_mall/shop_mall",
+        "pages/shop_cart_next/shop_cart_next",
+        "pages/shop_cart_submitted/shop_cart_submitted",
+        "pages/shop_mall_plate/shop_mall_plate",
+        "pages/shop_mall_type/shop_mall_type",
+        "pages/product_detail/product_detail"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",

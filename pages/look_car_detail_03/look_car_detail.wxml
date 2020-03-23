@@ -3,17 +3,24 @@
 
 
 <!-- preheat-mask -->
-<view wx:if="{{ lookCarDetail.t80_show == 1 }}" class="preheat-mask" style="background:url('http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/preheat.jpg') no-repeat center center/cover">
+<view wx:if="{{ lookCarDetail.t80_show == 1 }}" class="preheat-mask"
+  style="background:url('http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/preheat.jpg') no-repeat center center/cover">
   <div class="top">
-    <image class="logo" src="http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/logo.png" mode="widthFix"></image>
-    <image class="title" src="http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/title.png" mode="widthFix"></image>
+    <image class="logo"
+      src="http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/logo.png"
+      mode="widthFix"></image>
+    <image class="title"
+      src="http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/title.png"
+      mode="widthFix"></image>
   </div>
 
   <div class="bottom">
     <view class="p">2019年11月22日广州车展5.2展馆</view>
     <view class="p">敬请期待......</view>
 
-    <image bindtap="moreBtn" class="more" src="http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/more.png" mode="widthFix"></image>
+    <image bindtap="moreBtn" class="more"
+      src="http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/look_car_detail/more.png"
+      mode="widthFix"></image>
 
     <view class="btn" bindtap="downPayment">预约关注</view>
   </div>
@@ -25,16 +32,20 @@
 
   <!-- banner -->
   <view class="banner">
-    <image src="{{ IMGSERVICE }}/spike/banner.png" mode="widthFix" data-index="0" onload="imgLoad" onerror="imgLoad"></image>
+    <image src="{{ IMGSERVICE }}/spike/banner.png" mode="widthFix" data-index="0" onload="imgLoad" onerror="imgLoad">
+    </image>
   </view>
 
   <view class="rule">
-    <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/shuomingshu.jpg" onload="imgLoad" onerror="imgLoad"></image>
+    <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/shuomingshu.jpg" data-index="1" onload="imgLoad"
+      onerror="imgLoad">
+    </image>
   </view>
-  <!-- h2 -->
-  <view class="h2">
 
-    <view class="container dom-local initLocalUp {{ domAnimatedList[0].amt ? 'fadeInUp' : '' }}">
+  <!-- h2 -->
+  <view class="h2 dom-local">
+
+    <view class="container initLocalUp {{ domAnimatedList[0].amt ? 'fadeInUp' : '' }}">
       <image class=""></image>
       <image class="span" mode="widthFix" src="{{ IMGSERVICE }}/spike/page4_6.png"></image>
       <image class="line" mode="widthFix" src="{{ IMGSERVICE }}/spike/page4_5.png"></image>
@@ -45,7 +56,7 @@
 
   <!-- section
   <view class="section">
-    <!-- <view class="image">
+    <view class="image">
             <image src="{{ IMGSERVICE }}/spike/big_01.jpg" mode="widthFix" data-index="1" onload="imgLoad" onerror="imgLoad"></image>
             <view class="arrow">
                 <text class="left"></text>
@@ -100,14 +111,14 @@
     <view class="p dom-local initLocalUp {{ domAnimatedList[1].amt ? 'fadeInUp' : '' }}">
       <text wx:if="{{ swiper4 == 0 }}" class="oFadeIn">V-Galaxy星空家族前脸</text>
       <text wx:elif="{{ swiper4 == 1 }}" class="oFadeIn">星级车标
-</text>
+      </text>
       <text wx:elif="{{ swiper4 == 2 }}" class="oFadeIn">双子星LED大灯</text>
       <text wx:elif="{{ swiper4 == 3 }}" class="oFadeIn">贯穿式尾灯
-</text>
+      </text>
       <text wx:elif="{{ swiper4 == 4 }}" class="oFadeIn">V-Motif高位刹车灯
-</text>
+      </text>
       <text wx:elif="{{ swiper4 == 5 }}" class="oFadeIn">饱满张力型面
-</text>
+      </text>
       <text wx:elif="{{ swiper4 == 6 }}" class="oFadeIn">19英寸双色大轮毂</text>
     </view>
   </view>
@@ -120,31 +131,33 @@
       </block>
     </swiper>
   </view>
-  <!-- <view class="swiper1">
-    <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
+  <view class="swiper1">
+    <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1"
+      bindchange="swiperchange" data-type="4" current="{{swiper4}}">
       <block wx:for="{{7}}" wx:key="item">
         <swiper-item>
-          <view class="item1 {{swiper4!=index-1&&!(swiper4==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/pay/swipe/index{{index == 0 ? index+7:index}}.png?1)"></view>
+          <view class="item1 {{swiper4!=index-1&&!(swiper4==7&&index==0)?'sethui':''}}"
+            style="background-image:url({{IMGSERVICE}}/pay/swipe/index{{index == 0 ? index+7:index}}.png?1)"></view>
         </swiper-item>
       </block>
     </swiper>
-  </view> -->
+  </view>
   <!--轮播实例-->
 
   <!--轮播实例2-->
   <!-- section -->
   <view class="section">
-    <view class="p dom-local initLocalUp {{ domAnimatedList[1].amt ? 'fadeInUp' : '' }}">
+    <view class="p dom-local initLocalUp {{ domAnimatedList[2].amt ? 'fadeInUp' : '' }}">
       <text wx:if="{{ swiper5 == 0 }}" class="oFadeIn">智能触控真皮方向盘
-</text>
+      </text>
       <text wx:elif="{{ swiper5 == 1 }}" class="oFadeIn">悬浮式中控台
-</text>
+      </text>
       <text wx:elif="{{ swiper5 == 2 }}" class="oFadeIn">钻石绗缝真皮包覆</text>
       <text wx:elif="{{ swiper5 == 3 }}" class="oFadeIn">女王副驾座椅
 
-</text>
+      </text>
       <text wx:elif="{{ swiper5 == 4 }}" class="oFadeIn">15.6英寸全面屏智能中控
-</text>
+      </text>
     </view>
   </view>
   <view class="threebg threebg1 anit3_{{swiper5}}">
@@ -167,7 +180,7 @@
   </view> -->
   <!--轮播实例-->
 
-   
+
 
   <!-- title -->
   <!-- <view class="title dom-local initLocalUp {{ domAnimatedList[3].amt ? 'fadeInUp' : '' }}">头等舱的设计概念</view> -->
@@ -189,8 +202,8 @@
 
     </view> -->
 
-  <view class="video">
-    <video src="http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/car.mp4"></video>
+  <view class="video" style="height:600rpx">
+    <!-- <video src="http://flynew.oss-cn-hangzhou.aliyuncs.com/game/wechat/xw/rc_qc/assets_3.0/car.mp4"></video> -->
   </view>
 
   <!-- gift-btn -->
@@ -203,9 +216,12 @@
   <view class="gift-btn">
     <!-- <image src="{{ IMGSERVICE }}/spike/page4_22.png" mode="widthFix" bindtap="downPayment"></image> -->
     <!-- <image src="{{ IMGSERVICE }}/spike/page4_22.png" mode="widthFix" bindtap="downPayment"></image> -->
-    <image wx:if="{{payInfoData.show_page==2 || payInfoData.show_page==3}}" src="{{ IMGSERVICE }}/pay/pay_btn.png" mode="widthFix" bindtap="downPayment"></image>
-    <image wx:if="{{payInfoData.show_page==4}}" src="{{ IMGSERVICE }}/pay/pay_get_btn.png" bindtap="cardFun" mode="widthFix"></image>
-    <image wx:if="{{payInfoData.show_page==5}}" src="{{ IMGSERVICE }}/pay/toGetPrize.png" bindtap="toPayIndex" mode="widthFix"></image>
+    <image wx:if="{{payInfoData.show_page==2 || payInfoData.show_page==3}}" src="{{ IMGSERVICE }}/pay/pay_btn.png"
+      mode="widthFix" bindtap="downPayment"></image>
+    <image wx:if="{{payInfoData.show_page==4}}" src="{{ IMGSERVICE }}/pay/pay_get_btn.png" bindtap="cardFun"
+      mode="widthFix"></image>
+    <image wx:if="{{payInfoData.show_page==5}}" src="{{ IMGSERVICE }}/pay/toGetPrize.png" bindtap="toPayIndex"
+      mode="widthFix"></image>
   </view>
 
 

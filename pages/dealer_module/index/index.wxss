@@ -1,0 +1,149 @@
+/* pages/dealer-module/index/index.wxss */
+
+page {
+    background-color: #fff;
+}
+
+.header {}
+
+.header image {
+    display: block;
+    width: 100%;
+}
+
+.position-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 47rpx 32rpx 28rpx;
+}
+
+.position-bar .bar-title {
+    font-weight: bold;
+    color: #000;
+    font-size: 34rpx;
+}
+
+.position-bar .bar-cur-position {
+    display: flex;
+    align-items: center;
+    max-width: 170rpx;
+}
+
+.position-bar .bar-cur-position .cur-position-icon {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 26rpx;
+    margin-right: 8rpx;
+}
+
+.position-bar .bar-cur-position .cur-position-text {
+    color: #000;
+    font-size: 26rpx;
+}
+
+.card-list {
+    padding: 0 32rpx;
+}
+
+.card-list .card-item {
+    margin-bottom: 28rpx;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 20rpx;
+    box-shadow: 0 6rpx 54rpx 0 rgba(204, 204, 204, 0.35);
+}
+
+.card-list .card-item image {
+    display: block;
+    width: 100%;
+}
+
+.card-list .item-info {
+    padding: 29rpx 26rpx 39rpx;
+}
+
+.card-list .item-info .info-title {
+    margin-bottom: 25rpx;
+    font-weight: bold;
+    font-size: 32rpx;
+    color: #000;
+}
+
+.card-list .item-info .info-tips {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.card-list .item-info .info-tips .span {}
+
+.card-list .item-info .info-tips .span.time {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: 20rpx;
+    white-space: nowrap;
+}
+
+.card-list .item-info .join-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.card-list .item-info .join-info .joining {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    align-items:center;
+}
+
+.card-list .item-info .join-info .joining .joining-headimg {
+    display: flex;
+    flex:0 0 auto;
+}
+
+.card-list .item-info .join-info .joining .joining-headimg image {
+    width: 49rpx;
+    height: 49rpx;
+    border-radius:50%;
+    object-fit:cover;
+}
+.card-list .item-info .join-info .joining .joining-headimg image:not(:first-of-type){
+    margin-left: -12rpx;
+}
+.card-list .item-info .join-info .joining .joining-headimg image:last-of-type{
+    margin-right: 12rpx;
+}
+
+.card-list .item-info .join-info .joining .joining-number {
+    flex-grow:1;
+    flex-shrink:1;
+    display: flex;
+    font-size: 26rpx;
+    color: #333;
+}
+
+.card-list .item-info .join-info .joining .joining-number .span {
+    color: #F1403E;
+}
+
+.card-list .item-info .join-info .join-btn {
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 196rpx;
+    height: 70rpx;
+    box-sizing:border-box;
+    font-size: 28rpx;
+    color:#003B73;
+    text-align:center;
+    line-height: 66rpx;
+    border:2rpx solid rgba(0,59,115,1);
+    border-radius:35rpx;
+}
+.card-list .item-info .join-info .join-btn.router-link-exact-active::before{
+    background-color: rgba(0,59,115,1);
+}

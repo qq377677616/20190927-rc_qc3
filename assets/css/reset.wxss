@@ -135,3 +135,20 @@ image {
     display: block;
     clear:both;
 }
+
+.router-link-exact-active{
+    position: relative;
+    overflow: hidden;
+}
+.router-link-exact-active::before{
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.router-link-exact-active:active::before{
+    opacity: 0.2;
+}

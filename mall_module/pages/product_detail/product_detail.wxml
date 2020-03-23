@@ -1,6 +1,6 @@
 <!--pages/product_detail/product_detail.wxml-->
 
-<import src="../../utils/wxParse/wxParse.wxml" />
+<import src="../../../utils/wxParse/wxParse.wxml" />
 
 <!-- product_detail_page -->
 <view class="product_detail_page">

@@ -14,6 +14,8 @@ let dingshi;
 
 let swiper1Timmer = null;
 let swiper2Timmer = null;
+
+let scrollTimmer = null;
 Page({
 
   /**
@@ -35,38 +37,28 @@ Page({
     rulspop: false,
     isHaveCard: false, // 是否有卡券信息
     domAnimatedList: [{
-        local: 0,
-        height: 0,
-        amt: true,
-      },
-      {
-        local: 0,
-        height: 0,
-        amt: true,
-      },
-      {
-        local: 0,
-        height: 0,
-        amt: true,
-      },
-      {
-        local: 0,
-        height: 0,
-        amt: false,
-      },
-      {
-        local: 0,
-        height: 0,
-        amt: false,
-      },
+      local: 0,
+      height: 0,
+      amt: false,
+    },
+    {
+      local: 0,
+      height: 0,
+      amt: false,
+    },
+    {
+      local: 0,
+      height: 0,
+      amt: false,
+    },
     ],
-    imgList: [false],
+    imgList: [false, false],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     request_01.login(() => {
 
       //数据初始化
@@ -93,10 +85,10 @@ Page({
     console.log(e);
     let type = e.currentTarget.dataset.type;
     this.setData({
-    
+
       swiper4: type == 4 ? e.detail.current : this.data.swiper4,
       swiper5: type == 5 ? e.detail.current : this.data.swiper5
-     
+
     })
     // console.log(this.data.swiper2);
   },
@@ -104,67 +96,76 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
   /**
    * 页面滚动事件
    */
-  onPageScroll: function(options) {
-    const scrollTop = options.scrollTop;
-    const domAnimatedList = this.data.domAnimatedList;
-    const windowHeight = wx.getSystemInfoSync().windowHeight;
+  onPageScroll: function (options) {
 
-    domAnimatedList.forEach((val, key) => {
-      const local = val.local;
-      const height = val.height;
+    clearTimeout(scrollTimmer)
 
-      val.amt = (scrollTop + windowHeight) >= local && scrollTop <= (local + height);
+    scrollTimmer = setTimeout(() => {
+      const scrollTop = options.scrollTop;
+      const domAnimatedList = this.data.domAnimatedList;
+      const windowHeight = wx.getSystemInfoSync().windowHeight;
 
-    })
-    this.setData({
-      domAnimatedList,
-    })
+      domAnimatedList.forEach((val, key) => {
+        const local = val.local;
+        const height = val.height;
+        /**
+         * 从下往上出现，从上往下出现
+         */
+        val.amt = (scrollTop + windowHeight) >= local && scrollTop <= (local + height);
+        this.setData({
+          domAnimatedList,
+        })
+      })
+
+      
+    }, 1000/30)
+
   },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     const lookCarDetail = this.data.lookCarDetail;
     const IMGSERVICE = this.data.IMGSERVICE;
     const options = this.data.options;
@@ -183,11 +184,11 @@ Page({
     })
 
     Promise.all([
-        request_01.lookCarDetail({
-          user_id: wx.getStorageSync('userInfo').user_id,
-          id: options.id,
-        })
-      ])
+      request_01.lookCarDetail({
+        user_id: wx.getStorageSync('userInfo').user_id,
+        id: options.id,
+      })
+    ])
       .then((value) => {
         //success
         const lookCarDetail = value[0].data.data;
@@ -202,6 +203,7 @@ Page({
         wx.setNavigationBarTitle({
           title: lookCarDetail.car_name
         })
+
       })
       .catch((reason) => {
         //fail
@@ -221,11 +223,9 @@ Page({
     const index = e.currentTarget.dataset.index;
     const imgList = this.data.imgList;
     imgList[index] = true;
-
     const result = imgList.every((val) => {
       return val;
     })
-
     if (result) {
       alert.loading_h()
       //获取dom的位置
@@ -250,7 +250,6 @@ Page({
         domAnimatedList[index].local = rect.top;
         domAnimatedList[index].height = rect.height;
       })
-
 
       this.setData({
         domAnimatedList,
@@ -439,76 +438,76 @@ Page({
     const userInfo = wx.getStorageSync('userInfo');
     const lookCarDetail = this.data.lookCarDetail;
     request_05.ninepaySetData({
-        openid: userInfo.openid, //openidID
-        activity_id: activity_id, //activity_id
-        name: detail.name, //留资姓名
-        mobile: detail.phone, //留资电话
-        // v_code: detail.code || '',//短信验证码
-        code: detail.storeCode, //专营店编码
-        area: area,
-        car_type: '', //车型 可不填
-      }).then((res) => {
-        //success
-        console.log(res.data.status, '留资状态')
-        if (res.data.status == 1) {
-          if (!openPay) {
-            console.log('调取支付')
-            request_05.getPayParam({
-              activity_id,
-              openid
-            }).then(res => {
-              if (res.data.status == 1) {
-                wx.requestPayment({
-                  timeStamp: res.data.data.timeStamp,
-                  nonceStr: res.data.data.nonceStr,
-                  package: res.data.data.package,
-                  signType: 'MD5',
-                  paySign: res.data.data.paySign,
-                  success(res) {
-                    _this.isShowForm()
-                    wx.showToast({
-                      title: '支付成功',
-                      icon: 'success',
-                      duration: 2000
-                    })
-                    setTimeout(() => {
-                      _this.getPayInfo();
-                    }, 2500)
-                  },
-                  fail(res) {
-                    console.log('支付失败')
-                  }
-                })
-              } else {
-                alert.alert(res.data.msg)
-              }
-            })
-          } else {
-            _this.isShowForm()
-            tool.alert('留资成功')
-            setTimeout(() => {
-              _this.initData(options)
-            }, 500)
-          }
+      openid: userInfo.openid, //openidID
+      activity_id: activity_id, //activity_id
+      name: detail.name, //留资姓名
+      mobile: detail.phone, //留资电话
+      // v_code: detail.code || '',//短信验证码
+      code: detail.storeCode, //专营店编码
+      area: area,
+      car_type: '', //车型 可不填
+    }).then((res) => {
+      //success
+      console.log(res.data.status, '留资状态')
+      if (res.data.status == 1) {
+        if (!openPay) {
+          console.log('调取支付')
+          request_05.getPayParam({
+            activity_id,
+            openid
+          }).then(res => {
+            if (res.data.status == 1) {
+              wx.requestPayment({
+                timeStamp: res.data.data.timeStamp,
+                nonceStr: res.data.data.nonceStr,
+                package: res.data.data.package,
+                signType: 'MD5',
+                paySign: res.data.data.paySign,
+                success(res) {
+                  _this.isShowForm()
+                  wx.showToast({
+                    title: '支付成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                  setTimeout(() => {
+                    _this.getPayInfo();
+                  }, 2500)
+                },
+                fail(res) {
+                  console.log('支付失败')
+                }
+              })
+            } else {
+              alert.alert(res.data.msg)
+            }
+          })
+        } else {
+          _this.isShowForm()
+          tool.alert('留资成功')
+          setTimeout(() => {
+            _this.initData(options)
+          }, 500)
         }
+      }
 
-        // const status = value.data.status;
-        // const msg = value.data.msg;
-        // if (status == 1) {
-        //   alert.loading_h()
-        //   // mta.Event.stat("booking_car_other", { name: detail.name, phone: detail.phone, city: detail.region.join('--') })
-        //   { userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}` }
-        //   alert.confirm({ title: "预约成功", content: `您已成功预约「${this.data.vehicle.title}」的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
-        //     this.setData({
-        //       isShowForm: false,
-        //     })
-        //   })
-        // } else {
-        //   alert.alert({
-        //     str: msg,
-        //   })
-        // }
-      })
+      // const status = value.data.status;
+      // const msg = value.data.msg;
+      // if (status == 1) {
+      //   alert.loading_h()
+      //   // mta.Event.stat("booking_car_other", { name: detail.name, phone: detail.phone, city: detail.region.join('--') })
+      //   { userinfo: `${detail.name} ${detail.phone} ${detail.region.join('--')}` }
+      //   alert.confirm({ title: "预约成功", content: `您已成功预约「${this.data.vehicle.title}」的试驾，稍后将有工作人员联系您，请保持电话畅通。`, confirms: "好的,#0C5AC0", cancels: false }).then(res => {
+      //     this.setData({
+      //       isShowForm: false,
+      //     })
+      //   })
+      // } else {
+      //   alert.alert({
+      //     str: msg,
+      //   })
+      // }
+    })
       .catch(() => {
         //fail
         alert.loading_h()
