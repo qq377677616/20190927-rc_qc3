@@ -23,7 +23,7 @@
                 <view class="go iconfont icon_more"></view>
             </view>
 
-            <view class="group" wx:if="{{ !(parmData.type == 2) }}">
+            <view class="group">
                 <view class="icon iconfont icon-shouyexianxing"></view>
                 <block wx:if="{{ pickerStoreList.length }}">
                     <picker class="span" mode="selector" bindchange="bindPickerChange" range="{{ pickerStoreList }}" value="{{ storeIndex }}" style="width:520rpx;">

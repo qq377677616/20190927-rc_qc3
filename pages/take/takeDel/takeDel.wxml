@@ -1,33 +1,59 @@
 <!-- 聊天信息 -->
-<view wx:for="{{2}}" wx:key="{{l}}">
-	<view class="times">2020-01-02</view>
-	<view class="leftinfo">
-		<view class="l_img" style="background-image:url({{BASEURL}}/test.png)"></view>
-		<view class="r_info">
-			<image src="{{BASEURL}}/test.png" mode="aspectFit" class="setwidth"></image>
+<view class="infobox">
+	<view wx:for="{{sendload}}" wx:key="{{l}}">
+	<!-- <view class="times">2020-01-02</view> -->
+		<!-- 左边图片 -->
+		<view class="leftinfo" wx:if="{{item.is_ob==0&&item.msg_type==2}}">
+			<view class="l_img" style="background-image:url({{handimg?handimg:BASEURL+'/test.png'}})">
+			</view>
+			<view class="r_info l_info2 l_info3">
+				<image src="{{item.content}}" mode="widthFix" class="setwidth" bindtap="preview" data-src="{{item.content}}"></image>
+			</view>
 		</view>
-	</view>
-	<view class="rightinfo">
-		<view class="l_info">亲，我是您的导购人员，有什么问题都可以问我哦。</view>
-		<view class="r_img" style="background-image:url({{BASEURL}}/test.png)"></view>	
+		<!-- 左边文字 -->
+		<view class="leftinfo" wx:if="{{item.is_ob==0&&item.msg_type==1}}">
+			<view class="r_img" style="background-image:url({{handimg?handimg:BASEURL+'/test.png'}})"></view>	
+			<view class="l_info l_info2 l_info3">{{item.content}}</view>
+		</view>
+		<!-- 右边文字 -->
+		<view class="rightinfo" wx:if="{{item.is_ob==1&&item.msg_type==1}}">
+			<view class="l_info">{{item.content}}</view>
+			<view class="r_img" style="background-image:url({{userInfo.headimg}})"></view>	
+		</view>
+		<!-- 右边图片 -->
+	    <view class="rightinfo" wx:if="{{item.is_ob==1&&item.msg_type==2}}">
+			<view class="r_info r_info2">
+				<image src="{{item.content}}" mode="widthFix" class="setwidth" bindtap="preview" data-src="{{item.content}}"></image>
+			</view>
+			<view class="l_img" style="background-image:url({{userInfo.headimg}})"></view>
+		</view>
+
 	</view>
 </view>
+
 <!-- 无法发送消息通知 -->
-<view class="noway">
+<!-- <view class="noway">
 	<view class="l_line"></view>
 	<view class="c_txt">距离用户回复超过48小时，无法发送消息</view>
 	<view class="r_line"></view>
-</view>
+</view> -->
 <!--占位view -->
 <view class="zhanwei"></view>
 <!-- 底部发送消息 -->
-<view class="footbox">
+<view class="footbox {{isIponeX?'setbom':''}}">
 	<view class="l_em">
-		<image src="{{BASEURL}}/icon.png" class="iconimg" mode="widthFix"></image>
+		<image src="{{BASEURL}}/icon.png" class="iconimg" mode="widthFix" bindtap="upimg"></image>
 	</view>
 	<view class="c_ipt">
-		<input class="infoipt" bindinput="getval" value="{{msg}}"></input>
+		<input class="infoipt" bindinput="getval" value="{{msg}}" bindfocus="setscret"></input>
 	</view>
 	<view class="r_send" bindtap="sendMsg">发送</view>
+</view>
+
+<!-- iphoneX处理 -->
+<view class="{{isIponeX?'ipxbox':''}}"></view>
+
+<view class="imgpop fadeShow" wx:if="{{popshow}}" bindtap="hidepop">
+	<image src="{{BASEURL}}/test.png" class="bigimg"></image>
 </view>
 

@@ -66,16 +66,9 @@
     <view class="win_content">
       <scroll-view scroll-y bindscrolltolower="winListScroll" class="win_list">
         <view class="win_item" wx:for="{{ winInfo.the_winning_list }}" wx:key="index">
-          <!-- <view class="label nowrap">{{ index + 1 }}</view> -->
           <image class="headimg" src="{{ item.headimg }}" mode="widthFix"></image>
           <view class="name nowrap">{{ item.nickname }}</view>
-          <!-- <view class="status">恭喜中奖</view> -->
         </view>
-        <!-- <view class="win_item active">
-          <image class="headimg" src="{{ winInfo.user_activity.headimg }}" mode="widthFix"></image>
-          <view class="name nowrap">{{ winInfo.user_activity.nickname }}</view>
-          <view class="status">{{ winInfo.user_activity.status == 1 ? '恭喜中奖' : '未获奖' }}</view>
-        </view> -->
       </scroll-view>
       <view class="user_item active">
         <image class="headimg" src="{{ winInfo.user_activity.headimg }}" mode="widthFix"></image>

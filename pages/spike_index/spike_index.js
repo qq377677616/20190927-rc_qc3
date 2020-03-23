@@ -121,8 +121,8 @@ Page({
     const options = this.data.options;
     const IMGSERVICE = this.data.IMGSERVICE;
     return {
-      title: '秒杀天天有，今天特别大！',
-      imageUrl: `${IMGSERVICE}/spike/spike_share_s1.jpg`,
+      title: 'iphone11、小米家电……好礼等你来抢！',
+      imageUrl: `${IMGSERVICE}/spike/spike_share_s1.jpg?100`,
       path: `/pages/spike_index/spike_index?activity_id=${options.activity_id}`,
     };
   },
@@ -503,7 +503,7 @@ Page({
           !wx.getStorageSync("userInfo").nickName
         ) return;
         if (this.data.goods2_buy == 0) {
-          tool.alert('暂无权限')
+          tool.alert('您未参与启辰官网1元下订活动，暂无秒杀资格!')
           return
         }
         tool.requestSubscribeMessage()
@@ -1051,6 +1051,7 @@ Page({
           wx.setStorageSync("userInfo", _userInfo)
           this.initData(options)
         } else {
+          console.log(11111111)
           tool.alert(res.data.msg)
         }
       })

@@ -2,19 +2,17 @@
 	<view class="hander">
 		<!-- 头部 -->
 		<view class="row1">
-			<view class="useinfo">
-				<view class="useimg" style="background-image:url({{useData.avatar}})">
-					<button open-type="getUserInfo" class="sqbtn" bindgetuserinfo="authBtn"></button>
-				</view>
+			<view class="useinfo"> 
+				<view class="useimg" style="background-image:url({{useData.avatar?useData.avatar:BASEURL+'/test.png'}})"></view>
 				<view class="riginfo">
 					<view class="l_name">
 						<text class="txt1">{{useData.name}}</text>
 						<view class="txt2">{{useData.position}}</view>
 					</view>
-					<view class="cg_btn">
+					<!-- <view class="cg_btn">
 						<image mode="widthFix" src="{{BASEURL}}/tk_change.png" class="change"></image>
 						<text class="txt3">切换</text>
-					</view>
+					</view> -->
 				</view>			
 			</view>
 		</view>
@@ -39,8 +37,8 @@
 				</view>
 
 				<view class="s_row2">
-					<text class="txt5">座机：{{item.telephone?item.telephone:'暂无'}}</text>
-					<view class="rigicon" bindtap="callPhone" data-phone="{{useData.telephone}}">
+					<text class="txt5">座机：{{useData.service_tel?useData.service_tel:'暂无'}}</text>
+					<view class="rigicon" bindtap="callPhone" data-phone="{{useData.service_tel}}">
 						<image mode="widthFix" src="{{BASEURL}}/tk_phone.png" class="bigicon"></image>
 						<text class="txt6">拨打</text>
 					</view>
@@ -61,10 +59,11 @@
 					</view>
 					<view class="topbtn1" bindtap="takeMan">
 						聊一聊
+						<button wx:if="{{ !userInfo.nickName || !userInfo.unionid }}" open-type="getUserInfo" class="sqbtn"  bindgetuserinfo="getUserInfo"></button>
 					</view>
 					<view class="topbtn1">
 						加微信
-						<cell styleType="2" class="cell"  bind:startmessage='startmessage' bind:completemessage="completemessage" plugid='b36ffd92a408e5fa6c47a224079815ae' />
+						<cell styleType="2" class="cell"  bind:startmessage='startmessage' bind:completemessage="completemessage" plugid='{{useData.plugid}}' />
 					</view>
 				</view>
 
@@ -89,4 +88,8 @@
 	</view>
 	<!-- 强制定位 -->
 	 <showModal showModalOption="{{showModalOption}}" bindoperation="operation"></showModal>
+</view>
+<!-- 跳转启程星小程序 -->
+<view class="xingIcon">
+	<image src="{{BASEURL}}/xing_icon.png" mode="widthFix"></image>
 </view>

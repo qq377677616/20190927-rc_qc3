@@ -172,9 +172,9 @@
   </view>
 
   <!-- spike-log -->
-  <!-- <view class="spike-log" bindtap="spikeLogBtn">
+  <view class="spike-log" bindtap="spikeLogBtn">
     <text>我的\n秒杀</text>
-  </view> -->
+  </view>
 
   <!-- qc-rule -->
   <view class="fadeIn" wx:if="{{ ruleVisible }}">

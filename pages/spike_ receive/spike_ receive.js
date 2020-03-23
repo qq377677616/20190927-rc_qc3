@@ -308,36 +308,37 @@ Page({
 		const storeList = this.data.storeList;//门店列表
 		const storeIndex = this.data.storeIndex;//门店索引
 		let dealer_code = '';//门店编码
+		console.log(storeList)
 		console.log(storeIndex)
 		//收货人信息必填
 		console.log(currentAddressItem.address_id)
 		if (!currentAddressItem.address_id) return alert.alert({
 			str: '请填写收货人信息'
 		});
-		if (this.data.parmData.is_yy == 0 || this.data.parmData.type != 2) {//立即支付跳转过来
-			if (!(this.data.parmData.type == 2) && !storeList.length) return alert.alert({
+		// if (this.data.parmData.is_yy == 0) {//立即支付跳转过来
+			if (!storeList.length) return alert.alert({
 				str: '请选择领取的门店'
 			});
-			let dealer_code = storeList[storeIndex].code;//门店id 为快递时门店id非必选
+			dealer_code = storeList[storeIndex].code;//门店id 为快递时门店id非必选
 			this.setData({ dealer_code: dealer_code })
-		}
+		// }
 		this.data.parmData.is_yy == 0 ? this.lq_receive() : this.yy_receive();
 	},
 	lq_receive() {
 		// 领取奖品 结算留资
 		this.isShowLoading();
 		let dat = {};
-		if (this.data.parmData.type == 2) {
-			dat = {
-				activity_id: this.data.parmData.activity_id,
-				openid: wx.getStorageSync('userInfo').openid,
-				log_id: this.data.parmData.log_id,
-				name: this.data.useName,
-				mobile: this.data.mobile,
-				area: this.data.area,
-				address: this.data.address
-			}
-		} else {
+		// if (this.data.parmData.type == 2) {
+		// 	dat = {
+		// 		activity_id: this.data.parmData.activity_id,
+		// 		openid: wx.getStorageSync('userInfo').openid,
+		// 		log_id: this.data.parmData.log_id,
+		// 		name: this.data.useName,
+		// 		mobile: this.data.mobile,
+		// 		area: this.data.area,
+		// 		address: this.data.address
+		// 	}
+		// } else {
 			dat = {
 				activity_id: this.data.parmData.activity_id,
 				openid: wx.getStorageSync('userInfo').openid,
@@ -348,7 +349,7 @@ Page({
 				address: this.data.address,
 				code: this.data.dealer_code
 			}
-		}
+		// }
 		// console.log(dat);
 		// return;
 		request_04.lq_receive(dat).then((res) => {

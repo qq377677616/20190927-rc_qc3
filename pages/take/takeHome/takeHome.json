@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-	"showModal": "/components/showModal/showModal",
+	"showModal": "/components/showModal/showModal2",
 	"cell": "plugin://contactPlugin/cell"
 }
 }

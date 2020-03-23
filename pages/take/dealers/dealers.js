@@ -12,7 +12,7 @@ Page({
 		BASEURL: app.globalData.ASSETSURL,//基本路径
 		storlist:[],//门店列表
 		address:'',//地址
-		page:1,//当前页面
+		page:0,//当前页面
 		limit:10,//每页限制条数
 		isData:true,//是否有下一页
 	},
@@ -108,7 +108,7 @@ Page({
 		// console.log(1111)
 	},
 	resetpot(){//重新定位
-		this.setData({ page: 1, storlist:[]});
+		this.setData({ page: 0, storlist:[]});
 		this.getInfo();
 	}
 })

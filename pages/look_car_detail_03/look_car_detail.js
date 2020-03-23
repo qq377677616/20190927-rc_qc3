@@ -29,8 +29,8 @@ Page({
     dotIndex2: '0',
     swiper1: true,
     swiper2: true,
-    swiper4: 0,//控制第1个swiper
-    swiper5: 0,//控制第2个swiper
+    swiper4: 0, //控制第1个swiper
+    swiper5: 0, //控制第2个swiper
     isShowForm: false,
     formsType: 2,
     vehicle: {},
@@ -39,17 +39,17 @@ Page({
     domAnimatedList: [{
       local: 0,
       height: 0,
-      amt: false,
+      amt: true,
     },
     {
       local: 0,
       height: 0,
-      amt: false,
+      amt: true,
     },
     {
       local: 0,
       height: 0,
-      amt: false,
+      amt: true,
     },
     ],
     imgList: [false, false],
@@ -82,7 +82,6 @@ Page({
   },
 
   swiperchange(e) {
-    console.log(e);
     let type = e.currentTarget.dataset.type;
     this.setData({
 
@@ -138,7 +137,6 @@ Page({
    * 页面滚动事件
    */
   onPageScroll: function (options) {
-
     clearTimeout(scrollTimmer)
 
     scrollTimmer = setTimeout(() => {
@@ -146,39 +144,83 @@ Page({
       const domAnimatedList = this.data.domAnimatedList;
       const windowHeight = wx.getSystemInfoSync().windowHeight;
 
+
       domAnimatedList.forEach((val, key) => {
         const local = val.local;
         const height = val.height;
         /**
-         * 从下往上出现，从上往下出现
+         * 从下往上出现，从上往下出现
          */
+
         val.amt = (scrollTop + windowHeight) >= local && scrollTop <= (local + height);
         this.setData({
           domAnimatedList,
+
         })
       })
 
-      
-    }, 1000/30)
 
+
+    }, 1000 / 30)
   },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    const lookCarDetail = this.data.lookCarDetail;
-    const IMGSERVICE = this.data.IMGSERVICE;
-    const options = this.data.options;
-    return {
-      title: `启辰星亮相发布，快来预约关注！`,
-      imageUrl: `${IMGSERVICE}/spike/t80_share.jpg`,
-      path: `/pages/look_car_detail_03/look_car_detail?id=${options.id}`
+    let activity_id = this.data.activity_id;
+    let id = this.data.id;
+    let txt = '';
+    switch (id) {
+      case '11':
+        txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
+        break;
+      case '6':
+        txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
+        break;
+      case '3':
+        txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
+        break;
+      case '9':
+        txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
+        break;
+      case '7':
+        txt = '启辰T70，高品质智联SUV，品质来袭！';
+        break;
+      case '5':
+        txt = '启辰T70，高品质智联SUV，品质来袭！';
+        break;
+      case '10':
+        txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
+        break;
+      case '13':
+        txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
+        break;
     }
+    let obj = {
+      title: `${txt}`,
+      path: `/pages/look_car_detail_03/look_car_detail?activity_id=${activity_id}&id=${id}`,
+      imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
+    };
+    return obj;
   },
   //页面初始化
   initData(options) {
-    this.getPayInfo()
+    console.log(options)
+    let id = '';
+    if (options.scene) {
+      let scene = decodeURIComponent(options.scene);
+      console.log(scene)
+      scene.split('&').forEach((item) => {
+        if (item.split('=')[0] == 'id') { //找到id
+          id = item.split('=')[1]
+        }
+      })
+    } else {
+      id = options.id;
+    }
+    console.log(id, 'id')
 
+    this.getPayInfo(options)
     tool.loading({
       str: '加载中'
     })
@@ -186,7 +228,7 @@ Page({
     Promise.all([
       request_01.lookCarDetail({
         user_id: wx.getStorageSync('userInfo').user_id,
-        id: options.id,
+        id: id,
       })
     ])
       .then((value) => {
@@ -198,6 +240,7 @@ Page({
         this.setData({
           lookCarDetail,
           userInfo: wx.getStorageSync('userInfo'),
+          id: options.id
         })
 
         wx.setNavigationBarTitle({
@@ -258,20 +301,31 @@ Page({
   },
 
   //获取99元下定首页数据的
-  getPayInfo() {
+  getPayInfo(options) {
+    let activity_id = '';
+    if (options.scene) {
+      let scene = decodeURIComponent(options.scene);
+      console.log(scene)
+      scene.split('&').forEach((item) => {
+        if (item.split('=')[0] == 'a') { //找到activity_id
+          activity_id = item.split('=')[1]
+        }
+      })
+    } else {
+      activity_id = wx.getStorageSync('activity_id');
+    }
     let openid = wx.getStorageSync('userInfo').openid
-    let activity_id = wx.getStorageSync('activity_id')
     request_05.ninepayInfo({
       openid,
       activity_id
     }).then(res => {
       if (res.data.status == 1) {
-        console.log(res.data.data, 'data')
         this.setData({
-          payInfoData: res.data.data
+          payInfoData: res.data.data,
+          activity_id,
+          options,
         })
         if (res.data.data.card_info.length > 0) {
-          console.log('有')
           this.cardFun()
         }
       } else {
@@ -343,6 +397,7 @@ Page({
   },
   //立即下定
   downPayment(e) {
+    let options = this.data.options
     let onlyOne = e.currentTarget.dataset.open
     var _this = this
     // order_sn判断订单号是否为空字符串  不为空则为以留资
@@ -376,10 +431,11 @@ Page({
                     duration: 2000
                   })
                   setTimeout(() => {
-                    _this.getPayInfo()
+                    _this.getPayInfo(options)
                   }, 2500)
                 },
                 fail(res) {
+                  _this.getPayInfo(options);
                   console.log('支付失败')
                 }
               })
@@ -471,15 +527,16 @@ Page({
                     duration: 2000
                   })
                   setTimeout(() => {
-                    _this.getPayInfo();
+                    _this.getPayInfo(options);
                   }, 2500)
                 },
                 fail(res) {
+                  _this.getPayInfo(options);
                   console.log('支付失败')
                 }
               })
             } else {
-              alert.alert(res.data.msg)
+              tool.alert(res.data.msg)
             }
           })
         } else {
@@ -489,7 +546,10 @@ Page({
             _this.initData(options)
           }, 500)
         }
+      } else {
+        tool.alert(res.data.msg)
       }
+
 
       // const status = value.data.status;
       // const msg = value.data.msg;
@@ -531,39 +591,54 @@ Page({
   },
   //轮播图上下切换
   switchBtn(e) {
+    let swiper4 = this.data.swiper4
+    let swiper5 = this.data.swiper5
     const btn = e.currentTarget.dataset.btn;
-    const indexType = e.currentTarget.dataset.indextype;
-    let dotIndex = this.data[indexType];
-    const swiperType = e.currentTarget.dataset.swipertype;
-    let num;
-
-    num = swiperType == 'swiper1' ? 3 : 4;
-
-    // clearTimeout(swiper1Timmer)
-    // clearTimeout(swiper2Timmer)
-
-    // swiperType == 'swiper1' ? swiper1Timmer = setTimeout(()=>{
-    //   this.setData({
-    //     swiper1:true,
-    //   })
-    //   clearTimeout(swiper1Timmer)
-    // }, 1000) : '';
-
-    // swiperType == 'swiper2' ? swiper2Timmer = setTimeout(()=>{
-    //   this.setData({
-    //     swiper2:true,
-    //   })
-    //   clearTimeout(swiper2Timmer)
-    // }, 1000) : '';
-
-
-    btn == 'next' ? dotIndex = Math.abs(++dotIndex % num) : '';
-    btn == 'prev' ? dotIndex = Math.abs(--dotIndex % num) : '';
-
-    this.setData({
-      [indexType]: String(dotIndex),
-      // [swiperType]:false,
-    })
+    if (btn == 'prev1') {
+      if (swiper4 > 0) {
+        swiper4--
+        this.setData({
+          swiper4
+        })
+      } else {
+        this.setData({
+          swiper4: 6
+        })
+      }
+    } else if (btn == 'next1') {
+      if (swiper4 < 6) {
+        ++swiper4
+        this.setData({
+          swiper4
+        })
+      } else {
+        this.setData({
+          swiper4: 0
+        })
+      }
+    } else if (btn == 'prev2') {
+      if (swiper5 > 0) {
+        swiper5--
+        this.setData({
+          swiper5
+        })
+      } else {
+        this.setData({
+          swiper5: 4
+        })
+      }
+    } else if (btn == 'next2') {
+      if (swiper5 < 4) {
+        ++swiper5
+        this.setData({
+          swiper5
+        })
+      } else {
+        this.setData({
+          swiper5: 0
+        })
+      }
+    }
   },
   //授权
   getUserInfo(e) {

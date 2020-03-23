@@ -6,7 +6,7 @@
   </view>
   <view class="pro_name">{{proData.title}}</view>
   <view class="pro_score">
-    <view class="score_txt1">积分：</view>
+    <view class="score_txt1">现金红包:</view>
     <view class="score_txt2">{{proData.vcoin}}</view>
   </view>
   <view class="pro_explain">
@@ -16,5 +16,15 @@
       <template is="wxParse" data="{{ wxParseData:product_explain.nodes }}" />
     </view>
   </view>
+  <!-- pruduct_image -->
+  <view class="pruduct_image" wx:if="{{ goodsDetail.goods_detail.length }}">
+
+    <view class="title">商品详情</view>
+
+    <view class="image_list">
+        <image class="fadeIn" wx:for="{{ goodsDetail.goods_detail }}" wx:key="index" src="{{ item }}" mode="widthFix"></image>
+    </view>
+
+  </view><!-- pruduct_image -->
   <view class="btn" bindtap="toPay">立即兑换</view>
 </view>

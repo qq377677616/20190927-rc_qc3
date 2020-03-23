@@ -2,8 +2,17 @@
 
 .pic{
   width: 100%;
+  position: relative;
 }
 
 .pic image{
   width: 100%;
+}
+
+.btn{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: 60rpx;
+  right: 10rpx;
 }

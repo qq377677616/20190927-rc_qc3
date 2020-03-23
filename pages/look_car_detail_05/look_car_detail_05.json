@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "forms": "/components/foms2/form"
+  },
+  "navigationBarTitleText": "启辰T90"
+}

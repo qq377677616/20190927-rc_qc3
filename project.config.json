@@ -20,10 +20,13 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"preloadBackgroundData": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.3",
 	"appid": "wx1d585c8c2fffe589",
 	"projectname": "new_rc_qc_3.0",
 	"debugOptions": {
@@ -54,7 +57,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 109,
 			"list": [
 				{
 					"id": 38,
@@ -79,13 +82,6 @@
 				},
 				{
 					"id": -1,
-					"name": "audit_page",
-					"pathName": "pages/audit_page/audit_page",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "bargain_index",
 					"pathName": "pages/bargain_index/bargain_index",
 					"query": "",
@@ -95,20 +91,6 @@
 					"id": -1,
 					"name": "bargain_state",
 					"pathName": "pages/bargain_state/bargain_state",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "jizan",
-					"pathName": "pages/jizan/jizan",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "look_car",
-					"pathName": "pages/look_car/look_car",
 					"query": "",
 					"scene": null
 				},
@@ -463,8 +445,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/look_car_detail_03/look_car_detail",
+					"id": 96,
+					"name": "启辰星",
 					"pathName": "pages/look_car_detail_03/look_car_detail",
 					"query": "id=11",
 					"scene": null
@@ -477,10 +459,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "改版T6",
+					"id": 95,
+					"name": "改版T70",
 					"pathName": "pages/look_car_detail_04/look_car_detail_04",
-					"query": "id=6",
+					"query": "id=3",
 					"scene": null
 				},
 				{
@@ -526,15 +508,92 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 105,
 					"name": "takeDel",
 					"pathName": "pages/take/takeDel/takeDel",
+					"query": "uid=1&to_uid=50",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "look_car_detail",
+					"pathName": "pages/look_car_detail/look_car_detail",
+					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": 107,
+					"name": "改版t90",
+					"pathName": "pages/look_car_detail_05/look_car_detail_05",
+					"query": "id=9",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "99协议书",
+					"pathName": "pages/protocol/protocol",
+					"query": "id=11",
+					"scene": null
+				},
+				{
+					"id": 109,
+					"name": "EV首页",
+					"pathName": "pages/ev/ev_index/ev_index",
+					"query": "activity_id=30",
+					"scene": null
+				},
+				{
+					"id": 110,
+					"name": "EV留资",
+					"pathName": "pages/ev/ev_form/ev_form",
+					"query": "activity_id=30",
+					"scene": null
+				},
+				{
+					"id": 111,
+					"name": "EV助力",
+					"pathName": "pages/ev/ev_help/ev_help",
+					"query": "activity_id=30&openid=oORV85Ug4HkB3B0G4T31lCG14E4Y&user_id=62",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "EV自己助力",
+					"pathName": "pages/ev/ev_help/ev_help",
+					"query": "activity_id=30",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "云赏车",
+					"pathName": "pages/webview3/webview3",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": 106,
-					"name": "pages/look_car_detail_03/look_car_detail",
+					"id": -1,
+					"name": "pages/webview_2/webview_2",
+					"pathName": "pages/webview_2/webview_2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/webview/webview",
+					"pathName": "pages/webview/webview",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 116,
+					"name": "EV页面",
+					"pathName": "pages/look_car_detail_02/look_car_detail_02",
+					"query": "id=13",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "启辰星",
 					"pathName": "pages/look_car_detail_03/look_car_detail",
 					"query": "id=11",
 					"scene": null

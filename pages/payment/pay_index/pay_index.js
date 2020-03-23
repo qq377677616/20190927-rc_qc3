@@ -31,7 +31,20 @@ Page({
 
   // 初始化数据
   initData(options) {
-    let activity_id = options.activity_id;
+    console.log(options)
+    let activity_id = '';
+    if (options.scene) {
+      let scene = decodeURIComponent(options.scene);
+      console.log(scene)
+      scene.split('&').forEach((item) => {
+        console.log(item.split('='))
+        if (item.split('=')[0] == 'a') { //找到activity_id
+          activity_id = item.split('=')[1]
+        }
+      })
+    } else {
+      activity_id = options.activity_id;
+    }
     console.log(activity_id)
     let openid = wx.getStorageSync('userInfo').openid
     request_05.ninepayInfo({
@@ -46,6 +59,7 @@ Page({
           activity_id: options.activity_id,
           order_sn: res.data.data.order_sn,
           acData: res.data.data,
+          open_buy:res.data.data.open_buy,
           my_score: res.data.data.my_score,
           is_upgrade: res.data.data.help_info.prize_info.is_upgrade,
           options
@@ -84,6 +98,8 @@ Page({
           popType: 1,
           text: "活动已结束"
         })
+      }else{
+        tool.alert(res.data.msg)
       }
     })
   },
@@ -104,14 +120,19 @@ Page({
 
   //去兑换页
   toChange() {
-    let activity_id = this.data.activity_id
-    let cate_id = this.data.acData.activity_info.cate_id
-    let goods2_buy = this.data.acData.goods2_buy
-    let car_owner = this.data.car_owner
-    console.log(cate_id, 'cate_id')
-    router.jump_nav({
-      url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}&activity_id=${activity_id}`
-    })
+      let cate_id = this.data.acData.activity_info.cate_id
+      if(cate_id==0){
+        tool.alert('暂未开放,敬请期待!')
+        return
+      }
+      let open_buy = this.data.open_buy
+      let activity_id = this.data.activity_id
+      let goods2_buy = this.data.acData.goods2_buy
+      let car_owner = this.data.car_owner
+      console.log(cate_id, 'cate_id')
+      router.jump_nav({
+        url: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}&car_owner=${car_owner}&goods2_buy=${goods2_buy}&activity_id=${activity_id}&open_buy=${open_buy}`
+      })
   },
 
   // 开关下订弹窗
@@ -124,7 +145,7 @@ Page({
   btn_detail() {
     let activity_id = this.data.activity_id
     let order_sn = this.data.order_sn
-    route.jump_red({
+    router.jump_red({
       url: `/pages/look_car_detail_03/look_car_detail?id=${11}&activity_id=${activity_id}&order_sn=${order_sn}`
     })
   },
@@ -340,6 +361,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+	  console.log(options)
     request_01.login(() => {
       this.initData(options);
     })
@@ -399,6 +421,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    let activity_id = this.data.activity_id;
+    let obj = {
+      title: '启辰星送您尊享大红包，每天可领，快来参加!',
+      path: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
+      imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
+    };
+    return obj;
   }
 })

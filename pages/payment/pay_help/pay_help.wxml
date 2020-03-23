@@ -11,7 +11,7 @@
           <text class="userTxt">我正在获得现金红包,快来帮我助力!</text>
         </view>
       </view>
-      <view class="prizeImg" style="background-image:url({{IMGSERVICE}}/pay/pay_gift.png)">
+      <view class="prizeImg" style="background-image:url({{IMGSERVICE}}/pay/pay_gift.png?1)">
       </view>
       <view data-type="ok" class="helpBtn mt2 red" bindtap="helpH" wx:if="{{is_help==0}}">
         <text>助TA一臂之力</text>

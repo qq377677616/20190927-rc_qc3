@@ -1,5 +1,5 @@
 import $ from './request.js'
-const QQMapWX = require('../qqmap-wx-jssdk.min.js');
+const QQMapWX = require('../../utils/other/qqmap-wx-jssdk.min.js');
 const REQUESTURL = getApp().globalData.REQUESTURL
 const myRequest = (data, url, type = 'post', isUrl = false) => {
   !isUrl && (url = `${REQUESTURL}${url}`)
@@ -37,12 +37,37 @@ const getPosition = () => {
 			},
 			fail: function (err) {
 				reject(err)
-				console.log("定位失败")
+				console.log("定位失败333")
 			}
 		})
 	})
 }
-
+// 获取专营店信息 
+const msgLog = (data, url = '/index/index/msgLog') => { return myRequest(data, url) }
+// 图片上传
+const uploadFiles = (data) => {
+	let url = `${REQUESTURL}/index/index/upload`;
+	return new Promise((resolve, reject) => {
+		wx.chooseImage({
+			success(res) {
+				const tempFilePaths = res.tempFilePaths
+				wx.uploadFile({
+					url: url,
+					filePath: tempFilePaths[0],
+					name: 'file',
+					formData: {},
+					success(res) {
+						const data = res.data
+						resolve(JSON.parse(data))
+					}
+				})
+			},
+			fail(err) {
+				reject(err)
+			}
+		})
+	})
+}
 module.exports = {
   myRequest,
   getOpenid,
@@ -53,4 +78,6 @@ module.exports = {
   clientLogin,
   getInfo,
   getPosition,
+	msgLog,
+	uploadFiles,
 }

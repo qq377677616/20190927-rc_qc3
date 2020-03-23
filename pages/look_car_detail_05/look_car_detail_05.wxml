@@ -1,0 +1,297 @@
+<!-- pages/look_car_detail/look_car_detail.wxml -->
+<view class="car-detail-content" bindtap="closelz">
+    <!-- nav_area -->
+    <view class="nav_area">
+        <view class="bg" style="left:{{navIndex * 50}}%"></view>
+        <view class="nav_item {{ navIndex == 0 ? 'active' : '' }}" data-index="0" bindtap="navList">车型介绍</view>
+        <view class="nav_item {{ navIndex == 1 ? 'active' : '' }}" data-index="1" bindtap="navList">参数配置</view>
+        <!-- <view class="nav_item {{ navIndex == 2 ? 'active' : '' }}" data-index="2" bindtap="navList">精彩美图</view> -->
+    </view>
+    <!-- top -->
+	<!-- 车型介绍 -->
+    <view wx:if="{{navIndex==0}}">
+		<!-- T90 -->
+            <view class="image_item">
+			<view>
+				<view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_1.png?1)"></view>
+				<view class="txtbox1">
+					<view class="txt1" style="background-image:url({{IMGSERVICE}}/gaiban/t90txt_1.png)"></view>
+					<!-- <text class="txt1">合资品质</text> -->
+					<text class="txt2">结合风雕美学设计理念，创造独特的惊艳外观。</text>
+				</view>
+				<view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_2.png)"></view>
+				<view class="txtbox2">{{swiper1_txt[swiper1]}}</view>
+				<!--轮播实例1-->
+				<view class="threebg threebg1 anit1_{{swiper1}}">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
+						 <block wx:for="{{t90swp1}}" wx:key="item">
+							<swiper-item>
+
+								<!-- 自定义播放按钮 -->
+								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="1" data-length="{{t90swp1.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
+								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="1" data-length="{{t90swp1.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
+								<!-- 自定义播放按钮 -->
+
+								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
+								<video class="v_bigitem" autoplay='{{true}}' wx:if="{{item.type==2&&swiper1==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
+						 <block wx:for="{{t90swp1}}" wx:key="item">
+							<swiper-item>
+								<view class="item1 {{swiper1!=index-1&&!(swiper1==(t90swp1.length-1)&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t90_1_{{index+1}}.png)" data-type="1" data-tab="{{index-1}}" data-len="{{t90swp1.length}}" bindtap="tabSwiper"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<!--轮播实例-->
+
+				<view class="setwhite"></view>
+				<view class="txtbox1 setbg">
+					<view class="m_txt" style="background-image:url({{IMGSERVICE}}/gaiban/t90txt_2.png)"></view>
+					<text class="txt2">2765mm轴距的越级驾乘空间，</text>
+					<text class="txt2 lowtxt">结合人体工程学原理设计，更舒适自在。</text>
+				</view>
+				<view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_3.png)"></view>
+				<view class="txtbox2 txtbox3">{{swiper2_txt[swiper2]}}</view>
+				
+				<!--轮播实例2-->
+				<view class="threebg threebg2 anit1_{{swiper2}}">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
+						 <block wx:for="{{t90swp2}}" wx:key="item">
+							<swiper-item>
+
+								<!-- 自定义播放按钮 -->
+								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="2" data-length="{{t90swp2.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
+								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="2" data-length="{{t90swp2.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
+								<!-- 自定义播放按钮 -->	
+
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
+						 <block wx:for="{{t90swp2}}" wx:key="item">
+							<swiper-item>
+								<view class="item1 {{swiper2!=index-1&&!(swiper2==(t90swp2.length-1)&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t90_2_{{index+1}}.png?1)" data-type="2" data-tab="{{index-1}}" data-len="{{t90swp2.length}}" bindtap="tabSwiper"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<!--轮播实例-->
+
+				<view class="setwhite"></view>
+				
+				<view class="txtbox1 setbg">
+					<view class="m_txt m_txt3" style="background-image:url({{IMGSERVICE}}/gaiban/t90txt_3.png)"></view>
+					<text class="txt2">新一代日产铂金动力组合搭配专业舒适化底盘，</text>
+					<text class="txt2 lowtxt">高效动力与平顺驾乘兼顾。</text>
+				</view>
+
+				<view class="nt60_6" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_4.png)"></view>
+				<view class="txtbox2 txtbox3">{{swiper3_txt[swiper3]}}</view>
+
+				<!--轮播实例3-->
+				<view class="threebg threebg1 anit1_{{swiper3}}">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="3" current="{{swiper3}}">
+						 <block wx:for="{{t90swp3}}" wx:key="ite m">
+							<swiper-item>
+
+								<!-- 自定义播放按钮 -->
+								<view  class="nopt {{item.type==2&&swiper3==index&&vbtn?'opt':''}}">
+									<view class="fgbox">
+										<view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video1" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}">
+											<view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
+										</view>
+									</view>
+									<view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
+								</view>
+								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="3" data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
+								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="3"data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
+								<!-- 自定义播放按钮 -->
+
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
+						 <block wx:for="{{t90swp3}}" wx:key="item">
+							<swiper-item>
+								<view class="item1 {{swiper3!=index-1&&!(swiper3==(t90swp3.length-1)&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t90_3_{{index+1}}.png?1)" data-type="3" data-tab="{{index-1}}" data-len="{{t90swp3.length}}" bindtap="tabSwiper"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<!--轮播实例-->
+				 
+				 <view class="setwhite"></view>
+				
+				<view class="txtbox1 setbg">
+					<view class="m_txt m_txt4" style="background-image:url({{IMGSERVICE}}/gaiban/t90txt_4.png)"></view>
+					<text class="txt2">集成更人性化的智能科技配置，</text>
+					<text class="txt2 lowtxt">为驾驶添一份乐趣。</text>
+				</view>
+				<view class="nt60_7" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_5.png)"></view>
+				
+				<view class="txtbox2 txtbox3">{{swiper4_txt[swiper4]}}</view>
+
+				<!--轮播实例4-->
+				<view class="threebg threebg4 anit4_{{swiper4}}">
+					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="4" current="{{swiper4}}">
+						 <block wx:for="{{t90swp4}}" wx:key="item">
+							<swiper-item>
+
+								<!-- 自定义播放按钮 -->
+								<view  class="nopt {{item.type==2&&swiper4==index&&vbtn?'opt':''}}">
+									<view class="fgbox">
+										<view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video2" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}">
+											<view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
+										</view>
+									</view>
+									<view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
+								</view>
+								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="4" data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
+								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="4"data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
+								<!-- 自定义播放按钮 -->
+
+								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<view class="swiper1">
+					<swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="4" current="{{swiper4}}">
+						 <block wx:for="{{t90swp4}}" wx:key="item">
+							<swiper-item>
+								<view class="item1 {{swiper4!=index-1&&!(swiper4==(t90swp4.length-1)&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t90_4_{{index+1}}.png?1)" data-type="4" data-tab="{{index-1}}" data-len="{{t90swp4.length}}" bindtap="tabSwiper"></view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<!--轮播实例-->
+				<view class="setwhite"></view>
+				
+				<view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_6.png?1)">
+					<view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)" wx:for="{{carcol}}" wx:key="item"></view>
+					<text class="txt3">启辰T90配置参数</text>
+					<text class="txt4">（官网画面仅供参考，购买时以实车为准）</text>
+					<view class="selectcol">
+						<scroll-view scroll-x="{{true}}">
+							<view class="setflex">
+								<view class="f_items" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
+									<view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img2}}?1)"></view>
+									<text class="txt5">{{item.txt}}</text>
+								</view>
+							</view>
+						</scroll-view>
+					</view>
+				</view>
+				<!-- 车系数据 -->
+				<view class="carnum">
+					<view class="numitem">
+						<text>轴距</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num1.png" class="num1"></image>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_12.png" class="lines"></image>
+					</view>
+					<view class="numitem">
+						<text>车宽</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num2.png" class="num2"></image>
+					</view>
+				</view>
+				<view class="carnum">
+					<view class="numitem">
+						<text>后备箱</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num3.png" class="num3"></image>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_12.png" class="lines"></image>
+					</view>
+					<view class="numitem">
+						<text>综合工况油耗</text>
+						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num4.png" class="num4"></image>
+					</view>
+				</view>
+				<view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/t90_m1.png)">
+					<text class="txt6">2765mm</text>
+					<text class="txt7">1591mm</text>
+					<text class="txt11">4805mm</text>
+				</view>
+				<!-- 车系数据 -->
+				<view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/t90_m2.png)">
+					<!-- <text class="txt8">4412mm</text> -->
+					<text class="txt9">1820mm</text>
+				</view>
+
+				<view class="txt10">智悦版车型断面图和剖面图</view>
+
+			</view>	
+            </view>
+
+			<!-- T60 -->
+    </view>
+	<!-- 参数配置 -->
+    <view wx:if="{{navIndex==1}}">
+            <view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
+
+                <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
+                    <view class="label">{{item.value}}</view>
+                </view>
+                <view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
+                    <view class="lable">{{item.name}}</view>
+                    <view class="span">{{isSwitchIng ? '--' : item.value}}</view>
+                </view>
+            </view>
+          <view class="group">
+            <view class="li config_area flex-bet remarks">
+                <view class="lable">备注：</view>
+                <!-- <view class="span">{{remarks || '暂无相关备注信息'}}</view> -->
+                <view class="span">
+                  <view wx:for="{{lookCarDetail.remarks}}" wx:key="key{{index}}">{{item}}</view>
+                </view>
+            </view>
+          </view>
+        </view>
+		<!-- 精彩美图 -->
+        <view class="beauPic" wx:if="{{navIndex==2}}">
+            <video src="{{IMGSERVICE}}/activity/route/index.mp4" autoplay="true" loop	="true"></video>
+            <view class="title">
+              <image src="{{IMGSERVICE}}/activity/route/icon.png"></image>
+              <view>推荐旅游路线</view>
+            </view>
+            <view class="picList" wx:for="{{imgFourList}}" data-index="{{index}}" bindtap="toDetailRoute">
+              <image src="{{IMGSERVICE}}/activity/{{item}}" mode="widthFix"></image>
+            </view> 
+        </view>
+   
+    <!-- 选择车款-->
+    <view class="select_car flex-cen" wx:if="{{ navIndex == 1 }}">
+      <view class="text"><view>级别</view><view>选择</view></view>
+      <!-- <picker class="picker" mode="selector" bindchange="bindRegionChange" range="{{type_list}}" value="0">
+      </picker> -->
+      <picker class="picker" bindchange="bindRegionChange" value="{{index}}" range="{{car_type_list}}">
+        <view class="picker"></view>
+      </picker>
+    </view>
+	<view class="float-btn">
+        <image bindtap="moreBtn" src="{{ IMGSERVICE }}/spike/page4_24.png" mode="widthFix"></image>
+    </view>
+    <!-- title4 -->
+    <!-- science -->
+	 <!-- 留资弹窗-->
+    
+</view>
+<view class="forms-box" wx:if="{{ true }}">
+	<forms bindsubmit="submit" bindclose="isShowForm" popstu="{{popstu}}" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
+</view>
+
+<!-- 视频播放 -->
+<view class="playVedio fadeIn" wx:if="{{isPlayVedio}}">
+	<image class="close_video_btn" catchtap="isOpenVideo" src="{{IMGSERVICE}}/gaiban/close_video_btn.png" mode="widthFix"></image>
+	<video class="v_bigitem" object-fit="cover" loop="{{true}}" show-center-play-btn="{{false}}"  controls="{{false}}" autoplay='{{true}}' src="{{videoUrl}}"></video>
+</view>
+<!-- 视频播放 -->

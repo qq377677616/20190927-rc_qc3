@@ -8,8 +8,9 @@
       <block wx:for="{{lunImg}}" wx:for-item="item" wx:for-index="index" wx:key>
         <swiper-item catchtap="goToxq" data-lubImgid="{{item.carouselUrl}}">
           <view class="card_info">
-              <image src="{{item.titleImg}}" class="title_img{{index}} {{(!item.lowprice && !item.highprice) ? 'no_price' : ''}}" mode="widthFix" style="height:auto"></image>
-              <view  class="card_info_title">
+              <!-- <image src="{{item.titleImg}}" class="title_img{{index}} {{(!item.lowprice && !item.highprice) ? 'no_price' : ''}}" mode="widthFix" style="height:auto"></image> -->
+			  <view class="iconfont {{item.icon}}"></view>	
+			  <view  class="card_info_title">
                 <view wx:for="{{item.info}}" wx:for-item="infoItem">{{infoItem}}</view>
               </view>
               <view class="price_info" wx:if="{{item.lowprice && item.highprice}}">{{item.pritxt}}<text>{{item.lowprice}}</text>万元-<text>{{item.highprice}}</text>万元</view>

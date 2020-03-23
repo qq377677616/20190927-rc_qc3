@@ -34,7 +34,7 @@ Page({
           goodsData: res.data.data,
           car_owner: options.car_owner == 1,
           goods2_buy: options.goods2_buy,
-          options
+          options,
         })
       } else {
         console.log('报错')
@@ -44,13 +44,18 @@ Page({
 
   // 商品详情页
   toDetail(e) {
+    if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
     let activity_id = this.data.options.activity_id
     let goods_id = e.currentTarget.dataset.id
     let stype = e.currentTarget.dataset.stype
+    let open_buy = this.data.options.open_buy
+    if(open_buy!=1){
+      tool.alert('暂未开放')
+      return
+    }
     if (stype == 2 && this.data.goods2_buy == 0) {
-      tool.alert('暂无权限')
+      tool.alert('线下提车后次日即可兑换实物礼品')
     } else {
-      if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.car_owner) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
       if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.owner == 1) {
         this.setData({
           popType: 4
@@ -148,6 +153,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    let cate_id = this.data.options.cate_id;
+    let obj = {
+      title: '启辰星预售开启，快来兑换精美礼品！',
+      path: `/pages/payment/pay_change/pay_change?cate_id=${cate_id}`,
+      imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
+    };
+    return obj;
   }
 })
