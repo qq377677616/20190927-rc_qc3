@@ -96,6 +96,20 @@
     "pages/ev/ev_help/ev_help",
     "pages/webview3/webview3"
   ],
+"subpackages": [
+	{
+		"root": "mall_module",
+		"pages": [
+			"pages/shop_mall/shop_mall",
+			"pages/product_detail/product_detail",
+			"pages/shop_cart/shop_cart",
+			"pages/shop_mall_plate/shop_mall_plate",
+			"pages/shop_cart_next/shop_cart_next",
+			"pages/shop_cart_submitted/shop_cart_submitted",
+			"pages/shop_mall_type/shop_mall_type"
+		]
+	}
+],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "",

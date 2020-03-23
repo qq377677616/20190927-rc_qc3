@@ -247,10 +247,10 @@ Page({
     const cate_id = mallInfo.cate_list[index].cate_id;
     let url;
     if( name == '更多' ){//点击导航区更多时，跳转到 商城分类
-      url = `/pages/shop_mall_type/shop_mall_type?cate_id=${ cate_id }&pageTitle=${ name }`;
+      url = `/mall_module/pages/shop_mall_type/shop_mall_type?cate_id=${ cate_id }&pageTitle=${ name }`;
     }
     else{//否则跳转到 商城板块
-      url = `/pages/shop_mall_plate/shop_mall_plate?cate_id=${ cate_id }&pageTitle=${ name }`;
+      url = `/mall_module/pages/shop_mall_plate/shop_mall_plate?cate_id=${ cate_id }&pageTitle=${ name }`;
     }
 
     router.jump_nav({
@@ -261,7 +261,7 @@ Page({
   goodsDetail(e){
     const id = e.currentTarget.dataset.id;
     router.jump_nav({
-      url:`/pages/product_detail/product_detail?goods_id=${id}`,
+      url:`/mall_module/pages/product_detail/product_detail?goods_id=${id}`,
     })
   },
   //查看更多
@@ -323,7 +323,7 @@ Page({
   //购物车
   shopCart(){
     router.jump_nav({
-      url:'/pages/shop_cart/shop_cart',
+      url:'/mall_module/pages/shop_cart/shop_cart',
     })
   },
 })

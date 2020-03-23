@@ -269,7 +269,7 @@ Page({
   goodsDetail(e){
     const id = e.currentTarget.dataset.id;
     router.jump_nav({
-      url:`/pages/product_detail/product_detail?goods_id=${id}`,
+      url:`/mall_module/pages/product_detail/product_detail?goods_id=${id}`,
     })
   },
 })

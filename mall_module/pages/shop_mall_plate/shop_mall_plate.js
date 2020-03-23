@@ -222,7 +222,7 @@ Page({
   //购物车
   shopCart(){
     router.jump_nav({
-      url:'/pages/shop_cart/shop_cart',
+      url:'/mall_module/pages/shop_cart/shop_cart',
     })
   },
   //商品搜索
@@ -294,7 +294,7 @@ Page({
   goodsDetail(e){
     const id = e.currentTarget.dataset.id;
     router.jump_nav({
-      url:`/pages/product_detail/product_detail?goods_id=${id}`,
+      url:`/mall_module/pages/product_detail/product_detail?goods_id=${id}`,
     })
   },
 })

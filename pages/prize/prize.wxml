@@ -41,7 +41,7 @@
         <view class="my-prize"> 
           <view class="h3">您的抽奖机会<text>({{prizeDetails.my_draw_num}}/{{prizeDetails.draw_num}})</text></view>
           <view class="btns flex-cen">
-            <view class="button" bindtap="router" data-url="/pages/shop_mall/shop_mall">更多好礼</view>
+            <view class="button" bindtap="router" data-url="/mall_module/pages/shop_mall/shop_mall">更多好礼</view>
             <view class="button"  bindtap="router" data-url="/pages/activity_list/activity_list">更多精彩</view>
           </view>
         </view> 
