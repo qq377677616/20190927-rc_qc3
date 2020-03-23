@@ -55,6 +55,8 @@ Page({
 		code: '',
 		loadingText: '卡券领取中',
 		isShowLoading: false,
+		isphone:null,//是否有授权手机号
+		_iphone:null,// 自己手机号
 	},
 
 	/**
@@ -73,7 +75,8 @@ Page({
 				activity_id: options.activity_id || wx.getStorageSync('activity_id')
 			});
 		}
-		this.setData({ isshare: options.isshare == "6" })
+		console.log("aaa",wx.getStorageSync('_iphone'));
+		this.setData({ isshare: options.isshare == "6", _iphone: wx.getStorageSync('_iphone') })
 		this.allWeek();
 		request_01.login(() => {
 			this.setData({
@@ -151,15 +154,16 @@ Page({
 			}
 		}).catch(err => { console.log("err", err) })
 	},
-	get_barNnm() {//获取剩余砍价的次数
+	get_barNnm(){//获取剩余砍价的次数
 		let dat = {
+			mobile:this.data._iphone,
 			openid: wx.getStorageSync('userInfo').openid,
-			activity_id: this.data.activity_id
+			activity_id: this.data.activity_id,
 		}
 		request_04.restBarnum(dat).then((res) => {
 			//  console.log(res.data)
 			if (res.data.status == 0) {
-				this.setData({ restNum: res.data.data.sy_kj_num })
+				this.setData({ restNum: res.data.data.sy_kj_num, isphone:res.data.data.status })
 			}
 		}).catch((reason) => {
 			console.log(reason)
@@ -230,7 +234,14 @@ Page({
 		this.setData({ time_value: val })
 	},
 	freeGet(e) {//点击免费拿
-
+		let _ing = e.currentTarget.dataset.ing;
+		let _end = e.currentTarget.dataset.end;
+		if (_ing == 3 && _end == 1 && !this.data._iphone) // 手机号授权判断
+		return;
+		if (_ing == 3 && _end == 1 && this.data.isphone==0){// 授权后有没有资格参与
+			tool.alert("您暂无资格参与！")
+			return;
+		}
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.obj.car_owner == 1) {
 			console.log("hello")
@@ -264,9 +275,16 @@ Page({
 
 	},
 	goshopDel2(e) {
+		let _ing = e.currentTarget.dataset.ing;
+		let _end = e.currentTarget.dataset.end;
+		if(_ing==3 &&_end==1 && !this.data._iphone)// 判断有没有手机号授权
+		return;
+		if (_ing == 3 && _end == 1 && this.data.isphone == 0) {// 授权后有没有资格参与
+			tool.alert("您暂无资格参与！")
+			return;
+		}
 		//正在进行中商品点击整行进入商品详情
 		if (e.target.dataset.types == 'no') return;
-		console.log(55555)
 		// this.setData({ ok: this.data.iscarActive ? "ok" : "false" });
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		console.log("是否是车主商品", wx.getStorageSync("userInfo").user_type, e.currentTarget.dataset.car);
@@ -614,4 +632,22 @@ Page({
 			data: code,
 		});
 	},
+	bindgetphonenumber(e){//获取手机号
+		let dat = {
+			user_id: wx.getStorageSync("userInfo").user_id,
+			encrypted_data: e.detail.encryptedData,
+			session_key: wx.getStorageSync('userInfo').session_key,
+			iv:e.detail.iv
+		}
+		request_04.de_phone(dat).then((res)=>{
+			if(res.data.status==1){
+				this.setData({ _iphone: res.data.data.mobile});
+				wx.setStorageSync("_iphone", res.data.data.mobile);
+				this.get_barNnm();
+			}else{
+				wx.setStorageSync("_iphone", false)
+			}
+			
+		})
+	}
 })

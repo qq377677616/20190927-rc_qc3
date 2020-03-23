@@ -428,7 +428,22 @@ const is_upgrade = (data) => {
 			})
 	})
 }
-// 刮刮乐  图片加载处理
+//解密手机号 api3/oauth/de_phone
+const de_phone = (data) => {
+	let url = `${SERVICE}/api3/oauth/de_phone`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
 module.exports = {
 	reply_list,
 	addArtlike,
@@ -456,4 +471,5 @@ module.exports = {
 	yy_receive,
 	order_info,
 	is_upgrade,
+	de_phone,
 }
