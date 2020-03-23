@@ -146,14 +146,14 @@ Page({
   //返回商城
   shopMall(){
     router.jump_rel({
-      url:'/pages/shop_mall/shop_mall'
+      url:'/mall_module/pages/shop_mall/shop_mall'
     })
   },
   //商品详情
   goodsDetail(e){
     const id = e.currentTarget.dataset.id;
     router.jump_red({
-      url:`/pages/product_detail/product_detail?goods_id=${id}`,
+      url:`/mall_module/pages/product_detail/product_detail?goods_id=${id}`,
     })
   },
   //查看更多

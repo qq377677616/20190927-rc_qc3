@@ -411,7 +411,7 @@ Page({
   //去逛逛
   goGo(){
     router.jump_nav({
-      url:'/pages/shop_mall/shop_mall'
+      url:'/mall_module/pages/shop_mall/shop_mall'
     })
   },
   //结算
@@ -440,7 +440,7 @@ Page({
     });//将该购物车列表、购物车类型（快递、卡卷）存于全局
 
     router.jump_red({
-      url:'/pages/shop_cart_next/shop_cart_next?type=cart'
+      url:'/mall_module/pages/shop_cart_next/shop_cart_next?type=cart'
     })
   },
 })

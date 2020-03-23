@@ -166,7 +166,7 @@ Page({
   //我的购物车
   shopCart(){
     router.jump_nav({
-      url:'/pages/shop_cart/shop_cart',
+      url:'/mall_module/pages/shop_cart/shop_cart',
     })
   },
   //弹出选择规格
@@ -367,7 +367,7 @@ Page({
       this.closeBtn()
       
       router.jump_nav({
-        url:'/pages/shop_cart_next/shop_cart_next?type=pay'
+        url:'/mall_module/pages/shop_cart_next/shop_cart_next?type=pay'
       })
     }
 

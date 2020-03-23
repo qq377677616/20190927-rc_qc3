@@ -294,7 +294,7 @@ Page({
         str:'请选择领取的门店'
       });
       
-      url = '/pages/shop_cart_submitted/shop_cart_submitted?type=' + goodsDetail.type;
+      url = '/mall_module/pages/shop_cart_submitted/shop_cart_submitted?type=' + goodsDetail.type;
 
       promise = request_01.goodsSettlement({
         user_id:userInfo.user_id,//用户ID
@@ -316,7 +316,7 @@ Page({
         return item.shopping_cart_id;
       })
 
-      url = '/pages/shop_cart_submitted/shop_cart_submitted?type=' + cartDetail.type;
+      url = '/mall_module/pages/shop_cart_submitted/shop_cart_submitted?type=' + cartDetail.type;
 
       promise = request_01.settlementShopCart({
         user_id:userInfo.user_id,//用户ID

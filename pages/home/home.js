@@ -166,7 +166,7 @@ Page({
       case '3':
         //积分商城
         router.jump_nav({
-          url: '/pages/shop_mall/shop_mall',
+          url: '/mall_module/pages/shop_mall/shop_mall',
         })
         break;
       case '4':
