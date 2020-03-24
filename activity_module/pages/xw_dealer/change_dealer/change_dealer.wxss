@@ -1,0 +1,107 @@
+/* activity_module/pages/xw_dealer/change_dealer/change_dealer.wxss */
+page{
+    background-color: #F5F5F5;
+}
+
+.position-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 47rpx 32rpx 28rpx;
+    background-color: #fff;
+    box-shadow:0 6rpx 32rpx 0 rgba(209,209,209,0.2);
+}
+
+.position-bar .bar-cur-position,
+.position-bar .change-position {
+    display: flex;
+    align-items: center;
+    max-width: 300rpx;
+}
+
+.position-bar .bar-cur-position .cur-position-icon,
+.position-bar .change-position .cur-position-icon{
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 28rpx;
+    margin-right: 8rpx;
+}
+.position-bar .bar-cur-position .label,
+.position-bar .bar-cur-position .cur-position-text {
+    color: #000;
+    font-size: 28rpx;
+}
+.position-bar .change-position .cur-position-text{
+    color:#003B73;
+    font-size: 28rpx;
+}
+
+.dealer-list{
+    width: 92%;
+    margin:28rpx auto;
+    padding: 0 28rpx;
+    box-sizing: border-box;
+    border-radius:14rpx;
+    background-color: #fff;
+    box-shadow:0 6rpx 32rpx 0 rgba(209,209,209,0.2);
+}
+.dealer-list .dealer-item{
+    padding: 30rpx 0;
+}
+.dealer-list .dealer-item:not(:last-of-type){
+    border-bottom:1rpx solid #E4E4E4;
+}
+.dealer-list .dealer-item .dealer-poster{
+    float:left;
+    width: 210rpx;
+    height: 210rpx;
+    background:rgba(243,243,243,1);
+    border-radius:10rpx;
+}
+.dealer-list .dealer-item .dealer-info{
+    margin-left: 235rpx;
+}
+.dealer-list .dealer-item .dealer-info .title{
+    position: relative;
+    margin-bottom: 56rpx;
+    font-size: 30rpx;
+    color: #333;
+    
+}
+.dealer-list .dealer-item .dealer-info .title .span{
+    margin-right: 110rpx;
+    line-height: 38rpx;
+    font-weight: bold;
+}
+.dealer-list .dealer-item .dealer-info .title .tag{
+    position: absolute;
+    right:0;
+    top: 0;
+    padding: 7rpx 14rpx;
+    background-color: #F1403E;
+    opacity:0.8;
+    border-radius:4rpx;
+    font-size: 24rpx;
+    color: #fff;
+    line-height: normal;
+    vertical-align:middle;
+}
+.dealer-list .dealer-item .dealer-info .phone{
+    position: relative;
+    margin-bottom: 26rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+.dealer-list .dealer-item .dealer-info .phone .span{
+    margin-right: 110rpx;
+}
+.dealer-list .dealer-item .dealer-info .phone .tag{
+    position: absolute;
+    right:0;
+    top: 0;
+}
+.dealer-list .dealer-item .dealer-info .addr{
+    line-height:36rpx;
+    font-size: 24rpx;
+    color: #666;
+}

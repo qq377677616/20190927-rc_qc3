@@ -1,0 +1,8 @@
+/* xw_components/Fail/Fail.wxss */
+
+.container{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform:translate3d(-50%,-50%,0);
+}

@@ -1,0 +1,50 @@
+<!--activity_module/pages/xw_assemble/index/index.wxml-->
+
+<view class="container">
+
+    <view class="header">
+        <view class="rule-btn">
+            <view class="span">活动规则</view>
+            <image class="icon" src="{{ IMGSERVICE }}/icon/right-arrow.png" mode="aspectFit"></image>
+        </view>
+        <image class="poster"
+            src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+            mode="aspectFit"></image>
+    </view>
+
+    <view class="activity-info-bar">
+        <block wx:if="{{ true }}">
+            <view class="info-left">
+                <view class="name">拼团秒杀</view>
+                <view class="tips">活动结束恢复原价</view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="info-left">
+                <view class="name">拼团秒杀</view>
+                <view class="tips">活动结束恢复原价</view>
+            </view>
+        </block>
+
+        <block wx:if="{{ true }}">
+            <view class="info-right">
+                <view class="tips">活动已经结束</view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="info-right">
+                <view class="count-down-text">距离活动结束仅剩</view>
+                <view class="count-down">
+                    <view class="span">84</view>
+                    <view class="text-1">天</view>
+                    <view class="span">09</view>
+                    <view class="text-2">:</view>
+                    <view class="span">15</view>
+                    <view class="text-2">:</view>
+                    <view class="span">45</view>
+                </view>
+            </view>
+        </block>
+    </view>
+
+</view>

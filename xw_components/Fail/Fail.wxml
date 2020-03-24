@@ -1,0 +1,6 @@
+<!--xw_components/Fail/Fail.wxml-->
+
+<view class="container">
+    <slot name="img-url"></slot>
+    <slot name="tips-text"></slot>
+</view>

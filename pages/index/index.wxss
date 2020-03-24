@@ -138,29 +138,57 @@ page {
 .list_area {
   padding: 0 29rpx;
 }
+.list_area .tab-bar{
+  display: flex;
+}
+.list_area .tab-bar scroll-view{
+  flex:1;
+  margin-right: 10rpx;
+}
+.list_area .tab-bar .position {
+  flex:0 0 auto;
+  display: flex;
+  align-items: center;
+  max-width: 170rpx;
+}
 
-.list_area .title {
+.list_area .tab-bar .position .cur-position-icon {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 26rpx;
+  margin-right: 8rpx;
+}
+
+.list_area .tab-bar .position .cur-position-text {
+  color: #000;
+  font-size: 26rpx;
+}
+.list_area scroll-view .title {
   display: flex;
 }
 
-.list_area .title .title_item {
+.list_area scroll-view .title .title_item {
+  position: relative;
   flex-basis: auto;
   flex-shrink: 0;
   flex-grow: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 10rpx;
+  margin-right: 28rpx;
+  
 }
 
-.list_area .title .title_item .span {
-  font-size: 34rpx;
+.list_area scroll-view .title .title_item .span {
+  padding-bottom: 10rpx;
+  font-size: 28rpx;
   color: #333;
-  font-weight: bold;
-  margin-bottom: 10rpx;
+  line-height: 44rpx;
 }
 
-.list_area .title .title_item .border {
+.list_area scroll-view .title .title_item .span.active {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.list_area scroll-view .title .title_item .border {
   width: 40rpx;
   height: 4rpx;
   background-color: #333;
