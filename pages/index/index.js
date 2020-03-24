@@ -33,11 +33,19 @@ Page({
         isMore: false,
         tag: true,
         isPay: false, //支付弹窗
+        tabList: [{
+            id: 1,
+            value: "总部活动"
+        }, {
+            id: 2,
+            value: "经销商活动"
+        }],
+        tabIndex:1,
     },
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
         let activityPage = this.data.activityPage;
         let activityKey = this.data.activityKey;
         let activityPrivateKey = this.data.activityPrivateKey;
@@ -53,9 +61,9 @@ Page({
         })
 
         request_01.indexActivity({
-                page: activityPage + 1,
-                user_id: userInfo.user_id,
-            })
+            page: activityPage + 1,
+            user_id: userInfo.user_id,
+        })
             .then((value) => {
                 //success
                 const data = value.data.data.list;
@@ -94,9 +102,19 @@ Page({
             })
     },
     /**
+     * 
+     * tab切换
+     */
+    tabClickHandler(e){
+        let id = e.currentTarget.dataset.id
+        this.setData({
+            tabIndex:id
+        })
+    },
+    /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
         //字体
         // wx.loadFontFace({
         //   family: 'ygyxsziti2',
@@ -124,7 +142,7 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
         const IMGSERVICE = this.data.IMGSERVICE;
         return {
             title: '启辰星亮相发布，快来预约关注！',
@@ -137,24 +155,24 @@ Page({
         const activityPage = this.data.activityPage;
         const userInfo = wx.getStorageSync('userInfo');
         Promise.all([
-                request_01.indexBanner({
-                    user_id: userInfo.user_id,
-                }),
-                request_01.indexActivity({
-                    user_id: userInfo.user_id,
-                    page: activityPage,
-                }),
-                request_01.signInInfo({
-                    user_id: userInfo.user_id,
-                }),
-                request_01.personalInfo({
-                    user_id: userInfo.user_id,
-                    openid: userInfo.openid,
-                }),
-                // request_01.tag({
-                //   version:'3.0',
-                // }),
-            ])
+            request_01.indexBanner({
+                user_id: userInfo.user_id,
+            }),
+            request_01.indexActivity({
+                user_id: userInfo.user_id,
+                page: activityPage,
+            }),
+            request_01.signInInfo({
+                user_id: userInfo.user_id,
+            }),
+            request_01.personalInfo({
+                user_id: userInfo.user_id,
+                openid: userInfo.openid,
+            }),
+            // request_01.tag({
+            //   version:'3.0',
+            // }),
+        ])
             .then((value) => {
                 const listInfo = value[0].data.data;
                 const activityList = value[1].data.data.list;

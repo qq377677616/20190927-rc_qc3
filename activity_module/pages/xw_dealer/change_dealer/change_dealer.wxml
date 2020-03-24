@@ -1,0 +1,71 @@
+<!--activity_module/pages/xw_dealer/change_dealer/change_dealer.wxml-->
+
+<view class="container">
+    <view class="position-bar">
+
+        <view class="bar-cur-position">
+            <view class="label">
+                当前位置：
+            </view>
+
+            <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
+
+            <view class="cur-position-text nowrap">
+                广州绿日
+            </view>
+        </view>
+
+        <view class="change-position">
+            <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
+
+            <view class="cur-position-text nowrap">
+                重新定位
+            </view>
+        </view>
+    </view>
+
+    <block wx:if="{{ false }}">
+        <Fail>
+            <image slot="img-url" src="{{ IMGSERVICE }}/fail/position.png" mode="widthFix"
+                style="display:block; width:302rpx; margin:auto;"></image>
+            <view slot="tips-text" style="margin-top:35rpx; font-size: 30rpx; color:#666;">定位失败，请打开定位功能</view>
+        </Fail>
+    </block>
+
+    <block wx:elif="{{ false }}">
+        <Fail>
+            <image slot="img-url" src="{{ IMGSERVICE }}/fail/null.png" mode="widthFix"
+                style="display:block; width:302rpx; margin:auto;"></image>
+            <view slot="tips-text" style="margin-top:35rpx; font-size: 30rpx; color:#666;">当前附近没有门店</view>
+        </Fail>
+    </block>
+
+    <block wx:else>
+        <view class="dealer-list">
+            <view wx:for="{{ 0 }}" wx:key="1" class="dealer-item clearfix">
+                <image
+                    src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+                    mode="aspectFit" class="dealer-poster"></image>
+
+                <view class="dealer-info">
+                    <view class="title">
+                        <view class="span">广州花都店</view>
+
+                        <view class="tag">营业中</view>
+                    </view>
+
+                    <view class="phone">
+                        <view class="span">电话：13222245522</view>
+
+                        <view class="tag">100m</view>
+                    </view>
+
+                    <view class="addr">
+                        地址：广东华天滨元街道花都广场1F1025号门面
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+
+</view>

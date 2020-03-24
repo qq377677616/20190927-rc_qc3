@@ -7,7 +7,8 @@
 
     <swiper circular="true" autoplay="true" interval="2500" bindchange="dotchange">
 
-      <swiper-item wx:for="{{ listInfo.banner_list }}" wx:key="index" style="background-image:url({{ item.image }});" data-index="{{ index }}" bindtap="bannerJump"></swiper-item>
+      <swiper-item wx:for="{{ listInfo.banner_list }}" wx:key="index" style="background-image:url({{ item.image }});"
+        data-index="{{ index }}" bindtap="bannerJump"></swiper-item>
 
 
     </swiper>
@@ -29,7 +30,8 @@
     <scroll-view scroll-x>
       <view class="nav_area">
 
-        <view class="nav_item {{ listInfo.icon_list.length == 3 ? 'flex1' : 'flex0' }}" wx:for="{{ listInfo.icon_list }}" wx:key="index" data-index="{{ index }}" bindtap="navJump">
+        <view class="nav_item {{ listInfo.icon_list.length == 3 ? 'flex1' : 'flex0' }}"
+          wx:for="{{ listInfo.icon_list }}" wx:key="index" data-index="{{ index }}" bindtap="navJump">
           <view class="image">
             <image src="{{ item.icon }}?3" mode="widthFix"></image>
           </view>
@@ -88,18 +90,31 @@
     <!-- list_area -->
     <view class="list_area">
 
-      <scroll-view scroll-x>
-        <view class="title">
-          <view class="title_item">
-            <view class="span">活动</view>
-            <!-- <view class="border"></view> -->
+      <view class="tab-bar">
+        <scroll-view scroll-x>
+          <view class="title">
+            <view wx:for="{{ tabList }}" wx:key="{{ item.id }}" class="title_item">
+              <view data-id="{{ item.id }}" bind:tap="tabClickHandler"
+                class="span {{ tabIndex == item.id ? 'active' : '' }}">{{ item.value }}</view>
+              <!-- <view class="border"></view> -->
+            </view>
+          </view>
+        </scroll-view>
+
+        <view class="position">
+          <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
+
+          <view class="cur-position-text nowrap">
+            广州绿日
           </view>
         </view>
-      </scroll-view>
+      </view>
+
 
       <view class="list">
 
-        <view wx:for="{{ activityList }}" wx:key="index" class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn" data-index="{{ index }}" bindtap="activityJump">
+        <view wx:for="{{ activityList }}" wx:key="index" class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn"
+          data-index="{{ index }}" bindtap="activityJump">
 
           <!-- <view class="describe">
                         
@@ -146,7 +161,8 @@
   <!-- qc-SignIn -->
 
   <!-- tips_mask -->
-  <view class="tips_mask fadeIn" wx:if="{{ bindcarIf }}" style="background-image:url({{ IMGSERVICE }}/center/bind_car.png);">
+  <view class="tips_mask fadeIn" wx:if="{{ bindcarIf }}"
+    style="background-image:url({{ IMGSERVICE }}/center/bind_car.png);">
 
     <view class="main">
 
@@ -166,7 +182,8 @@
   <!-- tips_mask -->
 
   <!-- tips_mask -->
-  <view class="tips_mask fadeIn" wx:if="{{ giftIf && keyGroup.giftKey }}" style="background-image:url({{ IMGSERVICE }}/index/jianmianli.png);">
+  <view class="tips_mask fadeIn" wx:if="{{ giftIf && keyGroup.giftKey }}"
+    style="background-image:url({{ IMGSERVICE }}/index/jianmianli.png);">
 
     <view class="main">
 
@@ -189,7 +206,8 @@
   <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404>
   <!-- qc-page404 -->
   <!-- 疫情按钮 -->
-  <image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/yq_icon.png" class="yqbtn" bindtap="goyqpage"></image>
+  <image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/yq_icon.png"
+    class="yqbtn" bindtap="goyqpage"></image>
   <!-- ca入口 -->
   <!-- <view class="cabtn" bindtap="caDel">ca</view> -->
   <!-- 99元下定弹窗 -->

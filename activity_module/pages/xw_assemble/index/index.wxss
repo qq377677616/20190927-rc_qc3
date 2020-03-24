@@ -1,0 +1,59 @@
+/* activity_module/pages/xw_assemble/index/index.wxss */
+
+.header {
+    position: relative;
+}
+
+.header .rule-btn {
+    position: absolute;
+    right:0;
+    top: 34rpx;
+    min-width: 164rpx;
+    border: 3rpx solid rgba(255, 255, 255,0.6);
+    border-right:none;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 30rpx 0 0 30rpx;
+    padding: 0 10rpx 0 26rpx;
+    box-sizing: border-box;
+    height: 60rpx;
+    line-height: 54rpx;
+}
+.header .rule-btn .span{
+    display: inline-block;
+    font-size: 24rpx;
+    color: #fff;
+}
+.header .rule-btn .icon{
+    display: inline-block;
+    vertical-align:middle;
+    width: 32rpx;
+    height: 28rpx;
+}
+.header .poster {
+    display: block;
+    width: 100%;
+    height: 454rpx;
+}
+
+
+.activity-info-bar{
+
+}
+.activity-info-bar .info-left{
+    color: #fff;
+}
+.activity-info-bar .info-left .name{
+    font-weight: bold;
+    font-size: 30rpx;
+}
+.activity-info-bar .info-left .tips{
+    font-size: 24rpx;
+}
+.activity-info-bar .info-right{
+    
+}
+.activity-info-bar .info-right .tips{
+    font-weight: bold;
+    color: #F1403E;
+    font-size: 34rpx;
+}

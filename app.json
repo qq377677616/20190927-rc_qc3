@@ -96,20 +96,28 @@
     "pages/ev/ev_help/ev_help",
     "pages/webview3/webview3"
   ],
-"subpackages": [
-	{
-		"root": "mall_module",
-		"pages": [
-			"pages/shop_mall/shop_mall",
-			"pages/product_detail/product_detail",
-			"pages/shop_cart/shop_cart",
-			"pages/shop_mall_plate/shop_mall_plate",
-			"pages/shop_cart_next/shop_cart_next",
-			"pages/shop_cart_submitted/shop_cart_submitted",
-			"pages/shop_mall_type/shop_mall_type"
-		]
-	}
-],
+  "subpackages": [
+    {
+      "root": "mall_module",
+      "pages": [
+        "pages/shop_mall/shop_mall",
+        "pages/product_detail/product_detail",
+        "pages/shop_cart/shop_cart",
+        "pages/shop_mall_plate/shop_mall_plate",
+        "pages/shop_cart_next/shop_cart_next",
+        "pages/shop_cart_submitted/shop_cart_submitted",
+        "pages/shop_mall_type/shop_mall_type"
+      ]
+    },
+    {
+      "root": "activity_module",
+      "pages": [
+        "pages/xw_dealer/index/index",
+        "pages/xw_dealer/change_dealer/change_dealer",
+        "pages/xw_assemble/index/index"
+      ]
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "",
