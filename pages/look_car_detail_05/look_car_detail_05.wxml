@@ -216,18 +216,18 @@
 						<image mode="widthFix" src="{{IMGSERVICE}}/gaiban/t90num4.png" class="num4"></image>
 					</view>
 				</view>
-				<view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/t90_m1.png)">
+				<view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/t90_m1.png?1)">
 					<text class="txt6">2765mm</text>
 					<text class="txt7">1591mm</text>
 					<text class="txt11">4805mm</text>
 				</view>
 				<!-- 车系数据 -->
-				<view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/t90_m2.png)">
+				<view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/t90_m2.png?1)">
 					<!-- <text class="txt8">4412mm</text> -->
-					<text class="txt9">1820mm</text>
+					<text class="txt9">1865mm</text>
 				</view>
 
-				<view class="txt10">智悦版车型断面图和剖面图</view>
+				<view class="txt10">智联创行版车型剖面图和断面图</view>
 
 			</view>	
             </view>

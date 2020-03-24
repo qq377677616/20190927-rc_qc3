@@ -35,11 +35,13 @@ Page({
         isPay: false, //支付弹窗
         tabList: [{
             id: 1,
-            value: "总部活动"
-        }, {
-            id: 2,
-            value: "经销商活动"
-        }],
+            value: "活动"//总部
+        }
+		// , {
+        //     id: 2,
+        //     value: "经销商活动"
+        // }
+		],
         tabIndex:1,
     },
     /**

@@ -101,13 +101,13 @@
           </view>
         </scroll-view>
 
-        <view class="position">
+        <!-- <view class="position">
           <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
 
           <view class="cur-position-text nowrap">
             广州绿日
           </view>
-        </view>
+        </view> -->
       </view>
 
 

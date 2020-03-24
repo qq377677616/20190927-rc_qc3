@@ -947,17 +947,19 @@ page{
 	background: center no-repeat/cover;
 }
 .txtbox2{
-	width: 100%;
+	width: 70%;
 	height: 154rpx;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	font-size:31rpx;
 	font-family:MHeiPRC;
 	font-weight:bold;
 	color:rgba(0,0,0,1);
 	background-color: white;
+	margin: 0 auto;
 }
 .threebg{
 	width: 100%;
