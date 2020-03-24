@@ -155,7 +155,7 @@
         </view>
 
         <view class="pro_list" wx:for="{{shopList.dq_prize}}" wx:key="item" data-type="ok" bindtap="goshopDel2"
-          data-car="{{item.car_owner}}" data-ing="{{item.buttom_type}}" data-shopid="{{item.id}}">
+          data-car="{{item.car_owner}}" data-ing="{{item.buttom_type}}" data-shopid="{{item.id}}" data-end="{{endStatus}}">
 
           <view class="spimg" style="background-image:url({{item.thumb}})" data-type="ok">
             <image wx:if="{{ item.car_owner == 1 }}" class="label" src="{{ IMGSERVICE }}/spike/index_icon_04.png"
@@ -178,10 +178,10 @@
                 <view class="residue" data-type="ok">剩余<text class="red">{{item.sy_num}}</text>件</view>
 
               </view>
-              <view wx:if="{{item.buttom_type==3 && endStatus==1}}" data-types="no" data-type="ok"
+              <view wx:if="{{item.buttom_type==3 && endStatus==1}}" data-ing="{{item.buttom_type}}" data-end="{{endStatus}}" data-types="no" data-type="ok"
                 class="cut_on setposition" bindtap="freeGet" data-obj="{{item}}" data-name="{{item.title}}"
                 data-price="{{item.price}}" data-sid="{{item.id}}" data-Image="{{item.thumb}}">
-                <!-- wx:if="{{!userInfo.nickName}}" -->
+               <button wx:if="{{!_iphone}}" open-type="getPhoneNumber" lang="zh_CN" bindgetphonenumber="bindgetphonenumber" class="getphone"></button>
                 点击免费拿
               </view>
 

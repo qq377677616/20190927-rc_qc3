@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "看车详情",
   "usingComponents": {
-     "forms": "/components/foms2/form"
+    "forms": "/components/forms/form"
   }
 }

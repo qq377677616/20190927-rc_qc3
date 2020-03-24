@@ -882,8 +882,8 @@ margin-bottom: 32rpx;
 	height: auto;
 }
 .d60footcar1{
-	width: 563rpx;
-	height: 600rpx;
+	width: 553rpx;
+	height: 590rpx;
 	background: center no-repeat/cover;
 }
 /* 加视频播放效果 */
@@ -996,8 +996,9 @@ margin-bottom: 32rpx;
 	right: 50rpx;
 	top: 50rpx;
 }
-.range{
-	/* transform: translateY(-2rpx); */
+.range>.topimg{
+	width: 118rpx;
+	height: 39rpx;
 }
 .range>text{
 	font-size: 22rpx;
