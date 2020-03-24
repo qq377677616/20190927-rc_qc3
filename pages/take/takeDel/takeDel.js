@@ -130,7 +130,7 @@ Page({
 			if (msg == '' && !this.data.img) {
 				tool.alert("输入不能为空");
 			} else {//${this.data.to_uid}
-				let content = `{"type":"send","to_uid":"ylsA","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img : msg}"}}`;
+				let content = `{"type":"send","to_uid":"239658A","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img : msg}"}}`;
 				console.log(app.globalData.socketOpen, '777');
 				if (app.globalData.socketOpen) {
 					wx.sendSocketMessage({
@@ -180,12 +180,13 @@ Page({
 		let dat = {
 			page:this.data.page,
 			uid:this.data.uid,
-			to_uid: 'ylsA',//`${this.data.to_uid}A`,
+			to_uid: '239658A',//`${this.data.to_uid}A`,
 			limit:10
 		}
 		https.msgLog(dat).then((res)=>{
 			if (res.data.code == 1){
 				this.setData({ sendload: [...res.data.data, ...this.data.sendload], havpage: res.data.data.length >= 10 });
+				console.log(this.data.sendload);
 				if (this.data.isenter == 1) {
 					this.setscret();
 					this.setData({ isenter: ++this.data.isenter })
@@ -223,10 +224,11 @@ Page({
 	},
 	conutHeg(){// 计算滚动高度
 		let baseheg = this.data.isIponeX?70:50; 
+		console.log("计算抬起高度", baseheg);
 		if (!this.data.iscurr) return;
 		setTimeout(()=>{
 			tool.getDom('.infobox').then((res) => {
-				if (res[0].height > wx.getSystemInfoSync().windowHeight) {
+				if (res[0].height + baseheg > wx.getSystemInfoSync().windowHeight) {
 					wx.pageScrollTo({
 						scrollTop: (res[0].height - wx.getSystemInfoSync().windowHeight + baseheg),
 						duration: 100
