@@ -1,0 +1,45 @@
+<!--activity_module/pages/xw_assemble/o_assemle/o_assemle.wxml-->
+
+<view class="container">
+    <view class="state-info">
+        <view class="info-header clearfix">
+            <image class="poster"
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+                mode="aspectFit"></image>
+
+            <view class="goods-info">
+                <view class="name">购车大礼包购车大礼包购车</view>
+
+                <view class="money">
+                    <view class="span">
+                        购车现金
+                    </view>
+                    <view class="number">
+                        ￥2000
+                    </view>
+                </view>
+
+                <view class="out">
+                    已拼3000件
+                </view>
+            </view>
+        </view>
+
+        <view class="state-message">3人团&nbsp;拼团中</view>
+
+        <view class="current-join">
+            已参与<view class="span">2人</view>，邀请好友一起拼团
+        </view>
+
+        <view class="count-down">
+            <view class="label">距离结束还剩：</view>
+            <view class="p">
+                <view class="span">09</view>
+                <view class="text-2">:</view>
+                <view class="span">15</view>
+                <view class="text-2">:</view>
+                <view class="span">45</view>
+            </view>
+        </view>
+    </view>
+</view>

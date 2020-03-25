@@ -1,0 +1,55 @@
+/* activity_module/pages/xw_assemble/o_assemle/o_assemle.wxss */
+
+page{
+    background-color: #F5F5F5;
+}
+
+.container{
+    padding: 28rpx;
+}
+
+.state-info{
+    padding: 22rpx;
+    box-shadow:0 6rpx 32rpx 0 rgba(209,209,209,0.2);
+    border-radius:14rpx;
+    background-color: #fff;
+}
+.state-info .info-header{
+    padding:22rpx 20rpx;
+    background-color: #EEE;
+    border-radius:14rpx;
+}
+.state-info .info-header .poster{
+    float:left;
+    width: 152rpx;
+    height: 152rpx;
+    background-color: #fff;
+    border-radius:8rpx;
+}
+.state-info .info-header .goods-info{
+    margin-left: 176rpx;
+}
+.state-info .info-header .goods-info .name{
+    margin-bottom: 28rpx;
+    font-size: 32rpx;
+    color: #333;
+    font-weight: bold;
+}
+.state-info .info-header .goods-info .money{
+    margin-bottom: 18rpx;
+}
+.state-info .info-header .goods-info .money .span{
+    display: inline-block;
+    font-size: 28rpx;
+    color: #666;
+}
+.state-info .info-header .goods-info .money .number{
+    display: inline-block;
+    font-size: 36rpx;
+    color: #F1403E;
+    font-weight: bold;
+}
+.state-info .info-header .goods-info .out{
+    font-size: 24rpx;
+    color: #333;
+}

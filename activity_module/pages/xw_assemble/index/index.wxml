@@ -9,11 +9,11 @@
         </view>
         <image class="poster"
             src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
-            mode="aspectFit"></image>
+            mode="aspectFill"></image>
     </view>
 
-    <view class="activity-info-bar">
-        <block wx:if="{{ true }}">
+    <view class="activity-info-bar clearfix">
+        <block wx:if="{{ false }}">
             <view class="info-left">
                 <view class="name">拼团秒杀</view>
                 <view class="tips">活动结束恢复原价</view>
@@ -21,12 +21,13 @@
         </block>
         <block wx:else>
             <view class="info-left">
-                <view class="name">拼团秒杀</view>
-                <view class="tips">活动结束恢复原价</view>
+                <view class="join-number">
+                    有<view class="span">24000</view>个人正在参与
+                </view>
             </view>
         </block>
 
-        <block wx:if="{{ true }}">
+        <block wx:if="{{ false }}">
             <view class="info-right">
                 <view class="tips">活动已经结束</view>
             </view>
@@ -47,4 +48,71 @@
         </block>
     </view>
 
+
+    <view class="goods-info-bar">
+        <view class="info-title">
+            <view class="tag">电商专享</view>
+            <view class="p">购车大礼包购车大礼包购车大礼包购车大礼包购车大礼包</view>
+        </view>
+
+        <view class="info-money">
+            <view class="span">
+                购车现金
+            </view>
+            <view class="number">
+                ￥2000  
+            </view>
+        </view>
+
+        <view class="info-copy clearfix">
+            <view class="host-party">举办方：启辰万江店</view>
+
+            <view class="statistic">
+                围观276次 分享28次
+            </view>
+        </view>
+    </view>
+
+    <view class="current-assemble">
+        <view class="assemble-statistic">3人正在拼团</view>
+
+        <view class="assemble-list">
+            <view wx:for="{{3}}" class="assemble-item">
+                <image mode="aspectFit" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg" class="head-img"></image>
+
+                <view class="nickname">爱丽丝仙境</view>
+
+                <view class="info">
+                    <view class="count-down">
+                        <view class="p people">还差<view class="span">1人</view>成功</view>
+
+                        <view class="p time">剩余03:57:56</view>
+                    </view>
+
+                    <view class="btn">立即参团</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <view wx:for="{{0}}" class="section">
+        <view class="title">产品详情</view>
+
+        <image class="poster" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg" mode="widthFix"></image>
+    </view>
+
+    <view class="footer">
+        <view class="back-home">
+            <image class="icon" src="{{ IMGSERVICE }}/icon/home.png" mode="widthFix"></image>
+            <view class="span">首页</view>
+        </view>
+
+        <view class="share">
+            <image class="icon" src="{{ IMGSERVICE }}/icon/share.png" mode="widthFix"></image>
+            <view class="span">分享</view>
+        </view>
+
+        <view class="get-btn">立即领取</view>
+    </view>
 </view>
