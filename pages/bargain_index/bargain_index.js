@@ -63,7 +63,7 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		// console.log('参数', options);
+		console.log('参数', options);
 		//   alert.alert({ str:options.isshare})
 		if (options.scene) {
 			let scene = decodeURIComponent(options.scene);
@@ -137,9 +137,9 @@ Page({
 	 */
 	onShareAppMessage: function () {
 		let obj = {
-			title: '共战疫情！“辰”意好礼免费领',
+			title: '下订启辰星，星级好礼免费领！',
 			path: '/pages/bargain_index/bargain_index?activity_id=' + this.data.activity_id + "&isshare=6",
-			imageUrl: this.data.IMGSERVICE + "/center/kanjiashare.jpg?6"
+			imageUrl: this.data.IMGSERVICE + "/center/kanjiashare.jpg?10"
 		};
 		return obj;
 	},

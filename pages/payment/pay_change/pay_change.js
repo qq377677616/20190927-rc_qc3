@@ -49,8 +49,9 @@ Page({
     let goods_id = e.currentTarget.dataset.id
     let stype = e.currentTarget.dataset.stype
     let open_buy = this.data.options.open_buy
+   
     if(open_buy!=1){
-      tool.alert('暂未开放')
+		tool.alert('4月1日开启兑奖，敬请期待！');
       return
     }
     if (stype == 2 && this.data.goods2_buy == 0) {

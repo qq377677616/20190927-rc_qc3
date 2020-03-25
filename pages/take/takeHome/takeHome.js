@@ -43,12 +43,15 @@ Page({
 		uid:null,// 自己id
 		to_uid:null,// 给别人的id
 		linkNum:1, // socket 连接次数
+		codeuser:null,//是不是扫码用户
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+		// console.log(options.userid);
+		this.setData({ codeuser: options.userid})
 		if (options.obj){
 			let obj = JSON.parse(options.obj);
 			this.setData({ useData: obj });
@@ -151,16 +154,18 @@ Page({
 	getInfo(){//获取专营店信息
 		tool.loading("自动定位中")
 		https.getPosition().then((res)=>{// 获取地理位置
-		
+				let dat =  {};
 				let locat = res.result.ad_info.location;
-				let dat = {
+				this.data.codeuser?dat = {
+					userid: this.data.codeuser	
+				} : dat = {
 					lon: locat.lng,
 					lat: locat.lat,
 					page: 0,
 					limit: 1
 				}
 				https.getInfo(dat).then((res) => {
-					console.log(res);
+					// console.log(res);
 					if (res.data.code == 1) {
 						tool.loading_h();
 						// console.log(res);
@@ -169,8 +174,6 @@ Page({
 						tool.alert(res.data.msg)
 					}
 				})
-			
-			
 		})
 		.catch(err => {
 			console.log("定位失败", err)

@@ -241,7 +241,7 @@ Page({
 				url: `/pages/look_car_detail_05/look_car_detail_05?id=${9}`,
 			})
 		}
-		else if (id == 11) {
+		else if (id == 11){
 			// 启程星
 			router.jump_nav({
 				url: `/pages/look_car_detail_03/look_car_detail?id=${11}`,

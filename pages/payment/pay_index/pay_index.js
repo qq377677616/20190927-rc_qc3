@@ -52,7 +52,7 @@ Page({
       openid
     }).then(res => {
       if (res.data.status == 1) {
-        this.setRule()
+        this.setRule();
         this.setData({
           show_page: res.data.data.show_page,
           car_owner: res.data.data.activity_info.car_owner,

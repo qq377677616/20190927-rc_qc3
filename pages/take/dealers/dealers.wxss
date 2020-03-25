@@ -34,7 +34,7 @@
 .deList{
 	width: 694rpx;
 	height: auto;
-	padding-bottom: 30rpx;
+	padding-bottom: 30rpx; 
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
@@ -44,6 +44,7 @@
 	width: 210rpx;
 	height: 210rpx;
 	background: center no-repeat/cover;
+	border-radius: 10rpx;
 }
 .rightinfo{
 	flex: 1;

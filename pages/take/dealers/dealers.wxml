@@ -8,7 +8,7 @@
 	</view>
 	<view class="tackitem">
 		<view class="deList" wx:for="{{storlist}}" wx:key="l" bindtap="goback" data-obj="{{item}}">
-			<view class="leftimg" style="background-image:url({{item.avatar}})"></view>
+			<view class="leftimg" style="background-image:url({{item.avatar?item.avatar:BASEURL+'/default_hand.jpg'}})"></view>
 			<view class="rightinfo">
 				<view class="row1">
 					<text class="txt3">{{item.store}}</text>
