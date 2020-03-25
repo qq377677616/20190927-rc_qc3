@@ -114,7 +114,8 @@
       "pages": [
         "pages/xw_dealer/index/index",
         "pages/xw_dealer/change_dealer/change_dealer",
-        "pages/xw_assemble/index/index"
+        "pages/xw_assemble/index/index",
+        "pages/xw_assemble/o_assemle/o_assemle"
       ]
     }
   ],
