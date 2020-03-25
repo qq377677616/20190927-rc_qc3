@@ -108,13 +108,14 @@ Page({
     animateInit: null,
     isSwitchIng: false,
     isShowIcon: -1,
-    sss: true
+    sss: true,
+	id:null
   },
 
   onLoad: function (options) {
     mta.Page.init()//腾讯统计
     console.log("options", options)
-    this.data.id = options.id
+	this.setData({ id: options.id })
     mta.Event.stat("look_car_t90", {})
     if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", { channelid: wx.getStorageSync("shareIds").channel_id})
     if (options.gdt_vid) this.data.gdt_vid = options.gdt_vid
@@ -298,11 +299,49 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '全新启辰T90 跨悦上市',
-      path: `/pages/look_car_detail/look_car_detail?id=${this.data.id}`,
-      imageUrl: `${this.data.IMGSERVICE}/car_detail/share.jpg`
-    }
+	  let activity_id = this.data.activity_id;
+	  let id = this.data.id;
+	  let txt = '';
+	  let imageUrl = '';
+	  switch (id) {
+		  case '11':
+			  txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/`
+			  break;
+		  case '6':
+			  txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60.png`
+			  break;
+		  case '3':
+			  txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60.png`
+			  break;
+		  case '9':
+			  txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T90.png`
+			  break;
+		  case '7':
+			  txt = '启辰T70，高品质智联SUV，品质来袭！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T70.png`
+			  break;
+		  case '5':
+			  txt = '启辰D60EV，长续航合资纯电家轿，智无忧，趣更远！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60EV.png`
+			  break;
+		  case '10':
+			  txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_E30.png`
+			  break;
+		  case '13':
+			  txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60EV.png`
+			  break;
+	  }
+	  return {
+		  title: `${txt}`,
+		  path: `/pages/look_car_detail/look_car_detail?id=${this.data.id}`,
+		  imageUrl: imageUrl
+	  }
   },
   //获取swiper高度
   getHeight: function (e) {

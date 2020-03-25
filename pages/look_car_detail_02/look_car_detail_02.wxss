@@ -103,3 +103,8 @@ page {
   0%{ box-shadow: 0 0 0rpx 2rpx rgba(32, 161, 224, 1);}
   100%{ box-shadow: 0 0 10rpx 4rpx rgba(32, 161, 224, 1);}
 }
+/* 2020-03-25*/
+.group .li.cur {
+  background: #fff;
+  color: #999;
+}

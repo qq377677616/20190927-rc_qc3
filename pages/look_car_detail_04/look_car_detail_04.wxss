@@ -704,9 +704,7 @@ margin-bottom: 32rpx;
 .t70carself{
 	top: 240rpx;
 }
-.setopt{
-	opacity: 1;
-}
+
 
 
 
@@ -742,6 +740,7 @@ margin-bottom: 32rpx;
 	margin-top: 20rpx;
 }
 .t70_6{
+	position: relative;
 	height: 639rpx;
 }
 .t70_8{
@@ -882,8 +881,8 @@ margin-bottom: 32rpx;
 	height: auto;
 }
 .d60footcar1{
-	width: 553rpx;
-	height: 590rpx;
+	width: 415rpx;
+	height: 442rpx;
 	background: center no-repeat/cover;
 }
 /* 加视频播放效果 */
@@ -935,22 +934,22 @@ margin-bottom: 32rpx;
 	opacity: 1;
 }
 .leftbtn{
-	width: 72rpx;
-	height: 17rpx;
+	width: 23rpx;
+	height: 103rpx;
 	background: center no-repeat/cover;
 	z-index: 200;
 	position: absolute;
-	left: 0;
+	left: 50rpx;
 	top: 50%;
 	transform: translateY(-50%);
 }
 .rightbtn{
-	width: 72rpx;
-	height: 17rpx;
+	width: 23rpx;
+	height: 103rpx;
 	background: center no-repeat/cover;
 	z-index: 200;
 	position: absolute;
-	right: 0;
+	right: 50rpx;
 	top: 50%;
 	transform: translateY(-50%);
 }
@@ -997,10 +996,39 @@ margin-bottom: 32rpx;
 	top: 50rpx;
 }
 .range>.topimg{
-	width: 118rpx;
-	height: 39rpx;
+	width: 120rpx;
+	height: 40rpx;
 }
 .range>text{
 	font-size: 22rpx;
 	font-weight: bold;
+}
+/* 序列盒子 */
+.xlbox{
+	width: 100%;
+	height: 100%;
+	background: center no-repeat/cover;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.setopt{
+	opacity: 1;
+}
+/* 2020-03-25-17-39 */
+.group .li.gray::after {
+  content: "";
+  display: block;
+  border-right: 1rpx solid #e6e6e6;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1rpx;
+}
+.group .li.cur {
+  background: #fff;
+  color: #999;
 }

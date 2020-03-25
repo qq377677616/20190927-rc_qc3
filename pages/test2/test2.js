@@ -102,7 +102,7 @@ Page({
 			"bgUrl": [imageUrl + "/lookcar/img_d60ev.png", imageUrl + "/lookcar/img_d60ev_X.png"],
 			"titleImg": imageUrl + "/lookcar/title_d60ev.png?2",
 			icon:'icon-DEV',
-			cid: 5,
+			cid:5,
 			pritxt: '补贴后官方指导价'
 		},  {
 			"name": 'e30',

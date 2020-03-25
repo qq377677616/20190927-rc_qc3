@@ -22,6 +22,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+	IMGSERVICE: app.globalData.IMGSERVICE,
     options: {},
     navIndex: 0,
     lookCarDetail: {},
@@ -36,7 +37,8 @@ Page({
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_01.png', url: '/pages/bargain_index/bargain_index?activity_id=47' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_02.png', url: '/pages/assemble/pin/pin?activity_id=44' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' }
-    ]
+    ],
+	id:null
   },
 
   /** 
@@ -45,7 +47,7 @@ Page({
   onLoad: function (options) {
     mta.Page.init()//腾讯统计
     mta.Event.stat("look_car_other", {})
-    this.data.id = options.id
+	  this.setData({ id: options.id })
     if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", { channelid: wx.getStorageSync("shareIds").channel_id})
     request_01.login(() => {
       this.initData(options)
@@ -220,10 +222,50 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: `赶快来预约 ${this.data.lookCarDetail.car_name} 吧~`,
-      path: `/pages/look_car_detail_02/look_car_detail_02?id=${this.data.id}`
-    }
+	  let activity_id = this.data.activity_id;
+	  let id = this.data.id;
+	  let txt = '';
+	  let imageUrl = '';
+	  switch (id) {
+		  case '11':
+			  txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/`
+			  break;
+		  case '6':
+			  txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60.png`
+			  break;
+		  case '3':
+			  txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60.png`
+			  break;
+		  case '9':
+			  txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T90.png`
+			  break;
+		  case '7':
+			  txt = '启辰T70，高品质智联SUV，品质来袭！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T70.png`
+			  break;
+		  case '5':
+			  txt = '启辰D60EV，长续航合资纯电家轿，智无忧，趣更远！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60EV.png`
+			  break;
+		  case '10':
+			  txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_E30.png`
+			  break;
+		  case '13':
+			  txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60EV.png`
+			  break;
+	  }
+	  console.log(imageUrl);
+	  return {
+		  title: `${txt}`,
+		  path: `/pages/look_car_detail_02/look_car_detail_02?id=${this.data.id}`,
+		  imageUrl: imageUrl
+	  }
 	},
 	closelz() {
 		this.setData({ popstu: 2 })

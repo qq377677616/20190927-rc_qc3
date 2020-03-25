@@ -55,9 +55,8 @@ Page({
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
+		console.log("onhide");
 		this.setData({iscurr:false})
-		// app.globalData.socketOpen = false;
-		// this.closesck();
 	},
 
 	/**
@@ -170,6 +169,7 @@ Page({
 					arr.push({ client_avatar: self.data.handimg, content: data.data.content, type: 1, is_ob: 0, msg_type: data.data.msg_type });
 					self.setData({ sendload: [...self.data.sendload, ...arr], msg: '', img: null });
 					self.conutHeg();
+					self.cleardot();
 					arr = [];
 					break;
 				}
@@ -186,7 +186,7 @@ Page({
 		https.msgLog(dat).then((res)=>{
 			if (res.data.code == 1){
 				this.setData({ sendload: [...res.data.data, ...this.data.sendload], havpage: res.data.data.length >= 10 });
-				console.log(this.data.sendload);
+				// console.log(this.data.sendload);
 				if (this.data.isenter == 1) {
 					this.setscret();
 					this.setData({ isenter: ++this.data.isenter })
@@ -224,10 +224,9 @@ Page({
 	},
 	conutHeg(){// 计算滚动高度
 		let baseheg = this.data.isIponeX?70:50; 
-		console.log("计算抬起高度", baseheg);
-		if (!this.data.iscurr) return;
 		setTimeout(()=>{
 			tool.getDom('.infobox').then((res) => {
+				if (!res[0]) return;
 				if (res[0].height + baseheg > wx.getSystemInfoSync().windowHeight) {
 					wx.pageScrollTo({
 						scrollTop: (res[0].height - wx.getSystemInfoSync().windowHeight + baseheg),
@@ -261,6 +260,16 @@ Page({
 					resolve(res);
 				}
 			})
+		})
+	},
+	cleardot() { // 清除红点  //239658+'A'//this.data.useData.userid+'A',
+		console.log(this.data.uid);
+		let dat = {
+			uid: this.data.uid,
+			to_uid: 239658 + 'A'
+		}
+		https.cleaninfo(dat).then((res) => {
+			console.log(res);
 		})
 	}
 })

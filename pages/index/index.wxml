@@ -206,7 +206,7 @@
   <qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404>
   <!-- qc-page404 -->
   <!-- 疫情按钮 -->
-  <image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/yq_icon.png"
+  <image mode="widthFix" src="https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/center/yq_icon.png?1"
     class="yqbtn" bindtap="goyqpage"></image>
   <!-- ca入口 -->
   <!-- <view class="cabtn" bindtap="caDel">ca</view> -->

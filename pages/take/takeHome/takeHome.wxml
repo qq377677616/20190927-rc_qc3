@@ -60,6 +60,7 @@
 					<view class="topbtn1" bindtap="takeMan">
 						聊一聊
 						<button wx:if="{{ !userInfo.nickName || !userInfo.unionid }}" open-type="getUserInfo" class="sqbtn"  bindgetuserinfo="getUserInfo"></button>
+						<view class="dots" wx:if="{{hasdot||alljuge}}"></view>
 					</view>
 					<view class="topbtn1">
 						加微信

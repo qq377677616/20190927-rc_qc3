@@ -23,15 +23,13 @@
 				<view class="txtbox2">{{swiper1_txt[swiper1]}}</view>
 				<!--轮播实例1-->
 				<view class="threebg threebg1 anit1_{{swiper1}}">
+				<!-- 左右箭头 -->
+				<view class="leftbtn" catchtap="changetab" data-type="1" data-id="1" data-length="{{t90swp1.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
+				<view class="rightbtn" catchtap="changetab" data-type="2" data-id="1" data-length="{{t90swp1.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
+				<!-- 左右箭头 -->
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
 						 <block wx:for="{{t90swp1}}" wx:key="item">
 							<swiper-item>
-
-								<!-- 自定义播放按钮 -->
-								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="1" data-length="{{t90swp1.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
-								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="1" data-length="{{t90swp1.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
-								<!-- 自定义播放按钮 -->
-
 								<view class="bigitem" wx:if="{{item.type==1}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
 								<video class="v_bigitem" autoplay='{{true}}' wx:if="{{item.type==2&&swiper1==index}}" src="{{IMGSERVICE}}/gaiban/{{item.img}}"></video>
 							</swiper-item>
@@ -56,19 +54,17 @@
 					<text class="txt2 lowtxt">结合人体工程学原理设计，更舒适自在。</text>
 				</view>
 				<view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/t90bg_3.png)"></view>
-				<view class="txtbox2 txtbox3">{{swiper2_txt[swiper2]}}</view>
+				<view class="txtbox2 txtbox3 {{swiper2==0?'setwids':''}}">{{swiper2_txt[swiper2]}}</view>
 				
 				<!--轮播实例2-->
 				<view class="threebg threebg2 anit1_{{swiper2}}">
+					<!-- 左右箭头 -->
+					<view class="leftbtn" catchtap="changetab" data-type="1" data-id="2" data-length="{{t90swp2.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
+					<view class="rightbtn" catchtap="changetab" data-type="2" data-id="2" data-length="{{t90swp2.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
+					<!-- 左右箭头 -->
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
 						 <block wx:for="{{t90swp2}}" wx:key="item">
 							<swiper-item>
-
-								<!-- 自定义播放按钮 -->
-								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="2" data-length="{{t90swp2.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
-								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="2" data-length="{{t90swp2.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
-								<!-- 自定义播放按钮 -->	
-
 								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
 							</swiper-item>
 						</block>
@@ -98,6 +94,10 @@
 
 				<!--轮播实例3-->
 				<view class="threebg threebg1 anit1_{{swiper3}}">
+					<!-- 左右箭头 -->
+					<view class="leftbtn" catchtap="changetab" data-type="1" data-id="3" data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
+					<view class="rightbtn" catchtap="changetab" data-type="2" data-id="3" data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
+					<!-- 左右箭头 -->
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="3" current="{{swiper3}}">
 						 <block wx:for="{{t90swp3}}" wx:key="ite m">
 							<swiper-item>
@@ -111,8 +111,6 @@
 									</view>
 									<view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
 								</view>
-								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="3" data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
-								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="3"data-length="{{t90swp3.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
 								<!-- 自定义播放按钮 -->
 
 								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
@@ -144,6 +142,10 @@
 
 				<!--轮播实例4-->
 				<view class="threebg threebg4 anit4_{{swiper4}}">
+					<!-- 左右箭头 -->
+					<view class="leftbtn" catchtap="changetab" data-type="1" data-id="4" data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
+					<view class="rightbtn" catchtap="changetab" data-type="2" data-id="4" data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
+					<!-- 左右箭头 -->
 					<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="4" current="{{swiper4}}">
 						 <block wx:for="{{t90swp4}}" wx:key="item">
 							<swiper-item>
@@ -157,8 +159,6 @@
 									</view>
 									<view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
 								</view>
-								<view class="leftbtn" catchtap="changetab" data-type="1" data-id="4" data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_leftbtn.png)"></view>
-								<view class="rightbtn" catchtap="changetab" data-type="2" data-id="4"data-length="{{t90swp4.length-1}}" style="background-image:url({{IMGSERVICE}}/gaiban/s_rightbtn.png)"></view>
 								<!-- 自定义播放按钮 -->
 
 								<view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
@@ -185,7 +185,7 @@
 					<view class="selectcol">
 						<scroll-view scroll-x="{{true}}">
 							<view class="setflex">
-								<view class="f_items" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
+								<view class="f_items {{rogincol==index?'range':''}}" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
 									<view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img2}}?1)"></view>
 									<text class="txt5">{{item.txt}}</text>
 								</view>
@@ -284,7 +284,8 @@
     <!-- science -->
 	 <!-- 留资弹窗-->
     
-</view>
+	</view>
+
 <view class="forms-box" wx:if="{{ true }}">
 	<forms bindsubmit="submit" bindclose="isShowForm" popstu="{{popstu}}" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
 </view>
