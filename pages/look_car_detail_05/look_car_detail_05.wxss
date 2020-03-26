@@ -1609,6 +1609,6 @@ page{
 	font-weight: bold;
 }
 .setwids{
-	width: 68%;
+	width: 480rpx;
 }
 

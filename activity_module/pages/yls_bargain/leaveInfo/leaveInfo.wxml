@@ -1,0 +1,19 @@
+<view class="whole">
+	<!-- 头部 -->
+	<view class="hander">
+		<view class="handrow">
+			<text></text>	
+			<view></view>
+		</view>
+		<view class="handrow"></view>				
+	</view>
+	<!-- 商品详情 -->
+	<view class="shopbox">
+		<view class="shopimg" style="background-image:url({{IMGSERVICE}}/center/coin_01.png)"></view>
+		<view class="shopinfo">
+			<text class="carName">启辰T70启辰T70</text>
+			<text class="getTime">获奖时间：2019-09-09</text>
+		</view>
+	</view>
+	<view class="lqbtn">立即领取</view>
+</view>

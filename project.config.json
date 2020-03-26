@@ -611,6 +611,20 @@
 					"pathName": "activity_module/pages/xw_assemble/o_assemle/o_assemle",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 79,
+					"name": "经销商砍价",
+					"pathName": "activity_module/pages/yls_bargain/bargain_index/bargain_index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "经销商留资",
+					"pathName": "activity_module/pages/yls_bargain/leaveInfo/leaveInfo",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

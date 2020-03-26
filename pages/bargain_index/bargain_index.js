@@ -78,7 +78,8 @@ Page({
 		console.log("aaa",wx.getStorageSync('_iphone'));
 		this.setData({ isshare: options.isshare == "6", _iphone: wx.getStorageSync('_iphone') })
 		this.allWeek();
-		request_01.login(() => {
+		request_01.login((res) => {
+			console.log("====登录===",res);
 			this.setData({
 				activity_id: options.activity_id || wx.getStorageSync('activity_id'),
 				userInfo: wx.getStorageSync("userInfo"),
@@ -234,14 +235,15 @@ Page({
 		this.setData({ time_value: val })
 	},
 	freeGet(e) {//点击免费拿
+		console.log(this.data.isphone);
 		let _ing = e.currentTarget.dataset.ing;
 		let _end = e.currentTarget.dataset.end;
 		if (_ing == 3 && _end == 1 && !this.data._iphone) // 手机号授权判断
 		return;
-		if (_ing == 3 && _end == 1 && this.data.isphone==0){// 授权后有没有资格参与
-			tool.alert("您暂无资格参与！")
-			return;
-		}
+		// if (_ing == 3 && _end == 1 && this.data.isphone==0){// 授权后有没有资格参与
+		// 	tool.alert("您暂无资格参与！")
+		// 	return;
+		// }
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.obj.car_owner == 1) {
 			console.log("hello")
@@ -639,8 +641,11 @@ Page({
 			session_key: wx.getStorageSync('userInfo').session_key,
 			iv:e.detail.iv
 		}
+		console.log("dat",dat);
 		request_04.de_phone(dat).then((res)=>{
+			console.log(res);
 			if(res.data.status==1){
+				console.log("=====",res,res.data.data.mobile);
 				this.setData({ _iphone: res.data.data.mobile});
 				wx.setStorageSync("_iphone", res.data.data.mobile);
 				this.get_barNnm();
@@ -648,6 +653,8 @@ Page({
 				wx.setStorageSync("_iphone", false)
 			}
 			
+		}).catch((err)=>{
+			console.log(err);
 		})
 	}
 })

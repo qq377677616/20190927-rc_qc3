@@ -45,7 +45,7 @@
 		<image src="{{BASEURL}}/icon.png" class="iconimg" mode="widthFix" bindtap="upimg"></image>
 	</view>
 	<view class="c_ipt">
-		<input class="infoipt" bindinput="getval" value="{{msg}}" bindfocus="setscret"></input>
+		<input class="infoipt" bindinput="getval" value="{{msg}}"></input>
 	</view>
 	<view class="r_send" bindtap="sendMsg">发送</view>
 </view>

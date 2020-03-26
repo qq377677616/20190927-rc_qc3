@@ -6,6 +6,7 @@ const request_05 = require('../../utils/request/request_05.js');
 const router = require('../../utils/tool/router.js');
 
 const alert = require('../../utils/tool/alert.js');
+
 const tool = require('../../utils/tool/tool.js');
 
 const app = getApp(); //获取应用实例
@@ -407,18 +408,18 @@ Page({
   },
   //立即下定
   downPayment(e) {
-    let options = this.data.options
-    let onlyOne = e.currentTarget.dataset.open
-    var _this = this
+    let options = this.data.options;
+    let onlyOne = e.currentTarget.dataset.open;
+    var _this = this;
     // order_sn判断订单号是否为空字符串  不为空则为以留资
-    let openid = wx.getStorageSync('userInfo').openid
-    let show_page = this.data.payInfoData.show_page
-    let activity_id = wx.getStorageSync('activity_id')
-    console.log(show_page, 'show_page')
+    let openid = wx.getStorageSync('userInfo').openid;
+	  let show_page = this.data.payInfoData?this.data.payInfoData.show_page:'';
+    let activity_id = wx.getStorageSync('activity_id');
+    console.log(show_page, 'show_page');
     switch (show_page) {
       case 3:
         if (onlyOne) {
-          tool.alert('您已经留过资了哦~')
+          tool.alert('您已经留过资了哦~');
           return
         } else {
           request_05.getPayParam({

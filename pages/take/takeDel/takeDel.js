@@ -188,7 +188,7 @@ Page({
 				this.setData({ sendload: [...res.data.data, ...this.data.sendload], havpage: res.data.data.length >= 10 });
 				// console.log(this.data.sendload);
 				if (this.data.isenter == 1) {
-					this.setscret();
+					this.conutHeg();
 					this.setData({ isenter: ++this.data.isenter })
 				}
 			}
@@ -205,9 +205,6 @@ Page({
 			}
 		})
 	},
-	setscret(){ // 抬起聊天
-		this.conutHeg();
-	},
 	preview(e){ // 图片预览
 		let arr = [];
 		let currentUrl = e.currentTarget.dataset.src;
@@ -223,10 +220,11 @@ Page({
 		})	
 	},
 	conutHeg(){// 计算滚动高度
-		let baseheg = this.data.isIponeX?70:50; 
+		let baseheg = this.data.isIponeX?80:60; 
 		setTimeout(()=>{
 			tool.getDom('.infobox').then((res) => {
 				if (!res[0]) return;
+				
 				if (res[0].height + baseheg > wx.getSystemInfoSync().windowHeight) {
 					wx.pageScrollTo({
 						scrollTop: (res[0].height - wx.getSystemInfoSync().windowHeight + baseheg),
@@ -241,7 +239,7 @@ Page({
 			.then((value) => {
 				console.log("屏幕高度", value.screenHeight);
 				const model = value.model;
-				if (model.search('iPhone X') != -1){
+				if (model.search('iPhone X')!= -1){
 					this.setData({
 						isIponeX: true,
 					})
