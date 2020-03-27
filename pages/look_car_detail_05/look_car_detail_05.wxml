@@ -236,16 +236,16 @@
     </view>
 	<!-- 参数配置 -->
     <view wx:if="{{navIndex==1}}">
-            <view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
+		<view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
 
-                <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
-                    <view class="label">{{item.value}}</view>
-                </view>
-                <view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
-                    <view class="lable">{{item.name}}</view>
-                    <view class="span">{{isSwitchIng ? '--' : item.value}}</view>
-                </view>
-            </view>
+			<view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
+				<view class="label">{{item.value}}</view>
+			</view>
+			<view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
+				<view class="lable">{{item.name}}{{index>81&&index<91?'69666':''}}</view>
+				<view class="span">{{isSwitchIng ? '--' : item.value}}</view>
+			</view>
+		</view>
           <view class="group">
             <view class="li config_area flex-bet remarks">
                 <view class="lable">备注：</view>

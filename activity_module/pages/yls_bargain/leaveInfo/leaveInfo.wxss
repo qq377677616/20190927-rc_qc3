@@ -20,6 +20,7 @@ page{
 	box-sizing: border-box;
 	border-bottom: 1rpx solid rgba(238,238,238,1);
 	display: flex;
+	align-items: center;
 }
 .hander>.handrow:last-child{
 	border: none;
@@ -76,6 +77,16 @@ page{
 	font-weight:400;
 	color:rgba(102,102,102,1);
 	margin-top: 38rpx;
+}
+.manPick{
+	flex: 1;
+	padding-left: 23rpx;
+	box-sizing: border-box;
+}
+.icon1{
+	font-size: 30rpx;
+	font-weight: bold;
+	color: #999;
 }
 
 

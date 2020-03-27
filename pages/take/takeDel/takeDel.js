@@ -117,7 +117,8 @@ Page({
 		},50000)
 	},
 	sendMsg(){// 发送消息
-		this.subMsg().then((rel)=>{
+		
+		
 			if (!app.globalData.socketOpen) {
 				tool.alert("网络链接失败！");
 			}
@@ -145,7 +146,6 @@ Page({
 					console.log("发送失败！");
 				}
 			}
-		});
 	},
 	acceptmag(){//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
 		let self = this;
@@ -249,16 +249,6 @@ Page({
 					})
 				}
 			})
-	},
-	subMsg(){ // 发送订阅消息
-		return new Promise((resolve,reject)=>{
-			wx.requestSubscribeMessage({
-				tmplIds: ['adOBVu25IYMu8usw2VbaO1US8B9yB95xbTzlBzEYai0'],
-				success(res) {
-					resolve(res);
-				}
-			})
-		})
 	},
 	cleardot() { // 清除红点  //239658+'A'//this.data.useData.userid+'A',
 		console.log(this.data.uid);

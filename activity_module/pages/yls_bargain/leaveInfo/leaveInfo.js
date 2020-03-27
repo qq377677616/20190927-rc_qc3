@@ -6,7 +6,8 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		IMGSERVICE: app.globalData.IMGSERVICE
+		IMGSERVICE: app.globalData.IMGSERVICE,
+		array: ['美国', '中国', '巴西', '日本']
 	},
 
 	/**

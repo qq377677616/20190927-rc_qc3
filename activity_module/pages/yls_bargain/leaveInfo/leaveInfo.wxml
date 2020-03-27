@@ -2,10 +2,21 @@
 	<!-- 头部 -->
 	<view class="hander">
 		<view class="handrow">
-			<text></text>	
-			<view></view>
+			<text class="iconfont icon-wodexianxing icon1"></text>	
+			<view class="manPick">
+				<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+					<view class="picker">
+					当前选择：{{array[index]}}
+					</view>
+				</picker>
+			</view>
 		</view>
-		<view class="handrow"></view>				
+		<view class="handrow">
+			<text class="iconfont icon-shouyexianxing icon1"></text>	
+			<view class="manPick">
+
+			</view>
+		</view>				
 	</view>
 	<!-- 商品详情 -->
 	<view class="shopbox">

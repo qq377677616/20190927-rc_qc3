@@ -45,6 +45,8 @@ Page({
 		linkNum:1, // socket 连接次数
 		codeuser:null,//是不是扫码用户
 		hasdot:false,//是否有红点  默认没有
+		takeNum:'',//聊天数
+		servepop:false,//人员服务弹窗
 	},
 
 	/**
@@ -55,7 +57,7 @@ Page({
 		this.setData({ codeuser: options.userid})
 		if (options.obj){
 			let obj = JSON.parse(options.obj);
-			this.setData({ useData: obj });
+			this.setData({ useData: obj, servepop:true});
 		}else{
 			this.getInfo();
 		}
@@ -168,7 +170,7 @@ Page({
 					if (res.data.code == 1) {
 						tool.loading_h();
 						console.log(res);
-						this.setData({ useData: res.data.data[0] })
+						this.setData({ useData: res.data.data[0], servepop:true})
 						this.msgList();// 获取是否有红点 
 					} else {
 						tool.alert(res.data.msg)
@@ -191,8 +193,10 @@ Page({
 	},
 	takeMan(){ //聊一聊userInfo.nickName || !userInfo.unionid
 		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.id){
-			tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}&handimg=${this.data.useData.avatar}`);
-			this.cleardot();
+			this.subMsg().then((rel) => { 
+				tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}&handimg=${this.data.useData.avatar}`);
+				this.cleardot();
+			});
 		}else{
 			tool.alert("加载中请稍后！");
 		}
@@ -391,7 +395,7 @@ Page({
 			if (res.data.code == 1) {
 				console.log(this.data.uid);
 				console.log("====", JSON.stringify(res.data.data));
-				this.setData({ hasdot: res.data.data > 0 && res.data.data})
+				this.setData({ hasdot: res.data.data > 0 && res.data.data, takeNum: res.data.data})
 			}
 		})
 	},
@@ -403,5 +407,18 @@ Page({
 		https.cleaninfo(dat).then((res)=>{
 			console.log(res);
 		})
+	},
+	subMsg() { // 发送订阅消息
+		return new Promise((resolve, reject) => {
+			wx.requestSubscribeMessage({
+				tmplIds: ['adOBVu25IYMu8usw2VbaO1US8B9yB95xbTzlBzEYai0'],
+				success(res) {
+					resolve(res);
+				}
+			})
+		})
+	},
+	closePop(){
+		this.setData({ servepop:false})
 	}
 })
