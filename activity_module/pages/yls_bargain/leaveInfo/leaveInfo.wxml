@@ -1,0 +1,30 @@
+<view class="whole">
+	<!-- 头部 -->
+	<view class="hander">
+		<view class="handrow">
+			<text class="iconfont icon-wodexianxing icon1"></text>	
+			<view class="manPick">
+				<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+					<view class="picker">
+					当前选择：{{array[index]}}
+					</view>
+				</picker>
+			</view>
+		</view>
+		<view class="handrow">
+			<text class="iconfont icon-shouyexianxing icon1"></text>	
+			<view class="manPick">
+
+			</view>
+		</view>				
+	</view>
+	<!-- 商品详情 -->
+	<view class="shopbox">
+		<view class="shopimg" style="background-image:url({{IMGSERVICE}}/center/coin_01.png)"></view>
+		<view class="shopinfo">
+			<text class="carName">启辰T70启辰T70</text>
+			<text class="getTime">获奖时间：2019-09-09</text>
+		</view>
+	</view>
+	<view class="lqbtn">立即领取</view>
+</view>

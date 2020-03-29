@@ -44,6 +44,9 @@ Page({
 		to_uid:null,// 给别人的id
 		linkNum:1, // socket 连接次数
 		codeuser:null,//是不是扫码用户
+		hasdot:false,//是否有红点  默认没有
+		takeNum:'',//聊天数
+		servepop:false,//人员服务弹窗
 	},
 
 	/**
@@ -54,32 +57,31 @@ Page({
 		this.setData({ codeuser: options.userid})
 		if (options.obj){
 			let obj = JSON.parse(options.obj);
-			this.setData({ useData: obj });
+			this.setData({ useData: obj, servepop:true});
 		}else{
 			this.getInfo();
 		}
-		request_01.login(() => {
+		request_01.login(() =>{
 			this.setData({
 				userInfo: wx.getStorageSync("userInfo") || {}
 			})
 			this.authBtn();
 		})
-		
 	},
-
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
 	onReady: function () {
-
 	},
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {
-		
+	onShow: function () {	
+		if (this.data.uid && this.data.useData.userid){
+			this.msgList();
+			this.acceptmag();
+		}
 	},
-
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
@@ -87,14 +89,12 @@ Page({
 		// app.globalData.socketOpen = false;
 		// this.closesck();
 	},
-
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
 	onUnload: function () {
 
 	},
-
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
@@ -123,6 +123,7 @@ Page({
 	},
 	//授权
 	authBtn(){
+		console.log("授权");
 		let dat = {
 			app_id:'wx1d585c8c2fffe589',
 			openid: this.data.userInfo.openid,
@@ -130,8 +131,8 @@ Page({
 			avatar: this.data.userInfo.headimg
 		}
 		https.clientLogin(dat).then((res)=>{
-			// console.log(res);
-			if(res.data.code==1)this.setData({uid:res.data.data,to_uid:this.data.useData.id});
+			console.log(res.data.data);
+			if(res.data.code==1)this.setData({uid:res.data.data});
 			this.scoketInit(); // 初始化scoket
 		})
 	},
@@ -168,8 +169,9 @@ Page({
 					// console.log(res);
 					if (res.data.code == 1) {
 						tool.loading_h();
-						// console.log(res);
-						this.setData({ useData: res.data.data[0] })
+						console.log(res);
+						this.setData({ useData: res.data.data[0], servepop:true})
+						this.msgList();// 获取是否有红点 
 					} else {
 						tool.alert(res.data.msg)
 					}
@@ -189,9 +191,12 @@ Page({
 	addwx(){
 		this.setData({iscope:true});
 	},
-	takeMan() { //聊一聊userInfo.nickName || !userInfo.unionid
+	takeMan(){ //聊一聊userInfo.nickName || !userInfo.unionid
 		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.id){
-			tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}&handimg=${this.data.useData.avatar}`);
+			this.subMsg().then((rel) => { 
+				tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}&handimg=${this.data.useData.avatar}`);
+				this.cleardot();
+			});
 		}else{
 			tool.alert("加载中请稍后！");
 		}
@@ -201,7 +206,7 @@ Page({
 		tool.jump_nav(`/pages/take/dealers/dealers`);
 	},
 	//点击自定义Modal弹框上的按钮
-	operation(e) {
+	operation(e){
 		if (e.detail.confirm) {
 			auth.openSetting(res => {//用户自行从设置勾选授权后
 				if (res.authSetting["scope.userLocation"]) {
@@ -219,7 +224,7 @@ Page({
 		}
 	},
 	// 自定义弹窗
-	showHideModal() {
+	showHideModal(){
 		let _showModalOption = this.data.showModalOption
 		_showModalOption.isShow = !_showModalOption.isShow
 		this.setData({ showModalOption: _showModalOption })
@@ -239,9 +244,8 @@ Page({
 		}else{
 			tool.alert("暂无座机");
 		}
-		
 	},
-	navMap(){ //第三方地图跳转
+	navMap(){//第三方地图跳转
 		let self = this;
 		wx.getLocation({
 			type: 'gcj02', //返回可以用于wx.openLocation的经纬度
@@ -270,7 +274,7 @@ Page({
 			tool.jump_nav(`/pages/look_car_detail_02/look_car_detail_02?id=${id}`)
 		}
 	},
-	creatSocket() {
+	creatSocket(){
 		let self = this;
 		wx.connectSocket({
 			url: app.globalData.SOCKETURL,
@@ -301,7 +305,7 @@ Page({
 			self.setData({ linkNum: 1 });
 			self.bindUse(); // 绑定用户
 			self.scoketClose();// 监听socket关闭
-			// self.acceptmag();// 接收socekt
+			self.acceptmag();// 接收socekt
 		})
 	},
 	scoketClose(){// 监听socket 关闭事件 重连
@@ -341,7 +345,7 @@ Page({
 
 		}
 	},
-	bindUse() {// 绑定 
+	bindUse(){// 绑定 
 		let time = null;
 		wx.sendSocketMessage({
 			data: '{"type":"bind","uid":"' + this.data.uid + '"}'
@@ -366,8 +370,10 @@ Page({
 			})
 		} 
 	},
-	acceptmag() {//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
+	acceptmag(){//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
+		let self = this;
 		wx.onSocketMessage(function (msg) {
+			console.log("首页")
 			let data = JSON.parse(msg.data);
 			let code = data.code;
 			let type = data.type;
@@ -379,5 +385,40 @@ Page({
 				}
 			}
 		})
+	},
+	msgList() {// 获取消息记录 
+		let dat = {
+			client_id: this.data.uid, //239658+'A'//this.data.useData.userid+'A',
+			service_id: 239658+'A'
+		}
+		https.msgList(dat).then((res) => {
+			if (res.data.code == 1) {
+				console.log(this.data.uid);
+				console.log("====", JSON.stringify(res.data.data));
+				this.setData({ hasdot: res.data.data > 0 && res.data.data, takeNum: res.data.data})
+			}
+		})
+	},
+	cleardot() { // 清除红点  //239658+'A'//this.data.useData.userid+'A',
+		let dat = {
+			uid:this.data.uid,
+			to_uid: 239658 + 'A'
+		}
+		https.cleaninfo(dat).then((res)=>{
+			console.log(res);
+		})
+	},
+	subMsg() { // 发送订阅消息
+		return new Promise((resolve, reject) => {
+			wx.requestSubscribeMessage({
+				tmplIds: ['adOBVu25IYMu8usw2VbaO1US8B9yB95xbTzlBzEYai0'],
+				success(res) {
+					resolve(res);
+				}
+			})
+		})
+	},
+	closePop(){
+		this.setData({ servepop:false})
 	}
 })

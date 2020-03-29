@@ -44,6 +44,10 @@ const getPosition = () => {
 }
 // 获取专营店信息 
 const msgLog = (data, url = '/index/index/msgLog') => { return myRequest(data, url) }
+//消息记录接口
+const msgList = (data, url = '/index/index/isExistMsg') => { return myRequest(data, url) }
+// 清除消息记录 
+const cleaninfo = (data, url = '/index/index/clean') => { return myRequest(data, url) }
 // 图片上传
 const uploadFiles = (data) => {
 	let url = `${REQUESTURL}/index/index/upload`;
@@ -80,4 +84,6 @@ module.exports = {
   getPosition,
 	msgLog,
 	uploadFiles,
+	msgList,
+	cleaninfo,
 }

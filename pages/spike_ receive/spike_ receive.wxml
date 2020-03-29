@@ -10,7 +10,7 @@
         <view class="form_area">
 
             <view class="group" bindtap="getInfo">
-                <view class="icon iconfont icon_wd"></view>
+                <view class="icon iconfont icon-wodexianxing"></view>
                 <view class="span">
                     <block wx:if="{{ currentAddressItem.real_address }}">
                         <view class="nowrap">{{ currentAddressItem.name + ' ' + currentAddressItem.mobile }}</view>

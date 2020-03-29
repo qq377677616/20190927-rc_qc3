@@ -497,8 +497,22 @@ Page({
         })
     },
     caDel() { //跳转ca详情
+		console.log("==========")
         router.jump_nav({
             url: "/pages/take/takeHome/takeHome"
         })
+		// wx.navigateToMiniProgram({
+		// 	appId: 'wx5f4c100ae6bb86d1',
+		// 	path: '',
+		// 	extraData: {
+		// 		name: '小东',
+		// 		phone: '13217484172',
+		// 		area: '开福区'
+		// 	},
+		// 	envVersion: 'release',
+		// 	success(res) {
+		// 		console.log('跳转成功');
+		// 	}
+		// })
     }
 })

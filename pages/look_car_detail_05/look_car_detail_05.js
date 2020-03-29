@@ -134,7 +134,7 @@ Page({
 	  rogincol: 0,//初始选择的颜色
 	  carid: '',
 	  swiper1_txt: ['流水式LED转向灯', '贯穿式光导LED组合尾灯', '矩阵式全LED前大灯', '19英寸星射线铝合金轮辋', '全新家族V-Galaxy星空格栅设计'],//部件名称
-	  swiper2_txt: ['超大尺寸4805*1865*1591mm，同级领先轴距2765mm', '360° 大视野全景天窗', '628双模式行旅厢', '人性化车内储物空间', '触控式科技中控面板'],//部件名称
+	  swiper2_txt: ['超大尺寸4805*1865*1591mm \n 同级领先轴距2765mm', '360° 大视野全景天窗', '628双模式行旅厢', '人性化车内储物空间', '触控式科技中控面板'],//部件名称
 	  swiper3_txt: ['全新日产XTRONIC CVT智能无级变速器', '专业舒适化底盘调校', 'Multi-Layer人体工学座椅 (带座椅通风/加热)', '出众的NVH品质', '新一代日产明星缸内直喷发动机MR20'],//部件名称
 	  swiper4_txt: ['全时在线导航', '全新升级智能语音交互', '手机远程控制', '智能安防系统', '全场景账号服务系统','高品质娱乐体验','智能车联服务','EPB电子手刹+Auto Hold自动驻车','12.3+10.25英寸沉浸式科技联屏','15W高效无线充电','智能交互电动尾门','3D AVM无盲区高清全景监控影像系统','FEB预碰撞智能刹车辅助系统','LDW 车道偏离预警系统','EAPM 油门误踩智能纠正系统','BSW 变道盲区预警系统','车家互联'],//部件名称
 	  t90swp1:[
@@ -181,13 +181,14 @@ Page({
 	  vbtn: true,// 是否显示 播放按钮
 	  popstu: 1,// 留资弹窗状态
 	  curvio: null, // 当前创建的video
+	  id:null
 
   },
 
   onLoad: function (options) {
     mta.Page.init()//腾讯统计
     console.log("options", options)
-    this.data.id = options.id
+	this.setData({ id: options.id})
     mta.Event.stat("look_car_t90", {})
     if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", { channelid: wx.getStorageSync("shareIds").channel_id})
     if (options.gdt_vid) this.data.gdt_vid = options.gdt_vid
@@ -357,37 +358,46 @@ Page({
   onShareAppMessage: function () {
 	  let id = this.data.id;
 	  let txt = '';
+	  let imageUrl = '';
 	  switch (id) {
 		  case '11':
 			  txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/`
 			  break;
 		  case '6':
 			  txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60.png`
 			  break;
 		  case '3':
 			  txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60.png`
 			  break;
 		  case '9':
 			  txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T90.png`
 			  break;
 		  case '7':
 			  txt = '启辰T70，高品质智联SUV，品质来袭！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T70.png`
 			  break;
 		  case '5':
-			  txt = '启辰T70，高品质智联SUV，品质来袭！';
+			  txt = '启辰D60EV，长续航合资纯电家轿，智无忧，趣更远！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60EV.png`
 			  break;
 		  case '10':
 			  txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_E30.png`
 			  break;
 		  case '13':
 			  txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60EV.png`
 			  break;
 	  }
-    return {
-      title: `${txt}`,
-      path: `/pages/look_car_detail/look_car_detail?id=${this.data.id}`,
-      imageUrl: `${this.data.IMGSERVICE}/car_detail/share.jpg`
-    }
+	  return {
+		  title: `${txt}`,
+		  path: `/pages/look_car_detail_05/look_car_detail_05?id=${this.data.id}`,
+		  imageUrl: imageUrl
+	  }
   },
   //获取swiper高度
   getHeight: function (e) {

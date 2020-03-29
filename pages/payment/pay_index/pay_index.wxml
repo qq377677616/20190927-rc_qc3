@@ -65,7 +65,7 @@
   <!-- 详情弹窗 -->
   <view class="prize-con cen fadeIn" wx:if="{{isDetail}}">
       <image class="btn_close" bindtap="openDetail" src="{{ IMGSERVICE }}/pay/btn_close.png" mode="widthFix"></image>
-      <image class="content" src="{{ IMGSERVICE }}/pay/content.png?14" mode="widthFix"></image>
+      <image class="content" src="{{ IMGSERVICE }}/pay/content.png?16" mode="widthFix"></image>
       <image class="btn_detail" bindtap="btn_detail" src="{{ IMGSERVICE }}/pay/btn_detail.png" mode="widthFix"></image>
   </view>
   

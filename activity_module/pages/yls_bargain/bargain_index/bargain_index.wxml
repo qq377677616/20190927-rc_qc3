@@ -1,0 +1,254 @@
+<!--砍价状态页面-->
+<view class="whole">
+	<!-- 砍价成功已领取-->
+	<view class="handBox" wx:if="{{shopInfo.buttom_type==3}}">
+		<view class="userInfo">
+			<view class="userImg" style="background-image:url({{IMGSERVICE}}/center/coin_01.png)"></view>
+			<view class="userTxt">
+				<text class="nickName">Remuan</text>
+				<text class="txt nowrap">我正在抢购免费礼品，来帮我砍价吧！</text>
+			</view>
+		</view>
+		<view class="shopInfo">
+			<view class="sjx_box"></view>
+			<view class="shopImg" style="background-image:url({{IMGSERVICE}}/center/coin_01.png)"></view>
+
+			<view class="shoptxt">
+				<text class="shopName">我正在抢购免费礼品我正在抢购免费礼品我正在抢购免费礼品我正在抢购免费礼品</text>
+				<view class="djs_box">
+					<text class="type1">00</text>
+					<text class="type2">:</text>
+					<text class="type1">00</text>
+					<text class="type2">:</text>
+					<text class="type1">00</text>
+					<text class="type2">:</text>
+					<text class="type3">00</text>
+					<text class="type4">砍价已过期</text>
+				</view>
+			</view>
+
+			<!-- <view class="barStatus" style="background-image:url({{IMGSERVICE}}/center/kjchenggong.png)"></view> -->
+		</view>
+		<view class="tipTxt">已砍<text class="txtcol">92.81</text>元,还剩<text class="txtcol">222.19</text>元</view>
+		<view class="progess">
+			<progress percent="100" active color="#E3413E" border-radius="16" />
+		</view>
+		<view class="progressInfo">
+			<text>￥315.00</text>
+			<text>￥0</text>
+		</view>
+		<view class="statusBtn statusBtn3" wx:if="{{!isRight}}"><text>我要砍价</text></view>
+		<!-- <view class="statusBtn statusBtn3" bindtap="goHome"><text>看看其他活动</text></view> -->
+	</view>
+	<!-- 砍价成功未领取-->
+	<view class="handBox" wx:if="{{shopInfo.buttom_type==2}}">
+		<view class="userInfo">
+			<view class="userImg" style="background-image:url({{userImg}})"></view>
+			<view class="userTxt">
+				<text class="nickName">{{userName}}</text>
+				<text class="txt nowrap">我正在抢购免费礼品，来帮我砍价吧！</text>
+			</view>
+		</view>
+		<view class="shopInfo">
+			<view class="sjx_box"></view>
+			<view class="shopImg" style="background-image:url({{shopInfo.thumb}})"></view>
+			<view class="shoptxt">
+				<text class="shopName">{{shopInfo.title}}</text>
+				<text class="shopTip nowrap">恭喜您已成功砍至0元</text>
+			</view>
+			<view class="barStatus" style="background-image:url({{IMGSERVICE}}/center/kjchenggong.png)"></view>
+		</view>
+		<view class="tipTxt"><text class="addcolor">砍价成功，快去领取吧</text></view>
+		<view class="progess">
+			<progress percent="100" active color="#E3413E" border-radius="16" />
+		</view>
+		<view class="progressInfo">
+			<text>￥315.00</text>
+			<text>￥0</text>
+		</view>
+		<view class="statusBtn statusBtn2" wx:if="{{isRight}}" bindtap="getworld" data-cid="{{kj_id}}">
+			<text>立即领取奖品</text></view>
+		<view class="statusBtn statusBtn3" wx:if="{{isRight}}" bindtap="selfFreeget"><text>看看其他商品</text></view>
+		<view class="statusBtn statusBtn5" wx:if="{{!isRight}}">
+			<text>帮好友砍价</text>
+		</view>
+		<view class="statusBtn statusBtn3" wx:if="{{!isRight}}" bindtap="selfFreeget"><text>我也要免费拿</text></view>
+		<view class="statusBtn statusBtn3" bindtap="goHome"><text>看看其他活动</text></view>
+	</view>
+	<!-- 砍价超时 -->
+	<view class="handBox" wx:if="{{shopInfo.buttom_type==1}}">
+		<view class="userInfo">
+			<view class="userImg" style="background-image:url({{userImg}})"></view>
+			<view class="userTxt">
+				<text class="nickName">{{userName}}</text>
+				<text class="txt nowrap">我正在抢购免费礼品，来帮我砍价吧！</text>
+			</view>
+		</view>
+		<view class="shopInfo">
+			<view class="sjx_box"></view>
+			<view class="shopImg" style="background-image:url({{shopInfo.thumb}})"></view>
+			
+			<view class="shoptxt">
+				<text class="shopName">{{shopInfo.title}}</text>
+				<view class="djs_box">
+					<text class="type1">00</text>
+					<text class="type2">:</text>
+					<text class="type1">00</text>
+					<text class="type2">:</text>
+					<text class="type1">00</text>
+					<text class="type2">:</text>
+					<text class="type3">00</text>
+					<text class="type4">砍价已过期</text>
+				</view>
+				<!-- <text class="shopTip nowrap">砍价已过期</text> -->
+			</view>
+
+			<view class="barStatus" style="background-image:url({{IMGSERVICE}}/center/chaoshi_01.png)"></view>
+		</view>
+		<view class="tipTxt"><text>砍价时间到，砍价失败</text></view>
+		<view class="progess">
+			<progress percent="{{percent}}" active color="#E3413E" border-radius="16" />
+		</view>
+		<view class="progressInfo">
+			<text>￥315.00</text>
+			<text>￥0</text>
+		</view>
+		<view class="statusBtn statusBtn3" wx:if="{{isRight}}" bindtap="selfFreeget"><text>看看其他商品</text></view>
+		<view class="statusBtn statusBtn5" wx:if="{{!isRight}}"><text>帮好友砍价</text></view>
+		<view class="statusBtn statusBtn3" bindtap="goHome"><text>看看其他活动</text></view>
+		<view class="statusBtn statusBtn3" wx:if="{{!isRight}}" bindtap="selfFreeget"><text>我也要免费拿</text></view>
+	</view>
+	<!-- 正在砍价 -->
+	<view class="handBox" wx:if="{{ture}}">
+		<view class="userInfo">
+			<view class="userImg" style="background-image:url({{userImg}})"></view>
+			<view class="userTxt">
+				<text class="nickName">{{userName}}</text>
+				<text class="txt nowrap">我正在抢购免费礼品，来帮我砍价吧！</text>
+			</view>
+		</view>
+		<view class="shopInfo">
+			<view class="sjx_box"></view>
+			<view class="shopImg" style="background-image:url({{shopInfo.thumb}})"></view>
+
+			<view class="shoptxt">
+				<text class="shopName">{{shopInfo.title}}</text>
+				<view class="djs_box">
+					<text class="type1">{{djs.d}}</text>
+					<text class="type2">:</text>
+					<text class="type1">{{djs.h}}</text>
+					<text class="type2">:</text>
+					<text class="type1">{{djs.m}}</text>
+					<text class="type2">:</text>
+					<text class="type3">{{djs.s}}</text>
+					<text class="type4">后砍价过期</text>
+				</view>
+			</view>
+
+			<view class="barStatus" style="background-image:url({{IMGSERVICE}}/center/nonum.png)" wx:if="{{!sy_num>0}}">
+			</view>
+		</view>
+		<view class="tipTxt"><text>已砍￥<text class="addcolor">{{shopInfo.kj_price}}</text>元,还剩￥<text
+					class="addcolor">{{shopInfo.sy_price}}</text>元</text></view>
+		<view class="progess">
+			<progress percent="{{percent}}" active color="#E3413E" border-radius="16" />
+		</view>
+		<view class="progressInfo">
+			<text>￥315.00</text>
+			<text>￥0</text>
+		</view>
+		<view class="statusBtn statusBtn3" bindtap="invitFriend" wx:if="{{isRight&&sy_num>0}}">
+			<text>邀请好友砍价</text>
+			<button open-type="share" class="shareBtn" data-img="{{shopInfo.thumb}}"></button>
+		</view>
+		<view class="statusBtn statusBtn3 home" bindtap="goHome">
+			<text>查看其他活动</text>
+		</view>
+		<view class="statusBtn statusBtn3" bindtap="friendHelp" wx:if="{{!isRight&&sy_num>0}}">
+			<text>帮好友砍价</text>
+			<button wx:if="{{!userInfo.nickName||!userInfo.unionid}}" open-type="getUserInfo"
+				bindgetuserinfo="getUserInfo" class="shouquan"></button>
+		</view>
+		<view class="statusBtn statusBtn3 statusBtn4" bindtap="selfFreeget" wx:if="{{!isRight}}">
+			<text>我也要免费拿</text>
+			<button wx:if="{{!userInfo.nickName||!userInfo.unionid}}" open-type="getUserInfo"
+				bindgetuserinfo="getUserInfo" class="shouquan"></button>
+		</view>
+		<view class="statusBtn" wx:if="{{!sy_num>0}}">
+			<text>库存不足</text>
+		</view>
+	</view>
+
+
+	<!-- 砍价记录以及多少人拿到列表 -->
+	<view class="bar_record">
+		<view class="firtip">
+			<text>砍价记录</text>
+			<text>已有<text class="addcolor">8</text>人砍过</text>
+		</view>
+		<view class="swiper">
+			<swiper vertical="true"
+				display-multiple-items="{{barRecord.kj_friend_log.length>4?4:barRecord.kj_friend_log.length}}"
+				interval="1500" autoplay="{{barRecord.kj_friend_log.length>4}}" circular="true" style="height:440rpx">
+				<swiper-item class="flex-cen" wx:for="{{barRecord.kj_friend_log}}" wx:key="item">
+					<view class="gd_item">
+						<view class="leftBox">
+							<view class="barImg" style="background-image:url({{item.headimgurl}})"></view>
+						</view>
+						<view class="rightBox">
+							<view class="leftName"><text class="nowrap">{{item.nickname}}</text></view>
+							<view class="rightInfo">
+								<!-- <view class="coinImg" style="background-image:url({{IMGSERVICE}}/center/coin_01.png)">
+								</view> -->
+								<view class="barPrice">
+									<text>砍掉<text class="addcolor">{{item.kj_price}}</text>元</text>
+								</view>
+							</view>
+						</view>
+					</view>
+				</swiper-item>
+			</swiper>
+		</view>
+	</view>
+	<!-- 砍价成功弹窗 succPop-->
+	<view class="succPop" wx:if="{{false}}">
+		<view class="centerBox">
+			<view class="closeView" bindtap="closePop"></view>
+			<view class="closeBtn" style="background-image:url({{IMGSERVICE}}/center/X_3.png)"></view>
+			<view class="coin2" style="background-image:url({{IMGSERVICE}}/center/coin_2.png)"></view>
+			<view class="poptxt1" wx:if="{{isRight}}"><text>成功帮助好友砍掉<text class="addcolor">8.81</text>元</text>
+			</view>
+			<view class="poptxt1" wx:if="{{!isRight}}"><text>恭喜你!</text></view>
+			<view class="poptxt1 poptxt2" wx:if="{{!isRight}}"><text>成功砍掉 <text class="addcolor">8.81</text>元</text></view>
+			<view class="poptxt3" wx:if="{{!isRight}}"><text>快去邀请好友帮忙砍价吧</text></view>
+			
+			<view class="popBtn" wx:if="{{!isRight}}">
+				<text>邀请好友砍价</text>
+				<button open-type="share" class="shareBtn" data-img="{{shopInfo.thumb}}"></button>
+			</view>
+			<view class="popBtn popBtn2" wx:if="{{isRight}}" bindtap="selfFreeget">
+				<text>我也要免费拿</text>
+			</view>
+		</view>
+	</view>
+
+	<!-- 兑换码弹窗  -->
+	<view class="code_mask fadeIn" wx:if="{{ isCodeShow }}">
+		<view class="main">
+			<view class="h3">
+				<view>请凭激活码自行</view>
+				<view>前往对应平台自助兑换</view>
+			</view>
+			<view class="p">{{ code }}</view>
+			<view class="btn" bindtap="setClipboar">复制商品码</view>
+			<view class="close_btn iconfont icon_del" bindtap="closeCode"></view>
+		</view>
+	</view>
+	<!-- 兑换码弹窗  -->
+
+	<!-- 自定义loading -->
+	<showLoading wx:if="{{isShowLoading}}" loadingText="{{ loadingText }}"></showLoading>
+
+	<!-- qc-page404 -->
+	<qc-page404 wx:if="{{ page404 }}" bind:reload="reload"></qc-page404><!-- qc-page404 -->
+</view>

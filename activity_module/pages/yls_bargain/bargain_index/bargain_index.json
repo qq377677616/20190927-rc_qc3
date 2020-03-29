@@ -1,0 +1,7 @@
+{
+	"usingComponents": {
+		"qc-page404": "/components/page404/page404",
+		"showLoading": "/components/showLoading/showLoading"
+	},
+	"navigationBarTitleText": "砍价免费拿"
+}

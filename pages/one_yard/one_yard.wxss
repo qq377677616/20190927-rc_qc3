@@ -12,13 +12,15 @@ page {
   overflow: hidden;
 }
 
-.banner image {
-  width: 750rpx;
+.banner>view {
+  width: 100%;
+  height: 320rpx;
+  background: center no-repeat/cover;	
 }
 
 .one-bg {
   width: 750rpx;
-  height: 1020rpx;
+  /* height: 1020rpx; */
   background-size: 100% auto;
   background-position: center;
   background-repeat: no-repeat;
@@ -243,4 +245,20 @@ picker {
   position: absolute;
   top: 642rpx;
   right: -20rpx;
+}
+.selectbox{
+	width: 670rpx;
+	height: 150rpx;
+	background-color: #fff;
+	border-radius:10rpx;
+	margin-top: -176rpx;
+	position: relative;
+	/* z-index: 99; */
+}
+/* 0327 */
+.giftbg{
+	width: 100vw;
+	height: 392rpx;
+	background-color: red;
+	background: center no-repeat/cover;
 }

@@ -60,6 +60,7 @@
 					<view class="topbtn1" bindtap="takeMan">
 						聊一聊
 						<button wx:if="{{ !userInfo.nickName || !userInfo.unionid }}" open-type="getUserInfo" class="sqbtn"  bindgetuserinfo="getUserInfo"></button>
+						<view class="dots" wx:if="{{hasdot||alljuge}}">{{takeNum}}</view>
 					</view>
 					<view class="topbtn1">
 						加微信
@@ -92,4 +93,12 @@
 <!-- 跳转启程星小程序 -->
 <view class="xingIcon">
 	<image src="{{BASEURL}}/xing_icon.png" mode="widthFix"></image>
+</view>
+<!-- 服务人弹窗 -->
+<view class="serveBox" wx:if="{{servepop}}">
+	<view class="comfirm">
+		<text class="comtxt1">温馨提示</text>
+		<text class="comtxt2">{{useData.store}}{{useData.name}}{{useData.position}}为您服务</text>
+		<view class="combtn" bindtap="closePop">确定</view>
+	</view>
 </view>

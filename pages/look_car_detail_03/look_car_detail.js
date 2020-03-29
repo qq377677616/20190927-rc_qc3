@@ -6,6 +6,7 @@ const request_05 = require('../../utils/request/request_05.js');
 const router = require('../../utils/tool/router.js');
 
 const alert = require('../../utils/tool/alert.js');
+
 const tool = require('../../utils/tool/tool.js');
 
 const app = getApp(); //获取应用实例
@@ -53,12 +54,14 @@ Page({
     },
     ],
     imgList: [false, false],
+	id:null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	  this.setData({ id: options.id });
     request_01.login(() => {
 
       //数据初始化
@@ -170,38 +173,46 @@ Page({
     let activity_id = this.data.activity_id;
     let id = this.data.id;
     let txt = '';
-    switch (id) {
-      case '11':
-        txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
-        break;
-      case '6':
-        txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
-        break;
-      case '3':
-        txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
-        break;
-      case '9':
-        txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
-        break;
-      case '7':
-        txt = '启辰T70，高品质智联SUV，品质来袭！';
-        break;
-      case '5':
-        txt = '启辰T70，高品质智联SUV，品质来袭！';
-        break;
-      case '10':
-        txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
-        break;
-      case '13':
-        txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
-        break;
-    }
-    let obj = {
-      title: `${txt}`,
-      path: `/pages/look_car_detail_03/look_car_detail?activity_id=${activity_id}&id=${id}`,
-      imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
-    };
-    return obj;
+	let imageUrl = '';
+	  switch (id) {
+		  case '11':
+			  txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/`
+			  break;
+		  case '6':
+			  txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60.png`
+			  break;
+		  case '3':
+			  txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60.png`
+			  break;
+		  case '9':
+			  txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T90.png`
+			  break;
+		  case '7':
+			  txt = '启辰T70，高品质智联SUV，品质来袭！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T70.png`
+			  break;
+		  case '5':
+			  txt = '启辰D60EV，长续航合资纯电家轿，智无忧，趣更远！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60EV.png`
+			  break;
+		  case '10':
+			  txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_E30.png`
+			  break;
+		  case '13':
+			  txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
+			  imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60EV.png`
+			  break;
+	  }
+	  return {
+		  title: `${txt}`,
+		  path: `/pages/look_car_detail_03/look_car_detail?id=${this.data.id}`,
+		  imageUrl: imageUrl
+	  }
   },
   //页面初始化
   initData(options) {
@@ -397,18 +408,18 @@ Page({
   },
   //立即下定
   downPayment(e) {
-    let options = this.data.options
-    let onlyOne = e.currentTarget.dataset.open
-    var _this = this
+    let options = this.data.options;
+    let onlyOne = e.currentTarget.dataset.open;
+    var _this = this;
     // order_sn判断订单号是否为空字符串  不为空则为以留资
-    let openid = wx.getStorageSync('userInfo').openid
-    let show_page = this.data.payInfoData.show_page
-    let activity_id = wx.getStorageSync('activity_id')
-    console.log(show_page, 'show_page')
+    let openid = wx.getStorageSync('userInfo').openid;
+	  let show_page = this.data.payInfoData?this.data.payInfoData.show_page:'';
+    let activity_id = wx.getStorageSync('activity_id');
+    console.log(show_page, 'show_page');
     switch (show_page) {
       case 3:
         if (onlyOne) {
-          tool.alert('您已经留过资了哦~')
+          tool.alert('您已经留过资了哦~');
           return
         } else {
           request_05.getPayParam({

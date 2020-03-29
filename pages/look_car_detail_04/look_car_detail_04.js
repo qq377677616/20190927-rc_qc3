@@ -16,6 +16,8 @@ const alert = require('../../utils/tool/alert.js');
 const api = require('../../utils/request/request_03.js');
 
 const app = getApp(); //获取应用实例
+
+let time = null;
 Page({
 
     /**
@@ -87,7 +89,7 @@ Page({
         t70_swiper2_txt: ['数字化车联&互联网信息娱乐', '车辆智能安防体系', '智慧语音助手', '手机远程控制', '异常诊断手机提醒', '全时在线导航'], //部件名称
         t70_swiper3_txt: ['流媒体后视镜', '3D全景式监控影像系统', '后视镜自动折叠', 'TPMS胎压监测系统', '智能电动尾门'], //部件名称
 		t70_swiper4_txt: ['先进的XTRONIC CVT无级变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统', '日产全球战略引擎MR20发动机', '先进的XTRONIC CVT无级变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统', '日产全球战略引擎MR20发动机'], //部件名称
-		t70_swiper5_txt: ['专业制造工艺', 'ABS+EBD+BA三位一体智能刹车辅助系统', 'ATC主动循迹控制系统', 'ESS紧急制动提醒系统', '雷诺-日产-三菱联盟品质标准'], //部件名称
+		t70_swiper5_txt: ['专业制造工艺', 'ABS+EBD+BA三位一体智能刹车辅助系统', 'ESS紧急制动提醒系统', 'ATC主动循迹控制系统', '雷诺-日产-三菱联盟品质标准'], //部件名称
         d60_swiper1_txt: ['车辆智能安防系统', '在线娱乐系统', '智能人机语音交互', '手机远程控制', '车载W i f i热点', '人性化贴心全时导航'], //部件名称
         d60_swiper2_txt: ['宽敞大尺寸天窗', 'Multi-Layer人体工学座椅', '663mm后排膝部空间', '宽敞大尺寸天窗', 'Multi-Layer人体工学座椅', '663mm后排膝部空间'], //部件名称
         d60_swiper3_txt: ['锐利的鹰眼LED前大灯', '星空点阵式前格栅', '红镰式光导LED组合尾灯', '驾驶员导向飞航式驾驶舱设计', '人体工学D型多功能方向盘', '高品质透气性菱格皮质座椅', '4756mm优越车身长度'], //部件名称
@@ -127,6 +129,8 @@ Page({
         vbtn: true, // 是否显示 播放按钮
         popstu: 1, // 留资弹窗状态
         curvio: null, // 当前创建的video
+		_currxl:0,//开车门当前序列帧
+		id:null
     },
 
 
@@ -135,11 +139,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        console.log(options);
+        // console.log(options);
         this.setData({ carid: options.id })
         mta.Page.init() //腾讯统计
         mta.Event.stat("look_car_other", {})
-        this.data.id = options.id
+		this.setData({ id: options.id })
         if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", { channelid: wx.getStorageSync("shareIds").channel_id })
         request_01.login(() => {
                 this.initData(options)
@@ -151,6 +155,7 @@ Page({
             this.setData({ isShowIcon: res.data.data })
             console.log("isShowIcon", this.data.isShowIcon)
         })
+		this.xlfuc();
     },
     //两个icon动画
     aimateInit() {
@@ -167,10 +172,12 @@ Page({
         this.aimateInit()
     },
     onHide() {
-        clearInterval(this.data.animateInit)
+		clearInterval(time);
+        clearInterval(this.data.animateInit);
     },
     onUnload() {
-        clearInterval(this.data.animateInit)
+		clearInterval(time);
+        clearInterval(this.data.animateInit);
     },
     //选择车款
     bindRegionChange(e) {
@@ -316,35 +323,45 @@ Page({
     onShareAppMessage: function() {
 		let id = this.data.id;
 		let txt = '';
+		let imageUrl = '';
 		switch (id) {
 			case '11':
 				txt = '启辰星，A+级SUV头等舱，“混元”美学的秘密，等你来探索！';
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/`
 				break;
 			case '6':
 				txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60.png`
 				break;
 			case '3':
 				txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60.png`
 				break;
 			case '9':
 				txt = '全新启辰T90，高品质跨界SUV，跨有界，悦无限！';
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T90.png`
 				break;
 			case '7':
 				txt = '启辰T70，高品质智联SUV，品质来袭！';
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T70.png`
 				break;
 			case '5':
-				txt = '启辰T70，高品质智联SUV，品质来袭！';
+				txt = '启辰D60EV，长续航合资纯电家轿，智无忧，趣更远！';
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_D60EV.png`
 				break;
 			case '10':
 				txt = '启辰e30，我的第一台纯电精品车，智在灵活，趣动精彩！';
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_E30.png`
 				break;
 			case '13':
 				txt = '启辰T60EV，智领合资纯电SUV，智无忧，趣更远！';
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60EV.png`
 				break;
 		}
 		return {
             title: `${txt}`,
-            path: `/pages/look_car_detail_02/look_car_detail_02?id=${this.data.id}`
+            path: `/pages/look_car_detail_04/look_car_detail_04?id=${this.data.id}`,
+			imageUrl: imageUrl
         }
     },
     moreBtn() {
@@ -460,5 +477,15 @@ Page({
 			swiper11: type == 11 ? (tab == -1 ? len : tab) : this.data.swiper11,
 			swiper12: type == 12 ? (tab == -1 ? len : tab) : this.data.swiper12,
 		})
-	}
+	},
+	xlfuc(){// 控制序列帧
+	let currxl = 0;
+	clearInterval(time);
+	time = setInterval(()=>{
+		if (currxl==3)currxl=0;
+		this.setData({ _currxl:currxl});
+		++currxl;
+		console.log(this.data._currxl);
+	},1000)
+ }
 })

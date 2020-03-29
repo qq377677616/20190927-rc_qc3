@@ -37,7 +37,7 @@
   </view>
 
   <view class="rule">
-    <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/shuomingshu.jpg?3" data-index="1" onload="imgLoad" onerror="imgLoad"></image>
+    <image class="rule" mode="widthFix" src="{{ IMGSERVICE }}/pay/shuomingshu.jpg?4" data-index="1" onload="imgLoad" onerror="imgLoad"></image>
   </view>
 
   <!-- h2 -->
@@ -252,7 +252,7 @@
 
 <!-- 规则 -->
 <view class="pof fadeShow" wx:if="{{rulspop}}" catchtap="java">
-  <rule bindclose="openRule" ruleImg="{{ IMGSERVICE }}/pay/pay_rule.png?2"></rule>
+  <rule bindclose="openRule" ruleImg="{{ IMGSERVICE }}/pay/pay_rule.png?4"></rule>
 </view>
 
 

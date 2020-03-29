@@ -182,7 +182,7 @@
                 class="cut_on setposition" bindtap="freeGet" data-obj="{{item}}" data-name="{{item.title}}"
                 data-price="{{item.price}}" data-sid="{{item.id}}" data-Image="{{item.thumb}}">
                <button wx:if="{{!_iphone}}" open-type="getPhoneNumber" lang="zh_CN" bindgetphonenumber="bindgetphonenumber" class="getphone"></button>
-                点击免费拿
+			    点击免费拿
               </view>
 
               <view wx:if="{{item.buttom_type==1 && endStatus==1}}" class="cut_robbed setbold">已经抢过了</view>

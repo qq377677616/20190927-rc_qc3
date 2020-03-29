@@ -55,9 +55,8 @@ Page({
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide: function () {
+		console.log("onhide");
 		this.setData({iscurr:false})
-		// app.globalData.socketOpen = false;
-		// this.closesck();
 	},
 
 	/**
@@ -118,7 +117,8 @@ Page({
 		},50000)
 	},
 	sendMsg(){// 发送消息
-		this.subMsg().then((rel)=>{
+		
+		
 			if (!app.globalData.socketOpen) {
 				tool.alert("网络链接失败！");
 			}
@@ -146,7 +146,6 @@ Page({
 					console.log("发送失败！");
 				}
 			}
-		});
 	},
 	acceptmag(){//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
 		let self = this;
@@ -170,6 +169,7 @@ Page({
 					arr.push({ client_avatar: self.data.handimg, content: data.data.content, type: 1, is_ob: 0, msg_type: data.data.msg_type });
 					self.setData({ sendload: [...self.data.sendload, ...arr], msg: '', img: null });
 					self.conutHeg();
+					self.cleardot();
 					arr = [];
 					break;
 				}
@@ -186,9 +186,9 @@ Page({
 		https.msgLog(dat).then((res)=>{
 			if (res.data.code == 1){
 				this.setData({ sendload: [...res.data.data, ...this.data.sendload], havpage: res.data.data.length >= 10 });
-				console.log(this.data.sendload);
+				// console.log(this.data.sendload);
 				if (this.data.isenter == 1) {
-					this.setscret();
+					this.conutHeg();
 					this.setData({ isenter: ++this.data.isenter })
 				}
 			}
@@ -205,9 +205,6 @@ Page({
 			}
 		})
 	},
-	setscret(){ // 抬起聊天
-		this.conutHeg();
-	},
 	preview(e){ // 图片预览
 		let arr = [];
 		let currentUrl = e.currentTarget.dataset.src;
@@ -223,11 +220,11 @@ Page({
 		})	
 	},
 	conutHeg(){// 计算滚动高度
-		let baseheg = this.data.isIponeX?70:50; 
-		console.log("计算抬起高度", baseheg);
-		if (!this.data.iscurr) return;
+		let baseheg = this.data.isIponeX?80:60; 
 		setTimeout(()=>{
 			tool.getDom('.infobox').then((res) => {
+				if (!res[0]) return;
+				
 				if (res[0].height + baseheg > wx.getSystemInfoSync().windowHeight) {
 					wx.pageScrollTo({
 						scrollTop: (res[0].height - wx.getSystemInfoSync().windowHeight + baseheg),
@@ -242,7 +239,7 @@ Page({
 			.then((value) => {
 				console.log("屏幕高度", value.screenHeight);
 				const model = value.model;
-				if (model.search('iPhone X') != -1){
+				if (model.search('iPhone X')!= -1){
 					this.setData({
 						isIponeX: true,
 					})
@@ -253,14 +250,14 @@ Page({
 				}
 			})
 	},
-	subMsg(){ // 发送订阅消息
-		return new Promise((resolve,reject)=>{
-			wx.requestSubscribeMessage({
-				tmplIds: ['adOBVu25IYMu8usw2VbaO1US8B9yB95xbTzlBzEYai0'],
-				success(res) {
-					resolve(res);
-				}
-			})
+	cleardot() { // 清除红点  //239658+'A'//this.data.useData.userid+'A',
+		console.log(this.data.uid);
+		let dat = {
+			uid: this.data.uid,
+			to_uid: 239658 + 'A'
+		}
+		https.cleaninfo(dat).then((res) => {
+			console.log(res);
 		})
 	}
 })
