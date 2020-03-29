@@ -1,11 +1,12 @@
 // activity_module/pages/xw_assemble/o_assemle/o_assemle.js
+const app = getApp(); //获取应用实例
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    IMGSERVICE: app.globalData.IMGSERVICE,
   },
 
   /**

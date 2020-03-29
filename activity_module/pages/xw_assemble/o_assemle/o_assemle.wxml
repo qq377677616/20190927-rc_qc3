@@ -25,11 +25,12 @@
             </view>
         </view>
 
-        <view class="state-message">3人团&nbsp;拼团中</view>
+        <!-- No.1 -->
+        <text decode class="state-message">3人团&nbsp;拼团中</text>
 
-        <view class="current-join">
-            已参与<view class="span">2人</view>，邀请好友一起拼团
-        </view>
+        <text decode class="current-join-message">
+            已参与<text class="span">2人</text>，邀请好友一起拼团
+        </text>
 
         <view class="count-down">
             <view class="label">距离结束还剩：</view>
@@ -38,8 +39,167 @@
                 <view class="text-2">:</view>
                 <view class="span">15</view>
                 <view class="text-2">:</view>
-                <view class="span">45</view>
+                <view class="span active">45</view>
             </view>
         </view>
+
+        <view class="join-head-img">
+            <block wx:if="{{true}}">
+                <view wx:for="{{20}}" class="head-img-item joining">
+                    <image class="huang-guan" src="{{ IMGSERVICE }}/icon/huang-guan.png" mode="aspectFit"></image>
+                    <image class="head-img"
+                        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+                        mode="aspectFit"></image>
+                    <view class="span">团长</view>
+                </view>
+            </block>
+
+            <block wx:else>
+                <view wx:for="{{20}}" class="head-img-item virtual-position">
+                    <image class="head-img"
+                        src="{{ IMGSERVICE }}/icon/wen-hao.png"
+                        mode="aspectFit"></image>
+                </view>
+            </block>
+
+        </view>
+
+        <view class="btn-group colorF1403E">
+            <view class="btn share">邀请好友</view>
+            <view class="btn more">查看更多活动</view>
+        </view>
+
+        <!-- No.2 -->
+        <text decode class="state-message">3人团&nbsp;拼团成功</text>
+
+        <text decode class="current-join-message">
+            您已拼团成功啦&nbsp;快来领取奖品吧
+        </text>
+
+        <view class="count-down hidden">
+            <view class="label">距离结束还剩：</view>
+            <view class="p">
+                <view class="span">09</view>
+                <view class="text-2">:</view>
+                <view class="span">15</view>
+                <view class="text-2">:</view>
+                <view class="span active">45</view>
+            </view>
+        </view>
+
+        <view class="join-head-img">
+            <block wx:if="{{true}}">
+                <view wx:for="{{20}}" class="head-img-item joining">
+                    <image class="huang-guan" src="{{ IMGSERVICE }}/icon/huang-guan.png" mode="aspectFit"></image>
+                    <image class="head-img"
+                        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+                        mode="aspectFit"></image>
+                    <view class="span">团长</view>
+                </view>
+            </block>
+
+            <block wx:else>
+                <view wx:for="{{20}}" class="head-img-item virtual-position">
+                    <image class="head-img"
+                        src="{{ IMGSERVICE }}/icon/wen-hao.png"
+                        mode="aspectFit"></image>
+                </view>
+            </block>
+
+        </view>
+
+        <view class="btn-group color003B73">
+            <view class="btn receive">领取奖品</view>
+            <view class="btn more">查看更多活动</view>
+        </view>
+
+        <!-- No.3 -->
+        <text decode class="state-message">3人团&nbsp;拼团成功</text>
+
+        <text decode class="current-join-message">
+            您已拼团成功啦&nbsp;快来领取奖品吧
+        </text>
+
+        <view class="count-down hidden">
+            <view class="label">距离结束还剩：</view>
+            <view class="p">
+                <view class="span">09</view>
+                <view class="text-2">:</view>
+                <view class="span">15</view>
+                <view class="text-2">:</view>
+                <view class="span active">45</view>
+            </view>
+        </view>
+
+        <view class="join-head-img">
+            <block wx:if="{{true}}">
+                <view wx:for="{{20}}" class="head-img-item joining">
+                    <image class="huang-guan" src="{{ IMGSERVICE }}/icon/huang-guan.png" mode="aspectFit"></image>
+                    <image class="head-img"
+                        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+                        mode="aspectFit"></image>
+                    <view class="span">团长</view>
+                </view>
+            </block>
+
+            <block wx:else>
+                <view wx:for="{{20}}" class="head-img-item virtual-position">
+                    <image class="head-img"
+                        src="{{ IMGSERVICE }}/icon/wen-hao.png"
+                        mode="aspectFit"></image>
+                </view>
+            </block>
+
+        </view>
+
+        <view class="btn-group color003B73">
+            <view class="btn join">立即参与</view>
+            <view class="btn share">邀请好友</view>
+            <view class="btn more">查看更多活动</view>
+        </view>
+
+        <!-- No.4 -->
+        <text decode class="state-message fail">3人团&nbsp;拼团失败</text>
+
+        <text decode class="current-join-message">
+            很抱歉&nbsp;您来晚了
+        </text>
+
+        <view class="count-down hidden">
+            <view class="label">距离结束还剩：</view>
+            <view class="p">
+                <view class="span">09</view>
+                <view class="text-2">:</view>
+                <view class="span">15</view>
+                <view class="text-2">:</view>
+                <view class="span active">45</view>
+            </view>
+        </view>
+
+        <view class="join-head-img">
+            <block wx:if="{{true}}">
+                <view wx:for="{{20}}" class="head-img-item joining">
+                    <image class="huang-guan" src="{{ IMGSERVICE }}/icon/huang-guan.png" mode="aspectFit"></image>
+                    <image class="head-img"
+                        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+                        mode="aspectFit"></image>
+                    <view class="span">团长</view>
+                </view>
+            </block>
+
+            <block wx:else>
+                <view wx:for="{{20}}" class="head-img-item virtual-position">
+                    <image class="head-img"
+                        src="{{ IMGSERVICE }}/icon/wen-hao.png"
+                        mode="aspectFit"></image>
+                </view>
+            </block>
+
+        </view>
+
+        <view class="btn-group color003B73">
+            <view class="btn more">查看更多活动</view>
+        </view>
+
     </view>
 </view>

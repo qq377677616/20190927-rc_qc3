@@ -53,3 +53,164 @@ page{
     font-size: 24rpx;
     color: #333;
 }
+
+.state-info .state-message{
+    display: block;
+    margin-bottom: 32rpx;
+    margin-top: 42rpx;
+    font-style:italic;
+    text-align:center;
+    font-size: 36rpx;
+    color: #F34644;
+    font-weight: bold;
+
+}
+.state-info .state-message.fail{
+    color: #999;
+}
+.state-info .current-join-message{
+    display: block;
+    margin-bottom: 12rpx;
+    text-align:center;
+    font-size: 28rpx;
+    color: #333;
+    font-weight: bold;
+}
+.state-info .current-join-message .span{
+    display: inline;
+    font-size: 30rpx;
+    color: #F1403E;
+    font-weight: bold;
+}
+
+.state-info .count-down {
+    margin-bottom: 104rpx;
+    text-align: center;
+}
+.state-info .count-down.hidden {
+    visibility:hidden;
+}
+.state-info .count-down .label{
+    display: inline-block;
+    font-size: 24rpx;
+    color: #666;
+}
+.state-info .count-down .p{
+    display: inline-block;
+}
+.state-info .count-down .span {
+    display: inline-block;
+    padding: 10rpx 8rpx;
+    font-size: 20rpx;
+    color: #fff;
+    background-color: #333;
+    border-radius: 8rpx;
+}
+
+.state-info .count-down .span.active {
+    background-color: #F1403E;
+}
+
+.state-info .count-down .text-1 {
+    padding: 0 2rpx;
+    display: inline-block;
+    font-size: 22rpx;
+    color: #333;
+}
+
+.state-info .count-down .text-2 {
+    padding: 0 4rpx;
+    display: inline-block;
+    color: #333;
+    font-size: 16rpx;
+}
+
+.state-info .join-head-img{
+    width: 384rpx;
+    margin: auto;
+}
+
+.state-info .head-img-item{
+    position: relative;
+    display: inline-block;
+    margin: 15rpx 15rpx;
+    box-sizing: border-box;
+    width: 66rpx;
+    height: 66rpx;
+    border-radius:50%;
+}
+.state-info .head-img-item.virtual-position{
+    border:1rpx dashed #7D7D7D;
+}
+.state-info .head-img-item .huang-guan{
+    position: absolute;
+    left: -15rpx;
+    top: -15rpx;
+    width: 35rpx;
+    height: 35rpx;
+    transform:rotate(-45deg);
+}
+.state-info .head-img-item.joining .head-img{
+    width: 100%;
+    height: 100%;
+    border-radius:50%;
+}
+.state-info .head-img-item.virtual-position .head-img{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate3d(-50%,-50%,0);
+    width: 60%;
+    height: 60%;
+}
+.state-info .head-img-item .span{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform:translate3d(-50%,50%,0);
+    padding: 4rpx 8rpx;
+    font-size: 15rpx;
+    color: #fff;
+    line-height: normal;
+    background-color: #FFC052;
+    border-radius:12px;
+    white-space:nowrap;
+}
+
+.btn-group{
+    
+}
+.btn-group .btn{
+    margin-top: 36rpx;
+    height: 74rpx;
+    font-size: 30rpx;
+    line-height: 74rpx;
+    text-align:center;
+    box-sizing: border-box;
+    border-radius:37rpx;
+    font-weight: bold;
+}
+.btn-group.colorF1403E .btn.share{
+    background-color: #F1403E;
+    color: #fff;
+}
+.btn-group.colorF1403E .btn.more{
+    border:2rpx solid #F1403E;
+    color:#F1403E;
+}
+.btn-group.color003B73 .btn.receive{
+    background-color: #003B73;
+    color: #fff;
+}
+.btn-group.color003B73 .btn.join{
+    background-color: #003B73;
+    color: #fff;
+}
+.btn-group.color003B73 .btn.share{
+    background-color: #003B73;
+    color: #fff;
+}
+.btn-group.color003B73 .btn.more{
+    border:2rpx solid #003B73;
+    color:#003B73;
+}
