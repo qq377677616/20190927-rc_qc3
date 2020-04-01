@@ -109,6 +109,7 @@ page{
 
 .activity-info-bar .info-right .count-down {
     text-align: center;
+	margin-top: 12rpx;
 }
 
 .activity-info-bar .info-right .count-down .span {
@@ -183,8 +184,6 @@ page{
     color:#F1403E;
 }
 
-.goods-info-bar .info-copy {}
-
 .goods-info-bar .info-copy .host-party {
     float:left;
     font-size: 24rpx;
@@ -208,9 +207,7 @@ page{
     font-size: 28rpx;
     color: #F1403E;
 }
-.current-assemble .assemble-list{
-    
-}
+
 .current-assemble .assemble-list .assemble-item{
     display: flex;
     align-items:center;
@@ -236,9 +233,6 @@ page{
     margin-right: 24rpx;
     text-align:right;
 }
-.current-assemble .assemble-list .assemble-item .info .count-down .p{
-    
-}
 .current-assemble .assemble-list .assemble-item .info .count-down .p.people{
     margin-bottom: 8rpx;
     font-size: 20rpx;
@@ -261,7 +255,6 @@ page{
     border-radius:28rpx;
     line-height: 56rpx;
 }
-
 .section{
     padding: 28rpx;
     background-color: #fff;
@@ -277,8 +270,6 @@ page{
     width: 100%;
     display: block;
 }
-
-
 .footer{
     display: flex;
     position: fixed;
@@ -306,15 +297,6 @@ page{
     color: #444;
     text-align:center;
 }
-.footer .share{
-    
-}
-.footer .share .icon{
-    
-}
-.footer .share .span{
-    
-}
 .footer .get-btn{
     flex:0 0 auto;
     width: 400rpx;
@@ -324,3 +306,15 @@ page{
     line-height: 100rpx;
     text-align:center;
 }
+.setbg{
+	background-color: #F1403E !important;
+}
+.setlowprice{
+	margin-left:17rpx; 
+	text-decoration: line-through;
+}
+/* 2020-04-01 */
+/* .info-copy{
+	border-bottom: 1rpx solid rgba(229,229,229,1);
+	padding-bottom: 23rpx;
+} */

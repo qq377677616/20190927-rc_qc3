@@ -35,6 +35,7 @@ const post = (url, data = {}, callback) => {
     url: url,
     data: data,
     method: 'POST',
+	dataType:'json',
     header: {
       'content-type': 'application/x-www-form-urlencoded'
     },
@@ -68,6 +69,7 @@ const postP = (url, data = {}, header = { 'content-type': 'application/x-www-for
       url: url,
       data: data,
       method: 'POST',
+	  dataType: 'json',
       header: header,
       success: function (res) {
         resolve(res)

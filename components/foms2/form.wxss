@@ -157,7 +157,8 @@
     font-size: 28rpx;
     color: #fff;
     margin: 0 auto;
-	background: center no-repeat/cover;
+	background-color: #2A558D;
+	/* background: center no-repeat/cover; */
 }
 
 picker {

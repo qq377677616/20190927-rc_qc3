@@ -62,8 +62,8 @@
         </view>
 
 		
-
-        <view class="submit" bindtap="submit" style="background-image:url({{ IMGSERVICE }}/gaiban/yuyuebtn.png)">
+		<!-- <view class=""></view> -->
+        <view class="submit" bindtap="submit" >预约试驾
 
 		<!-- 预约试驾 -->
 		</view>

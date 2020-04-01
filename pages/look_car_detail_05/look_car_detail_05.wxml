@@ -242,7 +242,14 @@
 				<view class="label">{{item.value}}</view>
 			</view>
 			<view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
-				<view class="lable">{{item.name}}{{index>81&&index<91?'69666':''}}</view>
+				<view class="lable {{index>81&&index<91?'setpad':''}}">
+					{{item.name}}
+					<view class="coule" wx:if="{{index==82}}">
+						<text>东风启辰智联系统</text> 
+						<text>3.0</text> 
+						<text>PLUS</text> 
+					</view>
+				</view>
 				<view class="span">{{isSwitchIng ? '--' : item.value}}</view>
 			</view>
 		</view>

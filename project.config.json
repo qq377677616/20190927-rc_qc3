@@ -632,6 +632,13 @@
 					"pathName": "pages/one_yard/one_yard",
 					"query": "s_i=38",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "经销商砍价首页",
+					"pathName": "activity_module/pages/yls_bargain/index/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

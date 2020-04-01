@@ -27,7 +27,9 @@ Page({
         name: '',
         isGetCode: 0,
         countDown: 60,
-        firstShow: false
+        firstShow: false,
+		ways:0,//参与方式  1 预约  2 现场互动
+		popshow:false,
     },
 
     //获取手机号
@@ -475,14 +477,26 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function(){
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function(){
 
-    }
+    },
+	checkway(e){
+		let type = e.currentTarget.dataset.type;
+		this.setData({ ways: type == this.data.ways ? 0 : type});
+		this.setData({ popshow: this.data.ways == 2});
+		// console.log(type);	
+	},
+	closePop(){
+		this.setData({popshow:false})
+	},
+	goback(){
+		tool.jump_back();
+	}
 })
