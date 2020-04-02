@@ -1040,7 +1040,7 @@ margin-bottom: 32rpx;
 .coule,.coule2,.coule3,.coule4{
 	position: absolute;
 	left: -39rpx;
-	top: -4rpx;
+	top: -3rpx;
 	width: 110rpx;
 	height: 1334rpx;
 	background-color: #F5F5F5;
@@ -1058,10 +1058,10 @@ margin-bottom: 32rpx;
 	height: 1222rpx;
 }
 .coule3{
-	height: 1270rpx;
+	height: 1264rpx;
 }
 .coule4{
-	height: 490rpx;
+	height: 484rpx;
 }
 .coule>text:first-child,.coule2>text:first-child,.coule3>text:first-child,.coule4>text:first-child{
 	writing-mode:vertical-rl;

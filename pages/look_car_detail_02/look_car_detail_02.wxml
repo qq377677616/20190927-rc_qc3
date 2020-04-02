@@ -75,4 +75,8 @@
     <view class="forms-box" wx:if="{{ true }}">
 		<forms bindsubmit="submit" bindclose="isShowForm" popstu="{{popstu}}" type="{{ formsType }}" vehicle="{{ vehicle }}"></forms>
 	</view>
+<!-- 更多按钮 -->
+<view class="float-btn">
+	<image bindtap="moreBtn" src="{{ IMGSERVICE }}/spike/page4_24.png" mode="widthFix"></image>
+</view>
 

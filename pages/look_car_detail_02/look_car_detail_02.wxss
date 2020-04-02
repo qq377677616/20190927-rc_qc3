@@ -108,3 +108,16 @@ page {
   background: #fff;
   color: #999;
 }
+
+/* 新加icon样式 */
+.float-btn {
+	position: fixed;
+	right: 18rpx;
+	bottom: 180rpx;
+	z-index: 99;
+}
+.float-btn image {
+display: block;
+width: 84rpx;
+margin-bottom: 32rpx;
+}

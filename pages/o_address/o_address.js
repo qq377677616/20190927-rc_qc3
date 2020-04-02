@@ -26,6 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	console.log(options)
     request_01.login(()=>{
       this.initData(options)
     })
@@ -179,7 +180,6 @@ Page({
       })
       .then(()=>{
         //complete
-
         this.setData({
           options,
         })

@@ -269,5 +269,8 @@ Page({
 	},
 	closelz() {
 		this.setData({ popstu: 2 })
-	}
+	},
+	moreBtn() {
+		tool.jump_red("/pages/index/index")
+	},
 })
