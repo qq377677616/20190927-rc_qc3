@@ -12,7 +12,7 @@
             <view class="address_item fadeIn {{ item.direction == 'left' ? 'left' : 'right' }}" bind:touchstart="touchstart" bind:touchmove="touchmove" bind:touchend="touchend" data-id="{{ index }}" bindtap="checkedBtn" wx:key="item.address_id" wx:for="{{ addressList }}">
 
                 <block wx:if="{{ options.pageType == 'back' }}">
-                    <view wx:if="{{ item.is_default == 1 }}" class="checked active iconfont icon_gouxuan"></view>
+                    <view wx:if="{{ item.is_default == 1 }}" class="checked active iconfont icon-gouxuan"></view>
                     <view wx:else class="checked"></view>
                 </block>
 

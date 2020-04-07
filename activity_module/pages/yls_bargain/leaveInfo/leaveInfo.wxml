@@ -4,17 +4,33 @@
 		<view class="handrow">
 			<text class="iconfont icon-wodexianxing icon1"></text>	
 			<view class="manPick">
-				<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-					<view class="picker">
-					当前选择：{{array[index]}}
+				<!-- <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}"> -->
+					<view class="picker" bindtap="getInfo">
+						<block wx:if="{{ currentAddressItem.real_address }}">
+							<view class="nowrap">{{ currentAddressItem.name + ' ' + currentAddressItem.mobile }}</view>
+							<view class="nowrap">{{ currentAddressItem.real_address }}</view>
+						</block>
+						<block wx:else>
+							填写收货人信息
+						</block>
 					</view>
-				</picker>
+				<!-- </picker> -->
 			</view>
 		</view>
 		<view class="handrow">
 			<text class="iconfont icon-shouyexianxing icon1"></text>	
 			<view class="manPick">
+				<picker bindchange="bindPickerChange" value="{{store_index}}" range="{{pickerStoreList}}" range-key="name">
+					<view class="picker">
+						<block wx:if="{{ pickerStoreList[store_index].name }}">
+							<view class="nowrap">{{pickerStoreList[store_index].name}}</view>
+						</block>
+						<block wx:else>
+							选择领取的门店
+						</block>
+					</view>
 
+				</picker>
 			</view>
 		</view>				
 	</view>

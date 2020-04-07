@@ -86,7 +86,7 @@ Page({
 		swiper2_txt: ['“星耀式” LED光导尾灯', '“星航” 投射式LED前大灯', '18英寸切削铝合金轮辋', '悬浮式车顶', '全景天窗', '科技范高质感内饰', 'Multi-Layer人体工学座椅', '“星空点阵式” 启辰家族前格栅'], //部件名称
         swiper3_txt: ['AEB自主紧急制动系统', 'BSW变道盲区预警系统', 'LDW车道偏离预警系统', '3D AVM全景式监控影像系统', '多场景远程控制', '远程控制车辆', '智能语音助手', '10+8英寸大尺寸智能双屏交互', '智能全时导航', 'DVR智能行车记录仪'], //部件名称
         t70_swiper1_txt: ['LED光扩散粒子后尾灯', '18英寸铝合金双色切割工艺轮辋', '钻石绗缝皮质座椅', '丰富的收纳空间', '10.1英寸高清多点触控屏', '炮筒式高清晰组合仪表盘', '多功能D型真皮方向盘(带控制键)', '投射式鹰眼前大灯'], //部件名称
-        t70_swiper2_txt: ['数字化车联&互联网信息娱乐', '车辆智能安防体系', '智慧语音助手', '手机远程控制', '异常诊断手机提醒', '全时在线导航'], //部件名称
+		t70_swiper2_txt: ['全时在线导航', '智慧语音助手', '手机远程控制', '数字化车联&互联网信息娱乐', '车俩智能安防体系', '异常诊断手机提醒 '], //部件名称
         t70_swiper3_txt: ['流媒体后视镜', '3D全景式监控影像系统', '后视镜自动折叠', 'TPMS胎压监测系统', '智能电动尾门'], //部件名称
 		t70_swiper4_txt: ['先进的XTRONIC CVT无级变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统', '日产全球战略引擎MR20发动机', '先进的XTRONIC CVT无级变速器', '多连杆独立后悬挂', 'ESP车身电子稳定系统', '日产全球战略引擎MR20发动机'], //部件名称
 		t70_swiper5_txt: ['专业制造工艺', 'ABS+EBD+BA三位一体智能刹车辅助系统', 'ESS紧急制动提醒系统', 'ATC主动循迹控制系统', '雷诺-日产-三菱联盟品质标准'], //部件名称
@@ -118,13 +118,21 @@ Page({
             { img: 'Tb60_sw3_10.png', type: 2, vUrl: "Tb60_sw3_10.mp4"}
         ],
         t70_swiper2_img: [ // t70第二个swiper
-            { img: 'tb70_2_1.png', type: 2, vUrl: "tb70_2_1.mp4" },
+			{ img: 'tb70_2_6.png', type: 2, vUrl: "tb70_2_6.mp4" }, 
+			{ img: 'tb70_2_3.png', type: 2, vUrl: "tb70_2_3.mp4" },
+			{ img: 'tb70_2_4.png', type: 2, vUrl: "tb70_2_4.mp4" },
+			{ img: 'tb70_2_1.png', type: 2, vUrl: "tb70_2_1.mp4" },
             { img: 'tb70_2_2.png', type: 2, vUrl: "tb70_2_2.mp4" },
-            { img: 'tb70_2_3.png', type: 2, vUrl: "tb70_2_3.mp4" },
-            { img: 'tb70_2_4.png', type: 2, vUrl: "tb70_2_4.mp4" },
-            { img: 'tb70_2_5.png', type: 2, vUrl: "tb70_2_5.mp4" },
-            { img: 'tb70_2_6.png', type: 2, vUrl: "tb70_2_6.mp4" }
+            { img: 'tb70_2_5.png', type: 2, vUrl: "tb70_2_5.mp4" }
         ],
+		t70_swiper2_imgs: [ // t70第二个swiper 的小轮播图
+			{ img: 'tb70_2_5.png', type: 2, vUrl: "tb70_2_5.mp4" },
+			{ img: 'tb70_2_6.png', type: 2, vUrl: "tb70_2_6.mp4" },
+			{ img: 'tb70_2_3.png', type: 2, vUrl: "tb70_2_3.mp4" },
+			{ img: 'tb70_2_4.png', type: 2, vUrl: "tb70_2_4.mp4" },
+			{ img: 'tb70_2_1.png', type: 2, vUrl: "tb70_2_1.mp4" },
+			{ img: 'tb70_2_2.png', type: 2, vUrl: "tb70_2_2.mp4" }
+		],
         isplay: false, // 是否在播放视频
         vbtn: true, // 是否显示 播放按钮
         popstu: 1, // 留资弹窗状态
@@ -203,6 +211,7 @@ Page({
     //页面初始化
     initData(options) {
         // tool.loading("加载中")
+		console.log("---", options.id);
         Promise.all([
                 request_01.lookCarDetail({
                     user_id: wx.getStorageSync('userInfo').user_id,

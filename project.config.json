@@ -522,7 +522,7 @@
 					"scene": null
 				},
 				{
-					"id": 107,
+					"id": 66,
 					"name": "改版t90",
 					"pathName": "pages/look_car_detail_05/look_car_detail_05",
 					"query": "id=9",
@@ -631,6 +631,13 @@
 					"name": "one_yard",
 					"pathName": "pages/one_yard/one_yard",
 					"query": "s_i=38",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "经销商砍价首页",
+					"pathName": "activity_module/pages/yls_bargain/index/index",
+					"query": "",
 					"scene": null
 				}
 			]

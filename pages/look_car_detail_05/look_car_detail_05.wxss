@@ -1611,4 +1611,27 @@ page{
 .setwids{
 	width: 480rpx;
 }
-
+.setpad{
+	padding-left: 80rpx;
+	position: relative;
+}
+.coule{
+	position: absolute;
+	left: -39rpx;
+	top: -4rpx;
+	width: 110rpx;
+	height: 1264rpx;
+	background-color: #F5F5F5;
+	z-index: 99;
+	/* writing-mode:horizontal-tb; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	/* writing-mode:vertical-lr */
+	border-right: 1rpx solid #e6e6e6;
+	box-sizing: border-box;
+}
+.coule>text:first-child{
+	writing-mode:vertical-rl;
+}

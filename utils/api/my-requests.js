@@ -1,4 +1,5 @@
 import $ from './request.js'
+import tool from '../public/tool.js'
 const QQMapWX = require('../../utils/other/qqmap-wx-jssdk.min.js');
 const REQUESTURL = getApp().globalData.REQUESTURL
 const myRequest = (data, url, type = 'post', isUrl = false) => {
@@ -50,6 +51,7 @@ const msgList = (data, url = '/index/index/isExistMsg') => { return myRequest(da
 const cleaninfo = (data, url = '/index/index/clean') => { return myRequest(data, url) }
 // 图片上传
 const uploadFiles = (data) => {
+	tool.loading();
 	let url = `${REQUESTURL}/index/index/upload`;
 	return new Promise((resolve, reject) => {
 		wx.chooseImage({
@@ -62,12 +64,18 @@ const uploadFiles = (data) => {
 					formData: {},
 					success(res) {
 						const data = res.data
-						resolve(JSON.parse(data))
+						console.log(data);
+						tool.loading_h();
+						data ? resolve(JSON.parse(data)) : tool.alert("图片大小不能超过俩兆！");
 					}
 				})
 			},
 			fail(err) {
-				reject(err)
+				reject(err);
+				tool.loading_h();
+			},
+			complete(rel){
+				tool.loading_h();
 			}
 		})
 	})

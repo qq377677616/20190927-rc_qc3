@@ -444,6 +444,38 @@ const de_phone = (data) => {
 			})
 	})
 }
+//获取默认地址
+const defaultAddress = (data) => {
+	let url = `${SERVICE}/api3/address/default_address`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data: { ...data, openid: wx.getStorageSync('userInfo').openid }
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 经销商 获取门店
+const store_list = (data) => {
+	let url = `${SERVICE}/api3/dealer_activity/store_list`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data: { ...data, openid: wx.getStorageSync('userInfo').openid }
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
 module.exports = {
 	reply_list,
 	addArtlike,
@@ -472,4 +504,6 @@ module.exports = {
 	order_info,
 	is_upgrade,
 	de_phone,
+	defaultAddress,
+	store_list,
 }

@@ -306,6 +306,7 @@ Page({
 			self.bindUse(); // 绑定用户
 			self.scoketClose();// 监听socket关闭
 			self.acceptmag();// 接收socekt
+			tool.loading_h(); 
 		})
 	},
 	scoketClose(){// 监听socket 关闭事件 重连

@@ -67,7 +67,7 @@ Page({
 				"info": ['高品质跨界SUV 跨有界 悦无限'],
 				"lowprice": "11.88",
 				"highprice": "15.48",
-				"bgUrl": [imageUrl + "/lookcar/img_t90.png", imageUrl + "/lookcar/img_t90_X.png"],
+				"bgUrl": [imageUrl + "/lookcar/img_t90.png?2", imageUrl + "/lookcar/img_t90_X.png?2"],
 				"titleImg": imageUrl + "/lookcar/title_t90.png?2",
 				icon:'icon-T2',
 				cid: 9,

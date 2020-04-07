@@ -117,7 +117,8 @@
 				"pages/xw_assemble/index/index",
 				"pages/xw_assemble/o_assemle/o_assemle",
 				"pages/yls_bargain/bargain_index/bargain_index",
-				"pages/yls_bargain/leaveInfo/leaveInfo"
+				"pages/yls_bargain/leaveInfo/leaveInfo",
+				"pages/yls_bargain/index/index"
 			]
 		}
 	],

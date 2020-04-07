@@ -203,6 +203,8 @@ Page({
 				this.setData({ msg_type: 2, img: res.data});
 				this.sendMsg()	
 			}
+		}).catch((err)=>{
+			console.log("请求超时");
 		})
 	},
 	preview(e){ // 图片预览
