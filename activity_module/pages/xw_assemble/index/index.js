@@ -1,5 +1,7 @@
 // activity_module/pages/xw_assemble/index/index.js
 const app = getApp(); //获取应用实例
+import { assembleIndex } from '../../../../xw_api/index.js'
+let userInfo = wx.getStorageSync('userInfo');
 Page({
 
   /**
@@ -8,12 +10,28 @@ Page({
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE,
   },
+  initData(options) {
+    Promise.all([
+      assembleIndex({
+        data: {
+          out_id: '17',
+          openid: userInfo.openid
+        }
+      })
+    ]).then((res) => {
+      const { msg: msg0, status: status0, data:data0} = res[0].data
 
+      
+      console.warn(msg0,status0,data0)
+    }).catch((err)=>{
+
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initData(options)
   },
 
   /**
