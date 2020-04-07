@@ -450,7 +450,7 @@ const defaultAddress = (data) => {
 	return new Promise((resolve, reject) => {
 		_request.request({
 			url,
-			data: { ...data, openid: wx.getStorageSync('userInfo').openid }
+			data
 		})
 			.then(res => {
 				resolve(res)
@@ -466,7 +466,55 @@ const store_list = (data) => {
 	return new Promise((resolve, reject) => {
 		_request.request({
 			url,
-			data: { ...data, openid: wx.getStorageSync('userInfo').openid }
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 经销商 获取砍价首页接口
+const bargainDel = (data) => {
+	let url = `${SERVICE}/api3/dealer_bargain/detail`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+//经销商 发起砍价接口
+const start_bargain = (data) => {
+	let url = `${SERVICE}/api3/dealer_bargain/start_bargain`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 经销商 查询砍价信息接口
+const bargain_info = (data) => {
+	let url = `${SERVICE}/api3/dealer_bargain/bargain_info`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
 		})
 			.then(res => {
 				resolve(res)
@@ -506,4 +554,7 @@ module.exports = {
 	de_phone,
 	defaultAddress,
 	store_list,
+	bargainDel,
+	start_bargain,
+	bargain_info,
 }

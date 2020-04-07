@@ -84,7 +84,7 @@ Page({
 	  return {
 		  title: "立即认证启辰车主，即可赢好礼！",
 		  path: `/pages/binding/owner/owner?activity_id=${this.data.activity_id}`,
-		  imageUrl: `${this.data.IMGSERVICE}/guaguale/gglshare.jpg?1`,
+		  imageUrl: `${this.data.IMGSERVICE}/guaguale/gglshare.jpg?3`,
 		  success() {
 			  console.log("通过按钮分享上报")
 		  }

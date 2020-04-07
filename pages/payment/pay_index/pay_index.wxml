@@ -79,3 +79,11 @@
 <view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}" id="popType_index">
   <activePop acData="{{acData}}" popType="{{popType}}" text="{{text}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme"></activePop>
 </view>
+<!-- 4.4号弹窗 wx:if="{{ffpop||fspop}}" -->
+<view class="fore_fore fadeShow" wx:if="{{ffpop||fspop}}">
+	<view class="setpor">
+		<image mode="widthFix" class="fore_fore_img" src="{{IMGSERVICE}}/pay/{{ffpop?'date_tanchuang1.png':'date_tanchuang2.png'}}"></image>
+		<view class="closebtn" bindtap="closePop"></view>
+		<view class="djbtn" catchtap="toChange" wx:if="{{fspop}}"></view>
+	</view>
+</view>

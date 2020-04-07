@@ -288,5 +288,40 @@ swiper-item {
   width:332rpx;
   margin-top: 48rpx;
 }
-
-
+/* 4.4号 */
+.fore_fore{
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.fore_fore_img{
+	width: 566rpx;
+	height: auto;
+}
+.setpor{
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+.closebtn{
+	width: 45rpx;
+	height: 45rpx;
+	/* background-color: red; */
+	position: absolute;
+	bottom: 0;
+	border-radius: 50%;
+}
+.djbtn{
+	width: 480rpx;
+	height: 63rpx;
+	/* background-color: red; */
+	position: absolute;
+	bottom: 97rpx;
+}

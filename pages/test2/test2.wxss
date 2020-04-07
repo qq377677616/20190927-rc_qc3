@@ -387,3 +387,7 @@ page .no_price {
 	font-size: 94rpx;
 	color: #002870;
 }
+.icon-biaoti1{
+	font-size: 110rpx;
+	color: white;
+}

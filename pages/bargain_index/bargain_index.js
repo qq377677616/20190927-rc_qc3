@@ -57,6 +57,7 @@ Page({
 		isShowLoading: false,
 		isphone:null,//是否有授权手机号
 		_iphone:null,// 自己手机号
+		ffpop:false,// 弹窗判断
 	},
 
 	/**
@@ -65,7 +66,7 @@ Page({
 	onLoad: function (options) {
 		console.log('参数', options);
 		//   alert.alert({ str:options.isshare})
-		if (options.scene) {
+		if (options.scene){
 			let scene = decodeURIComponent(options.scene);
 			let aid = scene.split("&")[1].split("=")[1]
 			this.setData({ activity_id: aid})
@@ -127,7 +128,9 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-		this.bar_shopList();
+		if (this.data.currTime){
+			this.bar_shopList();
+		}
 		this.get_barNnm();
 		this.getBargain();
 		this.setData({ isfirst: 1 })
@@ -171,17 +174,20 @@ Page({
 		})
 	},
 	bar_shopList() {//砍价商品列表wx.getStorageSync('userInfo').openid
-
 		let dat = {
 			openid: wx.getStorageSync('userInfo').openid,
 			date: this.data.currTime,
 			activity_id: this.data.activity_id,
 			user_id: this.data.userInfo.user_id
 		}
-		request_04.bargain_shop_list(dat).then((res) => {
+		request_04.bargain_shop_list(dat).then((res) =>{
 			console.log("砍价商品列表数据", res.data);
 			this.setData({ activeStatus: res.data.status, praTime: res.data.status == 1005 ? res.data.data.start_date.split(" ")[0] : '' })
 			if (res.data.status == 0) {
+				if (res.data.data.tanchuang2 == 1 && !wx.getStorageSync("kjffpop")) {
+					this.setData({ ffpop: true });
+					wx.setStorageSync('kjffpop', true)
+				} 
 				this.setData({
 					shopList: res.data.data,
 					iscarActive: res.data.data.car_owner == 1,
@@ -240,13 +246,12 @@ Page({
 		let _end = e.currentTarget.dataset.end;
 		if (_ing == 3 && _end == 1 && !this.data._iphone) // 手机号授权判断
 		return;
-		// if (_ing == 3 && _end == 1 && this.data.isphone==0){// 授权后有没有资格参与
-		// 	tool.alert("您暂无资格参与！")
-		// 	return;
-		// }
+		if (_ing == 3 && _end == 1 && this.data.isphone==0){// 授权后有没有资格参与
+			tool.alert("您暂无资格参与！")
+			return;
+		}
 		if ((wx.getStorageSync("userInfo").user_type == 0 && this.data.iscarActive) || !wx.getStorageSync("userInfo").nickName || !wx.getStorageSync("userInfo").unionid) return;
 		if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.obj.car_owner == 1) {
-			console.log("hello")
 			this.setData({ popType: 4 });
 			this.isVehicleOwnerHidePop();
 			return;
@@ -656,5 +661,8 @@ Page({
 		}).catch((err)=>{
 			console.log(err);
 		})
+	},
+	foreclosePop() {
+		this.setData({ ffpop: false })
 	}
 })

@@ -407,3 +407,10 @@
   </activePop>
 </view>
 <!-- 活动状态弹窗 -->
+<!-- 4.4号弹窗 -->
+<view class="fore_fore fadeShow" wx:if="{{ffpop}}">
+	<view class="setpor">
+		<image mode="widthFix" class="fore_fore_img" src="{{IMGSERVICE}}/pay/date_tanchuang3.png"></image>
+		<view class="closebtn" bindtap="foreclosePop"></view>
+	</view>
+</view>

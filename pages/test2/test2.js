@@ -47,7 +47,7 @@ Page({
 			"info": ['高品质智趣SUV 星级品质 焕新登场'],
 			"lowprice": "8.68",
 			"highprice": "11.88",
-			"bgUrl": [imageUrl + "/lookcar/img_t60.png?1", imageUrl + "/lookcar/img_t60_X.png"],
+			"bgUrl": [imageUrl + "/lookcar/img_t60.png?2", imageUrl + "/lookcar/img_t60_X.png?2"],
 			"titleImg": imageUrl + "/lookcar/title_t60.png?4",
 			icon:'icon-T',
 			cid: 6,
@@ -78,9 +78,9 @@ Page({
 				"info": [''],
 				"lowprice": "",
 				"highprice": "",
-				"bgUrl": [imageUrl + "/lookcar/img_xing.png", imageUrl + "/lookcar/img_xing_X.png"],
+				"bgUrl": [imageUrl + "/lookcar/img_xing.png?2", imageUrl + "/lookcar/img_xing_X.png?2"],
 				"titleImg": imageUrl + "/lookcar/title_xing_1.png?2",
-				 icon:'icon-qichenxing',
+				 icon:'icon-biaoti1',
 				 cid: 11,
 				pritxt: '官方指导价'
 			},
@@ -233,6 +233,8 @@ Page({
 	},
 	jump_page(){
 		let id = this.data.currid;
+		console.log(id);
+		// return;
 		if (id == 9) {
 			// 跳转T90页面
 			router.jump_nav({
@@ -242,12 +244,22 @@ Page({
 			})
 		}
 		else if (id == 11){
-			// 启程星
-			router.jump_nav({
-				url: `/pages/look_car_detail_03/look_car_detail?id=${11}`,
+			// 启程星 wx5c64e733d849c3ef
+			// router.jump_nav({
+			// 	url: `/pages/look_car_detail_03/look_car_detail?id=${11}`,
+			// })
+			wx.navigateToMiniProgram({
+				appId: 'wx5c64e733d849c3ef',
+				path: '',
+				extraData: {},
+				envVersion: 'release',
+				success(res) {
+					console.log('跳转成功');
+				}
 			})
+			return;
 		}
-		else
+		// else
 		// {
 		// 	router.jump_nav({
 		// 		url: `/pages/look_car_detail_02/look_car_detail_02?id=${id}`,
@@ -299,7 +311,7 @@ Page({
 		console.log(`${IMGSERVICE}/lookcar/carshare.jpg`);
 		return {
 			title: '东风启辰线上展厅，在家选好车！',
-			imageUrl: `${IMGSERVICE}/lookcar/carshare.jpg`,
+			imageUrl: `${IMGSERVICE}/lookcar/carshare.jpg?2`,
 			path: '/pages/index/index'
 		};
 	}

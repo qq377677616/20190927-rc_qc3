@@ -1,11 +1,10 @@
 // pages/bargain_state/bargain_state.js
-const app = getApp();
-const route = require('../../../../utils/tool/router.js');
-const alert = require('../../../../utils/tool/alert.js');
-const daojishi = require('../../../../utils/public/util.js');
-import tool from '../../../../utils/tool/tool.js';
+import tool from '../../../../utils/public/tool.js';
+import daojishi from '../../../../utils/public/util.js';
+import request_04 from '../../../../utils/request/request_04.js';
+import request_01 from '../../../../utils/request/request_01.js';
 let shopTimes = '';
-let selftime = '';
+const app = getApp(); //获取应用实例
 Page({
 
 	/**
@@ -50,14 +49,20 @@ Page({
 				kj_price: 55,
 				nickname: '落日'
 			}
-		]}
+		]},
+		bargain_id:null,// 砍价id
+		bargainDat:{},//砍价信息对象
+		restPrice:0,//剩余金额 
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		
+		request_01.login(() => {
+			this.setData({ bargain_id: options.bargain_id})
+			this.getbargainInfo();
+		})
 	},
 
 	/**
@@ -107,6 +112,23 @@ Page({
 	 */
 	onShareAppMessage: function (option) {
 		
+	},
+	getbargainInfo(){// 获取砍价信息
+		const userInfo = wx.getStorageSync('userInfo');
+		let dat = {
+			bargain_id:this.data.bargain_id,
+				openid:userInfo.openid
+		}
+		request_04.bargain_info(dat).then((res)=>{
+			if(res.data.status==1){
+				console.log(res.data);
+				this.setData({ 
+				bargainDat: res.data.data, 
+				restPrice: parseFloat((res.data.data.bargain_info.total_price) - parseFloat(res.data.data.bargain_info.bargain_price)).toFixed(2),
+				})
+			}else{
+				tool.alert(res.data.msg)
+			}
+		})
 	}
-	
 })

@@ -43,8 +43,8 @@ App({
 		IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0', //日产小程序的 图片路径
 
         ASSETSURL: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/ca', //ca 资源地址
-		REQUESTURL: 'http://xkvyfp.natappfree.cc/index.php', //ca接口请求路径
-		SOCKETURL:'wss://wss.vrupup.com/ca:443',// ca socket地址
+		REQUESTURL: 'https://weixinyhby.venucia.com/backend/public/index.php', //ca接口请求路径 http://xkvyfp.natappfree.cc/index.php   日产 https://weixinyhby.venucia.com/backend/public/index.php
+		SOCKETURL: 'wss://weixinyhby.venucia.com/wss',// ca socket地址 wss://weixinyhby.venucia.com/wss
 		socketOpen:false,// 是否连接socket
         currentAddressItem:{},
         goodsDetail: {},

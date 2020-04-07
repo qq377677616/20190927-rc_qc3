@@ -130,8 +130,8 @@ Page({
 			if (msg == '' && !this.data.img) {
 				tool.alert("输入不能为空");
 			} else {//${this.data.to_uid}
-				let content = `{"type":"send","to_uid":"239658A","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img : msg}"}}`;
-				console.log(app.globalData.socketOpen, '777');
+				let content = `{"type":"send","to_uid":"${this.data.to_uid}A","data":{"msg_type":"${msg_type}","content":"${this.data.img ? this.data.img : msg}"}}`;
+				// console.log(app.globalData.socketOpen, '777');
 				if (app.globalData.socketOpen) {
 					wx.sendSocketMessage({
 						data: content,
@@ -180,7 +180,7 @@ Page({
 		let dat = {
 			page:this.data.page,
 			uid:this.data.uid,
-			to_uid: '239658A',//`${this.data.to_uid}A`,
+			to_uid: `${this.data.to_uid}A`,//`${this.data.to_uid}A`,
 			limit:10
 		}
 		https.msgLog(dat).then((res)=>{
@@ -256,7 +256,7 @@ Page({
 		console.log(this.data.uid);
 		let dat = {
 			uid: this.data.uid,
-			to_uid: 239658 + 'A'
+			to_uid: `${this.data.to_uid}A`
 		}
 		https.cleaninfo(dat).then((res) => {
 			console.log(res);

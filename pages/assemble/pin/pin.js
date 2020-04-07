@@ -189,7 +189,7 @@ Page({
 
             return {
                 title: '组团领好礼，有福一起享！',
-				imageUrl: `${IMGSERVICE}/pin/pin.jpg?2`,
+				imageUrl: `${IMGSERVICE}/pin/pin.jpg?3`,
                 path: `/pages/assemble/o_pin/o_pin?groupbuy_id=${groupbuy_id}&user_id=${userInfo.user_id}`,
             };
         }
@@ -198,7 +198,7 @@ Page({
             const options = this.data.options;
             return {
                 title: '组团领好礼，有福一起享！',
-                imageUrl: `${IMGSERVICE}/pin/pin.jpg?2`,
+                imageUrl: `${IMGSERVICE}/pin/pin.jpg?3`,
                 path: `/pages/assemble/pin/pin?activity_id=${options.activity_id}&pageType=index`,
             };
         }
