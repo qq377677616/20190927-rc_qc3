@@ -3,46 +3,44 @@
 <view class="container">
 
     <view class="header">
-        <view class="rule-btn">
+        <view bindtap="isRuleVisibleHandler" class="rule-btn">
             <view class="span">活动规则</view>
             <image class="icon" src="{{ IMGSERVICE }}/icon/right-arrow.png" mode="aspectFit"></image>
         </view>
-        <image class="poster"
-            src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
-            mode="aspectFill"></image>
+        <image class="poster" src="{{ indexData.activity_info.banner }}" mode="aspectFill"></image>
     </view>
 
     <view class="activity-info-bar clearfix">
-        <block wx:if="{{ false }}">
+        <block wx:if="{{ indexData.activity_info.status === 3 }}">
             <view class="info-left">
                 <view class="name">拼团秒杀</view>
                 <view class="tips">活动结束恢复原价</view>
             </view>
         </block>
-        <block wx:else>
+        <block wx:elif="{{ indexData.activity_info.status === 1 }}">
             <view class="info-left">
                 <view class="join-number">
-                    有<view class="span">24000</view>个人正在参与
+                    有<view class="span">{{ indexData.activity_info.joining_people }}</view>个人正在参与
                 </view>
             </view>
         </block>
 
-        <block wx:if="{{ false }}">
+        <block wx:if="{{ indexData.activity_info.status === 3 }}">
             <view class="info-right">
                 <view class="tips">活动已经结束</view>
             </view>
         </block>
-        <block wx:else>
+        <block wx:elif="{{ indexData.activity_info.status === 1 }}">
             <view class="info-right">
                 <view class="count-down-text">距离活动结束仅剩</view>
                 <view class="count-down">
-                    <view class="span">84</view>
+                    <view class="span">{{ countDownFormat.day }}</view>
                     <view class="text-1">天</view>
-                    <view class="span">09</view>
+                    <view class="span">{{ countDownFormat.hours }}</view>
                     <view class="text-2">:</view>
-                    <view class="span">15</view>
+                    <view class="span">{{ countDownFormat.minutes }}</view>
                     <view class="text-2">:</view>
-                    <view class="span">45</view>
+                    <view class="span active">{{ countDownFormat.seconds }}</view>
                 </view>
             </view>
         </block>
@@ -52,7 +50,7 @@
     <view class="goods-info-bar">
         <view class="info-title">
             <view class="tag">电商专享</view>
-            <view class="p">购车大礼包购车大礼包购车大礼包购车大礼包购车大礼包</view>
+            <view class="p">{{ indexData.card_info.coupon_title }}</view>
         </view>
 
         <view class="info-money">
@@ -60,59 +58,84 @@
                 购车现金
             </view>
             <view class="number">
-                ￥2000  
+                ￥{{ indexData.card_info.coupon_price }}
             </view>
         </view>
 
         <view class="info-copy clearfix">
-            <view class="host-party">举办方：启辰万江店</view>
+            <view class="host-party">举办方：{{ indexData.card_info.store_name }}</view>
 
             <view class="statistic">
-                围观276次 分享28次
+                围观{{ indexData.activity_info.pv }}次 分享{{ indexData.activity_info.share }}次
             </view>
         </view>
     </view>
 
-    <view class="current-assemble">
-        <view class="assemble-statistic">3人正在拼团</view>
+    <block wx:if="{{ otherTuan.length }}">
+        <view class="current-assemble">
+            <view class="assemble-statistic">{{ otherTuan.length }}人正在拼团</view>
 
-        <view class="assemble-list">
-            <view wx:for="{{3}}" class="assemble-item">
-                <image mode="aspectFit" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg" class="head-img"></image>
+            <view class="assemble-list">
+                <view wx:for="{{ otherTuan }}" class="assemble-item">
+                    <image mode="aspectFit"
+                        src="{{ item.headimg }}"
+                        class="head-img"></image>
 
-                <view class="nickname">爱丽丝仙境</view>
+                    <view class="nickname">{{ item.nickname }}</view>
 
-                <view class="info">
-                    <view class="count-down">
-                        <view class="p people">还差<view class="span">1人</view>成功</view>
+                    <view class="info">
+                        <view class="count-down">
+                            <view class="p people">还差<view class="span">{{ item.few_people }}人</view>成功</view>
 
-                        <view class="p time">剩余03:57:56</view>
+                            <view class="p time">剩余{{ countDownFormatList[index] }}</view>
+                        </view>
+
+                        <view class="btn">立即参团</view>
                     </view>
-
-                    <view class="btn">立即参团</view>
                 </view>
             </view>
         </view>
-    </view>
+    </block>
 
 
     <view wx:for="{{0}}" class="section">
         <view class="title">产品详情</view>
 
-        <image class="poster" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg" mode="widthFix"></image>
+        <image class="poster"
+            src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+            mode="widthFix"></image>
     </view>
 
     <view class="footer">
-        <view class="back-home">
+        <view bindtap="jumpHome" class="back-home">
             <image class="icon" src="{{ IMGSERVICE }}/icon/home.png" mode="widthFix"></image>
             <view class="span">首页</view>
         </view>
 
-        <view class="share">
+        <button open-type="share" class="share">
             <image class="icon" src="{{ IMGSERVICE }}/icon/share.png" mode="widthFix"></image>
             <view class="span">分享</view>
-        </view>
+        </button>
 
-        <view class="get-btn">立即领取</view>
+        <!-- 
+            //活动进行中 //未拼团
+
+            //活动进行中 //拼团中
+
+            //活动进行中 活动已结束 //拼团成功 
+         -->
+        <view wx:if="{{ indexData.activity_info.status === 1 && indexData.join_info.status === -1 }}"
+            bindtap="lunchAssembleHandler" class="btn lunch">发起拼团</view>
+        <view wx:elif="{{ indexData.activity_info.status === 1 && indexData.join_info.status === 0 }}" class="btn over">
+            拼团中</view>
+        <view
+            wx:elif="{{ indexData.activity_info.status === 1 && indexData.join_info.status === 1 || indexData.activity_info.status === 3 && indexData.join_info.status === 1 }}"
+            class="btn get">立即领取</view>
+        <view wx:else class="btn over">发起拼团</view>
     </view>
+
+    <block wx:if="{{ isVisible }}">
+        <Rule bindclose="isRuleVisibleHandler" ruleUrl="{{ indexData.activity_info.rule }}"></Rule>
+    </block>
+
 </view>

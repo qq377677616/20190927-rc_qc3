@@ -607,8 +607,8 @@
 				},
 				{
 					"id": 78,
-					"name": "o_assemble",
-					"pathName": "activity_module/pages/xw_assemble/o_assemle/o_assemle",
+					"name": "index",
+					"pathName": "activity_module/pages/xw_assemble/index/index",
 					"query": "",
 					"scene": null
 				},
