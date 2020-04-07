@@ -1,0 +1,10 @@
+<!--xw_components/Rule/Rule.wxml-->
+
+<view class="container">
+  <view class="main">
+    <scroll-view scroll-y class="rule">
+      <image src="{{ ruleUrl }}" mode="widthFix"></image>
+    </scroll-view>
+    <image class="close-btn" src="{{ IMGSERVICE }}/prize/close.png" mode="widthFix" bindtap="isVisibleHandler"></image>
+  </view>
+</view>

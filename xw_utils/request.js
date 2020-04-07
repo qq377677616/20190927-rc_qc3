@@ -9,7 +9,7 @@ import productionBase from './production.base.js'
 
 let request = (url = '',
     {
-        method,
+        method = "POST",
         /**
          * application/x-www-form-urlencoded
          * application/json
@@ -17,15 +17,11 @@ let request = (url = '',
          * text/xml
          * multipart/form-data
          */
-        headers,
-        data,
-    } = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            data: {}
-        }) => {
+        headers = {
+            "Content-Type": "application/json",
+        },
+        data = {},
+    } = {}) => {
     return new Promise((resolve, reject) => {
         wx.request({
             url: `${developmentBase.baseApi}${url}`,

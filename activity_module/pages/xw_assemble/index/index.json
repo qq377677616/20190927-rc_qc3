@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "Rule":"/xw_components/Rule/Rule"
+  }
 }

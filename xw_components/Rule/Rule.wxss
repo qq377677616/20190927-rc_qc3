@@ -1,0 +1,40 @@
+/* xw_components/Rule/Rule.wxss */
+
+.container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+}
+
+.container .main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translatex(-50%) translatey(-50%);
+}
+
+.container .main .rule {
+    width: 640rpx;
+    max-height: 900rpx;
+    overflow: auto;
+    border-radius: 40rpx;
+    background-color: #fff;
+}
+
+.container .main .rule image {
+    display: block;
+    width: 100%;
+    border-radius: 40rpx;
+}
+
+.container .main .close-btn {
+    width: 50rpx;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translatex(40rpx) translatey(-40rpx);
+}

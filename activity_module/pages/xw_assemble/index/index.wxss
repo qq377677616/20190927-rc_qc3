@@ -56,7 +56,7 @@ page{
 .activity-info-bar .info-left {
     float: left;
     margin-left: 28rpx;
-    padding-top: 26rpx;
+    padding-top: 28rpx;
     width: 50%;
     line-height: normal;
     color: #fff;
@@ -85,6 +85,7 @@ page{
     display: inline;
     font-size: 36rpx;
     color: #F1403E;
+    vertical-align:middle;
 }
 
 .activity-info-bar .info-right {
@@ -156,7 +157,7 @@ page{
     color: #fff;
     border-radius:6rpx;
     background-color: #F1403E;
-    vertical-align:8rpx;
+    vertical-align:4rpx;
 }
 
 .goods-info-bar .info-title .p {
@@ -315,12 +316,22 @@ page{
 .footer .share .span{
     
 }
-.footer .get-btn{
+.footer .btn{
     flex:0 0 auto;
     width: 400rpx;
-    background-color: #003B73;
     font-size: 34rpx;
-    color: #fff;
     line-height: 100rpx;
     text-align:center;
+}
+.footer .btn.lunch{
+    background-color: #F1403E;
+    color: #fff;
+}
+.footer .btn.get{
+    background-color: #003B73;
+    color: #fff;
+}
+.footer .btn.over{
+    background-color: #E2E2E2;
+    color: #666;
 }
