@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+	  "rule": "/components/rule/rule",
+	  "activeStatus": "/components/activeStatus/activeStatus",
+	  "activePop": "/components/activePop/activePop"
+  }
 }

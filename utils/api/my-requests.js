@@ -25,6 +25,8 @@ const uploadBase64 = (data, url = '/api/upload/upload_file_base64') => { return 
 const requestSubscribeMessage = (data, url = '/api/message/send_remind_msg') => { return myRequest(data, url) }
 //微信客户端登陆
 const clientLogin = (data, url = '/index/index/clientLogin') => { return myRequest(data, url) }
+// 微信传头像昵称
+const clientUpdate = (data, url = '/index/index/clientUpdate') => { return myRequest(data, url) }
 // 获取专营店信息 
 const getInfo = (data, url = '/index/index/getInfo') => { return myRequest(data, url) }
 //获取地理位置
@@ -49,6 +51,7 @@ const msgLog = (data, url = '/index/index/msgLog') => { return myRequest(data, u
 const msgList = (data, url = '/index/index/isExistMsg') => { return myRequest(data, url) }
 // 清除消息记录 
 const cleaninfo = (data, url = '/index/index/clean') => { return myRequest(data, url) }
+
 // 图片上传
 const uploadFiles = (data) => {
 	tool.loading();
@@ -94,4 +97,5 @@ module.exports = {
 	uploadFiles,
 	msgList,
 	cleaninfo,
+	clientUpdate,
 }

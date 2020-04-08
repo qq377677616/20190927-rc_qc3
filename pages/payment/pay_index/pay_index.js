@@ -23,6 +23,8 @@ Page({
     isGou: true, //是否默认选√
     isOnShowOpen: true,
     isDetail: false, //开关下订弹窗
+	ffpop:false,//4.4弹窗
+	fspop:false,//4.7弹窗
   },
 
   onMyEvent(e) {
@@ -62,8 +64,16 @@ Page({
           open_buy:res.data.data.open_buy,
           my_score: res.data.data.my_score,
           is_upgrade: res.data.data.help_info.prize_info.is_upgrade,
-          options
-        })
+          options		  
+		  })
+		//   console.log(res.data.data.tanchuang1);
+		  if (res.data.data.tanchuang == 1 && !wx.getStorageSync("ffpop")){
+			  this.setData({ ffpop:true});
+			  wx.setStorageSync('ffpop', true)
+		} else if (res.data.data.tanchuang2 == 1 && !wx.getStorageSync("fspop")){
+			this.setData({ fspop: true });
+			wx.setStorageSync('fspop', true)
+		}
         if (this.data.isOnShowOpen) {
           if (res.data.data.show_page == 6 && res.data.data.help_info.prize_info.is_upgrade == 0 || res.data.data.show_page == 7 && res.data.data.help_info.prize_info.is_upgrade == 0) {
             router.jump_nav({
@@ -361,7 +371,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-	  console.log(options)
+	console.log("盲定活动",options);
     request_01.login(() => {
       this.initData(options);
     })
@@ -428,5 +438,8 @@ Page({
       imageUrl: this.data.IMGSERVICE + "/pay/share_pay.jpg"
     };
     return obj;
-  }
+  },
+    closePop(){
+		this.setData({ffpop:false,fspop:false})
+	}
 })

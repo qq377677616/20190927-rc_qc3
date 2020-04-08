@@ -414,7 +414,7 @@ picker text {
 
 .f_box {
     width: 100%;
-    height: 240rpx;
+    height: 180rpx;
     /* background-color: red; */
 }
 

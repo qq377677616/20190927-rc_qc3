@@ -52,16 +52,16 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
-		// console.log(options.userid);
-		this.setData({ codeuser: options.userid})
-		if (options.obj){
-			let obj = JSON.parse(options.obj);
-			this.setData({ useData: obj, servepop:true});
-		}else{
-			this.getInfo();
-		}
+	onLoad: function (options){
+		console.log(options,'5555');
 		request_01.login(() =>{
+			this.setData({ codeuser: options.userid })
+			if (options.obj) {
+				let obj = JSON.parse(options.obj);
+				this.setData({ servepop: true, useData: obj });
+			} else {
+				this.getInfo();
+			}
 			this.setData({
 				userInfo: wx.getStorageSync("userInfo") || {}
 			})
@@ -78,8 +78,8 @@ Page({
 	 */
 	onShow: function () {	
 		if (this.data.uid && this.data.useData.userid){
-			this.msgList();
 			this.acceptmag();
+			this.msgList();
 		}
 	},
 	/**
@@ -126,14 +126,28 @@ Page({
 		console.log("授权");
 		let dat = {
 			app_id:'wx1d585c8c2fffe589',
-			openid: this.data.userInfo.openid,
-			nickname: this.data.userInfo.nickName,
-			avatar: this.data.userInfo.headimg
+			openid: this.data.userInfo.openid
+			// nickname: this.data.userInfo.nickname||'',
+			// avatar: this.data.userInfo.headimg||''
 		}
 		https.clientLogin(dat).then((res)=>{
 			console.log(res.data.data);
 			if(res.data.code==1)this.setData({uid:res.data.data});
 			this.scoketInit(); // 初始化scoket
+			this.msgList();
+			// console.log(this.data.useData)
+		})
+	},
+	clientUpdate(){
+		let dat = {
+			app_id: 'wx1d585c8c2fffe589',
+			openid: this.data.userInfo.openid,
+			nickname: this.data.userInfo.nickname||'',
+			avatar: this.data.userInfo.headimg||''
+		}
+		https.clientUpdate(dat).then((res) => {
+			console.log(res.data.data);
+			// console.log(this.data.useData)
 		})
 	},
 	getUserInfo(e) { // 授权
@@ -143,7 +157,7 @@ Page({
 				this.setData({
 					userInfo: wx.getStorageSync("userInfo")
 				})
-				this.authBtn();			
+				this.clientUpdate();			
 			})
 			.catch((err) => {
 				console.log(typeof err);
@@ -192,9 +206,9 @@ Page({
 		this.setData({iscope:true});
 	},
 	takeMan(){ //聊一聊userInfo.nickName || !userInfo.unionid
-		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.id){
+		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.userid){
 			this.subMsg().then((rel) => { 
-				tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.id}&handimg=${this.data.useData.avatar}`);
+				tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.userid}&handimg=${this.data.useData.avatar}`);
 				this.cleardot();
 			});
 		}else{
@@ -203,7 +217,12 @@ Page({
 	},
 	// 跳转到专营店列表
 	storlist(){
-		tool.jump_nav(`/pages/take/dealers/dealers`);
+		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.userid) {
+			tool.jump_nav(`/pages/take/dealers/dealers`);
+		}else{
+			return;
+		}
+		
 	},
 	//点击自定义Modal弹框上的按钮
 	operation(e){
@@ -374,7 +393,7 @@ Page({
 	acceptmag(){//接收信息 is_ob: 1 自己 0 别人  msg_type为接收的信息类型 msg_type:1 为文字 2为图片
 		let self = this;
 		wx.onSocketMessage(function (msg) {
-			console.log("首页")
+			// console.log(self.data.useData)
 			let data = JSON.parse(msg.data);
 			let code = data.code;
 			let type = data.type;
@@ -388,22 +407,26 @@ Page({
 		})
 	},
 	msgList() {// 获取消息记录 
+		// console.log(this.data.useData)
 		let dat = {
 			client_id: this.data.uid, //239658+'A'//this.data.useData.userid+'A',
-			service_id: 239658+'A'
+			service_id: `${this.data.useData.userid}A`
 		}
 		https.msgList(dat).then((res) => {
 			if (res.data.code == 1) {
-				console.log(this.data.uid);
-				console.log("====", JSON.stringify(res.data.data));
-				this.setData({ hasdot: res.data.data > 0 && res.data.data, takeNum: res.data.data})
+				console.log(res.data.data)
+				this.setData({ 
+					hasdot: res.data.data > 0,
+					takeNum: res.data.data
+				})
+				console.log(this.data.takeNum);
 			}
 		})
 	},
 	cleardot() { // 清除红点  //239658+'A'//this.data.useData.userid+'A',
 		let dat = {
 			uid:this.data.uid,
-			to_uid: 239658 + 'A'
+			to_uid: `${this.data.useData.userid}A`
 		}
 		https.cleaninfo(dat).then((res)=>{
 			console.log(res);
@@ -421,5 +444,16 @@ Page({
 	},
 	closePop(){
 		this.setData({ servepop:false})
+	},
+	goqcXing(){
+		wx.navigateToMiniProgram({
+			appId: 'wx5c64e733d849c3ef',
+			path: '',
+			extraData: {},
+			envVersion: 'release',
+			success(res) {
+				console.log('跳转成功');
+			}
+		})
 	}
 })

@@ -26,6 +26,7 @@
 						<image mode="widthFix" src="{{BASEURL}}/tk_more.png" class="moreicon"></image>
 					</view>
 					<view class="brow">{{useData.num}}人浏览</view>
+					<button wx:if="{{ !userInfo.nickName || !userInfo.unionid }}" open-type="getUserInfo" class="sqbtn"  bindgetuserinfo="getUserInfo"></button>
 				</view>
 
 				<view class="s_row2">
@@ -60,7 +61,7 @@
 					<view class="topbtn1" bindtap="takeMan">
 						聊一聊
 						<button wx:if="{{ !userInfo.nickName || !userInfo.unionid }}" open-type="getUserInfo" class="sqbtn"  bindgetuserinfo="getUserInfo"></button>
-						<view class="dots" wx:if="{{hasdot||alljuge}}">{{takeNum}}</view>
+						<view class="dots" wx:if="{{hasdot}}">{{takeNum}}</view>
 					</view>
 					<view class="topbtn1">
 						加微信
@@ -92,7 +93,7 @@
 </view>
 <!-- 跳转启程星小程序 -->
 <view class="xingIcon">
-	<image src="{{BASEURL}}/xing_icon.png" mode="widthFix"></image>
+	<image src="{{BASEURL}}/xing_icon.png" mode="widthFix" bindtap="goqcXing"></image>
 </view>
 <!-- 服务人弹窗 -->
 <view class="serveBox" wx:if="{{servepop}}">

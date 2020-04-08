@@ -1,14 +1,14 @@
 <!--activity_module/pages/xw_assemble/index/index.wxml-->
 
-<view class="container">
+<view class="container" bindtap="isVehicleOwner">
 
     <view class="header">
-        <view class="rule-btn">
+        <view class="rule-btn" bindtap="actPop">
             <view class="span">活动规则</view>
             <image class="icon" src="{{ IMGSERVICE }}/icon/right-arrow.png" mode="aspectFit"></image>
         </view>
         <image class="poster"
-            src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+            src="{{bargainDat.activity_info.banner}}"
             mode="aspectFill"></image>
     </view>
 
@@ -36,65 +36,39 @@
             <view class="info-right">
                 <view class="count-down-text">距离活动结束仅剩</view>
                 <view class="count-down">
-                    <view class="span">84</view>
+                    <view class="span">{{djs.d}}</view>
                     <view class="text-1">天</view>
-                    <view class="span">09</view>
+                    <view class="span">{{djs.h}}</view>
                     <view class="text-2">:</view>
-                    <view class="span">15</view>
+                    <view class="span">{{djs.m}}</view>
                     <view class="text-2">:</view>
-                    <view class="span  setbg">45</view>
+                    <view class="span  setbg">{{djs.s}}</view>
                 </view>
             </view>
         </block>
     </view>
 
-
     <view class="goods-info-bar">
         <view class="info-title">
             <view class="tag">电商专享</view>
-            <view class="p">购车大礼包购车大礼包购车大礼包购车大礼包购车大礼包</view>
+            <view class="p">{{bargainDat.card_info.coupon_title}}</view>
         </view>
-
         <view class="info-money">
             <view class="number">
-                ￥2000  
+                ￥0  
             </view>
 			 <view class="span setlowprice">
-               ￥1299
+               ￥{{bargainDat.card_info.coupon_price}}
             </view>
         </view>
 
         <view class="info-copy clearfix">
-            <view class="host-party">举办方：启辰万江店</view>
-
+            <view class="host-party">举办方：{{bargainDat.card_info.store_name}}</view>
             <view class="statistic">
-                围观276次 分享28次
+                围观{{bargainDat.activity_info.pv}}次 分享{{bargainDat.activity_info.share}}次
             </view>
         </view>
     </view>
-
-    <!-- <view class="current-assemble">
-        <view class="assemble-statistic">3人正在拼团</view>
-
-        <view class="assemble-list">
-            <view wx:for="{{3}}" class="assemble-item">
-                <image mode="aspectFit" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg" class="head-img"></image>
-
-                <view class="nickname">爱丽丝仙境</view>
-
-                <view class="info">
-                    <view class="count-down">
-                        <view class="p people">还差<view class="span">1人</view>成功</view>
-
-                        <view class="p time">剩余03:57:56</view>
-                    </view>
-
-                    <view class="btn">立即参团</view>
-                </view>
-            </view>
-        </view>
-    </view> -->
-
 
     <view wx:for="{{1}}" class="section">
         <view class="title">产品详情</view>
@@ -103,7 +77,7 @@
     </view>
 
     <view class="footer">
-        <view class="back-home">
+        <view class="back-home" bindtap="goHome">
             <image class="icon" src="{{ IMGSERVICE }}/icon/home.png" mode="widthFix"></image>
             <view class="span">首页</view>
         </view>
@@ -111,8 +85,25 @@
         <view class="share">
             <image class="icon" src="{{ IMGSERVICE }}/icon/share.png" mode="widthFix"></image>
             <view class="span">分享</view>
+			<button open-type="share" class="sharebtn"></button>
         </view>
-
-        <view class="get-btn">立即领取</view>
+		<!-- 状态按钮 -->
+			<view class="get-btn setpray" wx:if="{{!bargainDat.activity_info.status}}">请稍后</view>
+			<view class="get-btn setpray" wx:if="{{bargainDat.activity_info.status==2}}">活动未开始</view>
+			<view class="get-btn setred" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.is_bargain==0}}" bindtap="immdEnter" data-type="ok">立即参与</view>
+			<view class="get-btn" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.bargain_info.status==1}}">立即领取</view>
+			<view class="get-btn setpray" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.bargain_info.is_receive==1}}">>已领取</view>
+			<view class="get-btn setpray" wx:if="{{bargainDat.activity_info.status==3}}">活动已结束</view>
+			<view class="get-btn setred" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.bargain_info.is_receive==0}}" bindtap="continuebargain">继续砍价</view>
+		<!-- 状态按钮 -->
     </view>
+</view>
+<!-- 规则弹窗 -->
+  <view class="pof fadeShow" wx:if="{{rulspop}}">
+    <rule bindclose="closePop" ruleImg="{{bargainDat.activity_info.rule}}"></rule>
+  </view>
+<!-- 授权、去绑定车主弹窗 -->
+<view class="pof fadeShow" wx:if="{{isVehicleOwnerHidePop}}">
+  <activePop popType="{{popType}}" text="{{poptxt}}" bindclose="isVehicleOwnerHidePop" bindgetParme="getParme">
+  </activePop>
 </view>

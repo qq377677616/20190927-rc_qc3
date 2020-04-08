@@ -3,9 +3,9 @@
 	<!-- 砍价成功已领取-->
 	<view class="handBox" wx:if="{{shopInfo.buttom_type==3}}">
 		<view class="userInfo">
-			<view class="userImg" style="background-image:url({{IMGSERVICE}}/center/coin_01.png)"></view>
+			<view class="userImg" style="background-image:url({{bargainDat.bargain_info.headimg}})"></view>
 			<view class="userTxt">
-				<text class="nickName">Remuan</text>
+				<text class="nickName">{{bargainDat.bargain_info.nickname}}</text>
 				<text class="txt nowrap">我正在抢购免费礼品，来帮我砍价吧！</text>
 			</view>
 		</view>
@@ -14,7 +14,7 @@
 			<view class="shopImg" style="background-image:url({{IMGSERVICE}}/center/coin_01.png)"></view>
 
 			<view class="shoptxt">
-				<text class="shopName">我正在抢购免费礼品我正在抢购免费礼品我正在抢购免费礼品我正在抢购免费礼品</text>
+				<text class="shopName">{{bargainDat.card_info.coupon_title}}</text>
 				<view class="djs_box">
 					<text class="type1">00</text>
 					<text class="type2">:</text>
@@ -29,12 +29,12 @@
 
 			<!-- <view class="barStatus" style="background-image:url({{IMGSERVICE}}/center/kjchenggong.png)"></view> -->
 		</view>
-		<view class="tipTxt">已砍<text class="txtcol">92.81</text>元,还剩<text class="txtcol">222.19</text>元</view>
+		<view class="tipTxt">已砍<text class="txtcol">{{bargainDat.bargain_info.bargain_price}}</text>元,还剩<text class="txtcol">{{restPrice}}</text>元</view>
 		<view class="progess">
 			<progress percent="100" active color="#E3413E" border-radius="16" />
 		</view>
 		<view class="progressInfo">
-			<text>￥315.00</text>
+			<text>￥{{bargainDat.bargain_info.total_price}}</text>
 			<text>￥0</text>
 		</view>
 		<view class="statusBtn statusBtn3" wx:if="{{!isRight}}"><text>我要砍价</text></view>
@@ -63,7 +63,7 @@
 			<progress percent="100" active color="#E3413E" border-radius="16" />
 		</view>
 		<view class="progressInfo">
-			<text>￥315.00</text>
+			<text>￥{{bargainDat.bargain_info.total_price}}</text>
 			<text>￥0</text>
 		</view>
 		<view class="statusBtn statusBtn2" wx:if="{{isRight}}" bindtap="getworld" data-cid="{{kj_id}}">
@@ -110,7 +110,7 @@
 			<progress percent="{{percent}}" active color="#E3413E" border-radius="16" />
 		</view>
 		<view class="progressInfo">
-			<text>￥315.00</text>
+			<text>￥{{bargainDat.bargain_info.total_price}}</text>
 			<text>￥0</text>
 		</view>
 		<view class="statusBtn statusBtn3" wx:if="{{isRight}}" bindtap="selfFreeget"><text>看看其他商品</text></view>
@@ -154,7 +154,7 @@
 			<progress percent="{{percent}}" active color="#E3413E" border-radius="16" />
 		</view>
 		<view class="progressInfo">
-			<text>￥315.00</text>
+			<text>￥{{bargainDat.bargain_info.total_price}}</text>
 			<text>￥0</text>
 		</view>
 		<view class="statusBtn statusBtn3" bindtap="invitFriend" wx:if="{{isRight&&sy_num>0}}">

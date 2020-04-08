@@ -21,9 +21,9 @@
                 </view>
 
                 <view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
-                    <view class="lable {{(carid==3&&index>66&&index<75)||(carid==3&&index>74&&index<82)||(carid==7&&index>65&&index<76)||(carid==6&&index>61&&index<70)?'setpad':''}}">
+                    <view class="lable {{(carid==3&&index>66&&index<75)||(carid==3&&index>74&&index<82)||(carid==7&&index>65&&index<76)||(carid==6&&index>63&&index<72)?'setpad':''}}">
 						{{item.name}}
-						<view class="{{carid==7?'coule':carid==6?'coule2':(carid==3&&index==67)?'coule3':(carid==3&&index==75)?'coule4':''}}" wx:if="{{(carid==7&&index==66)||(carid==6&&index==62)||(carid==3&&index==67)||(carid==3&&index==75)}}">
+						<view class="{{carid==7?'coule':carid==6?'coule2':(carid==3&&index==67)?'coule3':(carid==3&&index==75)?'coule4':''}}" wx:if="{{(carid==7&&index==66)||(carid==6&&index==64)||(carid==3&&index==67)||(carid==3&&index==75)}}">
 							<text>{{carid==7?'东风启辰智联系统':carid==6?'启辰智联系统':(carid==3&&index==67)?'启辰智联系统':(carid==3&&index==75)?'车载娱乐系统':''}}</text> 
 						</view>
 					</view>

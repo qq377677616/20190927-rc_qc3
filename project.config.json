@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -13,6 +13,8 @@
 		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -21,9 +23,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"preloadBackgroundData": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		"preloadBackgroundData": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.3",
@@ -616,7 +616,7 @@
 					"id": 79,
 					"name": "经销商砍价",
 					"pathName": "activity_module/pages/yls_bargain/bargain_index/bargain_index",
-					"query": "",
+					"query": "bargain_id=1",
 					"scene": null
 				},
 				{
@@ -638,6 +638,13 @@
 					"name": "经销商砍价首页",
 					"pathName": "activity_module/pages/yls_bargain/index/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "盲定首页",
+					"pathName": "pages/payment/pay_index/pay_index",
+					"query": "activity_id=18",
 					"scene": null
 				}
 			]
