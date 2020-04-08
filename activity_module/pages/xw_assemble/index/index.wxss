@@ -331,6 +331,9 @@ page{
     background-color: #003B73;
     color: #fff;
 }
+.footer .btn.get::before{
+    background-color: #fff;
+}
 .footer .btn.over{
     background-color: #E2E2E2;
     color: #666;

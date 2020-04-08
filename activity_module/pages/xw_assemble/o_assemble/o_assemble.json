@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "Rule":"/xw_components/Rule/Rule",
     "Form":"/xw_components/Form/Form",
     "Confirm":"/xw_components/Confirm/Confirm"
   }

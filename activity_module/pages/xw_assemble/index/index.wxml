@@ -1,6 +1,6 @@
 <!--activity_module/pages/xw_assemble/index/index.wxml-->
 
-<view class="container">
+<view class="container" bindtap="globalValidationHandler">
 
     <view class="header">
         <view bindtap="isRuleVisibleHandler" class="rule-btn">
@@ -76,10 +76,8 @@
             <view class="assemble-statistic">{{ otherTuan.length }}人正在拼团</view>
 
             <view class="assemble-list">
-                <view wx:for="{{ otherTuan }}" class="assemble-item">
-                    <image mode="aspectFit"
-                        src="{{ item.headimg }}"
-                        class="head-img"></image>
+                <view wx:for="{{ otherTuan }}" wx:key="tuan_id" class="assemble-item">
+                    <image mode="aspectFit" src="{{ item.headimg }}" class="head-img"></image>
 
                     <view class="nickname">{{ item.nickname }}</view>
 
@@ -90,7 +88,7 @@
                             <view class="p time">剩余{{ countDownFormatList[index] }}</view>
                         </view>
 
-                        <view class="btn">立即参团</view>
+                        <view data-tuanId="{{ item.tuan_id }}" bindtap="joinAssembleHandler" class="btn" data-is-validation="yes">立即参团</view>
                     </view>
                 </view>
             </view>
@@ -98,7 +96,7 @@
     </block>
 
 
-    <view wx:for="{{0}}" class="section">
+    <view wx:for="{{0}}" wx:key="index" class="section">
         <view class="title">产品详情</view>
 
         <image class="poster"
@@ -125,17 +123,119 @@
             //活动进行中 活动已结束 //拼团成功 
          -->
         <view wx:if="{{ indexData.activity_info.status === 1 && indexData.join_info.status === -1 }}"
-            bindtap="lunchAssembleHandler" class="btn lunch">发起拼团</view>
+            bindtap="lunchAssembleHandler" class="btn lunch" data-is-validation="yes">发起拼团</view>
         <view wx:elif="{{ indexData.activity_info.status === 1 && indexData.join_info.status === 0 }}" class="btn over">
             拼团中</view>
         <view
             wx:elif="{{ indexData.activity_info.status === 1 && indexData.join_info.status === 1 || indexData.activity_info.status === 3 && indexData.join_info.status === 1 }}"
-            class="btn get">立即领取</view>
+            bindtap="receiveHandler" class="btn get router-link-exact-active">立即领取</view>
         <view wx:else class="btn over">发起拼团</view>
     </view>
 
-    <block wx:if="{{ isVisible }}">
+    <!-- 规则组件 -->
+    <block wx:if="{{ isVisibleRule }}">
         <Rule bindclose="isRuleVisibleHandler" ruleUrl="{{ indexData.activity_info.rule }}"></Rule>
     </block>
 
+    <!-- 留资表单组件 -->
+    <block wx:if="{{ isVisibleLunchForm }}">
+        <Form bindformSubmitHandler="lunchFormSubmitHandler" bindformCancelHandler="lunckFormCancelHandler"
+            bindformPersonalInfoHandler="lunchFormPersonalInfoHandler"
+            bindchangeStoreInfoHandler="lunckChangeStoreInfoHandler" personalInfo="{{ personalInfo }}"
+            storeInfo="{{ storeInfo }}" params="{{ params }}">
+            <view class="clearfix" slot="goods-info"
+                style="background-color: #fff; padding:19rpx; border-radius:14rpx;">
+                <image src="{{ IMGSERVICE }}/icon/defultCard.png" mode="aspectFit"
+                    style="width:156rpx; height:156rpx; background-color: #F5F5F5; float:left;"></image>
+
+                <view class="main" style="margin-left: 182rpx; padding-top: 18rpx;">
+                    <view style="font-size:30rpx; color:#333; margin-bottom: 38rpx; font-weight:bold;">
+                        {{ indexData.card_info.coupon_title }}</view>
+                    <!-- <view style="font-size:24rpx; color:#666;">获奖时间：2019-09-09</view> -->
+                </view>
+            </view>
+        </Form>
+    </block>
+    <!-- 留资表单组件 -->
+    <block wx:if="{{ isVisibleJoinForm }}">
+        <Form bindformSubmitHandler="joinFormSubmitHandler" bindformCancelHandler="joinFormCancelHandler"
+            bindformPersonalInfoHandler="joinFormPersonalInfoHandler"
+            bindchangeStoreInfoHandler="joinChangeStoreInfoHandler" personalInfo="{{ personalInfo }}"
+            storeInfo="{{ storeInfo }}" params="{{ params }}">
+            <view class="clearfix" slot="goods-info"
+                style="background-color: #fff; padding:19rpx; border-radius:14rpx;">
+                <image src="{{ IMGSERVICE }}/icon/defultCard.png" mode="aspectFit"
+                    style="width:156rpx; height:156rpx; background-color: #F5F5F5; float:left;"></image>
+
+                <view class="main" style="margin-left: 182rpx; padding-top: 18rpx;">
+                    <view style="font-size:30rpx; color:#333; margin-bottom: 38rpx; font-weight:bold;">
+                        {{ indexData.card_info.coupon_title }}</view>
+                    <!-- <view style="font-size:24rpx; color:#666;">获奖时间：2019-09-09</view> -->
+                </view>
+            </view>
+        </Form>
+    </block>
+
+    <!-- 活动开始提示组件 -->
+    <block wx:if="{{ isVisibleActivityStateConfirm }}">
+        <Confirm>
+            <view slot="slot-text1"
+                style="padding-top:72rpx; font-size:36rpx; color:#333; font-weight:bold; text-align:center;">
+                活动暂未开始，敬请期待！</view>
+            <view slot="slot-text2" style="margin:36rpx 0; font-size:32rpx; color:#F1403E; text-align:center;">
+                开始时间:{{ indexData.activity_info.start_date }}</view>
+            <view 
+            slot="slot-btn1"
+            bindtap="moreActivityBtn"
+            style="margin-bottom:72rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#fff; background:linear-gradient(-90deg,rgba(18,77,184,1),rgba(32,161,224,1)); border-radius:35rpx;">
+                看看其它活动</view>
+            <!-- <image 
+            slot="slot-btn2" 
+            bindtap="moreActivityBtn"
+            src="{{ IMGSERVICE }}/icon/close-icon.png" mode="aspectFit"
+            style="width:50rpx; height:100rpx; position:absolute; left: 50%; margin-left:-25rpx; bottom:0; margin-bottom:-100rpx;">
+            </image> -->
+        </Confirm>
+    </block>
+
+    <!-- 授权组件 -->
+    <block wx:if="{{ isVisibleAuthConfirm }}">
+        <Confirm>
+            <view slot="slot-text1"
+                style="padding-top:72rpx; font-size:36rpx; color:#333; font-weight:bold; text-align:center;">
+                您暂无授权</view>
+            <view slot="slot-text2" style="margin:36rpx 0; font-size:32rpx; color:#333; text-align:center;">无法参与活动</view>
+            <button 
+            slot="slot-btn1"
+            open-type="getUserInfo" 
+            lang="zh_CN" 
+            bindgetuserinfo="authHandler"
+            style="margin-bottom:10rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#fff; background:linear-gradient(-90deg,rgba(18,77,184,1),rgba(32,161,224,1)); border-radius:35rpx;">
+            立即授权</button>
+            <view 
+            slot="slot-btn2"
+            bindtap="closeAuthConfirmBtn"
+            style="margin-bottom:36rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#333; border-radius:35rpx;">
+            暂不授权</view>
+        </Confirm>
+    </block>
+
+    <!-- 绑定车主组件 -->
+    <block wx:if="{{ isVisibleBindConfirm }}">
+        <Confirm>
+            <view slot="slot-text1"
+                style="padding-top:72rpx; font-size:32rpx; color:#333; font-weight:bold; text-align:center;">活动仅限车主参与</view>
+            <view slot="slot-text2" style="margin:12rpx 0 72rpx; font-size:32rpx; color:#333; font-weight:bold; text-align:center;">您暂未绑定车主噢</view>
+            <view 
+            slot="slot-btn1"
+            bindtap="bindHandler"
+            style="margin-bottom:10rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#fff; background:linear-gradient(-90deg,rgba(18,77,184,1),rgba(32,161,224,1)); border-radius:35rpx;">
+            立即绑定</view>
+            <view 
+            slot="slot-btn2"
+            bindtap="closeBindConfirmBtn"
+            style="margin-bottom:36rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#333; border-radius:35rpx;">
+            暂不绑定</view>
+        </Confirm>
+    </block>
 </view>

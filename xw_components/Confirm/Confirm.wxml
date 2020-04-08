@@ -1,0 +1,12 @@
+<!--xw_components/Confirm/Confirm.wxml-->
+
+<view class="container">
+    <view class="main">
+        <slot name="slot-text1"></slot>
+        <slot name="slot-text2"></slot>
+        <slot name="slot-text3"></slot>
+        <slot name="slot-btn1"></slot>
+        <slot name="slot-btn2"></slot>
+        <slot name="slot-btn3"></slot>
+    </view>
+</view>

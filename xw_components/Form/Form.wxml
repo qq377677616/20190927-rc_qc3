@@ -1,0 +1,29 @@
+<!--xw_components/Form/Form.wxml-->
+
+
+<view class="container">
+    <view class="form-group">
+
+        <block wx:if="{{ personalInfo.isVisible }}">
+            <view bindtap="changePersonalInfoHandler" class="group personal">
+                <image src="{{ IMGSERVICE }}/icon/ren-wu.png" class="icon" mode="widthFix"></image>
+                <view class="p">{{ personalInfo.value.area || '填写收货人信息' }}</view>
+                <image src="{{ IMGSERVICE }}/icon/right-arrow-666.png" class="arrow" mode="widthFix"></image>
+            </view>
+        </block>
+
+        <block wx:if="{{ storeInfo.isVisible }}">
+            <view class="group store">
+                <image src="{{ IMGSERVICE }}/icon/home.png" class="icon" mode="widthFix"></image>
+                <picker class="p" mode="selector" disabled="{{ personalInfo.value ? false : true }}" bindchange="changeStoreInfoHandler" range-key="name" range="{{ storeList }}" value="{{ storeIndex }}">{{ storeInfo.value.name || '选择领取的门店' }}</picker>
+                <image src="{{ IMGSERVICE }}/icon/right-arrow-666.png" class="arrow" mode="widthFix"></image>
+            </view>
+        </block>
+
+    </view>
+
+    <slot name="goods-info"></slot>
+
+    <view bindtap="formSubmitHandler" class="btn submit">{{ params.btnText }}</view>
+    <view bindtap="formCancelHandler" class="btn cancel">取消</view>
+</view>
