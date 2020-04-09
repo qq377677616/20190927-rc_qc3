@@ -1,0 +1,51 @@
+/* xw_components/Form/Form.wxss */
+
+.container{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index:150;
+    padding: 28rpx;
+    background-color: #F3F3F3;
+    box-sizing: border-box;
+}
+
+.form-group{
+    margin-bottom: 24rpx;
+    border-radius:14rpx;
+    background-color: #fff;
+}
+.form-group .group{
+    display: flex;
+    align-items:center;
+    padding: 0 24rpx;
+    min-height: 120rpx;
+}
+.form-group .group .icon{
+    flex:0 0 auto;
+    width: 34rpx;
+}
+.form-group .group .p{
+    flex:1;
+    padding: 0 20rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+.form-group .group .arrow{
+    flex:0 0 auto;
+    width: 34rpx;
+}
+
+.btn{
+    width: 91%;
+    margin:60rpx auto auto;
+    background-color: #003B73;
+    font-size: 30rpx;
+    color: #fff;
+    height: 74rpx;
+    line-height: 74rpx;
+    border-radius:37rpx;
+    text-align:center;
+}

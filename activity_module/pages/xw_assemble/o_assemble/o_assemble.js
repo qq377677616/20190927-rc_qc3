@@ -1,6 +1,6 @@
-// activity_module/pages/xw_assemble/index/index.js
+// activity_module/pages/xw_assemble/o_assemle/o_assemle.js
 const app = getApp(); //获取应用实例
-import { assembleIndex, lunchAssemble, joinAssemble, receivePrize, login, postUserInfo, getUnionid, getUserDatabaseInfo } from '../../../../xw_api/index.js'
+import { assembleDetail, receivePrize, joinAssemble, login, postUserInfo, getUnionid, getUserDatabaseInfo } from '../../../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../../../xw_utils/alert.js'
 import { timeFormat, getUserAdmin } from '../../../../xw_utils/tools.js'
 import { jump_nav } from '../../../../xw_utils/route.js'
@@ -27,15 +27,10 @@ Page({
       btnText: '提交'
     },
     options: {},
-    isVisibleRule: false,
-    isVisibleLunchForm: false,//发起拼团留资
+    oAssembleData:{},
     isVisibleJoinForm: false,//参加拼团留资
-    indexData: {},
-    countDown: 0,
-    countDownFormat: {},
-    otherTuan: [],
-    countDownFormatList: [],
-    isVisibleActivityStateConfirm: false,
+    countDown:0,
+    countDownFormat:{},
     isVisibleAuthConfirm: false,
     isVisibleBindConfirm: false,
   },
@@ -46,10 +41,10 @@ Page({
   globalValidationHandler(e) {
     let isValidation = e.target.dataset.isValidation === 'yes'
     if (Boolean(isValidation)) {
-      let indexData = this.data.indexData
+      let oAssembleData = this.data.oAssembleData
       //获取用户admin信息
       let userAdmin = getUserAdmin({
-        isOwnerVip: indexData.activity_info.car_owner
+        isOwnerVip: oAssembleData.tuan_info.car_owner
       })
 
       for (let prop in userAdmin) {
@@ -75,7 +70,7 @@ Page({
     }
   },
   /**
-   * 
+   * 初始化
    * @param {*} options 
    */
   initData(options) {
@@ -83,19 +78,19 @@ Page({
       title: '加载中'
     })
     Promise.all([
-      assembleIndex({
+      assembleDetail({
         data: {
-          out_id: options.out_id,//活动ID
-          openid: userInfo.openid,//用户openid
+          openid: options.openid || userInfo.openid,//string	用户OPENID
+          tuan_id: options.tuan_id,//int	团购ID
         }
-      })
+      }),
     ]).then((res) => {
-      const { msg: msg0, status: status0, data: data0 } = res[0].data
+      let { data: data0, msg: msg0, status: status0 } = res[0].data
 
       //当前活动倒计时相关处理
       let countDown = 0
       let countDownFormat = {}
-      countDown = data0.card_info.count_down
+      countDown = data0.tuan_info.count_down
       countDownFormat = {
         day: '00',
         hours: '00',
@@ -103,27 +98,11 @@ Page({
         seconds: '00'
       }
 
-      //其它活动倒计时相关处理
-      let otherTuan = []
-      let countDownFormatList = []
-      otherTuan = data0.other_tuan.map((item) => {
-        countDownFormatList.push(`00:00:00`)
-        return Object.assign({}, item)
-      })
-
-      //
-      let isVisibleActivityStateConfirm = false
-      isVisibleActivityStateConfirm = data0.activity_info.status === 2
-
       this.setData({
-        indexData: data0,
-        countDown,//保存当前活动倒计时
+        oAssembleData:data0,
+        countDown,//报存当前活动倒计时
         countDownFormat,
-        otherTuan,
-        countDownFormatList,
-        isVisibleActivityStateConfirm,
       })
-
       //开启活动倒计时
       this.openCountDownHandler()
     }).catch((err) => {
@@ -132,18 +111,12 @@ Page({
       })
     }).then(() => {
       hideLoading()
+      Object.assign(options,{
+        isSelf:options.openid === userInfo.openid
+      })
       this.setData({
         options
       })
-    })
-  },
-  /**
-   * 规则显示隐藏
-   */
-  isRuleVisibleHandler() {
-    let isVisibleRule = this.data.isVisibleRule
-    this.setData({
-      isVisibleRule: !isVisibleRule
     })
   },
   /**
@@ -187,26 +160,6 @@ Page({
         })
       }
 
-      //其它团购商品
-      let otherTuan = this.data.otherTuan
-      let countDownFormatList = this.data.countDownFormatList
-      otherTuan.forEach((item, index) => {
-        if (typeof item.count_down === 'number' && item.count_down > 0) {
-          item.count_down = item.count_down - 1
-          timeFormat(item.count_down, function ({ day, hours, minutes, seconds }) {
-            countDownFormatList[index] = `${hours}:${minutes}:${seconds}`
-          })
-          key = false
-        } else {
-          countDownFormatList[index] = `00:00:00`
-        }
-      })
-
-      this.setData({
-        otherTuan,
-        countDownFormatList,
-      })
-
       //
       if (key) {
         this.clearInterval()
@@ -221,56 +174,17 @@ Page({
     timmer = null
   },
   /**
-   * 发起拼团
+   * 领取程序
    */
-  lunchAssembleHandler() {
-    //该按钮需要验证授权、绑定车主
-    let indexData = this.data.indexData
-    //获取用户admin信息
-    let userAdmin = getUserAdmin({
-      isOwnerVip: indexData.activity_info.car_owner
-    })
-    let isPass = Object.values(userAdmin).every((item) => { return item })
-    if (!Boolean(isPass)) return
-
-    this.setData({
-      isVisibleLunchForm: true
-    })
-  },
-  /**
-   * 参加拼团
-   */
-  joinAssembleHandler(e) {
-    //该按钮需要验证授权、绑定车主
-    let indexData = this.data.indexData
-    //获取用户admin信息
-    let userAdmin = getUserAdmin({
-      isOwnerVip: indexData.activity_info.car_owner
-    })
-    let isPass = Object.values(userAdmin).every((item) => { return item })
-    if (!Boolean(isPass)) return
-
-    let tuanid = e.currentTarget.dataset.tuanid
-    this.setData({
-      isVisibleJoinForm: tuanid
-    })
-  },
-  /**
-   * 发起拼团留资提交
-   * @param {*} e 
-   */
-  lunchFormSubmitHandler(e) {
+  receiveHandler() {
     loading({
-      title: '提交中'
+      title: '领取中'
     })
-    let { personalInfoValue, storeInfoValue } = e.detail
     let options = this.data.options
-    lunchAssemble({
+    receivePrize({
       data: {
-        openid: userInfo.openid,//string	用户OPENID
-        out_id: options.out_id,//int	经销商活动ID
-        address_id: personalInfoValue.address_id,//int	收货地址ID
-        data_code: storeInfoValue.code,//string	留资转营店编码
+        openid: userInfo.openid,//string	用户openid
+        tuan_log_id: options.tuan_log_id,//int	团购记录ID
       }
     }).then((res) => {
       let { msg, status } = res.data
@@ -281,16 +195,28 @@ Page({
       } else {
         throw new Error(msg)
       }
-      this.setData({
-        isVisibleLunchForm: false
-      })
     }).catch((err) => {
       hideLoading()
       alert({
         title: err.message
       })
     })
-
+  },
+  /**
+   * 参加拼团
+   */
+  joinAssembleHandler() {
+    //该按钮需要验证授权、绑定车主
+    let oAssembleData = this.data.oAssembleData
+    //获取用户admin信息
+    let userAdmin = getUserAdmin({
+      isOwnerVip: oAssembleData.tuan_info.car_owner
+    })
+    let isPass = Object.values(userAdmin).every((item) => { return item })
+    if (!Boolean(isPass)) return
+    this.setData({
+      isVisibleJoinForm: true
+    })
   },
   /**
    * 参加拼团留资提交
@@ -301,13 +227,12 @@ Page({
       title: '提交中'
     })
     let { personalInfoValue, storeInfoValue } = e.detail
-    let isVisibleJoinForm = this.data.isVisibleJoinForm
     let options = this.data.options
     joinAssemble({
       data: {
         openid: userInfo.openid,//string	用户OPENID
         out_id: options.out_id,//int	经销商活动ID
-        tuan_id: isVisibleJoinForm,//int	团购ID
+        tuan_id: options.tuan_id,//int	团购ID
         address_id: personalInfoValue.address_id,//int	收货地址ID
         data_code: storeInfoValue.code,//string	留资转营店编码
       }
@@ -331,28 +256,9 @@ Page({
     })
   },
   /** */
-  lunckFormCancelHandler() {
-    this.setData({
-      isVisibleLunchForm: false
-    })
-  },
-  /** */
   joinFormCancelHandler() {
     this.setData({
       isVisibleJoinForm: false
-    })
-  },
-  /**
-   * 发起拼团个人信息程序
-   * @param {*} e 
-   */
-  lunchFormPersonalInfoHandler(e) {
-    let personalInfo = this.data.personalInfo
-    Object.assign(personalInfo, {
-      value: e.detail
-    })
-    this.setData({
-      personalInfo
     })
   },
   /**
@@ -369,19 +275,6 @@ Page({
     })
   },
   /**
-   * 发起拼团专营店程序
-   * @param {*} e 
-   */
-  lunckChangeStoreInfoHandler(e) {
-    let storeInfo = this.data.storeInfo
-    Object.assign(storeInfo, {
-      value: e.detail.store
-    })
-    this.setData({
-      storeInfo
-    })
-  },
-  /**
    * 参加拼团专营店程序
    * @param {*} e 
    */
@@ -395,45 +288,9 @@ Page({
     })
   },
   /**
-   * 领取程序
+   * 查看更多活动
    */
-  receiveHandler() {
-    loading({
-      title: '领取中'
-    })
-    let indexData = this.data.indexData
-    receivePrize({
-      data: {
-        openid: userInfo.openid,//string	用户openid
-        tuan_log_id: indexData.join_info.tuan_log_id,//int	团购记录ID
-      }
-    }).then((res) => {
-      let options = this.data.options
-      let { msg, status } = res.data
-      hideLoading()
-
-      if (status == 1) {
-        this.initData(options)
-      } else {
-        throw new Error(msg)
-      }
-    }).catch((err) => {
-      hideLoading()
-      alert({
-        title: err.message
-      })
-    })
-  },
-  /**
-   * 返回经销商首页
-   */
-  jumpHome() {
-    jump_nav(`/activity_module/pages/xw_dealer/index/index`)
-  },
-  /**
-   * 更多活动
-   */
-  moreActivityBtn() {
+  moreActivityBtn(){
     jump_nav(`/activity_module/pages/xw_dealer/index/index`)
   },
   /**
@@ -441,6 +298,7 @@ Page({
    */
   authHandler(e) {
     let { errMsg, userInfo: newUserInfo = {}, iv, encryptedData } = e.detail
+    console.warn(e)
     if (errMsg === 'getUserInfo:ok') {
       //推送用户信息
       postUserInfo({
@@ -536,7 +394,10 @@ Page({
    */
   onLoad: function (options) {
     options = {
-      out_id: '20'
+      tuan_id:'1',
+      openid:userInfo.openid,
+      tuan_log_id:'1',
+      out_id:'20'
     }
     loading({
       title: '登录中'
@@ -568,7 +429,6 @@ Page({
         personalInfo
       })
     }
-
   },
 
   /**
@@ -603,31 +463,23 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (e) {
-    let indexData = this.data.indexData
     let options = this.data.options
-    /**
-     * 活动1-进行中  3-已结束
-     * 0-拼团中 1-拼团成功
-     */
-    if (e.from === 'button' &&
-      (indexData.activity_info.status === 1 ||
-        indexData.activity_info.status === 3) &&
-      (indexData.join_info.status === 0 ||
-        indexData.join_info.status === 1)) {
+    let oAssembleData = this.data.oAssembleData
 
+    if( oAssembleData.tuan_info.status === 0 ){
+      //拼团中
       return {
         // title: '',
         // imageUrl: ``,
-        path: `/activity_module/pages/xw_assemble/o_assemble/o_assemble?tuan_id=${indexData.join_info.tuan_id}&openid=${userInfo.openid}&out_id=${options.out_id}&tuan_log_id=${indexData.join_info.tuan_log_id}`,
+        path: `/activity_module/pages/xw_assemble/o_assemble/o_assemble?tuan_id=${options.tuan_id}&openid=${options.openid}&out_id=${options.out_id}&tuan_log_id=${options.tuan_log_id}`,
       };
-    } else {
-
+    }else{
+      //拼团成功、拼团失败
       return {
         // title: '',
         // imageUrl: ``,
         path: `/activity_module/pages/xw_assemble/index/index?out_id=${options.out_id}`,
       };
-
     }
   }
 })

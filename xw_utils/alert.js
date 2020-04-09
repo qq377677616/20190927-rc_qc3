@@ -9,17 +9,15 @@ export const alert = ({ title = '', icon = "none", duration = 1500, mask = false
 }
 
 //开启loading
-export const loading = ({ title = '', icon = "none", duration = 1500, mask = false } = {}) => {
-    wx.showToast({
+export const loading = ({ title = '', mask = true } = {}) => {
+    wx.showLoading({
         title,
-        icon,
-        duration,
         mask
     })
 }
 
 //关闭loading
 export const hideLoading = () => {
-    wx.hideToast()
+    wx.hideLoading()
 }
 

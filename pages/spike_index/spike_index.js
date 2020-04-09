@@ -498,7 +498,8 @@ Page({
         //用户不是车主，活动是车主活动。
         //用户未授权。
         if (
-          (wx.getStorageSync("userInfo").user_type == 0 && spikeIndex.activity_info.car_owner) ||
+          (wx.getStorageSync("userInfo").user_type == 0 && 
+          spikeIndex.activity_info.car_owner) ||
           !wx.getStorageSync("userInfo").unionid ||
           !wx.getStorageSync("userInfo").nickName
         ) return;

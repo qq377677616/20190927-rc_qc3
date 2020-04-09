@@ -12,13 +12,13 @@ const SERVICE = "https://weixinfslb.venucia.com";
 
 
 //版本控制
-const tag = (data) =>{
+const tag = (data) => {
     let url = 'https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public/api3/oauth/version'
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -39,9 +39,9 @@ const taskIndex = (data) => {
     let url = `${SERVICE}/api3/task/task_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -56,9 +56,9 @@ const addShopCart = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/add_shopping_cart`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -73,9 +73,9 @@ const editShopCart = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/edit_shopping_cart`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -90,9 +90,9 @@ const shopCartList = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/shopping_cart_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -107,9 +107,9 @@ const deleteShopCart = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/del_shopping_cart`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -124,9 +124,9 @@ const settlementShopCart = (data) => {
     let url = `${SERVICE}/api3/shoppingcart/settlement_shopping_cart`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -147,9 +147,9 @@ const homeInfo = (data) => {
     let url = `${SERVICE}/api3/user/user_index`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -164,9 +164,9 @@ const personalInfo = (data) => {
     let url = `${SERVICE}/api3/user/my_info`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -181,9 +181,9 @@ const vdouSrouse = (data) => {
     let url = `${SERVICE}/api3/user/my_vcoin_log`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -198,9 +198,9 @@ const myReservationDriving = (data) => {
     let url = `${SERVICE}/api3/testdrive/my_test_drive`;
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -215,9 +215,9 @@ const signInInfo = (data) => {
     let url = `${SERVICE}/api3/user/sign_in_info`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -232,9 +232,9 @@ const signIn = (data) => {
     let url = `${SERVICE}/api3/user/do_sign_in`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -249,9 +249,9 @@ const groupList = (data) => {
     let url = `${SERVICE}/api3/groupbuy/my_groupbuy_order_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -266,9 +266,9 @@ const groupDetail = (data) => {
     let url = `${SERVICE}/api3/groupbuy/my_groupbuy_order_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -283,9 +283,9 @@ const getOrderId = (data) => {
     let url = `${SERVICE}/api3/groupbuy/receive_prize`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -301,9 +301,9 @@ const carAuth = (data) => {
     let url = `${SERVICE}/api3/member/bind_member`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -324,9 +324,9 @@ const publishArticle = (data) => {
     let url = `${SERVICE}/api3/article/release_article`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -341,9 +341,9 @@ const articleList = (data) => {
     let url = `${SERVICE}/api3/article/article_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -358,9 +358,9 @@ const likeArticle = (data) => {
     let url = `${SERVICE}/api3/article/favorite_article`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -375,9 +375,9 @@ const forwardArticle = (data) => {
     let url = `${SERVICE}/api3/article/relay_article`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -392,9 +392,9 @@ const commentArticle = (data) => {
     let url = `${SERVICE}/api3/article/reply_article`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -415,9 +415,9 @@ const shopMall = (data) => {
     let url = `${SERVICE}/api3/shop/shop_index`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -432,9 +432,9 @@ const goodsList = (data) => {
     let url = `${SERVICE}/api3/shop/goods_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -449,9 +449,9 @@ const goodsSettlement = (data) => {
     let url = `${SERVICE}/api3/shop/settlement`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -466,9 +466,9 @@ const goodsDetail = (data) => {
     let url = `${SERVICE}/api3/shop/goods_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -483,9 +483,9 @@ const classList = (data) => {
     let url = `${SERVICE}/api3/shop/cate_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -506,9 +506,9 @@ const EV_Draw = (data) => {
     let url = `${SERVICE}/api/evgame/lottery_draw`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -523,9 +523,9 @@ const EV_Share = (data) => {
     let url = `${SERVICE}/api/evgame/share_game`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -540,9 +540,9 @@ const EV_RetainInfo = (data) => {
     let url = `${SERVICE}/api/evgame/receive_prize`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -557,9 +557,9 @@ const EV_isOwner = (data) => {
     let url = `${SERVICE}/api/evgame/check_identity`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -574,9 +574,9 @@ const EV_broadcastList = (data) => {
     let url = `${SERVICE}/api/evgame/win_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -591,9 +591,9 @@ const EV_myPrize = (data) => {
     let url = `${SERVICE}/api/evgame/my_prize`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -614,9 +614,9 @@ const storeList = (data) => {
     let url = `${SERVICE}/api3/dealer/dealer_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -637,9 +637,9 @@ const orderList = (data) => {
     let url = `${SERVICE}/api3/order/my_order_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data: {...data, openid: wx.getStorageSync('userInfo').openid }
-            })
+            url,
+            data: { ...data, openid: wx.getStorageSync('userInfo').openid }
+        })
             .then(res => {
                 resolve(res)
             })
@@ -654,9 +654,9 @@ const orderDetail = (data) => {
     let url = `${SERVICE}/api3/order/my_order_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data: {...data, openid: wx.getStorageSync('userInfo').openid }
-            })
+            url,
+            data: { ...data, openid: wx.getStorageSync('userInfo').openid }
+        })
             .then(res => {
                 resolve(res)
             })
@@ -671,9 +671,9 @@ const orderWuliu = (data) => {
     let url = `${SERVICE}/api3/order/shipping_info`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -688,9 +688,9 @@ const prizeWuliu = (data) => {
     let url = `${SERVICE}/api3/prize/shipping_info`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -711,9 +711,9 @@ const activityList = (data) => {
     let url = `${SERVICE}/api3/activity/activity_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -728,9 +728,9 @@ const activityDetail = (data) => {
     let url = `${SERVICE}/api3/activity/activity_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -745,9 +745,9 @@ const joinActivity = (data) => {
     let url = `${SERVICE}/api3/activity/join_activity`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -762,9 +762,9 @@ const getStatus = (data) => {
     let url = `${SERVICE}/api3/ninepay/join_status`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -779,9 +779,9 @@ const receivePay = (data) => {
     let url = `${SERVICE}/api3/ninepay/pay`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -802,9 +802,9 @@ const pinIndex = (data) => {
     let url = `${SERVICE}/api3/groupbuy/group_buy_index`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -819,9 +819,9 @@ const pinGoodsList = (data) => {
     let url = `${SERVICE}/api3/groupbuy/goods_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -836,9 +836,9 @@ const pinGoodsDetail = (data) => {
     let url = `${SERVICE}/api3/groupbuy/goods_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -853,9 +853,9 @@ const launchPin = (data) => {
     let url = `${SERVICE}/api3/groupbuy/group_buying`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -870,9 +870,9 @@ const pinDetail = (data) => {
     let url = `${SERVICE}/api3/groupbuy/groupbuy_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -887,9 +887,9 @@ const joinPin = (data) => {
     let url = `${SERVICE}/api3/groupbuy/join_group_buying`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -910,9 +910,9 @@ const getUserInfo = (data) => {
     let url = `${SERVICE}/api3/oauth/oauth_reg`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -927,9 +927,9 @@ const getSessionKey = (data) => {
     let url = `${SERVICE}/api3/oauth/oauth_get`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -944,9 +944,9 @@ const getUnionid = (data) => {
     let url = `${SERVICE}/api3/oauth/de_union_id`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -961,9 +961,9 @@ const getPhone = (data) => {
     let url = `${SERVICE}/api3/oauth/de_phone`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -978,9 +978,9 @@ const perfectInfo = (data) => {
     let url = `${SERVICE}/api3/oauth/perfect`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1001,9 +1001,9 @@ const indexBanner = (data) => {
     let url = `${SERVICE}/api3/index/banner`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1018,9 +1018,9 @@ const indexActivity = (data) => {
     let url = `${SERVICE}/api3/index/recommend_activity`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1035,9 +1035,9 @@ const gameList = (data) => {
     let url = `${SERVICE}/api3/index/game_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1052,9 +1052,9 @@ const lookCarList = (data) => {
     let url = `${SERVICE}/api3/lookcar/car_list`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1069,9 +1069,9 @@ const lookCarDetail = (data) => {
     let url = `${SERVICE}/api3/lookcar/car_details`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1083,25 +1083,25 @@ const lookCarDetail = (data) => {
 
 //预约试驾
 const lookCarSubmit = (data) => {
-        let url = `${SERVICE}/api3/testdrive/look_car_log`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/testdrive/look_car_log`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    // /**
-    //  * 
-    //  * 
-    //  * H5小游戏
-    //  */
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+// /**
+//  * 
+//  * 
+//  * H5小游戏
+//  */
 
 // //是否授权了手机号
 // const userPhone = (data) => {
@@ -1131,9 +1131,9 @@ const addAddress = (data) => {
     let url = `${SERVICE}/api3/address/add_address`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1148,9 +1148,9 @@ const editAddress = (data) => {
     let url = `${SERVICE}/api3/address/edit_address`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1165,9 +1165,9 @@ const deleteAddress = (data) => {
     let url = `${SERVICE}/api3/address/del_address`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1177,148 +1177,148 @@ const deleteAddress = (data) => {
     })
 }
 const prizeList = (data) => { //我的兑换列表
-        let url = `${SERVICE}/api3/prize/my_prize_list`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/prize/my_prize_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //我的收货地址列表exchange
-const addressList = (data) => {
-        let url = `${SERVICE}/api3/address/my_address`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
-        })
-    }
-    //我的收货地址列表-yls-0910
-const exchangeList = (data) => {
-        let url = `${SERVICE}/api3/order/my_order_list`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data: {...data, openid: wx.getStorageSync('userInfo').openid }
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
-        })
-    }
-    //获取默认地址
-const defaultAddress = (data) => {
-        let url = `${SERVICE}/api3/address/default_address`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data: {...data, openid: wx.getStorageSync('userInfo').openid }
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
-        })
-    }
-    //文件视频/上传-yls-0910
-const uploadFiles = (data) => {
-        let url = `${SERVICE}/api3/upload/upload_image`;
-        return new Promise((resolve, reject) => {
-            wx.chooseImage({
-                success(res) {
-                    const tempFilePaths = res.tempFilePaths
-                    wx.uploadFile({
-                        url: url,
-                        filePath: tempFilePaths[0],
-                        name: 'file',
-                        formData: {},
-                        success(res) {
-                            const data = res.data
-                            resolve(JSON.parse(data))
-                        }
-                    })
-                },
-                fail(err) {
-                    reject(err)
-                }
+            .then(res => {
+                resolve(res)
             })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//我的收货地址列表exchange
+const addressList = (data) => {
+    let url = `${SERVICE}/api3/address/my_address`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    // 投票排行榜列表yls
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//我的收货地址列表-yls-0910
+const exchangeList = (data) => {
+    let url = `${SERVICE}/api3/order/my_order_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data: { ...data, openid: wx.getStorageSync('userInfo').openid }
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//获取默认地址
+const defaultAddress = (data) => {
+    let url = `${SERVICE}/api3/address/default_address`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data: { ...data, openid: wx.getStorageSync('userInfo').openid }
+        })
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//文件视频/上传-yls-0910
+const uploadFiles = (data) => {
+    let url = `${SERVICE}/api3/upload/upload_image`;
+    return new Promise((resolve, reject) => {
+        wx.chooseImage({
+            success(res) {
+                const tempFilePaths = res.tempFilePaths
+                wx.uploadFile({
+                    url: url,
+                    filePath: tempFilePaths[0],
+                    name: 'file',
+                    formData: {},
+                    success(res) {
+                        const data = res.data
+                        resolve(JSON.parse(data))
+                    }
+                })
+            },
+            fail(err) {
+                reject(err)
+            }
+        })
+    })
+}
+// 投票排行榜列表yls
 const voteList = (data) => {
-        let url = `${SERVICE}/api3/vote/vote_list`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/vote/vote_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    // 为别人投票接口yls
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+// 为别人投票接口yls
 const voteing = (data) => {
-        let url = `${SERVICE}/api3/vote/do_vote`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/vote/do_vote`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //评论接口yls
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//评论接口yls
 const remarkArt = (data) => {
-        let url = `${SERVICE}/api3/article/reply_article`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/article/reply_article`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //文章详情接口
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//文章详情接口
 const articleDel = (data) => {
     let url = `${SERVICE}/api3/article/article_detail`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1337,131 +1337,131 @@ const articleDel = (data) => {
 //登录
 const login = (callback) => {
 
-        return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
-            const userInfo = wx.getStorageSync('userInfo');
+        const userInfo = wx.getStorageSync('userInfo');
 
-            alert.loading({
-                str: '登录中'
-            })
-            console.warn('userInfo.user_id：', userInfo.user_id)
-            if (userInfo.user_id) { //本地已保存用户信息
-
-                alert.loading_h();
-
-                authorization.isCheckSession()
-                    .then((value) => {
-                        console.warn('//未过期，并且在本生命周期一直有效')
-                    })
-                    .catch((reason) => { //已经失效，需要重新执行登录流程
-                        getCode()
-                    })
-
-                //更新用户是否为车主(服务号可以绑定车主问题)
-                homeInfo({
-                        openid: userInfo.openid,
-                        user_id: userInfo.user_id,
-                    })
-                    .then((value) => {
-                        //success
-                        const data = value.data.data;
-
-                        wx.setStorageSync('userInfo', Object.assign(userInfo, {
-                            user_type: data.user_type,
-                        }))
-                    })
-                    .catch((reason) => {
-                        //fail
-                    })
-                    .then(() => {
-                        //complete
-                        callback()
-                    })
-
-
-
-            } else { //本地未保存用户信息
-
-
-                Promise.all([
-                        authorization.login(),
-                        authorization.login()
-                    ])
-                    .then((value) => {
-                        return Promise.all([
-                            getUserInfo({
-                                code: value[1].code,
-                                parent_id: wx.getStorageSync("shareIds").parent_id,
-                                channel_id: wx.getStorageSync("shareIds").channel_id
-                            }),
-                        ])
-
-                    })
-                    .then((value) => {
-                        const data = value[0].data.data;
-                        alert.loading_h();
-
-                        if (data.errcode && data.errmsg) {
-
-                            login(callback)
-                        } else {
-                            console.log('<<<', data, '>>>')
-
-
-                            wx.setStorageSync('userInfo', data)
-                            callback()
-                        }
-                    })
-                    .catch((reason) => {
-                        alert.loading_h();
-                        // alert.alert({
-                        //     str: reason
-                        // })
-                        callback()
-                    })
-            }
+        alert.loading({
+            str: '登录中'
         })
+        console.warn('userInfo.user_id：', userInfo.user_id)
+        if (userInfo.user_id) { //本地已保存用户信息
 
-    }
-    // //授权
-    // const setUserInfo = (e) => {
-    //   return new Promise((resolve, reject) => {
-    //     tool.loading("授权中")
-    //     const userInfo = e.detail.userInfo
-    //     if (userInfo) {
-    //       Object.assign(userInfo, wx.getStorageSync("userInfo") || {})
-    //       wx.setStorageSync("userInfo", userInfo)
-    //       tool.loading_h()
-    //       //这里做上传头像昵称给后台操作
-    //       uploadUserInfo({
-    //         user_id: wx.getStorageSync("userInfo").user_id,
-    //         nickname: userInfo.nickName,
-    //         headimg: userInfo.avatarUrl,
-    //         gender: 1
-    //       }).then(res => {
-    //         tool.loading_h()
-    //         resolve(true)
-    //       }).catch(err => {
-    //         reject(err)
-    //       })
-    //     } else {
-    //       tool.loading_h()
-    //       // tool.showModal('授权', '为了更好的体验，请先授权', '好的,#124DB8', false)
-    //       resolve(false)
-    //     }
-    //   })
-    // }
+            alert.loading_h();
+
+            authorization.isCheckSession()
+                .then((value) => {
+                    console.warn('//未过期，并且在本生命周期一直有效')
+                })
+                .catch((reason) => { //已经失效，需要重新执行登录流程
+                    getCode()
+                })
+
+            //更新用户是否为车主(服务号可以绑定车主问题)
+            homeInfo({
+                openid: userInfo.openid,
+                user_id: userInfo.user_id,
+            })
+                .then((value) => {
+                    //success
+                    const data = value.data.data;
+
+                    wx.setStorageSync('userInfo', Object.assign(userInfo, {
+                        user_type: data.user_type,
+                    }))
+                })
+                .catch((reason) => {
+                    //fail
+                })
+                .then(() => {
+                    //complete
+                    callback()
+                })
+
+
+
+        } else { //本地未保存用户信息
+
+
+            Promise.all([
+                authorization.login(),
+                authorization.login()
+            ])
+                .then((value) => {
+                    return Promise.all([
+                        getUserInfo({
+                            code: value[1].code,
+                            parent_id: wx.getStorageSync("shareIds").parent_id,
+                            channel_id: wx.getStorageSync("shareIds").channel_id
+                        }),
+                    ])
+
+                })
+                .then((value) => {
+                    const data = value[0].data.data;
+                    alert.loading_h();
+
+                    if (data.errcode && data.errmsg) {
+
+                        login(callback)
+                    } else {
+                        console.log('<<<', data, '>>>')
+
+
+                        wx.setStorageSync('userInfo', data)
+                        callback()
+                    }
+                })
+                .catch((reason) => {
+                    alert.loading_h();
+                    // alert.alert({
+                    //     str: reason
+                    // })
+                    callback()
+                })
+        }
+    })
+
+}
+// //授权
+// const setUserInfo = (e) => {
+//   return new Promise((resolve, reject) => {
+//     tool.loading("授权中")
+//     const userInfo = e.detail.userInfo
+//     if (userInfo) {
+//       Object.assign(userInfo, wx.getStorageSync("userInfo") || {})
+//       wx.setStorageSync("userInfo", userInfo)
+//       tool.loading_h()
+//       //这里做上传头像昵称给后台操作
+//       uploadUserInfo({
+//         user_id: wx.getStorageSync("userInfo").user_id,
+//         nickname: userInfo.nickName,
+//         headimg: userInfo.avatarUrl,
+//         gender: 1
+//       }).then(res => {
+//         tool.loading_h()
+//         resolve(true)
+//       }).catch(err => {
+//         reject(err)
+//       })
+//     } else {
+//       tool.loading_h()
+//       // tool.showModal('授权', '为了更好的体验，请先授权', '好的,#124DB8', false)
+//       resolve(false)
+//     }
+//   })
+// }
 
 
 function unionid(resolve) {
     tool.loading("授权中")
     const userInfo = wx.getStorageSync('userInfo');
     getUnionid({
-            user_id: userInfo.user_id, //用户ID
-            encrypted_data: userInfo.encryptedData, //加密数据
-            session_key: userInfo.session_key, //上一个接口获得的session_key
-            iv: userInfo.iv, //加密数据匹配的iv                  
-        })
+        user_id: userInfo.user_id, //用户ID
+        encrypted_data: userInfo.encryptedData, //加密数据
+        session_key: userInfo.session_key, //上一个接口获得的session_key
+        iv: userInfo.iv, //加密数据匹配的iv                  
+    })
         .then((value) => {
 
 
@@ -1479,13 +1479,13 @@ function unionid(resolve) {
 
             //更新用户是否是车主
             personalInfo({
-                    user_id: userInfo.user_id,
-                    openid: userInfo.openid,
-                })
+                user_id: userInfo.user_id,
+                openid: userInfo.openid,
+            })
                 .then((value) => {
                     const data = value.data.data;
                     tool.loading_h()
-                        //拼接所有信息（user_type）
+                    //拼接所有信息（user_type）
                     Object.assign(userInfo, {
                         user_type: data.user_type,
                     })
@@ -1501,14 +1501,14 @@ function unionid(resolve) {
                 .catch((reason) => {
                     //fail
                     tool.loading_h()
-                        // tool.alert(`车主信息获取失败：${reason}`)
+                    // tool.alert(`车主信息获取失败：${reason}`)
                 })
 
         })
         .catch((reason) => {
             //fail
             tool.loading_h()
-                // tool.alert(`unionid获取失败：${reason}`)
+            // tool.alert(`unionid获取失败：${reason}`)
         })
 }
 
@@ -1518,10 +1518,10 @@ function sessionKey({ resolve, code }) {
 
     //获取sessionKey
     getSessionKey({
-            code,
-            parent_id: shareIds.parent_id,
-            channel_id: shareIds.channel_id
-        })
+        code,
+        parent_id: shareIds.parent_id,
+        channel_id: shareIds.channel_id
+    })
         .then((value) => {
             const data = value.data.data;
             const userInfo = wx.getStorageSync('userInfo');
@@ -1556,9 +1556,9 @@ function getCode(resolve) {
 
     //递归获取code
     Promise.all([
-            authorization.login(),
-            authorization.login()
-        ])
+        authorization.login(),
+        authorization.login()
+    ])
         .then((value) => {
 
             //获取sessionKey
@@ -1633,9 +1633,9 @@ const uploadUserInfo = (data) => {
     let url = `${SERVICE}/api3/oauth/perfect`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })
@@ -1647,156 +1647,156 @@ const uploadUserInfo = (data) => {
 
 //秒杀活动首页
 const spikeIndex = (data) => {
-        let url = `${SERVICE}/api3/seckill/detail`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/detail`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //秒杀活动商品
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动商品
 const spikeGoodsList = (data) => {
-        let url = `${SERVICE}/api3/seckill/goods_list`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/goods_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //秒杀活动预约
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动预约
 const spikeAppo = (data) => {
-        let url = `${SERVICE}/api3/seckill/leave_info`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/leave_info`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //秒杀活动秒杀
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动秒杀
 const spikeSpike = (data) => {
-        let url = `${SERVICE}/api3/seckill/seckill`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/seckill`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //秒杀活动商品详情
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动商品详情
 const spikeGoodsDetail = (data) => {
-        let url = `${SERVICE}/api3/seckill/goods_detail`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/goods_detail`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //秒杀活动领取奖品
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀活动领取奖品
 const spikeReceive = (data) => {
-        let url = `${SERVICE}/api3/seckill/receive`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/receive`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //预约信息回填
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//预约信息回填
 const spikeBackfill = (data) => {
-        let url = `${SERVICE}/api3/seckill/order_info`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/order_info`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //秒杀记录
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//秒杀记录
 const spikeLog = (data) => {
-        let url = `${SERVICE}/api3/seckill/my_seckill`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/my_seckill`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //时间段列表
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//时间段列表
 const spikeTimeList = (data) => {
-        let url = `${SERVICE}/api3/seckill/time_list`
-        return new Promise((resolve, reject) => {
-            _request.request({
-                    url,
-                    data
-                })
-                .then(res => {
-                    resolve(res)
-                })
-                .catch((reason) => {
-                    reject(reason)
-                })
+    let url = `${SERVICE}/api3/seckill/time_list`
+    return new Promise((resolve, reject) => {
+        _request.request({
+            url,
+            data
         })
-    }
-    //时间段列表
+            .then(res => {
+                resolve(res)
+            })
+            .catch((reason) => {
+                reject(reason)
+            })
+    })
+}
+//时间段列表
 const spikeTips = (data) => {
     let url = `${SERVICE}/api3/seckill/remind_me`
     return new Promise((resolve, reject) => {
         _request.request({
-                url,
-                data
-            })
+            url,
+            data
+        })
             .then(res => {
                 resolve(res)
             })

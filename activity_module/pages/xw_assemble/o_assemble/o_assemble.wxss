@@ -138,6 +138,7 @@ page{
     width: 66rpx;
     height: 66rpx;
     border-radius:50%;
+    vertical-align:middle;
 }
 .state-info .head-img-item.virtual-position{
     border:1rpx dashed #7D7D7D;
@@ -201,6 +202,9 @@ page{
 .btn-group.color003B73 .btn.receive{
     background-color: #003B73;
     color: #fff;
+}
+.btn-group.color003B73 .btn.receive::before{
+    background-color: #fff;
 }
 .btn-group.color003B73 .btn.join{
     background-color: #003B73;
