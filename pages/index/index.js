@@ -1,16 +1,18 @@
 //index.js
 const mta = require('../../utils/public/mta_analysis.js')
 
-const request_01 = require('../../utils/request/request_01.js');
+const request_01 = require('../../utils/request/request_01.js')
 
-const method = require('../../utils/tool/method.js');
+const method = require('../../utils/tool/method.js')
 
-const app = getApp(); //获取应用实例
+const app = getApp() //获取应用实例
+import { COMMONLogin, DEALERActivityList, USERGetUserDatabaseInfo } from '../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../xw_utils/alert.js'
 import { getPosition } from '../../xw_utils/tools.js'
-import { COMMONLogin, DEALERActivityList } from '../../xw_api/index.js'
 import { jump_nav } from '../../xw_utils/route.js'
 
+let userInfo = wx.getStorageSync('userInfo')
+let shareIds = wx.getStorageSync('shareIds')
 Page({
     data: {
         IMGSERVICE: app.globalData.IMGSERVICE,
@@ -52,7 +54,6 @@ Page({
         let activityPage = this.data.activityPage;
         let activityKey = this.data.activityKey;
         let activityPrivateKey = this.data.activityPrivateKey;
-        const userInfo = wx.getStorageSync('userInfo');
 
         //滚动加载中不允许操作
         if (!activityKey || !activityPrivateKey) return;
@@ -120,7 +121,6 @@ Page({
      */
     initData(options) {
         const activityPage = this.data.activityPage
-        const userInfo = wx.getStorageSync('userInfo')
         getPosition().then((res) => {
             let { location, ad_info } = res.result
             this.setData({
@@ -143,26 +143,29 @@ Page({
                 request_01.signInInfo({
                     user_id: userInfo.user_id,
                 }),
-                request_01.personalInfo({
-                    user_id: userInfo.user_id,
-                    openid: userInfo.openid,
-                }),
-                // request_01.tag({
-                //   version:'3.0',
-                // }),
                 DEALERActivityList({
                     data: {
                         city_name: curCity,//string	城市名字
                         dlr_code: '',//string	专营店编码
                     }
-                })
+                }),
+                // USERGetUserDatabaseInfo({
+                //     data:{
+                //         user_id: userInfo.user_id,
+                //         openid: userInfo.openid,
+                //     }
+                // }),
+                // request_01.tag({
+                //   version:'3.0',
+                // }),
             ])
                 .then((value) => {
                     let { msg: msg0, status: status0, data: listInfo } = value[0].data
                     let { msg: msg1, status: status1, data: activityList } = value[1].data
                     let { msg: msg2, status: status2, data: signInInfo } = value[2].data
-                    let { msg: msg3, status: status3, data: personalInfo } = value[3].data
-                    let { msg: msg4, status: status4, data: data4 } = value[4].data
+                    let { msg: msg3, status: status3, data: data3 } = value[3].data
+                    // let { msg: msg4, status: status4, data: personalInfo } = value[4].data
+
                     activityList = activityList.list
 
                     if (status0 == 1 && status1 == 1 && status2 == 1 && status3 == 1) {
@@ -172,7 +175,7 @@ Page({
                                 wx.setStorageSync('activity_id', item.activity_id)
                             }
                         })
-                        // const tag = value[4].data.status;
+
                         const keyGroup = wx.getStorageSync('keyGroup');
 
                         let isMore;
@@ -187,26 +190,24 @@ Page({
                         this.setData({
                             listInfo,
                             activityList,
-                            signInIf: signInInfo.is_sign == 1 ? false : true,
+                            signInIf: !Boolean(signInInfo.is_sign == 1),
                             str: '- 我是有底线的 -',
                             isMore,
-                            giftIf: personalInfo.nickname ? false : true, //是否授权 授权关闭见面礼 
+                            giftIf: !Boolean(userInfo.nickname), //是否是新用户 授权关闭见面礼 
                             keyGroup,
                             // tag:tag == 1 ? true : false,// 1-展示 0-隐藏
-                            storeActivityList: data4,//经销商活动列表信息
+                            storeActivityList: data3,//经销商活动列表信息
                         })
                     } else {
                         throw new Error(
                             status0 != 1 && msg0 ||
                             status1 != 1 && msg1 ||
                             status2 != 1 && msg2 ||
-                            status3 != 1 && msg3 ||
-                            status4 != 1 && msg4)
+                            status3 != 1 && msg3)
                     }
                 })
                 .catch((err) => {
                     //fail
-
                     //开启404页面
                     this.setData({
                         page404: true,
@@ -222,7 +223,9 @@ Page({
                 })
         })
     },
-    //重新加载
+    /**
+     * 重新加载
+     */
     reload() {
         const options = this.data.options;
 
@@ -233,7 +236,10 @@ Page({
 
         this.onLoad(options);
     },
-    //banner轮播切换事件
+    /**
+     * banner轮播切换事件
+     * @param {*} e 
+     */
     dotchange(e) {
         this.setData({
             dotIndex: e.detail.current
@@ -255,7 +261,9 @@ Page({
             return false;
         }
     },
-    //直接跳过
+    /**
+     * 直接跳过见面礼按钮
+     */
     jumpGift() {
         const keyGroup = this.data.keyGroup; //锁
 
@@ -268,7 +276,10 @@ Page({
             keyGroup, //存页面
         })
     },
-    //立即授权
+    /**
+     * 立即授权
+     * @param {*} e 
+     */
     authBtn(e) {
         const detail = e.detail; //btn授权信息
         const errMsg = detail.errMsg; //是否授权信息
@@ -278,7 +289,6 @@ Page({
             .then(() => { //用户接受授权，获取用户信息
 
                 const keyGroup = this.data.keyGroup; //锁
-                const userInfo = wx.getStorageSync('userInfo');
 
                 keyGroup.giftKey = false; //见面礼锁关闭
 
@@ -312,18 +322,21 @@ Page({
 
             })
     },
-    //暂不是车主
+    /**
+     * 暂不是车主
+     */
     unbind() {
         this.setData({
             bindcarIf: false,
         })
     },
-    //立即绑定
+    /**
+     * 立即绑定
+     */
     bind() {
         this.setData({
             bindcarIf: false,
         })
-
         jump_nav(`/pages/o_love_car/o_love_car?pageType=back`)
     },
     /**
@@ -429,12 +442,9 @@ Page({
                 break
         }
     },
-    openPay() {
-        this.setData({
-            isPay: true
-        })
-    },
-
+    /**
+     * 红包
+     */
     toPay() {
         this.setData({
             isPay: false
@@ -442,20 +452,30 @@ Page({
         let activity_id = wx.getStorageSync('activity_id')
         jump_nav(`/pages/payment/pay_index/pay_index?activity_id=${activity_id}`)
     },
-
-    //签到
+    openPay() {
+        this.setData({
+            isPay: true
+        })
+    },
+    /**
+     * 签到
+     */
     sureBtn() {
         this.setData({
             signInIf: false,
             // isPay:true,
         })
     },
-    //  跳转到疫情页面
+    /**
+     * 跳转到疫情页面
+     */
     goyqpage() {
         jump_nav(`/pages/yqpage/yqpage`)
     },
-    caDel() { //跳转ca详情
-        console.log("==========")
+    /**
+     * 跳转ca详情
+     */
+    caDel() {
         jump_nav(`/pages/take/takeHome/takeHome`)
         // wx.navigateToMiniProgram({
         // 	appId: 'wx5f4c100ae6bb86d1',
@@ -489,11 +509,18 @@ Page({
         //     console.log("字体3", res)
         //   }
         // })
-        mta.Page.init() //腾讯统计
-        if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", {
-            channel_id: wx.getStorageSync("shareIds").channel_id,
-            page: 'home'
-        })
+
+        //腾讯统计
+        mta.Page.init()
+        if (Boolean(shareIds.channel_id)) {
+            mta.Event.stat("channel_sunode", {
+                channel_id: shareIds.channel_id,
+                page: 'home'
+            })
+        }
+
+
+
         loading({
             title: '登录中'
         })
@@ -506,7 +533,7 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-        const IMGSERVICE = this.data.IMGSERVICE;
+        let IMGSERVICE = this.data.IMGSERVICE;
         return {
             title: '启辰星亮相发布，快来预约关注！',
             imageUrl: `${IMGSERVICE}/index/index_share.jpg`,

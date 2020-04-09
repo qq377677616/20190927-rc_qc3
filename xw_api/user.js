@@ -52,7 +52,7 @@ export function USERGetUnionid(data = {}){
 }
 
 /**
- * 获取用户信息
+ * 获取用户信息（数据库中用户信息）
  * @param {*} data 
  */
 export function USERGetUserDatabaseInfo(data = {}){
