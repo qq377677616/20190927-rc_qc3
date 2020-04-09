@@ -634,10 +634,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 82,
 					"name": "经销商砍价首页",
 					"pathName": "activity_module/pages/yls_bargain/index/index",
-					"query": "",
+					"query": "activity_id=23",
 					"scene": null
 				},
 				{
@@ -645,6 +645,20 @@
 					"name": "盲定首页",
 					"pathName": "pages/payment/pay_index/pay_index",
 					"query": "activity_id=18",
+					"scene": null
+				},
+				{
+					"id": 84,
+					"name": "pay_cart",
+					"pathName": "pages/payment/pay_cart/pay_cart",
+					"query": "type=pay&activity_id=18",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/payment/pay_cart/pay_cart",
+					"pathName": "pages/payment/pay_cart/pay_cart",
+					"query": "type=pay&activity_id=18",
 					"scene": null
 				}
 			]

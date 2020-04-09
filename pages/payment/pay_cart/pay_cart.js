@@ -25,13 +25,17 @@ Page({
     pickerStoreList: [],
     storeIndex: 0,
     positionKey: true,
+	jumpurl:null,// 跳转路径
+	swpop:false,//实物弹窗控制
+	qtpop:false,//其他弹窗控制
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.activity_id)
+	console.log(options,"接收参数");
+    // console.log(options.activity_id)
     request_01.login(() => {
       this.initData(options)
     })
@@ -298,7 +302,7 @@ Page({
       });
 
       url = '/mall_module/pages/shop_cart_submitted/shop_cart_submitted?type=' + goodsDetail.type;
-
+	 
       promise = request_05.buyGoods({
         openid: userInfo.openid, //openid
         activity_id: this.data.options.activity_id, //openid
@@ -346,14 +350,22 @@ Page({
         alert.loading_h()
 
         if (status == 1) { //成功
-          router.jump_red({
-              url: `${url}&order_id=${order_id}`,
-            })
-            .then(() => {
-              app.globalData.goodsDetail = {}; //清空立即支付商品信息
-              app.globalData.cartDetail = {}; //清空购物车商品信息
-            })
+			console.log("t3==", value.data.data.tanchuang3, 't4==', value.data.data.tanchuang4)
+			if (value.data.data.tanchuang4 == 1) {
+				this.setData({ swpop: true });
+			} else if (value.data.data.tanchuang3 == 1) {
+				this.setData({ qtpop: true });
+			}
 
+			this.setData({ jumpurl: `${url}&order_id=${order_id}`});
+			if (type == 'pay')return; // 如果是立即支付先弹弹窗
+			router.jump_red({
+				url: `${url}&order_id=${order_id}`,
+			})
+			.then(() => {
+				app.globalData.goodsDetail = {}; //清空立即支付商品信息
+				app.globalData.cartDetail = {}; //清空购物车商品信息
+			})
         } else { //失败
 
           alert.alert({
@@ -371,7 +383,27 @@ Page({
         alert.alert({
           str: reason
         })
-
       })
   },
+	closePop(){// 关闭弹窗
+		this.setData({swpop:false,qtpop:false})
+		router.jump_red({
+			url: `${this.data.jumpurl}`,
+		})
+		.then(() => {
+			app.globalData.goodsDetail = {}; //清空立即支付商品信息
+			app.globalData.cartDetail = {}; //清空购物车商品信息
+		})
+	},
+	goxcx(){
+		wx.navigateToMiniProgram({
+			appId: 'wx5c64e733d849c3ef',
+			path: '',
+			extraData: {},
+			envVersion: 'release',
+			success(res) {
+				console.log('跳转成功');
+			}
+		})
+	}
 })

@@ -30,6 +30,8 @@ Page({
         firstShow: false,
 		ways:0,//参与方式  1 预约  2 现场互动
 		popshow:false,
+		tool_id:-1,//展具类型id
+		is_data:-1,//是否留资
     },
 
     //获取手机号
@@ -99,6 +101,8 @@ Page({
                     storeList: res.data.data.dlr_code,
                     banner: res.data.data.banner,
                     small_activity_id,
+					tool_id: res.data.data.tool_id,
+					is_data: res.data.data.is_data,
                     options
                 })
                 if (res.data.data.status == 2) {
@@ -496,7 +500,68 @@ Page({
 	closePop(){
 		this.setData({popshow:false})
 	},
-	goback(){
-		tool.jump_back();
+	goback(){ // 根据展具id跳转
+		// console.log(this.data.small_activity_id);return;
+		let t_id = this.data.tool_id;
+		let d_id = this.data.is_data;
+		let type = t_id == 1|| t_id == 3 ? 1 : (t_id == 6 || t_id == 7 || t_id == 8) ? 6 : t_id;
+		if (d_id == -1 || t_id==-1)return;
+		switch(type){
+			case 0:
+				tool.jump_back();
+				break;
+			case 1:
+				wx.navigateToMiniProgram({
+					appId: 'wx1520e6685337ea01',
+					path: '',
+					extraData: {
+						success: d_id,
+						activityid: this.data.small_activity_id,
+						appid:'wx1d585c8c2fffe589'
+					},
+					envVersion: 'release',
+					success(res) {
+						console.log('跳转成功');
+					}
+				})
+				break;
+			case 2:
+			//其他操作
+				wx.navigateToMiniProgram({
+					appId: 'wx1520e6685337ea01',
+					path: '',
+					extraData: {
+						success: d_id,
+						activityid: this.data.small_activity_id,
+						appid: 'wx1d585c8c2fffe589'
+					},
+					envVersion: 'release',
+					success(res) {
+						console.log('跳转成功');
+					}
+				})
+				break;
+			case 4:
+				console.log("跳转其他小程序");
+				break;
+			case 5:
+				wx.navigateToMiniProgram({
+					appId: 'wx5f4c100ae6bb86d1',
+					path: '',
+					extraData: {
+						name: d_id,
+						phone: this.data.small_activity_id,
+						appid: 'wx1d585c8c2fffe589'
+					},
+					envVersion: 'release',
+					success(res) {
+						console.log('跳转成功');
+					}
+				})
+				break;
+			case 6:
+				tool.jump_back();
+				break;
+		}
 	}
 })

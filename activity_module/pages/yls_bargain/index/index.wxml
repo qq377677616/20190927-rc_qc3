@@ -15,24 +15,24 @@
     <view class="activity-info-bar clearfix">
         <block wx:if="{{ false }}">
             <view class="info-left">
-                <view class="name">拼团秒杀</view>
+                <view class="name">砍价秒杀</view>
                 <view class="tips">活动结束恢复原价</view>
             </view>
         </block>
         <block wx:else>
             <view class="info-left">
                 <view class="join-number">
-                    有<view class="span">24000</view>个人正在参与
+                    有<view class="span">{{bargainDat.activity_info.joining_people}}</view>个人正在参与
                 </view>
             </view>
         </block>
 
-        <block wx:if="{{ false }}">
+        <block wx:if="{{bargainDat.activity_info.status==3}}">
             <view class="info-right">
                 <view class="tips">活动已经结束</view>
             </view>
         </block>
-        <block wx:else>
+        <block wx:if="{{bargainDat.activity_info.status==1}}">
             <view class="info-right">
                 <view class="count-down-text">距离活动结束仅剩</view>
                 <view class="count-down">
@@ -73,7 +73,7 @@
     <view wx:for="{{1}}" class="section">
         <view class="title">产品详情</view>
 
-        <image class="poster" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg" mode="widthFix"></image>
+        <image class="poster" src="{{IMGSERVICE}}/icon/kj_default.png" mode="widthFix"></image>
     </view>
 
     <view class="footer">
@@ -91,10 +91,10 @@
 			<view class="get-btn setpray" wx:if="{{!bargainDat.activity_info.status}}">请稍后</view>
 			<view class="get-btn setpray" wx:if="{{bargainDat.activity_info.status==2}}">活动未开始</view>
 			<view class="get-btn setred" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.is_bargain==0}}" bindtap="immdEnter" data-type="ok">立即参与</view>
-			<view class="get-btn" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.bargain_info.status==1}}">立即领取</view>
-			<view class="get-btn setpray" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.bargain_info.is_receive==1}}">>已领取</view>
+			<view class="get-btn" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.bargain_info.status==1&&bargainDat.bargain_info.is_receive==0}}" bindtap="getworld">立即领取</view>
+			<view class="get-btn setpray" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.bargain_info.is_receive==1}}">已领取</view>
 			<view class="get-btn setpray" wx:if="{{bargainDat.activity_info.status==3}}">活动已结束</view>
-			<view class="get-btn setred" wx:if="{{bargainDat.activity_info.status==1&&bargainDat.bargain_info.is_receive==0}}" bindtap="continuebargain">继续砍价</view>
+			<view class="get-btn setred" wx:if="{{bargainDat.bargain_info.status==0}}" bindtap="continuebargain">继续砍价</view>
 		<!-- 状态按钮 -->
     </view>
 </view>

@@ -524,6 +524,54 @@ const bargain_info = (data) => {
 			})
 	})
 }
+// 经销商 分享上报接口
+const share_log = (data) => {
+	let url = `${SERVICE}/api3/dealer_activity/share_log`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 经销商 好友帮忙砍价
+const helpbargain = (data) => {
+	let url = `${SERVICE}/api3/dealer_bargain/bargain`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
+// 经销商 
+const bargainreceive = (data) => {
+	let url = `${SERVICE}/api3/dealer_bargain/receive`
+	return new Promise((resolve, reject) => {
+		_request.request({
+			url,
+			data
+		})
+			.then(res => {
+				resolve(res)
+			})
+			.catch((reason) => {
+				reject(reason)
+			})
+	})
+}
 module.exports = {
 	reply_list,
 	addArtlike,
@@ -557,4 +605,7 @@ module.exports = {
 	bargainDel,
 	start_bargain,
 	bargain_info,
+	share_log,
+	helpbargain,
+	bargainreceive,
 }

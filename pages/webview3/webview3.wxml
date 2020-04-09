@@ -1,4 +1,24 @@
 <!--pages/webview3/webview3.wxml-->
 <view class="webview page">
-  <web-view src="{{h5Url}}"></web-view>
+  <!-- tips_mask -->
+  <view class="tips_mask fadeIn" wx:if="{{!userInfo.nickName||!userInfo.unionid}}"
+    style="background-image:url({{ IMGSERVICE }}/index/jianmianli.png);">
+
+    <view class="main">
+
+      <view class="title">授权即可获得</view>
+
+      <view class="number">30V豆</view>
+
+      <view class="btn_group">
+        <view class="btn out" bindtap="jumpGift">直接跳过</view>
+
+        <button open-type="getUserInfo" class="btn go" bindgetuserinfo="authBtn">立即授权</button>
+      </view>
+
+    </view>
+
+  </view>
+  <!-- tips_mask -->
+  <web-view src="{{h5Url}}" wx:if="{{userInfo.nickName&&userInfo.unionid}}"></web-view>
 </view>

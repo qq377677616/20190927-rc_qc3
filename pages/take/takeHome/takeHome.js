@@ -142,8 +142,8 @@ Page({
 		let dat = {
 			app_id: 'wx1d585c8c2fffe589',
 			openid: this.data.userInfo.openid,
-			nickname: this.data.userInfo.nickname||'',
-			avatar: this.data.userInfo.headimg||''
+			nickname: this.data.userInfo.nickname,
+			avatar: this.data.userInfo.headimg
 		}
 		https.clientUpdate(dat).then((res) => {
 			console.log(res.data.data);
@@ -193,7 +193,7 @@ Page({
 		})
 		.catch(err => {
 			console.log("定位失败", err)
-			tool.alert("定位失败")
+			tool.alert("定位失败") 
 			tool.loading_h()
 			this.showHideModal()
 		})
@@ -208,7 +208,8 @@ Page({
 	takeMan(){ //聊一聊userInfo.nickName || !userInfo.unionid
 		if (this.data.userInfo.nickName && this.data.userInfo.unionid && this.data.useData.userid){
 			this.subMsg().then((rel) => { 
-				tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&to_uid=${this.data.useData.userid}&handimg=${this.data.useData.avatar}`);
+				this.clientUpdate();
+				tool.jump_nav(`/pages/take/takeDel/takeDel?uid=${this.data.uid}&&name=${this.data.useData.name}&to_uid=${this.data.useData.userid}&handimg=${this.data.useData.avatar}`);
 				this.cleardot();
 			});
 		}else{
@@ -286,8 +287,17 @@ Page({
 			tool.jump_nav(`/pages/look_car_detail/look_car_detail?id=${9}`);
 		}
 		else if (id == 11) {
-			// 跳转T90页面
-			tool.jump_nav(`/pages/look_car_detail_03/look_car_detail?id=${11}`)
+			// 启辰星
+			// tool.jump_nav(`/pages/look_car_detail_03/look_car_detail?id=${11}`)
+			wx.navigateToMiniProgram({
+				appId: 'wx5c64e733d849c3ef',
+				path: '',
+				extraData: {},
+				envVersion: 'release',
+				success(res) {
+					console.log('跳转成功');
+				}
+			})
 		}
 		else {
 			tool.jump_nav(`/pages/look_car_detail_02/look_car_detail_02?id=${id}`)

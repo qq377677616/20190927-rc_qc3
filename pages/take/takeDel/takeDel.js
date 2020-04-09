@@ -23,6 +23,7 @@ Page({
 		linkNum:1,// 连接次数
 		isIponeX:null,// 是不是iphonex
 		iscurr: true,// 是不是在当前页面
+		// name:'',//专营店人名字
 	},
 
 	/**
@@ -31,9 +32,10 @@ Page({
 	onLoad: function (options) {
 		this.getPhoneinfo();
 		this.setData({ uid: options.uid, to_uid: options.to_uid, userInfo: wx.getStorageSync("userInfo"), handimg: options.avatar})
-		// this.creatSocket();
+		wx.setNavigationBarTitle({ // 动态设置title
+			title: options.name
+		})
 		this.msgLog();
-		// this.scoketInit();
 		this.creatSocket();
 	},
 
@@ -166,6 +168,8 @@ Page({
 					break;
 				}
 				case 'receive':{
+					console.log(self.data.to_uid, '==', data.data.from);
+					if (`${self.data.to_uid}A` != data.data.from) return;
 					arr.push({ client_avatar: self.data.handimg, content: data.data.content, type: 1, is_ob: 0, msg_type: data.data.msg_type });
 					self.setData({ sendload: [...self.data.sendload, ...arr], msg: '', img: null });
 					self.conutHeg();

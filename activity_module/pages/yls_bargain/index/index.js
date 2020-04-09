@@ -12,7 +12,7 @@ Page({
    */
   data: {
     IMGSERVICE: app.globalData.IMGSERVICE, // 图片基础路径
-	activity_id:23,// 经销商活动id
+	activity_id:null,// 经销商活动id
 	bargainDat:{},// 砍价信息 存储
 	rulspop:false,// 规则弹窗
 	djs: {},//倒计时数据
@@ -26,6 +26,7 @@ Page({
    */
   onLoad: function (options) {
 	  request_01.login(() => {
+		  this.setData({ activity_id: options.activity_id});
 		  this.getbargainInfo();
 	  })
   },
@@ -41,7 +42,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-	  if (this.data.bargainDat){
+	  if (this.data.bargainDat&&this.data.activity_id){
 		  this.getbargainInfo();
 	  }
   },
@@ -78,6 +79,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+	  this.shareUp();
 	  return {
 		  title: '砍价好礼任你选 ！',
 		//   imageUrl: `${IMGSERVICE}/lookcar/carshare.jpg`,
@@ -195,11 +197,41 @@ immdEnter(e){//立即参与
 		tool.alert("加载中请稍后！");
 	}
 	}, 
-	continuebargain(){
+	continuebargain(){ // 继续砍价
 		if (this.data.bargainDat.bargain_info.bargain_id){
-			tool.jump_nav(`/activity_module/pages/yls_bargain/bargain_index/bargain_index?bargain_id=${this.data.bargainDat.bargain_info.bargain_id}`);
+			tool.jump_nav(`/activity_module/pages/yls_bargain/bargain_index/bargain_index?bargain_id=${this.data.bargainDat.bargain_info.bargain_id}&activity_id=${this.data.activity_id}`);
 		}else{
 			tool.alert("请稍候！")
 		}
+	},
+	shareUp(){ // 分享上报
+		let userInfo = wx.getStorageSync("userInfo");
+		let dat = {
+			openid:userInfo.openid,
+			out_id:this.data.activity_id,
+			out_type:1,
+			page_id:1,
+			page_name:'经销商砍价首页'
+		} 
+		request_04.share_log(dat).then((res)=>{
+			console.log(res.data);
+		})	
+	},
+	getworld() {//领取奖品
+		tool.loading();
+		let useobj = wx.getStorageSync("userInfo");
+		let dat = {
+			bargain_id: this.data.bargain_id,
+			openid: useobj.openid
+		}
+		request_04.bargainreceive(dat).then((res) => {
+			// console.log(res.data);
+			tool.loading_h();
+			if (res.data.status != 1) {
+				tool.alert(res.data.msg);
+			} else {
+				tool.jump_nav("/pages/order_detail/order_detail?order_id=" + res.data.data.order_id);
+			}
+		})
 	}
 })
