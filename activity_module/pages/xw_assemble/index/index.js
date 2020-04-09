@@ -420,11 +420,12 @@ Page({
       }
     }).then((res) => {
       let options = this.data.options
-      let { msg, status } = res.data
+      let { msg, status, data } = res.data
       hideLoading()
 
       if (status == 1) {
         this.initData(options)
+        jump_nav(`/pages/order_detail/order_detail?order_id=${data.order_id}`);
       } else {
         throw new Error(msg)
       }
