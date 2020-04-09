@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "qc-Tabbar":"/components/Tabbar/cmp",
-    "qc-More":"/components/More/cmp",
+    "NoMore":"/xw_components/NoMore/NoMore",
     "qc-SignIn":"/components/SignIn/cmp",
     "qc-page404":"/components/page404/page404"
   },

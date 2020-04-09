@@ -15,7 +15,7 @@
         <block wx:if="{{ storeInfo.isVisible }}">
             <view class="group store">
                 <image src="{{ IMGSERVICE }}/icon/home.png" class="icon" mode="widthFix"></image>
-                <picker class="p" mode="selector" disabled="{{ personalInfo.value ? false : true }}" bindchange="changeStoreInfoHandler" range-key="name" range="{{ storeList }}" value="{{ storeIndex }}">{{ storeInfo.value.name || '选择领取的门店' }}</picker>
+                <picker class="p" mode="selector" disabled="{{ personalInfo.value ? false : true }}" bindchange="changeStoreInfoHandler" range-key="name" range="{{ storeList }}">{{ storeInfo.value.name || '选择领取的门店' }}</picker>
                 <image src="{{ IMGSERVICE }}/icon/right-arrow-666.png" class="arrow" mode="widthFix"></image>
             </view>
         </block>

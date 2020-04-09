@@ -1,6 +1,6 @@
 // activity_module/pages/xw_assemble/index/index.js
 const app = getApp(); //获取应用实例
-import { assembleIndex, lunchAssemble, joinAssemble, receivePrize, login, postUserInfo, getUnionid, getUserDatabaseInfo } from '../../../../xw_api/index.js'
+import { ASSEMBLEAssembleIndex, ASSEMBLELunchAssemble, ASSEMBLEJoinAssemble, ASSEMBLEReceivePrize, COMMONLogin, USERPostUserInfo, USERGetUnionid, USERGetUserDatabaseInfo } from '../../../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../../../xw_utils/alert.js'
 import { timeFormat, getUserAdmin } from '../../../../xw_utils/tools.js'
 import { jump_nav } from '../../../../xw_utils/route.js'
@@ -83,7 +83,7 @@ Page({
       title: '加载中'
     })
     Promise.all([
-      assembleIndex({
+      ASSEMBLEAssembleIndex({
         data: {
           out_id: options.out_id,//活动ID
           openid: userInfo.openid,//用户openid
@@ -92,40 +92,51 @@ Page({
     ]).then((res) => {
       const { msg: msg0, status: status0, data: data0 } = res[0].data
 
-      //当前活动倒计时相关处理
-      let countDown = 0
-      let countDownFormat = {}
-      countDown = data0.card_info.count_down
-      countDownFormat = {
-        day: '00',
-        hours: '00',
-        minutes: '00',
-        seconds: '00'
+      if (status0 == 1) {
+        //当前活动倒计时相关处理
+        let countDown = 0
+        let countDownFormat = {}
+        countDown = data0.card_info.count_down
+        countDownFormat = {
+          day: '00',
+          hours: '00',
+          minutes: '00',
+          seconds: '00'
+        }
+
+        //其它活动倒计时相关处理
+        let otherTuan = []
+        let countDownFormatList = []
+        otherTuan = data0.other_tuan.map((item) => {
+          countDownFormatList.push(`00:00:00`)
+          return Object.assign({}, item)
+        })
+
+        //活动进行状态
+        let isVisibleActivityStateConfirm = false
+        isVisibleActivityStateConfirm = data0.activity_info.status === 2
+
+        //
+        let params = this.data.params
+        params.out_id = options.out_id
+        params.out_type = options.out_type
+
+
+        this.setData({
+          params,
+          indexData: data0,
+          countDown,//保存当前活动倒计时
+          countDownFormat,
+          otherTuan,
+          countDownFormatList,
+          isVisibleActivityStateConfirm,
+        })
+
+        //开启活动倒计时
+        this.openCountDownHandler()
+      }else{
+        throw new Error(msg0)
       }
-
-      //其它活动倒计时相关处理
-      let otherTuan = []
-      let countDownFormatList = []
-      otherTuan = data0.other_tuan.map((item) => {
-        countDownFormatList.push(`00:00:00`)
-        return Object.assign({}, item)
-      })
-
-      //
-      let isVisibleActivityStateConfirm = false
-      isVisibleActivityStateConfirm = data0.activity_info.status === 2
-
-      this.setData({
-        indexData: data0,
-        countDown,//保存当前活动倒计时
-        countDownFormat,
-        otherTuan,
-        countDownFormatList,
-        isVisibleActivityStateConfirm,
-      })
-
-      //开启活动倒计时
-      this.openCountDownHandler()
     }).catch((err) => {
       alert({
         title: err.message
@@ -265,7 +276,7 @@ Page({
     })
     let { personalInfoValue, storeInfoValue } = e.detail
     let options = this.data.options
-    lunchAssemble({
+    ASSEMBLELunchAssemble({
       data: {
         openid: userInfo.openid,//string	用户OPENID
         out_id: options.out_id,//int	经销商活动ID
@@ -303,7 +314,7 @@ Page({
     let { personalInfoValue, storeInfoValue } = e.detail
     let isVisibleJoinForm = this.data.isVisibleJoinForm
     let options = this.data.options
-    joinAssemble({
+    ASSEMBLEJoinAssemble({
       data: {
         openid: userInfo.openid,//string	用户OPENID
         out_id: options.out_id,//int	经销商活动ID
@@ -402,7 +413,7 @@ Page({
       title: '领取中'
     })
     let indexData = this.data.indexData
-    receivePrize({
+    ASSEMBLEReceivePrize({
       data: {
         openid: userInfo.openid,//string	用户openid
         tuan_log_id: indexData.join_info.tuan_log_id,//int	团购记录ID
@@ -443,7 +454,7 @@ Page({
     let { errMsg, userInfo: newUserInfo = {}, iv, encryptedData } = e.detail
     if (errMsg === 'getUserInfo:ok') {
       //推送用户信息
-      postUserInfo({
+      USERPostUserInfo({
         data: {
           user_id: userInfo.user_id,
           openid: userInfo.openid,
@@ -454,44 +465,44 @@ Page({
       }).then((res) => {
         //更新用户信息至本地
         let { status, msg } = res.data
-        if( status == 1 ){
+        if (status == 1) {
           wx.setStorageSync("userInfo", Object.assign(userInfo, newUserInfo))
-        }else{
+        } else {
           throw new Error(msg)
         }
         //获取unionid
-        return getUnionid({
-          data:{
+        return USERGetUnionid({
+          data: {
             user_id: userInfo.user_id, //用户ID
             openid: userInfo.openid,
             encrypted_data: encryptedData, //加密数据
             session_key: userInfo.session_key, //上一个接口获得的session_key
             iv: iv, //加密数据匹配的iv                
           }
-        }).then((res)=>{
+        }).then((res) => {
           let { status, msg } = res.data
-          if( status != 1 ){
+          if (status != 1) {
             throw new Error(msg)
           }
 
           //获取用户数据库信息
-          return getUserDatabaseInfo({
-            data:{
+          return USERGetUserDatabaseInfo({
+            data: {
               user_id: userInfo.user_id,
               openid: userInfo.openid,
             }
-          }).then((res)=>{
+          }).then((res) => {
             let { status, msg, data } = res.data
-            if( status == 1 ){
+            if (status == 1) {
               wx.setStorageSync("userInfo", Object.assign(userInfo, {
                 user_type: data.user_type,
               }))
               this.closeAuthConfirmBtn()
 
-            }else{
+            } else {
               throw new Error(msg)
             }
-          }).catch((err)=>{
+          }).catch((err) => {
             alert({
               title: err.message
             })
@@ -511,7 +522,7 @@ Page({
   /**
    * 绑定车主程序
    */
-  bindHandler(){
+  bindHandler() {
     this.closeBindConfirmBtn()
     jump_nav(`/pages/o_love_car/o_love_car?pageType=back`)
   },
@@ -535,13 +546,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options = {
-      out_id: '20'
-    }
     loading({
       title: '登录中'
     })
-    login(() => {
+    COMMONLogin(() => {
       hideLoading()
       this.initData(options)
     })
@@ -618,14 +626,14 @@ Page({
       return {
         // title: '',
         // imageUrl: ``,
-        path: `/activity_module/pages/xw_assemble/o_assemble/o_assemble?tuan_id=${indexData.join_info.tuan_id}&openid=${userInfo.openid}&out_id=${options.out_id}&tuan_log_id=${indexData.join_info.tuan_log_id}`,
+        path: `/activity_module/pages/xw_assemble/o_assemble/o_assemble?tuan_id=${indexData.join_info.tuan_id}&openid=${userInfo.openid}&out_id=${options.out_id}&out_type=${options.out_type}&tuan_log_id=${indexData.join_info.tuan_log_id}`,
       };
     } else {
 
       return {
         // title: '',
         // imageUrl: ``,
-        path: `/activity_module/pages/xw_assemble/index/index?out_id=${options.out_id}`,
+        path: `/activity_module/pages/xw_assemble/index/index?out_id=${options.out_id}&out_type=${options.out_type}`,
       };
 
     }

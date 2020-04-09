@@ -5,13 +5,11 @@ const request_01 = require('../../utils/request/request_01.js');
 
 const method = require('../../utils/tool/method.js');
 
-const router = require('../../utils/tool/router.js');
-
-const authorization = require('../../utils/tool/authorization.js');
-
-const alert = require('../../utils/tool/alert.js');
-
 const app = getApp(); //获取应用实例
+import { alert, loading, hideLoading } from '../../xw_utils/alert.js'
+import { getPosition } from '../../xw_utils/tools.js'
+import { COMMONLogin, DEALERActivityList } from '../../xw_api/index.js'
+import { jump_nav } from '../../xw_utils/route.js'
 
 Page({
     data: {
@@ -33,16 +31,19 @@ Page({
         isMore: false,
         tag: true,
         isPay: false, //支付弹窗
-        tabList: [{
-            id: 1,
-            value: "活动"//总部
-        }
-		// , {
-        //     id: 2,
-        //     value: "经销商活动"
-        // }
-		],
-        tabIndex:1,
+        tabList: [
+            {
+                id: 1,
+                value: "总部活动"
+            },
+            {
+                id: 2,
+                value: "经销商活动"
+            }
+        ],
+        tabIndex: 1,
+        curCity: '',
+        storeActivityList: [],
     },
     /**
      * 页面上拉触底事件的处理函数
@@ -104,127 +105,122 @@ Page({
             })
     },
     /**
-     * 
-     * tab切换
+     * tab bar切换
+     * @param {*} e 
      */
-    tabClickHandler(e){
+    tabClickHandler(e) {
         let id = e.currentTarget.dataset.id
         this.setData({
-            tabIndex:id
+            tabIndex: id
         })
     },
     /**
-     * 生命周期函数--监听页面加载
+     * 初始化
+     * @param {*} options 
      */
-    onLoad: function (options) {
-        //字体
-        // wx.loadFontFace({
-        //   family: 'ygyxsziti2',
-        //   source: 'url("https://game.flyh5.cn/resources/game/wechat/szq/images/ygyxsziti2.0.ttf")',
-        //   success: function (res) {
-        //     console.log("字体", res)
-        //   },
-        //   fail: function (res) {
-        //     console.log("字体2", res)
-        //   },
-        //   complete: function (res) {
-        //     console.log("字体3", res)
-        //   }
-        // })
-        mta.Page.init() //腾讯统计
-        if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", {
-            channel_id: wx.getStorageSync("shareIds").channel_id,
-            page: 'home'
-        })
-        request_01.login(() => {
-
-            this.initData(options)
-        })
-    },
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-        const IMGSERVICE = this.data.IMGSERVICE;
-        return {
-            title: '启辰星亮相发布，快来预约关注！',
-            imageUrl: `${IMGSERVICE}/index/index_share.jpg`,
-            path: '/pages/index/index'
-        };
-    },
-    //页面初始化
     initData(options) {
-        const activityPage = this.data.activityPage;
-        const userInfo = wx.getStorageSync('userInfo');
-        Promise.all([
-            request_01.indexBanner({
-                user_id: userInfo.user_id,
-            }),
-            request_01.indexActivity({
-                user_id: userInfo.user_id,
-                page: activityPage,
-            }),
-            request_01.signInInfo({
-                user_id: userInfo.user_id,
-            }),
-            request_01.personalInfo({
-                user_id: userInfo.user_id,
-                openid: userInfo.openid,
-            }),
-            // request_01.tag({
-            //   version:'3.0',
-            // }),
-        ])
-            .then((value) => {
-                const listInfo = value[0].data.data;
-                const activityList = value[1].data.data.list;
-                // 判断看车类型
-                activityList.forEach((item, index) => {
-                    if (item.activity_type == 16) {
-                        wx.setStorageSync('activity_id', item.activity_id)
+        const activityPage = this.data.activityPage
+        const userInfo = wx.getStorageSync('userInfo')
+        getPosition().then((res) => {
+            let { location, ad_info } = res.result
+            this.setData({
+                curCity: ad_info.city,
+            })
+        }).catch((err) => {
+            alert({
+                title: err.message
+            })
+        }).then(() => {
+            let curCity = this.data.curCity
+            Promise.all([
+                request_01.indexBanner({
+                    user_id: userInfo.user_id,
+                }),
+                request_01.indexActivity({
+                    user_id: userInfo.user_id,
+                    page: activityPage,
+                }),
+                request_01.signInInfo({
+                    user_id: userInfo.user_id,
+                }),
+                request_01.personalInfo({
+                    user_id: userInfo.user_id,
+                    openid: userInfo.openid,
+                }),
+                // request_01.tag({
+                //   version:'3.0',
+                // }),
+                DEALERActivityList({
+                    data: {
+                        city_name: curCity,//string	城市名字
+                        dlr_code: '',//string	专营店编码
                     }
                 })
-                const signInInfo = value[2].data.data;
-                const personalInfo = value[3].data.data;
-                // const tag = value[4].data.status;
-                const keyGroup = wx.getStorageSync('keyGroup');
+            ])
+                .then((value) => {
+                    let { msg: msg0, status: status0, data: listInfo } = value[0].data
+                    let { msg: msg1, status: status1, data: activityList } = value[1].data
+                    let { msg: msg2, status: status2, data: signInInfo } = value[2].data
+                    let { msg: msg3, status: status3, data: personalInfo } = value[3].data
+                    let { msg: msg4, status: status4, data: data4 } = value[4].data
+                    activityList = activityList.list
 
-                let isMore;
+                    if (status0 == 1 && status1 == 1 && status2 == 1 && status3 == 1) {
+                        // 判断看车类型
+                        activityList.forEach((item, index) => {
+                            if (item.activity_type == 16) {
+                                wx.setStorageSync('activity_id', item.activity_id)
+                            }
+                        })
+                        // const tag = value[4].data.status;
+                        const keyGroup = wx.getStorageSync('keyGroup');
 
-                if (activityList.length) { //有商品数据
-                    isMore = false;
-                } else { //无商品数据
-                    isMore = true;
-                }
-                this.setData({
-                    listInfo,
-                    activityList,
-                    signInIf: signInInfo.is_sign == 1 ? false : true,
-                    str: '- 我是有底线的 -',
-                    isMore,
-                    giftIf: personalInfo.nickname ? false : true, //是否授权 授权关闭见面礼 
-                    keyGroup,
-                    // tag:tag == 1 ? true : false,// 1-展示 0-隐藏
+                        let isMore;
+
+                        if (activityList.length) { //有商品数据
+                            isMore = false;
+                        } else { //无商品数据
+                            isMore = true;
+                        }
+
+
+                        this.setData({
+                            listInfo,
+                            activityList,
+                            signInIf: signInInfo.is_sign == 1 ? false : true,
+                            str: '- 我是有底线的 -',
+                            isMore,
+                            giftIf: personalInfo.nickname ? false : true, //是否授权 授权关闭见面礼 
+                            keyGroup,
+                            // tag:tag == 1 ? true : false,// 1-展示 0-隐藏
+                            storeActivityList: data4,//经销商活动列表信息
+                        })
+                    } else {
+                        throw new Error(
+                            status0 != 1 && msg0 ||
+                            status1 != 1 && msg1 ||
+                            status2 != 1 && msg2 ||
+                            status3 != 1 && msg3 ||
+                            status4 != 1 && msg4)
+                    }
                 })
+                .catch((err) => {
+                    //fail
 
-            })
-            .catch((reason) => {
-                //fail
-
-                //开启404页面
-                this.setData({
-                    page404: true,
+                    //开启404页面
+                    this.setData({
+                        page404: true,
+                    })
                 })
-            })
-            .then(() => {
-                //complete
+                .then(() => {
+                    //complete
 
-                this.setData({
-                    options,
+                    this.setData({
+                        options,
+                    })
+
                 })
-
-            })
-
+        })
     },
     //重新加载
     reload() {
@@ -243,7 +239,10 @@ Page({
             dotIndex: e.detail.current
         })
     },
-    //banner图跳转
+    /**
+     * banner图跳转
+     * @param {*} e 
+     */
     bannerJump(e) {
 
         const index = e.currentTarget.dataset.index;
@@ -251,9 +250,7 @@ Page({
         const page = listInfo.banner_list[index].page;
         console.log(page)
         if (page) { //page页面存在
-            router.jump_nav({
-                url: `/${page}`,
-            })
+            jump_nav(`/${page}`)
         } else { //page页面不存在
             return false;
         }
@@ -327,55 +324,27 @@ Page({
             bindcarIf: false,
         })
 
-        router.jump_nav({
-            url: '/pages/o_love_car/o_love_car?pageType=back'
-        })
+        jump_nav(`/pages/o_love_car/o_love_car?pageType=back`)
     },
-    //nav导航区跳转
-    // navJump(e){
-    //   const id = e.currentTarget.dataset.id;
-
-    //   switch(id){
-    //     case 1:
-    //       //体验、活动
-    //       router.jump_nav({
-    //         url:'/pages/activity_list/activity_list',
-    //       })
-    //       break;
-    //     case 2:
-    //       //咨询、社区
-    //       router.jump_nav({
-    //         url:'/pages/community/community',
-    //       })
-    //       break;
-    //     case 3:
-    //       //游戏列表
-    //       router.jump_nav({
-    //         url:'/pages/game_list/game_list',
-    //       })
-    //       break;
-    //     case 4:
-    //       //任务
-    //       router.jump_nav({
-    //         url:'/pages/task/task',
-    //       })
-    //       break;
-    //   }
-    // },
+    /**
+     * nav bar跳转
+     * @param {*} e 
+     */
     navJump(e) {
         const index = e.currentTarget.dataset.index;
         const listInfo = this.data.listInfo;
         const page = listInfo.icon_list[index].page;
 
         if (page) { //page页面存在
-            router.jump_nav({
-                url: `/${page}`,
-            })
+            jump_nav(`/${page}`)
         } else { //page页面不存在
             return false;
         }
     },
-    //活动区跳转
+    /**
+     * 总部活动跳转
+     * @param {*} e 
+     */
     activityJump(e) {
         const index = e.currentTarget.dataset.index;
         const activityList = this.data.activityList;
@@ -387,86 +356,79 @@ Page({
         switch (activity_type) {
             case 1:
                 //1	抽奖
-                router.jump_nav({
-                    url: `/pages/prize/prize?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/prize/prize?activity_id=${activity_id}`)
                 break;
             case 2:
                 //2	投票
-                router.jump_nav({
-                    url: `/pages/vote_page/vote_page?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/vote_page/vote_page?activity_id=${activity_id}`)
                 break;
             case 3:
                 //3	点亮
-                router.jump_nav({
-                    url: `/pages/prize/prize?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/prize/prize?activity_id=${activity_id}`)
                 break;
             case 4:
                 //4	集攒
-                router.jump_nav({
-                    url: `/pages/vote/vote?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/vote/vote?activity_id=${activity_id}`)
                 break;
             case 5:
                 //5	团购
-                router.jump_nav({
-                    url: `/pages/assemble/pin/pin?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/assemble/pin/pin?activity_id=${activity_id}`)
 
                 break;
             case 7:
                 //7	报名
-                router.jump_nav({
-                    url: `/pages/sign_up/sign_up?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/sign_up/sign_up?activity_id=${activity_id}`)
                 break;
             case 11:
                 //11	看车
-                router.jump_nav({
-                    url: `/pages/vote/vote?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/vote/vote?activity_id=${activity_id}`)
                 break;
             case 12:
                 //12	摇红包
-                router.jump_nav({
-                    url: `/pages/shake_shake/shake_shake?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/shake_shake/shake_shake?activity_id=${activity_id}`)
                 break;
             case 13:
                 //13	砍价
-                router.jump_nav({
-                    url: `/pages/bargain_index/bargain_index?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/bargain_index/bargain_index?activity_id=${activity_id}`)
                 break;
             case 14:
                 //14	秒杀
-                router.jump_nav({
-                    url: `/pages/spike_index/spike_index?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/spike_index/spike_index?activity_id=${activity_id}`)
                 break;
             case 15:
                 //15 刮刮乐
-                router.jump_nav({
-                    url: `/pages/binding/owner/owner?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/binding/owner/owner?activity_id=${activity_id}`)
                 break;
             case 16:
                 //16 99元支付
-                router.jump_nav({
-                    url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/payment/pay_index/pay_index?activity_id=${activity_id}`)
                 break;
             case 19:
                 //19 ev
-                router.jump_nav({
-                    url: `/pages/ev/ev_index/ev_index?activity_id=${activity_id}`,
-                })
+                jump_nav(`/pages/ev/ev_index/ev_index?activity_id=${activity_id}`)
                 break;
         }
     },
-
+    /**
+     * 经销商活动跳转
+     * @param {*} e 
+     */
+    storeActivityJump(e) {
+        let out_id = e.currentTarget.dataset.outId
+        let out_type = e.currentTarget.dataset.outType
+        switch (out_type) {
+            case 1:
+                //砍价 
+                jump_nav(`/activity_module/pages/yls_bargain/index/index?activity_id=${out_id}&out_type=${out_type}`)
+                break
+            case 2:
+                //团购
+                jump_nav(`/activity_module/pages/xw_assemble/index/index?out_id=${out_id}&out_type=${out_type}`)
+                break
+            default:
+                break
+        }
+    },
     openPay() {
         this.setData({
             isPay: true
@@ -478,9 +440,7 @@ Page({
             isPay: false
         })
         let activity_id = wx.getStorageSync('activity_id')
-        router.jump_nav({
-            url: `/pages/payment/pay_index/pay_index?activity_id=${activity_id}`,
-        })
+        jump_nav(`/pages/payment/pay_index/pay_index?activity_id=${activity_id}`)
     },
 
     //签到
@@ -492,27 +452,65 @@ Page({
     },
     //  跳转到疫情页面
     goyqpage() {
-        router.jump_nav({
-            url: "/pages/yqpage/yqpage"
-        })
+        jump_nav(`/pages/yqpage/yqpage`)
     },
     caDel() { //跳转ca详情
-		console.log("==========")
-        router.jump_nav({
-            url: "/pages/take/takeHome/takeHome"
+        console.log("==========")
+        jump_nav(`/pages/take/takeHome/takeHome`)
+        // wx.navigateToMiniProgram({
+        // 	appId: 'wx5f4c100ae6bb86d1',
+        // 	path: '',
+        // 	extraData: {
+        // 		name: '小东',
+        // 		phone: '13217484172',
+        // 		area: '开福区'
+        // 	},
+        // 	envVersion: 'release',
+        // 	success(res) {
+        // 		console.log('跳转成功');
+        // 	}
+        // })
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        //字体
+        // wx.loadFontFace({
+        //   family: 'ygyxsziti2',
+        //   source: 'url("https://game.flyh5.cn/resources/game/wechat/szq/images/ygyxsziti2.0.ttf")',
+        //   success: function (res) {
+        //     console.log("字体", res)
+        //   },
+        //   fail: function (res) {
+        //     console.log("字体2", res)
+        //   },
+        //   complete: function (res) {
+        //     console.log("字体3", res)
+        //   }
+        // })
+        mta.Page.init() //腾讯统计
+        if (wx.getStorageSync("shareIds").channel_id) mta.Event.stat("channel_sunode", {
+            channel_id: wx.getStorageSync("shareIds").channel_id,
+            page: 'home'
         })
-		// wx.navigateToMiniProgram({
-		// 	appId: 'wx5f4c100ae6bb86d1',
-		// 	path: '',
-		// 	extraData: {
-		// 		name: '小东',
-		// 		phone: '13217484172',
-		// 		area: '开福区'
-		// 	},
-		// 	envVersion: 'release',
-		// 	success(res) {
-		// 		console.log('跳转成功');
-		// 	}
-		// })
+        loading({
+            title: '登录中'
+        })
+        COMMONLogin(() => {
+            hideLoading()
+            this.initData(options)
+        })
+    },
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
+        const IMGSERVICE = this.data.IMGSERVICE;
+        return {
+            title: '启辰星亮相发布，快来预约关注！',
+            imageUrl: `${IMGSERVICE}/index/index_share.jpg`,
+            path: '/pages/index/index'
+        };
     }
 })

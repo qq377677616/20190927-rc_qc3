@@ -608,7 +608,7 @@
 				{
 					"id": 78,
 					"name": "index",
-					"pathName": "activity_module/pages/xw_assemble/index/index",
+					"pathName": "activity_module/pages/xw_dealer/index/index",
 					"query": "tuan_id=1",
 					"scene": null
 				},

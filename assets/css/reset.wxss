@@ -152,3 +152,7 @@ image {
 .router-link-exact-active:active::before{
     opacity: 0.2;
 }
+
+.visibility{
+    visibility:hidden;
+}

@@ -101,22 +101,23 @@
           </view>
         </scroll-view>
 
-        <!-- <view class="position">
+        <view class="position">
           <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
 
           <view class="cur-position-text nowrap">
-            广州绿日
+            {{ curCity }}
           </view>
-        </view> -->
+        </view>
       </view>
 
+      <!-- tab1 -->
+      <block wx:if="{{ tabIndex == 1 }}">
+        <view class="list">
 
-      <view class="list">
+          <view wx:for="{{ activityList }}" wx:key="index" class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn"
+            data-index="{{ index }}" bindtap="activityJump">
 
-        <view wx:for="{{ activityList }}" wx:key="index" class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn"
-          data-index="{{ index }}" bindtap="activityJump">
-
-          <!-- <view class="describe">
+            <!-- <view class="describe">
                         
                         <view class="main">
                             <view class="span nowrap">
@@ -128,18 +129,55 @@
                         </view>
 
                     </view> -->
-          <!-- 改版 -->
-          <view class="topimg" style="background-image:url({{ item.thumb }});"></view>
-          <view class="botominfo">
-            <view class="leftinfo">
-              <text class="Aname">{{ item.title }}</text>
-              <text class="Atime">{{ item.time }}</text>
+            <!-- 改版 -->
+            <view class="topimg" style="background-image:url({{ item.thumb }});"></view>
+            <view class="botominfo">
+              <view class="leftinfo">
+                <text class="Aname">{{ item.title }}</text>
+                <text class="Atime">{{ item.time }}</text>
+              </view>
+              <view class="rightbtn">立即参与</view>
             </view>
-            <view class="rightbtn">立即参与</view>
           </view>
-        </view>
 
-      </view>
+        </view>
+      </block>
+
+      <!-- tab2 -->
+      <block wx:elif="{{ tabIndex == 2 }}">
+        <view class="list">
+
+          <view wx:for="{{ storeActivityList }}" wx:key="index"
+            class="list_item {{ index%2 == 0 ? 'right' : 'left'}} fadeIn" data-out-id="{{ item.out_id }}"
+            data-out-type="{{ item.type }}" bindtap="storeActivityJump">
+
+            <!-- <view class="describe">
+                        
+                        <view class="main">
+                            <view class="span nowrap">
+                                {{ item.title }}
+                            </view>
+                            <view class="time nowrap">
+                                {{ item.time }}
+                            </view>
+                        </view>
+  
+                    </view> -->
+            <!-- 改版 -->
+            <view class="topimg" style="background-image:url({{ item.thumb }});"></view>
+            <view class="botominfo">
+              <view class="leftinfo">
+                <text class="Aname">{{ item.title }}</text>
+                <text class="Atime">{{ item.dlr_name }}</text>
+              </view>
+              <view class="rightbtn">联系导购人员</view>
+            </view>
+          </view>
+
+        </view>
+      </block>
+
+
 
     </view>
     <!-- list_area -->
@@ -148,7 +186,7 @@
   <!-- main_container -->
 
   <!-- qc-More -->
-  <qc-More str="{{ str }}" wx:if="{{ isMore }}"></qc-More>
+  <NoMore wx:if="{{ isMore }}" str="{{ str }}"></NoMore>
   <!-- qc-More -->
 
   <!-- qc-Tabbar -->
