@@ -187,3 +187,11 @@
 
 
 </view><!-- shop_cart_next_page -->
+
+<!-- 4.10号弹窗 -->
+<view class="ftPop" wx:if="{{swpop||qtpop}}">
+	<view class="popcontent" style="background-image:url({{ IMGSERVICE }}/shop_cart/{{swpop?'date_tanchuang4.png':'date_tanchuang5.png'}})">
+		<view class="closebtn" style="background-image:url({{ IMGSERVICE }}/shop_cart/popClose.png)" bindtap="closePop"></view>
+		<view class="xdbtn" bindtap="goxcx"></view>
+	</view>
+</view>

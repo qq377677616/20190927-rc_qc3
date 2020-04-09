@@ -1,1 +1,73 @@
 /* pages/webview3/webview3.wxss */
+/* tips_mask */
+
+.tips_mask {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -50vw;
+  margin-top: -50vh;
+  z-index: 999;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #fff;
+}
+
+.tips_mask .main {
+  background: rgba(8, 8, 8, 0.4);
+  border-radius: 16rpx;
+  width: 660rpx;
+  padding: 38rpx 73rpx 45rpx;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 213rpx;
+  left: 50%;
+  transform: translatex(-50%);
+  letter-spacing: 0;
+}
+
+.tips_mask .main .title {
+  font-size: 36rpx;
+  color: #f8f8f8;
+  text-align: center;
+}
+
+.tips_mask .main .number {
+  font-size: 72rpx;
+  /* color: #FDE24A; */
+  color: #ecb1ac;
+  text-align: center;
+  line-height: 100rpx;
+  margin-bottom: 37rpx;
+}
+
+.tips_mask .main .btn_group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tips_mask .main .btn_group .btn {
+  box-sizing: border-box;
+  min-width: 219rpx;
+  height: 57rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tips_mask .main .btn_group .btn.out {
+  background-color: #d0d0d0;
+  color: #4f5a66;
+}
+
+.tips_mask .main .btn_group .btn.go {
+  background-image: linear-gradient(270deg, #1450b0 0%, #185cc4 26%, #1f7bcd 52%, #1e96d7 80%, #209cd9 100%);
+  color: #fff;
+}
+
+/* tips_mask */

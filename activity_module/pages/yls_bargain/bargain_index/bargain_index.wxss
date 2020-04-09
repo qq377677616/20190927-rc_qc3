@@ -429,6 +429,13 @@ page{
 .statusBtn5{
 	position: relative;
 }
+.statusBtn6{
+	background-color: white;
+	border: 1rpx solid #E3413E;
+}
+.statusBtn6>text{
+	color: #E3413E;
+}
 .shouquan{
 	width: 100%;
 	height: 100%;
@@ -512,4 +519,12 @@ page{
   .tipTxt>.txtcol{
 	  color: #F1403E;
 	  font-weight: Bold;
+  }
+  /* 分享 */
+  .shareBtn{
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
   }

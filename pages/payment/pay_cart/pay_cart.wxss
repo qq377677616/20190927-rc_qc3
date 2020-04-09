@@ -218,3 +218,40 @@ page{
     justify-content: center;
 
 }/* footer */
+/* 4.10弹窗 */
+.ftPop{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: rgba(0,0,0,.8);
+	z-index: 99;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.popcontent{
+	position: relative;
+	width: 518rpx;
+	height: 649rpx;
+	background: center no-repeat/cover;
+	display: flex;
+	justify-content: center;
+}
+.closebtn{
+	width: 36rpx;
+	height: 36rpx;
+	background: center no-repeat/cover;
+	position: absolute;
+	bottom: -60rpx;
+}
+/* 0408 */
+.xdbtn{
+	width: 400rpx;
+	height: 72rpx;
+	/* background-color: red; */
+	position: absolute;
+	bottom: 9rpx;
+	border-radius:20rpx;
+}

@@ -15,6 +15,7 @@ Page({
 		activity_id:null,// 活动id
 		store_index:0,//专营店index
 		shopInfo:null,// 接收商品信息
+		// barprice:null,// 砍价金额
 	},
 
 	/**
@@ -138,7 +139,8 @@ Page({
 				bargainDat = res.data.data.bargain_info;
 				if(res.data.status==1){
 					// console.log(res.data);
-					tool.jump_red(`/activity_module/pages/yls_bargain/bargain_index/bargain_index?bargain_id=${bargainDat.bargain_id}`);
+					let barprice = res.data.data.bargain_info.bargain_price;
+					tool.jump_red(`/activity_module/pages/yls_bargain/bargain_index/bargain_index?bargain_id=${bargainDat.bargain_id}&activity_id=${this.data.activity_id}&barprice=${barprice}`);
 				}else{
 					tool.alert(res.data.msg);
 				}

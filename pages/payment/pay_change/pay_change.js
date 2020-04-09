@@ -54,9 +54,9 @@ Page({
 		tool.alert('4月1日开启兑奖，敬请期待！');
       return
     }
-    if (stype == 2 && this.data.goods2_buy == 0) {
-      tool.alert('线下提车后次日即可兑换实物礼品')
-    } else {
+    // if (stype == 2 && this.data.goods2_buy == 0) {
+    //   tool.alert('线下提车后次日即可兑换实物礼品')
+    // } else {
       if (wx.getStorageSync("userInfo").user_type == 0 && e.currentTarget.dataset.owner == 1) {
         this.setData({
           popType: 4
@@ -67,7 +67,7 @@ Page({
       router.jump_nav({
         url: `/pages/payment/pay_detail/pay_detail?goods_id=${goods_id}&activity_id=${activity_id}`
       })
-    }
+    // }
   },
 
   //判断是否授权和是否是车主

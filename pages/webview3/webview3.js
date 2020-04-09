@@ -3,6 +3,10 @@ const method = require('../../utils/tool/method.js');
 const alert = require('../../utils/tool/alert.js');
 
 const request_01 = require('../../utils/request/request_01.js');
+
+const tool = require('../../utils/public/tool.js');
+
+const app = getApp(); //获取应用实例
 // pages/webview3/webview3.js
 Page({
 
@@ -10,7 +14,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    h5Url:''
+    h5Url:'',
+	IMGSERVICE: app.globalData.IMGSERVICE,
+	islogin:false
   },
 
   /**
@@ -23,7 +29,8 @@ Page({
       let nickname = ''
       let headimgurl = ''
       let code = '';
-      if (options.scene) {
+	  this.setData({ userInfo: wx.getStorageSync('userInfo')})
+      if (options.scene){
         let scene = decodeURIComponent(options.scene);
         console.log(scene)
         scene.split('&').forEach((item) => {
@@ -39,6 +46,7 @@ Page({
       if(wx.getStorageSync('userInfo').headimg || wx.getStorageSync('userInfo').avatarUrl){
         headimgurl = wx.getStorageSync('userInfo').headimg || wx.getStorageSync('userInfo').avatarUrl 
       }
+		console.log(openid, '==', '==', nickname, '==', headimgurl, '空哦', code);
       h5Url = `https://platform.easys.co/2020/index.html?openid=${openid}&nickname=${nickname}&headimgurl=${headimgurl}&code=${code}`   
       this.setData({
         h5Url
@@ -93,6 +101,36 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
-  }
+	  const IMGSERVICE = this.data.IMGSERVICE;
+	  console.log(`${IMGSERVICE}/lookcar/carshare.jpg`);
+	  return {
+		  title: '启辰星 A+级SUV头等舱',
+		  imageUrl: `${IMGSERVICE}/lookcar/carshare.jpg?3`,
+		  path: '/pages/webview3/webview3'
+	  }
+  },
+	//立即授权
+  authBtn(e) {
+		const detail = e.detail; //btn授权信息
+		const errMsg = detail.errMsg; //是否授权信息
+		method.userInfoAuth(e)
+			.then(() => { //用户接受授权，获取用户信息
+				const userInfo = wx.getStorageSync('userInfo');
+				return request_01.personalInfo({
+					user_id: userInfo.user_id,
+					openid: userInfo.openid,
+				})
+			})
+			.then((value) => {
+				const personalInfo = value.data.data;
+				tool.jump_red('/pages/webview3/webview3')
+			})
+			.catch((err) => {
+				//fail
+				console.log(err)
+			})
+	},
+	jumpGift(){
+		tool.jump_red('/pages/index/index');
+	}
 })
