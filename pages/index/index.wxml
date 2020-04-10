@@ -1,4 +1,5 @@
 <!-- index.wxml -->
+
 <!-- index_page -->
 <view class="index_page">
 
@@ -23,8 +24,8 @@
   </view>
   <!-- swiper-area -->
 
-  <!-- main_container -->
-  <view class="main_container">
+  <!-- main-container -->
+  <view class="main-container">
 
     <!-- nav_area -->
     <scroll-view scroll-x>
@@ -183,7 +184,7 @@
     <!-- list_area -->
 
   </view>
-  <!-- main_container -->
+  <!-- main-container -->
 
   <!-- qc-More -->
   <NoMore wx:if="{{ isMore }}" str="{{ str }}"></NoMore>

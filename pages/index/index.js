@@ -242,9 +242,10 @@ Page({
                     })
                 }
             })
-            .catch(() => {
-                //fail
-
+            .catch((err) => {
+                alert({
+                    title: err.message
+                })
             })
     },
     /**
