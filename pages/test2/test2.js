@@ -47,7 +47,7 @@ Page({
 			"info": ['高品质智趣SUV 星级品质 焕新登场'],
 			"lowprice": "8.68",
 			"highprice": "11.88",
-			"bgUrl": [imageUrl + "/lookcar/img_t60.png?2", imageUrl + "/lookcar/img_t60_X.png?2"],
+			"bgUrl": [imageUrl + "/lookcar/img_t60.png?3", imageUrl + "/lookcar/img_t60_X.png?3"],
 			"titleImg": imageUrl + "/lookcar/title_t60.png?4",
 			icon:'icon-T',
 			cid: 6,

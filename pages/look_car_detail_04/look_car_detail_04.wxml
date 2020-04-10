@@ -21,9 +21,9 @@
                 </view>
 
                 <view class="li config_area flex-bet gray" wx:if="{{item.is_header == 0}}">
-                    <view class="lable {{(carid==3&&index>66&&index<75)||(carid==3&&index>74&&index<82)||(carid==7&&index>65&&index<76)||(carid==6&&index>63&&index<72)?'setpad':''}}">
+                    <view class="lable {{(carid==3&&index>66&&index<75)||(carid==3&&index>74&&index<82)||(carid==7&&index>65&&index<76)||(carid==6&&index>58&&index<67)?'setpad':''}}">
 						{{item.name}}
-						<view class="{{carid==7?'coule':carid==6?'coule2':(carid==3&&index==67)?'coule3':(carid==3&&index==75)?'coule4':''}}" wx:if="{{(carid==7&&index==66)||(carid==6&&index==64)||(carid==3&&index==67)||(carid==3&&index==75)}}">
+						<view class="{{carid==7?'coule':carid==6?'coule2':(carid==3&&index==67)?'coule3':(carid==3&&index==75)?'coule4':''}}" wx:if="{{(carid==7&&index==66)||(carid==6&&index==59)||(carid==3&&index==67)||(carid==3&&index==75)}}">
 							<text>{{carid==7?'东风启辰智联系统':carid==6?'启辰智联系统':(carid==3&&index==67)?'启辰智联系统':(carid==3&&index==75)?'车载娱乐系统':''}}</text> 
 						</view>
 					</view>
@@ -44,16 +44,16 @@
             <!-- T60 -->
             <view class="image_item" wx:if="{{carid==6}}">
                 <view>
-                    <view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60.png?1)"></view>
+                    <view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60.png?3)"></view>
                     <view class="txtbox1">
                         <view class="txt1" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt1.png)"></view>
                         <!-- <text class="txt1">合资品质</text> -->
                         <text class="txt2">合资级品质 / 日产动力组合 / 五星标准安全防护</text>
                     </view>
-                    <view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_2.png)"></view>
+                    <view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_2.png?1)"></view>
                     <view class="txtbox2">{{swiper1_txt[swiper1]}}</view>
                     <!--轮播实例1-->
-                    <view class="threebg threebg1 anit1_{{swiper1}}">
+                    <view class="threebg threebg1 anit2_{{swiper1}}">
 						<!-- 左右箭头 -->
 						<view class="leftbtn" catchtap="changetab" data-type="1" data-id="1" data-length="{{swp1_img.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
                         <view class="rightbtn" catchtap="changetab" data-type="2" data-id="1" data-length="{{swp1_img.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
@@ -71,16 +71,16 @@
                                         <view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
                                     </view>
                                     <!-- 自定义播放按钮 -->
-                                    <view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}})"></view>
+                                    <view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?1)"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
                     </view>
                     <view class="swiper1">
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
-                            <block wx:for="{{9}}" wx:key="item">
+                            <block wx:for="{{swp1_img}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper1!=index-1&&!(swiper1==8&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw{{index+1}}.png)" data-type="1" data-tab="{{index-1}}" data-len="{{9}}" bindtap="tabSwiper"></view>
+                                    <view class="item1 {{swiper1!=index-1&&!(swiper1==swp1_img.length-1&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{swp1_img[index==0?swp1_img.length-1:index-1].img}})" data-type="1" data-tab="{{index-1}}" data-len="{{swp1_img.length}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -115,7 +115,7 @@
                                         <view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
                                     </view>
 
-                                    <view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_{{index+1}}.png?1)"></view>
+                                    <view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_{{index+1}}.png?3)"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -124,7 +124,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
                             <block wx:for="{{8}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper2!=index-1&&!(swiper2==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw2_{{index+1}}.png?1)" data-type="2" data-tab="{{index-1}}" data-len="{{8}}" bindtap="tabSwiper"></view>
+                                    <view class="item1 {{swiper2!=index-1&&!(swiper2==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw2_{{index+1}}.png?2)" data-type="2" data-tab="{{index-1}}" data-len="{{8}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>
@@ -138,7 +138,7 @@
                         <text class="txt2">智能安全 / 智能控制 / 智能交互</text>
                     </view>
 
-                    <view class="nt60_6" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_6.png)"></view>
+                    <view class="nt60_6" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_6.png?1)"></view>
                     <view class="txtbox2 txtbox3">{{swiper3_txt[swiper3]}}</view>
 
                     <!--轮播实例3-->
@@ -181,7 +181,7 @@
                     <!--轮播实例-->
 
                     <view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png?1)">
-                        <view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?1)" wx:for="{{carcol}}" wx:key="item"></view>
+                        <view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?2)" wx:for="{{carcol}}" wx:key="item"></view>
                         <text class="txt3">启辰T60配置参数</text>
                         <text class="txt4">（官网画面仅供参考，购买时以实车为准）</text>
                         <view class="selectcol">
@@ -211,14 +211,14 @@
                             <image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_11.png" class="num3"></image>
                         </view>
                     </view>
-                    <view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_13.png?1)">
+                    <view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_13.png?2)">
                        
                     </view>
                     <view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_14.png?1)">
                      
                     </view>
 
-                    <view class="txt10">智悦版车型断面图和剖面图</view>
+                    <view class="txt10">智炫版车型断面图和剖面图</view>
 
                 </view>
             </view>

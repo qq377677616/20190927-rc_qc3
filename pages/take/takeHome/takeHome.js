@@ -47,6 +47,7 @@ Page({
 		hasdot:false,//是否有红点  默认没有
 		takeNum:'',//聊天数
 		servepop:false,//人员服务弹窗
+		code:null,// 通过code查询专营店
 	},
 
 	/**
@@ -55,7 +56,7 @@ Page({
 	onLoad: function (options){
 		console.log(options,'5555');
 		request_01.login(() =>{
-			this.setData({ codeuser: options.userid })
+			this.setData({ codeuser: options.userid, code:options.code })
 			if (options.obj) {
 				let obj = JSON.parse(options.obj);
 				this.setData({ servepop: true, useData: obj });
@@ -173,7 +174,7 @@ Page({
 				let locat = res.result.ad_info.location;
 				this.data.codeuser?dat = {
 					userid: this.data.codeuser	
-				} : dat = {
+				} : this.data.code?dat={code:this.data.code}:dat = {
 					lon: locat.lng,
 					lat: locat.lat,
 					page: 0,

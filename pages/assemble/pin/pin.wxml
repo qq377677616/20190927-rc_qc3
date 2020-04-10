@@ -59,7 +59,7 @@
                 件
               </view>
             </view>
-            <view class="cut_on blue" data-index="{{ index }}" bindtap="prizeBtn">{{ (item.is_receive == 1 && item.order_id) ? '查看订单' : '领取奖品' }}</view>
+            <view class="cut_on blue" data-index="{{ index }}" bindtap="prizeBtn">{{ (item.groupbuy_info.is_receive == 1 && item.groupbuy_info.order_id) ? '查看订单' : '领取奖品' }}</view>
           </view>
         </view>
       </view>
