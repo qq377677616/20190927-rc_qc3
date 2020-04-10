@@ -1,11 +1,11 @@
 //index.js
-const mta = require('../../utils/public/mta_analysis.js')
+let mta = require('../../utils/public/mta_analysis.js')
 
-const request_01 = require('../../utils/request/request_01.js')
+let request_01 = require('../../utils/request/request_01.js')
 
-const method = require('../../utils/tool/method.js')
+let method = require('../../utils/tool/method.js')
 
-const app = getApp() //获取应用实例
+let app = getApp() //获取应用实例
 import { COMMONLogin, DEALERActivityList, USERGetUserDatabaseInfo } from '../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../xw_utils/alert.js'
 import { getPosition } from '../../xw_utils/tools.js'
@@ -70,7 +70,7 @@ Page({
         })
             .then((value) => {
                 //success
-                const data = value.data.data.list;
+                let data = value.data.data.list;
                 let activityList = this.data.activityList;
                 let isMore, activityPrivateKey;
 
@@ -120,7 +120,7 @@ Page({
      * @param {*} options 
      */
     initData(options) {
-        const activityPage = this.data.activityPage
+        let activityPage = this.data.activityPage
         getPosition().then((res) => {
             let { location, ad_info } = res.result
             this.setData({
@@ -176,7 +176,7 @@ Page({
                             }
                         })
 
-                        const keyGroup = wx.getStorageSync('keyGroup');
+                        let keyGroup = wx.getStorageSync('keyGroup');
 
                         let isMore;
 
@@ -227,7 +227,7 @@ Page({
      * 重新加载
      */
     reload() {
-        const options = this.data.options;
+        let options = this.data.options;
 
         //关闭404页面
         this.setData({
@@ -251,9 +251,9 @@ Page({
      */
     bannerJump(e) {
 
-        const index = e.currentTarget.dataset.index;
-        const listInfo = this.data.listInfo;
-        const page = listInfo.banner_list[index].page;
+        let index = e.currentTarget.dataset.index;
+        let listInfo = this.data.listInfo;
+        let page = listInfo.banner_list[index].page;
         console.log(page)
         if (page) { //page页面存在
             jump_nav(`/${page}`)
@@ -265,7 +265,7 @@ Page({
      * 直接跳过见面礼按钮
      */
     jumpGift() {
-        const keyGroup = this.data.keyGroup; //锁
+        let keyGroup = this.data.keyGroup; //锁
 
         keyGroup.giftKey = false; //见面礼锁关闭
 
@@ -281,14 +281,14 @@ Page({
      * @param {*} e 
      */
     authBtn(e) {
-        const detail = e.detail; //btn授权信息
-        const errMsg = detail.errMsg; //是否授权信息
+        let detail = e.detail; //btn授权信息
+        let errMsg = detail.errMsg; //是否授权信息
 
 
         method.userInfoAuth(e)
             .then(() => { //用户接受授权，获取用户信息
 
-                const keyGroup = this.data.keyGroup; //锁
+                let keyGroup = this.data.keyGroup; //锁
 
                 keyGroup.giftKey = false; //见面礼锁关闭
 
@@ -307,7 +307,7 @@ Page({
                 })
             })
             .then((value) => {
-                const personalInfo = value.data.data;
+                let personalInfo = value.data.data;
 
                 if (!(personalInfo.user_type == 1)) {
                     //不是车主
@@ -344,9 +344,9 @@ Page({
      * @param {*} e 
      */
     navJump(e) {
-        const index = e.currentTarget.dataset.index;
-        const listInfo = this.data.listInfo;
-        const page = listInfo.icon_list[index].page;
+        let index = e.currentTarget.dataset.index;
+        let listInfo = this.data.listInfo;
+        let page = listInfo.icon_list[index].page;
 
         if (page) { //page页面存在
             jump_nav(`/${page}`)
@@ -359,12 +359,12 @@ Page({
      * @param {*} e 
      */
     activityJump(e) {
-        const index = e.currentTarget.dataset.index;
-        const activityList = this.data.activityList;
-        const activity_id = activityList[index].activity_id;
-        const screen = activityList[index].screen;
+        let index = e.currentTarget.dataset.index;
+        let activityList = this.data.activityList;
+        let activity_id = activityList[index].activity_id;
+        let screen = activityList[index].screen;
         wx.setStorageSync('screen', screen);
-        const activity_type = activityList[index].activity_type;
+        let activity_type = activityList[index].activity_type;
 
         switch (activity_type) {
             case 1:

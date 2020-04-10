@@ -134,7 +134,7 @@ Page({
 
         //开启活动倒计时
         this.openCountDownHandler()
-      }else{
+      } else {
         throw new Error(msg0)
       }
     }).catch((err) => {
@@ -409,32 +409,38 @@ Page({
    * 领取程序
    */
   receiveHandler() {
-    loading({
-      title: '领取中'
-    })
     let indexData = this.data.indexData
-    ASSEMBLEReceivePrize({
-      data: {
-        openid: userInfo.openid,//string	用户openid
-        tuan_log_id: indexData.join_info.tuan_log_id,//int	团购记录ID
-      }
-    }).then((res) => {
-      let options = this.data.options
-      let { msg, status, data } = res.data
-      hideLoading()
-
-      if (status == 1) {
-        this.initData(options)
-        jump_nav(`/pages/order_detail/order_detail?order_id=${data.order_id}`);
-      } else {
-        throw new Error(msg)
-      }
-    }).catch((err) => {
-      hideLoading()
-      alert({
-        title: err.message
+    let order_id = indexData.join_info.order_id
+    if ( Boolean(order_id) ) {
+      jump_nav(`/pages/order_detail/order_detail?order_id=${order_id}`);
+    } else {
+      loading({
+        title: '领取中'
       })
-    })
+      let indexData = this.data.indexData
+      ASSEMBLEReceivePrize({
+        data: {
+          openid: userInfo.openid,//string	用户openid
+          tuan_log_id: indexData.join_info.tuan_log_id,//int	团购记录ID
+        }
+      }).then((res) => {
+        let options = this.data.options
+        let { msg, status, data } = res.data
+        hideLoading()
+
+        if (status == 1) {
+          this.initData(options)
+          jump_nav(`/pages/order_detail/order_detail?order_id=${data.order_id}`);
+        } else {
+          throw new Error(msg)
+        }
+      }).catch((err) => {
+        hideLoading()
+        alert({
+          title: err.message
+        })
+      })
+    }
   },
   /**
    * 返回经销商首页

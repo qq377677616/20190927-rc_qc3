@@ -187,31 +187,38 @@ Page({
    * 领取程序
    */
   receiveHandler() {
-    loading({
-      title: '领取中'
-    })
-    let options = this.data.options
-    ASSEMBLEReceivePrize({
-      data: {
-        openid: userInfo.openid,//string	用户openid
-        tuan_log_id: options.tuan_log_id,//int	团购记录ID
-      }
-    }).then((res) => {
-      let { msg, status, data } = res.data
-      hideLoading()
-
-      if (status == 1) {
-        this.initData(options)
-        jump_nav(`/pages/order_detail/order_detail?order_id=${data.order_id}`);
-      } else {
-        throw new Error(msg)
-      }
-    }).catch((err) => {
-      hideLoading()
-      alert({
-        title: err.message
+    let oAssembleData = this.data.oAssembleData
+    let order_id = oAssembleData.join_info.order_id
+    if( Boolean(order_id) ){
+      jump_nav(`/pages/order_detail/order_detail?order_id=${order_id}`);
+    }else{
+      loading({
+        title: '领取中'
       })
-    })
+      let options = this.data.options
+      ASSEMBLEReceivePrize({
+        data: {
+          openid: userInfo.openid,//string	用户openid
+          tuan_log_id: options.tuan_log_id,//int	团购记录ID
+        }
+      }).then((res) => {
+        let { msg, status, data } = res.data
+        hideLoading()
+  
+        if (status == 1) {
+          this.initData(options)
+          jump_nav(`/pages/order_detail/order_detail?order_id=${data.order_id}`);
+        } else {
+          throw new Error(msg)
+        }
+      }).catch((err) => {
+        hideLoading()
+        alert({
+          title: err.message
+        })
+      })
+    }
+    
   },
   /**
    * 参加拼团

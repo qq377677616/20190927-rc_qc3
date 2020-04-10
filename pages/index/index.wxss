@@ -1,12 +1,12 @@
 /**index.wxss**/
 
 page {
-  height: 100%;
   background-color: #fff;
 }
 
 .index_page {
   padding-bottom: 100rpx;
+  pointer-events:none;
 }
 
 /* swiper_area */
