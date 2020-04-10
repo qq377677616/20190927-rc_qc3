@@ -1055,7 +1055,7 @@ margin-bottom: 32rpx;
 	box-sizing: border-box;
 }
 .coule2{
-	height: 1222rpx;
+	height: 1192rpx;
 }
 .coule3{
 	height: 1264rpx;
