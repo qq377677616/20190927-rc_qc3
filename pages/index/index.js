@@ -48,74 +48,6 @@ Page({
         storeActivityList: [],
     },
     /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-        let activityPage = this.data.activityPage;
-        let activityKey = this.data.activityKey;
-        let activityPrivateKey = this.data.activityPrivateKey;
-
-        //滚动加载中不允许操作
-        if (!activityKey || !activityPrivateKey) return;
-
-        this.setData({
-            activityKey: false,
-            str: '加载中...',
-            isMore: true,
-        })
-
-        request_01.indexActivity({
-            page: activityPage + 1,
-            user_id: userInfo.user_id,
-        })
-            .then((value) => {
-                //success
-                let data = value.data.data.list;
-                let activityList = this.data.activityList;
-                let isMore, activityPrivateKey;
-
-                if (data.length) { //有数据返回
-                    isMore = false;
-                    activityPrivateKey = true;
-
-                } else { //无数据返回
-
-                    isMore = true;
-                    activityPrivateKey = false;
-                }
-                this.setData({
-                    activityList: [...activityList, ...data],
-                    activityPage: activityPage + 1,
-                    str: '- 我是有底线的 -',
-                    isMore,
-                    activityPrivateKey,
-                })
-            })
-            .catch((reason) => {
-                //fail
-                this.setData({
-                    str: '- 我是有底线的 -',
-                    isMore: false,
-                })
-            })
-            .then(() => {
-                //complete
-                this.setData({
-                    activityKey: true,
-                })
-            })
-    },
-    /**
-     * tab bar切换
-     * @param {*} e 
-     */
-    tabClickHandler(e) {
-        let id = e.currentTarget.dataset.id
-        this.setData({
-            tabIndex: id
-        })
-    },
-    /**
      * 初始化
      * @param {*} options 
      */
@@ -126,13 +58,9 @@ Page({
             this.setData({
                 curCity: ad_info.city,
             })
-        }).catch((err) => {
-            alert({
-                title: err.message
-            })
         }).then(() => {
             let curCity = this.data.curCity
-            Promise.all([
+            return Promise.all([
                 request_01.indexBanner({
                     user_id: userInfo.user_id,
                 }),
@@ -165,7 +93,6 @@ Page({
                     let { msg: msg2, status: status2, data: signInInfo } = value[2].data
                     let { msg: msg3, status: status3, data: data3 } = value[3].data
                     // let { msg: msg4, status: status4, data: personalInfo } = value[4].data
-
                     activityList = activityList.list
 
                     if (status0 == 1 && status1 == 1 && status2 == 1 && status3 == 1) {
@@ -206,21 +133,19 @@ Page({
                             status3 != 1 && msg3)
                     }
                 })
-                .catch((err) => {
-                    //fail
-                    //开启404页面
-                    this.setData({
-                        page404: true,
-                    })
-                })
-                .then(() => {
-                    //complete
 
-                    this.setData({
-                        options,
-                    })
-
-                })
+        }).catch((err) => {
+            alert({
+                title: err.message
+            })
+            //开启404页面
+            this.setData({
+                page404: true,
+            })
+        }).then(() => {
+            this.setData({
+                options,
+            })
         })
     },
     /**
@@ -245,6 +170,7 @@ Page({
             dotIndex: e.detail.current
         })
     },
+
     /**
      * banner图跳转
      * @param {*} e 
@@ -354,6 +280,16 @@ Page({
         }
     },
     /**
+     * tab 切换
+     * @param {*} e 
+     */
+    tabClickHandler(e) {
+        let id = e.currentTarget.dataset.id
+        this.setData({
+            tabIndex: id
+        })
+    },
+    /**
      * 总部活动跳转
      * @param {*} e 
      */
@@ -445,7 +381,7 @@ Page({
      * 联系导购人员按钮
      * @param {*} e 
      */
-    contactBtn(e){
+    contactBtn(e) {
         let code = e.currentTarget.dataset.code
         jump_nav(`/pages/take/takeHome/takeHome?code=${code}`)
     },
@@ -546,5 +482,63 @@ Page({
             imageUrl: `${IMGSERVICE}/index/index_share.jpg`,
             path: '/pages/index/index'
         };
-    }
+    },
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function () {
+        let activityPage = this.data.activityPage;
+        let activityKey = this.data.activityKey;
+        let activityPrivateKey = this.data.activityPrivateKey;
+
+        //滚动加载中不允许操作
+        if (!activityKey || !activityPrivateKey) return;
+
+        this.setData({
+            activityKey: false,
+            str: '加载中...',
+            isMore: true,
+        })
+
+        request_01.indexActivity({
+            page: activityPage + 1,
+            user_id: userInfo.user_id,
+        })
+            .then((value) => {
+                //success
+                let data = value.data.data.list;
+                let activityList = this.data.activityList;
+                let isMore, activityPrivateKey;
+
+                if (data.length) { //有数据返回
+                    isMore = false;
+                    activityPrivateKey = true;
+
+                } else { //无数据返回
+
+                    isMore = true;
+                    activityPrivateKey = false;
+                }
+                this.setData({
+                    activityList: [...activityList, ...data],
+                    activityPage: activityPage + 1,
+                    str: '- 我是有底线的 -',
+                    isMore,
+                    activityPrivateKey,
+                })
+            })
+            .catch((reason) => {
+                //fail
+                this.setData({
+                    str: '- 我是有底线的 -',
+                    isMore: false,
+                })
+            })
+            .then(() => {
+                //complete
+                this.setData({
+                    activityKey: true,
+                })
+            })
+    },
 })
