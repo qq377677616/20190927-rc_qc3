@@ -170,7 +170,7 @@
                 <text class="Aname">{{ item.title }}</text>
                 <text class="Atime">{{ item.dlr_name }}</text>
               </view>
-              <view class="rightbtn">联系导购人员</view>
+              <view catchtap="contactBtn" data-code="{{ item.code }}" class="rightbtn">联系导购人员</view>
             </view>
           </view>
 

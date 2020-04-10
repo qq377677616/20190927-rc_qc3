@@ -254,7 +254,6 @@ Page({
         let index = e.currentTarget.dataset.index;
         let listInfo = this.data.listInfo;
         let page = listInfo.banner_list[index].page;
-        console.log(page)
         if (page) { //page页面存在
             jump_nav(`/${page}`)
         } else { //page页面不存在
@@ -443,6 +442,14 @@ Page({
         }
     },
     /**
+     * 联系导购人员按钮
+     * @param {*} e 
+     */
+    contactBtn(e){
+        let code = e.currentTarget.dataset.code
+        jump_nav(`/pages/take/takeHome/takeHome?code=${code}`)
+    },
+    /**
      * 红包
      */
     toPay() {
@@ -487,7 +494,7 @@ Page({
         // 	},
         // 	envVersion: 'release',
         // 	success(res) {
-        // 		console.log('跳转成功');
+        // 	
         // 	}
         // })
     },

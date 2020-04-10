@@ -6,7 +6,6 @@ page {
 
 .index_page {
   padding-bottom: 100rpx;
-  pointer-events:none;
 }
 
 /* swiper_area */
