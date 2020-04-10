@@ -11,11 +11,11 @@
             <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
 
             <view class="cur-position-text nowrap">
-                广州绿日
+                {{ curCity }}
             </view>
         </view>
 
-        <view class="change-position">
+        <view bindtap="relocationBtn" class="change-position">
             <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
 
             <view class="cur-position-text nowrap">
@@ -24,7 +24,7 @@
         </view>
     </view>
 
-    <block wx:if="{{ false }}">
+    <block wx:if="{{ seekFail }}">
         <Fail>
             <image slot="img-url" src="{{ IMGSERVICE }}/fail/position.png" mode="widthFix"
                 style="display:block; width:302rpx; margin:auto;"></image>
@@ -32,7 +32,7 @@
         </Fail>
     </block>
 
-    <block wx:elif="{{ false }}">
+    <block wx:elif="{{ !storeList.length }}">
         <Fail>
             <image slot="img-url" src="{{ IMGSERVICE }}/fail/null.png" mode="widthFix"
                 style="display:block; width:302rpx; margin:auto;"></image>
@@ -42,26 +42,26 @@
 
     <block wx:else>
         <view class="dealer-list">
-            <view wx:for="{{ 0 }}" wx:key="1" class="dealer-item clearfix">
+            <view wx:for="{{ storeList }}" wx:key="index" data-code="{{ item.code }}" bindtap="selectStoreBtn" class="dealer-item clearfix">
                 <image
-                    src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+                    src="{{ item.xx }}"
                     mode="aspectFit" class="dealer-poster"></image>
 
                 <view class="dealer-info">
                     <view class="title">
-                        <view class="span">广州花都店</view>
+                        <view class="span">{{ item.name }}</view>
 
                         <view class="tag">营业中</view>
                     </view>
 
                     <view class="phone">
-                        <view class="span">电话：13222245522</view>
+                        <view class="span visibility">电话：13222245522</view>
 
-                        <view class="tag">100m</view>
+                        <view class="tag">{{ item.distance }}</view>
                     </view>
 
                     <view class="addr">
-                        地址：广东华天滨元街道花都广场1F1025号门面
+                        地址：{{ item.address }}
                     </view>
                 </view>
             </view>

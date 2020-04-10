@@ -4,7 +4,7 @@ import request from '../xw_utils/request.js'
  * 用户相关信息
  * @param {*} data 
  */
-export function getUserInfo(data = {}) {
+export function USERGetUserInfo(data = {}) {
     return request('/api3/user/user_index', {
         ...data
     })
@@ -14,7 +14,7 @@ export function getUserInfo(data = {}) {
  * 根据code获取session_key授权
  * @param {*} data 
  */
-export function getSessionKey(data = {}) {
+export function USERGetSessionKey(data = {}) {
     return request('/api3/oauth/oauth_get', {
         ...data
     })
@@ -24,7 +24,7 @@ export function getSessionKey(data = {}) {
  * 用户授权
  * @param {*} data 
  */
-export function userAuth(data = {}) {
+export function USERUserAuth(data = {}) {
     return request('/api3/oauth/oauth_reg', {
         ...data
     })
@@ -35,7 +35,7 @@ export function userAuth(data = {}) {
  * 发送用户信息至后台
  * @param {*} data 
  */
-export function postUserInfo(data = {}){
+export function USERPostUserInfo(data = {}){
     return request('/api3/oauth/perfect', {
         ...data
     })
@@ -45,17 +45,17 @@ export function postUserInfo(data = {}){
  * 获取unionid
  * @param {*} data 
  */
-export function getUnionid(data = {}){
+export function USERGetUnionid(data = {}){
     return request('/api3/oauth/de_union_id', {
         ...data
     })
 }
 
 /**
- * 获取用户信息
+ * 获取用户信息（数据库中用户信息）
  * @param {*} data 
  */
-export function getUserDatabaseInfo(data = {}){
+export function USERGetUserDatabaseInfo(data = {}){
     return request('/api3/user/my_info', {
         ...data
     })

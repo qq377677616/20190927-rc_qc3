@@ -1,6 +1,6 @@
 // xw_components/Form/Form.js
 const app = getApp(); //获取应用实例
-import { defaultAddress, storeList } from '../../xw_api/index.js'
+import { COMMONDefaultAddress, COMMONPositionStoreList, COMMONStoreList } from '../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../xw_utils/alert.js'
 import { getPosition } from '../../xw_utils/tools.js'
 import { jump_nav } from '../../xw_utils/route.js'
@@ -36,12 +36,13 @@ Component({
     multipleSlots: true,
   },
   lifetimes: {
+    // 在组件实例进入页面节点树时执行
     attached: function () {
-      // 在组件实例进入页面节点树时执行
       this.initData()
     },
+    // 在组件实例被从页面节点树移除时执行
     detached: function () {
-      // 在组件实例被从页面节点树移除时执行
+      
     },
   },
   observers: {
@@ -51,46 +52,78 @@ Component({
         loading({
           title: '定位中'
         })
-        getPosition().then((res) => {
-
-          let { location } = res.result
-          //获取专营店
-          return storeList({
+        let params = this.properties.params
+        let promise
+        if (Boolean(params.out_id) && Boolean(params.out_type)) {
+          promise = COMMONStoreList({
             data: {
-              city: newValue.value.area.split(' ')[1],
-              lon: location.lng,
-              lat: location.lat,
+              out_id: params.out_id,//int	活动ID
+              out_type: params.out_type,//int	活动类型 砍价-1 团购-2
             }
           }).then((res) => {
-
-            let storeList = res.data.data
-            this.setData({
-              storeList,
-            })
-            this.triggerEvent("changeStoreInfoHandler", {
-              store:storeList[0]
-            })
-          }).catch((err) => {
-
-            return storeList({
-              data: {
-                city: newValue.value.area.split(' ')[1],
-                lon: '',
-                lat: '',
-              }
-            }).then((res) => {
-              let storeList = res.data.data
-
+            let { msg, data, status } = res.data
+            if (status == 1) {
               this.setData({
-                storeList,
+                storeList: data,
               })
               this.triggerEvent("changeStoreInfoHandler", {
-                store:storeList[0]
+                store: data[0]
               })
-            })
-
+            } else {
+              throw new Error(msg)
+            }
           })
-        }).catch((err) => {
+        } else {
+          promise = getPosition().then((res) => {
+
+            let { location } = res.result
+            //获取专营店
+            return COMMONPositionStoreList({
+              data: {
+                city: newValue.value.area.split(' ')[1],
+                lon: location.lng,
+                lat: location.lat,
+              }
+            }).then((res) => {
+              let { msg, data, status } = res.data
+              if (status == 1) {
+                this.setData({
+                  storeList: data,
+                })
+                this.triggerEvent("changeStoreInfoHandler", {
+                  store: data[0]
+                })
+              } else {
+                throw new Error(msg)
+              }
+
+            }).catch((err) => {
+
+              return COMMONPositionStoreList({
+                data: {
+                  city: newValue.value.area.split(' ')[1],
+                  lon: '',
+                  lat: '',
+                }
+              }).then((res) => {
+                let { msg, data, status } = res.data
+                if (status == 1) {
+                  this.setData({
+                    storeList: data,
+                  })
+                  this.triggerEvent("changeStoreInfoHandler", {
+                    store: data[0]
+                  })
+                } else {
+                  throw new Error(msg)
+                }
+              })
+
+            })
+          })
+        }
+
+        promise.catch((err) => {
           alert({
             title: err.message
           })
@@ -150,7 +183,7 @@ Component({
       })
     },
     /** */
-    formCancelHandler(){
+    formCancelHandler() {
       this.triggerEvent("formCancelHandler")
     },
     /**
@@ -161,7 +194,7 @@ Component({
         title: '加载中'
       })
       //获取默认地址信息、地理位置
-      defaultAddress({
+      COMMONDefaultAddress({
         data: {
           openid: userInfo.openid,
           user_id: userInfo.user_id,

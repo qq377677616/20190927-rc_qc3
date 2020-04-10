@@ -28,6 +28,7 @@ page {
     display: flex;
     align-items: center;
     max-width: 170rpx;
+    min-width: 130rpx;
 }
 
 .position-bar .bar-cur-position .cur-position-icon {
@@ -143,7 +144,4 @@ page {
     line-height: 66rpx;
     border:2rpx solid rgba(0,59,115,1);
     border-radius:35rpx;
-}
-.card-list .item-info .join-info .join-btn.router-link-exact-active::before{
-    background-color: rgba(0,59,115,1);
 }

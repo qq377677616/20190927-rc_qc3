@@ -2,70 +2,65 @@
 <view class="container">
 
     <view class="header">
-        <image 
-            src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
-            mode="widthFix"
-        ></image>
+        <image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+            mode="widthFix"></image>
     </view>
 
     <view class="position-bar">
         <view class="bar-title">经销商活动</view>
 
-        <view class="bar-cur-position">
-            <image 
-                class="cur-position-icon" 
-                mode="widthFix" 
-                src="{{ IMGSERVICE }}/ca/relocation.png"
-            ></image>
+        <view bindtap="changeStoreBtn" class="bar-cur-position">
+            <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
 
             <view class="cur-position-text nowrap">
-                广州绿日
+                {{ curCity }}
             </view>
         </view>
     </view>
 
     <view class="card-list">
-        <view class="card-item" wx:for="{{ 3 }}">
-            <image
-                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
-                mode="widthFix"
-            ></image>
+        <view class="card-item" wx:for="{{ activityList }}" wx:key="index">
+            <image src="{{ item.thumb }}" mode="widthFix"></image>
 
             <view class="item-info">
                 <view class="info-title">
-                    启辰星新车2000元抵扣券
+                    {{ item.title }}
                 </view>
 
                 <view class="info-tips">
-                    <view class="span time">2020.01.01至2020.01.02</view>
+                    <view class="span time">{{ item.start_time }}至{{ item.end_time }}</view>
 
-                    <view class="span nowrap">举办方：启辰万江店</view>
+                    <!-- <view class="span nowrap">举办方：{{ item.dlr_name }}</view> -->
+                </view>
+                <view class="info-tips">
+                    <!-- <view class="span time">{{ item.start_time }}至{{ item.end_time }}</view> -->
+
+                    <view class="span nowrap">举办方：{{ item.dlr_name }}</view>
                 </view>
 
                 <view class="join-info">
                     <view class="joining">
                         <view class="joining-headimg">
-                            <image
-                                wx:for="{{ 4 }}"
-                                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
-                            ></image>
+                            <image wx:for="{{ item.headimg_list }}" wx:for-item="headListItem" wx:for-index="headListIndex" wx:key="headListIndex"
+                                src="{{ headListItem }}">
+                            </image>
                         </view>
 
                         <view class="joining-number">
                             等
                             <view class="span">
-                                3000人
+                                {{ item.join_member }}人
                             </view>
-                            正在参与 
+                            正在参与
                         </view>
                     </view>
 
-                    <view class="join-btn router-link-exact-active">
+                    <view data-out-id="{{ item.out_id }}" data-out-type="{{ item.type }}" bindtap="joinBtn" class="join-btn">
                         立即参与
                     </view>
                 </view>
             </view>
         </view>
     </view>
-
+    <NoMore></NoMore>
 </view>

@@ -1,0 +1,2 @@
+<!--xw_components/NoMore/NoMore.wxml-->
+<view class="no-more">{{ str }}</view>

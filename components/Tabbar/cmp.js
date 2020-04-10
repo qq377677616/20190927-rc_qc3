@@ -1,61 +1,65 @@
 // components/tabber/cmp.js
-const router = require('../../utils/tool/router.js');
 
 const method = require('../../utils/tool/method.js');
 
 const app = getApp();
+import { jump_rel } from '../../xw_utils/route.js'
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
     tabbarList: {
-      type: Array,//   pages/look_car/look_car
+      type: Array,
       value: [
         { text: '首页', path: '/pages/index/index' },
         { text: '看车', path: '/pages/test2/test2' },
         { text: '商城', path: '/mall_module/pages/shop_mall/shop_mall' },
         { text: '我的', path: '/pages/home/home' }
       ]
-    },
-    oData: {
-      type: Object,
-      value: {}
-    },
-    IMGSERVICE: {
-      type: String,
-      value: app.globalData.IMGSERVICE
-    },
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    currentIndex: null,
+    curTabbarIndex: null,
     isIponeX: false,
   },
-  attached() {
-    this.initData()
+  lifetimes: {
+    // 在组件实例进入页面节点树时执行
+    attached() {
+      this.initData()
+    },
+    // 在组件实例被从页面节点树移除时执行
+    detached: function () {
+
+    },
   },
   /**
    * 组件的方法列表
    */
   methods: {
-    //数据初始化
+    /**
+     * 初始化
+     */
     initData() {
-      let currentUrl = this.getUrl();
+      let curPageUrl = this.getPageUrl();
       let tabbarList = this.properties.tabbarList;
       tabbarList.some((item, index) => {
-        if (item.path.slice(1) == currentUrl) {
+        let tabbarUrl = item.path.slice(1)
+        if (tabbarUrl == curPageUrl) {
           this.setData({
-            currentIndex: index
+            curTabbarIndex: index
           })
           return true;
         }
       })
 
-      //获取手机信息
+      /**
+       * 获取手机相关信息
+       */
       method.getSystem()
         .then((value) => {
           console.log("屏幕高度", value.screenHeight);
@@ -76,23 +80,29 @@ Component({
         })
 
     },
-    //获取当前页面路径
-    getUrl() {
+    /**
+     * 获取页面路径
+     * @param {*} n 
+     */
+    getPageUrl(n = 1) {
       let pages = getCurrentPages();
       let currentPage = pages[pages.length - 1];
       return currentPage.route;
     },
+    /**
+     * 切换tabbar
+     * @param {*} e 
+     */
+    switchTabbarBtn(e) {
+      let index = e.currentTarget.dataset.index
+      let tabbarUrl = this.properties.tabbarList[index].path
 
-    switchBtn(e) {
-      let index = e.currentTarget.dataset.index;
-      let url = this.properties.tabbarList[index].path;
+      if (index == this.data.curTabbarIndex) return;
 
-      if (index == this.data.currentIndex) return;
-
-      this.setData({ currentIndex: index })
-
-      router.jump_rel({
-        url,
+      jump_rel(tabbarUrl).then(() => {
+        this.setData({
+          curTabbarIndex: index
+        })
       })
     }
   }

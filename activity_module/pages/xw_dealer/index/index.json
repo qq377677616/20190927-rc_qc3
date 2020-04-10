@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "NoMore":"/xw_components/NoMore/NoMore"
+  }
 }

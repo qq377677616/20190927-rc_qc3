@@ -1,34 +1,42 @@
 import request from '../xw_utils/request.js'
 import { isCheckSession, wxLogin } from '../xw_utils/tools.js'
 import { alert } from '../xw_utils/alert.js'
-import { getUserInfo, getSessionKey, userAuth } from './user.js'
+import { USERGetUserInfo, USERGetSessionKey, USERUserAuth } from './user.js'
 /**
  * 默认地址信息
  * @param {*} data 
  */
-export function defaultAddress(data = {}) {
+export function COMMONDefaultAddress(data = {}) {
     return request('/api3/address/default_address', {
         ...data
     })
 }
 
 /**
- * 专营店信息
+ * 定位获取专营店信息
  * @param {*} data 
  */
-export function storeList(data = {}) {
+export function COMMONPositionStoreList(data = {}) {
     return request('/api3/dealer/dealer_list', {
         ...data
     })
 }
 
-
+/**
+ * 经销商专营店信息
+ * @param {*} data 
+ */
+export function COMMONStoreList(data = {}) {
+    return request('/api3/dealer_activity/store_list', {
+        ...data
+    })
+}
 
 /**
  * 登录
  * @param {*} callback 
  */
-export function login(callback) {
+export function COMMONLogin(callback) {
     let userInfo = wx.getStorageSync('userInfo');
     //本地已存放了用户信息
     if (Boolean(userInfo.openid)) {
@@ -36,7 +44,7 @@ export function login(callback) {
         isCheckSession().then((res) => {
             //密钥session_key未过期
             let userInfo = wx.getStorageSync('userInfo');
-            return getUserInfo({
+            return USERGetUserInfo({
                 data: {
                     openid: userInfo.openid,
                     user_id: userInfo.user_id,
@@ -59,7 +67,7 @@ export function login(callback) {
                 let code = res.code
                 let shareIds = wx.getStorageSync("shareIds");
 
-                return getSessionKey({
+                return USERGetSessionKey({
                     data: {
                         code,
                         parent_id: shareIds.parent_id,
@@ -93,7 +101,7 @@ export function login(callback) {
         wxLogin().then((res) => {
             let code = res.code
             let shareIds = wx.getStorageSync("shareIds");
-            return userAuth({
+            return USERUserAuth({
                 data: {
                     code,
                     parent_id: shareIds.parent_id,
