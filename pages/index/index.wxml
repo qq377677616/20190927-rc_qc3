@@ -23,7 +23,7 @@
 
   </view>
   <!-- swiper-area -->
-<text>{{o}} -- {{u}}</text>
+
   <!-- main-container -->
   <view class="main-container">
 
