@@ -464,11 +464,13 @@ Page({
         }
 
 
-
+        
         loading({
             title: '登录中'
         })
         COMMONLogin(() => {
+            userInfo = wx.getStorageSync('userInfo')
+            shareIds = wx.getStorageSync('shareIds')
             hideLoading()
             this.initData(options)
         })

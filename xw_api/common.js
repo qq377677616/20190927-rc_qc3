@@ -87,7 +87,7 @@ export function COMMONLogin(callback) {
                     wx.setStorageSync('userInfo', Object.assign(userInfo, data))
 
                 }
-                login(callback)
+                COMMONLogin(callback)
             }).catch((err) => {
                 alert({
                     title: err.message
@@ -112,7 +112,7 @@ export function COMMONLogin(callback) {
             let data = res.data.data;
 
             if (data.errcode && data.errmsg) {
-                login(callback)
+                COMMONLogin(callback)
             } else {
                 wx.setStorageSync('userInfo', data)
                 callback()

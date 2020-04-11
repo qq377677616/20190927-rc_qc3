@@ -557,6 +557,7 @@ Page({
       title: '登录中'
     })
     COMMONLogin(() => {
+      userInfo = wx.getStorageSync('userInfo');
       hideLoading()
       this.initData(options)
     })
