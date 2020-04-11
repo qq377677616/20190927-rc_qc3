@@ -58,6 +58,10 @@ Page({
             this.setData({
                 curCity: ad_info.city,
             })
+        }).catch((err) => {
+            alert({
+                title: err.message
+            })
         }).then(() => {
             let curCity = this.data.curCity
             return Promise.all([
@@ -132,16 +136,16 @@ Page({
                             status2 != 1 && msg2 ||
                             status3 != 1 && msg3)
                     }
+                }).catch((err) => {
+                    alert({
+                        title: err.message
+                    })
+                    //开启404页面
+                    this.setData({
+                        page404: true,
+                    })
                 })
 
-        }).catch((err) => {
-            alert({
-                title: err.message
-            })
-            //开启404页面
-            this.setData({
-                page404: true,
-            })
         }).then(() => {
             this.setData({
                 options,
