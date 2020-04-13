@@ -158,8 +158,9 @@ Page({
 		}
 	},
 	helpBargain(){ //帮好友砍价
+		console.log(this.data.bargain_id);
 		if(!this.data.userInfo.nickName || !this.data.userInfo.unionid) return;
-		if (!this.data.is_bargain){
+		if (!this.data.bargain_id){
 			tool.alert("请稍候！");
 		} else if (this.data.is_bargain==1){
 			tool.alert("您已经帮他砍过价了！");
@@ -170,7 +171,7 @@ Page({
 			bargain_id:this.data.bargain_id
 		}
 		request_04.helpbargain(dat).then((res)=>{
-			// console.log(res.data);
+			console.log(res.data);
 			if(res.data.status==1){
 				this.setData({ barpop: true, barprice: res.data.data.bargain_price});
 				this.getbargainInfo();

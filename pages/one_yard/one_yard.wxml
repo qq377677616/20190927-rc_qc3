@@ -71,7 +71,7 @@
 		<!-- 确认不参与区域  -->
 		<view class="comfir {{ways==2?'marheg2':''}}">
 			<text class="comfirtxt">亲，确认不需要预约购车咨询服务吗？</text>
-			<view class="comfirbtn" bindtap="goback">确认</view>
+			<view class="comfirbtn" bindtap="openPop">确认</view>
 		</view>
 </view>
 <view class="yzym_car" style="background-image:url('{{IMGSERVICE}}/pay/yzym_bg.png')" ></view>
@@ -82,7 +82,7 @@
 		<text>进入互动环节将失去</text>
 		<text>获取留资礼品的机会哦~</text>
 		<view class="popfoot">
-			<view class="onebtn" bindtap="closePop">确认</view>
+			<view class="onebtn" bindtap="goback">确认</view>
 			<view class="twobtn" bindtap="closePop">返回</view>
 		</view>
 	</view>

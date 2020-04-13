@@ -7,9 +7,7 @@
             <view class="span">活动规则</view>
             <image class="icon" src="{{ IMGSERVICE }}/icon/right-arrow.png" mode="aspectFit"></image>
         </view>
-        <image class="poster"
-            src="{{bargainDat.activity_info.banner}}"
-            mode="aspectFill"></image>
+        <image class="poster" src="{{bargainDat.activity_info.banner}}" mode="aspectFill"></image>
     </view>
 
     <view class="activity-info-bar clearfix">
