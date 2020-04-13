@@ -553,8 +553,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (Boolean(options.query)) {
-      let scene = decodeURIComponent(options.query.scene)
+    if (Boolean(options.scene)) {
+      let scene = decodeURIComponent(options.scene)
       scene.split('&').forEach((item) => {
         if (item.split('=')[0] == 'o_i') {
           Object.assign(options, {
