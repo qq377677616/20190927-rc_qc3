@@ -25,6 +25,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	  if (Boolean(options.scene)) {
+		  let scene = decodeURIComponent(options.scene)
+		  console.log(scene);
+		  scene.split('&').forEach((item) => {
+			  if (item.split('=')[0] == 'o_i'){
+				  console.log(item.split('=')[1]);
+				  Object.assign(options, {
+					  activity_id: item.split('=')[1]
+				  })
+			  }
+		  })
+	  }
+	//   console.log(options.activity_id, '砍价');
 	  request_01.login(() => {
 		  this.setData({ activity_id: options.activity_id});
 		  this.getbargainInfo();
