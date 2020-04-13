@@ -468,10 +468,7 @@ Page({
                 channel_id: shareIds.channel_id,
                 page: 'home'
             })
-        }
-
-
-        
+        }        
         loading({
             title: '登录中'
         })

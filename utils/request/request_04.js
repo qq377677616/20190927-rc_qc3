@@ -556,7 +556,7 @@ const helpbargain = (data) => {
 			})
 	})
 }
-// 经销商 
+// 经销商 领取奖品
 const bargainreceive = (data) => {
 	let url = `${SERVICE}/api3/dealer_bargain/receive`
 	return new Promise((resolve, reject) => {

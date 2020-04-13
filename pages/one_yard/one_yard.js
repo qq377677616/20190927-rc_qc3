@@ -494,7 +494,7 @@ Page({
 	checkway(e){
 		let type = e.currentTarget.dataset.type;
 		this.setData({ ways: type == this.data.ways ? 0 : type});
-		this.setData({ popshow: this.data.ways == 2});
+		// this.setData({ popshow: this.data.ways == 2});
 		// console.log(type);	
 	},
 	closePop(){
@@ -563,5 +563,8 @@ Page({
 				tool.jump_back();
 				break;
 		}
+	},
+	openPop(){ // 确认打开弹窗
+		this.setData({ popshow:true});
 	}
 })

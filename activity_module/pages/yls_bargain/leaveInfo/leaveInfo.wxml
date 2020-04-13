@@ -39,8 +39,8 @@
 		<view class="shopimg" style="background-image:url({{IMGSERVICE}}/icon/defultCard.png)"></view>
 		<view class="shopinfo">
 			<text class="carName">{{shopInfo.shopName}}</text>
-			<text class="setlat">￥{{shopInfo.shopPrice}}</text>
-            <text class="span setdel">￥0.00</text>
+			<text class="setlat">￥0.00</text>
+            <text class="span setdel">￥{{shopInfo.shopPrice}}</text>
 		</view>
 	</view>
 	<view class="lqbtn" bindtap="immdEnter">立即领取</view>

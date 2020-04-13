@@ -82,8 +82,7 @@ Page({
 	  this.shareUp();
 	  return {
 		  title: '砍价好礼任你选 ！',
-		//   imageUrl: `${IMGSERVICE}/lookcar/carshare.jpg`,
-		  path: '/activity_module/pages/yls_bargain/index/index'
+		  path: `/activity_module/pages/yls_bargain/index/index?activity_id=${this.data.activity_id}`
 	  }
   },
 	//判断是否授权和是否是车主
