@@ -142,7 +142,7 @@
                     <view class="txtbox2 txtbox3">{{swiper3_txt[swiper3]}}</view>
 
                     <!--轮播实例3-->
-                    <view class="threebg threebg3 anit3_{{swiper3}}">
+                    <view class="threebg threebg1 anit2_{{swiper3}}">
 						<!-- 左右箭头 -->
 						<view class="leftbtn" catchtap="changetab" data-type="1" data-id="3" data-length="{{swp3_img.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
                         <view class="rightbtn" catchtap="changetab" data-type="2" data-id="3" data-length="{{swp3_img.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
@@ -169,9 +169,9 @@
                     </view>
                     <view class="swiper1">
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
-                            <block wx:for="{{10}}" wx:key="item">
+                            <block wx:for="{{swp3_img}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper3!=index-1&&!(swiper3==9&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw3_{{index+1}}.png?1)" data-type="3" data-tab="{{index-1}}" data-len="{{10}}" bindtap="tabSwiper"></view>
+                                    <view class="item1 {{swiper3!=index-1&&!(swiper3==swp3_img.length-1&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{swp3_img[index==0?swp3_img.length-1:index-1].img}}?1)" data-type="3" data-tab="{{index-1}}" data-len="{{swp3_img.length}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>

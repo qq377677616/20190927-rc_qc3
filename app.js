@@ -8,7 +8,7 @@ const mta = require('./utils/public/mta_analysis.js')
 App({
     onLaunch: function (options) {
         console.log("app.js的options", options)
-        //获取parent_id和channel_id存储到本地
+        //获取parent_id和channel_id存储到本地 
         let scene = decodeURIComponent(options.query.scene)
         let _shareIds = { channel_id: 0, parent_id: 0 }
         scene.split('&').forEach((item) => {
@@ -40,7 +40,7 @@ App({
         userInfo: null,
         //https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
         //'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
-		IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0', //日产小程序的 图片路径
+		IMGSERVICE: 'https://weixinfslb.venucia.com/uploads/assets_3.0', //日产小程序的 图片路径
 
         ASSETSURL: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0/ca', //ca 资源地址
 		REQUESTURL: 'http://as7tyf.natappfree.cc/index.php', //ca接口请求路径 http://xkvyfp.natappfree.cc/index.php   日产 https://weixinyhby.venucia.com/backend/public/index.php
