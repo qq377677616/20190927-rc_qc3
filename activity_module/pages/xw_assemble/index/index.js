@@ -1,6 +1,6 @@
 // activity_module/pages/xw_assemble/index/index.js
 const app = getApp(); //获取应用实例
-import { ASSEMBLEAssembleIndex, ASSEMBLELunchAssemble, ASSEMBLEJoinAssemble, ASSEMBLEReceivePrize, COMMONLogin, USERPostUserInfo, USERGetUnionid, USERGetUserDatabaseInfo } from '../../../../xw_api/index.js'
+import { ASSEMBLEAssembleIndex, ASSEMBLELunchAssemble, ASSEMBLEJoinAssemble, ASSEMBLEReceivePrize, COMMONLogin, USERPostUserInfo, USERGetUnionid, USERGetUserDatabaseInfo, ASSEMBLEAssembleShareLog } from '../../../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../../../xw_utils/alert.js'
 import { timeFormat, getUserAdmin } from '../../../../xw_utils/tools.js'
 import { jump_nav } from '../../../../xw_utils/route.js'
@@ -411,7 +411,7 @@ Page({
   receiveHandler() {
     let indexData = this.data.indexData
     let order_id = indexData.join_info.order_id
-    if ( Boolean(order_id) ) {
+    if (Boolean(order_id)) {
       jump_nav(`/pages/order_detail/order_detail?order_id=${order_id}`);
     } else {
       loading({
@@ -553,9 +553,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    Object.assign(options,{
-        out_type:2
+    if (Boolean(options.query)) {
+      let scene = decodeURIComponent(options.query.scene)
+      scene.split('&').forEach((item) => {
+        if (item.split('=')[0] == 'o_i') {
+          Object.assign(options, {
+            out_id: item.split('=')[1]
+          })
+        }
       })
+    }
+    
+    Object.assign(options, {
+      out_type: 2
+    })
     loading({
       title: '登录中'
     })
@@ -624,6 +635,15 @@ Page({
   onShareAppMessage: function (e) {
     let indexData = this.data.indexData
     let options = this.data.options
+    ASSEMBLEAssembleShareLog({
+      data:{
+        openid:userInfo.openid,//string	用户openID
+        out_id:options.out_id,//int	经销商活动ID
+        out_type:options.out_type,//int	活动类型 砍价-1 团购-2
+        page_id:'28',//int	1-100的数字 不要重复
+        page_name:'经销商团购首页',//string	页面名称 比如经销商团购首页
+      }
+    })
     /**
      * 活动1-进行中  3-已结束
      * 0-拼团中 1-拼团成功

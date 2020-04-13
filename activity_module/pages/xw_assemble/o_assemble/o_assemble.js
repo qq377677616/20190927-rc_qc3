@@ -1,6 +1,6 @@
 // activity_module/pages/xw_assemble/o_assemle/o_assemle.js
 const app = getApp(); //获取应用实例
-import { ASSEMBLEAssembleDetail, ASSEMBLEReceivePrize, ASSEMBLEJoinAssemble, COMMONLogin, USERPostUserInfo, USERGetUnionid, USERGetUserDatabaseInfo } from '../../../../xw_api/index.js'
+import { ASSEMBLEAssembleDetail, ASSEMBLEReceivePrize, ASSEMBLEJoinAssemble, COMMONLogin, USERPostUserInfo, USERGetUnionid, USERGetUserDatabaseInfo, ASSEMBLEAssembleShareLog } from '../../../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../../../xw_utils/alert.js'
 import { timeFormat, getUserAdmin } from '../../../../xw_utils/tools.js'
 import { jump_nav } from '../../../../xw_utils/route.js'
@@ -189,9 +189,9 @@ Page({
   receiveHandler() {
     let oAssembleData = this.data.oAssembleData
     let order_id = oAssembleData.join_info.order_id
-    if( Boolean(order_id) ){
+    if (Boolean(order_id)) {
       jump_nav(`/pages/order_detail/order_detail?order_id=${order_id}`);
-    }else{
+    } else {
       loading({
         title: '领取中'
       })
@@ -204,7 +204,7 @@ Page({
       }).then((res) => {
         let { msg, status, data } = res.data
         hideLoading()
-  
+
         if (status == 1) {
           this.initData(options)
           jump_nav(`/pages/order_detail/order_detail?order_id=${data.order_id}`);
@@ -218,7 +218,7 @@ Page({
         })
       })
     }
-    
+
   },
   /**
    * 参加拼团
@@ -410,8 +410,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    Object.assign(options,{
-      out_type:2
+    Object.assign(options, {
+      out_type: 2
     })
     loading({
       title: '登录中'
@@ -480,7 +480,16 @@ Page({
   onShareAppMessage: function (e) {
     let options = this.data.options
     let oAssembleData = this.data.oAssembleData
-
+    ASSEMBLEAssembleShareLog({
+      data:{
+        openid:userInfo.openid,//string	用户openID
+        out_id:options.out_id,//int	经销商活动ID
+        out_type:options.out_type,//int	活动类型 砍价-1 团购-2
+        page_id:'28',//int	1-100的数字 不要重复
+        page_name:'经销商团购-我的拼团',//string	页面名称 比如经销商团购首页
+      }
+    })
+    // 
     if (oAssembleData.tuan_info.status === 0) {
       //拼团中
       return {

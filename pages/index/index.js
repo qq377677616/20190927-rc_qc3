@@ -140,10 +140,6 @@ Page({
                     alert({
                         title: err.message
                     })
-                    //开启404页面
-                    this.setData({
-                        page404: true,
-                    })
                 })
 
         }).then(() => {

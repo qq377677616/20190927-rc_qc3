@@ -6,8 +6,11 @@ const alert = require('../tool/alert.js');
 
 const tool = require('../tool/tool.js');
 
+// 网晨测试环境
 const SERVICE = "https://game.flyh5.cn/game/wx7c3ed56f7f792d84/yyt_dfqcfslb/public";
+// 日产测试环境
 // const SERVICE = "http://dfldata-test.dongfeng-nissan.com.cn/fslb/public/index.php";
+// 正式环境
 // const SERVICE = "https://weixinfslb.venucia.com";
 
 

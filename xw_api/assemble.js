@@ -49,3 +49,13 @@ export function ASSEMBLEAssembleDetail(data = {}) {
         ...data
     })
 }
+
+/**
+ * 拼团分享上报
+ * @param {*} data 
+ */
+export function ASSEMBLEAssembleShareLog(data = {}) {
+    return request('/api3/dealer_activity/share_log', {
+        ...data
+    })
+}
