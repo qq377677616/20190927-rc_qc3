@@ -485,7 +485,7 @@ Page({
         openid:userInfo.openid,//string	用户openID
         out_id:options.out_id,//int	经销商活动ID
         out_type:options.out_type,//int	活动类型 砍价-1 团购-2
-        page_id:'28',//int	1-100的数字 不要重复
+        page_id:'29',//int	1-100的数字 不要重复
         page_name:'经销商团购-我的拼团',//string	页面名称 比如经销商团购首页
       }
     })
