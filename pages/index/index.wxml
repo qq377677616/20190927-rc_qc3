@@ -11,7 +11,6 @@
       <swiper-item wx:for="{{ listInfo.banner_list }}" wx:key="index" style="background-image:url({{ item.image }});"
         data-index="{{ index }}" bindtap="bannerJump"></swiper-item>
 
-
     </swiper>
 
     <view class="dots">
@@ -105,7 +104,7 @@
         <view class="position">
           <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
 
-          <view class="cur-position-text nowrap">
+          <view bindtap="relocationBtn" class="cur-position-text nowrap">
             {{ curCity }}
           </view>
         </view>
