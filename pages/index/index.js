@@ -9,7 +9,7 @@ let app = getApp() //获取应用实例
 import { COMMONLogin, DEALERActivityList, USERGetUserDatabaseInfo } from '../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../xw_utils/alert.js'
 import { getPosition } from '../../xw_utils/tools.js'
-import { jump_nav } from '../../xw_utils/route.js'
+import { jump_nav, jump_rel, jump_red } from '../../xw_utils/route.js'
 
 let userInfo = wx.getStorageSync('userInfo')
 let shareIds = wx.getStorageSync('shareIds')
@@ -283,6 +283,13 @@ Page({
         } else { //page页面不存在
             return false;
         }
+    },
+    /**
+     * 重新定位
+     */
+    relocationBtn(){
+        // let options = this.data.options
+        // this.initData(options)
     },
     /**
      * tab 切换
