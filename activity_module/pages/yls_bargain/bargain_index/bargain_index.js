@@ -122,14 +122,16 @@ Page({
 			bargain_id:this.data.bargain_id,
 			openid:userInfo.openid
 		}
+		console.log("砍价信息",dat);
 		request_04.bargain_info(dat).then((res)=>{
+			console.log("砍价信息2", res.data);
 			if(res.data.status==1){
 				console.log(res.data);
 				this.setData({ 
 				bargainDat: res.data.data, 
 				barRecord: res.data.data.bargain_list,
 				restPrice: parseFloat((res.data.data.bargain_info.total_price) - parseFloat(res.data.data.bargain_info.bargain_price)).toFixed(2),
-				percent: parseInt(parseInt(res.data.data.bargain_info.bargain_price) / parseInt(res.data.data.bargain_info.total_price) * 100),
+				percent: parseInt(parseFloat(res.data.data.bargain_info.bargain_price) / parseFloat(res.data.data.bargain_info.total_price) * 100),
 				restTime: res.data.data.card_info.count_down,
 				})
 				this.getdjsTime();

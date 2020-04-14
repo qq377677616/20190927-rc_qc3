@@ -32,6 +32,9 @@ Page({
 		popshow:false,
 		tool_id:-1,//展具类型id
 		is_data:-1,//是否留资
+		addinfo:null,//地址信息
+		isfirst:1,
+		out_id:null,
     },
 
     //获取手机号
@@ -76,6 +79,7 @@ Page({
                 wxPhone: mobile
             })
         }
+		this.setData({options:options})
         let small_activity_id = '';
         if (options.scene) {
             let scene = decodeURIComponent(options.scene);
@@ -95,15 +99,16 @@ Page({
         }).then(res => {
             console.log(res, 'res')
             if (res.data.status == 1) {
-
                 this.setData({
                     selCarList: res.data.data.car_list,
                     storeList: res.data.data.dlr_code,
                     banner: res.data.data.banner,
                     small_activity_id,
+					out_id: res.data.data.out_id,
 					tool_id: res.data.data.tool_id,
 					is_data: res.data.data.is_data,
-                    options
+                    options,
+					addinfo: res.data.data.data_info ? res.data.data.data_info:this.data.data_info
                 })
                 if (res.data.data.status == 2) {
                     this.setData({
@@ -118,6 +123,8 @@ Page({
                         text: "活动已结束"
                     })
                 }
+				this.data.isfirst == 1 ? this.setData({ isfirst: ++this.data.isfirst}):this.goback();
+				console.log(this.data.isfirst);
             } else {
                 tool.alert(res.data.msg)
             }
@@ -160,11 +167,7 @@ Page({
             console.log(res, 'res')
             if (res.data.status == 1) {
                 tool.alert(res.data.msg)
-                setTimeout(() => {
-                    router.jump_red({
-                        url: `/pages/index/index`
-                    })
-                }, 1000)
+				this.initData(this.data.options);
             } else {
                 tool.alert(res.data.msg)
             }
@@ -450,7 +453,8 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function(){
+		this.setData({ isfirst:1})
         let options = this.data.options
         if (this.data.firstShow) {
             this.initData(options)
@@ -504,20 +508,26 @@ Page({
 		// console.log(this.data.small_activity_id);return;
 		let t_id = this.data.tool_id;
 		let d_id = this.data.is_data;
-		let type = t_id == 1|| t_id == 3 ? 1 : (t_id == 6 || t_id == 7 || t_id == 8) ? 6 : t_id;
+		let addinfo = this.data.addinfo;
+		let type = t_id == 1||t_id == 8? 1 : (t_id == 6 || t_id == 7) ? 6 : t_id;
 		if (d_id == -1 || t_id==-1)return;
+		console.log(type,"跳转类型");
 		switch(type){
 			case 0:
 				tool.jump_back();
 				break;
 			case 1:
 				wx.navigateToMiniProgram({
-					appId: 'wx1520e6685337ea01',
-					path: '',
+					appId: 'wx8c6a68776ad26eeb',
+					path: 'pages/index/index',
 					extraData: {
 						success: d_id,
-						activityid: this.data.small_activity_id,
-						appid:'wx1d585c8c2fffe589'
+						activityid: this.data.out_id,
+						appid:'wx1d585c8c2fffe589',
+						s_i: this.data.small_activity_id,
+						name: addinfo.name ? addinfo.name : '',
+						phone: addinfo.mobile ? addinfo.mobile : '',
+						area: addinfo.dlr_name ? addinfo.dlr_name : ''
 					},
 					envVersion: 'release',
 					success(res) {
@@ -529,11 +539,34 @@ Page({
 			//其他操作
 				wx.navigateToMiniProgram({
 					appId: 'wx1520e6685337ea01',
-					path: '',
+					path: 'pages/index/index',
 					extraData: {
 						success: d_id,
-						activityid: this.data.small_activity_id,
-						appid: 'wx1d585c8c2fffe589'
+						activityid: this.data.out_id,
+						appid: 'wx1d585c8c2fffe589',
+						s_i: this.data.small_activity_id,
+						name: addinfo.name ? addinfo.name : '',
+						phone: addinfo.mobile ? addinfo.mobile : '',
+						area: addinfo.dlr_name ? addinfo.dlr_name : ''
+					},
+					envVersion: 'release',
+					success(res) {
+						console.log('跳转成功');
+					}
+				})
+				break;
+			case 3:
+				wx.navigateToMiniProgram({
+					appId: 'wx2ba9cb51465eee0f',
+					path: 'pages/index/index',
+					extraData: {
+						success: d_id,
+						activityid: this.data.out_id,
+						appid: 'wx1d585c8c2fffe589',
+						s_i: this.data.small_activity_id,
+						name: addinfo.name ? addinfo.name:'',
+						phone: addinfo.mobile ? addinfo.mobile : '',
+						area: addinfo.dlr_name ? addinfo.dlr_name : ''
 					},
 					envVersion: 'release',
 					success(res) {
@@ -542,16 +575,21 @@ Page({
 				})
 				break;
 			case 4:
-				console.log("跳转其他小程序");
+				tool.jump_back();
+				tool.alert("跳转h5");
 				break;
 			case 5:
 				wx.navigateToMiniProgram({
 					appId: 'wx5f4c100ae6bb86d1',
-					path: '',
+					path: 'pages/index/index',
 					extraData: {
-						name: d_id,
-						phone: this.data.small_activity_id,
-						appid: 'wx1d585c8c2fffe589'
+						success: d_id,
+						activityid: this.data.out_id,
+						appid: 'wx1d585c8c2fffe589',
+						s_i: this.data.small_activity_id,
+						name: addinfo.name ? addinfo.name : '',
+						phone: addinfo.mobile ? addinfo.mobile : '',
+						area: addinfo.dlr_name ? addinfo.dlr_name : ''
 					},
 					envVersion: 'release',
 					success(res) {

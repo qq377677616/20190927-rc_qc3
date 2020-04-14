@@ -610,8 +610,8 @@ margin-bottom: 32rpx;
 	top: 0;
 }
 .footcar1{
-	width: 457rpx;
-	height: 197rpx;
+	width: 672rpx;
+	height: 210rpx;
 	background: no-repeat center/cover;
 	margin: 0 auto;
 	margin-top: 80rpx;
