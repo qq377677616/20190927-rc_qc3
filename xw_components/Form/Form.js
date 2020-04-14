@@ -38,6 +38,7 @@ Component({
   lifetimes: {
     // 在组件实例进入页面节点树时执行
     attached: function () {
+      userInfo = wx.getStorageSync('userInfo');
       this.initData()
     },
     // 在组件实例被从页面节点树移除时执行

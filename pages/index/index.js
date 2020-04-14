@@ -58,12 +58,29 @@ Page({
             this.setData({
                 curCity: ad_info.city,
             })
-        }).catch((err) => {
-            alert({
-                title: err.message
+
+            // 经销商活动列表
+            return DEALERActivityList({
+                data: {
+                    city_name: ad_info.city,//string	城市名字
+                    dlr_code: '',//string	专营店编码
+                }
+            }).then((res)=>{
+                let { msg, status, data } = res.data
+                this.setData({
+                    storeActivityList: data,//经销商活动列表信息
+                })
+                
+            }).catch((err)=>{
+                alert({
+                    title: err.message
+                })
             })
+        }).catch((err) => {
+            // alert({
+            //     title: err.message
+            // })
         }).then(() => {
-            let curCity = this.data.curCity
             return Promise.all([
                 request_01.indexBanner({
                     user_id: userInfo.user_id,
@@ -75,12 +92,7 @@ Page({
                 request_01.signInInfo({
                     user_id: userInfo.user_id,
                 }),
-                DEALERActivityList({
-                    data: {
-                        city_name: curCity,//string	城市名字
-                        dlr_code: '',//string	专营店编码
-                    }
-                }),
+                
                 // USERGetUserDatabaseInfo({
                 //     data:{
                 //         user_id: userInfo.user_id,
@@ -95,11 +107,10 @@ Page({
                     let { msg: msg0, status: status0, data: listInfo } = value[0].data
                     let { msg: msg1, status: status1, data: activityList } = value[1].data
                     let { msg: msg2, status: status2, data: signInInfo } = value[2].data
-                    let { msg: msg3, status: status3, data: data3 } = value[3].data
                     // let { msg: msg4, status: status4, data: personalInfo } = value[4].data
                     activityList = activityList.list
 
-                    if (status0 == 1 && status1 == 1 && status2 == 1 && status3 == 1) {
+                    if (status0 == 1 && status1 == 1 && status2 == 1) {
                         // 判断看车类型
                         activityList.forEach((item, index) => {
                             if (item.activity_type == 16) {
@@ -127,14 +138,12 @@ Page({
                             giftIf: !Boolean(userInfo.nickname), //是否是新用户 授权关闭见面礼 
                             keyGroup,
                             // tag:tag == 1 ? true : false,// 1-展示 0-隐藏
-                            storeActivityList: data3,//经销商活动列表信息
                         })
                     } else {
                         throw new Error(
                             status0 != 1 && msg0 ||
                             status1 != 1 && msg1 ||
-                            status2 != 1 && msg2 ||
-                            status3 != 1 && msg3)
+                            status2 != 1 && msg2 )
                     }
                 }).catch((err) => {
                     alert({
@@ -284,8 +293,34 @@ Page({
      * 重新定位
      */
     relocationBtn(){
-        // let options = this.data.options
-        // this.initData(options)
+        getPosition().then((res) => {
+            let { location, ad_info } = res.result
+            this.setData({
+                curCity: ad_info.city,
+            })
+
+            // 经销商活动列表
+            return DEALERActivityList({
+                data: {
+                    city_name: ad_info.city,//string	城市名字
+                    dlr_code: '',//string	专营店编码
+                }
+            }).then((res)=>{
+                let { msg, status, data } = res.data
+                this.setData({
+                    storeActivityList: data,//经销商活动列表信息
+                })
+                
+            }).catch((err)=>{
+                alert({
+                    title: err.message
+                })
+            })
+        }).catch((err)=>{
+            alert({
+                title: '请开启右上角“...”中设置的位置信息'
+            })
+        })
     },
     /**
      * tab 切换
