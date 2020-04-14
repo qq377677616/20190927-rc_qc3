@@ -60,7 +60,7 @@ Page({
             })
 
             // 经销商活动列表
-            DEALERActivityList({
+            return DEALERActivityList({
                 data: {
                     city_name: ad_info.city,//string	城市名字
                     dlr_code: '',//string	专营店编码
@@ -77,9 +77,9 @@ Page({
                 })
             })
         }).catch((err) => {
-            alert({
-                title: err.message
-            })
+            // alert({
+            //     title: err.message
+            // })
         }).then(() => {
             return Promise.all([
                 request_01.indexBanner({
@@ -293,8 +293,34 @@ Page({
      * 重新定位
      */
     relocationBtn(){
-        // let options = this.data.options
-        // this.initData(options)
+        getPosition().then((res) => {
+            let { location, ad_info } = res.result
+            this.setData({
+                curCity: ad_info.city,
+            })
+
+            // 经销商活动列表
+            return DEALERActivityList({
+                data: {
+                    city_name: ad_info.city,//string	城市名字
+                    dlr_code: '',//string	专营店编码
+                }
+            }).then((res)=>{
+                let { msg, status, data } = res.data
+                this.setData({
+                    storeActivityList: data,//经销商活动列表信息
+                })
+                
+            }).catch((err)=>{
+                alert({
+                    title: err.message
+                })
+            })
+        }).catch((err)=>{
+            alert({
+                title: '请开启右上角“...”中设置的位置信息'
+            })
+        })
     },
     /**
      * tab 切换

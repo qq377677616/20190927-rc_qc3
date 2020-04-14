@@ -101,11 +101,11 @@
           </view>
         </scroll-view>
 
-        <view class="position">
+        <view bindtap="relocationBtn" class="position">
           <image class="cur-position-icon" mode="widthFix" src="{{ IMGSERVICE }}/ca/relocation.png"></image>
 
-          <view bindtap="relocationBtn" class="cur-position-text nowrap">
-            {{ curCity }}
+          <view class="cur-position-text nowrap">
+            {{ curCity || '重新定位' }}
           </view>
         </view>
       </view>
