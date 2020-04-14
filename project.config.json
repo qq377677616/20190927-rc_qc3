@@ -607,8 +607,8 @@
 				},
 				{
 					"id": 78,
-					"name": "assemble",
-					"pathName": "activity_module/pages/xw_assemble/index/index",
+					"name": "index",
+					"pathName": "activity_module/pages/xw_assemble/o_assemble/o_assemble",
 					"query": "tuan_id=1",
 					"scene": null
 				},
