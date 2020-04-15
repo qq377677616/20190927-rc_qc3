@@ -181,7 +181,7 @@
                     <!--轮播实例-->
 
                     <view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png?1)">
-                        <view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?3)" wx:for="{{carcol}}" wx:key="item"></view>
+                        <view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?4)" wx:for="{{carcol}}" wx:key="item"></view>
                         <text class="txt3">启辰T60配置参数</text>
                         <text class="txt4">（官网画面仅供参考，购买时以实车为准）</text>
                         <view class="selectcol">

@@ -338,7 +338,7 @@ Page({
 				break;
 			case '6':
 				txt = '启辰T60，高品质智趣SUV，星级品质，焕新登场！';
-				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60.png`
+				imageUrl = `${this.data.IMGSERVICE}/gaiban/share_T60.png?1`
 				break;
 			case '3':
 				txt = '启辰D60，高品质智联家轿，智联生活，即刻开启！';

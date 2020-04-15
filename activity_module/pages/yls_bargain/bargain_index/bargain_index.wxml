@@ -23,7 +23,7 @@
 					<text class="type1">{{djs.m}}</text>
 					<text class="type2">:</text>
 					<text class="type3">{{djs.s}}</text>
-					<text class="type4">砍价已过期</text>
+					<!-- <text class="type4">砍价已过期</text> -->
 				</view>
 			</view>
 
