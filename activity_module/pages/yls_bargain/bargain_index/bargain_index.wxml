@@ -31,6 +31,7 @@
 		</view>
 		<view class="tipTxt">已砍<text class="txtcol">{{bargainDat.bargain_info.bargain_price}}</text>元,还剩<text class="txtcol">{{restPrice}}</text>元</view>
 		<view class="progess">
+			<!-- {{percent}} -->
 			<progress percent="{{percent}}" active color="#E3413E" border-radius="16" />
 		</view>
 		<view class="progressInfo">
@@ -76,7 +77,7 @@
 		</view>
 		<view class="tipTxt"><text class="addcolor">砍价成功，快去领取吧</text></view>
 		<view class="progess">
-			<progress percent="100" active color="#E3413E" border-radius="16" />
+			<progress percent="{{percent}}" active color="#E3413E" border-radius="16" />
 		</view>
 		<view class="progressInfo">
 			<text>￥{{bargainDat.bargain_info.total_price}}</text>

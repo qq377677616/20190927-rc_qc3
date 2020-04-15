@@ -311,7 +311,7 @@ Page({
 		console.log(`${IMGSERVICE}/lookcar/carshare.jpg`);
 		return {
 			title: '东风启辰线上展厅，在家选好车！',
-			imageUrl: `${IMGSERVICE}/lookcar/carshare.jpg?3`,
+			// imageUrl: `${IMGSERVICE}/lookcar/carshare.jpg?3`,
 			path: '/pages/index/index'
 		};
 	}
