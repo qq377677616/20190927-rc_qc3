@@ -446,13 +446,15 @@ Page({
    * 返回经销商首页
    */
   jumpHome() {
-    jump_nav(`/activity_module/pages/xw_dealer/index/index`)
+    // jump_nav(`/activity_module/pages/xw_dealer/index/index`)
+    jump_nav(`/pages/index/index`)
   },
   /**
    * 更多活动
    */
   moreActivityBtn() {
-    jump_nav(`/activity_module/pages/xw_dealer/index/index`)
+    // jump_nav(`/activity_module/pages/xw_dealer/index/index`)
+    jump_nav(`/pages/index/index`)
   },
   /**
    * 立即授权
