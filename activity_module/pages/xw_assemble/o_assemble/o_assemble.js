@@ -309,7 +309,8 @@ Page({
    * 查看更多活动
    */
   moreActivityBtn() {
-    jump_nav(`/activity_module/pages/xw_dealer/index/index`)
+    // jump_nav(`/activity_module/pages/xw_dealer/index/index`)
+    jump_nav(`/pages/index/index`)
   },
   /**
    * 立即授权
