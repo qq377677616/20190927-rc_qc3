@@ -5,7 +5,7 @@
 	<view style="background-image:url({{banner}})"></view>
     <!-- <image src="{{banner}}" mode="widthFix"></image> -->
   </view>
-  <view class="giftbg" style="background-image:url('{{IMGSERVICE}}/pay/gift_bg.jpg')"></view>
+  <view class="giftbg" style="background-image:url('{{IMGSERVICE}}/pay/1586937932(1).jpg')"></view>
   <view class="one-bg" style="background-image:url('{{IMGSERVICE}}/pay/one_bg.png')">
     <!-- <image class="ong-title" src="{{IMGSERVICE}}/pay/one_title.png" mode="widthFix"></image> -->
     <view class="selectbox" bindtap="checkway" data-type="1">

@@ -118,7 +118,8 @@
 				"pages/xw_assemble/o_assemble/o_assemble",
 				"pages/yls_bargain/bargain_index/bargain_index",
 				"pages/yls_bargain/leaveInfo/leaveInfo",
-				"pages/yls_bargain/index/index"
+				"pages/yls_bargain/index/index",
+				"pages/webviews/webviews"
 			]
 		}
 	],
@@ -137,7 +138,6 @@
 		"wx1520e6685337ea01",
 		"wx8c6a68776ad26eeb",
 		"wx2ba9cb51465eee0f"
-
 	],
 	"sitemapLocation": "sitemap.json",
 	"networkTimeout": {
