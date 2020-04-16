@@ -1,5 +1,5 @@
 // xw_components/Rule/Rule.js
-let app = getApp()
+let app = getApp({allowDefault: true})
 Component({
   /**
    * 组件的属性列表

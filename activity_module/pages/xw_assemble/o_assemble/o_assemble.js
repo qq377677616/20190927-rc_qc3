@@ -1,5 +1,5 @@
 // activity_module/pages/xw_assemble/o_assemle/o_assemle.js
-const app = getApp(); //获取应用实例
+const app = getApp({allowDefault: true}); //获取应用实例
 import { ASSEMBLEAssembleDetail, ASSEMBLEReceivePrize, ASSEMBLEJoinAssemble, COMMONLogin, USERPostUserInfo, USERGetUnionid, USERGetUserDatabaseInfo, ASSEMBLEAssembleShareLog } from '../../../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../../../xw_utils/alert.js'
 import { timeFormat, getUserAdmin } from '../../../../xw_utils/tools.js'
@@ -490,6 +490,7 @@ Page({
         page_name:'经销商团购-我的拼团',//string	页面名称 比如经销商团购首页
       }
     })
+
     // 
     if (oAssembleData.tuan_info.status === 0) {
       //拼团中

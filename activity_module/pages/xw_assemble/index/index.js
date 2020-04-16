@@ -1,5 +1,5 @@
 // activity_module/pages/xw_assemble/index/index.js
-const app = getApp(); //获取应用实例
+const app = getApp({ allowDefault: true }); //获取应用实例
 import { ASSEMBLEAssembleIndex, ASSEMBLELunchAssemble, ASSEMBLEJoinAssemble, ASSEMBLEReceivePrize, COMMONLogin, USERPostUserInfo, USERGetUnionid, USERGetUserDatabaseInfo, ASSEMBLEAssembleShareLog } from '../../../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../../../xw_utils/alert.js'
 import { timeFormat, getUserAdmin } from '../../../../xw_utils/tools.js'
@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    aa:app,
     IMGSERVICE: app.globalData.IMGSERVICE,
     personalInfo: {
       isVisible: true,
@@ -411,13 +412,13 @@ Page({
   receiveHandler() {
     let indexData = this.data.indexData
     let order_id = indexData.join_info.order_id
+
     if (Boolean(order_id)) {
       jump_nav(`/pages/order_detail/order_detail?order_id=${order_id}`);
     } else {
       loading({
         title: '领取中'
       })
-      let indexData = this.data.indexData
       ASSEMBLEReceivePrize({
         data: {
           openid: userInfo.openid,//string	用户openid
@@ -565,7 +566,7 @@ Page({
         }
       })
     }
-    
+
     Object.assign(options, {
       out_type: 2
     })
@@ -638,12 +639,12 @@ Page({
     let indexData = this.data.indexData
     let options = this.data.options
     ASSEMBLEAssembleShareLog({
-      data:{
-        openid:userInfo.openid,//string	用户openID
-        out_id:options.out_id,//int	经销商活动ID
-        out_type:options.out_type,//int	活动类型 砍价-1 团购-2
-        page_id:'28',//int	1-100的数字 不要重复
-        page_name:'经销商团购首页',//string	页面名称 比如经销商团购首页
+      data: {
+        openid: userInfo.openid,//string	用户openID
+        out_id: options.out_id,//int	经销商活动ID
+        out_type: options.out_type,//int	活动类型 砍价-1 团购-2
+        page_id: '28',//int	1-100的数字 不要重复
+        page_name: '经销商团购-首页',//string	页面名称 比如经销商团购首页
       }
     })
     /**
@@ -655,7 +656,6 @@ Page({
         indexData.activity_info.status === 3) &&
       (indexData.join_info.status === 0 ||
         indexData.join_info.status === 1)) {
-
       return {
         // title: '',
         // imageUrl: ``,
