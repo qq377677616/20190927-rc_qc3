@@ -185,6 +185,7 @@
                 </view>
 
                 <view class="btn-group color003B73">
+                    <view bindtap="receiveHandler" class="btn receive router-link-exact-active">领取奖品</view>
                     <button open-type="share" class="btn share">邀请好友</button>
                     <view bindtap="moreActivityBtn" class="btn more">查看更多活动</view>
                 </view>

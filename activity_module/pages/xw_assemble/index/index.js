@@ -92,7 +92,6 @@ Page({
       })
     ]).then((res) => {
       const { msg: msg0, status: status0, data: data0 } = res[0].data
-
       if (status0 == 1) {
         //当前活动倒计时相关处理
         let countDown = 0

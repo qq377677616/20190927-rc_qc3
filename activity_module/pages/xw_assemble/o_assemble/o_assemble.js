@@ -1,5 +1,5 @@
 // activity_module/pages/xw_assemble/o_assemle/o_assemle.js
-const app = getApp({allowDefault: true}); //获取应用实例
+const app = getApp({ allowDefault: true }); //获取应用实例
 import { ASSEMBLEAssembleDetail, ASSEMBLEReceivePrize, ASSEMBLEJoinAssemble, COMMONLogin, USERPostUserInfo, USERGetUnionid, USERGetUserDatabaseInfo, ASSEMBLEAssembleShareLog } from '../../../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../../../xw_utils/alert.js'
 import { timeFormat, getUserAdmin } from '../../../../xw_utils/tools.js'
@@ -86,7 +86,6 @@ Page({
       }),
     ]).then((res) => {
       let { data: data0, msg: msg0, status: status0 } = res[0].data
-
       if (status0 == 1) {
         //当前活动倒计时相关处理
         let countDown = 0
@@ -482,12 +481,12 @@ Page({
     let options = this.data.options
     let oAssembleData = this.data.oAssembleData
     ASSEMBLEAssembleShareLog({
-      data:{
-        openid:userInfo.openid,//string	用户openID
-        out_id:options.out_id,//int	经销商活动ID
-        out_type:options.out_type,//int	活动类型 砍价-1 团购-2
-        page_id:'29',//int	1-100的数字 不要重复
-        page_name:'经销商团购-我的拼团',//string	页面名称 比如经销商团购首页
+      data: {
+        openid: userInfo.openid,//string	用户openID
+        out_id: options.out_id,//int	经销商活动ID
+        out_type: options.out_type,//int	活动类型 砍价-1 团购-2
+        page_id: '29',//int	1-100的数字 不要重复
+        page_name: '经销商团购-我的拼团',//string	页面名称 比如经销商团购首页
       }
     })
 
