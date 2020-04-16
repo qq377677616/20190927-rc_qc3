@@ -575,8 +575,9 @@ Page({
 				})
 				break;
 			case 4:
-				tool.jump_back();
-				tool.alert("跳转h5");
+				// tool.jump_back();
+				// tool.alert("跳转h5");
+				tool.jump_nav(`/activity_module/pages/webviews/webviews?url=https://2020qc.0v6.net/gameStatistics?aid=${addinfo.code}`)
 				break;
 			case 5:
 				wx.navigateToMiniProgram({

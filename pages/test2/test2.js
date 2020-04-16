@@ -46,7 +46,7 @@ Page({
 			"name": 'T60',
 			"info": ['高品质智趣SUV 星级品质 焕新登场'],
 			"lowprice": "8.68",
-			"highprice": "11.88",
+			"highprice": "11.28",
 			"bgUrl": [imageUrl + "/lookcar/img_t60.png?4", imageUrl + "/lookcar/img_t60_X.png?4"],
 			"titleImg": imageUrl + "/lookcar/title_t60.png?4",
 			icon:'icon-T',

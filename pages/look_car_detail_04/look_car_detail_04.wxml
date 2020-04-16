@@ -92,7 +92,7 @@
                         <view class="m_txt" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt2.png)"></view>
                         <text class="txt2">星航设计 / 舒适驾乘</text>
                     </view>
-                    <view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_4.png)"></view>
+                    <view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_5.png?6)"></view>
                     <view class="txtbox2 txtbox3">{{swiper2_txt[swiper2]}}</view>
 
                     <!--轮播实例2-->
@@ -124,7 +124,7 @@
                         <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
                             <block wx:for="{{8}}" wx:key="item">
                                 <swiper-item>
-                                    <view class="item1 {{swiper2!=index-1&&!(swiper2==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/T60_sw2_{{index+1}}.png?2)" data-type="2" data-tab="{{index-1}}" data-len="{{8}}" bindtap="tabSwiper"></view>
+                                    <view class="item1 {{swiper2!=index-1&&!(swiper2==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_{{index==0?8:index}}.png?2)" data-type="2" data-tab="{{index-1}}" data-len="{{8}}" bindtap="tabSwiper"></view>
                                 </swiper-item>
                             </block>
                         </swiper>

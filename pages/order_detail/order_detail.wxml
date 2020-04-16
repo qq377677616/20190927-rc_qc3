@@ -49,11 +49,11 @@
                 </view>
             </block>
 
-            <block wx:elif="{{ item.type == 3 }}">
+            <block wx:elif="{{ item.type == 3||item.type == 4 }}">
                 <view class="info">
                     <view class="section card_name_v">
                         <view class="card_name nowrap">{{ item.title }}</view>
-                        <view class="v">原价: {{ item.vcoin }}</view>
+                        <view class="v" wx:if="{{item.type == 3}}">原价: {{ item.vcoin }}</view>
                     </view>
                     <view class="section total_num">
                         <view class="num">X{{ item.number }}</view>
@@ -76,7 +76,7 @@
         </view><!-- card_item -->
 
         <!-- total_v -->
-        <view class="total_v">
+        <view class="total_v" wx:if="{{orderDetail.order_goods[0].type!=4}}">
             支付 <text class="span">V豆: {{ orderDetail.vcoin }}</text>
         </view><!-- total_v -->
 
@@ -98,27 +98,27 @@
             <view class="p nowrap">{{ orderDetail.create_time }}</view>
         </view>
 
-        <view class="section">
+        <view class="section" wx:if="{{orderDetail.order_goods[0].type!=4}}">
             <view class="span">订单来源</view>
             <view class="p nowrap">{{ orderDetail.from }}</view>
         </view>
 
-        <view class="section">
+        <view class="section" wx:if="{{orderDetail.order_goods[0].type!=4}}">
             <view class="span">领取方式</view>
             <view class="p nowrap">{{ orderDetail.receive_type }}</view>
         </view>
 
-        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+        <view class="section" wx:if="{{ !(orderDetail.type == 2) && orderDetail.order_goods[0].type!=4 }}">
             <view class="span">门店名称</view>
             <view class="p">{{ orderDetail.dealer_info.name }}</view>
         </view>
 
-        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+        <view class="section" wx:if="{{ !(orderDetail.type == 2) && orderDetail.order_goods[0].type!=4 }}">
             <view class="span">门店地址</view>
             <view class="p">{{ orderDetail.dealer_info.address }}</view>
         </view>
 
-        <view class="section" wx:if="{{ !(orderDetail.type == 2) }}">
+        <view class="section" wx:if="{{ !(orderDetail.type == 2) && orderDetail.order_goods[0].type!=4}}">
             <view class="span">门店电话</view>
             <view class="p nowrap">{{ orderDetail.dealer_info.service_tel }}</view>
         </view>
