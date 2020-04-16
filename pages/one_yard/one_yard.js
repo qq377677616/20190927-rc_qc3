@@ -512,6 +512,16 @@ Page({
 		let type = t_id == 1||t_id == 8? 1 : (t_id == 6 || t_id == 7) ? 6 : t_id;
 		if (d_id == -1 || t_id==-1)return;
 		console.log(type,"跳转类型");
+		let dat = {
+			success: d_id,
+			activityid: this.data.out_id,
+			appid: 'wx1d585c8c2fffe589',
+			s_i: this.data.small_activity_id,
+			name: addinfo ? addinfo.name : '',
+			phone: addinfo ? addinfo.mobile : '',
+			area: addinfo ? addinfo.dlr_name : ''
+		};
+		console.log(dat);
 		switch(type){
 			case 0:
 				tool.jump_back();
@@ -525,11 +535,11 @@ Page({
 						activityid: this.data.out_id,
 						appid:'wx1d585c8c2fffe589',
 						s_i: this.data.small_activity_id,
-						name: addinfo.name ? addinfo.name : '',
-						phone: addinfo.mobile ? addinfo.mobile : '',
-						area: addinfo.dlr_name ? addinfo.dlr_name : ''
+						name: addinfo ? addinfo.name : '',
+						phone: addinfo ? addinfo.mobile : '',
+						area: addinfo ? addinfo.dlr_name : ''
 					},
-					envVersion: 'release',
+					envVersion: 'trial',//release
 					success(res) {
 						console.log('跳转成功');
 					}
@@ -545,11 +555,11 @@ Page({
 						activityid: this.data.out_id,
 						appid: 'wx1d585c8c2fffe589',
 						s_i: this.data.small_activity_id,
-						name: addinfo.name ? addinfo.name : '',
-						phone: addinfo.mobile ? addinfo.mobile : '',
-						area: addinfo.dlr_name ? addinfo.dlr_name : ''
+						name: addinfo ? addinfo.name : '',
+						phone: addinfo ? addinfo.mobile : '',
+						area: addinfo ? addinfo.dlr_name : ''
 					},
-					envVersion: 'release',
+					envVersion: 'trial',
 					success(res) {
 						console.log('跳转成功');
 					}
@@ -564,11 +574,11 @@ Page({
 						activityid: this.data.out_id,
 						appid: 'wx1d585c8c2fffe589',
 						s_i: this.data.small_activity_id,
-						name: addinfo.name ? addinfo.name:'',
-						phone: addinfo.mobile ? addinfo.mobile : '',
-						area: addinfo.dlr_name ? addinfo.dlr_name : ''
+						name: addinfo ? addinfo.name:'',
+						phone: addinfo ? addinfo.mobile : '',
+						area: addinfo ? addinfo.dlr_name : ''
 					},
-					envVersion: 'release',
+					envVersion: 'trial',
 					success(res) {
 						console.log('跳转成功');
 					}
@@ -588,11 +598,11 @@ Page({
 						activityid: this.data.out_id,
 						appid: 'wx1d585c8c2fffe589',
 						s_i: this.data.small_activity_id,
-						name: addinfo.name ? addinfo.name : '',
-						phone: addinfo.mobile ? addinfo.mobile : '',
-						area: addinfo.dlr_name ? addinfo.dlr_name : ''
+						name: addinfo ? addinfo.name : '',
+						phone: addinfo ? addinfo.mobile : '',
+						area: addinfo ? addinfo.dlr_name : ''
 					},
-					envVersion: 'release',
+					envVersion: 'trial',
 					success(res) {
 						console.log('跳转成功');
 					}
