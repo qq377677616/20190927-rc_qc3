@@ -50,12 +50,18 @@ export function COMMONLogin(callback) {
                     user_id: userInfo.user_id,
                 }
             }).then((res) => {
-                //更新用户车主相关信息
-                let { user_type } = res.data.data || {};
-                wx.setStorageSync('userInfo', Object.assign(userInfo, {
-                    user_type,
-                }))
-                callback()
+                let { msg, data = {}, status } = res.data
+                if (status == 1) {
+                    //更新用户车主相关信息
+                    let { user_type } = data;
+                    wx.setStorageSync('userInfo', Object.assign(userInfo, {
+                        user_type,
+                    }))
+                    callback()
+                } else {
+                    throw new Error(msg)
+                }
+
             }).catch((err) => {
                 alert({
                     title: err.message
@@ -76,10 +82,11 @@ export function COMMONLogin(callback) {
                 })
             }).then((res) => {
                 let userInfo = wx.getStorageSync('userInfo');
-                let data = res.data.data;
+                let { data = {} } = res.data
 
                 if (data.errcode && data.errmsg) {
 
+                    throw new Error(data.errmsg)
 
                 } else {
 
@@ -109,8 +116,7 @@ export function COMMONLogin(callback) {
                 }
             })
         }).then((res) => {
-            let data = res.data.data;
-
+            let { data = {} } =  res.data
             if (data.errcode && data.errmsg) {
                 COMMONLogin(callback)
             } else {
