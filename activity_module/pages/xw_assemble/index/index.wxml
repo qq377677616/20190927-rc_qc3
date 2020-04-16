@@ -1,7 +1,7 @@
 <!--activity_module/pages/xw_assemble/index/index.wxml-->
 
 <view class="container" bindtap="globalValidationHandler">
-
+    
     <view class="header">
         <view bindtap="isRuleVisibleHandler" class="rule-btn">
             <view class="span">活动规则</view>
@@ -45,7 +45,6 @@
             </view>
         </block>
     </view>
-
 
     <view class="goods-info-bar">
         <view class="info-title">
@@ -103,7 +102,6 @@
             src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
             mode="widthFix"></image>
     </view>
-
     <view class="footer">
         <view bindtap="jumpHome" class="back-home">
             <image class="icon" src="{{ IMGSERVICE }}/icon/home.png" mode="widthFix"></image>

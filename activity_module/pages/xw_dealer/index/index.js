@@ -1,5 +1,5 @@
 // pages/dealer-module/index/index.js
-const app = getApp(); //获取应用实例
+const app = getApp({allowDefault: true}); //获取应用实例
 import { COMMONLogin, DEALERActivityList } from '../../../../xw_api/index.js'
 import { alert, loading, hideLoading } from '../../../../xw_utils/alert.js'
 import { getPosition } from '../../../../xw_utils/tools.js'
