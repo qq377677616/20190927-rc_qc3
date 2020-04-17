@@ -188,9 +188,9 @@ Page({
    */
   receiveHandler() {
     let oAssembleData = this.data.oAssembleData
-    let order_id = oAssembleData.join_info.order_id
-    if (Boolean(order_id)) {
-      jump_nav(`/pages/order_detail/order_detail?order_id=${order_id}`);
+    let { join_info = {} } = oAssembleData
+    if (Boolean(join_info.order_id)) {
+      jump_nav(`/pages/order_detail/order_detail?order_id=${join_info.order_id}`);
     } else {
       loading({
         title: '领取中'

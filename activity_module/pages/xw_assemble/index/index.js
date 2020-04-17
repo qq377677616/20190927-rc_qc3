@@ -410,10 +410,9 @@ Page({
    */
   receiveHandler() {
     let indexData = this.data.indexData
-    let order_id = indexData.join_info.order_id
-
-    if (Boolean(order_id)) {
-      jump_nav(`/pages/order_detail/order_detail?order_id=${order_id}`);
+    let { join_info = {} } = indexData
+    if (Boolean(join_info.order_id)) {
+      jump_nav(`/pages/order_detail/order_detail?order_id=${join_info.order_id}`);
     } else {
       loading({
         title: '领取中'
