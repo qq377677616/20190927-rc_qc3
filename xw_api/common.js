@@ -63,6 +63,7 @@ export function COMMONLogin(callback) {
                 }
 
             }).catch((err) => {
+                
                 alert({
                     title: err.message
                 })
