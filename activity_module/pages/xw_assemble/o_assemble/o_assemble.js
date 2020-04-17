@@ -187,8 +187,7 @@ Page({
    * 领取程序
    */
   receiveHandler() {
-    let oAssembleData = this.data.oAssembleData
-    let { join_info = {} } = oAssembleData
+    let { join_info = {} } = this.data.oAssembleData
     if (Boolean(join_info.order_id)) {
       jump_nav(`/pages/order_detail/order_detail?order_id=${join_info.order_id}`);
     } else {

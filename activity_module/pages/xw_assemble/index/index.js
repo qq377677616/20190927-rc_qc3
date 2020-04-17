@@ -83,7 +83,7 @@ Page({
     loading({
       title: '加载中'
     })
-    Promise.all([
+    return Promise.all([
       ASSEMBLEAssembleIndex({
         data: {
           out_id: options.out_id,//活动ID
@@ -276,6 +276,7 @@ Page({
     })
     let { personalInfoValue, storeInfoValue } = e.detail
     let options = this.data.options
+    let indexData = this.data.indexData
     ASSEMBLELunchAssemble({
       data: {
         openid: userInfo.openid,//string	用户OPENID
@@ -288,7 +289,9 @@ Page({
       hideLoading()
 
       if (status == 1) {
-        this.initData(options)
+        this.initData(options).then(()=>{
+          jump_nav(`/activity_module/pages/xw_assemble/o_assemble/o_assemble?tuan_id=${indexData.join_info.tuan_id}&openid=${userInfo.openid}&out_id=${options.out_id}&out_type=${options.out_type}&tuan_log_id=${indexData.join_info.tuan_log_id}`)
+        })
       } else {
         throw new Error(msg)
       }
@@ -314,6 +317,7 @@ Page({
     let { personalInfoValue, storeInfoValue } = e.detail
     let isVisibleJoinForm = this.data.isVisibleJoinForm
     let options = this.data.options
+    let indexData = this.data.indexData
     ASSEMBLEJoinAssemble({
       data: {
         openid: userInfo.openid,//string	用户OPENID
@@ -327,7 +331,10 @@ Page({
       hideLoading()
 
       if (status == 1) {
-        this.initData(options)
+
+        this.initData(options).then(()=>{
+          jump_nav(`/activity_module/pages/xw_assemble/o_assemble/o_assemble?tuan_id=${indexData.join_info.tuan_id}&openid=${userInfo.openid}&out_id=${options.out_id}&out_type=${options.out_type}&tuan_log_id=${indexData.join_info.tuan_log_id}`)
+        })
       } else {
         throw new Error(msg)
       }
@@ -409,8 +416,7 @@ Page({
    * 领取程序
    */
   receiveHandler() {
-    let indexData = this.data.indexData
-    let { join_info = {} } = indexData
+    let { join_info = {} } = this.data.indexData
     if (Boolean(join_info.order_id)) {
       jump_nav(`/pages/order_detail/order_detail?order_id=${join_info.order_id}`);
     } else {
@@ -420,7 +426,7 @@ Page({
       ASSEMBLEReceivePrize({
         data: {
           openid: userInfo.openid,//string	用户openid
-          tuan_log_id: indexData.join_info.tuan_log_id,//int	团购记录ID
+          tuan_log_id: join_info.tuan_log_id,//int	团购记录ID
         }
       }).then((res) => {
         let options = this.data.options
@@ -428,8 +434,9 @@ Page({
         hideLoading()
 
         if (status == 1) {
-          this.initData(options)
-          jump_nav(`/pages/order_detail/order_detail?order_id=${data.order_id}`);
+          this.initData(options).then(()=>{
+            jump_nav(`/pages/order_detail/order_detail?order_id=${data.order_id}`);
+          })
         } else {
           throw new Error(msg)
         }
@@ -566,7 +573,7 @@ Page({
     }
 
     Object.assign(options, {
-      out_type: 2
+      out_type: 2,
     })
     loading({
       title: '登录中'
