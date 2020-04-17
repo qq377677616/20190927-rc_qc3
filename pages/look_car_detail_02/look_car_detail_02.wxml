@@ -14,7 +14,7 @@
     <!-- main -->
     <scroll-view scroll-y class="main" scroll-top="{{scrollTop}}">
         <view hidden="{{ navIndex == 0 }}">
-            <view class="group" wx:for="{{ car_details }}" wx:key="key{{index}}">
+            <view class="group" wx:for="{{ car_details }}" wx:key="item">
 
                 <view class="li radio_area flex-bet cur" wx:if="{{item.is_header == 1}}">
                     <view class="label">{{item.value}}</view>
@@ -40,23 +40,207 @@
               <view class="lable">备注：</view>
               <!-- <view class="span">{{remarks || '暂无相关备注信息'}}</view> -->
               <view class="span">
-                <view wx:for="{{lookCarDetail.remarks}}" wx:key="key{{index}}">{{item}}</view>
+                <view wx:for="{{lookCarDetail.remarks}}" wx:key="item">{{item}}</view>
               </view>
           </view>
         </view>
         </view>
         <view hidden="{{navIndex == 1}}">
-            <view class="image_item">
+            <view class="image_item" wx:if="{{id!=10}}">
                 <image src="{{ lookCarDetail.car_details_img }}" mode="widthFix" ></image>
             </view>
+
+
+			<!-- e30-->
+            <view class="image_item" wx:if="{{id==10}}">
+                <view>
+                    <view class="firbg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60.png?3)"></view>
+                    <view class="txtbox1">
+                        <view class="txt1" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt1.png)"></view>
+                        <!-- <text class="txt1">合资品质</text> -->
+                        <text class="txt2">合资级品质 / 日产动力组合 / 五星标准安全防护</text>
+                    </view>
+                    <view class="twobg" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_2.png?1)"></view>
+                    <view class="txtbox2">{{swiper1_txt[swiper1]}}</view>
+                    <!--轮播实例1-->
+                    <view class="threebg threebg1 anit2_{{swiper1}}">
+						<!-- 左右箭头 -->
+						<view class="leftbtn" catchtap="changetab" data-type="1" data-id="1" data-length="{{swp1_img.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
+                        <view class="rightbtn" catchtap="changetab" data-type="2" data-id="1" data-length="{{swp1_img.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
+                        <!-- 左右箭头 -->
+						<swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="1" current="{{swiper1}}">
+                            <block wx:for="{{swp1_img}}" wx:key="item">
+                                <swiper-item>
+                                    <!-- 自定义播放按钮 -->
+                                    <view class="nopt {{item.type==2&&swiper1==index&&vbtn?'opt':''}}">
+                                        <view class="fgbox">
+                                            <view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video1" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}">
+                                                <view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
+                                            </view>
+                                        </view>
+                                        <view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
+                                    </view>
+                                    <!-- 自定义播放按钮 -->
+                                    <view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?8)"></view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                    <view class="swiper1">
+                        <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="1" current="{{swiper1}}">
+                            <block wx:for="{{swp1_img}}" wx:key="item">
+                                <swiper-item>
+                                    <view class="item1 {{swiper1!=index-1&&!(swiper1==swp1_img.length-1&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{swp1_img[index==0?swp1_img.length-1:index-1].img}})" data-type="1" data-tab="{{index-1}}" data-len="{{swp1_img.length}}" bindtap="tabSwiper"></view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                    <!--轮播实例-->
+
+                    <view class="setwhite"></view>
+                    <view class="txtbox1 setbg">
+                        <view class="m_txt" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt2.png)"></view>
+                        <text class="txt2">星航设计 / 舒适驾乘</text>
+                    </view>
+                    <view class="nt60_4" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_5.png?6)"></view>
+                    <view class="txtbox2 txtbox3">{{swiper2_txt[swiper2]}}</view>
+
+                    <!--轮播实例2-->
+                    <view class="threebg threebg2 anit2_{{swiper2}}">
+						<!-- 左右箭头 -->
+						<view class="leftbtn" catchtap="changetab" data-type="1" data-id="2" data-length="{{7}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
+                        <view class="rightbtn" catchtap="changetab" data-type="2" data-id="2" data-length="{{7}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
+                        <!-- 左右箭头 -->
+                        <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="2" current="{{swiper2}}">
+                            <block wx:for="{{8}}" wx:key="item">
+                                <swiper-item>
+
+                                    <!-- 自定义播放按钮 -->
+                                    <view class="nopt {{item.type==2&&swiper2==index&&vbtn?'opt':''}}">
+                                        <view class="fgbox">
+                                            <view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video2">
+                                                <view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
+                                            </view>
+                                        </view>
+                                        <view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
+                                    </view>
+
+                                    <view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_{{index+1}}.png?8)"></view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                    <view class="swiper1">
+                        <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="2" current="{{swiper2}}">
+                            <block wx:for="{{8}}" wx:key="item">
+                                <swiper-item>
+                                    <view class="item1 {{swiper2!=index-1&&!(swiper2==7&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/Tb60_sw2_{{index==0?8:index}}.png?2)" data-type="2" data-tab="{{index-1}}" data-len="{{8}}" bindtap="tabSwiper"></view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                    <!--轮播实例-->
+
+                    <view class="setwhite"></view>
+
+                    <view class="txtbox1 setbg">
+                        <view class="m_txt2" style="background-image:url({{IMGSERVICE}}/gaiban/t60_txt3.png)"></view>
+                        <text class="txt2">智能安全 / 智能控制 / 智能交互</text>
+                    </view>
+
+                    <view class="nt60_6" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_6.png?8)"></view>
+                    <view class="txtbox2 txtbox3">{{swiper3_txt[swiper3]}}</view>
+
+                    <!--轮播实例3-->
+                    <view class="threebg threebg1 anit2_{{swiper3}}">
+						<!-- 左右箭头 -->
+						<view class="leftbtn" catchtap="changetab" data-type="1" data-id="3" data-length="{{swp3_img.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_25.png)"></view>
+                        <view class="rightbtn" catchtap="changetab" data-type="2" data-id="3" data-length="{{swp3_img.length-1}}" style="background-image:url({{IMGSERVICE}}/spike/page6_24.png)"></view>
+                        <!-- 左右箭头 -->
+                        <swiper circular="{{true}}" class="bigper" bindchange="swiperchange" bindtap="showplay" data-type="3" current="{{swiper3}}">
+                            <block wx:for="{{swp3_img}}" wx:key="item">
+                                <swiper-item>
+
+                                    <!-- 自定义播放按钮 -->
+                                    <view class="nopt {{item.type==2&&swiper3==index&&vbtn?'opt':''}}">
+                                        <view class="fgbox">
+                                            <view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video3" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}">
+                                                <view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
+                                            </view>
+                                        </view>
+                                        <view class="playcen" style="background-image:url({{IMGSERVICE}}/gaiban/playcen.png)"></view>
+                                    </view>
+                                    <!-- 自定义播放按钮 -->
+
+                                    <view class="bigitem" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?8)"></view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                    <view class="swiper1">
+                        <swiper circular="{{true}}" previous-margin="80rpx" next-margin="80rpx" display-multiple-items="3" class="setheg1" bindchange="swiperchange" data-type="3" current="{{swiper3}}">
+                            <block wx:for="{{swp3_img}}" wx:key="item">
+                                <swiper-item>
+                                    <view class="item1 {{swiper3!=index-1&&!(swiper3==swp3_img.length-1&&index==0)?'sethui':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/{{swp3_img[index==0?swp3_img.length-1:index-1].img}}?1)" data-type="3" data-tab="{{index-1}}" data-len="{{swp3_img.length}}" bindtap="tabSwiper"></view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+
+                    <view class="setwhite"></view>
+                    <!--轮播实例-->
+
+                    <view class="nt60_8" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_8.png?1)">
+                        <view class="carself {{rogincol==index?'setopt':''}}" style="background-image:url({{IMGSERVICE}}/gaiban/t60_car{{index+1}}.png?8)" wx:for="{{carcol}}" wx:key="item"></view>
+                        <text class="txt3">启辰T60配置参数</text>
+                        <text class="txt4">（官网画面仅供参考，购买时以实车为准）</text>
+                        <view class="selectcol">
+                            <scroll-view scroll-x="{{true}}">
+                                <view class="setflex">
+                                    <view class="f_items {{rogincol==index?'range':''}}" wx:for="{{carcol}}" bindtap="changecol" data-index="{{index}}" wx:key="item">
+                                        <view class="topimg" style="background-image:url({{IMGSERVICE}}/gaiban/{{item.img}}?4)"></view>
+                                        <text class="txt5">{{item.txt}}</text>
+                                    </view>
+                                </view>
+                            </scroll-view>
+                        </view>
+                    </view>
+                    <view class="carnum">
+                        <view class="numitem">
+                            <text>百公里油耗</text>
+                            <image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_9.png" class="num1"></image>
+                            <image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_12.png" class="lines"></image>
+                        </view>
+                        <view class="numitem">
+                            <text>智能双屏交互</text>
+                            <image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_10.png" class="num2"></image>
+                            <image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_12.png" class="lines"></image>
+                        </view>
+                        <view class="numitem">
+                            <text>超长轴距</text>
+                            <image mode="widthFix" src="{{IMGSERVICE}}/gaiban/N_T60_11.png" class="num3"></image>
+                        </view>
+                    </view>
+                    <view class="footcar1" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_13.png?2)">
+                       
+                    </view>
+                    <view class="footcar2" style="background-image:url({{IMGSERVICE}}/gaiban/N_T60_14.png?1)">
+                     
+                    </view>
+
+                    <view class="txt10">智炫版车型断面图和剖面图</view>
+
+                </view>
+            </view>
+            <!--e30 -->
         </view>
 
     </scroll-view>
     <!-- main -->
     
     <!-- 两个icon -->
-    <view class="icon-box {{isIconShow ? 'right-left' : ''}}" wx:key="key{{index}}" wx:if="{{ navIndex == 0 }}">
-      <view class="li flex-cen" wx:for="{{iconList}}" wx:if="{{isShowIcon['btn' + (index + 1)] == 1}}" wx:key="key{{index}}" data-url="{{item.url}}" bindtap="jump">
+    <view class="icon-box {{isIconShow ? 'right-left' : ''}}" wx:key="item" wx:if="{{ navIndex == 0 }}">
+      <view class="li flex-cen" wx:for="{{iconList}}" wx:if="{{isShowIcon['btn' + (index + 1)] == 1}}" wx:key="item" data-url="{{item.url}}" bindtap="jump">
         <image class="{{(index != 2 && isAnimate) ? 'tada' : ''}} animated" src="{{item.img}}" mode="widthFix"></image>
       </view>
     </view>

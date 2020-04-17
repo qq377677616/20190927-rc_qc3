@@ -35,6 +35,7 @@ Page({
 		addinfo:null,//地址信息
 		isfirst:1,
 		out_id:null,
+		dlr_code:null,// 专营店编码
     },
 
     //获取手机号
@@ -108,7 +109,8 @@ Page({
 					tool_id: res.data.data.tool_id,
 					is_data: res.data.data.is_data,
                     options,
-					addinfo: res.data.data.data_info ? res.data.data.data_info:this.data.data_info
+					addinfo: res.data.data.data_info ? res.data.data.data_info:this.data.data_info,
+					dlr_code: res.data.data._dlr_code
                 })
                 if (res.data.data.status == 2) {
                     this.setData({
@@ -537,7 +539,8 @@ Page({
 						s_i: this.data.small_activity_id,
 						name: addinfo ? addinfo.name : '',
 						phone: addinfo ? addinfo.mobile : '',
-						area: addinfo ? addinfo.dlr_name : ''
+						area: addinfo ? addinfo.dlr_name : '',
+						dlr_code: this.data.dlr_code
 					},
 					envVersion: 'trial',//release
 					success(res) {
@@ -557,7 +560,8 @@ Page({
 						s_i: this.data.small_activity_id,
 						name: addinfo ? addinfo.name : '',
 						phone: addinfo ? addinfo.mobile : '',
-						area: addinfo ? addinfo.dlr_name : ''
+						area: addinfo ? addinfo.dlr_name : '',
+						dlr_code: this.data.dlr_code
 					},
 					envVersion: 'trial',
 					success(res) {
@@ -576,7 +580,8 @@ Page({
 						s_i: this.data.small_activity_id,
 						name: addinfo ? addinfo.name:'',
 						phone: addinfo ? addinfo.mobile : '',
-						area: addinfo ? addinfo.dlr_name : ''
+						area: addinfo ? addinfo.dlr_name : '',
+						dlr_code: this.data.dlr_code
 					},
 					envVersion: 'trial',
 					success(res) {
@@ -587,7 +592,7 @@ Page({
 			case 4:
 				// tool.jump_back();
 				// tool.alert("跳转h5");
-				tool.jump_nav(`/activity_module/pages/webviews/webviews?url=https://2020qc.0v6.net/gameStatistics?aid=${addinfo.code}`)
+				tool.jump_nav(`/activity_module/pages/webviews/webviews?url=https://2020qc.0v6.net/gameStatistics?aid=${addinfo.code}&dlr_code=${this.data.dlr_code}`)
 				break;
 			case 5:
 				wx.navigateToMiniProgram({
@@ -600,7 +605,8 @@ Page({
 						s_i: this.data.small_activity_id,
 						name: addinfo ? addinfo.name : '',
 						phone: addinfo ? addinfo.mobile : '',
-						area: addinfo ? addinfo.dlr_name : ''
+						area: addinfo ? addinfo.dlr_name : '',
+						dlr_code: this.data.dlr_code
 					},
 					envVersion: 'trial',
 					success(res) {

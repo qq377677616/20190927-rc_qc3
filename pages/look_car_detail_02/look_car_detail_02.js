@@ -38,13 +38,59 @@ Page({
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_02.png', url: '/pages/assemble/pin/pin?activity_id=44' },
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' }
     ],
-	id:null
+	id:null,
+	  swiper1_txt: ['共享全球供应商体系', '日产HR16发动机', '日产XTRONIC CVT无级变速器', 'Zone Body区域组合+1200Mpa高强钢车身', 'ASCD定速巡航', 'HSA上坡起步辅助系统', '博世9.1版ESP车身电子稳定系统', '日产同平台开发生产'], //部件名称
+	  swiper2_txt: ['“星耀式” LED光导尾灯', '“星航” 投射式LED前大灯', '17英寸切削铝合金轮辋', '悬浮式车顶', '全景天窗', '科技范高质感内饰', 'Multi-Layer人体工学座椅', '“星空点阵式” 启辰家族前格栅'], //部件名称
+	  swiper3_txt: ['AEB自主紧急制动系统', 'BSW变道盲区预警系统', 'LDW车道偏离预警系统', '多场景远程控制', '远程控制车辆', '智能语音助手', '10+8英寸大尺寸智能双屏交互', '智能全时导航'], //部件名称
+	  carcol: [ //t60颜色图
+		  { img: 't60_col1.png', txt: '旭日橙/珠光白双色' },
+		  { img: 't60_col2.png', txt: '烈焰红/曜石黑双色' },
+		  { img: 't60_col3.png', txt: '珠光白/曜石黑双色' },
+		  { img: 't60_col4.png', txt: '烈焰红' },
+		  { img: 't60_col5.png', txt: '曜石黑' },
+		  { img: 't60_col6.png', txt: '钨钢灰' },
+		  { img: 't60_col7.png', txt: '旭日橙' },
+		  { img: 't60_col8.png', txt: '晴空蓝' },
+		  { img: 't60_col9.png', txt: '珠光白' }
+	  ],
+	  swp1_img: [ //t60第一个swiper资源
+		  { img: 'Tb60_sw1.png', type: 1 },
+		  { img: 'Tb60_sw2.png', type: 2, vUrl: "Tb60_sw2.mp4" },
+		  { img: 'Tb60_sw3.png', type: 2, vUrl: "Tb60_sw3.mp4" },
+		  { img: 'Tb60_sw4.png', type: 2, vUrl: "Tb60_sw5.mp4" },
+		  // { img: 'Tb60_sw5.png', type: 1},
+		  { img: 'Tb60_sw6.png?2', type: 1 },
+		  { img: 'Tb60_sw7.png', type: 2, vUrl: "Tb60_sw7.mp4" },
+		  { img: 'Tb60_sw8.png', type: 2, vUrl: "Tb60_sw8.mp4" },
+		  { img: 'Tb60_sw9.png', type: 1 }
+	  ],
+	  swp3_imgjju
+	  : [ //t60第三个swiper资源
+		  { img: 'Tb60_sw3_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'Tb60_sw3_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'Tb60_sw3_3.png', type: 2, vUrl: "Tb60_sw3_3.mp4" },
+		  { img: 'Tb60_sw3_5.png', type: 2, vUrl: "Tb60_sw3_5.mp4" },
+		  { img: 'Tb60_sw3_6.png', type: 2, vUrl: "Tb60_sw3_6.mp4" },
+		  { img: 'Tb60_sw3_7.png', type: 2, vUrl: "Tb60_sw3_7.mp4" },
+		  { img: 'Tb60_sw3_8.png', type: 2, vUrl: "Tb60_sw3_8.mp4" },
+		  { img: 'Tb60_sw3_9.png', type: 2, vUrl: "Tb60_sw3_9.mp4" }
+	  ],
+	  swiper1: 0, //控制第一个swiper
+	  swiper2: 0, //控制第二个swiper
+	  swiper3: 0, //控制第三个swiper
+	  rogincol: 0, //初始选择的颜色
+	  isplay: false, // 是否在播放视频
+	  vbtn: true, // 是否显示 播放按钮
+	  popstu: 1, // 留资弹窗状态
+	  curvio: null, // 当前创建的vi
   },
+
 
   /** 
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	console.log(options);
     mta.Page.init()//腾讯统计
     mta.Event.stat("look_car_other", {})
 	  this.setData({ id: options.id })
@@ -273,4 +319,115 @@ Page({
 	moreBtn() {
 		tool.jump_red("/pages/index/index")
 	},
+	swiperchange(e) { // 滑动切换 swiper
+		// console.log(e);
+		let type = e.currentTarget.dataset.type;
+		this.setData({
+			vbtn: true,
+			swiper1: type == 1 ? e.detail.current : this.data.swiper1,
+			swiper2: type == 2 ? e.detail.current : this.data.swiper2,
+			swiper3: type == 3 ? e.detail.current : this.data.swiper3,
+			swiper4: type == 4 ? e.detail.current : this.data.swiper4,
+			swiper5: type == 5 ? e.detail.current : this.data.swiper5,
+			swiper6: type == 6 ? e.detail.current : this.data.swiper6,
+			swiper7: type == 7 ? e.detail.current : this.data.swiper7,
+			swiper8: type == 8 ? e.detail.current : this.data.swiper8,
+			swiper9: type == 9 ? e.detail.current : this.data.swiper9,
+			swiper10: type == 10 ? e.detail.current : this.data.swiper10,
+			swiper11: type == 11 ? e.detail.current : this.data.swiper11,
+			swiper12: type == 12 ? e.detail.current : this.data.swiper12,
+		})
+		console.log(this.data.swiper7);
+		console.log(this.data.swiper1, this.data.swiper2);
+	},
+	changecol(e) { // 选择车子颜色
+		let index = e.currentTarget.dataset.index;
+		this.setData({ rogincol: index })
+		console.log(index)
+	},
+	// 播放视频
+	setplay(e) {
+		console.log(e.currentTarget.dataset.vurl)
+		if (e.currentTarget.dataset.vurl.indexOf("mp4") == -1) return;
+		this.setData({
+			isplay: true,
+		});
+		setTimeout(() => {
+			this.setData({
+				videoUrl: e.currentTarget.dataset.vurl
+			})
+			this.isOpenVideo()
+		}, 1000);
+		console.log('2', this.data.isplay);
+	},
+	// 视频播放弹窗开关
+	isOpenVideo() {
+		this.setData({
+			isPlayVedio: !this.data.isPlayVedio,
+			isplay: false,
+		})
+	},
+	//播放
+	videoPlay() {
+		console.log('开始播放')
+		// var videoplay = wx.createVideoContext()
+		this.data.curvio.play()
+	},
+	// 暂停播放
+	videoPause() {
+		console.log('暂停播放')
+		// var videoplay = wx.createVideoContext()
+		this.data.curvio.pause()
+	},
+	// 显示播放按钮
+	showplay() {
+		if (this.data.vbtn) return;
+		this.setData({ vbtn: true })
+		setTimeout(() => {
+			this.setData({ vbtn: false })
+		}, 3000)
+	},
+	changetab(e) { // 点击左右切换轮播
+		let id = e.currentTarget.dataset.id;
+		let type = e.currentTarget.dataset.type;
+		let len = e.currentTarget.dataset.length;
+		console.log(id, type);
+		this.setData({
+			swiper1: id == 1 && type == 1 ? this.data.swiper1 == 0 ? len : --this.data.swiper1 : id == 1 && type == 2 ? this.data.swiper1 == len ? 0 : ++this.data.swiper1 : this.data.swiper1,
+			swiper2: id == 2 && type == 1 ? this.data.swiper2 == 0 ? len : --this.data.swiper2 : id == 2 && type == 2 ? this.data.swiper2 == len ? 0 : ++this.data.swiper2 : this.data.swiper2,
+			swiper3: id == 3 && type == 1 ? this.data.swiper3 == 0 ? len : --this.data.swiper3 : id == 3 && type == 2 ? this.data.swiper3 == len ? 0 : ++this.data.swiper3 : this.data.swiper3,
+			swiper4: id == 4 && type == 1 ? this.data.swiper4 == 0 ? len : --this.data.swiper4 : id == 4 && type == 2 ? this.data.swiper4 == len ? 0 : ++this.data.swiper4 : this.data.swiper4,
+			swiper5: id == 5 && type == 1 ? this.data.swiper5 == 0 ? len : --this.data.swiper5 : id == 5 && type == 2 ? this.data.swiper5 == len ? 0 : ++this.data.swiper5 : this.data.swiper5,
+			swiper6: id == 6 && type == 1 ? this.data.swiper6 == 0 ? len : --this.data.swiper6 : id == 6 && type == 2 ? this.data.swiper6 == len ? 0 : ++this.data.swiper6 : this.data.swiper6,
+			swiper7: id == 7 && type == 1 ? this.data.swiper7 == 0 ? len : --this.data.swiper7 : id == 7 && type == 2 ? this.data.swiper7 == len ? 0 : ++this.data.swiper7 : this.data.swiper7,
+			swiper8: id == 8 && type == 1 ? this.data.swiper8 == 0 ? len : --this.data.swiper8 : id == 8 && type == 2 ? this.data.swiper8 == len ? 0 : ++this.data.swiper8 : this.data.swiper8,
+			swiper9: id == 9 && type == 1 ? this.data.swiper9 == 0 ? len : --this.data.swiper9 : id == 9 && type == 2 ? this.data.swiper9 == len ? 0 : ++this.data.swiper9 : this.data.swiper9,
+			swiper10: id == 10 && type == 1 ? this.data.swiper10 == 0 ? len : --this.data.swiper10 : id == 10 && type == 2 ? this.data.swiper10 == len ? 0 : ++this.data.swiper10 : this.data.swiper10,
+			swiper11: id == 11 && type == 1 ? this.data.swiper11 == 0 ? len : --this.data.swiper11 : id == 11 && type == 2 ? this.data.swiper11 == len ? 0 : ++this.data.swiper11 : this.data.swiper11,
+			swiper12: id == 12 && type == 1 ? this.data.swiper12 == 0 ? len : --this.data.swiper12 : id == 12 && type == 2 ? this.data.swiper12 == len ? 0 : ++this.data.swiper12 : this.data.swiper12,
+		})
+	},
+	closelz() {// 关闭填写
+		this.setData({ popstu: 2 })
+	},
+	tabSwiper(e) {// 点击精准切换
+		let type = e.currentTarget.dataset.type;
+		let tab = e.currentTarget.dataset.tab;
+		let len = e.currentTarget.dataset.len - 1;
+		console.log(type, tab, len);
+		this.setData({
+			swiper1: type == 1 ? (tab == -1 ? len : tab) : this.data.swiper1,
+			swiper2: type == 2 ? (tab == -1 ? len : tab) : this.data.swiper2,
+			swiper3: type == 3 ? (tab == -1 ? len : tab) : this.data.swiper3,
+			swiper4: type == 4 ? (tab == -1 ? len : tab) : this.data.swiper4,
+			swiper5: type == 5 ? (tab == -1 ? len : tab) : this.data.swiper5,
+			swiper6: type == 6 ? (tab == -1 ? len : tab) : this.data.swiper6,
+			swiper7: type == 7 ? (tab == -1 ? len : tab) : this.data.swiper7,
+			swiper8: type == 8 ? (tab == -1 ? len : tab) : this.data.swiper8,
+			swiper9: type == 9 ? (tab == -1 ? len : tab) : this.data.swiper9,
+			swiper10: type == 10 ? (tab == -1 ? len : tab) : this.data.swiper10,
+			swiper11: type == 11 ? (tab == -1 ? len : tab) : this.data.swiper11,
+			swiper12: type == 12 ? (tab == -1 ? len : tab) : this.data.swiper12,
+		})
+	}
 })
