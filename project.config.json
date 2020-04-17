@@ -660,6 +660,13 @@
 					"pathName": "pages/payment/pay_cart/pay_cart",
 					"query": "type=pay&activity_id=18",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "改版e30",
+					"pathName": "pages/look_car_detail_02/look_car_detail_02",
+					"query": "id=10",
+					"scene": null
 				}
 			]
 		}
