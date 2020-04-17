@@ -23,18 +23,22 @@ page{
     padding: 0 10rpx 0 26rpx;
     box-sizing: border-box;
     height: 60rpx;
+    /* line-height: 60rpx; */
+    display: flex;
+    flex-wrap:nowrap;
+    align-items:center;
 }
 
 .header .rule-btn .span {
-    display: inline-block;
-    line-height: 50rpx;
+    /* display: inline-block;
+    vertical-align: middle; */
     font-size: 24rpx;
     color: #fff;
 }
 
 .header .rule-btn .icon {
-    display: inline-block;
-    vertical-align: middle;
+    /* display: inline-block;
+    vertical-align: middle; */
     width: 32rpx;
     height: 28rpx;
 }
@@ -78,12 +82,12 @@ page{
 .activity-info-bar .info-left .join-number {
     font-size: 30rpx;
     color: #fff;
-    line-height: normal;
+    line-height: 36rpx;
 }
 
 .activity-info-bar .info-left .join-number .span {
-    display: inline;
-    font-size: 36rpx;
+    display: inline-block;
+    font-size: 34rpx;
     color: #F1403E;
     vertical-align:middle;
 }

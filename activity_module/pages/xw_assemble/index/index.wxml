@@ -95,11 +95,11 @@
     </block>
 
 
-    <view wx:for="{{0}}" wx:key="index" class="section">
+    <view wx:key="index" class="section">
         <view class="title">产品详情</view>
 
         <image class="poster"
-            src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3037923248,2700637563&fm=26&gp=0.jpg"
+            src="{{IMGSERVICE}}/icon/kj_default.png"
             mode="widthFix"></image>
     </view>
     <view class="footer">

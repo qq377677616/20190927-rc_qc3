@@ -607,8 +607,8 @@
 				},
 				{
 					"id": 78,
-					"name": "index",
-					"pathName": "activity_module/pages/xw_assemble/o_assemble/o_assemble",
+					"name": "leaveInfo",
+					"pathName": "activity_module/pages/yls_bargain/index/index",
 					"query": "tuan_id=1",
 					"scene": null
 				},

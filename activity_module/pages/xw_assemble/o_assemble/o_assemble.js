@@ -80,7 +80,8 @@ Page({
     Promise.all([
       ASSEMBLEAssembleDetail({
         data: {
-          openid: options.openid || userInfo.openid,//string	用户OPENID
+          // openid: options.openid || userInfo.openid,//string	用户OPENID
+          openid: userInfo.openid,//string	用户OPENID
           tuan_id: options.tuan_id,//int	团购ID
         }
       }),
