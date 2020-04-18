@@ -86,64 +86,121 @@
         </block>
 
         <block wx:elif="{{ oAssembleData.tuan_info.status === 1 }}">
-            <!-- No.2 -->
-            <block wx:if="{{ options.isSelf }}">
-                <text decode class="state-message">{{ oAssembleData.tuan_info.tuan_people }}人团&nbsp;拼团成功</text>
+            <!--  -->
+            <block wx:if="{{ oAssembleData.is_join == 1 }}">
+                <!-- No.2 -->
+                <block wx:if="{{ options.isSelf }}">
+                    <text decode class="state-message">{{ oAssembleData.tuan_info.tuan_people }}人团&nbsp;拼团成功</text>
 
-                <text decode class="current-join-message">
-                    您已拼团成功啦&nbsp;快来领取奖品吧
-                </text>
+                    <text decode class="current-join-message">
+                        您已拼团成功啦&nbsp;快来领取奖品吧
+                    </text>
 
-                <view class="count-down hidden">
-                    <view class="label">距离结束还剩：</view>
-                    <view class="p">
-                        <view class="span">09</view>
-                        <view class="text-2">:</view>
-                        <view class="span">15</view>
-                        <view class="text-2">:</view>
-                        <view class="span active">45</view>
+                    <view class="count-down hidden">
+                        <view class="label">距离结束还剩：</view>
+                        <view class="p">
+                            <view class="span">09</view>
+                            <view class="text-2">:</view>
+                            <view class="span">15</view>
+                            <view class="text-2">:</view>
+                            <view class="span active">45</view>
+                        </view>
                     </view>
-                </view>
 
-                <view class="join-head-img">
+                    <view class="join-head-img">
 
-                    <block wx:for="{{ oAssembleData.tuan_info.tuan_people }}" wx:key="index">
-                        <block wx:if="{{ oAssembleData.join_list[index] }}">
-                            <view wx:if="{{ index == 0 }}" class="head-img-item joining">
-                                <image class="huang-guan" src="{{ IMGSERVICE }}/icon/huang-guan.png" mode="aspectFit">
-                                </image>
-                                <image class="head-img" src="{{ oAssembleData.join_list[index] }}" mode="aspectFit">
-                                </image>
-                                <view class="span">团长</view>
-                            </view>
-                            <view wx:else class="head-img-item joining">
-                                <image class="head-img" src="{{ oAssembleData.join_list[index] }}" mode="aspectFit">
-                                </image>
-                            </view>
+                        <block wx:for="{{ oAssembleData.tuan_info.tuan_people }}" wx:key="index">
+                            <block wx:if="{{ oAssembleData.join_list[index] }}">
+                                <view wx:if="{{ index == 0 }}" class="head-img-item joining">
+                                    <image class="huang-guan" src="{{ IMGSERVICE }}/icon/huang-guan.png"
+                                        mode="aspectFit">
+                                    </image>
+                                    <image class="head-img" src="{{ oAssembleData.join_list[index] }}" mode="aspectFit">
+                                    </image>
+                                    <view class="span">团长</view>
+                                </view>
+                                <view wx:else class="head-img-item joining">
+                                    <image class="head-img" src="{{ oAssembleData.join_list[index] }}" mode="aspectFit">
+                                    </image>
+                                </view>
+                            </block>
+
+                            <block wx:else>
+                                <view class="head-img-item virtual-position">
+                                    <image class="head-img" src="{{ IMGSERVICE }}/icon/wen-hao.png" mode="aspectFit">
+                                    </image>
+                                </view>
+                            </block>
                         </block>
 
-                        <block wx:else>
-                            <view class="head-img-item virtual-position">
-                                <image class="head-img" src="{{ IMGSERVICE }}/icon/wen-hao.png" mode="aspectFit">
-                                </image>
-                            </view>
+                    </view>
+
+                    <view class="btn-group color003B73">
+                        <view bindtap="receiveHandler" class="btn receive router-link-exact-active">领取奖品</view>
+                        <view bindtap="moreActivityBtn" class="btn more">查看更多活动</view>
+                    </view>
+                </block>
+
+                <!-- No.3 -->
+                <block wx:else>
+                    <text decode class="state-message">{{ oAssembleData.tuan_info.tuan_people }}人团&nbsp;拼团成功</text>
+
+                    <text decode class="current-join-message">
+                        您已拼团成功啦&nbsp;快来领取奖品吧
+                    </text>
+
+                    <view class="count-down hidden">
+                        <view class="label">距离结束还剩：</view>
+                        <view class="p">
+                            <view class="span">09</view>
+                            <view class="text-2">:</view>
+                            <view class="span">15</view>
+                            <view class="text-2">:</view>
+                            <view class="span active">45</view>
+                        </view>
+                    </view>
+
+                    <view class="join-head-img">
+
+                        <block wx:for="{{ oAssembleData.tuan_info.tuan_people }}" wx:key="index">
+                            <block wx:if="{{ oAssembleData.join_list[index] }}">
+                                <view wx:if="{{ index == 0 }}" class="head-img-item joining">
+                                    <image class="huang-guan" src="{{ IMGSERVICE }}/icon/huang-guan.png"
+                                        mode="aspectFit">
+                                    </image>
+                                    <image class="head-img" src="{{ oAssembleData.join_list[index] }}" mode="aspectFit">
+                                    </image>
+                                    <view class="span">团长</view>
+                                </view>
+                                <view wx:else class="head-img-item joining">
+                                    <image class="head-img" src="{{ oAssembleData.join_list[index] }}" mode="aspectFit">
+                                    </image>
+                                </view>
+                            </block>
+
+                            <block wx:else>
+                                <view class="head-img-item virtual-position">
+                                    <image class="head-img" src="{{ IMGSERVICE }}/icon/wen-hao.png" mode="aspectFit">
+                                    </image>
+                                </view>
+                            </block>
                         </block>
-                    </block>
 
-                </view>
+                    </view>
 
-                <view class="btn-group color003B73">
-                    <view bindtap="receiveHandler" class="btn receive router-link-exact-active">领取奖品</view>
-                    <view bindtap="moreActivityBtn" class="btn more">查看更多活动</view>
-                </view>
+                    <view class="btn-group color003B73">
+                        <view bindtap="receiveHandler" class="btn receive router-link-exact-active">领取奖品</view>
+                        <button open-type="share" class="btn share">邀请好友</button>
+                        <view bindtap="moreActivityBtn" class="btn more">查看更多活动</view>
+                    </view>
+                </block>
             </block>
-
-            <!-- No.3 -->
+            <!--  -->
             <block wx:else>
-                <text decode class="state-message">{{ oAssembleData.tuan_info.tuan_people }}人团&nbsp;拼团成功</text>
+                <text decode class="state-message fail">{{ oAssembleData.tuan_info.tuan_people }}人团&nbsp;拼团失败</text>
 
                 <text decode class="current-join-message">
-                    您已拼团成功啦&nbsp;快来领取奖品吧
+                    很抱歉&nbsp;您来晚了
                 </text>
 
                 <view class="count-down hidden">
@@ -185,8 +242,6 @@
                 </view>
 
                 <view class="btn-group color003B73">
-                    <view bindtap="receiveHandler" class="btn receive router-link-exact-active">领取奖品</view>
-                    <button open-type="share" class="btn share">邀请好友</button>
                     <view bindtap="moreActivityBtn" class="btn more">查看更多活动</view>
                 </view>
             </block>
@@ -269,19 +324,14 @@
             <view slot="slot-text1"
                 style="padding-top:72rpx; font-size:36rpx; color:#333; font-weight:bold; text-align:center;">
                 您暂无授权</view>
-            <view slot="slot-text2" style="margin:36rpx 0; font-size:32rpx; color:#333; text-align:center;">无法参与活动</view>
-            <button 
-            slot="slot-btn1"
-            open-type="getUserInfo" 
-            lang="zh_CN" 
-            bindgetuserinfo="authHandler"
-            style="margin-bottom:10rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#fff; background:linear-gradient(-90deg,rgba(18,77,184,1),rgba(32,161,224,1)); border-radius:35rpx;">
-            立即授权</button>
-            <view 
-            slot="slot-btn2"
-            bindtap="closeAuthConfirmBtn"
-            style="margin-bottom:36rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#333; border-radius:35rpx;">
-            暂不授权</view>
+            <view slot="slot-text2" style="margin:36rpx 0; font-size:32rpx; color:#333; text-align:center;">无法参与活动
+            </view>
+            <button slot="slot-btn1" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="authHandler"
+                style="margin-bottom:10rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#fff; background:linear-gradient(-90deg,rgba(18,77,184,1),rgba(32,161,224,1)); border-radius:35rpx;">
+                立即授权</button>
+            <view slot="slot-btn2" bindtap="closeAuthConfirmBtn"
+                style="margin-bottom:36rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#333; border-radius:35rpx;">
+                暂不授权</view>
         </Confirm>
     </block>
 
@@ -289,18 +339,17 @@
     <block wx:if="{{ isVisibleBindConfirm }}">
         <Confirm>
             <view slot="slot-text1"
-                style="padding-top:72rpx; font-size:32rpx; color:#333; font-weight:bold; text-align:center;">活动仅限车主参与</view>
-            <view slot="slot-text2" style="margin:12rpx 0 72rpx; font-size:32rpx; color:#333; font-weight:bold; text-align:center;">您暂未绑定车主噢</view>
-            <view 
-            slot="slot-btn1"
-            bindtap="bindHandler"
-            style="margin-bottom:10rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#fff; background:linear-gradient(-90deg,rgba(18,77,184,1),rgba(32,161,224,1)); border-radius:35rpx;">
-            立即绑定</view>
-            <view 
-            slot="slot-btn2"
-            bindtap="closeBindConfirmBtn"
-            style="margin-bottom:36rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#333; border-radius:35rpx;">
-            暂不绑定</view>
+                style="padding-top:72rpx; font-size:32rpx; color:#333; font-weight:bold; text-align:center;">活动仅限车主参与
+            </view>
+            <view slot="slot-text2"
+                style="margin:12rpx 0 72rpx; font-size:32rpx; color:#333; font-weight:bold; text-align:center;">您暂未绑定车主噢
+            </view>
+            <view slot="slot-btn1" bindtap="bindHandler"
+                style="margin-bottom:10rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#fff; background:linear-gradient(-90deg,rgba(18,77,184,1),rgba(32,161,224,1)); border-radius:35rpx;">
+                立即绑定</view>
+            <view slot="slot-btn2" bindtap="closeBindConfirmBtn"
+                style="margin-bottom:36rpx; height:70rpx; line-height:70rpx; text-align:center; font-size:28rpx; color:#333; border-radius:35rpx;">
+                暂不绑定</view>
         </Confirm>
     </block>
 
