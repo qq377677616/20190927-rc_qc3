@@ -187,10 +187,13 @@ Page({
    * 领取程序
    */
   receiveHandler() {
-    let oAssembleData = this.data.oAssembleData
-    let order_id = oAssembleData.join_info.order_id
-    if (Boolean(order_id)) {
-      jump_nav(`/pages/order_detail/order_detail?order_id=${order_id}`);
+    let { join_info = {} } = this.data.oAssembleData
+    switch(null){
+      case join_info:
+        join_info = {}
+    }
+    if (Boolean(join_info.order_id)) {
+      jump_nav(`/pages/order_detail/order_detail?order_id=${join_info.order_id}`);
     } else {
       loading({
         title: '领取中'

@@ -151,16 +151,15 @@ Component({
      * 留资表单提交
      */
     formSubmitHandler() {
-      let personalInfo = this.properties.personalInfo
-      let storeInfo = this.properties.storeInfo
-
+      let {isVisible:personalInfoIsVisible,value:personalInfoValue = {}} = this.properties.personalInfo
+      let {isVisible:storeInfoIsVisible, value:storeInfoValue = {}} = this.properties.storeInfo
       const validatList = [
         {
-          rule: personalInfo.isVisible && Boolean(personalInfo.value.address_id),
+          rule: personalInfoIsVisible && Boolean(personalInfoValue.address_id),
           tips: "请选择地址"
         },
         {
-          rule: storeInfo.isVisible && Boolean(storeInfo.value.code),
+          rule: storeInfoIsVisible && Boolean(storeInfoValue.code),
           tips: "请选择专营店"
         },
       ];
@@ -179,8 +178,8 @@ Component({
       if (!validat) return;
 
       this.triggerEvent("formSubmitHandler", {
-        personalInfoValue: personalInfo.value,
-        storeInfoValue: storeInfo.value,
+        personalInfoValue: personalInfoValue,
+        storeInfoValue: storeInfoValue,
       })
     },
     /** */
