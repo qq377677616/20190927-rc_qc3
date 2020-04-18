@@ -513,7 +513,7 @@ Page({
 		let addinfo = this.data.addinfo;
 		let type = t_id == 1||t_id == 8? 1 : (t_id == 6 || t_id == 7) ? 6 : t_id;
 		if (d_id == -1 || t_id==-1)return;
-		console.log(type,"跳转类型");
+		console.log(type,"跳转类型",this.data.dlr_code);
 		let dat = {
 			success: d_id,
 			activityid: this.data.out_id,
@@ -521,7 +521,8 @@ Page({
 			s_i: this.data.small_activity_id,
 			name: addinfo ? addinfo.name : '',
 			phone: addinfo ? addinfo.mobile : '',
-			area: addinfo ? addinfo.dlr_name : ''
+			area: addinfo ? addinfo.dlr_name : '',
+			dlr_code: this.data.dlr_code
 		};
 		console.log(dat);
 		switch(type){
