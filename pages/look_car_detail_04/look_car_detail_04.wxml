@@ -64,7 +64,7 @@
                                     <!-- 自定义播放按钮 -->
                                     <view class="nopt {{item.type==2&&swiper1==index&&vbtn?'opt':''}}">
                                         <view class="fgbox">
-                                            <view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video1" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}">
+                                            <view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video1" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}?{{v}}">
                                                 <view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
                                             </view>
                                         </view>
@@ -154,7 +154,7 @@
                                     <!-- 自定义播放按钮 -->
                                     <view class="nopt {{item.type==2&&swiper3==index&&vbtn?'opt':''}}">
                                         <view class="fgbox">
-                                            <view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video3" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}">
+                                            <view catchtap="setplay" class="playbtn {{isplay?'isant':''}}" data-vid="video3" data-vUrl="{{IMGSERVICE}}/gaiban/{{item.vUrl}}?{{v}}">
                                                 <view style="background-image:url({{IMGSERVICE}}/gaiban/playbox.png)" class="playbox"></view>
                                             </view>
                                         </view>

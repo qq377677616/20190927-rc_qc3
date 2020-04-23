@@ -92,6 +92,7 @@ Page({
         //success
 		// console.log(value);
         const location = value[0].result;
+		  console.log(location.location);
         this.setData({
           location,
 		  citys: value[0].result.address_component.city
@@ -107,7 +108,7 @@ Page({
 		this.initData();
 	},
 	getBuystroe(){
-		console.log(this.data.location);
+		console.log(this.data.location,"参数");
 		let dat ={
 			user_id:wx.getStorageSync('userInfo').user_id,
 			lon: this.data.location.lng,
@@ -134,6 +135,7 @@ Page({
 		this.getstroelist();
 	},
 	getstroelist(location={}){
+		console.log(this.data.location, "参数");
 		let dat = {};
 		if (this.data.selectCity == "") {
 			dat = {

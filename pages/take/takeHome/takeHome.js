@@ -10,6 +10,8 @@ const request_01 = require('../../../utils/request/request_01.js');
 
 const alert = require('../../../utils/tool/alert.js');
 
+const method = require('../../../utils/tool/method.js');
+
 Page({
 
 	/**
@@ -169,9 +171,11 @@ Page({
 	},
 	getInfo(){//获取专营店信息
 		tool.loading("自动定位中")
-		https.getPosition().then((res)=>{// 获取地理位置
+		method.getPosition().then((value)=>{// 获取地理位置
 				let dat =  {};
-				let locat = res.result.ad_info.location;
+				console.log(value)
+				let locat = value.result.location;
+				console.log(locat);
 				this.data.codeuser?dat = {
 					userid: this.data.codeuser	
 				} : this.data.code?dat={code:this.data.code}:dat = {
@@ -180,6 +184,7 @@ Page({
 					page: 0,
 					limit: 1
 				}
+				console.log("定位坐标",dat.lon,dat.lat);
 				https.getInfo(dat).then((res) => {
 					// console.log(res);
 					if (res.data.code == 1) {

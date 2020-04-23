@@ -39,45 +39,77 @@ Page({
       { img: app.globalData.IMGSERVICE + '/car_detail/icon_03s.png', url: '/pages/index/index' }
     ],
 	id:null,
-	  swiper1_txt: ['共享全球供应商体系', '日产HR16发动机', '日产XTRONIC CVT无级变速器', 'Zone Body区域组合+1200Mpa高强钢车身', 'ASCD定速巡航', 'HSA上坡起步辅助系统', '博世9.1版ESP车身电子稳定系统', '日产同平台开发生产'], //部件名称
-	  swiper2_txt: ['“星耀式” LED光导尾灯', '“星航” 投射式LED前大灯', '17英寸切削铝合金轮辋', '悬浮式车顶', '全景天窗', '科技范高质感内饰', 'Multi-Layer人体工学座椅', '“星空点阵式” 启辰家族前格栅'], //部件名称
-	  swiper3_txt: ['AEB自主紧急制动系统', 'BSW变道盲区预警系统', 'LDW车道偏离预警系统', '多场景远程控制', '远程控制车辆', '智能语音助手', '10+8英寸大尺寸智能双屏交互', '智能全时导航'], //部件名称
+	  swiper1_txt: ['领跑行业的电动车市场经验', '领跑行业的电动车市场经验', '领跑行业的电动车市场经验', '领跑行业的电动车市场经验', '领跑行业的电动车市场经验', '领跑行业的电动车市场经验'], //部件名称
+	  swiper2_txt: ['雷诺-日产-三菱联盟底盘技术', '高品质三重滤震设计', '雷诺-日产-三菱联盟底盘技术', '高品质三重滤震设计', '雷诺-日产-三菱联盟底盘技术', '高品质三重滤震设计'], //部件名称
+	  swiper3_txt: ['国际ASIL-D电池安全级别', '980MPa高强钢车身', '慢充4小时极速满电', '百公里仅需6元', '国际ASIL-D电池安全级别', '980MPa高强钢车身', '慢充4小时极速满电', '百公里仅需6元'], //部件名称
+	  swiper4_txt: ['五门四座舒适大空间', '灵活储物空间', '五门四座舒适大空间', '灵活储物空间', '五门四座舒适大空间', '灵活储物空间'],
+	  swiper5_txt: ['高级智能安防', '多功能远程控制', '人性化语音交互', '智能高德导航', '高级智能安防', '多功能远程控制', '人性化语音交互', '智能高德导航'],
+	  swiper6_txt: ['V-galaxy全新家族前脸', '跨界动感车顶行李架', '蓝色缝线简约座椅设计', '8寸高清触控大屏', '全新旋钮式电子换挡','“翼”式远近光一体式投射大灯'],	
+	  d60ev_txt4: ['Multi-Layer 人体工学座椅 PM2.5 自动空气净化系统','525L大容积后备厢+15处灵活储物空'],
 	  carcol: [ //t60颜色图
-		  { img: 't60_col1.png', txt: '旭日橙/珠光白双色' },
-		  { img: 't60_col2.png', txt: '烈焰红/曜石黑双色' },
-		  { img: 't60_col3.png', txt: '珠光白/曜石黑双色' },
-		  { img: 't60_col4.png', txt: '烈焰红' },
-		  { img: 't60_col5.png', txt: '曜石黑' },
-		  { img: 't60_col6.png', txt: '钨钢灰' },
-		  { img: 't60_col7.png', txt: '旭日橙' },
-		  { img: 't60_col8.png', txt: '晴空蓝' },
-		  { img: 't60_col9.png', txt: '珠光白' }
+		  { img: 'e30_col1.png', txt: '晨风蓝' },
+		  { img: 'e30_col2.png', txt: '典雅白' },
+		  { img: 'e30_col3.png', txt: '钻石银' },
+		  { img: 'e30_col4.png', txt: '赤兔红' }
 	  ],
 	  swp1_img: [ //t60第一个swiper资源
-		  { img: 'Tb60_sw1.png', type: 1 },
-		  { img: 'Tb60_sw2.png', type: 2, vUrl: "Tb60_sw2.mp4" },
-		  { img: 'Tb60_sw3.png', type: 2, vUrl: "Tb60_sw3.mp4" },
-		  { img: 'Tb60_sw4.png', type: 2, vUrl: "Tb60_sw5.mp4" },
-		  // { img: 'Tb60_sw5.png', type: 1},
-		  { img: 'Tb60_sw6.png?2', type: 1 },
-		  { img: 'Tb60_sw7.png', type: 2, vUrl: "Tb60_sw7.mp4" },
-		  { img: 'Tb60_sw8.png', type: 2, vUrl: "Tb60_sw8.mp4" },
-		  { img: 'Tb60_sw9.png', type: 1 }
+		  { img: 'e30_sw1_1.jpg', type: 1 },
+		  { img: 'e30_sw1_2.jpg', type: 2, vUrl: "Tb60_sw2.mp4" },
+		  { img: 'e30_sw1_1.jpg', type: 1 },
+		  { img: 'e30_sw1_2.jpg', type: 2,vUrl: "Tb60_sw2.mp4" },
+		  { img: 'e30_sw1_1.jpg', type: 1},
+		  { img: 'e30_sw1_2.jpg', type: 2,vUrl: "Tb60_sw2.mp4" }
 	  ],
-	  swp3_imgjju
-	  : [ //t60第三个swiper资源
-		  { img: 'Tb60_sw3_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
-		  { img: 'Tb60_sw3_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
-		  { img: 'Tb60_sw3_3.png', type: 2, vUrl: "Tb60_sw3_3.mp4" },
-		  { img: 'Tb60_sw3_5.png', type: 2, vUrl: "Tb60_sw3_5.mp4" },
-		  { img: 'Tb60_sw3_6.png', type: 2, vUrl: "Tb60_sw3_6.mp4" },
-		  { img: 'Tb60_sw3_7.png', type: 2, vUrl: "Tb60_sw3_7.mp4" },
-		  { img: 'Tb60_sw3_8.png', type: 2, vUrl: "Tb60_sw3_8.mp4" },
-		  { img: 'Tb60_sw3_9.png', type: 2, vUrl: "Tb60_sw3_9.mp4" }
+	  swp2_img:[
+		  { img: 'e30_sw2_1.png', type: 1 },
+		  { img: 'e30_sw2_2.png', type: 2, vUrl: "Tb60_sw2.mp4" },
+		  { img: 'e30_sw2_1.png', type: 1 },
+		  { img: 'e30_sw2_2.png', type: 2, vUrl: "Tb60_sw2.mp4" },
+		  { img: 'e30_sw2_1.png', type: 1 },
+		  { img: 'e30_sw2_2.png', type: 2, vUrl: "Tb60_sw2.mp4" }
+	  ],
+	  swp3_img:[ //t60第三个swiper资源
+		  { img: 'e30_sw3_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw3_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'e30_sw3_3.png', type: 2, vUrl: "Tb60_sw3_3.mp4" },
+		  { img: 'e30_sw3_4.png', type: 2, vUrl: "Tb60_sw3_5.mp4" },
+		  { img: 'e30_sw3_5.png', type: 2, vUrl: "Tb60_sw3_6.mp4" },
+		  { img: 'e30_sw3_6.png', type: 2, vUrl: "Tb60_sw3_7.mp4" },
+		  { img: 'e30_sw3_7.png', type: 2, vUrl: "Tb60_sw3_8.mp4" },
+		  { img: 'e30_sw3_8.png', type: 2, vUrl: "Tb60_sw3_9.mp4" }
+	  ],
+	  swp4_img:[
+		  { img: 'e30_sw4_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw4_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'e30_sw4_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw4_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'e30_sw4_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw4_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" }
+	  ],
+	  swp5_img: [
+		  { img: 'e30_sw5_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw5_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'e30_sw5_3.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw5_4.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'e30_sw5_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw5_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'e30_sw5_3.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw5_4.png', type: 2, vUrl: "Tb60_sw3_2.mp4" }
+	  ],
+	  swp6_img: [
+		  { img: 'e30_sw6_1.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw6_2.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'e30_sw6_3.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw6_4.png', type: 2, vUrl: "Tb60_sw3_2.mp4" },
+		  { img: 'e30_sw6_5.png', type: 2, vUrl: "Tb60_sw3_1.mp4" },
+		  { img: 'e30_sw6_6.png', type: 2, vUrl: "Tb60_sw3_2.mp4" }
 	  ],
 	  swiper1: 0, //控制第一个swiper
 	  swiper2: 0, //控制第二个swiper
 	  swiper3: 0, //控制第三个swiper
+	  swiper4: 0,
+	  swiper5:0,
+	  swiper6:0,
 	  rogincol: 0, //初始选择的颜色
 	  isplay: false, // 是否在播放视频
 	  vbtn: true, // 是否显示 播放按钮

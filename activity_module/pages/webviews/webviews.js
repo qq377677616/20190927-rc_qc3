@@ -12,7 +12,9 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		this.setData({h5url:options.url})
+		// console.log(options.url,options.aid);
+		this.setData({ h5url: `${options.url}?aid=${options.aid}`})
+		console.log(this.data.h5url);
 	},
 
 	/**

@@ -593,7 +593,8 @@ Page({
 			case 4:
 				// tool.jump_back();
 				// tool.alert("跳转h5");
-				tool.jump_nav(`/activity_module/pages/webviews/webviews?url=https://2020qc.0v6.net/gameStatistics?aid=${addinfo.code}&dlr_code=${this.data.dlr_code}`)
+				// console.log(`/activity_module/pages/webviews/webviews?url=https://2020qc.0v6.net/index?aid=${addinfo ? addinfo.code : ''}`)
+				tool.jump_nav(`/activity_module/pages/webviews/webviews?url=https://2020qc.0v6.net/index&aid=${addinfo ?addinfo.code:''}`)
 				break;
 			case 5:
 				wx.navigateToMiniProgram({
@@ -616,6 +617,9 @@ Page({
 				})
 				break;
 			case 6:
+				tool.jump_back();
+				break;
+			default:
 				tool.jump_back();
 				break;
 		}

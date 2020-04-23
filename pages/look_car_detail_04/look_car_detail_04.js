@@ -136,7 +136,8 @@ Page({
         popstu: 1, // 留资弹窗状态
         curvio: null, // 当前创建的video
 		_currxl:0,//开车门当前序列帧
-		id:null
+		id:null,
+		v:102
     },
 
 

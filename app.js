@@ -6,7 +6,7 @@ const alert = require('./utils/tool/alert.js');
 const mta = require('./utils/public/mta_analysis.js')
 
 App({
-    onLaunch: function (options) {
+    onLaunch:function (options){
         console.log("app.js的options", options)
         //获取parent_id和channel_id存储到本地 
         let scene = decodeURIComponent(options.query.scene)
@@ -36,11 +36,11 @@ App({
             pinKey: Boolean(keyGroup.pinKey), //99元下定开关
         })
     },
-    globalData: {
+    globalData:{
         userInfo: null,
         //https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0自己oss域名
         //'https://weixinfslb.venucia.com/uploads/assets_3.0',启辰服务器域名
-		IMGSERVICE: 'https://weixinfslb.venucia.com/uploads/assets_3.0', //日产小程序的 图片路径
+		IMGSERVICE: 'https://game.flyh5.cn/resources/game/wechat/xw/rc_qc/assets_3.0', //日产小程序的 图片路径
 
 		ASSETSURL: 'https://weixinfslb.venucia.com/uploads/assets_3.0/ca', //ca 资源地址
 		REQUESTURL: 'https://weixinyhby.venucia.com/backend/public/index.php', //ca接口请求路径 http://xkvyfp.natappfree.cc/index.php   日产 https://weixinyhby.venucia.com/backend/public/index.php

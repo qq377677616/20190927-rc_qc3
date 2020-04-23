@@ -156,7 +156,7 @@ margin-bottom: 32rpx;
 }
 .twobg{
 	width:750rpx;
-	height:738rpx;
+	height:750rpx;
 	background: center no-repeat/cover;
 }
 .twobg2{
@@ -387,6 +387,7 @@ margin-bottom: 32rpx;
 	width: 100%;
 	transition:all .3s linear;
 }
+
 .anit6_0::after{
 	width: 20%;
 	transition:all .3s linear;
@@ -490,7 +491,7 @@ margin-bottom: 32rpx;
 }
 .nt60_4{
 	width:100%;
-	height: 544rpx;
+	height: 640rpx;
 	background: center no-repeat/cover;
 	background-color: #F0F0F0;
 }
@@ -1065,4 +1066,55 @@ margin-bottom: 32rpx;
 }
 .coule>text:first-child,.coule2>text:first-child,.coule3>text:first-child,.coule4>text:first-child{
 	writing-mode:vertical-rl;
+}
+/* e30 添加样式 */
+.txtbg1,.txtbg2,.txtbg3,.txtbg4{
+	width: 333rpx;
+	height: 47rpx;
+}
+.setcenter{
+	justify-content: center;
+}
+/* d60ev */
+.d60ev_twobg{
+	height: 578rpx;
+}
+.d60box{
+	width: 100%;
+	height: 245rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.d60t1{
+	font-size: 31rpx;
+	font-family: MHeiPRC;
+	font-weight: 600;
+	color:rgba(0,0,0,1);
+	flex-shrink: 0;
+}
+.d60t2{
+	font-size:24rpx;
+	font-family:PingFangSC-Regular;
+	color:rgba(51,51,51,1);
+	margin-top: 40rpx;
+}
+.d60t3{
+	font-size:24rpx;
+	font-family:PingFangSC-Regular;
+	color:rgba(51,51,51,1);
+	margin-top: 20rpx;
+}
+.d60box2{
+	width: 100%;
+	justify-content: center;
+	display: flex;
+}
+.d60box2>image{
+	width: 647rpx !important;
+	height: auto;
+}
+.d60ev_nt60_4{
+	height: 587rpx;
 }

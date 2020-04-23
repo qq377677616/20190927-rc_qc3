@@ -3,6 +3,8 @@ let app = new getApp();
 import https from '../../../utils/api/my-requests.js';
 
 import tool from '../../../utils/public/tool.js';
+
+const method = require('../../../utils/tool/method.js');
 Page({
 
 	/**
@@ -80,13 +82,13 @@ Page({
 	// }
 	getInfo(){//获取专营店信息
 		this.data.page == 1 ? tool.loading("自动定位中") : tool.loading("加载中...");
-		https.getPosition().then((res) => {// 获取地理位置
-			console.log(res.result.address);
-			this.setData({ address: res.result.address});
-			let locat = res.result.ad_info.location;
+		method.getPosition().then((value) => {// 获取地理位置
+			let locat = value.result.location;
+			console.log(value);
+			this.setData({ address: value.result.address });
 			let dat = {
-				lon: locat.lng,
-				lat: locat.lat,
+				lon: 113.179001,//locat.lng,
+				lat: 23.378357,//locat.lat,
 				page:this.data.page,
 				limit:this.data.limit
 			}
